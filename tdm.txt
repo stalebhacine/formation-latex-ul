@@ -1,0 +1,36 @@
+TITRE ET SOUS-TITRE
+
+Composition de documents avec LaTeX
+
+Des premiers pas au document de qualité professionnelle
+
+
+TABLE DES MATIÈRES
+
+1. TeX, LaTeX et consorts: ce que c'est et ce que ce n'est pas
+2. Principes de base et composition d'un document simple
+3. LaTeX en français
+4. Parties d'un document et portions de texte spéciales (citations,
+   notes de bas de page, etc.)
+5. Document contenu dans plusieurs fichiers (utilisation de \include
+   et \input)
+6. Tableaux et figures
+7. Mathématiques (avec amsmath)
+8. Bibliographie avec BIBTeX
+9. Polices de caractères: au-delà de Computer Modern
+10. En rafale: trucs et astuces divers (hyperliens, présentation de code
+    informatique, symboles spéciaux, analyse et rapport intégrés [de
+    type Sweave], diapositives, ...)
+
+THÈMES TRANSVERSAUX
+
+- Liens avec la classe ulthese
+- Bonnes pratiques
+- Paquetages utiles ou recommandés
+
+PRÉ-REQUIS
+
+- Avoir installé une distribution LaTeX (TeX Live est recommandée) sur
+  son poste de travail.
+- Idéalement, avoir composé, compilé et visualisé au moins un document
+  simple (ne serait-ce que de niveau "Hello World!").
