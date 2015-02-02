@@ -1,0 +1,60 @@
+Un système TeX et LaTeX est formé d'un grand nombre de composantes
+réunies sont forme d'une distribution. La plus populaire distribution
+est aujourd'hui TeX Live, administrée par le TeX User Group.
+
+La philosophie de TeX Live: tout installer. Cette façon de faire est
+aujourd'hui réalisable puisque l'espace disque est disponible à
+profusion dans les ordinateurs. C'est également la plus simple puisque
+à peu près tout ce que vous êtes susceptible d'utiliser dans un
+système TeX est déjà installé.
+
+Cette capsule explique comment installer la distribution TeX Live sur
+un système Windows/Mac OS X.
+
+***
+
+Pour installer la distribution, rendez-vous sur le site du TeX User
+Group au t-u-g . org.
+
+***
+
+Sous OS X, on installera une version spécifique de TeX Live nommée
+MacTeX.
+
+***
+
+Le fichier à télécharger est MacTeX.pkg.
+
+Attention, toutefois, le fichier est énorme! Peut-être
+voudrez-vous par conséquent effectuer le téléchargement depuis le
+campus de l'Université.
+
+On clique pour télécharger et on prend une petite pause en attendant
+que le tout soit transféré.
+
+***
+
+Lorsque le téléchargement est terminé, cliquer sur le fichier dans
+le dossier de téléchargements, puis suivre l'assistant pour
+procéder à l'installation.
+
+***
+
+Une fois l'installation terminée, consulter le sous-dossier TeX du
+dossier Applications.
+
+Vous y trouverez quelques utilitaires, dont deux éditeurs -- TeXShop
+et TeXworks -- que vous pouvez utiliser pour créer vos documents
+LaTeX.
+
+Si vous effectuez vos premiers pas avec LaTeX, vous trouverez des
+informations utiles dans le fichier READ ME FIRST.
+
+***
+
+En terminant, prenez note que la distribution TeX Live est entièrement
+mise à jour sur une base annuelle.
+
+Si vous avez plus d'une version de TeX Live installée, vous pouvez
+sélectionner celle à utiliser dans la section spéciale TeX des
+Préférences système.
