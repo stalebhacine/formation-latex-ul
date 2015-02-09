@@ -1,4 +1,4 @@
-\documentclass[aspectratio=54,xcolor=x11names]{beamer}
+\documentclass[aspectratio=54,10pt,xcolor=x11names]{beamer}
   \usepackage[francais]{babel}
   \usepackage[autolanguage]{numprint}
   \usepackage{amsmath,icomma}
@@ -45,10 +45,10 @@
   \setbeamercolor{frametitle}{fg=white,bg=black}
   \setbeamerfont{frametitle}{family=\titles}
   \setbeamercolor{structure}{fg=orange,bg=white}
-  \setbeamercolor{block title}{fg=black,bg=white}
+  \setbeamercolor{block title}{fg=white,bg=black}
   \setbeamercolor{alerted text}{fg=black}
   \setbeamerfont{alerted text}{series=\bfseries}
-  \setbeamercolor{block title alerted}{fg=comments}
+  \setbeamercolor{block title alerted}{fg=white,bg=comments}
   \setbeamertemplate{theorems}[numbered]
   \setbeamertemplate{navigation symbols}{}
   \setbeamertemplate{section in sidebar}{}
@@ -90,53 +90,11 @@
 
 \begin{document}
 
-\begin{frame}[plain]
-  %% Code pour créer la page couverture conservé dans un fichier séparé
-  \input{couverture}
-\end{frame}
+%% Le code de la page couverture est conservé dans un fichier séparé
+\input{couverture}
 
-\begin{frame}[t,plain]
-  \tiny
-  \vspace*{10mm}
-
-  {\textcopyright} {\year} Université Laval \\[4mm]
-
-  \includegraphics[height=4mm,keepaspectratio=true]{by-sa} \\%
-
-  Cette création est mise à disposition selon le contrat
-  \href{http://creativecommons.org/licenses/by-sa/4.0/deed.fr}{%
-    Attribution-Partage dans les mêmes conditions 4.0 International}
-  de Creative Commons. En vertu de ce contrat, vous êtes libre de:
-  \begin{itemize}
-  \item \textbf{partager} --- reproduire, distribuer et communiquer
-    l'{\oe}uvre;
-  \item \textbf{remixer} --- adapter l'{\oe}uvre;
-  \item utiliser cette {\oe}uvre à des fins commerciales.
-  \end{itemize}
-  Selon les conditions suivantes:
-  \vspace*{2mm}
-
-  \begin{tabularx}{\linewidth}{@{}lX@{}}
-    \raisebox{-5.5mm}[0mm][10mm]{%
-      \includegraphics[height=7mm,keepaspectratio=true]{by}} &
-    \textbf{Attribution} --- Vous devez créditer l'{\oe}uvre, intégrer
-    un lien vers le contrat et indiquer si des modifications ont été
-    effectuées à l'{\oe}uvre. Vous devez indiquer ces informations par
-    tous les moyens possibles, mais vous ne pouvez suggérer que
-    l'Offrant vous soutient ou soutient la façon dont vous avez utilisé
-    son {\oe}uvre. \\
-    \raisebox{-5.5mm}{\includegraphics[height=7mm,keepaspectratio=true]{sa}}
-    & \textbf{Partage dans les mêmes conditions} --- Dans le cas où vous
-    modifiez, transformez ou créez à partir du matériel composant
-    l'{\oe}uvre originale, vous devez diffuser l'{\oe}uvre modifiée dans
-    les même conditions, c'est à dire avec le même contrat avec lequel
-    l'{\oe}uvre originale a été diffusée.
-  \end{tabularx}
-  \vspace*{4mm}
-
-  Notes de cours et exercices développés par Vincent Goulet,
-  professeur titulaire.
-\end{frame}
+%% Le texte du contrat de licence est conservé dans un fichier séparé
+\input{licence}
 
 \begin{frame}
   \frametitle{Sommaire}
@@ -367,6 +325,7 @@ Copyright 2014 D.E. Knuth.
   \end{enumerate}
 \end{frame}
 
+%%% >>>
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     \begin{enumerate}
@@ -375,9 +334,11 @@ Copyright 2014 D.E. Knuth.
       et observer le résultat.
     \item Ajouter du texte en français (avec accents) et observer le
       résultat.
+    \item Compiler le document \fichier{exercice\_demo.tex}.
     \end{enumerate}
   \end{exercice}
 \end{frame}
+%%% <<<
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Commandes}
@@ -417,7 +378,7 @@ Copyright 2014 D.E. Knuth.
     de produire le texte ci-dessous.
   \end{exercice}
   \begin{center}
-    \fbox{\includegraphics[width=\linewidth]{exercice_commandes-output}}
+    \fbox{\includegraphics[width=\linewidth]{exercice_commandes-solution}}
   \end{center}
 \end{frame}
 
@@ -515,7 +476,7 @@ Copyright 2014 D.E. Knuth.
   \item Tiret, tiret demi-cadratin, tiret cadratin:
     \begin{quote}
      \begin{minipage}[t]{0.07\linewidth}
-\begin{lstlisting}[aboveskip=-0.6\medskipamount]
+\begin{lstlisting}[aboveskip=-0.2\medskipamount]
 -
 \end{lstlisting}
      \end{minipage}
@@ -525,7 +486,7 @@ Copyright 2014 D.E. Knuth.
      \end{texoutput}
      \hfill
      \begin{minipage}[t]{0.07\linewidth}
-\begin{lstlisting}[aboveskip=-0.6\medskipamount]
+\begin{lstlisting}[aboveskip=-0.2\medskipamount]
 --
 \end{lstlisting}
      \end{minipage}
@@ -535,7 +496,7 @@ Copyright 2014 D.E. Knuth.
      \end{texoutput}
      \hfill
           \begin{minipage}[t]{0.07\linewidth}
-\begin{lstlisting}[aboveskip=-0.6\medskipamount]
+\begin{lstlisting}[aboveskip=-0.2\medskipamount]
 ---
 \end{lstlisting}
      \end{minipage}
@@ -600,18 +561,21 @@ Copyright 2014 D.E. Knuth.
   \frametitle{{\LaTeX} en français}
     \small
   \begin{tabularx}{1.0\linewidth}{Xl}
-    \textbf{Enjeu} & \textbf{Solution} \\
+    \toprule
+    \textbf{ENJEU} & \textbf{SOLUTION} \\
+    \midrule
     \addlinespace[6pt]
     Traduction des mots-clés prédéfinis & \textbf{babel} \\
-    \addlinespace[3pt]
+    \addlinespace[6pt]
     Coupure de mots & \textbf{babel} \\
-    \addlinespace[3pt]
+    \addlinespace[6pt]
     Typographie française & \textbf{babel} \\
-    \addlinespace[3pt]
+    \addlinespace[6pt]
     Lettres accentuées dans source & \textbf{inputenc} (\LaTeX) \\
-    \addlinespace[3pt]
+                                   & texte UTF-8 (\XeLaTeX) \\
+    \addlinespace[6pt]
     Virgule comme séparateur décimal & \textbf{icomma} \\
-    \addlinespace[3pt]
+    \addlinespace[6pt]
     Espace comme séparateur des milliers & \textbf{numprint}
   \end{tabularx}
 \end{frame}
@@ -701,7 +665,7 @@ Copyright 2014 D.E. Knuth.
 \end{abstract}
 \end{lstlisting}
   \item Classe \textbf{ulthese}: résumés français et anglais traités
-    comme des chapitres (non numérotés) normaux
+    comme des chapitres normaux (non numérotés)
   \end{itemize}
 \end{frame}
 
@@ -718,7 +682,7 @@ Copyright 2014 D.E. Knuth.
         \verb=\subsubsection= &
           \color{emphasis} \faArrowLeft\ à éviter dans un livre! \\
         \verb=\paragraph=  &
-          \color{emphasis} \faArrowLeft\ jamais utilisé (?) \\
+          \color{emphasis} \faArrowLeft\ jamais (?) utilisé \\
       \end{tabularx}
     \end{quote}
   \item Prennent le titre en argument
@@ -728,13 +692,18 @@ Copyright 2014 D.E. Knuth.
 \end{frame}
 
 %%% >>>
-\begin{frame}[plain]
+\begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
-    Utiliser le fichier \fichier{exercice\_classe+paquetages.tex}.
+    Utiliser le fichier \fichier{exercice\_sections.tex}.
+
     \begin{enumerate}
     \item Ajouter un titre et un auteur au document.
-    \item Insérer deux ou trois titres de sections et de sous-sections
+    \item Insérer deux ou trois titres de sections de différents niveaux
       dans le document.
+      \begin{itemize}
+      \item[\faExclamationSign] Le premier niveau de section
+          est \verb=\chapter= avec la classe \textbf{memoir}
+      \end{itemize}
     \end{enumerate}
   \end{exercice}
 \end{frame}
@@ -793,15 +762,15 @@ on a...
 \end{frame}
 
 %%% >>>
-\begin{frame}[plain=singleslide]
+\begin{frame}[plain]
   \begin{exercice}
-    Reprendre le fichier \fichier{exercice\_classe+paquetages.tex}
-    modifié à l'exercice précédent.
+    Utiliser le fichier \fichier{exercice\_renvois.tex}.
     \begin{enumerate}
     \item Insérer dans le texte un renvoi au numéro d'une section.
-    \item Charger le paquetage \textbf{hyperref} et comparer l'effet
-      d'utiliser \texttt{{\textbackslash}ref} ou
-      \texttt{{\textbackslash}autoref} pour le renvoi.
+    \item Activer le paquetage \textbf{hyperref} avec l'option
+      \texttt{colorlinks} et comparer l'effet d'utiliser
+      \texttt{{\textbackslash}ref} ou \texttt{{\textbackslash}autoref}
+      pour le renvoi.
     \end{enumerate}
   \end{exercice}
 \end{frame}
@@ -881,6 +850,20 @@ on a...
   \end{itemize}
 \end{frame}
 
+%%% >>>
+\begin{frame}[plain]
+  \begin{exercice}
+    Utiliser le fichier \fichier{exercice\_tdm+annexe.tex}.
+    \begin{enumerate}
+    \item Étudier la structure du document dans le code source.
+    \item Créer la table des matières du document en le compilant 2 à
+      3 fois.
+    \item Ajouter une annexe au document.
+    \end{enumerate}
+  \end{exercice}
+\end{frame}
+%%% <<<
+
 
 \section{Contrôle du texte}
 
@@ -943,7 +926,7 @@ on a...
       \verb=\Huge= \> {\Huge énorme}
     \end{tabbing}
   \end{block}
-  \vspace{-18pt}
+  \vspace{-10pt}
   \pause
   \begin{block}{Ajouts de \textbf{memoir} (et donc \textbf{ulthese})}
     \vspace{-12pt}
@@ -1198,8 +1181,11 @@ dans une police à largeur fixe
   \begin{exercice}
     \begin{enumerate}
     \item Ouvrir le fichier \fichier{exercice\_complet.tex} et en
-      étudier le code source avant de le compiler.
-    \item Effectuer les modfications suivantes au document.
+      étudier le code source, puis le compiler.
+    \item En comparant le résultat avec le fichier produit avec le
+      fichier \fichier{exercice\_tdm+annexes.tex}, déterminer l'effet
+      de l'option \texttt{article} dans la classe.
+    \item Effectuer les modifications suivantes au document.
       \begin{enumerate}[a)]
       \item Dernier paragraphe de la première section, placer toute la
         phrase débutant par \texttt{«De simple dérivé»} à l'intérieur
@@ -1213,82 +1199,82 @@ dans une police à largeur fixe
 %%% <<<
 
 
-\section{Document contenu dans plusieurs fichiers}
+% \section{Document contenu dans plusieurs fichiers}
 
-\begin{frame}[fragile=singleslide]
-  \frametitle{Extrait de la documentation de \textbf{ulthese}}
-  \begin{quote}
-    «Il est recommandé de segmenter tout document d'une certaine
-    ampleur dans des fichiers \verb=.tex= distincts pour chaque
-    partie --- habituellement un fichier par chapitre.
-  \end{quote}
+% \begin{frame}[fragile=singleslide]
+%   \frametitle{Extrait de la documentation de \textbf{ulthese}}
+%   \begin{quote}
+%     «Il est recommandé de segmenter tout document d'une certaine
+%     ampleur dans des fichiers \verb=.tex= distincts pour chaque
+%     partie --- habituellement un fichier par chapitre.
+%   \end{quote}
 
-  \begin{quote}
-    Le document complet est composé à l'aide d'un fichier maître qui
-    contient le préambule {\LaTeX} et un ensemble de commandes
-    \verb=\include= pour réunir les parties dans un tout.»
-  \end{quote}
-\end{frame}
+%   \begin{quote}
+%     Le document complet est composé à l'aide d'un fichier maître qui
+%     contient le préambule {\LaTeX} et un ensemble de commandes
+%     \verb=\include= pour réunir les parties dans un tout.»
+%   \end{quote}
+% \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Structure d'un fichier maître}
-\begin{lstlisting}
-\documentclass{ulthese}
-  [...]
+% \begin{frame}[fragile]
+%   \frametitle{Structure d'un fichier maître}
+% \begin{lstlisting}
+% \documentclass{ulthese}
+%   [...]
 
-\begin{document}
+% \begin{document}
 
-\frontmatter
+% \frontmatter
 
-\include{introduction}
-\tableofcontents*
+% \include{introduction}
+% \tableofcontents*
 
-\mainmatter
-\include{historique}
-[...]
+% \mainmatter
+% \include{historique}
+% [...]
 
-\end{document}
-\end{lstlisting}
-\end{frame}
+% \end{document}
+% \end{lstlisting}
+% \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Deux manières d'insérer du contenu externe}
-  \begin{itemize}
-  \item Commande \verb=\include= insère le contenu d'un fichier
-    \begin{itemize}
-    \item débute toujours une nouvelle page
-    \item numérotation des pages et références conservées entre les
-      compilations
-    \item \verb=\includeonly= dans le préambule permet de compiler un
-      ou quelques fichiers seulement
-    \item vraiment fait pour des chapitres, parties de livres, etc.
-    \end{itemize}
-  \item<2-> Commande \verb=\input= permet aussi d'insérer le contenu d'un
-    fichier
-    \begin{itemize}
-    \item contenu inséré tel quel, comme s'il avait été tapé dans le
-      fichier qui contient \verb=\input=
-    \item peut aussi être utilisé dans le préambule
-    \item fait pour les bouts de code que l'on veut sauvegarder
-      séparément (figures, long tableaux, etc.)
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]
+%   \frametitle{Deux manières d'insérer du contenu externe}
+%   \begin{itemize}
+%   \item Commande \verb=\include= insère le contenu d'un fichier
+%     \begin{itemize}
+%     \item débute toujours une nouvelle page
+%     \item numérotation des pages et références conservées entre les
+%       compilations
+%     \item \verb=\includeonly= dans le préambule permet de compiler un
+%       ou quelques fichiers seulement
+%     \item vraiment fait pour des chapitres, parties de livres, etc.
+%     \end{itemize}
+%   \item<2-> Commande \verb=\input= permet aussi d'insérer le contenu d'un
+%     fichier
+%     \begin{itemize}
+%     \item contenu inséré tel quel, comme s'il avait été tapé dans le
+%       fichier qui contient \verb=\input=
+%     \item peut aussi être utilisé dans le préambule
+%     \item fait pour les bouts de code que l'on veut sauvegarder
+%       séparément (figures, long tableaux, etc.)
+%     \end{itemize}
+%   \end{itemize}
+% \end{frame}
 
-%%% >>>
-\begin{frame}[plain]
-  \begin{exercice}
-    \begin{enumerate}
-    \item Modifier le fichier \fichier{exercice\_complet.tex} de telle
-      sorte que l'on puisse l'insérer dans un fichier maître.
-      Sauvegarder le fichier ainsi obtenu \fichier{presentation.tex}
-    \item Insérer le fichier \fichier{presentation.tex} dans le
-      document maître \fichier{gabarit-doctorat.tex} (tiré de
-      \textbf{ulthese} avec de légères simplifications).
-    \end{enumerate}
-  \end{exercice}
-\end{frame}
-%%% <<<
+% %%% >>>
+% \begin{frame}[plain]
+%   \begin{exercice}
+%     \begin{enumerate}
+%     \item Modifier le fichier \fichier{exercice\_complet.tex} de telle
+%       sorte que l'on puisse l'insérer dans un fichier maître.
+%       Sauvegarder le fichier ainsi obtenu \fichier{presentation.tex}
+%     \item Insérer le fichier \fichier{presentation.tex} dans le
+%       document maître \fichier{gabarit-doctorat.tex} (tiré de
+%       \textbf{ulthese} avec de légères simplifications).
+%     \end{enumerate}
+%   \end{exercice}
+% \end{frame}
+% %%% <<<
 
 
 \section{B.a.-ba du mode mathématique}
@@ -1304,11 +1290,13 @@ dans une police à largeur fixe
     \item lire la documentation de ce paquetage pour connaître toutes
       ses fonctionnalités
     \end{itemize}
-  \item Important d'utiliser un mode mathématique pour mettre en forme
-    des mathématiques
+  \item Décrire des équations mathématiques requiert un «language» spécial
     \begin{itemize}
-    \item «language» spécial pour décrire les mathématiques et il faut
-      en informer {\LaTeX}
+    \item il faut informer {\LaTeX} que l'on passe à ce langage
+    \item par le biais de modes mathématiques
+    \end{itemize}
+  \item Important d'utiliser un mode mathématique
+    \begin{itemize}
     \item règles de typographie spéciales (constantes vs variables,
       disposition des équations, numérotation, etc.)
     \item espaces entre les symboles et autour des opérateurs gérées
@@ -1425,176 +1413,176 @@ $x = 0 \text{ si } y < 2$
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Exposants et indices}
-  \begin{itemize}
-  \item Utiliser \verb=^= pour mettre le caractère suivant en exposant
-  \item Utiliser \verb=_= pour mettre le caractère suivant en indice
-  \item Pour plus d'un caractère, regrouper entre \verb={ }=
-  \item Toutes les combinaisons possibles
-  \end{itemize}
-  \pause
-  \begin{quote}
-    \begin{minipage}{0.2\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
-$x^2$
-\end{lstlisting}
-    \end{minipage}
-    \quad
-    \begin{texoutput}{0.2\linewidth}
-        $x^2$
-      \end{texoutput}
-    \hfill
-    \begin{minipage}{0.2\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
-$x_4$
-\end{lstlisting}
-    \end{minipage}
-    \quad
-    \begin{texoutput}{0.2\linewidth}
-      $x_4$
-    \end{texoutput}
-    \\
-    \begin{minipage}{0.2\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
-$x^{2n}$
-\end{lstlisting}
-    \end{minipage}
-    \quad
-    \begin{texoutput}{0.2\linewidth}
-      $x^{2n}$
-    \end{texoutput}
-    \hfill
-    \begin{minipage}{0.2\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
-$x^{y^2}$
-\end{lstlisting}
-    \end{minipage}
-    \quad
-    \begin{texoutput}{0.2\linewidth}
-      $x^{y^2}$
-    \end{texoutput}
-    \\
-    \begin{minipage}{0.5\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
-$A_{j_{(k, l)}}^{x_i^2}$
-\end{lstlisting}
-    \end{minipage}
-    \quad
-    \begin{texoutput}{0.3\linewidth}
-      $A_{j_{(k, l)}}^{x_i^2}$
-    \end{texoutput}
-  \end{quote}
-\end{frame}
+% \begin{frame}[fragile]
+%   \frametitle{Exposants et indices}
+%   \begin{itemize}
+%   \item Utiliser \verb=^= pour mettre le caractère suivant en exposant
+%   \item Utiliser \verb=_= pour mettre le caractère suivant en indice
+%   \item Pour plus d'un caractère, regrouper entre \verb={ }=
+%   \item Toutes les combinaisons possibles
+%   \end{itemize}
+%   \pause
+%   \begin{quote}
+%     \begin{minipage}{0.2\linewidth}
+% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% $x^2$
+% \end{lstlisting}
+%     \end{minipage}
+%     \quad
+%     \begin{texoutput}{0.2\linewidth}
+%         $x^2$
+%       \end{texoutput}
+%     \hfill
+%     \begin{minipage}{0.2\linewidth}
+% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% $x_4$
+% \end{lstlisting}
+%     \end{minipage}
+%     \quad
+%     \begin{texoutput}{0.2\linewidth}
+%       $x_4$
+%     \end{texoutput}
+%     \\
+%     \begin{minipage}{0.2\linewidth}
+% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% $x^{2n}$
+% \end{lstlisting}
+%     \end{minipage}
+%     \quad
+%     \begin{texoutput}{0.2\linewidth}
+%       $x^{2n}$
+%     \end{texoutput}
+%     \hfill
+%     \begin{minipage}{0.2\linewidth}
+% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% $x^{y^2}$
+% \end{lstlisting}
+%     \end{minipage}
+%     \quad
+%     \begin{texoutput}{0.2\linewidth}
+%       $x^{y^2}$
+%     \end{texoutput}
+%     \\
+%     \begin{minipage}{0.5\linewidth}
+% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% $A_{j_{(k, l)}}^{x_i^2}$
+% \end{lstlisting}
+%     \end{minipage}
+%     \quad
+%     \begin{texoutput}{0.3\linewidth}
+%       $A_{j_{(k, l)}}^{x_i^2}$
+%     \end{texoutput}
+%   \end{quote}
+% \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Fractions}
-  \begin{itemize}
-  \item Pour les équations en ligne, utiliser tout simplement la barre
-    oblique \verb=/=
-    \begin{quote}
-      \begin{minipage}{0.5\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
-On a $y = (n + m)/2$.
-\end{lstlisting}
-      \end{minipage}
-      \quad
-      \begin{texoutput}{0.4\linewidth}
-        \rmfamily On a $y = (n + m)/2$.
-      \end{texoutput}
-    \end{quote}
-  \item Pour écrire le numérateur au-dessus du dénominateur, utiliser
-    la commande \verb=\frac{}{}=
-    \begin{quote}
-      \begin{minipage}{0.75\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
-$\frac{x}{2}$
-\end{lstlisting}
-      \end{minipage}
-      \quad
-      \begin{texoutput}{0.15\linewidth}
-        $\dfrac{x}{2}$
-      \end{texoutput}
-      \\
-      \begin{minipage}{0.75\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
-$\frac{x_i + \frac{1}{2}}{y^2 + k}$
-\end{lstlisting}
-      \end{minipage}
-      \quad
-      \begin{texoutput}{0.15\linewidth}
-        $\dfrac{x_i + \frac{1}{2}}{y^2 + k}$
-      \end{texoutput}
-    \end{quote}
-  \end{itemize}
-\end{frame}
+% \begin{frame}[fragile]
+%   \frametitle{Fractions}
+%   \begin{itemize}
+%   \item Pour les équations en ligne, utiliser tout simplement la barre
+%     oblique \verb=/=
+%     \begin{quote}
+%       \begin{minipage}{0.5\linewidth}
+% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% On a $y = (n + m)/2$.
+% \end{lstlisting}
+%       \end{minipage}
+%       \quad
+%       \begin{texoutput}{0.4\linewidth}
+%         \rmfamily On a $y = (n + m)/2$.
+%       \end{texoutput}
+%     \end{quote}
+%   \item Pour écrire le numérateur au-dessus du dénominateur, utiliser
+%     la commande \verb=\frac{}{}=
+%     \begin{quote}
+%       \begin{minipage}{0.75\linewidth}
+% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% $\frac{x}{2}$
+% \end{lstlisting}
+%       \end{minipage}
+%       \quad
+%       \begin{texoutput}{0.15\linewidth}
+%         $\dfrac{x}{2}$
+%       \end{texoutput}
+%       \\
+%       \begin{minipage}{0.75\linewidth}
+% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% $\frac{x_i + \frac{1}{2}}{y^2 + k}$
+% \end{lstlisting}
+%       \end{minipage}
+%       \quad
+%       \begin{texoutput}{0.15\linewidth}
+%         $\dfrac{x_i + \frac{1}{2}}{y^2 + k}$
+%       \end{texoutput}
+%     \end{quote}
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{Lettres grecques \\ et autres symboles mathématiques}
+% \begin{frame}[fragile]
+%   \frametitle{Lettres grecques \\ et autres symboles mathématiques}
 
-  La plupart des symboles mathématiques sont invoqués par une commande
-  dont le nom correspond au nom ou à la signification mathématique du
-  symbole
+%   La plupart des symboles mathématiques sont invoqués par une commande
+%   dont le nom correspond au nom ou à la signification mathématique du
+%   symbole
 
-  \begin{quote}
-    \begin{minipage}{0.55\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
-$\mu + \sigma^2 + \gamma$
-\end{lstlisting}
-    \end{minipage}
-    \quad
-    \begin{texoutput}{0.35\linewidth}
-      $\mu + \sigma^2 + \gamma$
-    \end{texoutput}
-    \\
-    \begin{minipage}{0.55\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
-$\Lambda + \Delta + \Gamma$
-\end{lstlisting}
-    \end{minipage}
-    \quad
-    \begin{texoutput}{0.35\linewidth}
-      $\Lambda + \Delta + \Gamma$
-    \end{texoutput}
-    \\
-    \begin{minipage}{0.55\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
-$\times \div \leq \geq \neq$
-\end{lstlisting}
-    \end{minipage}
-    \quad
-    \begin{texoutput}{0.35\linewidth}
-      $\times \div \leq \geq \neq$
-    \end{texoutput}
-    \\
-    \begin{minipage}{0.55\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
-$\dots \cdots \cdot$
-\end{lstlisting}
-    \end{minipage}
-    \quad
-    \begin{texoutput}{0.35\linewidth}
-      $\cdot \dots \cdots$
-    \end{texoutput}
-    \\
-    \begin{minipage}{0.71\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
-$\sum_{x = 0}^\infty \int_0^x y\, dy$
-\end{lstlisting}
-    \end{minipage}
-    \quad
-    \begin{texoutput}{0.15\linewidth}
-      $\displaystyle \sum_{x = 0}^\infty \int_0^x y\, dy$
-    \end{texoutput}
-  \end{quote}
-\end{frame}
+%   \begin{quote}
+%     \begin{minipage}{0.55\linewidth}
+% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% $\mu + \sigma^2 + \gamma$
+% \end{lstlisting}
+%     \end{minipage}
+%     \quad
+%     \begin{texoutput}{0.35\linewidth}
+%       $\mu + \sigma^2 + \gamma$
+%     \end{texoutput}
+%     \\
+%     \begin{minipage}{0.55\linewidth}
+% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% $\Lambda + \Delta + \Gamma$
+% \end{lstlisting}
+%     \end{minipage}
+%     \quad
+%     \begin{texoutput}{0.35\linewidth}
+%       $\Lambda + \Delta + \Gamma$
+%     \end{texoutput}
+%     \\
+%     \begin{minipage}{0.55\linewidth}
+% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% $\times \div \leq \geq \neq$
+% \end{lstlisting}
+%     \end{minipage}
+%     \quad
+%     \begin{texoutput}{0.35\linewidth}
+%       $\times \div \leq \geq \neq$
+%     \end{texoutput}
+%     \\
+%     \begin{minipage}{0.55\linewidth}
+% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% $\dots \cdots \cdot$
+% \end{lstlisting}
+%     \end{minipage}
+%     \quad
+%     \begin{texoutput}{0.35\linewidth}
+%       $\cdot \dots \cdots$
+%     \end{texoutput}
+%     \\
+%     \begin{minipage}{0.71\linewidth}
+% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% $\sum_{x = 0}^\infty \int_0^x y\, dy$
+% \end{lstlisting}
+%     \end{minipage}
+%     \quad
+%     \begin{texoutput}{0.15\linewidth}
+%       $\displaystyle \sum_{x = 0}^\infty \int_0^x y\, dy$
+%     \end{texoutput}
+%   \end{quote}
+% \end{frame}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Environnements pour les équations hors paragraphe}
   \begin{itemize}
-  \item Équations d'une seule ligne
+  \item Équations d'une seule ligne \newline
     \begin{quote}
-      \begin{minipage}[t]{0.45\linewidth}
+      \begin{minipage}[t]{0.4\linewidth}
         \begin{block}{numérotées}
 \begin{lstlisting}
 equation
@@ -1602,7 +1590,7 @@ equation
         \end{block}
       \end{minipage}
       \hfill
-      \begin{minipage}[t]{0.45\linewidth}
+      \begin{minipage}[t]{0.4\linewidth}
         \begin{block}{non numérotées}
 \begin{lstlisting}
 displaymath
@@ -1613,7 +1601,7 @@ equation*
     \end{quote}
   \item Séries d'équations alignées, généralement sur \verb|=|
     \begin{quote}
-      \begin{minipage}[t]{0.45\linewidth}
+      \begin{minipage}[t]{0.4\linewidth}
         \begin{block}{numérotées}
 \begin{lstlisting}
 align
@@ -1621,7 +1609,7 @@ align
         \end{block}
       \end{minipage}
       \hfill
-      \begin{minipage}[t]{0.45\linewidth}
+      \begin{minipage}[t]{0.4\linewidth}
         \begin{block}{non numérotées}
 \begin{lstlisting}
 align*
@@ -1632,21 +1620,25 @@ align*
   \end{itemize}
 \end{frame}
 
-%%% >>>
-\begin{frame}[plain]
-  \begin{exercice}
-    \begin{enumerate}
-    \item Examiner le code source du fichier
-      \fichier{exercice\_mathematiques.tex}.
-    \item Insérer ce fichier dans le document maître
-      \fichier{gabarit-doctorat.tex}. Dans ce dernier, activer les
-      paquetages \textbf{amsmath} et \textbf{icomma}, puis compiler.
-    \item Modifier un environnement \texttt{align*} pour
-      \texttt{align} et observer le résultat.
-    \end{enumerate}
-  \end{exercice}
+\begin{frame}[fragile]
+  \frametitle{Avant-goût}
+
+  Pouvez-vous interpréter ce code?
+\begin{lstlisting}
+\begin{displaymath}
+  \int_0^\infty f(x)\, dx =
+  \sum_{i = 1}^n w_i e^{x_i} f(x_i)
+\end{displaymath}
+\end{lstlisting}
+  \vspace{18pt}
+  \pause
+
+  Fort probablement!
+  \begin{displaymath}
+    \int_0^\infty f(x)\, dx =
+    \sum_{i = 1}^n w_i e^{x_i} f(x_i)
+  \end{displaymath}
 \end{frame}
-%%% <<<
 
 
 \section{Classe ulthese}
@@ -1668,10 +1660,25 @@ align*
 \end{frame}
 
 %%% >>>
-\begin{frame}[plain]
+\begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
-    Compiler de nouveau le fichier maître obtenu à l'exercice
-    précédent en utilisant une police de caractères différente.
+    Utiliser le fichier \fichier{exercice\_ulthese.tex} qui est basé
+    sur le gabarit \fichier{gabarit-doctorat.tex} livré avec
+    \textbf{ulthese}.
+    \begin{enumerate}
+    \item Étudier le code source du fichier.
+
+      Remarquer que le \fichier{mathematiques.tex} est inséré dans le
+      document avec la commande \verb=\include=. Étudier brièvement le
+      code source de ce fichier.
+    \item Activer les paquetages \textbf{amsmath} et \textbf{icomma},
+      puis compiler \fichier{exercice\_ulthese.tex}.
+    \item Modifier un environnement \texttt{align*} pour
+      \texttt{align} dans \fichier{mathematiques.tex} et observer le
+      résultat dans la compilation de \fichier{exercice\_ulthese.tex}.
+    \item Compiler de nouveau le fichier en utilisant une police de
+      caractères différente.
+    \end{enumerate}
   \end{exercice}
 \end{frame}
 %%% <<<
