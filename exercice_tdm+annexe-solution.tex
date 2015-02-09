@@ -1,4 +1,4 @@
-\documentclass[11pt,article]{memoir}
+\documentclass[11pt]{memoir}
   \usepackage[francais]{babel}
   %% Activer les lignes appropriées selon le moteur utilisé
   \usepackage[utf8]{inputenc}   % LaTeX
@@ -6,9 +6,13 @@
   % \usepackage{fontspec}         % XeLaTeX
   \usepackage[colorlinks]{hyperref}
 
-  % \frenchbsetup{ItemLabeli=}
-
 \begin{document}
+
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
 
 \chapter{Présentation du langage R}
 \label{presentation}
@@ -138,5 +142,17 @@ capacités d'édition plutôt réduites.
   assez complet.
 \end{itemize}
 
+\appendix
+
+\chapter{Installation de packages dans R}
+
+Cette annexe explique comment installer et charger des extensions
+(\emph{package}) dans R.
+
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

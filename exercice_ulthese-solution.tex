@@ -1,15 +1,3 @@
-%% GABARIT POUR THÈSE STANDARD
-%%
-%% Consulter la documentation de la classe ulthese pour une
-%% description détaillée de la classe, de ce gabarit et des options
-%% disponibles.
-%%
-%% [Ne pas hésiter à supprimer les commentaires après les avoir lus.]
-%%
-%% Déclaration de la classe avec le type de grade
-%%   [l'un de PhD, LLD, DPsy, DThP]
-%% et les langues les plus courantes. Le français sera la langue par
-%% défaut du document.
 \documentclass[PhD,english,francais]{ulthese}
   %% Encodage utilisé pour les caractères accentués dans les fichiers
   %% source du document. Les gabarits sont encodés en UTF-8. Inutile avec
@@ -18,12 +6,12 @@
 
   %% Charger ici les autres paquetages nécessaires pour le document.
   %% Quelques exemples; décommenter au besoin.
-  %\usepackage{amsmath}          % recommandé pour les mathématiques
-  %\usepackage{icomma}           % gestion de la virgule dans les nombres
+  \usepackage{amsmath}          % recommandé pour les mathématiques
+  \usepackage{icomma}           % gestion de la virgule dans les nombres
 
   %% Utilisation d'une autre police de caractères pour le document.
   %% - Sous LaTeX
-  %\usepackage{mathpazo}         % texte et mathématiques en Palatino
+  \usepackage{mathpazo}         % texte et mathématiques en Palatino
   %\usepackage{mathptmx}         % texte et mathématiques en Times
   %% - Sous XeLaTeX
   %\setmainfont{TeX Gyre Pagella}      % texte en Pagella (Palatino)
@@ -44,9 +32,6 @@
     CompactItemize=false,         % ne pas compacter les listes
     ThinSpaceInFrenchNumbers=true % espace fine dans les nombres
   }
-
-  %% Style de la bibliographie.
-  %\bibliographystyle{}
 
   %% Déclarations de la page titre. Remplacer les éléments entre < >.
   %% Supprimer les caractères < >. Couper un long titre ou un long
@@ -78,6 +63,11 @@
 
 \mainmatter                     % corps du document
 
-\include{exercice_mathematiques}
+\include{mathematiques}
 
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
