@@ -259,6 +259,20 @@
   \end{tabularx}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Distributions}
+
+  Le système {\LaTeX} est rendu disponible sous forme de \emph{distributions}
+
+  \begin{itemize}
+  \item Windows: {\TeX}~Live et MiK{\TeX}
+  \item OS~X: Mac{\TeX} (dérivée de {\TeX}~Live)
+  \item Linux: {\TeX}~Live
+  \end{itemize}
+  La Bibliothèque et la Faculté des études supérieures et
+  post-doctorales recommandent {\TeX}~Live
+\end{frame}
+
 \begin{frame}[fragile=singleslide]
   \frametitle{Faits amusants}
   \begin{itemize}
@@ -378,7 +392,7 @@ Copyright 2014 D.E. Knuth.
     de produire le texte ci-dessous.
   \end{exercice}
   \begin{center}
-    \fbox{\includegraphics[width=\linewidth]{exercice_commandes-solution}}
+    \fbox{\includegraphics[width=\linewidth]{exercice_commandes-output}}
   \end{center}
 \end{frame}
 
@@ -546,12 +560,13 @@ Copyright 2014 D.E. Knuth.
   \item<2-> Les incontournables:
     \begin{description}
       \small
-    \item[babel*] typographie multilingue
-    \item[inputenc*] composition en français (\LaTeX)
-    \item[fontspec*] contrôle des polices (\XeLaTeX)
-    \item[amsmath] extensions mathématiques
-    \item[booktabs*] amélioration des tableaux
-    \item[hyperref*] hyperliens dans PDF
+      %% \hfill = PMLA (Poor Man's Left Align) !
+    \item[babel*\hfill] typographie multilingue
+    \item[inputenc*\hfill] composition en français (\LaTeX)
+    \item[fontspec*\hfill] contrôle des polices (\XeLaTeX)
+    \item[amsmath\hfill] extensions mathématiques
+    \item[booktabs*\hfill] amélioration des tableaux
+    \item[hyperref*\hfill] hyperliens dans PDF
     \end{description}
     {\footnotesize * = chargé par défaut dans \textbf{ulthese}}
   \end{itemize}
@@ -562,21 +577,21 @@ Copyright 2014 D.E. Knuth.
     \small
   \begin{tabularx}{1.0\linewidth}{Xl}
     \toprule
-    \textbf{ENJEU} & \textbf{SOLUTION} \\
+    \textbf{Enjeu} & \textbf{Solution} \\
     \midrule
     \addlinespace[6pt]
-    Traduction des mots-clés prédéfinis & \textbf{babel} \\
+    traduction des mots-clés prédéfinis & \textbf{babel} \\
     \addlinespace[6pt]
-    Coupure de mots & \textbf{babel} \\
+    coupure de mots & \textbf{babel} \\
     \addlinespace[6pt]
-    Typographie française & \textbf{babel} \\
+    typographie française & \textbf{babel} \\
     \addlinespace[6pt]
-    Lettres accentuées dans source & \textbf{inputenc} (\LaTeX) \\
-                                   & texte UTF-8 (\XeLaTeX) \\
+    lettres accentuées dans source & \textbf{inputenc} (\LaTeX) \\
+                                   & source en UTF-8 (\XeLaTeX) \\
     \addlinespace[6pt]
-    Virgule comme séparateur décimal & \textbf{icomma} \\
+    virgule comme séparateur décimal & \textbf{icomma} \\
     \addlinespace[6pt]
-    Espace comme séparateur des milliers & \textbf{numprint}
+    espace comme séparateur des milliers & \textbf{numprint}
   \end{tabularx}
 \end{frame}
 
@@ -611,7 +626,7 @@ Copyright 2014 D.E. Knuth.
 \section{Parties d'un document}
 
 \begin{frame}[plain]
-  \begin{alertblock}{Avertissement}
+  \begin{alertblock}{Conseil du {\TeX}pert}
     Utiliser impérativement les commandes {\LaTeX} pour identifier les
     différentes parties (la structure) d'un document
   \end{alertblock}
@@ -700,10 +715,6 @@ Copyright 2014 D.E. Knuth.
     \item Ajouter un titre et un auteur au document.
     \item Insérer deux ou trois titres de sections de différents niveaux
       dans le document.
-      \begin{itemize}
-      \item[\faExclamationSign] Le premier niveau de section
-          est \verb=\chapter= avec la classe \textbf{memoir}
-      \end{itemize}
     \end{enumerate}
   \end{exercice}
 \end{frame}
@@ -734,6 +745,22 @@ Tel que vu à la section \ref{sec:definitions},
 on a...
 \end{lstlisting}
   \fbox{\includegraphics[width=\linewidth]{renvoi}}
+\end{frame}
+
+\begin{frame}[plain,fragile=singleslide]
+  \begin{alertblock}{Conseil du {\TeX}pert}
+    Adopter une manière systématique et mnémotechnique de nommer les
+    éléments dans un long document afin de vous y retrouver.
+
+    \bigskip %
+    Exemple:
+\begin{lstlisting}
+\label{chap:`\textit{chapitre}'}         % chapitre
+\label{sec:`\textit{chapitre}':`\textit{section}'}  % section
+\label{tab:`\textit{chapitre}':`\textit{tableau}'}  % tableau
+\label{eq:`\textit{chapitre}':`\textit{equation}'}  % équation
+\end{lstlisting}
+  \end{alertblock}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -779,19 +806,20 @@ on a...
 \begin{frame}[fragile=singleslide]
   \frametitle{Annexes}
   \begin{itemize}
-  \item Annexes sont des chapitres avec une numérotation
+  \item Annexes sont des sections ou chapitres avec une numérotation
     alphanumérique (A, A.1, ...)
-  \item Prochains chapitres identifiés comme des annexes par la
+  \item Prochaines sections identifiées comme des annexes par la
     commande
 \begin{lstlisting}
 \appendix
 \end{lstlisting}
-  \item Dans le titre, «Chapitre» changé pour «Annexe»
+  \item Dans le titre, «Chapitre» changé pour «Annexe» le cas échéant
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Structure logique d'un livre}
+  \framesubtitle{(classes \textbf{book}, \textbf{memoir}, \textbf{ulthese})}
 \begin{lstlisting}
 \frontmatter
 \end{lstlisting}
@@ -867,12 +895,12 @@ on a...
 
 \section{Contrôle du texte}
 
-\begin{frame}[fragile=singleslide]
+\begin{frame}[fragile]
   \frametitle{Changement d'attribut de la police de caractères}
-  \begin{block}{Famille}
+  \begin{block}{famille}
     \vspace{-12pt}
     \begin{tabbing}
-      \textsf{sans empattements} \quad\= \verb=\sffamily= \quad\=
+      \textsf{sans empattements} \qquad\= \verb=\sffamily= \qquad\=
       \verb=\textsf{texte}= \kill
       \small
       \textrm{romain} \> \verb=\rmfamily= \> \verb=\textrm{=\textit{texte}\verb=}= \\
@@ -881,10 +909,10 @@ on a...
     \end{tabbing}
   \end{block}
   \vfill
-  \begin{block}{Forme}
+  \begin{block}{forme}
     \vspace{-12pt}
     \begin{tabbing}
-      \textsf{sans empattements} \quad\= \verb=\sffamily= \quad\=
+      \textsf{sans empattements} \qquad\= \verb=\sffamily= \qquad\=
       \verb=\textsf{texte}= \kill
       \small
       \textup{\rmfamily droit} \> \verb=\upshape= \> \verb=\textup{=\textit{texte}\verb=}= \\
@@ -894,10 +922,10 @@ on a...
     \end{tabbing}
   \end{block}
   \vfill
-  \begin{block}{Série}
+  \begin{block}{série}
     \vspace{-12pt}
     \begin{tabbing}
-      \textsf{sans empattements} \quad\= \verb=\sffamily= \quad\=
+      \textsf{sans empattements} \qquad\= \verb=\sffamily= \qquad\=
       \verb=\textsf{texte}= \kill
       \rmfamily\small
       \textmd{\rmfamily moyen} \> \verb=\mdseries= \> \verb=\textmd{=\textit{texte}\verb=}= \\
@@ -905,13 +933,33 @@ on a...
     \end{tabbing}
     \vfill
   \end{block}
+  \pause
+  \begin{picture}(0,0)
+    \thicklines\color{blue}
+    \put(113,30){\dashbox{2}(62,190){}}
+    \put(100,20){
+      \begin{minipage}[t]{75\unitlength}
+        \footnotesize\centering
+        s'applique à tout le texte qui suit
+      \end{minipage}}
+  \end{picture}
+  \begin{picture}(0,0)
+    \thicklines\color{blue}
+    \put(185,30){\dashbox{2}(82,190){}}
+    \put(180,20){
+      \begin{minipage}[t]{85\unitlength}
+        \footnotesize\centering
+        s'applique au texte en argument
+      \end{minipage}}
+  \end{picture}
+
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Taille de la police}
-  \vspace{-6pt}
-  \begin{block}{Commandes standards}
-    \vspace{-12pt}
+  \vspace{-2pt}
+  \begin{block}{commandes standards}
+    \vspace{-10pt}
     \begin{tabbing}
       \verb=\footnotesize= \quad\= \kill
       \verb=\tiny= \> {\tiny minuscule} \\
@@ -928,11 +976,12 @@ on a...
   \end{block}
   \vspace{-10pt}
   \pause
-  \begin{block}{Ajouts de \textbf{memoir} (et donc \textbf{ulthese})}
-    \vspace{-12pt}
+  \begin{block}{ajouts de \textbf{memoir} (et donc \textbf{ulthese})}
+    \vspace{-10pt}
     \begin{tabbing}
-      \verb=\miniscule= \quad\= ($<$ \verb=\tiny=) \\
-      \verb=\HUGE= \> ($>$ \verb=\Huge=) \\
+      \verb=\footnotesize= \quad\= \kill
+      \verb=\miniscule= \quad\> [$<$ \verb=\tiny=] \\
+      \verb=\HUGE= \> [$>$ \verb=\Huge=] \\
     \end{tabbing}
   \end{block}
 \end{frame}
@@ -1282,15 +1331,7 @@ dans une police à largeur fixe
 \begin{frame}[fragile=singleslide]
   \frametitle{Préliminaires}
   \begin{itemize}
-  \item Vous voulez utiliser le paquetage \textbf{amsmath}
-\begin{lstlisting}
-\usepackage{amsmath}
-\end{lstlisting}
-    \begin{itemize}
-    \item lire la documentation de ce paquetage pour connaître toutes
-      ses fonctionnalités
-    \end{itemize}
-  \item Décrire des équations mathématiques requiert un «language» spécial
+  \item Décrire des équations mathématiques requiert un «langage» spécial
     \begin{itemize}
     \item il faut informer {\LaTeX} que l'on passe à ce langage
     \item par le biais de modes mathématiques
@@ -1301,6 +1342,14 @@ dans une police à largeur fixe
       disposition des équations, numérotation, etc.)
     \item espaces entre les symboles et autour des opérateurs gérées
       automatiquement
+    \end{itemize}
+  \item Vous voulez utiliser le paquetage \textbf{amsmath}
+\begin{lstlisting}
+\usepackage{amsmath}
+\end{lstlisting}
+    \begin{itemize}
+    \item lire la documentation de ce paquetage pour connaître toutes
+      ses fonctionnalités
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -1316,14 +1365,14 @@ comme $(a + b)^2 = a^2 + 2ab + b^2$
 \end{lstlisting}
   \item «Hors paragraphe» séparé du texte principal comme
     \begin{displaymath}
-      \int_0^\infty f(x)\, dx = \sum_{i = 1}^n w_i e^{x_i} f(x_i)
+      \int_0^\infty f(x)\, dx = \sum_{i = 1}^n \alpha_i e^{x_i} f(x_i)
     \end{displaymath}
     en utilisant divers types d'environnements
 \begin{lstlisting}
 «Hors paragraphe» séparé du texte principal comme
 \begin{displaymath}
   \int_0^\infty f(x)\, dx =
-  \sum_{i = 1}^n w_i e^{x_i} f(x_i)
+  \sum_{i = 1}^n \alpha_i e^{x_i} f(x_i)
 \end{displaymath}
 \end{lstlisting}
   \end{enumerate}
@@ -1332,8 +1381,11 @@ comme $(a + b)^2 = a^2 + 2ab + b^2$
 \begin{frame}[plain]
   \begin{alertblock}{Conseil du {\TeX}pert}
     Les équations, en ligne ou hors paragraphe, font partie intégrante
-    de la phrase. Les règles de ponctuation usuelles s'appliquent donc
-    aux équations.
+    de la phrase.
+
+    \bigskip %
+    Les règles de ponctuation usuelles s'appliquent donc aux
+    équations.
   \end{alertblock}
   \vspace{18pt}
   \fbox{\includegraphics[width=\linewidth]{ponctuation}}
@@ -1626,8 +1678,9 @@ align*
   Pouvez-vous interpréter ce code?
 \begin{lstlisting}
 \begin{displaymath}
-  \int_0^\infty f(x)\, dx =
-  \sum_{i = 1}^n w_i e^{x_i} f(x_i)
+  \Gamma(\alpha) =
+  \sum_{j = 0}^\infty \int_j^{j + 1}
+    x^{\alpha - 1} e^{-x}\, dx
 \end{displaymath}
 \end{lstlisting}
   \vspace{18pt}
@@ -1635,8 +1688,8 @@ align*
 
   Fort probablement!
   \begin{displaymath}
-    \int_0^\infty f(x)\, dx =
-    \sum_{i = 1}^n w_i e^{x_i} f(x_i)
+    \Gamma(\alpha) =
+    \sum_{j = 0}^\infty \int_j^{j + 1} x^{\alpha - 1} e^{-x}\, dx
   \end{displaymath}
 \end{frame}
 
