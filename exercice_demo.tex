@@ -1,17 +1,30 @@
 \documentclass[letterpaper,11pt]{memoir}
+  \usepackage[utf8]{inputenc}
   \usepackage{natbib,url}
   \usepackage[english,francais]{babel}
   \usepackage[autolanguage]{numprint}
-  \ifxetex\else \usepackage[utf8]{inputenc} \fi
   \usepackage{amsmath,amsthm,amsfonts}
   \usepackage{icomma}
   \usepackage[noae]{Sweave}
   \usepackage{soul}
 
+  %% Police de caractères
+  \usepackage{mathpazo}         % texte et mathématiques en Palatino
+
+  %% Couleurs
+  \usepackage{xcolor}
+  \definecolor{comments}{rgb}{0.7,0,0}
+  \definecolor{shadecolor}{gray}{0}
+  \definecolor{link}{rgb}{0,0.4,0.6}   % ~RoyalBlue de dvips
+  \definecolor{url}{rgb}{0.6,0,0}      % rouge-brun
+  \definecolor{citation}{rgb}{0,0.5,0} % vert foncé
 
   %% Hyperliens
   \usepackage{hyperref}
-  \hypersetup{colorlinks}
+  \hypersetup{colorlinks, linktocpage,
+    urlcolor=url, linkcolor=link, citecolor=citation,
+    bookmarksopen, bookmarksnumbered, bookmarksdepth=subsubsection,
+    pdfauthor={Vincent Goulet}}
   \renewcommand{\figureautorefname}{figure}
   \renewcommand{\tableautorefname}{tableau}
   \newcommand{\subtableautorefname}{tableau}
@@ -47,16 +60,14 @@
   %% Style de la bibliographie.
   \bibliographystyle{francais}
 
-  % \titre{<Titre principal>}
-  % \auteur{<Prénom Nom>}
-  % \programme{Doctorat en <discipline> -- <majeure, s'il y a lieu>}
-  % \annee{<20xx>}
+  \title{Exemple de document élaboré}
+  \author{Vincent Goulet}
 
 \begin{document}
 
 \frontmatter                    % pages liminaires
 
-%\maketitle                      % production de la page titre
+\maketitle                      % production de la page titre
 
 \tableofcontents                % production de la TdM
 \cleardoublepage
