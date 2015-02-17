@@ -1,0 +1,72 @@
+\chapter{Document contenu dans plusieurs fichiers}
+
+Extrait de la documentation de \class{ulthese}
+\begin{quote}
+  «Il est recommandé de segmenter tout document d'une certaine ampleur
+  dans des fichiers \verb=.tex= distincts pour chaque partie ---
+  habituellement un fichier par chapitre. Le document complet est
+  composé à l'aide d'un fichier maître qui contient le préambule
+  {\LaTeX} et un ensemble de commandes \verb=\include= pour réunir les
+  parties dans un tout.»
+\end{quote}
+
+Structure d'un fichier maître
+\begin{lstlisting}
+\documentclass{ulthese}
+  [...]
+
+\begin{document}
+
+\frontmatter
+
+\include{introduction}
+\tableofcontents*
+
+\mainmatter
+\include{historique}
+[...]
+
+\end{document}
+\end{lstlisting}
+
+Deux manières d'insérer du contenu externe
+  \begin{itemize}
+  \item Commande \verb=\include= insère le contenu d'un fichier
+    \begin{itemize}
+    \item débute toujours une nouvelle page
+    \item numérotation des pages et références conservées entre les
+      compilations
+    \item \verb=\includeonly= dans le préambule permet de compiler un
+      ou quelques fichiers seulement
+    \item vraiment fait pour des chapitres, parties de livres, etc.
+    \end{itemize}
+  \item Commande \verb=\input= permet aussi d'insérer le contenu d'un
+    fichier
+    \begin{itemize}
+    \item contenu inséré tel quel, comme s'il avait été tapé dans le
+      fichier qui contient \verb=\input=
+    \item peut aussi être utilisé dans le préambule
+    \item fait pour les bouts de code que l'on veut sauvegarder
+      séparément (figures, long tableaux, etc.)
+    \end{itemize}
+  \end{itemize}
+
+%%% >>>
+  \begin{exercice}
+    \begin{enumerate}
+    \item Modifier le fichier \fichier{exercice\_complet.tex} de telle
+      sorte que l'on puisse l'insérer dans un fichier maître.
+      Sauvegarder le fichier ainsi obtenu \fichier{presentation.tex}
+    \item Insérer le fichier \fichier{presentation.tex} dans le
+      document maître \fichier{gabarit-doctorat.tex} (tiré de
+      \textbf{ulthese} avec de légères simplifications).
+    \end{enumerate}
+  \end{exercice}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% TeX-master: "formation_latex-partie_2"
+%%% coding: utf-8
+%%% End:

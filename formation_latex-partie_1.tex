@@ -4,20 +4,21 @@
   \usepackage{amsmath,icomma}
   \usepackage{booktabs,tabularx}
   \usepackage{pgfpages}
-  \usepackage{fontspec,microtype}
   \usepackage{metalogo}                % \XeLaTeX logo
   \usepackage{fontawesome}
-  \usepackage{unicode-math}
   \usepackage{listings}
   \usepackage[overlay,absolute]{textpos}
 
   %%% Polices de caractères
+  \usepackage{fontspec}
+  \usepackage{unicode-math}
   \defaultfontfeatures{Ligatures=TeX}
   \setmainfont{Lucida Bright OT}
   \setsansfont{Lucida Sans OT}
   \setmathfont{Lucida Bright Math OT}
   \setmonofont[Scale=0.95]{Bitstream Vera Sans Mono}
   \newfontfamily\titles{Myriad Pro}
+  \usepackage{microtype}
 
   %% Définition de nouveaux symboles de la police Font Awesome pas
   %% encore définis dans le package fontawesome (v. 3.1.1)
@@ -1253,83 +1254,6 @@ dans une police à largeur fixe
 \end{frame}
 %%% <<<
 
-
-% \section{Document contenu dans plusieurs fichiers}
-
-% \begin{frame}[fragile=singleslide]
-%   \frametitle{Extrait de la documentation de \textbf{ulthese}}
-%   \begin{quote}
-%     «Il est recommandé de segmenter tout document d'une certaine
-%     ampleur dans des fichiers \verb=.tex= distincts pour chaque
-%     partie --- habituellement un fichier par chapitre.
-%   \end{quote}
-
-%   \begin{quote}
-%     Le document complet est composé à l'aide d'un fichier maître qui
-%     contient le préambule {\LaTeX} et un ensemble de commandes
-%     \verb=\include= pour réunir les parties dans un tout.»
-%   \end{quote}
-% \end{frame}
-
-% \begin{frame}[fragile]
-%   \frametitle{Structure d'un fichier maître}
-% \begin{lstlisting}
-% \documentclass{ulthese}
-%   [...]
-
-% \begin{document}
-
-% \frontmatter
-
-% \include{introduction}
-% \tableofcontents*
-
-% \mainmatter
-% \include{historique}
-% [...]
-
-% \end{document}
-% \end{lstlisting}
-% \end{frame}
-
-% \begin{frame}[fragile]
-%   \frametitle{Deux manières d'insérer du contenu externe}
-%   \begin{itemize}
-%   \item Commande \verb=\include= insère le contenu d'un fichier
-%     \begin{itemize}
-%     \item débute toujours une nouvelle page
-%     \item numérotation des pages et références conservées entre les
-%       compilations
-%     \item \verb=\includeonly= dans le préambule permet de compiler un
-%       ou quelques fichiers seulement
-%     \item vraiment fait pour des chapitres, parties de livres, etc.
-%     \end{itemize}
-%   \item<2-> Commande \verb=\input= permet aussi d'insérer le contenu d'un
-%     fichier
-%     \begin{itemize}
-%     \item contenu inséré tel quel, comme s'il avait été tapé dans le
-%       fichier qui contient \verb=\input=
-%     \item peut aussi être utilisé dans le préambule
-%     \item fait pour les bouts de code que l'on veut sauvegarder
-%       séparément (figures, long tableaux, etc.)
-%     \end{itemize}
-%   \end{itemize}
-% \end{frame}
-
-% %%% >>>
-% \begin{frame}[plain]
-%   \begin{exercice}
-%     \begin{enumerate}
-%     \item Modifier le fichier \fichier{exercice\_complet.tex} de telle
-%       sorte que l'on puisse l'insérer dans un fichier maître.
-%       Sauvegarder le fichier ainsi obtenu \fichier{presentation.tex}
-%     \item Insérer le fichier \fichier{presentation.tex} dans le
-%       document maître \fichier{gabarit-doctorat.tex} (tiré de
-%       \textbf{ulthese} avec de légères simplifications).
-%     \end{enumerate}
-%   \end{exercice}
-% \end{frame}
-% %%% <<<
 
 
 \section{B.a.-ba du mode mathématique}
