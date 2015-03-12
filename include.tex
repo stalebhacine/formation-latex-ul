@@ -17,10 +17,10 @@ accélérer la compilation des documents très longs ou comportant
 plusieurs images.
 
 
-\section{Insertion de contenu avec la commande \code{{\textbackslash}input}}
+\section{Insertion de contenu avec la commande \code{\string\input}}
 \label{sec:include:input}
 
-La commande \verb=\input= permet d'insérer le contenu d'un autre fichier
+La commande \cmd{\input} permet d'insérer le contenu d'un autre fichier
 dans un document {\LaTeX}.
 \begin{itemize}
 \item La syntaxe de la commande est
@@ -31,7 +31,7 @@ dans un document {\LaTeX}.
   laisse donc tomber l'extension \verb=.tex= qui est implicite.
 \item Le contenu du fichier est inséré tel quel dans le document,
   comme s'il avait été tapé dans le fichier qui contient l'appel à
-  \verb=\input=.
+  \cmd{\input}.
 \item Le procédé est surtout utile pour sauvegarder séparément des
   bouts de code qui pourraient nuire à l'édition du texte (figures,
   longs tableaux) ou qui sont communs entre plusieurs documents
@@ -44,7 +44,7 @@ dans un document {\LaTeX}.
 \end{itemize}
 
 
-\section{Insertion de parties avec la commande \code{{\textbackslash}include}}
+\section{Insertion de parties avec la commande \code{\string\include}}
 \label{sec:include:include}
 
 Extrait de la documentation de la classe \class{ulthese}:
@@ -57,19 +57,19 @@ Extrait de la documentation de la classe \class{ulthese}:
   parties dans un tout.»
 \end{quote}
 
-Comme \verb=\input=, la commande \verb=\include= insère le contenu
+Comme \cmd{\input}, la commande \cmd{\include} insère le contenu
 d'un autre fichier dans un document {\LaTeX}. Son effet est cependant
 différent et c'est son utilisation qui permet d'accélérer la
 compilation d'un long document.
 
 \begin{itemize}
-\item L'insertion d'un fichier avec \verb=\include= débute toujours
-  une nouvelle page. On utilisera donc \verb=\include= principalement
+\item L'insertion d'un fichier avec \cmd{\include} débute toujours
+  une nouvelle page. On utilisera donc \cmd{\include} principalement
   pour insérer des chapitres entiers plutôt que pour des portions de
   texte.
-\item Un fichier inséré avec \verb=\include= peut contenir des appels
-  à \verb=\input=, mais pas à \verb=\include=.
-\item La syntaxe de la commande \verb=\include= est
+\item Un fichier inséré avec \cmd{\include} peut contenir des appels
+  à \cmd{\input}, mais pas à \cmd{\include}.
+\item La syntaxe de la commande \cmd{\include} est
 \begin{lstlisting}
 \include{`\textit{fichier}'}
 \end{lstlisting}
@@ -94,25 +94,34 @@ compilation d'un long document.
 
 \end{document}
 \end{lstlisting}
+\end{itemize}
 
-\item Le principal avantage de \verb=\include= par rapport à
-  \verb=\input= réside dans le fait que {\LaTeX} peut préserver entre
-  les compilations les informations telles que les numéros de pages,
-  de sections ou d'équations, ainsi que les références. Cela permet,
-  par exemple, de compiler le texte d'un seul chapitre --- plutôt que
-  du document entier --- et de néanmoins en obtenir une image
-  représentative.
-\item La commande \verb=\includeonly=, que l'on utilise exclusivement
+Le principal avantage de \cmd{\include} par rapport à \cmd{\input}
+réside dans le fait que {\LaTeX} peut préserver entre les compilations
+les informations telles que les numéros de pages, de sections ou
+d'équations, ainsi que les références. Cela permet, par exemple, de
+compiler le texte d'un seul chapitre --- plutôt que le document entier
+--- et de néanmoins obtenir du chapitre une image représentative.
+Procéder ainsi accélère significativement la compilation des documents
+longs ou complexes.
+
+\begin{itemize}
+\item La commande \cmd{\includeonly}, que l'on utilise exclusivement
   dans le préambule, sert à spécifier le ou les fichiers à compiler
   tout en préservant la numérotation et les références. Sa syntaxe est
 \begin{lstlisting}
 \includeonly{`\textit{liste\_fichiers}'}
 \end{lstlisting}
   où \code{\textit{liste\_fichiers}} contient les noms des fichiers à
-  compiler séparés par des virgules et sans l'extension \verb=.tex=.
-\item Lors de l'utilisation de la commande \verb=\includeonly=, toute
+  inclure dans la compilation, séparés par des virgules et sans
+  l'extension \verb=.tex=.
+\item Lors de l'utilisation de la commande \cmd{\includeonly}, toute
   la numérotation dans les fichiers \code{\textit{liste\_fichiers}}
   suivra celle établie lors de la compilation précédente.
+\item Si l'édition des fichiers de \code{\textit{liste\_fichiers}}
+  cause des changements dans la numérotation et les références dans
+  les autres parties du document, une nouvelle compilation de
+  l'ensemble ou d'une partie de celui-ci s'avérera nécessaire.
 \end{itemize}
 
 Supposons qu'un document est composé des fichiers
@@ -131,7 +140,7 @@ que les chapitres débutent respectivement aux pages~1, 23 et 41.
 \end{itemize}
 
 L'\autoref{ex:include} illustre mieux le cycle typique
-d'utilisation des commandes \verb=\include= et \verb=\includeonly=.
+d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
 
 
 
@@ -139,12 +148,17 @@ d'utilisation des commandes \verb=\include= et \verb=\includeonly=.
 %%% Exercices
 %%%
 
+\section{Exercice}
+\label{sec:include:exercices}
+
+
 \begin{exercice}
   \label{ex:include}
   Cet exercice fait appel au fichier maître
   \fichier{exercice\_include.tex} et à plusieurs fichiers auxiliaires.
   Schématiquement, le document est composé ainsi:
 
+  \medskip
   \begin{minipage}{\linewidth}
     \dirtree{%
       .1 exercice\_include.tex.
@@ -154,9 +168,11 @@ d'utilisation des commandes \verb=\include= et \verb=\includeonly=.
       .2 {\textbackslash}include emacs.tex.
     }
   \end{minipage}
+  \medskip
 
-  La commande \verb=\includegraphics= provient du paquetage
-  \pkg{graphicx}.
+  La commande \cmd{\includegraphics} permet d'insérer une image
+  en divers formats (PDF, JPEG, PNG, \dots) dans un document {\LaTeX}.
+  Elle provient du paquetage \pkg{graphicx}.
 
   \begin{enumerate}
   \item Étudier le code source du fichier maître
@@ -190,6 +206,9 @@ d'utilisation des commandes \verb=\include= et \verb=\includeonly=.
   \end{enumerate}
 \end{exercice}
 
+\begin{exercice}
+  Préambule commun à deux documents
+\end{exercice}
 
 %%% Local Variables:
 %%% mode: latex
