@@ -17,7 +17,7 @@ accélérer la compilation des documents très longs ou comportant
 plusieurs images.
 
 
-\section{Insertion de contenu avec la commande \code{\string\input}}
+\section{Insertion de contenu avec la commande \cs{input}}
 \label{sec:include:input}
 
 La commande \cmd{\input} permet d'insérer le contenu d'un autre fichier
@@ -44,7 +44,7 @@ dans un document {\LaTeX}.
 \end{itemize}
 
 
-\section{Insertion de parties avec la commande \code{\string\include}}
+\section{Insertion de parties avec la commande \cs{include}}
 \label{sec:include:include}
 
 Extrait de la documentation de la classe \class{ulthese}:
@@ -148,7 +148,7 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
 %%% Exercices
 %%%
 
-\section{Exercice}
+\section{Exercices}
 \label{sec:include:exercices}
 
 
@@ -193,8 +193,12 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
 \includeonly{presentation}
 \end{lstlisting}
     Vers la fin du fichier \fichier{presentation.tex}, activer la
-    commande \verb=\includegraphics= en supprimant le symbole \% au
-    début de la ligne. Compiler de nouveau le document deux fois.
+    commande
+\begin{lstlisting}
+\includegraphics[width=\textwidth]{console-screenshot}
+\end{lstlisting}
+    en supprimant le symbole \% au début de la ligne. Compiler de
+    nouveau le document deux fois.
 
     Les modifications ont eu pour effet d'ajouter une page au
     chapitre~1. Observer que selon la table des matières, le
@@ -207,7 +211,11 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
 \end{exercice}
 
 \begin{exercice}
-  Préambule commun à deux documents
+  Déplacer dans un fichier \fichier{preambule.tex} toutes les lignes
+  du préambule du fichier \fichier{exercice\_include.tex} utilisé à
+  l'exercice précédent, à l'exception de celles relatives à la page
+  titre (titre, auteur, date). Insérer le préambule dans
+  \fichier{exercice\_include.tex} avec la commande \cmd{\input}.
 \end{exercice}
 
 %%% Local Variables:
