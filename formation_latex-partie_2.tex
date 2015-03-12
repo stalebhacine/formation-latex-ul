@@ -9,7 +9,7 @@
   \usepackage{textpos}
   \usepackage{graphicx}
   \usepackage{manfnt}                  % \mantriangleright (puce)
-  \usepackage{marvosym}                % \ForwardToEnd
+  \usepackage{dirtree}                 % arbre pour exercice ...?
   \usepackage{metalogo}                % \XeLaTeX logo
   \usepackage{applekeys}               % touches Mac
   \usepackage{fontawesome}             % \faExclamationSign, \faYouTubePlay
@@ -196,9 +196,11 @@
   %%% =====================
 
   %% Noms de fonctions, code, etc.
+  \renewcommand{\cmdprint}[1]{\textup{\texttt{\string#1}}}
   \newcommand{\code}[1]{\texttt{#1}}
   \newcommand{\fichier}[1]{\texttt{#1}}
   \newcommand{\class}[1]{\textbf{#1}}
+  \newcommand{\pkg}[1]{\textbf{#1}}
 
   %% Indications de capsule vidéo
   \newcommand{\capsule}[2]{\href{#1}{#2}\marginpar{%

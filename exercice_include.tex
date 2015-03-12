@@ -1,0 +1,27 @@
+\documentclass[11pt]{memoir}
+  \usepackage[francais]{babel}
+  %% Activer les lignes appropriées selon le moteur utilisé
+  \usepackage[utf8]{inputenc}   % LaTeX
+  \usepackage[T1]{fontenc}      % LaTeX
+  % \usepackage{fontspec}         % XeLaTeX
+  \usepackage{graphicx}         % insertion de graphiques avec \includegraphics
+  \usepackage[colorlinks]{hyperref}
+
+  \title{R et GNU Emacs}
+  \author{Vincent Goulet}
+  \date{Université Laval}
+
+\begin{document}
+
+\frontmatter
+
+\input{pagetitre}
+
+\tableofcontents*
+
+\mainmatter
+
+\include{presentation}
+\include{emacs}
+
+\end{document}

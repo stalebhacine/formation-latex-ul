@@ -1,6 +1,53 @@
 \chapter{Document contenu dans plusieurs fichiers}
 
-Extrait de la documentation de \class{ulthese}
+Un document {\LaTeX} comporte toujours un préambule suivi du corps du
+texte. Lorsque ceux-ci sont relativement courts (peu de commandes
+spéciales et moins d'une vingtaine de pages de texte), il demeure
+assez simple et convivial d'en faire l'édition dans un seul fichier à
+l'aide de son éditeur de texte favori.
+
+Cependant, si le préambule devient long et complexe ou, surtout,
+lorsque l'ampleur du document augmente jusqu'à compter un grand nombre
+de pages sur plusieurs chapitres, il convient de répartir les divers
+éléments du document dans des fichiers séparés.
+
+La segmentation en plusieurs fichiers rend l'édition du texte plus
+simple et plus efficace. De plus, elle peut significativement
+accélérer la compilation des documents très longs ou comportant
+plusieurs images.
+
+
+\section{Insertion de contenu avec la commande \code{{\textbackslash}input}}
+\label{sec:include:input}
+
+La commande \verb=\input= permet d'insérer le contenu d'un autre fichier
+dans un document {\LaTeX}.
+\begin{itemize}
+\item La syntaxe de la commande est
+\begin{lstlisting}
+\input{`\textit{fichier}'}
+\end{lstlisting}
+  où le nom du fichier à insérer est \code{\textit{fichier}.tex}. On
+  laisse donc tomber l'extension \verb=.tex= qui est implicite.
+\item Le contenu du fichier est inséré tel quel dans le document,
+  comme s'il avait été tapé dans le fichier qui contient l'appel à
+  \verb=\input=.
+\item Le procédé est surtout utile pour sauvegarder séparément des
+  bouts de code qui pourraient nuire à l'édition du texte (figures,
+  longs tableaux) ou qui sont communs entre plusieurs documents
+  (licence d'utilisation, auteur et affiliation).
+\item La commande peut aussi être utilisée dans le préambule pour
+  charger une partie ou l'ensemble de celui-ci. Cela permet de
+  composer un même préambule pour plusieurs documents. Il
+  suffit alors de faire d'éventuelles modifications à un seul endroit pour
+  les voir prendre effet dans tous les documents.
+\end{itemize}
+
+
+\section{Insertion de parties avec la commande \code{{\textbackslash}include}}
+\label{sec:include:include}
+
+Extrait de la documentation de la classe \class{ulthese}:
 \begin{quote}
   «Il est recommandé de segmenter tout document d'une certaine ampleur
   dans des fichiers \verb=.tex= distincts pour chaque partie ---
@@ -10,7 +57,25 @@ Extrait de la documentation de \class{ulthese}
   parties dans un tout.»
 \end{quote}
 
-Structure d'un fichier maître
+Comme \verb=\input=, la commande \verb=\include= insère le contenu
+d'un autre fichier dans un document {\LaTeX}. Son effet est cependant
+différent et c'est son utilisation qui permet d'accélérer la
+compilation d'un long document.
+
+\begin{itemize}
+\item L'insertion d'un fichier avec \verb=\include= débute toujours
+  une nouvelle page. On utilisera donc \verb=\include= principalement
+  pour insérer des chapitres entiers plutôt que pour des portions de
+  texte.
+\item Un fichier inséré avec \verb=\include= peut contenir des appels
+  à \verb=\input=, mais pas à \verb=\include=.
+\item La syntaxe de la commande \verb=\include= est
+\begin{lstlisting}
+\include{`\textit{fichier}'}
+\end{lstlisting}
+  où le nom du fichier à insérer est \code{\textit{fichier}.tex}. Ici
+  aussi on laisse tomber l'extension \verb=.tex= qui est implicite.
+\item La structure type d'un fichier maître est la suivante:
 \begin{lstlisting}
 \documentclass{ulthese}
   [...]
@@ -23,45 +88,107 @@ Structure d'un fichier maître
 \tableofcontents*
 
 \mainmatter
-\include{historique}
+\include{historique}            % premier chapitre
+\include{modele}                % deuxième chapitre
 [...]
 
 \end{document}
 \end{lstlisting}
 
-Deux manières d'insérer du contenu externe
-  \begin{itemize}
-  \item Commande \verb=\include= insère le contenu d'un fichier
-    \begin{itemize}
-    \item débute toujours une nouvelle page
-    \item numérotation des pages et références conservées entre les
-      compilations
-    \item \verb=\includeonly= dans le préambule permet de compiler un
-      ou quelques fichiers seulement
-    \item vraiment fait pour des chapitres, parties de livres, etc.
-    \end{itemize}
-  \item Commande \verb=\input= permet aussi d'insérer le contenu d'un
-    fichier
-    \begin{itemize}
-    \item contenu inséré tel quel, comme s'il avait été tapé dans le
-      fichier qui contient \verb=\input=
-    \item peut aussi être utilisé dans le préambule
-    \item fait pour les bouts de code que l'on veut sauvegarder
-      séparément (figures, long tableaux, etc.)
-    \end{itemize}
-  \end{itemize}
+\item Le principal avantage de \verb=\include= par rapport à
+  \verb=\input= réside dans le fait que {\LaTeX} peut préserver entre
+  les compilations les informations telles que les numéros de pages,
+  de sections ou d'équations, ainsi que les références. Cela permet,
+  par exemple, de compiler le texte d'un seul chapitre --- plutôt que
+  du document entier --- et de néanmoins en obtenir une image
+  représentative.
+\item La commande \verb=\includeonly=, que l'on utilise exclusivement
+  dans le préambule, sert à spécifier le ou les fichiers à compiler
+  tout en préservant la numérotation et les références. Sa syntaxe est
+\begin{lstlisting}
+\includeonly{`\textit{liste\_fichiers}'}
+\end{lstlisting}
+  où \code{\textit{liste\_fichiers}} contient les noms des fichiers à
+  compiler séparés par des virgules et sans l'extension \verb=.tex=.
+\item Lors de l'utilisation de la commande \verb=\includeonly=, toute
+  la numérotation dans les fichiers \code{\textit{liste\_fichiers}}
+  suivra celle établie lors de la compilation précédente.
+\end{itemize}
 
-%%% >>>
-  \begin{exercice}
-    \begin{enumerate}
-    \item Modifier le fichier \fichier{exercice\_complet.tex} de telle
-      sorte que l'on puisse l'insérer dans un fichier maître.
-      Sauvegarder le fichier ainsi obtenu \fichier{presentation.tex}
-    \item Insérer le fichier \fichier{presentation.tex} dans le
-      document maître \fichier{gabarit-doctorat.tex} (tiré de
-      \textbf{ulthese} avec de légères simplifications).
-    \end{enumerate}
-  \end{exercice}
+Supposons qu'un document est composé des fichiers
+\verb=chapitre1.tex=, \verb=chapitre2.tex=, \verb=chapitre3.tex= et
+que les chapitres débutent respectivement aux pages~1, 23 et 41.
+\begin{itemize}
+\item Si seul le fichier \verb=chapitre2.tex= est inclus dans la
+  compilation, le numéro du chapitre sera toujours 2 et le folio de la
+  première page sera toujours 23, même si les 22 pages précédentes ne se
+  trouvent pas dans le document.
+\item Si l'on modifie le fichier \verb=chapitre2= de telle sorte que
+  le chapitre se termine maitenant à la page 46, il faudra recompiler
+  le document avec au moins les fichiers \verb=chapitre2=  et
+  \verb=chapitre3= pour que les pages du chapitre~3 soient renumérotées
+  à partir de 47.
+\end{itemize}
+
+L'\autoref{ex:include} illustre mieux le cycle typique
+d'utilisation des commandes \verb=\include= et \verb=\includeonly=.
+
+
+
+%%%
+%%% Exercices
+%%%
+
+\begin{exercice}
+  \label{ex:include}
+  Cet exercice fait appel au fichier maître
+  \fichier{exercice\_include.tex} et à plusieurs fichiers auxiliaires.
+  Schématiquement, le document est composé ainsi:
+
+  \begin{minipage}{\linewidth}
+    \dirtree{%
+      .1 exercice\_include.tex.
+      .2 {\textbackslash}input pagetitre.tex.
+      .2 {\textbackslash}include presentation.tex.
+      .3 {\textbackslash}includegraphics console-screenshot.pdf.
+      .2 {\textbackslash}include emacs.tex.
+    }
+  \end{minipage}
+
+  La commande \verb=\includegraphics= provient du paquetage
+  \pkg{graphicx}.
+
+  \begin{enumerate}
+  \item Étudier le code source du fichier maître
+    \fichier{exercice\_include.tex}, puis le compiler deux à trois
+    fois jusqu'à ce que toutes les références internes soient à jour.
+    Il est normal à ce stade que la figure~1 du document soit vide.
+  \item Ajouter dans le préambule du fichier maître la commande
+\begin{lstlisting}
+\includeonly{emacs}
+\end{lstlisting}
+    puis compiler le document.
+
+    Observer que malgré l'absence du chapitre~1, la numérotation et
+    les références demeurent à jour, notamment la table des matières.
+  \item Remplacer la commande ajoutée en b) dans le préambule du
+    fichier maître par la commande
+\begin{lstlisting}
+\includeonly{presentation}
+\end{lstlisting}
+    Vers la fin du fichier \fichier{presentation.tex}, activer la
+    commande \verb=\includegraphics= en supprimant le symbole \% au
+    début de la ligne. Compiler de nouveau le document deux fois.
+
+    Les modifications ont eu pour effet d'ajouter une page au
+    chapitre~1. Observer que selon la table des matières, le
+    chapitre~2 débute toujours à la page~3 alors que celle-ci est
+    maintenant occupée par la figure~1.
+  \item Afin de corriger la table des matières, désactiver la
+    commande \verb=\includeonly= dans le préambule du fichier maître,
+    puis compiler de nouveau le document quelques fois.
+  \end{enumerate}
+\end{exercice}
 
 
 %%% Local Variables:
