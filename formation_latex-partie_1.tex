@@ -35,6 +35,7 @@
   %%% Définition de couleurs
   \definecolor{comments}{rgb}{0.7,0,0}
   \definecolor{emphasis}{named}{orange}
+  \definecolor{example}{named}{SlateGray1}
   \hypersetup{colorlinks,allcolors=emphasis}
 
   %%% Paramètres de beamer
@@ -95,7 +96,7 @@
 \input{couverture}
 
 %% Le texte du contrat de licence est conservé dans un fichier séparé
-\input{licence}
+\input{licence-partie_1}
 
 \begin{frame}
   \frametitle{Sommaire}
@@ -341,6 +342,8 @@ Copyright 2014 D.E. Knuth.
 \end{frame}
 
 %%% >>>
+\begingroup
+\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     \begin{enumerate}
@@ -359,6 +362,7 @@ Copyright 2014 D.E. Knuth.
     \end{enumerate}
   \end{exercice}
 \end{frame}
+\endgroup
 %%% <<<
 
 \begin{frame}[fragile=singleslide]
@@ -393,6 +397,9 @@ Copyright 2014 D.E. Knuth.
   \end{itemize}
 \end{frame}
 
+%%% >>>
+\begingroup
+\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     Modifier le fichier \fichier{exercice\_commandes.tex} afin
@@ -402,6 +409,8 @@ Copyright 2014 D.E. Knuth.
     \fbox{\includegraphics[width=\linewidth]{exercice_commandes-output}}
   \end{center}
 \end{frame}
+\endgroup
+%%% <<<
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Caractères spéciaux}
@@ -603,6 +612,8 @@ Copyright 2014 D.E. Knuth.
 \end{frame}
 
 %%% >>>
+\begingroup
+\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     \begin{enumerate}
@@ -628,6 +639,7 @@ Copyright 2014 D.E. Knuth.
     \end{enumerate}
   \end{exercice}
 \end{frame}
+\endgroup
 %%% <<<
 
 \section{Parties d'un document}
@@ -714,6 +726,8 @@ Copyright 2014 D.E. Knuth.
 \end{frame}
 
 %%% >>>
+\begingroup
+\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_sections.tex}.
@@ -725,6 +739,7 @@ Copyright 2014 D.E. Knuth.
     \end{enumerate}
   \end{exercice}
 \end{frame}
+\endgroup
 %%% <<<
 
 \begin{frame}[fragile=singleslide]
@@ -796,6 +811,8 @@ on a...
 \end{frame}
 
 %%% >>>
+\begingroup
+\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_renvois.tex}.
@@ -808,6 +825,7 @@ on a...
     \end{enumerate}
   \end{exercice}
 \end{frame}
+\endgroup
 %%% <<<
 
 \begin{frame}[fragile=singleslide]
@@ -886,6 +904,8 @@ on a...
 \end{frame}
 
 %%% >>>
+\begingroup
+\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_tdm+annexe.tex}.
@@ -897,6 +917,7 @@ on a...
     \end{enumerate}
   \end{exercice}
 \end{frame}
+\endgroup
 %%% <<<
 
 
@@ -1233,6 +1254,8 @@ dans une police à largeur fixe
 \end{frame}
 
 %%% >>>
+\begingroup
+\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain]
   \begin{exercice}
     \begin{enumerate}
@@ -1252,6 +1275,7 @@ dans une police à largeur fixe
     \end{enumerate}
   \end{exercice}
 \end{frame}
+\endgroup
 %%% <<<
 
 
@@ -1643,6 +1667,8 @@ align*
 \end{frame}
 
 %%% >>>
+\begingroup
+\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_ulthese.tex} --- qui est
@@ -1651,9 +1677,9 @@ align*
     \begin{enumerate}
     \item Étudier le code source du fichier.
 
-      Remarquer que le \fichier{mathematiques.tex} est inséré dans le
-      document avec la commande \verb=\include=. Étudier brièvement le
-      code source de ce fichier.
+      Remarquer que le fichier \fichier{mathematiques.tex} est inséré
+      dans le document avec la commande \verb=\include=. Étudier
+      brièvement le code source de ce fichier.
     \item Activer les paquetages \textbf{amsmath} et \textbf{icomma},
       puis compiler \fichier{exercice\_ulthese.tex}.
     \item Modifier un environnement \texttt{align*} pour
@@ -1664,6 +1690,7 @@ align*
     \end{enumerate}
   \end{exercice}
 \end{frame}
+\endgroup
 %%% <<<
 
 
