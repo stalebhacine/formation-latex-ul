@@ -1,0 +1,54 @@
+\chapter{Tableaux et figures}
+\label{chap:tableaux}
+
+Les tableaux et graphiques ne sont pas les éléments de texte les plus
+simples et rapides à créer avec {\LaTeX}. Les traitements de texte
+brillent, ici, avec leurs interfaces graphiques permettant de composer
+un tableau ou un graphique simple pièce par pièce avec la souris.
+
+En revanche, pour ce type de contenu comme pour tout autre, {\LaTeX}
+fait exactement ce qu'on lui demande. À ce chapitre, les traitements
+de texte ne brillent plus! Si vous avez déjà eu de la difficulté à
+contrôler les bordures d'un tableau, la hauteur des lignes ou la
+largeur des colonnes, vous comprenez ce à quoi nous faisons référence.
+
+Avant de discuter de la création ou de l'insertion de tableaux,
+graphiques et images, il convient ...
+
+
+\section{Éléments flottants}
+\label{sec:tableaux:floats}
+
+Les tableaux et figures sont des éléments de contenu qui occupent
+souvent beaucoup d'espace vertical dans la page. S'il ne reste plus
+assez de place pour afficher un tel élément sur une page, {\TeX} devra
+le déplacer au début de page suivante et cela risque de produire une
+page inesthétique car insuffisamment remplie\footnote{%
+  \emph{Underful \verb=\vbox=} dans le jargon de {\TeX}.}. %
+
+Pour éviter cela, il serait souhaitable que {\TeX} puisse insérer un
+tableau à l'endroit indiqué dans le code source s'il y a suffisamment
+d'espace sur la page pour l'accueillir
+
+
+De plus, tout tableau et toute figure dans un document soigné devrait
+comporter un titre/légende/description ainsi qu'un numéro afin de
+pouvoir y faire référence dans le texte («comme l'illustre la
+figure~3\dots»).
+
+fonctionnalité très élaborée de LaTeX
+
+
+éléments flottants
+conseils de booktabs
+tableaux
+figures (insertion de graphiques (Sweave), mention de picture)
+
+LATEX offre à ses valeureux utilisateurs la possibilité d'utiliser des environnements flottants. Ces environnements ont la particularité de rendre « flottants » leur contenu. C'est-à-dire que LATEX choisit à partir d'un algorithme qui tient compte d'un certain nombre de paramètres, la position de l'environnement dans le document.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% TeX-master: "formation_latex-partie_2"
+%%% coding: utf-8
+%%% End:
