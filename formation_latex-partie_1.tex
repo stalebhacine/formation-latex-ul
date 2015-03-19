@@ -36,7 +36,9 @@
   \definecolor{comments}{rgb}{0.7,0,0}
   \definecolor{emphasis}{named}{orange}
   \definecolor{example}{named}{SlateGray1}
-  \hypersetup{colorlinks,allcolors=emphasis}
+  \definecolor{link}{rgb}{0,0.4,0.6}   % ~RoyalBlue de dvips
+  \definecolor{url}{rgb}{0.6,0,0}      % rouge-brun
+  \hypersetup{colorlinks,allcolors=emphasis,urlcolor=url}
 
   %%% Paramètres de beamer
   \useinnertheme{default}
@@ -108,14 +110,18 @@
   \item Installer une distribution {\LaTeX} sur votre poste de
     travail; nous recommandons la distribution {\TeX}~Live
     \begin{itemize}
-    \item[] {\faYouTubePlay} installation sur Mac OS X
-    \item[] {\faYouTubePlay} installation sur Windows
+    \item[] \href{https://www.youtube.com/watch?v=fjcR6lFy0c4}{%
+        {\faYouTubePlay} installation sur Mac OS X}
+    \item[] \href{https://www.youtube.com/watch?v=z_dq3dns-WU}{%
+        {\faYouTubePlay} installation sur Windows}
     \end{itemize}
-  \item Compiler un premier un document très simple de type
-    \emph{Hello World!}
+    \bigskip
+  \item Compiler un premier très simple de type \emph{Hello World!}
     \begin{itemize}
-    \item[] {\faYouTubePlay} démonstration sur Mac OS X avec TeXShop
-    \item[] {\faYouTubePlay} démonstration sur Windows avec TeXMaker
+    \item[] \href{https://www.youtube.com/watch?v=QOUx_aOZ42o}{%
+        {\faYouTubePlay} démonstration sur Mac OS X avec TeXShop}
+    \item[] \href{https://www.youtube.com/watch?v=qddRMGwXnNM}{%
+        {\faYouTubePlay} démonstration sur Windows avec TeXMaker}
     \end{itemize}
   \end{enumerate}
 \end{frame}
@@ -405,7 +411,7 @@ Copyright 2014 D.E. Knuth.
     de produire le texte ci-dessous.
   \end{exercice}
   \begin{center}
-    \fbox{\includegraphics[width=\linewidth]{exercice_commandes-output}}
+    \colorbox{white}{\includegraphics[width=0.95\linewidth]{exercice_commandes-output}}
   \end{center}
 \end{frame}
 \endgroup
@@ -1341,7 +1347,7 @@ comme $(a + b)^2 = a^2 + 2ab + b^2$
     équations.
   \end{alertblock}
   \vspace{18pt}
-  \fbox{\includegraphics[width=\linewidth]{ponctuation}}
+  \fbox{\includegraphics[width=0.95\linewidth]{ponctuation}}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -1352,7 +1358,7 @@ comme $(a + b)^2 = a^2 + 2ab + b^2$
     variables en \textit{italique}
     \begin{quote}
       \begin{minipage}{0.45\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
+\begin{lstlisting}
 $z = 2a + 3y$
 \end{lstlisting}
       \end{minipage}
@@ -1365,7 +1371,7 @@ $z = 2a + 3y$
     code source
 \begin{quote}
       \begin{minipage}{0.45\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
+\begin{lstlisting}
 $z=2 a+3 y$
 \end{lstlisting}
       \end{minipage}
@@ -1384,7 +1390,7 @@ $z=2 a+3 y$
     texte en italique!
     \begin{quote}
       \begin{minipage}{0.45\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
+\begin{lstlisting}
 \emph{xyz}
 \end{lstlisting}
       \end{minipage}
@@ -1393,7 +1399,7 @@ $z=2 a+3 y$
         \rmfamily\emph{xyz}
       \end{texoutput} \\
       \begin{minipage}{0.45\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
+\begin{lstlisting}
 $xyz$
 \end{lstlisting}
       \end{minipage}
@@ -1406,7 +1412,7 @@ $xyz$
     obtenir du texte à l'intérieur du mode mathématique
 \begin{quote}
       \begin{minipage}{0.55\linewidth}
-\begin{lstlisting}[aboveskip=2.3\medskipamount]
+\begin{lstlisting}
 $x = 0 \text{ si } y < 2$
 \end{lstlisting}
       \end{minipage}
@@ -1429,7 +1435,7 @@ $x = 0 \text{ si } y < 2$
 %   \pause
 %   \begin{quote}
 %     \begin{minipage}{0.2\linewidth}
-% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% \begin{lstlisting}
 % $x^2$
 % \end{lstlisting}
 %     \end{minipage}
@@ -1439,7 +1445,7 @@ $x = 0 \text{ si } y < 2$
 %       \end{texoutput}
 %     \hfill
 %     \begin{minipage}{0.2\linewidth}
-% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% \begin{lstlisting}
 % $x_4$
 % \end{lstlisting}
 %     \end{minipage}
@@ -1449,7 +1455,7 @@ $x = 0 \text{ si } y < 2$
 %     \end{texoutput}
 %     \\
 %     \begin{minipage}{0.2\linewidth}
-% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% \begin{lstlisting}
 % $x^{2n}$
 % \end{lstlisting}
 %     \end{minipage}
@@ -1459,7 +1465,7 @@ $x = 0 \text{ si } y < 2$
 %     \end{texoutput}
 %     \hfill
 %     \begin{minipage}{0.2\linewidth}
-% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% \begin{lstlisting}
 % $x^{y^2}$
 % \end{lstlisting}
 %     \end{minipage}
@@ -1469,7 +1475,7 @@ $x = 0 \text{ si } y < 2$
 %     \end{texoutput}
 %     \\
 %     \begin{minipage}{0.5\linewidth}
-% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% \begin{lstlisting}
 % $A_{j_{(k, l)}}^{x_i^2}$
 % \end{lstlisting}
 %     \end{minipage}
@@ -1487,7 +1493,7 @@ $x = 0 \text{ si } y < 2$
 %     oblique \verb=/=
 %     \begin{quote}
 %       \begin{minipage}{0.5\linewidth}
-% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% \begin{lstlisting}
 % On a $y = (n + m)/2$.
 % \end{lstlisting}
 %       \end{minipage}
@@ -1500,7 +1506,7 @@ $x = 0 \text{ si } y < 2$
 %     la commande \verb=\frac{}{}=
 %     \begin{quote}
 %       \begin{minipage}{0.75\linewidth}
-% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% \begin{lstlisting}
 % $\frac{x}{2}$
 % \end{lstlisting}
 %       \end{minipage}
@@ -1510,7 +1516,7 @@ $x = 0 \text{ si } y < 2$
 %       \end{texoutput}
 %       \\
 %       \begin{minipage}{0.75\linewidth}
-% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% \begin{lstlisting}
 % $\frac{x_i + \frac{1}{2}}{y^2 + k}$
 % \end{lstlisting}
 %       \end{minipage}
@@ -1531,7 +1537,7 @@ $x = 0 \text{ si } y < 2$
 
 %   \begin{quote}
 %     \begin{minipage}{0.55\linewidth}
-% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% \begin{lstlisting}
 % $\mu + \sigma^2 + \gamma$
 % \end{lstlisting}
 %     \end{minipage}
@@ -1541,7 +1547,7 @@ $x = 0 \text{ si } y < 2$
 %     \end{texoutput}
 %     \\
 %     \begin{minipage}{0.55\linewidth}
-% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% \begin{lstlisting}
 % $\Lambda + \Delta + \Gamma$
 % \end{lstlisting}
 %     \end{minipage}
@@ -1551,7 +1557,7 @@ $x = 0 \text{ si } y < 2$
 %     \end{texoutput}
 %     \\
 %     \begin{minipage}{0.55\linewidth}
-% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% \begin{lstlisting}
 % $\times \div \leq \geq \neq$
 % \end{lstlisting}
 %     \end{minipage}
@@ -1561,7 +1567,7 @@ $x = 0 \text{ si } y < 2$
 %     \end{texoutput}
 %     \\
 %     \begin{minipage}{0.55\linewidth}
-% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% \begin{lstlisting}
 % $\dots \cdots \cdot$
 % \end{lstlisting}
 %     \end{minipage}
@@ -1571,7 +1577,7 @@ $x = 0 \text{ si } y < 2$
 %     \end{texoutput}
 %     \\
 %     \begin{minipage}{0.71\linewidth}
-% \begin{lstlisting}[aboveskip=2.3\medskipamount]
+% \begin{lstlisting}
 % $\sum_{x = 0}^\infty \int_0^x y\, dy$
 % \end{lstlisting}
 %     \end{minipage}
@@ -1654,7 +1660,7 @@ align*
   \begin{itemize}
   \item \textbf{ulthese} livrée dans {\TeX}~Live donc déjà
     installée sur votre ordinateur
-  \item Mise en forme conforme aux règles de présentation de la FESP
+  \item Mise en page conforme aux règles de présentation de la FESP
   \item Basée sur la classe \textbf{memoir}, donc les fonctionnalités
     de celle-ci sont disponibles dans \textbf{ulthese}
   \item Quelques nouvelles commandes pour la création de la page titre
@@ -1721,6 +1727,8 @@ align*
     \end{quote}
   \end{itemize}
 \end{frame}
+
+\input{colophon-partie_1}
 
 \end{document}
 
