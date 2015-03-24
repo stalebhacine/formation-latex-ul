@@ -189,6 +189,7 @@
   \item WYSIWYG
   \item Incompatible
   \item Instable
+  \item Imprévisible
   \end{itemize}
 \end{frame}
 
@@ -426,8 +427,8 @@ Copyright 2014 D.E. Knuth.
     \end{quote}
   \item Pour les utiliser, précéder par \verb=\=:
    \begin{quote}
-     \begin{minipage}[t]{0.07\linewidth}
-\begin{lstlisting}[aboveskip=-0.5\medskipamount]
+     \begin{minipage}{0.07\linewidth}
+\begin{lstlisting}
 \#
 \end{lstlisting}
       \end{minipage}
@@ -436,8 +437,8 @@ Copyright 2014 D.E. Knuth.
         \#
       \end{texoutput}
       \hfill
-     \begin{minipage}[t]{0.07\linewidth}
-\begin{lstlisting}[aboveskip=-0.5\medskipamount]
+     \begin{minipage}{0.07\linewidth}
+\begin{lstlisting}
 \$
 \end{lstlisting}
      \end{minipage}
@@ -446,8 +447,8 @@ Copyright 2014 D.E. Knuth.
        \$
      \end{texoutput}
      \hfill
-     \begin{minipage}[t]{0.07\linewidth}
-\begin{lstlisting}[aboveskip=-0.5\medskipamount]
+     \begin{minipage}{0.07\linewidth}
+\begin{lstlisting}
 \%
 \end{lstlisting}
      \end{minipage}
@@ -455,9 +456,9 @@ Copyright 2014 D.E. Knuth.
      \begin{texoutput}{0.07\linewidth}
        \%
      \end{texoutput}
-     \\
-     \begin{minipage}[t]{0.07\linewidth}
-\begin{lstlisting}[aboveskip=-0.6\medskipamount]
+     \\[-0.8\baselineskip]
+     \begin{minipage}{0.07\linewidth}
+\begin{lstlisting}
 \_
 \end{lstlisting}
      \end{minipage}
@@ -466,8 +467,8 @@ Copyright 2014 D.E. Knuth.
        \_
      \end{texoutput}
      \hfill
-     \begin{minipage}[t]{0.07\linewidth}
-\begin{lstlisting}[aboveskip=-0.5\medskipamount]
+     \begin{minipage}{0.07\linewidth}
+\begin{lstlisting}
 \{
 \end{lstlisting}
      \end{minipage}
@@ -476,8 +477,8 @@ Copyright 2014 D.E. Knuth.
        \}
      \end{texoutput}
      \hfill
-     \begin{minipage}[t]{0.07\linewidth}
-\begin{lstlisting}[aboveskip=-0.5\medskipamount]
+     \begin{minipage}{0.07\linewidth}
+\begin{lstlisting}
 \}
 \end{lstlisting}
      \end{minipage}
@@ -488,8 +489,8 @@ Copyright 2014 D.E. Knuth.
     \end{quote}
   \item Guillemets:
     \begin{quote}
-     \begin{minipage}[t]{0.45\linewidth}
-\begin{lstlisting}[aboveskip=-0.6\medskipamount,escapeinside={}]
+     \begin{minipage}{0.45\linewidth}
+\begin{lstlisting}[escapeinside={}]
 ``guillemets anglais''
 \end{lstlisting}
      \end{minipage}
@@ -497,9 +498,9 @@ Copyright 2014 D.E. Knuth.
      \begin{texoutput}{0.45\linewidth}
        ``guillemets anglais''
      \end{texoutput}
-     \\
-     \begin{minipage}[t]{0.45\linewidth}
-\begin{lstlisting}[aboveskip=-0.6\medskipamount]
+     \\[-0.8\baselineskip]
+     \begin{minipage}{0.45\linewidth}
+\begin{lstlisting}
 «guillemets français»
 \end{lstlisting}
      \end{minipage}
@@ -510,8 +511,8 @@ Copyright 2014 D.E. Knuth.
    \end{quote}
   \item Tiret, tiret demi-cadratin, tiret cadratin:
     \begin{quote}
-     \begin{minipage}[t]{0.07\linewidth}
-\begin{lstlisting}[aboveskip=-0.2\medskipamount]
+     \begin{minipage}{0.07\linewidth}
+\begin{lstlisting}
 -
 \end{lstlisting}
      \end{minipage}
@@ -520,8 +521,8 @@ Copyright 2014 D.E. Knuth.
        -
      \end{texoutput}
      \hfill
-     \begin{minipage}[t]{0.07\linewidth}
-\begin{lstlisting}[aboveskip=-0.2\medskipamount]
+     \begin{minipage}{0.07\linewidth}
+\begin{lstlisting}
 --
 \end{lstlisting}
      \end{minipage}
@@ -530,8 +531,8 @@ Copyright 2014 D.E. Knuth.
        --
      \end{texoutput}
      \hfill
-          \begin{minipage}[t]{0.07\linewidth}
-\begin{lstlisting}[aboveskip=-0.2\medskipamount]
+     \begin{minipage}{0.07\linewidth}
+\begin{lstlisting}
 ---
 \end{lstlisting}
      \end{minipage}
@@ -1051,7 +1052,7 @@ on a...
 \end{lstlisting}
       \end{minipage}
     \end{quote}
-  \item Aussi pour délimiter
+  \item Commande \verb=\\= aussi pour délimiter
     \begin{itemize}
     \item les lignes dans les tableaux
     \item les lignes d'une suite d'équations
