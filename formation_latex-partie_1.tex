@@ -230,6 +230,22 @@
   \end{picture}
 \end{frame}
 
+%%% >>>
+\begingroup
+\setbeamercolor{background canvas}{bg=example}
+\begin{frame}[plain,fragile=singleslide]
+  \begin{exercice}
+    \begin{enumerate}
+    \item Démarrer le logiciel \texttt{texmaker} (ou tout autre
+      éditeur ou logiciel intégré de rédaction de votre choix).
+    \item Ouvrir et compiler le fichier \fichier{exercice\_minimal.tex}.
+    \end{enumerate}
+  \end{exercice}
+\end{frame}
+\endgroup
+%%% <<<
+
+
 \begin{frame}
   \frametitle{Quelques choses simples à réaliser avec {\LaTeX}}
   \framesubtitle{(et pas nécessairement avec un traitement de texte)}
@@ -247,14 +263,12 @@
 
 \begin{frame}
   \frametitle{Moteurs et formats}
-  \visible<2->{
-    \begin{tabular}{r}
-      \\ \addlinespace[8pt] \\ \\
-      \color{emphasis}\faArrowRight \\
-      \color{emphasis}\faArrowRight
-    \end{tabular}
-    \hspace{-5mm}
-  }
+  \begin{tabular}{r}
+    \\ \addlinespace[8pt] \\ \\
+    \color{emphasis}\faArrowRight \\
+    \color{emphasis}\faArrowRight
+  \end{tabular}
+  \hspace{-5mm}
   \begin{tabularx}{0.9\linewidth}{Xlc}
     \toprule[2pt]
     Moteur & Format & Fichier de sortie \\
@@ -352,10 +366,10 @@ Copyright 2014 D.E. Knuth.
 \setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
+    Utiliser le fichier \fichier{exercice\_minimal.tex}.
     \begin{enumerate}
-    \item Compiler le document \fichier{exercice\_minimal.tex}.
-    \item Changer la classe \textbf{article} pour la classe \textbf{book}
-      et observer le résultat.
+    \item Compiler le document avec la classe \textbf{article}, puis
+      avec la classe \textbf{book}. Observer le résultat.
     \item Ajouter du texte en français (avec accents) et observer le
       résultat.
     \item Question de voir ce que {\LaTeX} peut faire, compiler le
@@ -546,24 +560,24 @@ Copyright 2014 D.E. Knuth.
 
 \begin{frame}[fragile]
   \frametitle{Classe de document}
-  \begin{itemize}
+  \begin{itemize}[<+->]
   \item La première commande du préambule est normalement la
     déclaration de la classe de la forme
 \begin{lstlisting}
 \documentclass[`\textit{options}']{`\textit{classe}'}
 \end{lstlisting}
-  \item<2-> Principales classes:
+  \item Principales classes:
     \begin{quote}
       \textbf{article, report, book, letter} \\
-      {\color<3->{emphasis} \textbf{memoir}} \\
-      {\color<3->{emphasis} \textbf{ulthese}}
+      {\color{emphasis} \textbf{memoir}} \\
+      {\color{emphasis} \textbf{ulthese}}
     \end{quote}
-  \item<4-> Principales options:
+  \item Principales options:
     \begin{quote}
-      \texttt{10pt, {\color<5->{emphasis} 11pt}, 12pt} \\
+      \texttt{10pt, {\color{emphasis} 11pt}, 12pt} \\
       \texttt{oneside, twoside} \\
       \texttt{openright, openany} \\
-      {\color<5->{emphasis} \texttt{article}} (classe \textbf{memoir})
+      {\color{emphasis} \texttt{article}} (classe \textbf{memoir})
     \end{quote}
   \end{itemize}
 \end{frame}
@@ -1705,10 +1719,15 @@ align*
 \begin{frame}
   \frametitle{Quelques essentiels}
   \begin{itemize}
-  \item Un bon livre de référence
+  \item Un excellent livre de référence
     \begin{quote}
       \href{http://ariane.ulaval.ca/cgi-bin/recherche.cgi?qu=a1982705}{%
         \emph{Guide to {\LaTeX}}, 4{\ieme} éd., de H.~Kopka et P.W.~Daly}
+    \end{quote}
+  \item En français, en ligne, libre
+    \begin{quote}
+      \href{http://fr.wikibooks.org/w/index.php?title=LaTeX&oldid=462659}{%
+        \emph{LaTeX} dans Wikilivre}
     \end{quote}
   \item Foire aux questions bien garnie
     \begin{quote}
