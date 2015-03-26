@@ -831,6 +831,16 @@ Copyright 2014 D.E. Knuth.
     \item Ajouter un titre et un auteur au document.
     \item Créer la table des matières du document en le compilant 2 à
       3 fois.
+    \item Insérer deux ou trois titres de sections de différents niveaux
+      dans le document.
+    \item Vous remarquerez que la numérotation cesse à partir des
+      sous-sections. C'est une particularité de la classe
+      \textbf{memoir}.
+
+      Recompiler le document après avoir ajouté au préambule la commande
+\begin{lstlisting}
+\maxsecnumdepth{subsection}
+\end{lstlisting}
     \item Ajouter une annexe au document.
     \end{enumerate}
   \end{exercice}
