@@ -756,6 +756,14 @@ Copyright 2014 D.E. Knuth.
     \item Ajouter un titre et un auteur au document.
     \item Insérer deux ou trois titres de sections de différents niveaux
       dans le document.
+    \item Vous remarquerez que la numérotation cesse à partir des
+      sous-sections. C'est une particularité de la classe
+      \textbf{memoir}.
+
+      Recompiler le document après avoir ajouté au préambule la commande
+\begin{lstlisting}
+\maxsecnumdepth{subsection}
+\end{lstlisting}
     \end{enumerate}
   \end{exercice}
 \end{frame}
