@@ -19,25 +19,24 @@ SÉANCE 1
    - Emphase
    - Sauts de ligne et de page
    - Césure de mots
-   
 6. Portions de texte spéciales
    - Texte centré
    - Citations
    - Notes de bas de page
    - Listes
-7. Document contenu dans plusieurs fichiers (utilisation de \include
-   et \input)
-8. B.a.-ba du mode mathématique
-9. Classe ulthese
+7. B.a.-ba du mode mathématique
+8. Classe ulthese
 
 SÉANCE 2
 
 1. Tableaux et figures
 2. Mathématiques (avec amsmath)
-3. Bibliographie avec BIBTeX
-4. (Polices de caractères: au-delà de Computer Modern)
-5. Commandes personnelles
-6. En rafale: trucs et astuces divers (hyperliens, présentation de code
+3. Document contenu dans plusieurs fichiers (utilisation de \include
+   et \input)
+4. Bibliographie avec BIBTeX
+5. (Polices de caractères: au-delà de Computer Modern)
+6. Commandes personnelles
+7. En rafale: trucs et astuces divers (hyperliens, présentation de code
    informatique, symboles spéciaux, analyse et rapport intégrés [de
    type Sweave], diapositives, ...)
 
