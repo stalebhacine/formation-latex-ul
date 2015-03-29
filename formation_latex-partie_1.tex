@@ -53,6 +53,7 @@
   \setbeamercolor{alerted text}{fg=black}
   \setbeamerfont{alerted text}{series=\bfseries}
   \setbeamercolor{block title alerted}{fg=white,bg=comments}
+  %\setbeamercolor{block title theorem}{fg=white,bg=white}
   \setbeamertemplate{theorems}[numbered]
   \setbeamertemplate{navigation symbols}{}
   \setbeamertemplate{section in sidebar}{}
@@ -823,7 +824,7 @@ Copyright 2014 D.E. Knuth.
 %%% >>>
 \begingroup
 \setbeamercolor{background canvas}{bg=example}
-\begin{frame}[plain]
+\begin{frame}[fragile=singleslide,plain]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_parties.tex}.
     \begin{enumerate}
@@ -938,7 +939,32 @@ on a...
 %%% <<<
 
 
-\section{Contrôle du texte}
+\section{Apparence du texte}
+
+\begin{frame}
+  \frametitle{Police de caractère}
+  \begin{itemize}
+  \item Par défaut, tous les documents {\LaTeX} utilisent la même
+    police de caractère, {\fontfamily{cmr}\selectfont Computer Modern}
+  \item Aujourd'hui plus facile d'utiliser d'autres polices, surtout
+    avec {\XeLaTeX}
+    \begin{itemize}
+    \item voir les fichiers d'exercices et les gabarits de
+      \textbf{ulthese} pour des exemples
+    \end{itemize}
+  \item Privilégier les polices de grande qualité et très complètes
+    (lettres accentuées, grand choix de symboles)
+    \begin{itemize}
+    \item polices Postscript standards ou leurs clones du projet
+      TeX~Gyre
+    \end{itemize}
+  \item Peu de polices sont adaptées pour les mathématiques
+    \begin{itemize}
+    \item {\fontfamily{ppl}\selectfont Palatino},
+      {\fontfamily{ptm}\selectfont Times}, \textrm{Lucida} (\$) sont des choix sûrs
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Changement d'attribut de la police de caractères}
@@ -978,7 +1004,6 @@ on a...
     \end{tabbing}
     \vfill
   \end{block}
-  \pause
   \begin{picture}(0,0)
     \thicklines\color{blue}
     \put(113,30){\dashbox{2}(62,190){}}
@@ -997,7 +1022,6 @@ on a...
         s'applique au texte en argument
       \end{minipage}}
   \end{picture}
-
 \end{frame}
 
 \begin{frame}[fragile]
@@ -1031,119 +1055,34 @@ on a...
   \end{block}
 \end{frame}
 
-\begin{frame}[fragile=singleslide]
-  \frametitle{Autres changements de police}
+\begin{frame}[fragile]
+  \frametitle{Emphase}
   \begin{itemize}
-  \item Attributs par défaut
-\begin{lstlisting}
-\textnormal{`\textit{texte}'}
-\end{lstlisting}
-  \item Emphase (par défaut italique dans texte droit et vice versa)
+  \item<1-> Une des propriétés les \emph{plus utilisées} dans le texte
+  \item<1-> Commande spécifique:
 \begin{lstlisting}
 \emph{`\textit{texte}'}
 \end{lstlisting}
-  \end{itemize}
-\end{frame}
+    \vfill
+  \item<2-> Par défaut: texte en italique dans texte droit et vice versa
 
-\begin{frame}[fragile=singleslide]
-  \frametitle{Sauts de ligne}
-  \begin{itemize}
-  \item Rarement nécessaire de forcer les retours à la ligne
-  \item Lorsque requis utiliser
-    \begin{quote}
-      \begin{minipage}{0.3\linewidth}
-\begin{lstlisting}[aboveskip=1.5\medskipamount]
-  \\
-\end{lstlisting}
-      \end{minipage}
-      \quad ou \quad
-      \begin{minipage}{0.3\linewidth}
-\begin{lstlisting}[aboveskip=1.5\medskipamount]
-  \newline
-\end{lstlisting}
-      \end{minipage}
-    \end{quote}
-  \item Commande \verb=\\= aussi pour délimiter
-    \begin{itemize}
-    \item les lignes dans les tableaux
-    \item les lignes d'une suite d'équations
-    \end{itemize}
-  \item On peut suivre un saut de ligne d'un espace vertical
-    arbitraire avec
 \begin{lstlisting}
-  \\[`\textit{longueur}']
+C'était un peu \emph{rough} par moments
 \end{lstlisting}
-  \item Espace insécable: \verb= ~ =
-\begin{lstlisting}
-M.~Tremblay
-\end{lstlisting}
+    \begin{texoutput}{\textwidth}
+      C'était un peu \emph{rough} par moments
+    \end{texoutput}
 
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Sauts de page}
-  \begin{itemize}
-  \item Parfois nécessaires lors de coupures malheureuses
-  \item Aussi pour placer des éléments où l'on veut
-  \item Garder l'édition des sauts de page pour la toute fin de la
-    rédaction
-  \item<2-> Commandes
 \begin{lstlisting}
-\newpage
-\clearpage
-\cleartorecto              % memoir seulement
-\cleartoverso              % memoir seulement
+Il m'a dit: «\emph{C'était un peu \emph{rough}
+par moments}»
 \end{lstlisting}
-  \item<3-> Suggestions
-\begin{lstlisting}
-\pagebreak[`\textit{n}']              % n = 0, 1, 2, 3, 4
-\enlargethispage{`\textit{longueur}'}
-\end{lstlisting}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-  \frametitle{Longueurs}
-  \begin{itemize}[<+->]
-  \item Nombre positif, négatif ou nul \alert{obligatoirement} et
-    \alert{immédiatement} suivi d'une unité de longueur (sans espace)
-  \item Principales unités
-    \begin{quote}
-      \begin{tabularx}{\linewidth}{XcX}
-        millimètre & \texttt{mm} \\
-        centimètre & \texttt{cm} & (10~mm) \\
-        pouce      & \texttt{in} & (2,54~cm) \\
-        point      & \texttt{pt} & (1/72,27~pouce) \\
-        largeur de la lettre M & \texttt{em} & (variable) \\
-        hauteur de la lettre x & \texttt{ex} & (variable)
-      \end{tabularx}
-    \end{quote}
-  \item Longueurs utiles prédéfinies
-\begin{lstlisting}
-\linewidth
-\textwidth
-\end{lstlisting}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile=singleslide]
-  \frametitle{Coupure de mots}
-  \begin{itemize}
-  \item Coupure de mots en fin de ligne automatique avec \LaTeX
-  \item Important d'indiquer à {\LaTeX} dans quelle langue est le texte!
-    \begin{itemize}
-    \item en anglais par défaut
-    \item autrement spécifié au chargement de \textbf{babel}
-    \end{itemize}
-  \item Suggestions pour un mot individuel
-\begin{lstlisting}
-vrai\-sem\-blance
-\end{lstlisting}
-  \item Ajout d'exceptions ou de mots inconnus dans le préambule
-\begin{lstlisting}
-\hyphenation{puis-que,cons-tante}
-\end{lstlisting}
+    \begin{texoutput}{\textwidth}
+      Il m'a dit: «\emph{C'était un peu \emph{rough} par moments}»
+    \end{texoutput}
+    \vfill
+  \item<3-> Pas de commande pour souligner en {\LaTeX\dots} et ce n'est
+    pas une omission!
   \end{itemize}
 \end{frame}
 
