@@ -16,6 +16,104 @@ Avant de discuter de la création ou de l'insertion de tableaux,
 graphiques et images, il convient ...
 
 
+\section{De la conception de beaux tableaux}
+\label{sec:tableaux:booktabs}
+
+On utilise les tableaux pour disposer de l'information sous forme de
+grille. Ainsi, le premier réflexe pour les mettre en forme consiste-t-il
+souvent à mettre en évidence cette grille par le biais de
+filets\footnote{%
+  Communément appelés «lignes» dans le langage courant ou «bordures»
+  dans les logiciels de traitement de texte.} %
+horizontaux et verticaux.
+
+C'est une mauvaise idée, une pratique à éviter. Vraiment!
+
+Comparer les deux tableaux ci-dessous. Le premier est mis en forme
+selon une approche classique supportée depuis toujours par {\LaTeX}:
+filets doubles en entête et en pied de tableau, filets simples entre
+chaque ligne et entre les colonnes.
+
+\begin{center}
+  \begin{tabular}{|>{$}c<{$}|>{$}r<{$}|>{$}r<{$}|>{$}r<{$}|>{$}c<{$}|>{$}c<{$}|}
+    \hline\hline
+    i &
+    \multicolumn{1}{c|}{$v$} &
+    \multicolumn{1}{c|}{$b_i$} &
+    \lfloor v/b_i \rfloor & v \bmod b_i & x_i \\
+    \hline
+    0 & \nombre{91492} &  60 & \nombre{1524} & 52 & 52 \\
+    1 &  \nombre{1524} &  60 &           25  & 24 & 24 \\
+    2 &            25  &  24 &            1  &  1 &  1 \\
+    3 &             1  & 365 &            0  &  1 &  1 \\
+    \hline\hline
+  \end{tabular}
+\end{center}
+
+Le second tableau tire profit des fonctionnalités du paquetage
+\pkg{booktabs} et des recommandations de son auteur: les filets
+horizontaux sont d'épaisseur différente selon qu'ils sont situés dans
+l'entête et dans le pied du tableau ou entre les lignes, l'espace
+autour des filets horizontaux est plus grand et, surtout, il n'y a pas
+de filets verticaux.
+
+\begin{center}
+  \begin{tabular}{>{$}c<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}c<{$}>{$}c<{$}}
+    \toprule
+    i &
+    \multicolumn{1}{c}{$v$} &
+    \multicolumn{1}{c}{$b_i$} &
+    \lfloor v/b_i \rfloor & v \bmod b_i & x_i \\
+    \midrule
+    0 & \nombre{91492} &  60 & \nombre{1524} & 52 & 52 \\
+    1 &  \nombre{1524} &  60 &           25  & 24 & 24 \\
+    2 &            25  &  24 &            1  &  1 &  1 \\
+    3 &             1  & 365 &            0  &  1 &  1 \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+La seconde version n'est-elle pas la plus aérée et la plus facile à
+consulter? Vous constatez que, contrairement à ce que l'on pourrait
+penser, les filets verticaux ne sont pas du tout requis pour bien
+délimiter les colonnes?
+
+Tel que mentionné ci-dessus, le paquetage \pkg{booktabs} ajoute des
+fonctionnalités à {\LaTeX} pour améliorer la qualité typographique des
+tableaux. Dans la documentation du paquetage, son auteur énonce
+quelques règles à suivre pour la mise en forme des tableaux:
+\begin{enumerate}
+\item ne \emph{jamais} utiliser de filets verticaux. Si l'information du côté
+  gauche du tableau semble si différente de celle du côté droit
+  qu'un filet apparait vertical nécessaire, scinder simplement
+  l'information dans deux tableaux;
+\item ne jamais utiliser de filets doubles;
+\item placer les unités dans le titre de la colonne plutôt qu'après
+  chaque valeur dans le corps du tableau;
+\item toujours inscrire un chiffre du côté gauche du séparateur
+  décimal: $0,1$ et non $,1$ (pratique plus répandue en anglais où le
+  séparateur décimal est le point);
+\item ne pas utiliser de symbole pour représenter une valeur répétée
+  (par exemple: $''$ ou ---). Laisser un blanc ou répéter la valeur
+  s'il subsiste une ambiguïté.
+\end{enumerate}
+
+Nous recommandons évidemment de suivre ces règles et c'est pourquoi la
+présente documentation ainsi que les fichiers d'exemples font usage
+des commandes de \pkg{booktabs}.
+
+Les fonctionnalités de \pkg{booktabs} sont intégrées à la classe
+\class{memoir} et par conséquent à \class{ulthese}. Il n'est donc pas
+nécessaire de charger le paquetage avec ces deux classes.
+
+
+
+\section{Tableaux}
+\label{sec:tableaux:tableaux}
+
+
+
+
 \section{Éléments flottants}
 \label{sec:tableaux:floats}
 
@@ -24,7 +122,7 @@ souvent beaucoup d'espace vertical dans la page. S'il ne reste plus
 assez de place pour afficher un tel élément sur une page, {\TeX} devra
 le déplacer au début de page suivante et cela risque de produire une
 page inesthétique car insuffisamment remplie\footnote{%
-  \emph{Underful \verb=\vbox=} dans le jargon de {\TeX}.}. %
+  \emph{Underful \textbackslash\texttt{vbox}} dans le jargon de {\TeX}.}. %
 
 Pour éviter cela, il serait souhaitable que {\TeX} puisse insérer un
 tableau à l'endroit indiqué dans le code source s'il y a suffisamment
