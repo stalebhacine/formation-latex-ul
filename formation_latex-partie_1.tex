@@ -53,7 +53,8 @@
   \setbeamercolor{alerted text}{fg=black}
   \setbeamerfont{alerted text}{series=\bfseries}
   \setbeamercolor{block title alerted}{fg=white,bg=comments}
-  %\setbeamercolor{block title theorem}{fg=white,bg=white}
+  \setbeamercolor{block title example}{fg=white,bg=Blue3}
+  \setbeamercolor{example text}{fg=Blue3,bg=white}
   \setbeamertemplate{theorems}[numbered]
   \setbeamertemplate{navigation symbols}{}
   \setbeamertemplate{section in sidebar}{}
@@ -75,7 +76,7 @@
     \begin{minipage}[t]{#1} \small}{%
     \end{minipage}}
 
-  \theoremstyle{definition}
+  \theoremstyle{example}
   \newtheorem{exercice}[theorem]{Exercice}
 
   %%% Paramètres de listings
@@ -122,7 +123,7 @@
     \item[] \href{https://www.youtube.com/watch?v=QOUx_aOZ42o}{%
         {\faYouTubePlay} démonstration sur Mac OS X avec TeXShop}
     \item[] \href{https://www.youtube.com/watch?v=qddRMGwXnNM}{%
-        {\faYouTubePlay} démonstration sur Windows avec TeXMaker}
+        {\faYouTubePlay} démonstration sur Windows avec Texmaker}
     \end{itemize}
   \end{enumerate}
 \end{frame}
@@ -232,18 +233,15 @@
 \end{frame}
 
 %%% >>>
-\begingroup
-\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     \begin{enumerate}
-    \item Démarrer le logiciel \texttt{texmaker} (ou tout autre
+    \item Démarrer le logiciel Texmaker (ou tout autre
       éditeur ou logiciel intégré de rédaction de votre choix).
     \item Ouvrir et compiler le fichier \fichier{exercice\_minimal.tex}.
     \end{enumerate}
   \end{exercice}
 \end{frame}
-\endgroup
 %%% <<<
 
 
@@ -363,8 +361,6 @@ Copyright 2014 D.E. Knuth.
 \end{frame}
 
 %%% >>>
-\begingroup
-\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_minimal.tex}.
@@ -383,7 +379,6 @@ Copyright 2014 D.E. Knuth.
     \end{enumerate}
   \end{exercice}
 \end{frame}
-\endgroup
 %%% <<<
 
 \begin{frame}[fragile=singleslide]
@@ -419,8 +414,6 @@ Copyright 2014 D.E. Knuth.
 \end{frame}
 
 %%% >>>
-\begingroup
-\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     Modifier le fichier \fichier{exercice\_commandes.tex} afin
@@ -430,7 +423,6 @@ Copyright 2014 D.E. Knuth.
     \colorbox{white}{\includegraphics[width=0.95\linewidth]{exercice_commandes-output}}
   \end{center}
 \end{frame}
-\endgroup
 %%% <<<
 
 \begin{frame}[fragile=singleslide]
@@ -633,8 +625,6 @@ Copyright 2014 D.E. Knuth.
 \end{frame}
 
 %%% >>>
-\begingroup
-\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     \begin{enumerate}
@@ -660,7 +650,6 @@ Copyright 2014 D.E. Knuth.
     \end{enumerate}
   \end{exercice}
 \end{frame}
-\endgroup
 %%% <<<
 
 \section{Parties d'un document}
@@ -822,8 +811,6 @@ Copyright 2014 D.E. Knuth.
 \end{frame}
 
 %%% >>>
-\begingroup
-\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[fragile=singleslide,plain]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_parties.tex}.
@@ -846,7 +833,6 @@ Copyright 2014 D.E. Knuth.
     \end{enumerate}
   \end{exercice}
 \end{frame}
-\endgroup
 %%% <<<
 
 
@@ -921,8 +907,6 @@ on a...
 \end{frame}
 
 %%% >>>
-\begingroup
-\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_renvois.tex}.
@@ -935,7 +919,6 @@ on a...
     \end{enumerate}
   \end{exercice}
 \end{frame}
-\endgroup
 %%% <<<
 
 
@@ -1210,8 +1193,6 @@ dans une police à largeur fixe
 \end{frame}
 
 %%% >>>
-\begingroup
-\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain]
   \begin{exercice}
     \begin{enumerate}
@@ -1231,7 +1212,6 @@ dans une police à largeur fixe
     \end{enumerate}
   \end{exercice}
 \end{frame}
-\endgroup
 %%% <<<
 
 
@@ -1623,8 +1603,6 @@ align*
 \end{frame}
 
 %%% >>>
-\begingroup
-\setbeamercolor{background canvas}{bg=example}
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_ulthese.tex} --- qui est
@@ -1646,7 +1624,6 @@ align*
     \end{enumerate}
   \end{exercice}
 \end{frame}
-\endgroup
 %%% <<<
 
 
