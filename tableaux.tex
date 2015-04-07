@@ -111,7 +111,86 @@ nécessaire de charger le paquetage avec ces deux classes.
 \section{Tableaux}
 \label{sec:tableaux:tableaux}
 
+Peu importe l'outil utilisé, la création d'un tableau requiert de
+préciser à l'ordinateur le nombre de colonnes que contiendra le
+tableau, l'entête du tableau si nécessaire et le contenu des
+différentes cellules. Cette dernière étape nécessite à son tour une
+convention pour pour identifier les passages à la colonne suivante
+ainsi que le passage à la ligne suivante.
 
+On crée des tableaux dans {\LaTeX} principalement avec les
+environnements \texttt{tabular}, \texttt{tabular*} et \texttt{tabularx}
+(ce dernier fourni par le paquetage \pkg{tabularx} ou par la classe
+\class{memoir}). La syntaxe de ces environnements est la suivante:
+\begin{lstlisting}
+\begin{tabular}[`\textit{pos}']{`\textit{format}'}           `\textit{lignes}' \end{tabular}
+\begin{tabular*}{`\textit{largeur}'}[`\textit{pos}']{`\textit{format}'} `\textit{lignes}' \end{tabular*}
+\begin{tabularx}{`\textit{largeur}'}[`\texttt{pos}']{`\texttt{format}'} `\textit{lignes}' \end{tabularx}
+\end{lstlisting}
+La signification des arguments est la suivante. Nous ne traitons ici
+que les options plus souvent employées. Pour une liste plus
+exhaustive, consulter la documentation de la classe \class{memoir}
+(chapitre 11) ou \cite{wikibooks:latex} (section
+\href{http://en.wikibooks.org/wiki/LaTeX/Tables}{Tables}).
+
+\begin{list}{}{%
+    \setlength{\labelsep}{1.5ex}
+    \settowidth{\labelwidth}{\textit{largeur}}
+    \setlength{\leftmargin}{\labelwidth}
+    \addtolength{\leftmargin}{\labelsep}
+    \setlength{\parsep}{0.5ex plus0.2ex minus0.2ex}
+    \setlength{\itemsep}{0.3ex}
+    \renewcommand{\makelabel}[1]{\textit{#1}\hfill}}
+%
+\item[largeur] Largeur hors tout d'un tableau avec les
+  environnements \texttt{tabular*} et \texttt{tabularx}. Autrement,
+  avec l'environnement \texttt{tabular}, la largeur d'un tableau est
+  déterminée automatiquement pour contenir tout le contenu du tableau,
+  quitte à dépasser dans la marge de droite.
+
+  La largeur du tableau est généralement exprimée en fraction de la
+  largeur du bloc de texte. Celle-ci est accessible avec la commande
+  \verb=\textwidth=. Par exemple, les déclarations suivantes
+  définissent respectivement des tableaux occupant toute la largeur
+  d'une page et 80~\% de la largeur de la page:
+\begin{lstlisting}
+\begin{tabular*}{\textwidth}[`\textit{pos}']{`\textit{format}'}
+\end{lstlisting}
+\begin{lstlisting}
+\begin{tabularx}{0.8\textwidth}[`\textit{pos}']{`\textit{format}'}
+\end{lstlisting}
+  L'environnement \code{tabular*} joue sur l'espace entre les colonnes
+  pour parvenir à la largeur prescrite, alors que \code{tabularx} joue
+  sur la largeur des colonnes (voir ci-dessous).
+%
+\item[pos] [Argument optionnel à peu près jamais utilisé.] Alignement
+  vertical du tableau par rapport à la ligne de base externe. Les
+  valeurs possibles sont \code{t} (le haut du tableau est aligné avec
+  la ligne de base) et \code{b} (le bas du tableau est aligné avec la
+  ligne de base). Par défaut, le tableau est centré par rapport à la
+  ligne de base externe.
+%
+\item[format] Le format des colonnes et, par le fait même, le
+  nombre de colonnes puisque l'argument doit compter un symbole pour
+  chaque colonne du tableau. Les principaux symboles de mise en forme
+  des colonnes sont:
+  \begin{description}
+  \item[\normalfont\code{l}] contenu de la colonne aligné à gauche;
+  \item[\normalfont\code{r}] contenu de la colonne aligné à droite;
+  \item[\normalfont\code{c}] contenu de la colonne centré;
+  \item[\normalfont\code{p\{}\textit{lgr}\code{\}}] contenu de la colonne traité comme un
+    paragraphe de texte de largeur \textit{lgr};
+  \item[\normalfont\code{X}] [environnement \code{tabularx} seulement]
+    colonne dont la largeur peut être ajustée pour obtenir un tableau
+    de la largeur prescrite; identique à \code{p} par ailleurs.
+  \end{description}
+  Les symboles \verb=|= et \verb=||= dans \textit{format} servent à
+  insérer des filets verticaux simples et doubles entre les colonnes,
+  mais nous avons vu à la \autoref{sec:tableaux:booktabs} que c'est
+  une pratique à proscrire.
+%
+\item[lignes]
+\end{list}
 
 
 \section{Éléments flottants}
