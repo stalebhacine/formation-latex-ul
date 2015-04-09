@@ -199,8 +199,30 @@
   \renewcommand{\cmdprint}[1]{\textup{\texttt{\string#1}}}
   \newcommand{\code}[1]{\texttt{#1}}
   \newcommand{\fichier}[1]{\texttt{#1}}
-  \newcommand{\class}[1]{\textbf{#1}}
+  \newcommand{\class}[1]{\textsf{#1}}
   \newcommand{\pkg}[1]{\textbf{#1}}
+
+  \newcommand*{\Pe}[1]{\texttt{#1}}                      % print env name
+  \newcommand*{\ixenv}[1]{\index{#1 env?\Pe{#1} (environnement)}% index env
+    \index{environnement!#1?\Pe{#1}}}
+  \newcommand*{\Ie}[1]{\Pe{#1}\ixenv{#1}}                % print & index env
+
+  %% Redéfinition d'une commande de memoir.cls pour enlever les
+  %% symboles $\langle$ et $\rangle$ des résultats de \marg et al.
+  \makeatletter
+  % \DeclareRobustCommand{\meta}[1]{%
+  %   {%
+  %     \meta@font@select
+  %     \edef\meta@hyphen@restore
+  %     {\hyphenchar\the\font\the\hyphenchar\font}%
+  %     \hyphenchar\font\m@ne
+  %     \language\l@nohyphenation
+  %     #1%
+  %     \meta@hyphen@restore
+  %   }
+  % }
+  \DeclareRobustCommand{\meta}[1]{{\meta@font@select\hyphenchar\font\m@ne #1}}
+  \makeatother
 
   %% Indications de capsule vidéo
   \newcommand{\capsule}[2]{\href{#1}{#2}\marginpar{%
