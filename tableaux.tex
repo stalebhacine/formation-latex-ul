@@ -119,32 +119,32 @@ convention pour pour identifier les passages à la colonne suivante
 ainsi que le passage à la ligne suivante.
 
 On crée des tableaux dans {\LaTeX} principalement avec les
-environnements \texttt{tabular}, \texttt{tabular*} et \texttt{tabularx}
+environnements \Ie{tabular}, \Ie{tabular*} et \Ie{tabularx}
 (ce dernier fourni par le paquetage \pkg{tabularx} ou par la classe
 \class{memoir}). La syntaxe de ces environnements est la suivante:
 \begin{lstlisting}
-\begin{tabular}[`\textit{pos}']{`\textit{format}'}           `\textit{lignes}' \end{tabular}
-\begin{tabular*}{`\textit{largeur}'}[`\textit{pos}']{`\textit{format}'} `\textit{lignes}' \end{tabular*}
-\begin{tabularx}{`\textit{largeur}'}[`\texttt{pos}']{`\texttt{format}'} `\textit{lignes}' \end{tabularx}
+\begin{tabular}`\oarg{pos}\marg{format}'             `\textit{lignes}' \end{tabular}
+\begin{tabular*}`\marg{largeur}\oarg{pos}\marg{format}' `\textit{lignes}' \end{tabular*}
+\begin{tabularx}`\marg{largeur}\oarg{pos}\marg{format}' `\textit{lignes}' \end{tabularx}
 \end{lstlisting}
 La signification des arguments est la suivante. Nous ne traitons ici
-que les options plus souvent employées. Pour une liste plus
+que les options les plus souvent employées. Pour une liste plus
 exhaustive, consulter la documentation de la classe \class{memoir}
 (chapitre 11) ou \cite{wikibooks:latex} (section
 \href{http://en.wikibooks.org/wiki/LaTeX/Tables}{Tables}).
 
 \begin{list}{}{%
     \setlength{\labelsep}{1.5ex}
-    \settowidth{\labelwidth}{\textit{largeur}}
+    \settowidth{\labelwidth}{\meta{largeur}}
     \setlength{\leftmargin}{\labelwidth}
     \addtolength{\leftmargin}{\labelsep}
     \setlength{\parsep}{0.5ex plus0.2ex minus0.2ex}
     \setlength{\itemsep}{0.3ex}
-    \renewcommand{\makelabel}[1]{\textit{#1}\hfill}}
+    \renewcommand{\makelabel}[1]{\meta{#1}\hfill}}
 %
 \item[largeur] Largeur hors tout d'un tableau avec les
-  environnements \texttt{tabular*} et \texttt{tabularx}. Autrement,
-  avec l'environnement \texttt{tabular}, la largeur d'un tableau est
+  environnements \Ie{tabular*} et \Ie{tabularx}. Autrement,
+  avec l'environnement \Ie{tabular}, la largeur d'un tableau est
   déterminée automatiquement pour contenir tout le contenu du tableau,
   quitte à dépasser dans la marge de droite.
 
@@ -154,42 +154,100 @@ exhaustive, consulter la documentation de la classe \class{memoir}
   définissent respectivement des tableaux occupant toute la largeur
   d'une page et 80~\% de la largeur de la page:
 \begin{lstlisting}
-\begin{tabular*}{\textwidth}[`\textit{pos}']{`\textit{format}'}
+\begin{tabular*}{\textwidth}`\marg{format}'
 \end{lstlisting}
 \begin{lstlisting}
-\begin{tabularx}{0.8\textwidth}[`\textit{pos}']{`\textit{format}'}
+\begin{tabularx}{0.8\textwidth}`\marg{format}'
 \end{lstlisting}
-  L'environnement \code{tabular*} joue sur l'espace entre les colonnes
-  pour parvenir à la largeur prescrite, alors que \code{tabularx} joue
+  L'environnement \Ie{tabular*} joue sur l'espace entre les colonnes
+  pour parvenir à la largeur prescrite, alors que \Ie{tabularx} joue
   sur la largeur des colonnes (voir ci-dessous).
-%
-\item[pos] [Argument optionnel à peu près jamais utilisé.] Alignement
+  %
+\item[pos] Argument optionnel à peu près jamais utilisé. Alignement
   vertical du tableau par rapport à la ligne de base externe. Les
   valeurs possibles sont \code{t} (le haut du tableau est aligné avec
   la ligne de base) et \code{b} (le bas du tableau est aligné avec la
   ligne de base). Par défaut, le tableau est centré par rapport à la
   ligne de base externe.
-%
-\item[format] Le format des colonnes et, par le fait même, le
-  nombre de colonnes puisque l'argument doit compter un symbole pour
-  chaque colonne du tableau. Les principaux symboles de mise en forme
-  des colonnes sont:
+  %
+\item[format] Le format des colonnes et, par le fait même, le nombre
+  de colonnes puisque l'argument doit compter un symbole pour chaque
+  colonne du tableau. Les principaux symboles de mise en forme des
+  colonnes sont:
   \begin{description}
   \item[\normalfont\code{l}] contenu de la colonne aligné à gauche;
   \item[\normalfont\code{r}] contenu de la colonne aligné à droite;
   \item[\normalfont\code{c}] contenu de la colonne centré;
   \item[\normalfont\code{p\{}\textit{lgr}\code{\}}] contenu de la colonne traité comme un
     paragraphe de texte de largeur \textit{lgr};
-  \item[\normalfont\code{X}] [environnement \code{tabularx} seulement]
+  \item[\normalfont\code{X}] [environnement \Ie{tabularx} seulement]
     colonne dont la largeur peut être ajustée pour obtenir un tableau
     de la largeur prescrite; identique à \code{p} par ailleurs.
   \end{description}
+  Par exemple, pour définir un tableau à trois colonnes dont le
+  contenu de la première est aligné à gauche, celui de la seconde à
+  droite et celui de la troisième en texte libre dans une cellule de
+  5~cm de largeur, on utiliserait:
+\begin{lstlisting}
+\begin{tabular}{lrp{5cm}}
+\end{lstlisting}
+  Avec la déclaration suivante, la largeur de la troisième colonne
+  sera automatiquement adaptée pour que le tableau occupe toute la
+  largeur de la page:
+\begin{lstlisting}
+\begin{tabularx}{lrX}
+\end{lstlisting}
+
   Les symboles \verb=|= et \verb=||= dans \textit{format} servent à
   insérer des filets verticaux simples et doubles entre les colonnes,
   mais nous avons vu à la \autoref{sec:tableaux:booktabs} que c'est
   une pratique à proscrire.
-%
-\item[lignes]
+  %
+\item[lignes] Le contenu des cellules du tableau. Les entrées des
+  cellules sont séparées par le symbole \verb=&= et les lignes par
+  \verb=\\=. Une cellule peut être vide.
+
+  Les lignes de contenu peuvent également contenir certaines commandes
+  spéciales, dont celle-ci pour fusionner des cellules:
+  \begin{description}
+  \item[\normalfont\cmd{\multicolumn\marg{num}\marg{fmt}\marg{texte}}]
+    fusionne les \meta{num} cellules suivantes en une seule de format
+    \meta{fmt} et contenant le texte \meta{texte}. \par%
+    Cette commande ne peut apparaître qu'au début d'une ligne ou après
+    un symbole de changement de colonne \verb=&=. \par%
+    La commande est souvent utilisée avec $\text{\meta{num}} = 1$ pour
+    changer le format d'une cellule, par exemple pour centrer le
+    titre d'une colonne autrement alignée à gauche ou à droite.
+  \end{description}
+
+  Les commandes suivantes\footnote{%
+    Fournies par \pkg{booktabs} et \class{memoir}.} %
+  servent à insérer des filets horizontaux dans un tableau:
+  \begin{description}
+  \item[\normalfont\cmd{\toprule}] insère un filet horizontal épais
+    suivi d'un espace vertical au début d'un tableau;
+  \item[\normalfont\cmd{\midrule}] insère un filet horizontal mince
+    précédé et suivi d'un espace vertical entre deux lignes;
+  \item[\normalfont\cmd{\cmidrule\marg{n-m}}] insère un filet
+    horizontal comme \cmd{\midrule}, mais seulement de la gauche de la
+    colonne \meta{n} à la droite de la colonne \meta{m};
+  \item[\normalfont\cmd{\bottomrule}] insère un filet horizontal épais
+    précédé d'un espace vertical à la fin d'un tableau.
+  \end{description}
+  Ces commandes doivent toutes obligatoirement être précédées d'une
+  fin de ligne \verb=\\=, sauf évidemment \cmd{\toprule}.
+
+  Un exemple simple de lignes de contenu serait:
+\begin{lstlisting}
+\toprule
+Produit & Quantité & Prix unitaire (\$) & Prix (\$) \\
+\midrule
+Vis à bois    & 2 & 9,90 & 19,80 \\
+Clous vrillés & 5 & 4,35 & 21,75 \\
+\midrule
+TOTAL         &   &      & 41,55 \\
+\bottomrule
+\end{lstlisting}
 \end{list}
 
 
@@ -201,7 +259,7 @@ souvent beaucoup d'espace vertical dans la page. S'il ne reste plus
 assez de place pour afficher un tel élément sur une page, {\TeX} devra
 le déplacer au début de page suivante et cela risque de produire une
 page inesthétique car insuffisamment remplie\footnote{%
-  \emph{Underful \textbackslash\texttt{vbox}} dans le jargon de {\TeX}.}. %
+  \emph{Underful \cs{vbox}} dans le jargon de {\TeX}.}. %
 
 Pour éviter cela, il serait souhaitable que {\TeX} puisse insérer un
 tableau à l'endroit indiqué dans le code source s'il y a suffisamment
