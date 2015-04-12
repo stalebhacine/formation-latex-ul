@@ -20,11 +20,12 @@ graphiques et images, il convient ...
 \label{sec:tableaux:booktabs}
 
 On utilise les tableaux pour disposer de l'information sous forme de
-grille. Ainsi, le premier réflexe pour les mettre en forme consiste-t-il
-souvent à mettre en évidence cette grille par le biais de
-filets\footnote{%
+grille. Ainsi, le premier réflexe pour les mettre en forme
+consiste-t-il souvent à mettre en évidence cette grille par le biais
+de filets\footnote{%
   Communément appelés «lignes» dans le langage courant ou «bordures»
-  dans les logiciels de traitement de texte.} %
+  dans les logiciels de traitement de texte. Dans la documentation en
+  anglais, on parle de \emph{rules}.} %
 horizontaux et verticaux.
 
 C'est une mauvaise idée, une pratique à éviter. Vraiment!
@@ -91,11 +92,11 @@ quelques règles à suivre pour la mise en forme des tableaux:
 \item placer les unités dans le titre de la colonne plutôt qu'après
   chaque valeur dans le corps du tableau;
 \item toujours inscrire un chiffre du côté gauche du séparateur
-  décimal: $0,1$ et non $,1$ (pratique plus répandue en anglais où le
+  décimal: $0,1$ et non $,1$ (pratique plus répandue en anglais, où le
   séparateur décimal est le point);
-\item ne pas utiliser de symbole pour représenter une valeur répétée
-  (par exemple: $''$ ou ---). Laisser un blanc ou répéter la valeur
-  s'il subsiste une ambiguïté.
+\item ne pas utiliser un symbole pour représenter une valeur
+  répétée (comme $''$ ou ---). Laisser un blanc ou répéter la
+  valeur s'il subsiste une ambiguïté.
 \end{enumerate}
 
 Nous recommandons évidemment de suivre ces règles et c'est pourquoi la
@@ -123,7 +124,7 @@ environnements \Ie{tabular}, \Ie{tabular*} et \Ie{tabularx}
 (ce dernier fourni par le paquetage \pkg{tabularx} ou par la classe
 \class{memoir}). La syntaxe de ces environnements est la suivante:
 \begin{lstlisting}
-\begin{tabular}`\oarg{pos}\marg{format}'             `\textit{lignes}' \end{tabular}
+\begin{tabular}`\oarg{pos}\marg{format}'           `\textit{lignes}' \end{tabular}
 \begin{tabular*}`\marg{largeur}\oarg{pos}\marg{format}' `\textit{lignes}' \end{tabular*}
 \begin{tabularx}`\marg{largeur}\oarg{pos}\marg{format}' `\textit{lignes}' \end{tabularx}
 \end{lstlisting}
@@ -208,7 +209,8 @@ exhaustive, consulter la documentation de la classe \class{memoir}
   \verb=\\=. Une cellule peut être vide.
 
   Les lignes de contenu peuvent également contenir certaines commandes
-  spéciales, dont celle-ci pour fusionner des cellules:
+  spéciales pour contrôler la mise en forme. La commande ci-dessous
+  permet de fusionner des cellules:
   \begin{description}
   \item[\normalfont\cmd{\multicolumn\marg{num}\marg{fmt}\marg{texte}}]
     fusionne les \meta{num} cellules suivantes en une seule de format
@@ -221,7 +223,8 @@ exhaustive, consulter la documentation de la classe \class{memoir}
   \end{description}
 
   Les commandes suivantes\footnote{%
-    Fournies par \pkg{booktabs} et \class{memoir}.} %
+    Ce sont les commandes de \pkg{booktabs} et \class{memoir}
+auxquelles nous faisions référence à la \autoref{sec:tableaux:booktabs}.} %
   servent à insérer des filets horizontaux dans un tableau:
   \begin{description}
   \item[\normalfont\cmd{\toprule}] insère un filet horizontal épais
@@ -245,10 +248,71 @@ Produit & Quantité & Prix unitaire (\$) & Prix (\$) \\
 Vis à bois    & 2 & 9,90 & 19,80 \\
 Clous vrillés & 5 & 4,35 & 21,75 \\
 \midrule
-TOTAL         &   &      & 41,55 \\
+TOTAL         & 7 &      & 41,55 \\
 \bottomrule
 \end{lstlisting}
 \end{list}
+
+\begin{exemple}
+  On reprend le contenu ci-dessus pour en faire un tableau d'une
+  largeur ajustée automatiquement au contenu. La première colonne est
+  alignée à gauche et toutes les autres à droite.
+\begin{lstlisting}
+\begin{tabular}{lrrr}
+  \toprule
+  Produit & Quantité & Prix unitaire (\$) & Prix (\$) \\
+  \midrule
+  Vis à bois    & 2 & 9,90 & 19,80 \\
+  Clous vrillés & 5 & 4,35 & 21,75 \\
+  \midrule
+  TOTAL         & 7 &      & 41,55 \\
+  \bottomrule
+\end{tabular}
+\end{lstlisting}
+  \begin{center}
+    \begin{tabular}{lrrr}
+      \toprule
+      Produit & Quantité & Prix unitaire (\$) & Prix (\$) \\
+      \midrule
+      Vis à bois    & 2 & 9,90 & 19,80 \\
+      Clous vrillés & 5 & 4,35 & 21,75 \\
+      \midrule
+      TOTAL         & 7 &      & 41,55 \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  Avec quelques modifications, le tableau occupe maintenant 80~\% de
+  la largeur de la page, la largeur de la première colonne étant
+  ajustée pour combler l'espace nécessaire. De plus, on modifie
+  l'entête de la première colonne avec la commande \cmd{\multicolumn}
+  afin de centrer le titre.
+\begin{lstlisting}
+\begin{tabularx}{0.8\textwidth}{Xrrr}
+  \toprule
+  \multicolumn{1}{c}{Produit} &
+    Quantité & Prix unitaire (\$) & Prix (\$) \\
+  \midrule
+  Vis à bois    & 2 & 9,90 & 19,80 \\
+  Clous vrillés & 5 & 4,35 & 21,75 \\
+  \midrule
+  TOTAL         & 7 &      & 41,55 \\
+  \bottomrule
+\end{tabularx}
+\end{lstlisting}
+  \begin{center}
+    \begin{tabularx}{0.8\textwidth}{Xrrr}
+      \toprule
+      \multicolumn{1}{c}{Produit} &
+        Quantité & Prix unitaire (\$) & Prix (\$) \\
+      \midrule
+      Vis à bois    & 2 & 9,90 & 19,80 \\
+      Clous vrillés & 5 & 4,35 & 21,75 \\
+      \midrule
+      TOTAL         & 7 &      & 41,55 \\
+      \bottomrule
+    \end{tabularx}
+  \end{center}
+\end{exemple}
 
 
 \section{Éléments flottants}
