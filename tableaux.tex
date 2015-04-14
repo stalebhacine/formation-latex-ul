@@ -1,4 +1,4 @@
-\chapter{Tableaux et figures}
+\chapter{Blocs, tableaux et figures}
 \label{chap:tableaux}
 
 Les tableaux et graphiques ne sont pas les éléments de texte les plus
@@ -14,6 +14,70 @@ largeur des colonnes, vous comprenez ce à quoi nous faisons référence.
 
 Avant de discuter de la création ou de l'insertion de tableaux,
 graphiques et images, il convient ...
+
+
+\section{Blocs}
+\label{sec:tableaux:blocs}
+
+Il arrive que l'on doive traiter de manière spéciale une aire
+rectangulaire de texte; pour l'encadrer, la mettre en surbrillance ou
+la mettre en exergue, par exemple.
+
+Dans les traitements de texte, on aura souvent recours aux tableaux
+pour de tels usages. {\LaTeX} offre ici une solution plus générale.
+Les tableaux servent spécifiquement à disposer de l'information sous
+forme de grille. Autrement, on utilise des «blocs», ou «boîtes»
+(\emph{boxes} en anglais) pour la disposition et la mise en forme de
+contenu quelconque se présentant sous forme rectangulaire.
+
+Il n'est pas inutile de savoir que {\TeX} ne manipule que cela, des
+boîtes. Pour {\TeX}, chaque caractère, chaque lettre n'est qu'un
+rectangle d'une certaine largeur qui s'élève au-dessus de la ligne de
+base (les lignes d'une feuille lignée) et qui, parfois, se prolonge
+sous la ligne de base (pensons aux lettres \emph{p}, \emph{y} ou
+\emph{Q}). Les commandes ci-dessous permettent simplement de créer
+d'autres boîtes dont nous contrôlons les dimensions ainsi que le
+contenu.
+
+Les commandes de création de blocs de texte les plus simples sont:
+\begin{lstlisting}
+\mbox`\marg{texte}'
+\fbox`\marg{texte}'
+\end{lstlisting}
+Elles produisent un bloc de la largeur précise de \meta{texte}. Avec
+la commande \cmd{\fbox}, le texte est au surplus \fbox{encadré}.
+
+Le bloc créé avec \cmd{\mbox} est une sorte d'unité de base avec
+lequel il est possible de construire des structures plus complexes. En
+usage courant, il sert principalement à deux choses:
+\begin{enumerate}
+\item réunir en un bloc du texte que l'on ne veut pas voir scindé
+  entre les lignes ou entre les pages;
+\item avec \verb=\mbox{}=, laisser croire à {\TeX} que du contenu
+  apparait à un endroit sans toutefois qu'il n'occupe aucun espace.
+\end{enumerate}
+
+Il existe également des versions plus générales des commandes
+\cmd{\mbox} et \cmd{\fbox}}. Il s'agit de:
+\begin{lstlisting}
+\makebox`\oarg{largeur}\oarg{pos}\marg{texte}'
+\framebox`\oarg{largeur}\oarg{pos}\marg{texte}'
+\end{lstlisting}
+Les arguments optionnels \meta{largeur} et \meta{pos} déterminent
+respectivement la largeur du bloc de texte et la position du texte
+dans le bloc:
+\begin{description}
+\item[\normalfont\code{l}] pour du texte \framebox[3.5cm][l]{aligné à gauche};
+\item[\normalfont\code{c}] pour du texte \framebox[3.5cm][c]{centré} (la valeur
+  par défaut);
+\item[\normalfont\code{r}] pour du texte \makebox[3.5cm][r]{aligné à droite}.
+\end{description}
+Les blocs ci-dessus ont été créés avec les commandes suivantes:
+\begin{lstlisting}
+\framebox[3.5cm][l]{aligné à gauche}
+\framebox[3.5cm][c]{centré}
+\makebox[3.5cm][r]{aligné à droite}
+\end{lstlisting}
 
 
 \section{De la conception de beaux tableaux}
@@ -120,19 +184,22 @@ convention pour pour identifier les passages à la colonne suivante
 ainsi que le passage à la ligne suivante.
 
 On crée des tableaux dans {\LaTeX} principalement avec les
-environnements \Ie{tabular}, \Ie{tabular*} et \Ie{tabularx}
-(ce dernier fourni par le paquetage \pkg{tabularx} ou par la classe
-\class{memoir}). La syntaxe de ces environnements est la suivante:
+environnements \Ie{tabular}, \Ie{tabular*} et \Ie{tabularx} (ce
+dernier fourni par le paquetage \pkg{tabularx} ou par la classe
+\class{memoir}). La syntaxe de ces environnements est:
 \begin{lstlisting}
-\begin{tabular}`\oarg{pos}\marg{format}'           `\textit{lignes}' \end{tabular}
-\begin{tabular*}`\marg{largeur}\oarg{pos}\marg{format}' `\textit{lignes}' \end{tabular*}
-\begin{tabularx}`\marg{largeur}\oarg{pos}\marg{format}' `\textit{lignes}' \end{tabularx}
+\begin{tabular}`\marg{format}'           `\textit{lignes}' \end{tabular}
+\begin{tabular*}`\marg{largeur}\marg{format}' `\textit{lignes}' \end{tabular*}
+\begin{tabularx}`\marg{largeur}\marg{format}' `\textit{lignes}' \end{tabularx}
 \end{lstlisting}
-La signification des arguments est la suivante. Nous ne traitons ici
-que les options les plus souvent employées. Pour une liste plus
-exhaustive, consulter la documentation de la classe \class{memoir}
-(chapitre 11) ou \cite{wikibooks:latex} (section
-\href{http://en.wikibooks.org/wiki/LaTeX/Tables}{Tables}).
+La signification des arguments\footnote{%
+  Nous avons omis un argument optionnel à peu près jamais utilisé
+  servant à spécifier l'alignement vertical du tableau par rapport à
+  la ligne de base externe.} %
+est la suivante. Nous ne traitons ici que les options les plus souvent
+employées. Pour une liste plus exhaustive, consulter la documentation
+de la classe \class{memoir} (chapitre 11) ou \cite{wikilivres:latex}
+(section \href{http://fr.wikibooks.org/wiki/LaTeX/Tableaux}{Tableaux}).
 
 \begin{list}{}{%
     \setlength{\labelsep}{1.5ex}
@@ -164,13 +231,6 @@ exhaustive, consulter la documentation de la classe \class{memoir}
   pour parvenir à la largeur prescrite, alors que \Ie{tabularx} joue
   sur la largeur des colonnes (voir ci-dessous).
   %
-\item[pos] Argument optionnel à peu près jamais utilisé. Alignement
-  vertical du tableau par rapport à la ligne de base externe. Les
-  valeurs possibles sont \code{t} (le haut du tableau est aligné avec
-  la ligne de base) et \code{b} (le bas du tableau est aligné avec la
-  ligne de base). Par défaut, le tableau est centré par rapport à la
-  ligne de base externe.
-  %
 \item[format] Le format des colonnes et, par le fait même, le nombre
   de colonnes puisque l'argument doit compter un symbole pour chaque
   colonne du tableau. Les principaux symboles de mise en forme des
@@ -196,7 +256,7 @@ exhaustive, consulter la documentation de la classe \class{memoir}
   sera automatiquement adaptée pour que le tableau occupe toute la
   largeur de la page:
 \begin{lstlisting}
-\begin{tabularx}{lrX}
+\begin{tabularx}{\textwidth}{lrX}
 \end{lstlisting}
 
   Les symboles \verb=|= et \verb=||= dans \textit{format} servent à
