@@ -1,4 +1,4 @@
-\chapter{Blocs, tableaux et figures}
+\chapter{Boîtes, tableaux et figures}
 \label{chap:tableaux}
 
 Les tableaux et graphiques ne sont pas les éléments de texte les plus
@@ -16,19 +16,19 @@ Avant de discuter de la création ou de l'insertion de tableaux,
 graphiques et images, il convient ...
 
 
-\section{Blocs}
-\label{sec:tableaux:blocs}
+\section{Boîtes}
+\label{sec:tableaux:boites}
 
 Il arrive que l'on doive traiter de manière spéciale une aire
 rectangulaire de texte; pour l'encadrer, la mettre en surbrillance ou
 la mettre en exergue, par exemple.
 
-Dans les traitements de texte, on aura souvent recours aux tableaux
-pour de tels usages. {\LaTeX} offre ici une solution plus générale.
-Les tableaux servent spécifiquement à disposer de l'information sous
-forme de grille. Autrement, on utilise des «blocs», ou «boîtes»
-(\emph{boxes} en anglais) pour la disposition et la mise en forme de
-contenu quelconque se présentant sous forme rectangulaire.
+Avec les traitements de texte, on aura souvent recours aux tableaux à
+de telles fins. {\LaTeX} offre ici une solution plus générale. Les
+tableaux servent spécifiquement à disposer de l'information sous forme
+de grille. Autrement, on utilise des «boîtes» (\emph{boxes} en
+anglais) pour la disposition et la mise en forme de contenu quelconque
+se présentant sous forme rectangulaire.
 
 Il n'est pas inutile de savoir que {\TeX} ne manipule que cela, des
 boîtes. Pour {\TeX}, chaque caractère, chaque lettre n'est qu'un
@@ -36,48 +36,60 @@ rectangle d'une certaine largeur qui s'élève au-dessus de la ligne de
 base (les lignes d'une feuille lignée) et qui, parfois, se prolonge
 sous la ligne de base (pensons aux lettres \emph{p}, \emph{y} ou
 \emph{Q}). Les commandes ci-dessous permettent simplement de créer
-d'autres boîtes dont nous contrôlons les dimensions ainsi que le
-contenu.
+d'autres boîtes dont le contrôle des dimensions et du contenu est
+laissé à l'usager. Une fois créée, une boîte ne peut être scindée en
+parties.
 
-Les commandes de création de blocs de texte les plus simples sont:
+\subsection{Boîtes horizontales}
+
+Le plus simple concept de boîte dans {\LaTeX} est celui de boîte
+«horizontale», c'est-à-dire dont le contenu est disposé latéralement
+de gauche à droite\footnote{%
+  D'où l'appellation \emph{LR (left-right) box} en anglais.}. %
+Le contenu est normalement du texte, mais conceptuellement ce pourrait
+être n'importe quoi, y compris d'autres boîtes.
+
+Les commandes de base pour créer des boîtes horizontales:
 \begin{lstlisting}
 \mbox`\marg{texte}'
 \fbox`\marg{texte}'
 \end{lstlisting}
-Elles produisent un bloc de la largeur précise de \meta{texte}. Avec
-la commande \cmd{\fbox}, le texte est au surplus \fbox{encadré}.
-
-Le bloc créé avec \cmd{\mbox} est une sorte d'unité de base avec
-lequel il est possible de construire des structures plus complexes. En
-usage courant, il sert principalement à deux choses:
+Elles produisent une boîte de la largeur précise de \meta{texte}. Avec
+la commande \cmd{\fbox}, le texte est au surplus \fbox{encadré}. En
+usage courant, la commande \cmd{!mbox} sert principalement à deux
+choses:
 \begin{enumerate}
 \item réunir en un bloc du texte que l'on ne veut pas voir scindé
   entre les lignes ou entre les pages;
 \item avec \verb=\mbox{}=, laisser croire à {\TeX} que du contenu
   apparait à un endroit sans toutefois qu'il n'occupe aucun espace.
+  %% ça prendrait un exemple de cela dans les exercices!
 \end{enumerate}
 
 Il existe également des versions plus générales des commandes
-\cmd{\mbox} et \cmd{\fbox}}. Il s'agit de:
+\cmd{\mbox} et \cmd{\fbox}. Il s'agit de:
 \begin{lstlisting}
 \makebox`\oarg{largeur}\oarg{pos}\marg{texte}'
 \framebox`\oarg{largeur}\oarg{pos}\marg{texte}'
 \end{lstlisting}
 Les arguments optionnels \meta{largeur} et \meta{pos} déterminent
-respectivement la largeur du bloc de texte et la position du texte
-dans le bloc:
-\begin{description}
-\item[\normalfont\code{l}] pour du texte \framebox[3.5cm][l]{aligné à gauche};
-\item[\normalfont\code{c}] pour du texte \framebox[3.5cm][c]{centré} (la valeur
-  par défaut);
-\item[\normalfont\code{r}] pour du texte \makebox[3.5cm][r]{aligné à droite}.
-\end{description}
-Les blocs ci-dessus ont été créés avec les commandes suivantes:
+respectivement la largeur de la boîte et la position du texte
+dans la boîte. Les valeurs possibles de \meta{pos} sont: \code{l} pour
+du texte aligné à gauche, \code{r} pour du texte aligné à droite et
+\code{c} (la valeur par défaut) pour du texte centré. Ainsi, la commande
 \begin{lstlisting}
 \framebox[3.5cm][l]{aligné à gauche}
-\framebox[3.5cm][c]{centré}
-\makebox[3.5cm][r]{aligné à droite}
 \end{lstlisting}
+produit \framebox[3.5cm][l]{aligné à gauche}, alors que
+\begin{lstlisting}
+\makebox[3.5cm]{centré}
+\end{lstlisting}
+produit, même sans l'argument optionnel, \makebox[3.5cm]{centré}.
+
+\subsection{Boîtes verticales}
+
+
+
 
 
 \section{De la conception de beaux tableaux}
