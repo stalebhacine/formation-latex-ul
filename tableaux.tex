@@ -61,8 +61,9 @@ choses:
 \begin{enumerate}
 \item réunir en un bloc du texte que l'on ne veut pas voir scindé
   entre les lignes ou entre les pages;
-\item avec \verb=\mbox{}=, laisser croire à {\TeX} que du contenu
-  apparait à un endroit sans toutefois qu'il n'occupe aucun espace.
+\item \label{item:tableaux:mbox} avec \verb=\mbox{}=, laisser croire à
+  {\TeX} que du contenu apparait à un endroit sans toutefois qu'il
+  n'occupe aucun espace.
   %% ça prendrait un exemple de cela dans les exercices!
 \end{enumerate}
 
@@ -84,12 +85,107 @@ produit \framebox[3.5cm][l]{aligné à gauche}, alors que
 \begin{lstlisting}
 \makebox[3.5cm]{centré}
 \end{lstlisting}
-produit, même sans l'argument optionnel, \makebox[3.5cm]{centré}.
+produit \makebox[3.5cm]{centré}.
 
 \subsection{Boîtes verticales}
 
+Les boîtes verticales se distinguent des boîtes horizontales par le
+fait qu'elles peuvent contenir plusieurs lignes de contenu empilées
+les unes au-dessus des autres. Lorsque le contenu en question est du
+texte, on obtient des paragraphes\footnote{%
+  D'où l'appellation, cette fois, de \emph{paragraph boxes} en anglais
+  ou \emph{parboxes} dans le jargon {\LaTeX}.}. %
 
+La commande de base pour créer une boîte verticale est
+\begin{lstlisting}
+\parbox`\oarg{pos}\marg{largeur}\marg{texte}'
+\end{lstlisting}
+Ici, l'argument optionnel \meta{pos} permet d'ajuster l'alignement
+vertical de la boîte avec la ligne de base: \code{b} ou \code{t} selon
+que l'on souhaite aligner, respectivement, le bas ou le haut de la
+boîte avec la ligne de base. Par défaut, la boîte est centrée avec la
+ligne de base. Cet argument n'a aucun effet si la boîte est le seul
+élément de contenu du paragraphe.
 
+On remarquera que l'argument \meta{largeur} est ici obligatoire.
+Autrement dit, on doit nécessairement définir la largeur des boîtes
+verticales, un peu comme il faut bien définir la largeur de la page
+pour le texte normal.
+
+Les boîtes créées avec \cmd{\parbox} ne peuvent contenir de structures
+«complexes» comme des listes ou des tableaux. Parce que plus général,
+l'outil véritablement utile de création de boîtes verticales est
+l'environnement \Ie{minipage}. Cet environnement peut contenir à peu
+n'importe quel type de contenu. Comme son nom l'indique, c'est ni plus
+ni moins qu'une page miniature à l'intérieur de la page standard.
+
+La syntaxe de l'environnement \Ie{minipage} est la suivante:
+\begin{lstlisting}
+\begin{minipage}`\oarg{pos}\marg{largeur}'
+  `\meta{texte}'
+\end{minipage}
+\end{lstlisting}
+
+L'environnement \Ie{minipage} est ouvent utilisé pour disposer des
+éléments de contenu de manière spécifique sur la page, notamment des
+tableaux ou des figures côte-à-côte ou en grille.
+%%% Exemple plus loin! %%%
+
+Voici un exemple d'utilisation des boîtes verticales. Le code suivant
+
+\begin{lstlisting}
+\begin{minipage}[b]{0.3\textwidth}
+  La ligne inférieure de cette \emph{minipage} est alignée avec
+\end{minipage}
+\hfill
+\parbox{0.3\textwidth}{la centre de cette boîte verticale, qui
+  est à son tour alignée avec}
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+  la ligne supérieure de cette \emph{minipage}.
+\end{minipage}
+\end{lstlisting}
+produit \\
+\medskip
+
+\noindent%
+\begin{minipage}{\textwidth}
+  \begin{minipage}[b]{0.3\textwidth}
+    La ligne inférieure de cette \emph{minipage} est alignée avec
+  \end{minipage}
+  \hfill
+  \parbox{0.3\textwidth}{la centre de cette boîte verticale, qui est à
+    son tour alignée avec}
+  \hfill
+  \begin{minipage}[t]{0.3\textwidth}
+    la ligne supérieure de cette \emph{minipage}.
+  \end{minipage}
+\end{minipage}
+\medskip
+
+La commande \cmd{\hfill} utilisée entre les boîtes ci-dessus indique à
+{\LaTeX} d'insérer de l'espace blanc entre les éléments de contenu de
+manière à remplir entièrement la ligne de texte. C'est une commande
+très utile pour disposer automatiquement des éléments à intervalles
+égaux sur la largeur du bloc de texte \hfill comme ceci
+\begin{lstlisting}
+[...] de texte  \hfill comme ceci
+\end{lstlisting}
+ou encore \hfill comme \hfill ceci.
+\begin{lstlisting}
+ou encore \hfill comme \hfill ceci.
+\end{lstlisting}
+
+%%% Exercices: faire le contenu de 4.7.4 de Kopka et Daly (disposition
+%%% verticale des boîtes)
+
+\subsection{Boîtes de réglure}
+
+Réglure est un terme d'imprimerie
+
+\begin{lstlisting}
+\rule`\oarg{delta}\marg{largeur}\marg{hauteur}'
+\end{lstlisting}
 
 
 \section{De la conception de beaux tableaux}
