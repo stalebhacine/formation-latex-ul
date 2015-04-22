@@ -114,7 +114,7 @@ pour le texte normal.
 
 Les boîtes créées avec \cmd{\parbox} ne peuvent contenir de structures
 «complexes» comme des listes ou des tableaux. Parce que plus général,
-l'outil véritablement utile de création de boîtes verticales est
+l'outil véritablement utile pour la création de boîtes verticales est
 l'environnement \Ie{minipage}. Cet environnement peut contenir à peu
 n'importe quel type de contenu. Comme son nom l'indique, c'est ni plus
 ni moins qu'une page miniature à l'intérieur de la page standard.
@@ -134,32 +134,33 @@ tableaux ou des figures côte-à-côte ou en grille.
 Voici un exemple d'utilisation des boîtes verticales. Le code suivant
 
 \begin{lstlisting}
-\begin{minipage}[b]{0.3\textwidth}
-  La ligne inférieure de cette \emph{minipage} est alignée avec
-\end{minipage}
+\fbox{\begin{minipage}[b]{0.3\textwidth}
+  La ligne inférieure de cette \emph{minipage} [...]
+\end{minipage}}
 \hfill
-\parbox{0.3\textwidth}{la centre de cette boîte verticale, qui
-  est à son tour alignée avec}
+\fbox{\parbox{0.3\textwidth}{le centre de cette boîte [...] }}
 \hfill
-\begin{minipage}[t]{0.3\textwidth}
-  la ligne supérieure de cette \emph{minipage}.
-\end{minipage}
+\fbox{\begin{minipage}[t]{0.3\textwidth}
+  la ligne supérieure de cette \emph{minipage}. [...]
+\end{minipage}}
 \end{lstlisting}
-produit \\
+produit: \\
 \medskip
 
 \noindent%
 \begin{minipage}{\textwidth}
-  \begin{minipage}[b]{0.3\textwidth}
+  \makebox[0pt][l]{\color{lightgray}\rule{\textwidth}{0.5pt}}\relax
+  \fbox{\begin{minipage}[b]{0.3\textwidth}
     La ligne inférieure de cette \emph{minipage} est alignée avec
-  \end{minipage}
+  \end{minipage}}
   \hfill
-  \parbox{0.3\textwidth}{la centre de cette boîte verticale, qui est à
-    son tour alignée avec}
+  \fbox{\parbox{0.3\textwidth}{le centre de cette boîte verticale, qui est à
+    son tour alignée avec}}
   \hfill
-  \begin{minipage}[t]{0.3\textwidth}
-    la ligne supérieure de cette \emph{minipage}.
-  \end{minipage}
+  \fbox{\begin{minipage}[t]{0.3\textwidth}
+    la ligne supérieure de cette \emph{minipage}. Le filet horizontal
+    grisé représente la ligne de base de ce paragraphe.
+  \end{minipage}}
 \end{minipage}
 \medskip
 
