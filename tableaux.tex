@@ -24,11 +24,10 @@ rectangulaire de texte; pour l'encadrer, la mettre en surbrillance ou
 la mettre en exergue, par exemple.
 
 Avec les traitements de texte, on aura souvent recours aux tableaux à
-de telles fins. {\LaTeX} offre ici une solution plus générale. Les
-tableaux servent spécifiquement à disposer de l'information sous forme
-de grille. Autrement, on utilise des «boîtes» (\emph{boxes} en
-anglais) pour la disposition et la mise en forme de contenu quelconque
-se présentant sous forme rectangulaire.
+de telles fins. Or, les tableaux devraient être réservés pour disposer
+de l'information sous forme de grille. Pour disposer et mettre en
+forme du contenu se présentant sous forme rectangulaire, {\LaTeX}
+offre la solution plus générale des «boîtes».
 
 Il n'est pas inutile de savoir que {\TeX} ne manipule que cela, des
 boîtes. Pour {\TeX}, chaque caractère, chaque lettre n'est qu'un
@@ -40,7 +39,15 @@ d'autres boîtes dont le contrôle des dimensions et du contenu est
 laissé à l'usager. Une fois créée, une boîte ne peut être scindée en
 parties.
 
+Il existe trois sortes de boîtes en {\LaTeX}: les boîtes horizontales
+dont le contenu est disposé exclusivement côte à côte; les boîtes
+verticales qui peu\-ent contenir plusieurs lignes de contenu; les
+boîtes de réglure pour former des lignes pleines de largeur et hauteur
+quelconques.
+
+
 \subsection{Boîtes horizontales}
+\label{sec:tableaux:boites:lrbox}
 
 Le plus simple concept de boîte dans {\LaTeX} est celui de boîte
 «horizontale», c'est-à-dire dont le contenu est disposé latéralement
@@ -88,6 +95,7 @@ produit \framebox[3.5cm][l]{aligné à gauche}, alors que
 produit \makebox[3.5cm]{centré}.
 
 \subsection{Boîtes verticales}
+\label{sec:tableaux:boites:parbox}
 
 Les boîtes verticales se distinguent des boîtes horizontales par le
 fait qu'elles peuvent contenir plusieurs lignes de contenu empilées
@@ -134,20 +142,17 @@ tableaux ou des figures côte-à-côte ou en grille.
 Voici un exemple d'utilisation des boîtes verticales. Le code suivant
 
 \begin{lstlisting}
-\fbox{\begin{minipage}[b]{0.3\textwidth}
+\begin{minipage}[b]{0.3\textwidth}
   La ligne inférieure de cette \emph{minipage} [...]
-\end{minipage}}
+\end{minipage}
 \hfill
-\fbox{\parbox{0.3\textwidth}{le centre de cette boîte [...] }}
+\parbox{0.3\textwidth}{le centre de cette boîte [...] }
 \hfill
-\fbox{\begin{minipage}[t]{0.3\textwidth}
+\begin{minipage}[t]{0.3\textwidth}
   la ligne supérieure de cette \emph{minipage}. [...]
-\end{minipage}}
+\end{minipage}
 \end{lstlisting}
-produit: \\
-\medskip
-
-\noindent%
+produit: \\[0.5\baselineskip]
 \begin{minipage}{\textwidth}
   \makebox[0pt][l]{\color{lightgray}\rule{\textwidth}{0.5pt}}\relax
   \fbox{\begin{minipage}[b]{0.3\textwidth}
@@ -159,34 +164,82 @@ produit: \\
   \hfill
   \fbox{\begin{minipage}[t]{0.3\textwidth}
     la ligne supérieure de cette \emph{minipage}. Le filet horizontal
-    grisé représente la ligne de base de ce paragraphe.
+    grisé représente la ligne de base du paragraphe contenant les
+    trois boîtes.
   \end{minipage}}
-\end{minipage}
-\medskip
+\end{minipage} \\[0.5\baselineskip]
 
 La commande \cmd{\hfill} utilisée entre les boîtes ci-dessus indique à
 {\LaTeX} d'insérer de l'espace blanc entre les éléments de contenu de
 manière à remplir entièrement la ligne de texte. C'est une commande
 très utile pour disposer automatiquement des éléments à intervalles
-égaux sur la largeur du bloc de texte \hfill comme ceci
+égaux sur la largeur du bloc de texte. Ainsi,
 \begin{lstlisting}
-[...] de texte  \hfill comme ceci
+gauche  \hfill droite
 \end{lstlisting}
-ou encore \hfill comme \hfill ceci.
+produit \\[0.5\baselineskip]
+\framebox[\textwidth]{gauche \hfill droite} \\[0.5\baselineskip]
+alors que
 \begin{lstlisting}
-ou encore \hfill comme \hfill ceci.
+gauche \hfill centre \hfill droite.
 \end{lstlisting}
+produit \\[0.5\baselineskip]
+\framebox[\textwidth]{gauche \hfill centre \hfill droite.}
+
+\begin{rem}
+  Dans les exemples de boîtes ci-dessus, nous avons encadré celles-ci
+  afin de les mettre en évidence. Le code pour créer les cadres
+  n'apparait pas dans les extraits de code source.
+\end{rem}
+
 
 %%% Exercices: faire le contenu de 4.7.4 de Kopka et Daly (disposition
 %%% verticale des boîtes)
 
 \subsection{Boîtes de réglure}
+\label{sec:tableaux:boites:rulebox}
 
-Réglure est un terme d'imprimerie
+En imprimerie, une réglure est une ligne droite continue ou
+pointillée. Une ligne n'étant jamais rien d'autre qu'un rectangle
+plein, si mince fut-il, la réglure est le troisième type de
+boîte\footnote{%
+  \emph{Rule box}, en anglais} %
+dans {\LaTeX}.
 
+La commande
 \begin{lstlisting}
-\rule`\oarg{delta}\marg{largeur}\marg{hauteur}'
+\rule`\oarg{déplacement}\marg{largeur}\marg{hauteur}'
 \end{lstlisting}
+crée une réglure de dimensions \meta{largeur} $\times$ \meta{hauteur}.
+Par défaut, la réglure s'appuie sur la ligne de base. Le résultat de
+\begin{lstlisting}
+\rule{2cm}{6pt}
+\end{lstlisting}
+est donc une ligne pleine de $2$~cm de long et $6$~points d'épais:
+\rule{2cm}{6pt}.
+
+L'argument optionnel \meta{déplacement} permet de déplacer
+verticalement la réglure au-dessus ou au-dessous de la ligne de base
+selon que \meta{déplacement} est positif ou négatif. Avec les deux
+commandes
+\begin{lstlisting}
+\rule[3pt]{2cm}{6pt}
+\rule[-3pt]{2cm}{6pt}
+\end{lstlisting}
+on crée les réglures \rule[3pt]{2cm}{6pt} et \rule[-3pt]{2cm}{6pt},
+dans l'ordre.
+
+Un usage intéressant de la réglure consiste à faire croire à {\TeX}
+qu'une ligne est plus haute qu'il n'y parait en insérant dans celle-ci
+une réglure de largeur nulle. Par exemple, la distance entre
+\rule[-8pt]{0mm}{24pt}\relax la présente ligne et les autres du paragraphe est
+plus grande que la normale parce que nous y avons inséré une réglure
+invisible avec
+\begin{lstlisting}
+\rule[-8pt]{0mm}{24pt}
+\end{lstlisting}
+Ce truc est particulièrement utile pour augmenter la hauteur des
+lignes dans un tableau; voir la \autoref{sec:tableaux:tableaux}.
 
 
 \section{De la conception de beaux tableaux}
@@ -422,6 +475,9 @@ TOTAL         & 7 &      & 41,55 \\
 \end{lstlisting}
 \end{list}
 
+La hauteur des lignes d'un tableau est déterminée automatiquement en
+fonction de contenu de celles-ci.
+
 \begin{exemple}
   On reprend le contenu ci-dessus pour en faire un tableau d'une
   largeur ajustée automatiquement au contenu. La première colonne est
@@ -450,16 +506,19 @@ TOTAL         & 7 &      & 41,55 \\
       \bottomrule
     \end{tabular}
   \end{center}
-  Avec quelques modifications, le tableau occupe maintenant 80~\% de
+
+  Avec quelques modifications, le tableau occupe maintenant toute
   la largeur de la page, la largeur de la première colonne étant
   ajustée pour combler l'espace nécessaire. De plus, on modifie
   l'entête de la première colonne avec la commande \cmd{\multicolumn}
-  afin de centrer le titre.
+  afin de centrer le titre. Enfin, on augmente la hauteur de l'entête
+  à l'aide d'une réglure invisible (\autoref{sec:tableaux:boites:rulebox}).
 \begin{lstlisting}
-\begin{tabularx}{0.8\textwidth}{Xrrr}
+\begin{tabularx}{\textwidth}{Xrrr}
   \toprule
   \multicolumn{1}{c}{Produit} &
-    Quantité & Prix unitaire (\$) & Prix (\$) \\
+    \rule[-8pt]{0mm}{24pt} Quantité &
+    Prix unitaire (\$) & Prix (\$) \\
   \midrule
   Vis à bois    & 2 & 9,90 & 19,80 \\
   Clous vrillés & 5 & 4,35 & 21,75 \\
@@ -469,10 +528,10 @@ TOTAL         & 7 &      & 41,55 \\
 \end{tabularx}
 \end{lstlisting}
   \begin{center}
-    \begin{tabularx}{0.8\textwidth}{Xrrr}
+    \begin{tabularx}{\textwidth}{Xrrr}
       \toprule
       \multicolumn{1}{c}{Produit} &
-        Quantité & Prix unitaire (\$) & Prix (\$) \\
+        \rule[-8pt]{0mm}{24pt} Quantité & Prix unitaire (\$) & Prix (\$) \\
       \midrule
       Vis à bois    & 2 & 9,90 & 19,80 \\
       Clous vrillés & 5 & 4,35 & 21,75 \\
