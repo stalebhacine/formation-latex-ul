@@ -34,6 +34,7 @@
 
   %%% Définition de couleurs
   \definecolor{comments}{rgb}{0.7,0,0}
+  \definecolor{alert}{rgb}{0,0.7,0}
   \definecolor{emphasis}{named}{orange}
   \definecolor{exercices}{named}{gray}
   \definecolor{link}{rgb}{0,0.4,0.6}   % ~RoyalBlue de dvips
@@ -52,7 +53,7 @@
   \setbeamercolor{block title}{fg=white,bg=black}
   \setbeamercolor{alerted text}{fg=black}
   \setbeamerfont{alerted text}{series=\bfseries}
-  \setbeamercolor{block title alerted}{fg=white,bg=comments}
+  \setbeamercolor{block title alerted}{fg=white,bg=alert}
   \setbeamercolor{block title example}{fg=white,bg=exercices}
   \setbeamercolor{example text}{fg=exercices,bg=white}
   \setbeamertemplate{theorems}[numbered]
@@ -77,6 +78,14 @@
     {\end{beamercolorbox}}
   \newenvironment{texoutput}[1]{%
     \begin{minipage}[t]{#1} \small}{%
+    \end{minipage}}
+  \newenvironment{conseil}{%
+    \begin{minipage}[t]{0.1\textwidth}
+      \color{alert}\raisebox{-2.3em}[0em][0em]{\huge\faThumbsUp}
+    \end{minipage}
+    \begin{minipage}[t]{0.8\textwidth}
+      \begin{alertblock}{Conseil du {\TeX}pert}}{%
+    \end{alertblock}
     \end{minipage}}
 
   \theoremstyle{example}
@@ -658,10 +667,10 @@ Copyright 2014 D.E. Knuth.
 \section{Parties d'un document}
 
 \begin{frame}[plain]
-  \begin{alertblock}{Conseil du {\TeX}pert}
-    Utiliser impérativement les commandes {\LaTeX} pour identifier les
-    différentes parties (la structure) d'un document
-  \end{alertblock}
+  \begin{conseil}
+    Utiliser impérativement les commandes {\LaTeX} pour identifier
+    les différentes parties (la structure) d'un document
+  \end{conseil}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -869,7 +878,7 @@ on a...
 \end{frame}
 
 \begin{frame}[plain,fragile=singleslide]
-  \begin{alertblock}{Conseil du {\TeX}pert}
+  \begin{conseil}
     Adopter une manière systématique et mnémotechnique de nommer les
     éléments dans un long document afin de vous y retrouver.
 
@@ -881,7 +890,7 @@ on a...
 \label{tab:`\textit{chapitre}':`\textit{tableau}'}  % tableau
 \label{eq:`\textit{chapitre}':`\textit{equation}'}  % équation
 \end{lstlisting}
-  \end{alertblock}
+  \end{conseil}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -1272,14 +1281,15 @@ comme $(a + b)^2 = a^2 + 2ab + b^2$
 \end{frame}
 
 \begin{frame}[plain]
-  \begin{alertblock}{Conseil du {\TeX}pert}
+  \begin{conseil}
     Les équations, en ligne ou hors paragraphe, font partie intégrante
     de la phrase.
 
     \bigskip %
     Les règles de ponctuation usuelles s'appliquent donc aux
     équations.
-  \end{alertblock}
+  \end{conseil}
+
   \vspace{18pt}
   \fbox{\includegraphics[width=0.95\linewidth]{ponctuation}}
 \end{frame}
