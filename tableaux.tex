@@ -26,24 +26,26 @@ la mettre en exergue, par exemple.
 Avec les traitements de texte, on aura souvent recours aux tableaux à
 de telles fins. Or, les tableaux devraient être réservés pour disposer
 de l'information sous forme de grille. Pour disposer et mettre en
-forme du contenu se présentant sous forme rectangulaire, {\LaTeX}
-offre la solution plus générale des «boîtes».
-
-Il n'est pas inutile de savoir que {\TeX} ne manipule que cela, des
-boîtes. Pour {\TeX}, chaque caractère, chaque lettre n'est qu'un
-rectangle d'une certaine largeur qui s'élève au-dessus de la ligne de
-base (les lignes d'une feuille lignée) et qui, parfois, se prolonge
-sous la ligne de base (pensons aux lettres \emph{p}, \emph{y} ou
-\emph{Q}). Les commandes ci-dessous permettent simplement de créer
-d'autres boîtes dont le contrôle des dimensions et du contenu est
-laissé à l'usager. Une fois créée, une boîte ne peut être scindée en
-parties.
+forme du tout autre type contenu se présentant sous forme
+rectangulaire, {\LaTeX} offre la solution plus générale des «boîtes».
 
 Il existe trois sortes de boîtes en {\LaTeX}: les boîtes horizontales
 dont le contenu est disposé exclusivement côte à côte; les boîtes
 verticales qui peu\-ent contenir plusieurs lignes de contenu; les
-boîtes de réglure pour former des lignes pleines de largeur et hauteur
-quelconques.
+boîtes de réglure pour former des lignes pleines de largeur et de
+hauteur quelconques.
+
+Il n'est pas inutile de savoir, au passage, que {\TeX} ne manipule que
+cela, des boîtes. Pour {\TeX}, chaque caractère, chaque lettre n'est
+qu'un rectangle d'une certaine largeur qui s'élève au-dessus de la
+ligne de base (les lignes d'une feuille lignée) et qui, parfois, se
+prolonge sous la ligne de base (pensons aux lettres \emph{p}, \emph{y}
+ou \emph{Q}). Les commandes et environnements présentés ci-dessous
+permettent simplement de créer d'autres boîtes dont le contrôle des
+dimensions et du contenu est laissé à l'usager.
+
+Une fois créée, une boîte ne peut être scindée en parties, notamment
+entre les lignes ou entre les pages.
 
 
 \subsection{Boîtes horizontales}
@@ -56,26 +58,26 @@ de gauche à droite\footnote{%
 Le contenu est normalement du texte, mais conceptuellement ce pourrait
 être n'importe quoi, y compris d'autres boîtes.
 
-Les commandes de base pour créer des boîtes horizontales:
+Les commandes de base pour créer des boîtes horizontales sont:
 \begin{lstlisting}
 \mbox`\marg{texte}'
 \fbox`\marg{texte}'
 \end{lstlisting}
 Elles produisent une boîte de la largeur précise de \meta{texte}. Avec
 la commande \cmd{\fbox}, le texte est au surplus \fbox{encadré}. En
-usage courant, la commande \cmd{!mbox} sert principalement à deux
+usage courant, la commande \cmd{\mbox} sert principalement à deux
 choses:
 \begin{enumerate}
 \item réunir en un bloc du texte que l'on ne veut pas voir scindé
   entre les lignes ou entre les pages;
-\item \label{item:tableaux:mbox} avec \verb=\mbox{}=, laisser croire à
-  {\TeX} que du contenu apparait à un endroit sans toutefois qu'il
-  n'occupe aucun espace.
+\item \label{item:tableaux:mbox} créer une boîte vide avec
+  \verb=\mbox{}= afin de laisser croire à {\TeX} que du contenu
+  apparait à un endroit, sans toutefois qu'il n'occupe aucun espace.
   %% ça prendrait un exemple de cela dans les exercices!
 \end{enumerate}
 
 Il existe également des versions plus générales des commandes
-\cmd{\mbox} et \cmd{\fbox}. Il s'agit de:
+\cmd{\mbox} et \cmd{\fbox}:
 \begin{lstlisting}
 \makebox`\oarg{largeur}\oarg{pos}\marg{texte}'
 \framebox`\oarg{largeur}\oarg{pos}\marg{texte}'
@@ -104,7 +106,7 @@ texte, on obtient des paragraphes\footnote{%
   D'où l'appellation, cette fois, de \emph{paragraph boxes} en anglais
   ou \emph{parboxes} dans le jargon {\LaTeX}.}. %
 
-La commande de base pour créer une boîte verticale est
+La commande de base pour créer une boîte verticale est:
 \begin{lstlisting}
 \parbox`\oarg{pos}\marg{largeur}\marg{texte}'
 \end{lstlisting}
@@ -139,8 +141,8 @@ L'environnement \Ie{minipage} est ouvent utilisé pour disposer des
 tableaux ou des figures côte-à-côte ou en grille.
 %%% Exemple plus loin! %%%
 
-Voici un exemple d'utilisation des boîtes verticales. Le code suivant
-
+\begin{exemple}
+  Le code ci-dessous
 \begin{lstlisting}
 \begin{minipage}[b]{0.3\textwidth}
   La ligne inférieure de cette \emph{minipage} [...]
@@ -152,28 +154,26 @@ Voici un exemple d'utilisation des boîtes verticales. Le code suivant
   la ligne supérieure de cette \emph{minipage}. [...]
 \end{minipage}
 \end{lstlisting}
-produit: \\[0.5\baselineskip]
-\begin{minipage}{\textwidth}
-  \makebox[0pt][l]{\color{lightgray}\rule{\textwidth}{0.5pt}}\relax
-  \fbox{\begin{minipage}[b]{0.3\textwidth}
-    La ligne inférieure de cette \emph{minipage} est alignée avec
-  \end{minipage}}
-  \hfill
-  \fbox{\parbox{0.3\textwidth}{le centre de cette boîte verticale, qui est à
-    son tour alignée avec}}
-  \hfill
-  \fbox{\begin{minipage}[t]{0.3\textwidth}
-    la ligne supérieure de cette \emph{minipage}. Le filet horizontal
-    grisé représente la ligne de base du paragraphe contenant les
-    trois boîtes.
-  \end{minipage}}
-\end{minipage} \\[0.5\baselineskip]
+  produit: \\[0.5\baselineskip]
+  \begin{minipage}{\textwidth}
+    \makebox[0pt][l]{\color{lightgray}\rule{\textwidth}{0.7pt}}\relax
+    \fbox{\begin{minipage}[b]{0.3\textwidth} La ligne inférieure de
+        cette \emph{minipage} est alignée avec
+      \end{minipage}} \hfill \fbox{\parbox{0.3\textwidth}{le centre de
+        cette boîte verticale, qui est à son tour alignée avec}}
+    \hfill \fbox{\begin{minipage}[t]{0.3\textwidth} la ligne
+        supérieure de cette \emph{minipage}. Le filet horizontal grisé
+        représente la ligne de base du paragraphe contenant les trois
+        boîtes.
+      \end{minipage}}
+  \end{minipage}
+\end{exemple}
 
-La commande \cmd{\hfill} utilisée entre les boîtes ci-dessus indique à
-{\LaTeX} d'insérer de l'espace blanc entre les éléments de contenu de
-manière à remplir entièrement la ligne de texte. C'est une commande
-très utile pour disposer automatiquement des éléments à intervalles
-égaux sur la largeur du bloc de texte. Ainsi,
+La commande \cmd{\hfill} utilisée entre les boîtes dans l'exemple
+indique à {\LaTeX} d'insérer de l'espace blanc entre les éléments de
+contenu de manière à remplir entièrement la ligne de texte. C'est une
+commande très utile pour disposer automatiquement des éléments à
+intervalles égaux sur la largeur du bloc de texte. Ainsi,
 \begin{lstlisting}
 gauche  \hfill droite
 \end{lstlisting}
@@ -226,8 +226,8 @@ commandes
 \rule[3pt]{2cm}{6pt}
 \rule[-3pt]{2cm}{6pt}
 \end{lstlisting}
-on crée les réglures \rule[3pt]{2cm}{6pt} et \rule[-3pt]{2cm}{6pt},
-dans l'ordre.
+on crée respectivement les réglures \rule[3pt]{2cm}{6pt} et
+\rule[-3pt]{2cm}{6pt}.
 
 Un usage intéressant de la réglure consiste à faire croire à {\TeX}
 qu'une ligne est plus haute qu'il n'y parait en insérant dans celle-ci
@@ -240,6 +240,7 @@ invisible avec
 \end{lstlisting}
 Ce truc est particulièrement utile pour augmenter la hauteur des
 lignes dans un tableau; voir la \autoref{sec:tableaux:tableaux}.
+
 
 
 \section{De la conception de beaux tableaux}
@@ -507,12 +508,12 @@ fonction de contenu de celles-ci.
     \end{tabular}
   \end{center}
 
-  Avec quelques modifications, le tableau occupe maintenant toute
-  la largeur de la page, la largeur de la première colonne étant
-  ajustée pour combler l'espace nécessaire. De plus, on modifie
-  l'entête de la première colonne avec la commande \cmd{\multicolumn}
-  afin de centrer le titre. Enfin, on augmente la hauteur de l'entête
-  à l'aide d'une réglure invisible (\autoref{sec:tableaux:boites:rulebox}).
+  Avec quelques modifications, le tableau occupe maintenant toute la
+  largeur de la page, la largeur de la première colonne étant ajustée
+  pour combler l'espace nécessaire. De plus, on modifie l'entête de la
+  première colonne avec la commande \cmd{\multicolumn} afin de centrer
+  le titre. Enfin, on augmente la hauteur de l'entête à l'aide d'une
+  réglure invisible (\autoref{sec:tableaux:boites:rulebox}).
 \begin{lstlisting}
 \begin{tabularx}{\textwidth}{Xrrr}
   \toprule
@@ -531,7 +532,7 @@ fonction de contenu de celles-ci.
     \begin{tabularx}{\textwidth}{Xrrr}
       \toprule
       \multicolumn{1}{c}{Produit} &
-        \rule[-8pt]{0mm}{24pt} Quantité & Prix unitaire (\$) & Prix (\$) \\
+      \rule[-8pt]{0mm}{24pt} Quantité & Prix unitaire (\$) & Prix (\$) \\
       \midrule
       Vis à bois    & 2 & 9,90 & 19,80 \\
       Clous vrillés & 5 & 4,35 & 21,75 \\
@@ -541,6 +542,157 @@ fonction de contenu de celles-ci.
     \end{tabularx}
   \end{center}
 \end{exemple}
+
+
+
+\section{Figures et graphiques}
+\label{sec:tableaux:figures}
+
+Il est possible de tracer des figures simples directement avec {\LaTeX}. Par «simple» on entend: des figures se
+limitant  pour l'essentiel à du texte, des lignes, des flèches, des
+ronds et des ovales. C'est parfois amplement suffisant et, en
+définitive, assez pratique puisque le code source d'une figure se
+trouve alors dans le même format que le reste du document.
+
+Pour la création de figures et de graphiques plus complexes, on aura généralement
+recours à des logiciels spécialisés externes. {\LaTeX} est ensuite en
+mesure d'importer des graphiques dans les formats standards tels que PDF, JPEG
+ou PNG, voire même d'insérer dans un document une ou plusieurs pages
+d'un document PDF.
+
+Couvrir les détails de la création et de la manipulation d'images
+dépasse largement la portée du présent document. Le reste de cette
+section ne présente que les principales fonctionnalités. Le lecteur
+intéressé d'en savoir plus pourra se référer aux sources de documentation habituelles figurant à la
+bibliographie.
+
+
+\subsection{Figures {\LaTeX}}
+\label{sec:tableaux:figures:picture}
+
+L'environnement \Ie{picture} permet de tracer des figures simples dans
+{\LaTeX} comme des diagrammes à base de texte, des flux logiques ou
+des organigrammes. Quelques logiciels spécialisés de création de
+graphiques sont en mesure d'exporter leurs graphiques dans le format
+de \Ie{picture}.
+
+Une fois conçues, les figures réalisées avec \Ie{picture} sont
+simples à modifier; nul besoin de recourir à un logiciel externe pour
+le moindre petit changement. Autre avantage: la police de caractère du texte
+de la figure sera le même que celle du document.
+
+Pour tracer une figure avec l'environnement \Ie{picture}, on crée
+d'abord une grille (invisible) d'une dimension quelconque dans l'unité
+de mensure de son choix (autrement dit: les lignes de la grille
+peuvent être distantes aussi bien de \code{1pt} que de \code{1cm}).
+Ensuite, on dispose des éléments sur la grille en donnant les
+coordonnées du point de départ et, le cas échéant, les dimensions de
+l'élément, la distance à parcourir ou quelqu'autre information pour
+compléter l'élément. Le plus simple demeure de  d'abord esquisser un modèle au
+crayon sur du papier quadrillé!
+
+Le code commenté et la figure correspondante ci-dessous  illustrent
+les idées principales. L'annexe~D de la documentation de la classe
+\class{memoir} fournit une bonne introduction à \Ie{picture}.
+
+\begingroup
+  \small
+\begin{lstlisting}
+\setlength{\unitlength}{7mm}  % unité de mesure
+\begin{picture}(15,9)         % grille 15 x 9
+  %% On trace d'abord toutes les boîtes
+  \put(0,7){%                 % point de départ (0, 7)
+    \framebox(5,1.5){%        % cadre 5 x 1,5
+      \begin{minipage}{35mm}  % contenu de la boîte
+        \centering L'environnement \\ \texttt{picture}
+      \end{minipage}}}
+
+  \put(1,4.5){\circle{2}}                     % cercle de diamètre 2
+  \put(1,4.5){\makebox(0,0){\small convient}} % texte centré dans cercle
+  \put(4,3){\circle{2}}                       % autre cercle
+  \put(4,3){\makebox(0,0){\small bien}}       % texte
+
+  \put(8.5,5){\makebox(5,1.5){pour les diagrammes}} % boîte sans cadre
+
+  \thicklines                     % lignes grasses
+  \put(8,1){\dashbox{0.2}(7,1.5){ % cadre 7 x 1,5 pointillé
+      et autres figures simples.}}
+
+  %% On trace ensuite les lignes entre les boîtes
+  \thinlines                    % retour aux lignes minces
+  \put(1,7){\vector(0,-1){1.5}} % flèche vers le bas de longueur 1,5
+                                % [couple (0,-1) donne la pente]
+  \put(14,5.75){\circle*{0.1}}  % petit cercle plein
+  \put(14,5.75){\vector(-1,-1){3.25}} % flèche vers sud-ouest
+                                      % [3.25 est déplacement hor.]
+
+  \thicklines                   % lignes grasses
+  \put(1,3.5){\line(0,-1){0.5}} % courte ligne sans flèche
+  \put(1,3){\vector(1,0){2}}    % suite de flèche entre les cercles
+
+  \qbezier(4,2)(5.5,-0.5)(7,4.25)  % deux courbes de Bézier bout à
+  \qbezier(7,4.25)(8.5,9)(10,6.5)  % bout pour produire courbe en S
+  \put(10,6.5){\vector(2,-3){0.1}} % pointe de flèche seule
+\end{picture}
+\end{lstlisting}
+\endgroup
+
+\setlength{\unitlength}{7mm}
+\begin{center}
+  \begin{picture}(15,9)
+    \linethickness{0.3pt} \color{lightgray}
+    \multiput(0,0)(1,0){16}{\line(0,1){9}}
+    \multiput(0,0)(0,1){10}{\line(1,0){15}}
+    \color{black}
+
+    %% boîtes
+    \put(0,7){%
+      \framebox(5,1.5){
+        \begin{minipage}{35mm}
+          \centering L'environnement \\ \texttt{picture}
+        \end{minipage}}}
+
+    \put(1,4.5){\circle{2}}
+    \put(1,4.5){\makebox(0,0){\small convient}}
+    \put(4,3){\circle{2}}
+    \put(4,3){\makebox(0,0){\small bien}}
+
+    \put(8.5,5){\makebox(5,1.5){pour les diagrammes}}
+
+    \thicklines
+    \put(8,1){\dashbox{0.2}(7,1.5){et autres figures simples.}}
+
+    %% lignes
+    \thinlines
+    \put(1,7){\vector(0,-1){1.5}}
+
+    \put(14,5.75){\circle*{0.1}}
+    \put(14,5.75){\vector(-1,-1){3.25}}
+
+    \thicklines
+    \put(1,3.5){\line(0,-1){0.5}}
+    \put(1,3){\vector(1,0){2}}
+
+    \qbezier(4,2)(5.5,-0.5)(7,4.25)
+    \qbezier(7,4.25)(8.5,9)(10,6.5)
+    \put(10,6.5){\vector(2,-3){0.1}}
+  \end{picture}
+\end{center}
+
+(Nous avons tracé la grille en filigrane dans la figure afin de
+faciliter la comparaison entre le code et le résultat.)
+
+Il existe quelques outils pour tracer des figures plus complexes directement avec {\LaTeX}. Le
+système Ti\emph{k}Z/\textsc{pgf} gagne beaucoup en popularité depuis
+quelques années.
+
+\subsection{Importation d'images}
+\label{sec:tableaux:figures:graphics}
+
+
+\subsection{Insertion de documents PDF}
+\label{sec:tableaux:figures:pdfpages}
+
 
 
 \section{Éléments flottants}
