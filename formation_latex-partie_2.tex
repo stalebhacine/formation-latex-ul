@@ -3,7 +3,7 @@
   \usepackage[english,francais]{babel}
   \usepackage[autolanguage]{numprint}
   \usepackage{amsmath,amsthm,icomma}
-  \usepackage[noae]{Sweave}
+  %\usepackage[noae]{Sweave}
   \usepackage{paralist}
   \usepackage[shortlabels]{enumitem}
   \usepackage{textpos}
@@ -114,11 +114,11 @@
   \newenvironment{rems}{\begin{remarques} \mbox{}}{\end{remarques}}
 
   %% Environnements de Sweave
-  \DefineVerbatimEnvironment{Sinput}{Verbatim}{xleftmargin=\parindent}
-  \DefineVerbatimEnvironment{Soutput}{Verbatim}{xleftmargin=\parindent}
-  \DefineVerbatimEnvironment{Scode}{Verbatim}{xleftmargin=\parindent}
-  \fvset{listparameters={\setlength{\topsep}{0pt}}}
-  \renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}
+  % \DefineVerbatimEnvironment{Sinput}{Verbatim}{xleftmargin=\parindent}
+  % \DefineVerbatimEnvironment{Soutput}{Verbatim}{xleftmargin=\parindent}
+  % \DefineVerbatimEnvironment{Scode}{Verbatim}{xleftmargin=\parindent}
+  % \fvset{listparameters={\setlength{\topsep}{0pt}}}
+  % \renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}
 
   %% Exercices et réponses
   \Newassociation{sol}{solution}{solutions}
@@ -172,17 +172,6 @@
       \noindent
       \begin{minipage}{0.1\linewidth}
         \raisebox{-1.5em}[0em][0em]{\HUGE\faInfoSign}
-      \end{minipage}
-      \begin{minipage}[t]{0.88\linewidth}}
-      {\end{minipage}%
-    \end{framed}}
-
-  %% Remarques spécifiques OS X
-  \newenvironment{osx}{%
-    \begin{framed}%
-      \noindent
-      \begin{minipage}{0.1\linewidth}
-        \raisebox{-1.5em}[0em][0em]{\HUGE\applekey}
       \end{minipage}
       \begin{minipage}[t]{0.88\linewidth}}
       {\end{minipage}%
@@ -301,10 +290,12 @@
 
 \include{tableaux}
 % \include{mathematiques}
-\include{include}
+% \include{include}
 % \include{bibliographie}
 % \include{polices}
 % \include{varia}
+
+\bibliography{formation_latex}
 
 \end{document}
 
