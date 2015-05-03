@@ -167,6 +167,7 @@ tableaux ou des figures côte-à-côte ou en grille.
         boîtes.
       \end{minipage}}
   \end{minipage}
+  \qed
 \end{exemple}
 
 La commande \cmd{\hfill} utilisée entre les boîtes dans l'exemple
@@ -541,6 +542,7 @@ fonction de contenu de celles-ci.
       \bottomrule
     \end{tabularx}
   \end{center}
+  \qed
 \end{exemple}
 
 
@@ -694,12 +696,8 @@ les idées principales. L'annexe~D de la documentation de la classe
 faciliter la comparaison entre le code et le résultat.)
 
 Il existe quelques outils pour tracer des figures plus complexes
-directement avec {\TeX}, dont PSTricks \citep[%
-  \href{http://mirrors.ctan.org/graphics/pstricks/base/doc/pst-user.pdf}{%
-    directement dans CTAN}]{pstricks} %
-ou le système Ti\emph{k}Z/\textsc{pgf} \citep[%
-  \href{http://mirrors.ctan.org/graphics/pgf/base/doc/pgfmanual.pdf}{%
-    directement dans CTAN}]{tikz}. %
+directement avec {\TeX}, dont PSTricks \citep{pstricks}
+ou le système Ti\emph{k}Z/\textsc{pgf} \citep{tikz}.
 Ce dernier gagne beaucoup en popularité depuis quelques années.
 
 
@@ -708,12 +706,11 @@ Ce dernier gagne beaucoup en popularité depuis quelques années.
 
 Il est aujourd'hui simple d'importer des images de source externes
 dans un document {\LaTeX} en utilisant l'un ou l'autre des paquetages
-\pkg{graphics} ou \pkg{graphicx} en combinaison avec un moteur {\TeX} moderne
-tel que pdf{\LaTeX} ou {\XeLaTeX}.
-
-Les fonctionnalités des paquetages \pkg{graphics} et \pkg{graphicx}
-sont les mêmes, seules les syntaxes des commandes diffèrent. Nous présenterons
-les commandes de \pkg{graphicx}, plus modernes et conviviales.
+\pkg{graphics} ou \pkg{graphicx} \citep{graphicx} en combinaison avec
+un moteur {\TeX} moderne tel que pdf{\LaTeX} ou {\XeLaTeX}. Les
+fonctionnalités des deux paquetages sont les mêmes, seules les
+syntaxes des commandes diffèrent. Nous présenterons les commandes de
+\pkg{graphicx}, plus modernes et conviviales.
 
 La commande de base pour importer des images dans un document {\LaTeX} est
 \begin{lstlisting}
@@ -727,16 +724,18 @@ EPS.
 
 Les \meta{options} de \cmd{\includegraphics}, nombreuses, permettent
 de redimensionner une image, de la faire pivoter ou encore de n'en
-importer qu'une partie. Consulter la documentation
-\cite[%
+importer qu'une partie. L'exemple ci-dessous présente les principales
+fonctionnalités; consulter la documentation %
+(\fichier{grfguide.pdf} dans {\TeX}~Live ou
   \href{http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf}{%
-    directement dans CTAN}]{graphicx} %
-pour les détails.
+    directement dans CTAN}) %
+pour les détails et d'autres options.
 
 \begin{exemple}
   Le fichier \fichier{ul\_p.pdf} contenant le logo de l'Université
-  Laval en couleur et en format vectoriel est distribué avec la présente
-  documentation ainsi qu'avec la classe \class{ulthese}. La simple commande
+  Laval en couleur et en format vectoriel est distribué avec la
+  présente documentation ainsi qu'avec la classe \class{ulthese}. La
+  simple commande
 \begin{lstlisting}
 \includegraphics{ul_p}
 \end{lstlisting}
@@ -746,8 +745,8 @@ pour les détails.
   \end{trivlist}
 
   On peut redimensionner l'image en valeur relative avec l'option
-  \code{scale} (une valeur négative indique un effet miroir) ou en
-  valeur absolue avec les options \code{width} ou \code{height}:
+  \code{scale} ou en valeur absolue avec les options \code{width} ou
+  \code{height}:
   \begin{trivlist}
   \item %
     \begin{minipage}[t]{0.55\linewidth}
@@ -757,17 +756,7 @@ pour les détails.
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.4\linewidth}
-      \mbox{}\\\includegraphics[scale=0.4]{ul_p}
-    \end{minipage}
-  \item %
-    \begin{minipage}[t]{0.55\linewidth}
-\begin{lstlisting}
-\includegraphics[scale=-0.4]{ul_p}
-\end{lstlisting}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.4\linewidth}
-      \mbox{}\\\includegraphics[scale=-0.4]{ul_p}
+      \mbox{}\\ \includegraphics[scale=0.4]{ul_p}
     \end{minipage}
   \item %
     \begin{minipage}[t]{0.55\linewidth}
@@ -777,16 +766,16 @@ pour les détails.
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.4\linewidth}
-      \mbox{}\\\includegraphics[height=15mm]{ul_p}
+      \mbox{}\\ \includegraphics[height=15mm]{ul_p}
     \end{minipage}
   \end{trivlist}
   (Il est préférable d'utiliser une seule de \code{width} ou
   \code{height}. Autrement, ajouter l'option
   \verb|keepaspectratio=true| pour éviter de déformer l'image.)
 
-  L'option \code{angle} permet de faire pivoter l'image de la valeur
-  de l'option (en degrés) dans le sens inverse des aiguilles d'une
-  montre autour du coin inférieur gauche de l'image:
+  L'option \code{angle} permet de faire pivoter l'image dans le sens
+  inverse des aiguilles d'une montre autour du coin inférieur gauche
+  de l'image:
   \begin{trivlist}
   \item %
     \begin{minipage}[t]{0.7\linewidth}
@@ -800,17 +789,145 @@ pour les détails.
     \end{minipage}
   \end{trivlist}
 
-texte \includegraphics[angle=45,scale=0.25]{ul_p}
-
+  Enfin, il y a diverses manières de sélectionner une partie seulement
+  d'une image. L'option \code{bb} (pour \emph{Bounding Box}) prend
+  quatre mesures en points PostScript (\code{bp}; $1~\text{bp} =
+  1/72~\text{pouce}$) définissant le coin inférieur gauche et le coin
+  supérieur droit de la zone à inclure:
   \begin{trivlist}
-  \item \includegraphics[bb=0 0 102 129, clip=true, scale=0.4]{ul_p}
+  \item %
+    \begin{minipage}[t]{0.7\linewidth}
+\begin{lstlisting}
+\includegraphics[bb=0 0 102 129,clip=true,
+  scale=0.4]{ul_p}
+\end{lstlisting}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.25\linewidth}
+      \mbox{}\\ \includegraphics[bb=0 0 102 129, clip=true, scale=0.4]{ul_p}
+    \end{minipage}
   \end{trivlist}
+  \qed
 \end{exemple}
 
-Aussi rotatebox, scalebox
+La commande \cmd{\includegraphics} permet d'appliquer certaines
+ transformations aux images importées, mais celles-ci
+peuvent également s'effectuer à l'aide de commandes externes
+\emph{après} l'importation. L'avantage de ces commandes, c'est
+qu'elles sont valides tout autant pour du texte que pour des images.
+
+Le paquetage \pkg{graphicx} définit les commandes suivantes:
+\begin{lstlisting}
+\rotatebox`\oarg{options}\marg{angle}\marg{texte}'
+\scalebox`\marg{échelle-h}\oarg{échelle-v}\marg{texte}'
+\resizebox`\marg{dim-h}\marg{dim-v}\marg{texte}'
+\reflectbox`\marg{texte}'
+\end{lstlisting}
+Dans tous les cas, \meta{texte} peut être du simple texte ou une boîte
+quelconque, y compris le résultat de \cmd{\includegraphics}. Ainsi,
+\begin{lstlisting}
+\rotatebox{45}{\includegraphics{ul_p}}
+\end{lstlisting}
+et
+\begin{lstlisting}
+\includegraphics[angle=45]{ul_p}
+\end{lstlisting}
+donnent le même résultat.
+
+Avec \cmd{\scalebox}, la mise à l'échelle \meta{échelle-h} s'applique
+par défaut autant à l'horizontale qu'à la verticale. Autrement,
+\meta{texte} est déformé.  Avec \cmd{\resizebox}, on peut spécifier
+l'une de \meta{dim-h} ou \meta{dim-v} et \verb=!= pour l'autre valeur
+pour éviter de déformer \meta{texte}.
+
+\begin{exemple}
+  Voici des exemples d'utilisation des commandes \cmd{\rotatebox},
+  \cmd{\scalebox}, \cmd{\resizebox} et \cmd{\reflectbox} avec du texte:
+  \begin{trivlist}
+  \item %
+    \begin{minipage}{0.55\linewidth}
+\begin{lstlisting}
+\rotatebox{135}{texte}
+\end{lstlisting}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.35\linewidth}
+      \rotatebox{135}{texte}
+    \end{minipage}
+  \item %
+    \begin{minipage}{0.55\linewidth}
+\begin{lstlisting}
+\scalebox{1.5}{texte}
+\end{lstlisting}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.35\linewidth}
+      \scalebox{1.5}{texte}
+    \end{minipage}
+  \item %
+    \begin{minipage}{0.55\linewidth}
+\begin{lstlisting}
+\scalebox{1.5}[0.75]{texte}
+\end{lstlisting}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.35\linewidth}
+      \scalebox{1.5}[0.75]{texte}
+    \end{minipage}
+  \item %
+    \begin{minipage}{0.55\linewidth}
+\begin{lstlisting}
+\resizebox{3cm}{!}{texte}
+\end{lstlisting}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.35\linewidth}
+      \resizebox{3cm}{!}{texte}
+    \end{minipage}
+  \item %
+    \begin{minipage}{0.55\linewidth}
+\begin{lstlisting}
+\reflectbox{texte}
+\end{lstlisting}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.35\linewidth}
+      \reflectbox{texte}
+    \end{minipage}
+  \end{trivlist}
+  \qed
+\end{exemple}
+
+
 
 \subsection{Insertion de documents PDF}
 \label{sec:tableaux:figures:pdfpages}
+
+Il est parfois utile d'insérer dans un document {\LaTeX} une ou
+plusieurs pages d'un autre document en format PDF, et ce, sans avoir à
+se soucier des marges respectives des deux documents. Si l'on utilise
+les moteurs pdf{\LaTeX} ou {\XeLaTeX}, le très pratique paquetage
+\pkg{pdfpages} \citep{pdfpages} fournit la commande
+\begin{lstlisting}
+\includepdf`\oarg{options}\marg{fichier}'
+\end{lstlisting}
+Les \meta{options} sont trop nombreuses pour les présenter ici;
+consulter la documentation (\fichier{pdfpages.pdf} dans {\TeX}~Live ou
+  \href{http://mirrors.ctan.org/macros/latex/contrib/pdfpages/pdfpages.pdf}{%
+    directement dans CTAN}).
+
+\begin{exemple}
+  Les couvertures avant et arrière du présent document ont été
+  réalisées dans un logiciel spécialisé de création graphique,
+  sauvegardées dans un fichier \fichier{couvertures.pdf}, puis mises
+  en place dans le document avec
+\begin{lstlisting}
+\includepdf[pages=1]{couvertures}
+\includepdf[pages=2]{couvertures}
+\end{lstlisting}
+  aux endroits appropriés.
+  \qed
+\end{exemple}
 
 
 
