@@ -1,0 +1,236 @@
+\chapter{Boîtes}
+\label{chap:boites}
+
+Il arrive que l'on doive traiter de manière spéciale une aire
+rectangulaire de texte; pour l'encadrer, la mettre en surbrillance ou
+la mettre en exergue, par exemple.
+
+Avec les traitements de texte, on aura souvent recours aux tableaux à
+de telles fins. Or, les tableaux devraient être réservés pour disposer
+de l'information sous forme de lignes et de colonnes. (Un tableau
+d'une seule cellule n'a donc pas vraiment de sens d'un point de vue
+sémantique ou typographique.) Pour disposer et mettre en forme du tout
+autre type contenu se présentant sous forme rectangulaire, {\LaTeX}
+offre la solution plus générale des «boîtes».
+
+Il existe trois sortes de boîtes en {\LaTeX}: les boîtes horizontales
+dont le contenu est disposé exclusivement côte à côte; les boîtes
+verticales qui peuvent contenir plusieurs lignes de contenu; les
+boîtes de réglure pour former des lignes pleines de largeur et de
+hauteur quelconques.
+
+Il n'est pas inutile de savoir, au passage, que {\TeX} ne manipule que
+cela, des boîtes. Pour {\TeX}, chaque caractère, chaque lettre n'est
+qu'un rectangle d'une certaine largeur qui s'élève au-dessus de la
+ligne de base (les lignes d'une feuille lignée) et qui, parfois, se
+prolonge sous la ligne de base (pensons aux lettres \emph{p}, \emph{y}
+ou \emph{Q}). Les commandes et environnements présentés ci-dessous
+permettent simplement de créer d'autres boîtes dont le contrôle des
+dimensions et du contenu est laissé à l'usager.
+
+Une fois créée, une boîte ne peut être scindée en parties, notamment
+entre les lignes ou entre les pages.
+
+
+
+\section{Boîtes horizontales}
+\label{sec:boites:lrbox}
+
+Le plus simple concept de boîte dans {\LaTeX} est celui de boîte
+«horizontale», c'est-à-dire dont le contenu est disposé latéralement
+de gauche à droite\footnote{%
+  D'où l'appellation \emph{LR (left-right) box} en anglais.}. %
+Le contenu est normalement du texte, mais conceptuellement ce pourrait
+être n'importe quoi, y compris d'autres boîtes.
+
+Les commandes de base pour créer des boîtes horizontales sont:
+\begin{lstlisting}
+\mbox`\marg{texte}'
+\fbox`\marg{texte}'
+\end{lstlisting}
+Elles produisent une boîte de la largeur précise de \meta{texte}. Avec
+la commande \cmd{\fbox}, le texte est au surplus \fbox{encadré}. En
+usage courant, la commande \cmd{\mbox} sert principalement à deux
+choses:
+\begin{enumerate}
+\item réunir en un bloc du texte que l'on ne veut pas voir scindé
+  entre les lignes ou entre les pages;
+\item \label{item:tableaux:mbox} créer une boîte vide avec
+  \cs{mbox\{\}} afin de laisser croire à {\TeX} que du contenu
+  apparaît à un endroit, sans toutefois qu'il n'occupe aucun espace.
+  %% ça prendrait un exemple de cela dans les exercices!
+\end{enumerate}
+
+Il existe également des versions plus générales des commandes
+\cmd{\mbox} et \cmd{\fbox}:
+\begin{lstlisting}
+\makebox`\oarg{largeur}\oarg{pos}\marg{texte}'
+\framebox`\oarg{largeur}\oarg{pos}\marg{texte}'
+\end{lstlisting}
+Les arguments optionnels \meta{largeur} et \meta{pos} déterminent
+respectivement la largeur de la boîte et la position du texte
+dans la boîte. Les valeurs possibles de \meta{pos} sont: \code{l} pour
+du texte aligné à gauche, \code{r} pour du texte aligné à droite et
+\code{c} (la valeur par défaut) pour du texte centré. Ainsi, la commande
+\begin{lstlisting}
+\framebox[3.5cm][l]{aligné à gauche}
+\end{lstlisting}
+produit \framebox[3.5cm][l]{aligné à gauche}, alors que
+\begin{lstlisting}
+\makebox[3.5cm]{centré}
+\end{lstlisting}
+produit \makebox[3.5cm]{centré}.
+
+
+
+\section{Boîtes verticales}
+\label{sec:boites:parbox}
+
+Les boîtes verticales se distinguent des boîtes horizontales par le
+fait qu'elles peuvent contenir plusieurs lignes de contenu empilées
+les unes au-dessus des autres. Lorsque le contenu en question est du
+texte, on obtient des paragraphes\footnote{%
+  D'où l'appellation, cette fois, de \emph{paragraph boxes} en anglais
+  ou \emph{parboxes} dans le jargon {\LaTeX}.}. %
+
+La commande de base pour créer une boîte verticale est:
+\begin{lstlisting}
+\parbox`\oarg{pos}\marg{largeur}\marg{texte}'
+\end{lstlisting}
+Ici, l'argument optionnel \meta{pos} permet d'ajuster l'alignement
+vertical de la boîte avec la ligne de base: \code{b} ou \code{t} selon
+que l'on souhaite aligner, respectivement, le bas ou le haut de la
+boîte avec la ligne de base. Par défaut, la boîte est centrée avec la
+ligne de base. Cet argument n'a aucun effet si la boîte est le seul
+élément de contenu du paragraphe.
+
+On remarquera que l'argument \meta{largeur} est ici obligatoire.
+Autrement dit, on doit nécessairement définir la largeur des boîtes
+verticales, un peu comme il faut bien définir la largeur de la page
+pour le texte normal.
+
+Les boîtes créées avec \cmd{\parbox} ne peuvent contenir de structures
+«complexes» comme des listes ou des tableaux. Parce que plus général,
+l'outil véritablement utile pour la création de boîtes verticales est
+l'environnement \Ie{minipage}. Cet environnement peut contenir à peu
+n'importe quel type de contenu. Comme son nom l'indique, c'est ni plus
+ni moins qu'une page miniature à l'intérieur de la page standard.
+
+La syntaxe de l'environnement \Ie{minipage} est la suivante:
+\begin{lstlisting}
+\begin{minipage}`\oarg{pos}\marg{largeur}'
+  `\meta{texte}'
+\end{minipage}
+\end{lstlisting}
+La signification des arguments \meta{largeur} et \meta{pos} est la
+même que pour la commande \cmd{parbox}.
+
+L'environnement \Ie{minipage} est souvent utilisé pour disposer des
+éléments de contenu de manière spécifique sur la page, notamment des
+tableaux ou des figures côte à côte ou en grille (voir
+l'\autoref{exemple:tableaux:grille} à la
+\autopageref{exemple:tableaux:grille}).
+
+\begin{exemple}
+  Le code ci-dessous
+\begin{lstlisting}
+\begin{minipage}[b]{0.3\textwidth}
+  La ligne inférieure de cette \emph{minipage} [...]
+\end{minipage}
+\hfill
+\parbox{0.3\textwidth}{le centre de cette boîte [...] }
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+  la ligne supérieure de cette \emph{minipage}. [...]
+\end{minipage}
+\end{lstlisting}
+  produit: \\[0.5\baselineskip]
+  \begin{minipage}{\textwidth}
+    \makebox[0pt][l]{\color{lightgray}\rule{\textwidth}{0.7pt}}\relax
+    \fbox{\begin{minipage}[b]{0.3\textwidth} La ligne inférieure de
+        cette \emph{minipage} est alignée avec
+      \end{minipage}} \hfill \fbox{\parbox{0.3\textwidth}{le centre de
+        cette boîte verticale, qui est à son tour alignée avec}}
+    \hfill \fbox{\begin{minipage}[t]{0.3\textwidth} la ligne
+        supérieure de cette \emph{minipage}. Le filet horizontal grisé
+        représente la ligne de base du paragraphe contenant les trois
+        boîtes.
+      \end{minipage}}
+  \end{minipage}
+  \qed
+\end{exemple}
+
+La commande \cmd{\hfill} utilisée entre les boîtes dans l'exemple
+indique à {\LaTeX} d'insérer de l'espace blanc entre les éléments de
+contenu de manière à remplir entièrement la ligne de texte. C'est une
+commande très utile pour disposer automatiquement des éléments à
+intervalles égaux sur la largeur du bloc de texte. Ainsi,
+\begin{lstlisting}
+\framebox[\textwidth]{gauche  \hfill droite}
+\end{lstlisting}
+produit \\[0.5\baselineskip]
+\framebox[\textwidth]{gauche \hfill droite} \\[0.5\baselineskip]
+alors que
+\begin{lstlisting}
+\framebox[\textwidth]{gauche \hfill centre \hfill droite.}
+\end{lstlisting}
+produit \\[0.5\baselineskip]
+\framebox[\textwidth]{gauche \hfill centre \hfill droite.}
+
+
+
+%%% Exercices: faire le contenu de 4.7.4 de Kopka et Daly (disposition
+%%% verticale des boîtes)
+
+\section{Boîtes de réglure}
+\label{sec:boites:rulebox}
+
+En imprimerie, une réglure est une ligne droite continue ou
+pointillée. Une ligne n'étant jamais rien d'autre qu'un rectangle
+plein, si mince fut-il, la réglure est le troisième type de
+boîte\footnote{%
+  \emph{Rule box}, en anglais} %
+dans {\LaTeX}.
+
+La commande
+\begin{lstlisting}
+\rule`\oarg{déplacement}\marg{largeur}\marg{hauteur}'
+\end{lstlisting}
+crée une réglure de dimensions \meta{largeur} $\times$ \meta{hauteur}.
+Par défaut, la réglure s'appuie sur la ligne de base. Le résultat de
+\begin{lstlisting}
+\rule{2cm}{6pt}
+\end{lstlisting}
+est donc une ligne pleine de $2$~cm de long et de $6$~points d'épais:
+\rule{2cm}{6pt}.
+
+L'argument optionnel \meta{déplacement} permet de déplacer
+verticalement la réglure au-dessus ou au-dessous de la ligne de base
+selon que \meta{déplacement} est positif ou négatif. Avec les deux
+commandes
+\begin{lstlisting}
+\rule[3pt]{2cm}{6pt}
+\rule[-3pt]{2cm}{6pt}
+\end{lstlisting}
+on crée respectivement les réglures \rule[3pt]{2cm}{6pt} et
+\rule[-3pt]{2cm}{6pt}.
+
+Un usage intéressant de la réglure consiste à faire croire à {\TeX}
+qu'une ligne est plus haute qu'il n'y parait en insérant dans celle-ci
+une réglure de largeur nulle. Par exemple, la distance entre
+\rule[-12pt]{0mm}{30pt}\relax la présente ligne et les autres du paragraphe est
+plus grande que la normale parce que nous y avons inséré une réglure
+invisible avec
+\begin{lstlisting}
+\rule[-12pt]{0mm}{30pt}
+\end{lstlisting}
+Ce truc est particulièrement utile pour augmenter la hauteur des
+lignes dans un tableau; voir la \autoref{sec:tableaux:tableaux}.
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% TeX-master: "formation_latex-partie_2"
+%%% coding: utf-8
+%%% End:

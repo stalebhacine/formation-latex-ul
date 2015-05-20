@@ -1,4 +1,4 @@
-\chapter{Boîtes, tableaux et figures}
+\chapter{Tableaux et figures}
 \label{chap:tableaux}
 
 Les tableaux et graphiques ne sont pas les éléments de texte les plus
@@ -7,253 +7,30 @@ brillent, ici, avec leurs interfaces graphiques permettant de composer
 un tableau ou un graphique simple pièce par pièce avec la souris.
 
 En revanche, pour ce type de contenu comme pour tout autre, {\LaTeX}
-fait exactement ce qu'on lui demande. À ce chapitre, les traitements
-de texte ne brillent plus! Si vous avez déjà eu de la difficulté à
-contrôler les bordures d'un tableau, la hauteur des lignes ou la
-largeur des colonnes, vous comprenez ce à quoi nous faisons référence.
+fait ce qu'on lui demande, sans tenter de deviner notre pensée ou,
+pire, de prétendre savoir mieux que nous ce que nous voulons faire. À
+ce chapitre, les traitements de texte ne brillent plus! Peut-être avez-vous
+déjà eu de la difficulté à contrôler les bordures d'un tableau, la
+hauteur des lignes ou la largeur des colonnes dans un traitement de
+texte. Voilà.
 
-Avant de discuter de la création ou de l'insertion de tableaux,
-graphiques et images, il convient ...
-
-
-\section{Boîtes}
-\label{sec:tableaux:boites}
-
-Il arrive que l'on doive traiter de manière spéciale une aire
-rectangulaire de texte; pour l'encadrer, la mettre en surbrillance ou
-la mettre en exergue, par exemple.
-
-Avec les traitements de texte, on aura souvent recours aux tableaux à
-de telles fins. Or, les tableaux devraient être réservés pour disposer
-de l'information sous forme de grille. Pour disposer et mettre en
-forme du tout autre type contenu se présentant sous forme
-rectangulaire, {\LaTeX} offre la solution plus générale des «boîtes».
-
-Il existe trois sortes de boîtes en {\LaTeX}: les boîtes horizontales
-dont le contenu est disposé exclusivement côte à côte; les boîtes
-verticales qui peu\-ent contenir plusieurs lignes de contenu; les
-boîtes de réglure pour former des lignes pleines de largeur et de
-hauteur quelconques.
-
-Il n'est pas inutile de savoir, au passage, que {\TeX} ne manipule que
-cela, des boîtes. Pour {\TeX}, chaque caractère, chaque lettre n'est
-qu'un rectangle d'une certaine largeur qui s'élève au-dessus de la
-ligne de base (les lignes d'une feuille lignée) et qui, parfois, se
-prolonge sous la ligne de base (pensons aux lettres \emph{p}, \emph{y}
-ou \emph{Q}). Les commandes et environnements présentés ci-dessous
-permettent simplement de créer d'autres boîtes dont le contrôle des
-dimensions et du contenu est laissé à l'usager.
-
-Une fois créée, une boîte ne peut être scindée en parties, notamment
-entre les lignes ou entre les pages.
-
-
-\subsection{Boîtes horizontales}
-\label{sec:tableaux:boites:lrbox}
-
-Le plus simple concept de boîte dans {\LaTeX} est celui de boîte
-«horizontale», c'est-à-dire dont le contenu est disposé latéralement
-de gauche à droite\footnote{%
-  D'où l'appellation \emph{LR (left-right) box} en anglais.}. %
-Le contenu est normalement du texte, mais conceptuellement ce pourrait
-être n'importe quoi, y compris d'autres boîtes.
-
-Les commandes de base pour créer des boîtes horizontales sont:
-\begin{lstlisting}
-\mbox`\marg{texte}'
-\fbox`\marg{texte}'
-\end{lstlisting}
-Elles produisent une boîte de la largeur précise de \meta{texte}. Avec
-la commande \cmd{\fbox}, le texte est au surplus \fbox{encadré}. En
-usage courant, la commande \cmd{\mbox} sert principalement à deux
-choses:
-\begin{enumerate}
-\item réunir en un bloc du texte que l'on ne veut pas voir scindé
-  entre les lignes ou entre les pages;
-\item \label{item:tableaux:mbox} créer une boîte vide avec
-  \verb=\mbox{}= afin de laisser croire à {\TeX} que du contenu
-  apparait à un endroit, sans toutefois qu'il n'occupe aucun espace.
-  %% ça prendrait un exemple de cela dans les exercices!
-\end{enumerate}
-
-Il existe également des versions plus générales des commandes
-\cmd{\mbox} et \cmd{\fbox}:
-\begin{lstlisting}
-\makebox`\oarg{largeur}\oarg{pos}\marg{texte}'
-\framebox`\oarg{largeur}\oarg{pos}\marg{texte}'
-\end{lstlisting}
-Les arguments optionnels \meta{largeur} et \meta{pos} déterminent
-respectivement la largeur de la boîte et la position du texte
-dans la boîte. Les valeurs possibles de \meta{pos} sont: \code{l} pour
-du texte aligné à gauche, \code{r} pour du texte aligné à droite et
-\code{c} (la valeur par défaut) pour du texte centré. Ainsi, la commande
-\begin{lstlisting}
-\framebox[3.5cm][l]{aligné à gauche}
-\end{lstlisting}
-produit \framebox[3.5cm][l]{aligné à gauche}, alors que
-\begin{lstlisting}
-\makebox[3.5cm]{centré}
-\end{lstlisting}
-produit \makebox[3.5cm]{centré}.
-
-\subsection{Boîtes verticales}
-\label{sec:tableaux:boites:parbox}
-
-Les boîtes verticales se distinguent des boîtes horizontales par le
-fait qu'elles peuvent contenir plusieurs lignes de contenu empilées
-les unes au-dessus des autres. Lorsque le contenu en question est du
-texte, on obtient des paragraphes\footnote{%
-  D'où l'appellation, cette fois, de \emph{paragraph boxes} en anglais
-  ou \emph{parboxes} dans le jargon {\LaTeX}.}. %
-
-La commande de base pour créer une boîte verticale est:
-\begin{lstlisting}
-\parbox`\oarg{pos}\marg{largeur}\marg{texte}'
-\end{lstlisting}
-Ici, l'argument optionnel \meta{pos} permet d'ajuster l'alignement
-vertical de la boîte avec la ligne de base: \code{b} ou \code{t} selon
-que l'on souhaite aligner, respectivement, le bas ou le haut de la
-boîte avec la ligne de base. Par défaut, la boîte est centrée avec la
-ligne de base. Cet argument n'a aucun effet si la boîte est le seul
-élément de contenu du paragraphe.
-
-On remarquera que l'argument \meta{largeur} est ici obligatoire.
-Autrement dit, on doit nécessairement définir la largeur des boîtes
-verticales, un peu comme il faut bien définir la largeur de la page
-pour le texte normal.
-
-Les boîtes créées avec \cmd{\parbox} ne peuvent contenir de structures
-«complexes» comme des listes ou des tableaux. Parce que plus général,
-l'outil véritablement utile pour la création de boîtes verticales est
-l'environnement \Ie{minipage}. Cet environnement peut contenir à peu
-n'importe quel type de contenu. Comme son nom l'indique, c'est ni plus
-ni moins qu'une page miniature à l'intérieur de la page standard.
-
-La syntaxe de l'environnement \Ie{minipage} est la suivante:
-\begin{lstlisting}
-\begin{minipage}`\oarg{pos}\marg{largeur}'
-  `\meta{texte}'
-\end{minipage}
-\end{lstlisting}
-
-L'environnement \Ie{minipage} est ouvent utilisé pour disposer des
-éléments de contenu de manière spécifique sur la page, notamment des
-tableaux ou des figures côte-à-côte ou en grille.
-%%% Exemple plus loin! %%%
-
-\begin{exemple}
-  Le code ci-dessous
-\begin{lstlisting}
-\begin{minipage}[b]{0.3\textwidth}
-  La ligne inférieure de cette \emph{minipage} [...]
-\end{minipage}
-\hfill
-\parbox{0.3\textwidth}{le centre de cette boîte [...] }
-\hfill
-\begin{minipage}[t]{0.3\textwidth}
-  la ligne supérieure de cette \emph{minipage}. [...]
-\end{minipage}
-\end{lstlisting}
-  produit: \\[0.5\baselineskip]
-  \begin{minipage}{\textwidth}
-    \makebox[0pt][l]{\color{lightgray}\rule{\textwidth}{0.7pt}}\relax
-    \fbox{\begin{minipage}[b]{0.3\textwidth} La ligne inférieure de
-        cette \emph{minipage} est alignée avec
-      \end{minipage}} \hfill \fbox{\parbox{0.3\textwidth}{le centre de
-        cette boîte verticale, qui est à son tour alignée avec}}
-    \hfill \fbox{\begin{minipage}[t]{0.3\textwidth} la ligne
-        supérieure de cette \emph{minipage}. Le filet horizontal grisé
-        représente la ligne de base du paragraphe contenant les trois
-        boîtes.
-      \end{minipage}}
-  \end{minipage}
-  \qed
-\end{exemple}
-
-La commande \cmd{\hfill} utilisée entre les boîtes dans l'exemple
-indique à {\LaTeX} d'insérer de l'espace blanc entre les éléments de
-contenu de manière à remplir entièrement la ligne de texte. C'est une
-commande très utile pour disposer automatiquement des éléments à
-intervalles égaux sur la largeur du bloc de texte. Ainsi,
-\begin{lstlisting}
-gauche  \hfill droite
-\end{lstlisting}
-produit \\[0.5\baselineskip]
-\framebox[\textwidth]{gauche \hfill droite} \\[0.5\baselineskip]
-alors que
-\begin{lstlisting}
-gauche \hfill centre \hfill droite.
-\end{lstlisting}
-produit \\[0.5\baselineskip]
-\framebox[\textwidth]{gauche \hfill centre \hfill droite.}
-
-\begin{rem}
-  Dans les exemples de boîtes ci-dessus, nous avons encadré celles-ci
-  afin de les mettre en évidence. Le code pour créer les cadres
-  n'apparait pas dans les extraits de code source.
-\end{rem}
-
-
-%%% Exercices: faire le contenu de 4.7.4 de Kopka et Daly (disposition
-%%% verticale des boîtes)
-
-\subsection{Boîtes de réglure}
-\label{sec:tableaux:boites:rulebox}
-
-En imprimerie, une réglure est une ligne droite continue ou
-pointillée. Une ligne n'étant jamais rien d'autre qu'un rectangle
-plein, si mince fut-il, la réglure est le troisième type de
-boîte\footnote{%
-  \emph{Rule box}, en anglais} %
-dans {\LaTeX}.
-
-La commande
-\begin{lstlisting}
-\rule`\oarg{déplacement}\marg{largeur}\marg{hauteur}'
-\end{lstlisting}
-crée une réglure de dimensions \meta{largeur} $\times$ \meta{hauteur}.
-Par défaut, la réglure s'appuie sur la ligne de base. Le résultat de
-\begin{lstlisting}
-\rule{2cm}{6pt}
-\end{lstlisting}
-est donc une ligne pleine de $2$~cm de long et $6$~points d'épais:
-\rule{2cm}{6pt}.
-
-L'argument optionnel \meta{déplacement} permet de déplacer
-verticalement la réglure au-dessus ou au-dessous de la ligne de base
-selon que \meta{déplacement} est positif ou négatif. Avec les deux
-commandes
-\begin{lstlisting}
-\rule[3pt]{2cm}{6pt}
-\rule[-3pt]{2cm}{6pt}
-\end{lstlisting}
-on crée respectivement les réglures \rule[3pt]{2cm}{6pt} et
-\rule[-3pt]{2cm}{6pt}.
-
-Un usage intéressant de la réglure consiste à faire croire à {\TeX}
-qu'une ligne est plus haute qu'il n'y parait en insérant dans celle-ci
-une réglure de largeur nulle. Par exemple, la distance entre
-\rule[-8pt]{0mm}{24pt}\relax la présente ligne et les autres du paragraphe est
-plus grande que la normale parce que nous y avons inséré une réglure
-invisible avec
-\begin{lstlisting}
-\rule[-8pt]{0mm}{24pt}
-\end{lstlisting}
-Ce truc est particulièrement utile pour augmenter la hauteur des
-lignes dans un tableau; voir la \autoref{sec:tableaux:tableaux}.
-
+Avant de discuter de la création ou de l'insertion de tableaux, de
+graphiques et d'images, il convient de présenter très succinctement
+quelques règles à suivre pour concevoir des tableaux clairs et faciles
+à consulter.
 
 
 \section{De la conception de beaux tableaux}
 \label{sec:tableaux:booktabs}
 
 On utilise les tableaux pour disposer de l'information sous forme de
-grille. Ainsi, le premier réflexe pour les mettre en forme
-consiste-t-il souvent à mettre en évidence cette grille par le biais
-de filets\footnote{%
-  Communément appelés «lignes» dans le langage courant ou «bordures»
-  dans les logiciels de traitement de texte. Dans la documentation en
-  anglais, on parle de \emph{rules}.} %
+grille. Par conséquent, le premier réflexe pour les mettre en forme
+consiste souvent à mettre en évidence cette grille par le biais de
+filets\footnote{%
+  Terme typographique pour ce qui est communément appelés des «lignes»
+  dans le langage courant ou des «bordures» dans les logiciels de
+  traitement de texte. Dans la documentation en anglais, on parle de
+  \emph{rules}.} %
 horizontaux et verticaux.
 
 C'est une mauvaise idée, une pratique à éviter. Vraiment!
@@ -303,7 +80,7 @@ de filets verticaux.
 \end{center}
 
 La seconde version n'est-elle pas la plus aérée et la plus facile à
-consulter? Vous constatez que, contrairement à ce que l'on pourrait
+consulter? N'est-ce pas que, contrairement à ce que l'on pourrait
 penser, les filets verticaux ne sont pas du tout requis pour bien
 délimiter les colonnes?
 
@@ -312,13 +89,14 @@ fonctionnalités à {\LaTeX} pour améliorer la qualité typographique des
 tableaux. Dans la documentation du paquetage, son auteur énonce
 quelques règles à suivre pour la mise en forme des tableaux:
 \begin{enumerate}
-\item ne \emph{jamais} utiliser de filets verticaux. Si l'information du côté
-  gauche du tableau semble si différente de celle du côté droit
-  qu'un filet apparait vertical nécessaire, scinder simplement
-  l'information dans deux tableaux;
+\item ne \emph{jamais} utiliser de filets verticaux. Si l'information
+  du côté gauche du tableau semble si différente de celle du côté
+  droit qu'un filet vertical apparaît absolument nécessaire, scinder
+  simplement l'information dans deux tableaux;
 \item ne jamais utiliser de filets doubles;
-\item placer les unités dans le titre de la colonne plutôt qu'après
-  chaque valeur dans le corps du tableau;
+\item placer les unités (\$, cm, {\textdegree}C, \dots) dans le titre
+  de la colonne plutôt qu'après chaque valeur dans le corps du
+  tableau;
 \item toujours inscrire un chiffre du côté gauche du séparateur
   décimal: $0,1$ et non $,1$ (pratique plus répandue en anglais, où le
   séparateur décimal est le point);
@@ -340,11 +118,11 @@ nécessaire de charger le paquetage avec ces deux classes.
 \section{Tableaux}
 \label{sec:tableaux:tableaux}
 
-Peu importe l'outil utilisé, la création d'un tableau requiert de
-préciser à l'ordinateur le nombre de colonnes que contiendra le
-tableau, l'entête du tableau si nécessaire et le contenu des
-différentes cellules. Cette dernière étape nécessite à son tour une
-convention pour pour identifier les passages à la colonne suivante
+Peu importe l'outil informatique utilisé, la création d'un tableau
+requiert toujours de préciser à l'ordinateur le nombre de colonnes que
+contiendra le tableau, l'entête du tableau, le as échéant, et le contenu
+des différentes cellules. Cette dernière étape nécessite à son tour
+une convention pour indiquer les passages à la colonne suivante
 ainsi que le passage à la ligne suivante.
 
 On crée des tableaux dans {\LaTeX} principalement avec les
@@ -362,8 +140,8 @@ La signification des arguments\footnote{%
   la ligne de base externe.} %
 est la suivante. Nous ne traitons ici que les options les plus souvent
 employées. Pour une liste plus exhaustive, consulter la documentation
-de la classe \class{memoir} (chapitre 11) ou \cite{wikilivres:latex}
-(section \href{http://fr.wikibooks.org/wiki/LaTeX/Tableaux}{Tableaux}).
+de la classe \class{memoir} (chapitre 11) ou %
+\cite[section \href{http://fr.wikibooks.org/wiki/LaTeX/Tableaux}{Tableaux}]{wikilivres:latex}.
 
 \begin{list}{}{%
     \setlength{\labelsep}{1.5ex}
@@ -382,7 +160,7 @@ de la classe \class{memoir} (chapitre 11) ou \cite{wikilivres:latex}
 
   La largeur du tableau est généralement exprimée en fraction de la
   largeur du bloc de texte. Celle-ci est accessible avec la commande
-  \verb=\textwidth=. Par exemple, les déclarations suivantes
+  \cs{textwidth}. Par exemple, les déclarations suivantes
   définissent respectivement des tableaux occupant toute la largeur
   d'une page et 80~\% de la largeur de la page:
 \begin{lstlisting}
@@ -481,6 +259,7 @@ La hauteur des lignes d'un tableau est déterminée automatiquement en
 fonction de contenu de celles-ci.
 
 \begin{exemple}
+  \label{exemple:tableaux:tabular}
   On reprend le contenu ci-dessus pour en faire un tableau d'une
   largeur ajustée automatiquement au contenu. La première colonne est
   alignée à gauche et toutes les autres à droite.
@@ -514,7 +293,7 @@ fonction de contenu de celles-ci.
   pour combler l'espace nécessaire. De plus, on modifie l'entête de la
   première colonne avec la commande \cmd{\multicolumn} afin de centrer
   le titre. Enfin, on augmente la hauteur de l'entête à l'aide d'une
-  réglure invisible (\autoref{sec:tableaux:boites:rulebox}).
+  réglure invisible (\autoref{sec:boites:rulebox}).
 \begin{lstlisting}
 \begin{tabularx}{\textwidth}{Xrrr}
   \toprule
@@ -585,70 +364,24 @@ de la figure sera le même que celle du document.
 
 Pour tracer une figure avec l'environnement \Ie{picture}, on crée
 d'abord une grille (invisible) d'une dimension quelconque dans l'unité
-de mensure de son choix (autrement dit: les lignes de la grille
+de mesure de son choix (autrement dit: les lignes de la grille
 peuvent être distantes aussi bien de \code{1pt} que de \code{1cm}).
 Ensuite, on dispose des éléments sur la grille en donnant les
-coordonnées du point de départ et, le cas échéant, les dimensions de
+coordonnées du point d'ancrage et, le cas échéant, les dimensions de
 l'élément, la distance à parcourir ou quelqu'autre information pour
 compléter l'élément. C'est souvent plus simple d'esquisser d'abord un modèle au
 crayon sur du papier quadrillé.
 
-Le code commenté et la figure correspondante ci-dessous  illustrent
-les idées principales. L'annexe~D de la documentation de la classe
-\class{memoir} fournit une bonne introduction à \Ie{picture}.
+La figure ci-dessous illustre ce qu'il est possible de faire avec
+l'environnement \Ie{picture}. La consultation du code commenté correspondant devrait
+permettre de comprendre les principes de base de la création de
+figures. Autrement, l'annexe~D de la documentation de la classe
+\class{memoir} (\fichier{memman.pdf} dans {\TeX}~Live ou %
+  \href{http://texdoc.net/pkg/memoir}{via TeXdoc Online}) %
+fournit une bonne introduction à \Ie{picture}.
 
-\begingroup
-  \small
-\begin{lstlisting}
-\setlength{\unitlength}{7mm}  % unité de mesure
-\begin{picture}(15,9)         % grille 15 x 9
-  %%% On trace d'abord toutes les boîtes
-
-  %% Rectangle "L'environnement picture"
-  \put(0,7){%                 % point de départ (0, 7)
-    \framebox(5,1.5){%        % rectangle 5 x 1,5 cadre plein
-      \begin{minipage}{35mm}  % contenu de la boîte
-        \centering L'environnement \\ \texttt{picture}
-      \end{minipage}}}
-
-  %% Cercles "convient" et "bien"
-  \put(1,4.5){\circle{2}}                     % cercle de diamètre 2
-  \put(1,4.5){\makebox(0,0){\small convient}} % texte centré
-  \put(4,3){\circle{2}}                       % autre cercle
-  \put(4,3){\makebox(0,0){\small bien}}       % texte
-
-  %% Texte "pour les diagrammes"
-  \put(8.5,5.7){pour les diagrammes}
-
-  %% Rectangle pointillé "et autres figures simples."
-  \thicklines                     % lignes grasses
-  \put(8,1){\dashbox{0.2}(7,1.5){ % rectangle 7 x 1,5 cadre pointillé
-      et autres figures simples.}}
-
-  %%% On trace ensuite les lignes entre les boîtes
-
-  %% De "L'environnement picture" à "convient"
-  \thinlines                    % retour aux lignes minces
-  \put(1,7){\vector(0,-1){1.5}} % flèche vers le bas de longueur 1,5
-                                % [couple (0,-1) donne la pente]
-
-  %% De "pour les diagrammes" à "et autres figures simples."
-  \put(14,5.75){\circle*{0.1}}  % petit cercle plein
-  \put(14,5.75){\vector(-1,-1){3.25}} % flèche vers sud-ouest
-                                      % [3.25 est déplacement hor.]
-
-  %% Entre les deux cercles; requiert deux segments
-  \thicklines                   % lignes grasses
-  \put(1,3.5){\line(0,-1){0.5}} % courte ligne sans flèche
-  \put(1,3){\vector(1,0){2}}    % suite de flèche entre les cercles
-
-  %% Entre "bien" et "pour les diagrammes"; requiert deux courbes
-  \qbezier(4,2)(5.5,-0.5)(7,4.25)  % deux courbes de Bézier bout à
-  \qbezier(7,4.25)(8.5,9)(10,6.5)  % bout pour produire courbe en S
-  \put(10,6.5){\vector(2,-3){0.1}} % pointe de flèche seule
-\end{picture}
-\end{lstlisting}
-\endgroup
+(Nous avons tracé la grille en filigrane dans la figure afin de
+faciliter la comparaison entre le code et le résultat.)
 
 \setlength{\unitlength}{7mm}
 \begin{center}
@@ -692,8 +425,61 @@ les idées principales. L'annexe~D de la documentation de la classe
   \end{picture}
 \end{center}
 
-(Nous avons tracé la grille en filigrane dans la figure afin de
-faciliter la comparaison entre le code et le résultat.)
+\begingroup
+  \small
+\begin{lstlisting}
+\setlength{\unitlength}{7mm}  % unité de mesure
+\begin{picture}(15,9)         % grille 15 x 9
+  %%%
+  %%% On trace d'abord toutes les boîtes
+  %%%
+  %% Rectangle "L'environnement picture"
+  \put(0,7){%                 % point d'ancrage (0, 7)
+    \framebox(5,1.5){%        % rectangle 5 x 1,5 cadre plein
+      \begin{minipage}{35mm}  % contenu de la boîte
+        \centering L'environnement \\ \texttt{picture}
+      \end{minipage}}}
+
+  %% Cercles "convient" et "bien"
+  \put(1,4.5){\circle{2}}                     % cercle de diamètre 2
+  \put(1,4.5){\makebox(0,0){\small convient}} % texte centré
+  \put(4,3){\circle{2}}                       % autre cercle
+  \put(4,3){\makebox(0,0){\small bien}}       % texte
+
+  %% Texte "pour les diagrammes"
+  \put(8.5,5.7){pour les diagrammes} % point d'ancrage (8,5, 5,7)
+
+  %% Rectangle pointillé "et autres figures simples."
+  \thicklines                     % lignes grasses
+  \put(8,1){\dashbox{0.2}(7,1.5){ % rectangle 7 x 1,5 cadre pointillé
+      et autres figures simples.}}
+
+  %%%
+  %%% On trace ensuite les lignes entre les boîtes
+  %%%
+  %% De "L'environnement picture" à "convient"
+  \thinlines                    % retour aux lignes minces
+  \put(1,7){\vector(0,-1){1.5}} % flèche vers le bas de longueur 1,5
+                                % [couple (0,-1) donne la pente]
+
+  %% De "pour les diagrammes" à "et autres figures simples."
+  \put(14,5.75){\circle*{0.1}}  % petit cercle plein
+  \put(14,5.75){\vector(-1,-1){3.25}} % flèche vers sud-ouest
+                                      % [3.25 est déplacement hor.]
+
+  %% Entre les deux cercles; requiert deux segments
+  \thicklines                   % lignes grasses
+  \put(1,3.5){\line(0,-1){0.5}} % courte ligne vert. sans flèche
+  \put(1,3){\vector(1,0){2}}    % flèche horizontale
+
+  %% Entre "bien" et "pour les diagrammes"; requiert deux courbes
+  \qbezier(4,2)(5.5,-0.5)(7,4.25)  % deux courbes de Bézier bout à
+  \qbezier(7,4.25)(8.5,9)(10,6.5)  % bout pour produire courbe en S
+  \put(10,6.5){\vector(2,-3){0.1}} % pointe de flèche seule
+\end{picture}
+\end{lstlisting}
+\endgroup
+
 
 Il existe quelques outils pour tracer des figures plus complexes
 directement avec {\TeX}, dont PSTricks \citep{pstricks}
@@ -727,8 +513,7 @@ de redimensionner une image, de la faire pivoter ou encore de n'en
 importer qu'une partie. L'exemple ci-dessous présente les principales
 fonctionnalités; consulter la documentation %
 (\fichier{grfguide.pdf} dans {\TeX}~Live ou
-  \href{http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf}{%
-    directement dans CTAN}) %
+  \href{http://texdoc.net/pkg/graphics/}{via TeXdoc Online}) %
 pour les détails et d'autres options.
 
 \begin{exemple}
@@ -749,23 +534,25 @@ pour les détails et d'autres options.
   \code{height}:
   \begin{trivlist}
   \item %
-    \begin{minipage}[t]{0.55\linewidth}
+    \begin{minipage}[t]{0.62\linewidth}
 \begin{lstlisting}
+%% réduction à 40 % de la taille réelle
 \includegraphics[scale=0.4]{ul_p}
 \end{lstlisting}
     \end{minipage}
     \hfill
-    \begin{minipage}[t]{0.4\linewidth}
+    \begin{minipage}[t]{0.35\linewidth}
       \mbox{}\\ \includegraphics[scale=0.4]{ul_p}
     \end{minipage}
   \item %
-    \begin{minipage}[t]{0.55\linewidth}
+    \begin{minipage}[t]{0.62\linewidth}
 \begin{lstlisting}
+%% réduction à exactement 15 mm de haut
 \includegraphics[height=15mm]{ul_p}
 \end{lstlisting}
     \end{minipage}
     \hfill
-    \begin{minipage}[t]{0.4\linewidth}
+    \begin{minipage}[t]{0.35\linewidth}
       \mbox{}\\ \includegraphics[height=15mm]{ul_p}
     \end{minipage}
   \end{trivlist}
@@ -780,6 +567,7 @@ pour les détails et d'autres options.
   \item %
     \begin{minipage}[t]{0.7\linewidth}
 \begin{lstlisting}
+%% réduction à 25 % et rotation à 45 degrés
 \includegraphics[angle=45,scale=0.25]{ul_p}
 \end{lstlisting}
     \end{minipage}
@@ -798,6 +586,7 @@ pour les détails et d'autres options.
   \item %
     \begin{minipage}[t]{0.7\linewidth}
 \begin{lstlisting}
+%% extraction du logo seul et réduction
 \includegraphics[bb=0 0 102 129,clip=true,
   scale=0.4]{ul_p}
 \end{lstlisting}
@@ -912,9 +701,8 @@ les moteurs pdf{\LaTeX} ou {\XeLaTeX}, le très pratique paquetage
 \includepdf`\oarg{options}\marg{fichier}'
 \end{lstlisting}
 Les \meta{options} sont trop nombreuses pour les présenter ici;
-consulter la documentation (\fichier{pdfpages.pdf} dans {\TeX}~Live ou
-  \href{http://mirrors.ctan.org/macros/latex/contrib/pdfpages/pdfpages.pdf}{%
-    directement dans CTAN}).
+consulter la documentation (\fichier{pdfpages.pdf} dans {\TeX}~Live ou %
+  \href{http://texdoc.net/pkg/pdfpages/}{via TeXdoc Online}).
 
 \begin{exemple}
   Les couvertures avant et arrière du présent document ont été
@@ -934,32 +722,269 @@ consulter la documentation (\fichier{pdfpages.pdf} dans {\TeX}~Live ou
 \section{Éléments flottants}
 \label{sec:tableaux:floats}
 
-Les tableaux et figures sont des éléments de contenu qui occupent
+Dans la terminologie de {\LaTeX}, un élément flottant\footnote{%
+  \emph{Float} en anglais.} %
+est un bloc de contenu (une boîte, en fait) que le logiciel pourra
+positionner sur la page et dans le document plus ou moins
+automatiquement en fonction d'un algorithme prédéfini. C'est une
+fonctionnalité très évoluée de {\LaTeX}.
+
+Pourquoi voudrait-on laisser {\LaTeX} décider où un élément de contenu
+devrait se retrouver dans notre document? D'abord et avant tout pour
+les tableaux et les figures.
+
+En effet, les tableaux et les figures sont des éléments de contenu qui occupent
 souvent beaucoup d'espace vertical dans la page. S'il ne reste plus
-assez de place pour afficher un tel élément sur une page, {\TeX} devra
-le déplacer au début de page suivante et cela risque de produire une
+assez de place pour y afficher un tel élément, {\LaTeX} devra
+le déplacer au début de la page suivante et cela risque de produire une
 page inesthétique car insuffisamment remplie\footnote{%
   \emph{Underful \cs{vbox}} dans le jargon de {\TeX}.}. %
+Les traitements de texte génèrent sans rechigner des pages
+à demi remplies dans de telles situations.
 
-Pour éviter cela, il serait souhaitable que {\TeX} puisse insérer un
-tableau à l'endroit indiqué dans le code source s'il y a suffisamment
-d'espace sur la page pour l'accueillir
+En définissant un élément comme flottant, on laisse la possibilité à
+{\LaTeX} de le disposer au meilleur endroit en fonction de la taille
+de l'élément, du contenu du document et de diverses règles
+typographiques.
+
+On crée des éléments flottants avec les environnements \Ie{table}
+et \Ie{figure}:
+\begin{lstlisting}
+\begin{table}`\oarg{pos}'  `\textit{tableau}' \end{table}
+\begin{figure}`\oarg{pos}' `\textit{figure}' \end{figure}
+\end{lstlisting}
+Ci-dessus, \meta{tableau} et \meta{figure} représentent le code source
+d'un tableau ou d'une figure avec possiblement une commande
+\cmd{caption}, tel que traité plus loin.
+
+L'argument optionnel \meta{pos} permet d'indiquer à {\LaTeX}
+la ou les positions \emph{souhaitées} pour le tableau ou la figure dans la page.
+Lorsqu'il est question d'éléments flottants, il est très difficile de donner des
+ordres fermes à {\LaTeX} et l'effet de l'argument \meta{pos} est
+souvent déconcertant. Aussi vaut-il souvent mieux ne rien indiquer et
+laisser {\LaTeX} faire à sa guise. Le résultat demeure assez
+prévisible puisque {\LaTeX} tâchera d'insérer l'élément flottant dans
+le document \emph{dès que possible} sous réserve des conditions
+suivantes:
+\begin{itemize}
+\item l'élément flottant ne peut apparaître dans le document avant la
+  page où l'élément est défini;
+\item l'élément sera placé de préférence dans le haut de la page
+  courante, puis dans le bas et enfin sur une page séparée ne pouvant
+  contenir que des éléments flottants, mais pas de texte.
+\end{itemize}
+
+Si la décision de {\LaTeX} ne convient pas, il est possible de
+l'infléchir avec une combinaison d'une ou plusieurs des lettres
+suivantes dans l'argument \meta{pos};
+\begin{description}
+\item[\normalfont\code{b}] placer l'élément au bas (\emph{bottom}) de la page;
+\item[\normalfont\code{h}] placer l'élément ici (\emph{here}), à
+  l'endroit où il est défini dans le code source;
+\item[\normalfont\code{p}] placer l'élément sur une page séparée;
+\item[\normalfont\code{t}] placer l'élément au haut (\emph{top}) de la page;
+\item[\normalfont\code{!}] essayer plus fort de placer l'élément à
+  l'endroit spécifié dans le reste de l'argument.
+\end{description}
+La valeur par défaut de l'argument \meta{pos} est \code{tbp}. La
+section 10.4 de la classe \class{memoir} (\fichier{memman.pdf} dans
+{\TeX}~Live ou %
+  \href{http://texdoc.net/pkg/memoir/}{via TeXdoc Online}) %
+explique plus en détail la signification des valeurs ci-dessus. Le
+lecteur qui voudrait vraiment \emph{tout} savoir sur la disposition des
+éléments flottants pourra consulter \cite{Mittelbach:floats:2014}.
+
+\begin{exemple}
+  On reprend le tableau de l'\autoref{exemple:tableaux:tabular}, mais cette
+  fois défini à l'intérieur d'un environnement \Ie{table}:
+\begin{lstlisting}
+\begin{table}
+  \centering
+  \begin{tabular}{lrrr}
+    \toprule
+    Produit & Quantité & Prix unitaire (\$) & Prix (\$) \\
+    \midrule
+    Vis à bois    & 2 & 9,90 & 19,80 \\
+    Clous vrillés & 5 & 4,35 & 21,75 \\
+    \midrule
+    TOTAL         & 7 &      & 41,55 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\end{lstlisting}
+  On voit que {\LaTeX} a automatiquement placé le tableau au haut de
+  la présente page.
+  \begin{table}
+    \centering
+    \begin{tabular}{lrrr}
+      \toprule
+      Produit & Quantité & Prix unitaire (\$) & Prix (\$) \\
+      \midrule
+      Vis à bois    & 2 & 9,90 & 19,80 \\
+      Clous vrillés & 5 & 4,35 & 21,75 \\
+      \midrule
+      TOTAL         & 7 &      & 41,55 \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+  \qed
+\end{exemple}
+
+Dans un document soigné, tout tableau et toute figure devrait
+comporter une légende ainsi qu'un numéro afin de pouvoir les
+annoncer et y faire référence dans le texte («comme l'illustre la
+figure~3\dots»). Cela
+permet de guider le lecteur au fil de sa lecture et de construire une
+liste des tableaux et des figures\footnote{%
+  Obtenues respectivement avec \cmd{\listoftables} et
+\cmd{\listoffigures} \citep[section~3]{UL:latex:1}.} %
+dans les pages liminaires d'un long document.
+
+Pour ajouter une légende à un tableau ou une figure, il suffit
+d'utiliser à l'intérieur des environnements \Ie{table} et \Ie{figure}
+la commande
+\begin{lstlisting}
+\caption`\oarg{texte\_court}\marg{texte}'
+\end{lstlisting}
+où \meta{texte} est le texte de la légende. Si celui-ci est long
+(plus d'une ligne), on peut en fournir une version abrégée dans
+l'argument optionnel \meta{texte\_court}. C'est cette version abrégée
+qui sera utilisée dans la liste des tableaux ou dans la liste des
+figures.
+
+La commande \cmd{\caption} insère,  à l'endroit où elle
+apparait dans l'environnement, une légende de la forme «\textsc{Tableau}
+\emph{n}: \meta{texte}» pour un tableau ou «\textsc{Figure}
+\emph{n}: \meta{texte}» pour une figure. Le texte de la légende est
+centré sur la page lorsqu'il fait moins d'une ligne; dans le cas contraire il est disposé
+comme un paragraphe normal.
+
+Pour faire référence à un tableau ou à une figure dans le texte, il
+faut utiliser le système de renvois automatiques de {\LaTeX}
+\citep[section~4]{UL:latex:1}. On attribue une étiquette à l'élément
+flottant en plaçant la commande \cmd{\label} dans le texte de la
+commande \cmd{\caption} ou dans son voisinage immédiat. Les commandes
+\cmd{\ref} ou \cmd{\autoref} servent ensuite à insérer des renvois dans
+le texte.
+
+L'exemple suivant présente finalement la recette complète pour composer
+un tableau et une figure dans {\LaTeX}, légende et renvoi inclus.
+
+\begin{exemple}
+  Attention, exemple récursif: son texte constitue lui-même un
+  exemple. Le code source de la \autoref{fig:tableaux:captions} crée
+  le \autoref{tab:tableaux:captions}. La figure elle-même est composée
+  avec le code suivant:
+\begin{lstlisting}
+  \begin{figure}
+    [...]
+    \caption{Code source pour créer le \autoref{tab:[...]}}
+    \label{fig:[...]}
+  \end{figure}
+\end{lstlisting}
+
+  \begin{figure}
+\begin{lstlisting}
+\begin{table}
+  \centering
+  \caption{Tableau correspondant au code
+    de la \autoref{fig:[...]}}
+  \label{tab:[...]}
+  \begin{tabular}{lrrr}
+    \toprule
+    Produit & Quantité & Prix unitaire (\$) & Prix (\$) \\
+    \midrule
+    Vis à bois    & 2 & 9,90 & 19,80 \\
+    Clous vrillés & 5 & 4,35 & 21,75 \\
+    \midrule
+    TOTAL         & 7 &      & 41,55 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\end{lstlisting}
+    \caption{Code source pour créer le \autoref{tab:tableaux:captions}}
+    \label{fig:tableaux:captions}
+  \end{figure}
+  \begin{table}
+    \centering
+    \caption{Tableau correspondant au code de la \autoref{fig:tableaux:captions}}
+    \label{tab:tableaux:captions}
+    \begin{tabular}{lrrr}
+      \toprule
+      Produit & Quantité & Prix unitaire (\$) & Prix (\$) \\
+      \midrule
+      Vis à bois    & 2 & 9,90 & 19,80 \\
+      Clous vrillés & 5 & 4,35 & 21,75 \\
+      \midrule
+      TOTAL         & 7 &      & 41,55 \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+  \qed
+\end{exemple}
+
+Les environnements \Ie{table} et \Ie{figure} créent des éléments
+flottants qui, par ailleurs, sont des boîtes verticales standards
+(\autoref{sec:boites:parbox}). Il est donc permis d'y mettre à peu
+près n'importe quoi, mais surtout plus d'un tableau ou plus d'une
+figure (ou même une combinaison des deux). Les environnements
+\Ie{minipage} se revèlent alors particulièrement utiles pour disposer
+les éléments de contenu dans la boîte.
+
+\begin{exemple}
+  \label{exemple:tableaux:grille}
+  Le code ci-dessous démontre comment disposer quatre images sous
+  forme de grille $2 \times 2$ dans une même figure flottante à l'aide
+  de boîtes verticales créées avec l'environnement \Ie{minipage}. On
+  pourrait faire de même avec des tableaux.
+
+  Dans la \autoref{fig:tableaux:grille} correspondant au code, nous
+  avons indiqué en grisé les limites des boîtes verticales.
+\begin{lstlisting}
+\begin{figure}
+  \begin{minipage}{0.45\linewidth}
+    \includegraphics[scale=0.4]{ul_p}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \reflectbox{\includegraphics[scale=0.4]{ul_p}}
+  \end{minipage}
+  \newline
+  \begin{minipage}{0.45\linewidth}
+    \includegraphics[scale=0.4,angle=45]{ul_p}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \reflectbox{\includegraphics[scale=0.4,angle=45]{ul_p}}
+  \end{minipage}
+\end{figure}
+\end{lstlisting}
+  \begin{figure}
+    \fcolorbox{lightgray}{white}{\begin{minipage}{0.45\linewidth}
+      \includegraphics[scale=0.4]{ul_p}
+    \end{minipage}}
+    \hfill
+    \fcolorbox{lightgray}{white}{\begin{minipage}{0.45\linewidth}
+      \reflectbox{\includegraphics[scale=0.4]{ul_p}}
+    \end{minipage}}
+    \newline
+    \fcolorbox{lightgray}{white}{\begin{minipage}{0.45\linewidth}
+      \includegraphics[scale=0.4,angle=45]{ul_p}
+    \end{minipage}}
+    \hfill
+    \fcolorbox{lightgray}{white}{\begin{minipage}{0.45\linewidth}
+      \reflectbox{\includegraphics[scale=0.4,angle=45]{ul_p}}
+    \end{minipage}}
+  \caption{Exemple de disposition de plusieurs graphiques dans une
+    même figure flottante}
+  \label{fig:tableaux:grille}
+  \end{figure}
+  \qed
+\end{exemple}
 
 
-De plus, tout tableau et toute figure dans un document soigné devrait
-comporter un titre/légende/description ainsi qu'un numéro afin de
-pouvoir y faire référence dans le texte («comme l'illustre la
-figure~3\dots»).
+%% exercice: subcaptions
 
-fonctionnalité très élaborée de LaTeX
-
-
-éléments flottants
-conseils de booktabs
-tableaux
-figures (insertion de graphiques (Sweave), mention de picture)
-
-LATEX offre à ses valeureux utilisateurs la possibilité d'utiliser des environnements flottants. Ces environnements ont la particularité de rendre « flottants » leur contenu. C'est-à-dire que LATEX choisit à partir d'un algorithme qui tient compte d'un certain nombre de paramètres, la position de l'environnement dans le document.
 
 %%% Local Variables:
 %%% mode: latex
