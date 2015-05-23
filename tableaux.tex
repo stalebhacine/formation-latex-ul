@@ -94,7 +94,7 @@ quelques règles à suivre pour la mise en forme des tableaux:
   droit qu'un filet vertical apparaît absolument nécessaire, scinder
   simplement l'information dans deux tableaux;
 \item ne jamais utiliser de filets doubles;
-\item placer les unités (\$, cm, {\textdegree}C, \dots) dans le titre
+\item placer les unités (\$, cm, {\textdegree}C, etc.) dans le titre
   de la colonne plutôt qu'après chaque valeur dans le corps du
   tableau;
 \item toujours inscrire un chiffre du côté gauche du séparateur
@@ -375,10 +375,9 @@ crayon sur du papier quadrillé.
 La figure ci-dessous illustre ce qu'il est possible de faire avec
 l'environnement \Ie{picture}. La consultation du code commenté correspondant devrait
 permettre de comprendre les principes de base de la création de
-figures. Autrement, l'annexe~D de la documentation de la classe
-\class{memoir} (\fichier{memman.pdf} dans {\TeX}~Live ou %
-  \href{http://texdoc.net/pkg/memoir}{via TeXdoc Online}) %
-fournit une bonne introduction à \Ie{picture}.
+figures. Autrement, l'annexe~D de la documentation %
+ \doc{memman}{http://texdoc.net/pkg/memoir} %
+de la classe \class{memoir} fournit une bonne introduction à \Ie{picture}.
 
 (Nous avons tracé la grille en filigrane dans la figure afin de
 faciliter la comparaison entre le code et le résultat.)
@@ -512,8 +511,7 @@ Les \meta{options} de \cmd{\includegraphics}, nombreuses, permettent
 de redimensionner une image, de la faire pivoter ou encore de n'en
 importer qu'une partie. L'exemple ci-dessous présente les principales
 fonctionnalités; consulter la documentation %
-(\fichier{grfguide.pdf} dans {\TeX}~Live ou
-  \href{http://texdoc.net/pkg/graphics/}{via TeXdoc Online}) %
+\doc{grfguide}{http://texdoc.net/pkg/graphics/} %
 pour les détails et d'autres options.
 
 \begin{exemple}
@@ -701,8 +699,8 @@ les moteurs pdf{\LaTeX} ou {\XeLaTeX}, le très pratique paquetage
 \includepdf`\oarg{options}\marg{fichier}'
 \end{lstlisting}
 Les \meta{options} sont trop nombreuses pour les présenter ici;
-consulter la documentation (\fichier{pdfpages.pdf} dans {\TeX}~Live ou %
-  \href{http://texdoc.net/pkg/pdfpages/}{via TeXdoc Online}).
+consulter la documentation%
+\doc{pdfpages}{http://texdoc.net/pkg/pdfpages/}.
 
 \begin{exemple}
   Les couvertures avant et arrière du présent document ont été
@@ -787,12 +785,12 @@ suivantes dans l'argument \meta{pos};
   l'endroit spécifié dans le reste de l'argument.
 \end{description}
 La valeur par défaut de l'argument \meta{pos} est \code{tbp}. La
-section 10.4 de la classe \class{memoir} (\fichier{memman.pdf} dans
-{\TeX}~Live ou %
-  \href{http://texdoc.net/pkg/memoir/}{via TeXdoc Online}) %
-explique plus en détail la signification des valeurs ci-dessus. Le
-lecteur qui voudrait vraiment \emph{tout} savoir sur la disposition des
-éléments flottants pourra consulter \cite{Mittelbach:floats:2014}.
+section~10.4 de la documentation %
+\doc{memman}{http://texdoc.net/pkg/memoir/} %
+de \class{memoir} explique plus en détail la signification des valeurs
+ci-dessus. Le lecteur qui voudrait vraiment \emph{tout} savoir sur la
+disposition des éléments flottants pourra consulter
+\cite{Mittelbach:floats:2014}.
 
 \begin{exemple}
   On reprend le tableau de l'\autoref{exemple:tableaux:tabular}, mais cette

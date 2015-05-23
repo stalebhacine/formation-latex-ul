@@ -74,7 +74,7 @@
 
   %% Marges, entêtes et pieds de page
   \setlength{\marginparsep}{7mm}
-  \setlength{\marginparwidth}{13mm}
+  \setlength{\marginparwidth}{20mm}
   \setlength{\headwidth}{\textwidth}
   \addtolength{\headwidth}{\marginparsep}
   \addtolength{\headwidth}{\marginparwidth}
@@ -211,9 +211,13 @@
   \DeclareRobustCommand{\meta}[1]{{\meta@font@select\hyphenchar\font\m@ne #1}}
   \makeatother
 
-  %% Indications de capsule vidéo
+  %% Indications de capsule vidéo dans la marge
   \newcommand{\capsule}[2]{\href{#1}{#2}\marginpar{%
       \href{#1}{\raisebox{-0.5em}[0em][0em]{\HUGE\faYouTubePlay}}}}
+
+  %% Lien vers documentation dans la marge
+  \newcommand{\doc}[2]{\marginpar{%
+      \faBook~\fichier{#1}\newline \href{#2}{\raisebox{-0.25ex}{\faExternalLink}~\small\sffamily TeXdoc}}}
 
   %%% =========================
   %%%  Sections de code source
