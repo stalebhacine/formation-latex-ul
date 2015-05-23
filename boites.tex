@@ -81,7 +81,30 @@ produit \framebox[3.5cm][l]{aligné à gauche}, alors que
 \end{lstlisting}
 produit \makebox[3.5cm]{centré}.
 
+Il arrive que l'on doive ajuster légèrement le positionnement vertical
+d'éléments de contenu, notamment pour les images. La commande
+\begin{lstlisting}
+\raisebox`\marg{déplacement}\marg{texte}'
+\end{lstlisting}
+produit une boîte horizontale avec le contenu \meta{texte} surélevé de
+\meta{déplacement} par rapport à la ligne de base. Si
+\meta{déplacement} est négatif, la boîte est positionnée sous la ligne
+de base. Ainsi
+\begin{lstlisting}
+\raisebox{1ex}{au-dessus} de la ligne de base
+\end{lstlisting}
+produit  \raisebox{1ex}{au-dessus} de la ligne de base et
+\begin{lstlisting}
+\raisebox{-1ex}{au-dessous} de la ligne de base
+\end{lstlisting}
+produit \raisebox{-1ex}{au-dessous} de la ligne de base.
 
+Attention, toutefois, de ne pas utiliser \cmd{\raisebox} pour placer
+du texte en exposant ou en indice. Employer plutôt les commandes
+\cmd{\textsuperscript} ou \cmd{\textsubscript}, le mode mathématique
+(\autoref{chap:math}) ou les commandes de la famille \cmd{\ieme} de
+\pkg{babel} (section~1.1 de la documentation%
+\doc{frenchb}{http://texdoc.net/pkg/babel-french/}).
 
 \section{Boîtes verticales}
 \label{sec:boites:parbox}
