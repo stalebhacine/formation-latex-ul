@@ -126,14 +126,16 @@
   \Newassociation{rep}{reponse}{reponses}
   \newcounter{exercice}[chapter]
   \renewcommand{\theexercice}{\thechapter.\arabic{exercice}}
-  \newenvironment{exercice}{%
+  \newenvironment{exercice}[1][]{%
     \begin{list}{}{%
         \refstepcounter{exercice}
-        \hypertarget{ex:\theexercice}{}
-        \Writetofile{solutions}{\protect\hypertarget{sol:\theexercice}{}}
-        \renewcommand{\makelabel}{%
-          \bfseries\protect\hyperlink{sol:\theexercice}{\theexercice}}
-        \settowidth{\labelwidth}{\bfseries \thechapter.\arabic{exercice}}
+        \ifthenelse{\equal{#1}{nosol}}{%
+          \renewcommand{\makelabel}{\bfseries\theexercice}}{%
+          \hypertarget{ex:\theexercice}{}
+          \Writetofile{solutions}{\protect\hypertarget{sol:\theexercice}{}}
+          \renewcommand{\makelabel}{%
+            \bfseries\protect\hyperlink{sol:\theexercice}{\theexercice}}}
+        \settowidth{\labelwidth}{\bfseries\theexercice}
         \setlength{\leftmargin}{\labelwidth}
         \addtolength{\leftmargin}{\labelsep}
         \setlist[enumerate,1]{label=\alph*),labelsep=*,leftmargin=1.5em}
@@ -197,17 +199,6 @@
   %% Redéfinition d'une commande de memoir.cls pour enlever les
   %% symboles $\langle$ et $\rangle$ des résultats de \marg et al.
   \makeatletter
-  % \DeclareRobustCommand{\meta}[1]{%
-  %   {%
-  %     \meta@font@select
-  %     \edef\meta@hyphen@restore
-  %     {\hyphenchar\the\font\the\hyphenchar\font}%
-  %     \hyphenchar\font\m@ne
-  %     \language\l@nohyphenation
-  %     #1%
-  %     \meta@hyphen@restore
-  %   }
-  % }
   \DeclareRobustCommand{\meta}[1]{{\meta@font@select\hyphenchar\font\m@ne #1}}
   \makeatother
 
@@ -272,6 +263,8 @@
   %                                         Exercices \textemdash\
   %                                         édition \year}
 
+\includeonly{include}
+
 \begin{document}
 
 \frontmatter
@@ -298,10 +291,10 @@
 
 \mainmatter
 
+\include{include}
 \include{boites}
-\include{tableaux}
+\include{tableaux+figures}
 % \include{mathematiques}
-% \include{include}
 % \include{bibliographie}
 % \include{polices}
 % \include{varia}
