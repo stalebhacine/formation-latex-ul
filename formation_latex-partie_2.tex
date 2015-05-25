@@ -215,9 +215,11 @@
   \newcommand{\capsule}[2]{\href{#1}{#2}\marginpar{%
       \href{#1}{\raisebox{-0.5em}[0em][0em]{\HUGE\faYouTubePlay}}}}
 
+  %% Hyperlien avec symbole de lien externe juste après
+  \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
+
   %% Lien vers documentation dans la marge
-  \newcommand{\doc}[2]{\marginpar{%
-      \faBook~\fichier{#1}\newline \href{#2}{\raisebox{-0.25ex}{\faExternalLink}~\small\sffamily TeXdoc}}}
+  \newcommand{\doc}[3][documentation]{\link{#3}{#1}\marginpar{\faBook~\fichier{#2}}}
 
   %%% =========================
   %%%  Sections de code source
@@ -232,7 +234,10 @@
     keywordstyle=\mdseries,
     emphstyle=\color{emphasis}\bfseries,
     backgroundcolor=\color{LightYellow1},
-    frame=none,
+    frame=lr,
+    rulecolor=\color{LightYellow1},
+    xleftmargin=3.4pt,
+    xrightmargin=3.4pt,
     showstringspaces=false}
 
   %%% =======

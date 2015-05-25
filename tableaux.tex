@@ -12,12 +12,13 @@ pire, de prétendre savoir mieux que nous ce que nous voulons faire. À
 ce chapitre, les traitements de texte ne brillent plus! Peut-être avez-vous
 déjà eu de la difficulté à contrôler les bordures d'un tableau, la
 hauteur des lignes ou la largeur des colonnes dans un traitement de
-texte. Voilà.
+texte? Alors vous comprenez que l'exercice de composition d'un tableau
+peut rapidement devenir frustrant.
 
 Avant de discuter de la création ou de l'insertion de tableaux, de
-graphiques et d'images, il convient de présenter très succinctement
-quelques règles à suivre pour concevoir des tableaux clairs et faciles
-à consulter.
+graphiques et d'images dans un document {\LaTeX}, il convient de
+présenter très succinctement quelques règles à suivre pour concevoir
+des tableaux clairs et faciles à consulter.
 
 
 \section{De la conception de beaux tableaux}
@@ -120,7 +121,7 @@ nécessaire de charger le paquetage avec ces deux classes.
 
 Peu importe l'outil informatique utilisé, la création d'un tableau
 requiert toujours de préciser à l'ordinateur le nombre de colonnes que
-contiendra le tableau, l'entête du tableau, le as échéant, et le contenu
+contiendra le tableau, l'entête du tableau le cas échéant et le contenu
 des différentes cellules. Cette dernière étape nécessite à son tour
 une convention pour indiquer les passages à la colonne suivante
 ainsi que le passage à la ligne suivante.
@@ -141,7 +142,7 @@ La signification des arguments\footnote{%
 est la suivante. Nous ne traitons ici que les options les plus souvent
 employées. Pour une liste plus exhaustive, consulter la documentation
 de la classe \class{memoir} (chapitre 11) ou %
-\cite[section \href{http://fr.wikibooks.org/wiki/LaTeX/Tableaux}{Tableaux}]{wikilivres:latex}.
+\cite[section \link{http://fr.wikibooks.org/wiki/LaTeX/Tableaux}{Tableaux}]{wikilivres:latex}.
 
 \begin{list}{}{%
     \setlength{\labelsep}{1.5ex}
@@ -219,9 +220,10 @@ de la classe \class{memoir} (chapitre 11) ou %
     \meta{fmt} et contenant le texte \meta{texte}. \par%
     Cette commande ne peut apparaître qu'au début d'une ligne ou après
     un symbole de changement de colonne \verb=&=. \par%
-    La commande est souvent utilisée avec $\text{\meta{num}} = 1$ pour
-    changer le format d'une cellule, par exemple pour centrer le
-    titre d'une colonne autrement alignée à gauche ou à droite.
+    La commande est souvent utilisée avec une valeur de
+    $\text{\meta{num}}$ égale à 1 pour changer le format d'une
+    cellule, par exemple pour centrer le titre d'une colonne autrement
+    alignée à gauche ou à droite.
   \end{description}
 
   Les commandes suivantes\footnote{%
@@ -256,7 +258,7 @@ TOTAL         & 7 &      & 41,55 \\
 \end{list}
 
 La hauteur des lignes d'un tableau est déterminée automatiquement en
-fonction de contenu de celles-ci.
+fonction du contenu de celles-ci.
 
 \begin{exemple}
   \label{exemple:tableaux:tabular}
@@ -375,7 +377,7 @@ crayon sur du papier quadrillé.
 La figure ci-dessous illustre ce qu'il est possible de faire avec
 l'environnement \Ie{picture}. La consultation du code commenté correspondant devrait
 permettre de comprendre les principes de base de la création de
-figures. Autrement, l'annexe~D de la documentation %
+figures. Autrement, l'annexe~D de la %
  \doc{memman}{http://texdoc.net/pkg/memoir} %
 de la classe \class{memoir} fournit une bonne introduction à \Ie{picture}.
 
@@ -434,7 +436,7 @@ faciliter la comparaison entre le code et le résultat.)
   %%%
   %% Rectangle "L'environnement picture"
   \put(0,7){%                 % point d'ancrage (0, 7)
-    \framebox(5,1.5){%        % rectangle 5 x 1,5 cadre plein
+    \framebox(5,1.5){%        % rectangle 5 x 1,5 plein
       \begin{minipage}{35mm}  % contenu de la boîte
         \centering L'environnement \\ \texttt{picture}
       \end{minipage}}}
@@ -450,7 +452,7 @@ faciliter la comparaison entre le code et le résultat.)
 
   %% Rectangle pointillé "et autres figures simples."
   \thicklines                     % lignes grasses
-  \put(8,1){\dashbox{0.2}(7,1.5){ % rectangle 7 x 1,5 cadre pointillé
+  \put(8,1){\dashbox{0.2}(7,1.5){ % rectangle 7 x 1,5 pointillé
       et autres figures simples.}}
 
   %%%
@@ -510,7 +512,7 @@ EPS.
 Les \meta{options} de \cmd{\includegraphics}, nombreuses, permettent
 de redimensionner une image, de la faire pivoter ou encore de n'en
 importer qu'une partie. L'exemple ci-dessous présente les principales
-fonctionnalités; consulter la documentation %
+fonctionnalités; consulter la %
 \doc{grfguide}{http://texdoc.net/pkg/graphics/} %
 pour les détails et d'autres options.
 
@@ -534,7 +536,7 @@ pour les détails et d'autres options.
   \item %
     \begin{minipage}[t]{0.62\linewidth}
 \begin{lstlisting}
-%% réduction à 40 % de la taille réelle
+%% réduction à 40 % de taille réelle
 \includegraphics[scale=0.4]{ul_p}
 \end{lstlisting}
     \end{minipage}
@@ -545,7 +547,7 @@ pour les détails et d'autres options.
   \item %
     \begin{minipage}[t]{0.62\linewidth}
 \begin{lstlisting}
-%% réduction à exactement 15 mm de haut
+%% réduction à 15 mm de haut
 \includegraphics[height=15mm]{ul_p}
 \end{lstlisting}
     \end{minipage}
@@ -699,7 +701,7 @@ les moteurs pdf{\LaTeX} ou {\XeLaTeX}, le très pratique paquetage
 \includepdf`\oarg{options}\marg{fichier}'
 \end{lstlisting}
 Les \meta{options} sont trop nombreuses pour les présenter ici;
-consulter la documentation%
+consulter la %
 \doc{pdfpages}{http://texdoc.net/pkg/pdfpages/}.
 
 \begin{exemple}
@@ -740,10 +742,10 @@ page inesthétique car insuffisamment remplie\footnote{%
 Les traitements de texte génèrent sans rechigner des pages
 à demi remplies dans de telles situations.
 
-En définissant un élément comme flottant, on laisse la possibilité à
-{\LaTeX} de le disposer au meilleur endroit en fonction de la taille
-de l'élément, du contenu du document et de diverses règles
-typographiques.
+En définissant un élément comme flottant, on laisse plutôt à
+{\LaTeX} la possibilité de le disposer au meilleur endroit en fonction
+de la taille de l'élément, du contenu du document et de diverses
+règles typographiques.
 
 On crée des éléments flottants avec les environnements \Ie{table}
 et \Ie{figure}:
@@ -785,7 +787,7 @@ suivantes dans l'argument \meta{pos};
   l'endroit spécifié dans le reste de l'argument.
 \end{description}
 La valeur par défaut de l'argument \meta{pos} est \code{tbp}. La
-section~10.4 de la documentation %
+section~10.4 de la %
 \doc{memman}{http://texdoc.net/pkg/memoir/} %
 de \class{memoir} explique plus en détail la signification des valeurs
 ci-dessus. Le lecteur qui voudrait vraiment \emph{tout} savoir sur la
@@ -810,8 +812,6 @@ disposition des éléments flottants pourra consulter
   \end{tabular}
 \end{table}
 \end{lstlisting}
-  On voit que {\LaTeX} a automatiquement placé le tableau au haut de
-  la présente page.
   \begin{table}
     \centering
     \begin{tabular}{lrrr}
@@ -825,6 +825,8 @@ disposition des éléments flottants pourra consulter
       \bottomrule
     \end{tabular}
   \end{table}
+  Remarquer où {\LaTeX} a automatiquement placé le tableau dans le
+  document en fonction des règles précitées. %
   \qed
 \end{exemple}
 
@@ -832,8 +834,8 @@ Dans un document soigné, tout tableau et toute figure devrait
 comporter une légende ainsi qu'un numéro afin de pouvoir les
 annoncer et y faire référence dans le texte («comme l'illustre la
 figure~3\dots»). Cela
-permet de guider le lecteur au fil de sa lecture et de construire une
-liste des tableaux et des figures\footnote{%
+permet à la fois de guider le lecteur au fil de sa lecture et de
+construire une liste des tableaux et des figures\footnote{%
   Obtenues respectivement avec \cmd{\listoftables} et
 \cmd{\listoffigures} \citep[section~3]{UL:latex:1}.} %
 dans les pages liminaires d'un long document.
@@ -851,9 +853,9 @@ qui sera utilisée dans la liste des tableaux ou dans la liste des
 figures.
 
 La commande \cmd{\caption} insère,  à l'endroit où elle
-apparait dans l'environnement, une légende de la forme «\textsc{Tableau}
-\emph{n}: \meta{texte}» pour un tableau ou «\textsc{Figure}
-\emph{n}: \meta{texte}» pour une figure. Le texte de la légende est
+apparait dans l'environnement, une légende de la forme «\textsc{Table}
+\emph{n}~--~\meta{texte}» pour un tableau ou «\textsc{Figure}
+\emph{n}~--~\meta{texte}» pour une figure. Le texte de la légende est
 centré sur la page lorsqu'il fait moins d'une ligne; dans le cas contraire il est disposé
 comme un paragraphe normal.
 
@@ -871,16 +873,7 @@ un tableau et une figure dans {\LaTeX}, légende et renvoi inclus.
 \begin{exemple}
   Attention, exemple récursif: son texte constitue lui-même un
   exemple. Le code source de la \autoref{fig:tableaux:captions} crée
-  le \autoref{tab:tableaux:captions}. La figure elle-même est composée
-  avec le code suivant:
-\begin{lstlisting}
-  \begin{figure}
-    [...]
-    \caption{Code source pour créer le \autoref{tab:[...]}}
-    \label{fig:[...]}
-  \end{figure}
-\end{lstlisting}
-
+  le \autoref{tab:tableaux:captions}.
   \begin{figure}
 \begin{lstlisting}
 \begin{table}
@@ -926,8 +919,9 @@ flottants qui, par ailleurs, sont des boîtes verticales standards
 (\autoref{sec:boites:parbox}). Il est donc permis d'y mettre à peu
 près n'importe quoi, mais surtout plus d'un tableau ou plus d'une
 figure (ou même une combinaison des deux). Les environnements
-\Ie{minipage} se revèlent alors particulièrement utiles pour disposer
-les éléments de contenu dans la boîte.
+\Ie{minipage} (\autoref{sec:boites:parbox}) se revèlent alors
+particulièrement utiles pour disposer les éléments de contenu dans la
+boîte.
 
 \begin{exemple}
   \label{exemple:tableaux:grille}
