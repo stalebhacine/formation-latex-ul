@@ -8,7 +8,7 @@ FILES1=formation_latex-partie_1.pdf \
 	exercice_tdm+annexe.tex \
 	exercice_complet.tex \
 	exercice_ulthese.tex \
-	mathematiques.tex \
+		includes/mathematiques.tex \
 	formation_latex.bib
 
 SOLUTIONS1=\
@@ -24,10 +24,10 @@ FILES2=formation_latex-partie_2.pdf \
 	ul_p.pdf \
 	exercice_gabarit.tex \
 	exercice_include.tex \
-		pagetitre.tex \
-		presentation.tex \
-		console-screenshot.tex \
-		emacs.tex \
+		includes/pagetitre.tex \
+		includes/presentation.tex \
+		includes/console-screenshot.pdf \
+		includes/emacs.tex \
 	exercice_subcaption.tex \
 	exercice_demo.tex \
 
@@ -36,4 +36,4 @@ SOLUTIONS2=
 all : zip
 
 zip :
-	zip formation_latex.zip ${FILES1} ${SOLUTIONS1} ${FILES2} ${SOLUTIONS2}
+	zip -j formation_latex.zip ${FILES1} ${SOLUTIONS1} ${FILES2} ${SOLUTIONS2}
