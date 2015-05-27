@@ -154,8 +154,8 @@ de la classe \class{memoir} (chapitre 11) ou %
     \renewcommand{\makelabel}[1]{\meta{#1}\hfill}}
 %
 \item[largeur] Largeur hors tout d'un tableau avec les
-  environnements \Ie{tabular*} et \Ie{tabularx}. Autrement,
-  avec l'environnement \Ie{tabular}, la largeur d'un tableau est
+  environnements \Pe{tabular*} et \Pe{tabularx}. Autrement,
+  avec l'environnement \Pe{tabular}, la largeur d'un tableau est
   déterminée automatiquement pour contenir tout le contenu du tableau,
   quitte à dépasser dans la marge de droite.
 
@@ -359,12 +359,12 @@ des organigrammes. Quelques logiciels spécialisés de création de
 graphiques sont en mesure d'exporter leurs graphiques dans le format
 de \Ie{picture}.
 
-Une fois conçues, les figures réalisées avec \Ie{picture} sont
+Une fois conçues, les figures réalisées avec \Pe{picture} sont
 simples à modifier; nul besoin de recourir à un logiciel externe pour
 le moindre petit changement. Autre avantage: la police de caractère du texte
 de la figure sera le même que celle du document.
 
-Pour tracer une figure avec l'environnement \Ie{picture}, on crée
+Pour tracer une figure avec l'environnement \Pe{picture}, on crée
 d'abord une grille (invisible) d'une dimension quelconque dans l'unité
 de mesure de son choix (autrement dit: les lignes de la grille
 peuvent être distantes aussi bien de \code{1pt} que de \code{1cm}).
@@ -375,11 +375,11 @@ compléter l'élément. C'est souvent plus simple d'esquisser d'abord un modèle
 crayon sur du papier quadrillé.
 
 La figure ci-dessous illustre ce qu'il est possible de faire avec
-l'environnement \Ie{picture}. La consultation du code commenté correspondant devrait
+l'environnement \Pe{picture}. La consultation du code commenté correspondant devrait
 permettre de comprendre les principes de base de la création de
 figures. Autrement, l'annexe~D de la %
  \doc{memman}{http://texdoc.net/pkg/memoir} %
-de la classe \class{memoir} fournit une bonne introduction à \Ie{picture}.
+de la classe \class{memoir} fournit une bonne introduction à \Pe{picture}.
 
 (Nous avons tracé la grille en filigrane dans la figure afin de
 faciliter la comparaison entre le code et le résultat.)
@@ -796,7 +796,7 @@ disposition des éléments flottants pourra consulter
 
 \begin{exemple}
   On reprend le tableau de l'\autoref{exemple:tableaux:tabular}, mais cette
-  fois défini à l'intérieur d'un environnement \Ie{table}:
+  fois défini à l'intérieur d'un environnement \Pe{table}:
 \begin{lstlisting}
 \begin{table}
   \centering
@@ -914,20 +914,23 @@ un tableau et une figure dans {\LaTeX}, légende et renvoi inclus.
   \qed
 \end{exemple}
 
-Les environnements \Ie{table} et \Ie{figure} créent des éléments
+Les environnements \Pe{table} et \Pe{figure} créent des éléments
 flottants qui, par ailleurs, sont des boîtes verticales standards
 (\autoref{sec:boites:parbox}). Il est donc permis d'y mettre à peu
 près n'importe quoi, mais surtout plus d'un tableau ou plus d'une
 figure (ou même une combinaison des deux). Les environnements
-\Ie{minipage} (\autoref{sec:boites:parbox}) se revèlent alors
+\Pe{minipage} (\autoref{sec:boites:parbox}) se revèlent alors
 particulièrement utiles pour disposer les éléments de contenu dans la
 boîte.
+
+À l'\autoref{ex:tableaux:subcaptions}, on montre comment ajouter des
+sous-légendes pour chacun des éléments.
 
 \begin{exemple}
   \label{exemple:tableaux:grille}
   Le code ci-dessous démontre comment disposer quatre images sous
   forme de grille $2 \times 2$ dans une même figure flottante à l'aide
-  de boîtes verticales créées avec l'environnement \Ie{minipage}. On
+  de boîtes verticales créées avec l'environnement \Pe{minipage}. On
   pourrait faire de même avec des tableaux.
 
   Dans la \autoref{fig:tableaux:grille} correspondant au code, nous
@@ -975,7 +978,180 @@ boîte.
 \end{exemple}
 
 
-%% exercice: subcaptions
+
+%%%
+%%% Exercices
+%%%
+
+\section{Exercices}
+\label{sec:tableaux:exercices}
+
+\Opensolutionfile{solutions}[solutions-tableaux+figures]
+
+\begin{Filesave}{solutions}
+\section*{Chapitre \ref*{chap:tableaux}}
+\addcontentsline{toc}{section}{Chapitre \protect\ref*{chap:tableaux}}
+
+\end{Filesave}
+
+\begin{exercice}
+  Reproduire le tableau ci-dessous à l'aide d'un environnement
+  \Pe{tabular}. Utiliser le gabarit de document
+  \fichier{exercice\_gabarit}.
+
+  La première colonne est alignée à gauche, la seconde est un bloc de
+  texte de $7,5$~cm et la troisième est alignée à droite. Le symbole
+  {\No} dans l'entête est produit par la commande \cmd{\No} de
+  \pkg{babel}. Le dernier prix est composé avec la commande
+  \cmd{\nombre} de \pkg{numprint}.
+  \begin{center}
+    \begin{tabular}{lp{7.5cm}r}
+      \toprule
+      {\No} lot & Description & Prix (\$) \\
+      \midrule
+      U-236 & Ordinateur portable MacBook Air 13~pouces mi-2013,
+              processeur 1,3~GHz, 8~Go RAM, disque SSD 250~Go & 998 \\
+      U-374 & Chaise de bureau ergonomique ajustable de 8 façons,
+              revêtement de tissu gris foncé & 275 \\
+      U-588 & Table de travail en L & \nombre{1125} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \begin{sol}
+    Les paquetages \pkg{babel} et \pkg{numprint} étant chargés dans le
+    fichier de gabarit, le code pour créer le tableau est le suivant:
+\begin{lstlisting}
+\begin{tabular}{lp{7.5cm}r}
+  \toprule
+  {\No} lot & Description & Prix (\$) \\
+  \midrule
+  U-236 & Ordinateur [...] & 998 \\
+  U-374 & Chaise [...] & 275 \\
+  U-588 & Table [...] & \nombre{1125} \\
+  \bottomrule
+\end{tabular}
+\end{lstlisting}
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  Apporter au tableau de l'exercice précédent les modifications
+  suivantes:
+  \begin{enumerate}[i)]
+  \item centrer le titre de la deuxième colonne;
+  \item ajuster automatiquement la largeur du tableau au bloc de texte
+    sur la page avec un environnement \Pe{tabularx}.
+  \end{enumerate}
+  \begin{sol}
+    Pour effectuer les modifications demandées, il faut:
+    \begin{enumerate}[i)]
+    \item utiliser la commande \cmd{\multicolumn} dans l'entête du
+      tableau pour centrer le titre de la deuxième colonne sans
+      autrement centrer le contenu de la colonne;
+    \item remplacer l'environnement \Pe{tabular} par l'environnement
+      \Pe{tabularx} de \class{memoir}, spécifier une largeur de
+      tableau \cs{textwidth}, changer le format de la deuxième colonne
+      pour \code{X} afin que la largeur de celle-ci s'ajuste
+      automatiquement pour combler celle du tableau.
+    \end{enumerate}
+\begin{lstlisting}
+\begin{tabularx}{\textwidth}{lXr}
+  \toprule
+  {\No} lot & \multicolumn{1}{c}{Description} & Prix (\$) \\
+  \midrule
+  U-236 & Ordinateur [...] & 998 \\
+  U-374 & Chaise [...] & 275 \\
+  U-588 & Table [...] & \nombre{1125} \\
+  \bottomrule
+\end{tabularx}
+\end{lstlisting}
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  \label{ex:tableaux:subcaptions}
+  L'\autoref{exemple:tableaux:grille} montre comment intégrer
+  plusieurs figures (ou tableaux) à l'intérieur d'un même
+  environnement flottant en les disposant dans des boîtes verticales.
+  Dans de tels cas, il peut être souhaitable de fournir une légende
+  pour l'ensemble du flottant, mais aussi des sous-légendes pour
+  chaque tableau ou figure.
+
+  Avec les classes \class{ulthese} et \class{memoir}, la production de
+  sous-légendes requiert d'abord de déclarer, dans le préambule du
+  document, son intention d'en créer pour les environnements flottants
+  \Pe{table} ou \Pe{figure} avec, selon le cas, les commandes
+\begin{lstlisting}
+\newsubfloat{table}
+\newsubfloat{figure}
+\end{lstlisting}
+  Ensuite, on utilise la commande
+\begin{lstlisting}
+\subcaption`\marg{texte}'
+\end{lstlisting}
+  de la même manière que \cmd{\caption}. La section~10.9 de la %
+  \doc{memman}{http://texdoc.net/pkg/memoir} %
+  de \class{memoir} comporte de nombreux détails additionnels sur les
+  sous-légendes.
+
+  Le fichier \fichier{exercice\_subcaption.tex} contient la structure
+  de base pour composer deux tableaux côte à côte. Ajouter des
+  sous-légendes à l'intérieur de l'environnement flottant.
+  \begin{sol}
+    Tout d'abord, remarquer que la commande
+\begin{lstlisting}
+\newsubfloat{table}
+\end{lstlisting}
+    est déjà présente dans le préambule du fichier. Si l'on souhaite
+    placer des sous-légendes au-dessus de chacun des deux tableaux, le
+    code du tableau devient:
+\begin{lstlisting}
+\begin{table}
+  \caption{Conversion du nombre décimal $23,31$ en binaire.}
+  \begin{minipage}[t]{0.45\linewidth}
+    \subcaption`\marg{texte}'   % ajout
+    \begin{tabular*}{\linewidth}{crrcc}
+      ...
+    \end{tabular*}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[t]{0.45\linewidth}
+    \subcaption`\marg{texte}'   % ajout
+    \begin{tabular*}{\linewidth}{ccccc}
+      ...
+    \end{tabular*}
+  \end{minipage}
+\end{table}
+\end{lstlisting}
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  Insérer, disons, la page couverture du présent document dans un
+  document de votre cru à l'aide des fonctionnalités du paquetage
+  \pkg{pdfpages} décrites à la \autoref{sec:tableaux:figures:pdfpages}.
+  \begin{sol}
+    Le préambule du document devrait contenir la déclaration
+\begin{lstlisting}
+\usepackage{pdfpages}
+\end{lstlisting}
+    pour charger le paquetage \pkg{pdfpages}. Ensuite, à l'endroit où
+    l'on souhaite insérer la couverture du présent document dans notre
+    document, il s'agit de placer la commande
+\begin{lstlisting}
+\includepdf[pages=1]{formation_latex-partie_2}
+\end{lstlisting}
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}[nosol]
+  Le document \fichier{exercice\_demo.tex} contient plusieurs éléments
+  flottants, tableaux et figures. Examiner le code et modifier
+  l'argument optionnel de position d'un flottant pour voir son effet
+  sur la mise en page du document.
+\end{exercice}
+
+\Closesolutionfile{solutions}
 
 
 %%% Local Variables:
