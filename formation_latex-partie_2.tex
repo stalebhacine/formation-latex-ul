@@ -40,7 +40,6 @@
   \usepackage{xcolor}
   \definecolor{comments}{rgb}{0.7,0,0}
   \definecolor{emphasis}{named}{orange}
-  \definecolor{shadecolor}{gray}{0}
   \definecolor{link}{rgb}{0,0.4,0.6}   % ~RoyalBlue de dvips
   \definecolor{url}{rgb}{0.6,0,0}      % rouge-brun
   \definecolor{citation}{rgb}{0,0.5,0} % vert foncé
@@ -95,8 +94,8 @@
     ThinSpaceInFrenchNumbers=true,
     ItemLabeli=\mantriangleright,
     ItemLabelii=\textendash}
-  \addto\captionsfrench{\def\figurename{{\scshape Fig.}}}
-  \addto\captionsfrench{\def\tablename{{\scshape Tab.}}}
+  \def\frenchfigurename{{\scshape Fig.}}
+  \def\frenchtablename{{\scshape Tab.}}
 
   %%% =========================
   %%%  Nouveaux environnements
@@ -174,6 +173,18 @@
       {\end{minipage}%
     \end{framed}}
 
+  %% Conseils du TeXpert
+  \newenvironment{conseil}{%
+    \begin{framed}%
+      \noindent
+      \begin{minipage}{0.1\linewidth}
+        \raisebox{-1.5em}[0em][0em]{\HUGE\faThumbsUp}
+      \end{minipage}
+      \begin{minipage}[t]{0.88\linewidth}
+        {\bfseries\sffamily Conseil du {\TeX}pert} \newline}
+      {\end{minipage}%
+    \end{framed}}
+
   %%% =====================
   %%%  Nouvelles commandes
   %%% =====================
@@ -248,7 +259,7 @@
                                           et de mémoires \\
                                           avec
     \bfseries\fontsize{62}{33}\selectfont \raisebox{-0.75ex}{\LaTeX} \\[10mm]
-    \mdseries\fontsize{18}{24}\selectfont 2. Concepts avancés}}
+    \mdseries\fontsize{18}{24}\selectfont 2. Concepts avancés}
   % \author{\protect\raggedright
   %   \bfseries\fontsize{16}{20}\selectfont Vincent Goulet}
   % \date{%
@@ -256,7 +267,7 @@
   %                                         Exercices \textemdash\
   %                                         édition \year}
 
-%\includeonly{tableaux+figures,solutions}
+%\includeonly{include}
 
 \begin{document}
 
@@ -300,6 +311,13 @@
 \include{solutions}
 
 \bibliography{formation_latex}
+
+\cleartoverso
+
+\input{colophon-partie_2}
+
+\cleartoverso
+
 
 \end{document}
 

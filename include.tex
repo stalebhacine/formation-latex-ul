@@ -18,7 +18,7 @@ peut significativement accélérer, la compilation des documents très
 longs ou comptant plusieurs images.
 
 
-\section{Insertion de contenu avec la commande \cs{input}}
+\section{Insertion du contenu d'un autre fichier}
 \label{sec:include:input}
 
 La commande \cmd{\input} permet d'insérer le contenu d'un autre
@@ -43,7 +43,7 @@ d'éventuelles modifications à un seul endroit pour les voir prendre
 effet dans tous les documents.
 
 
-\section{Insertion de parties avec la commande \cs{include}}
+\section{Insertion de parties d'un document}
 \label{sec:include:include}
 
 Extrait de la %
@@ -96,6 +96,13 @@ aussi on laisse tomber l'extension \code{.tex} qui est implicite.
 \end{document}
 \end{lstlisting}
 
+\begin{conseil}
+  Utiliser des noms des fichiers qui permettent de facilement
+  identifier leur contenu. Par exemple, un nom comme
+  \fichier{rappels.tex} est plus parlant et résiste mieux aux
+  changements à l'ordre des chapitres que \fichier{chapitre1.tex}.
+\end{conseil}
+
 Le principal avantage de \cmd{\include} par rapport à \cmd{\input}
 réside dans le fait que {\LaTeX} peut préserver entre les compilations
 les informations telles que les numéros de pages, de sections ou
@@ -127,24 +134,24 @@ nécessaire.
   Un document est composé en plusieurs parties avec les commandes
   suivantes:
 \begin{lstlisting}
-\include{chapitre1.tex}
-\include{chapitre2.tex}
-\include{chapitre3.tex}
+\include{historique}            % chapitre 1
+\include{rappels}               % chapitre 2
+\include{modele}                % chapitre 3
 \end{lstlisting}
   Les chapitres débutent respectivement aux pages~1, 23 et 41.
   \begin{itemize}
   \item Si on ajoute au préambule du document la commande
 \begin{lstlisting}
-\includeonly{chapitre2}
+\includeonly{rappels}
 \end{lstlisting}
     le numéro du chapitre sera toujours 2 et le folio de
     la première page sera toujours 23, même si les 22 pages
     précédentes ne se trouvent pas dans le document.
-  \item Si l'on modifie le fichier \code{chapitre2} de telle sorte que
-    le chapitre se termine maintenant à la page 46, il faudra
-    recompiler le document avec au moins les fichiers \code{chapitre2}
-    et \code{chapitre3} pour que les pages du chapitre~3 soient
-    renumérotées à partir de 47.
+  \item Si l'on modifie le fichier \fichier{rappels.tex} de telle
+    sorte que le chapitre se termine maintenant à la page 46, il
+    faudra recompiler le document avec au moins les fichiers
+    \fichier{rappels.tex} et \code{modele.tex} pour que les pages du
+    chapitre~3 soient renumérotées à partir de 47.
   \end{itemize}
   \qed
 \end{exemple}

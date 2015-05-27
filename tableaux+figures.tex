@@ -142,7 +142,7 @@ La signification des arguments\footnote{%
 est la suivante. Nous ne traitons ici que les options les plus souvent
 employées. Pour une liste plus exhaustive, consulter la documentation
 de la classe \class{memoir} (chapitre 11) ou %
-\cite[section \link{http://fr.wikibooks.org/wiki/LaTeX/Tableaux}{Tableaux}]{wikilivres:latex}.
+\citet[section \link{http://fr.wikibooks.org/wiki/LaTeX/Tableaux}{Tableaux}]{wikilivres:latex}.
 
 \begin{list}{}{%
     \setlength{\labelsep}{1.5ex}
@@ -241,8 +241,8 @@ auxquelles nous faisions référence à la \autoref{sec:tableaux:booktabs}.} %
   \item[\normalfont\cmd{\bottomrule}] insère un filet horizontal épais
     précédé d'un espace vertical à la fin d'un tableau.
   \end{description}
-  Ces commandes doivent toutes obligatoirement être précédées d'une
-  fin de ligne \verb=\\=, sauf évidemment \cmd{\toprule}.
+  Une fin de ligne \verb=\\=  doit  obligatoirement précéder chacune
+  de ces commandes, sauf évidemment \cmd{\toprule}.
 
   Un exemple simple de lignes de contenu serait:
 \begin{lstlisting}
@@ -422,7 +422,7 @@ faciliter la comparaison entre le code et le résultat.)
 
     \qbezier(4,2)(5.5,-0.5)(7,4.25)
     \qbezier(7,4.25)(8.5,9)(10,6.5)
-    \put(10,6.5){\vector(2,-3){0.1}}
+    \put(10,6.5){\vector(2,-3){0}}
   \end{picture}
 \end{center}
 
@@ -476,7 +476,7 @@ faciliter la comparaison entre le code et le résultat.)
   %% Entre "bien" et "pour les diagrammes"; requiert deux courbes
   \qbezier(4,2)(5.5,-0.5)(7,4.25)  % deux courbes de Bézier bout à
   \qbezier(7,4.25)(8.5,9)(10,6.5)  % bout pour produire courbe en S
-  \put(10,6.5){\vector(2,-3){0.1}} % pointe de flèche seule
+  \put(10,6.5){\vector(2,-3){0}}   % pointe de flèche seule
 \end{picture}
 \end{lstlisting}
 \endgroup
@@ -856,8 +856,20 @@ La commande \cmd{\caption} insère,  à l'endroit où elle
 apparait dans l'environnement, une légende de la forme «\textsc{Table}
 \emph{n}~--~\meta{texte}» pour un tableau ou «\textsc{Figure}
 \emph{n}~--~\meta{texte}» pour une figure. Le texte de la légende est
-centré sur la page lorsqu'il fait moins d'une ligne; dans le cas contraire il est disposé
-comme un paragraphe normal.
+centré sur la page lorsqu'il fait moins d'une ligne; dans le cas
+contraire il est disposé comme un paragraphe normal.
+
+\begin{conseil}
+  Les anciennes version du style français de \pkg{babel} utilisaient
+  les étiquettes plus neutres «\textsc{Tab.}» et «\textsc{Fig.}» dans
+  les légendes des tableaux et figures. Pour utiliser ces versions
+  plutôt que les versions par défaut --- comme dans le présent
+  document --- ajouter dans le préambule les commandes suivantes:
+\begin{lstlisting}
+\def\frenchtablename{{\scshape Tab.}}
+\def\frenchfigurename{{\scshape Fig.}}
+\end{lstlisting}
+\end{conseil}
 
 Pour faire référence à un tableau ou à une figure dans le texte, il
 faut utiliser le système de renvois automatiques de {\LaTeX}
@@ -924,7 +936,10 @@ particulièrement utiles pour disposer les éléments de contenu dans la
 boîte.
 
 À l'\autoref{ex:tableaux:subcaptions}, on montre comment ajouter des
-sous-légendes pour chacun des éléments.
+sous-légendes pour chacun des éléments.  La section~10.9 de la %
+  \doc{memman}{http://texdoc.net/pkg/memoir} %
+de \class{memoir} comporte de nombreux détails additionnels sur les
+sous-légendes.
 
 \begin{exemple}
   \label{exemple:tableaux:grille}
@@ -997,7 +1012,7 @@ sous-légendes pour chacun des éléments.
 \begin{exercice}
   Reproduire le tableau ci-dessous à l'aide d'un environnement
   \Pe{tabular}. Utiliser le gabarit de document
-  \fichier{exercice\_gabarit}.
+  \fichier{exercice\_gabarit.tex}.
 
   La première colonne est alignée à gauche, la seconde est un bloc de
   texte de $7,5$~cm et la troisième est alignée à droite. Le symbole
@@ -1057,7 +1072,7 @@ sous-légendes pour chacun des éléments.
 \begin{lstlisting}
 \begin{tabularx}{\textwidth}{lXr}
   \toprule
-  {\No} lot & \multicolumn{1}{c}{Description} & Prix (\$) \\
+  {\No} lot & \multicolumn{1}{c}{Description} & Prix (\$)\\
   \midrule
   U-236 & Ordinateur [...] & 998 \\
   U-374 & Chaise [...] & 275 \\
@@ -1089,10 +1104,7 @@ sous-légendes pour chacun des éléments.
 \begin{lstlisting}
 \subcaption`\marg{texte}'
 \end{lstlisting}
-  de la même manière que \cmd{\caption}. La section~10.9 de la %
-  \doc{memman}{http://texdoc.net/pkg/memoir} %
-  de \class{memoir} comporte de nombreux détails additionnels sur les
-  sous-légendes.
+  de la même manière que \cmd{\caption}.
 
   Le fichier \fichier{exercice\_subcaption.tex} contient la structure
   de base pour composer deux tableaux côte à côte. Ajouter des
@@ -1107,7 +1119,8 @@ sous-légendes pour chacun des éléments.
     code du tableau devient:
 \begin{lstlisting}
 \begin{table}
-  \caption{Conversion du nombre décimal $23,31$ en binaire.}
+  \caption{Conversion du nombre décimal $23,31$
+    en binaire.}
   \begin{minipage}[t]{0.45\linewidth}
     \subcaption`\marg{texte}'   % ajout
     \begin{tabular*}{\linewidth}{crrcc}
