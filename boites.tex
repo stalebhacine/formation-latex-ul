@@ -7,15 +7,13 @@ la mettre en exergue, par exemple.
 
 Avec les traitements de texte, on aura souvent recours aux tableaux à
 de telles fins. Or, les tableaux devraient être réservés pour disposer
-de l'information sous forme de lignes et de colonnes. (Un tableau
-d'une seule cellule n'a donc pas vraiment de sens d'un point de vue
-sémantique ou typographique.) Pour disposer et mettre en forme du tout
-autre type contenu se présentant sous forme rectangulaire, {\LaTeX}
-offre la solution plus générale des «boîtes».
+de l'information sous forme de lignes et de colonnes. Pour disposer et
+mettre en forme tout autre type contenu se présentant sous forme
+rectangulaire, {\LaTeX} offre la solution plus générale des «boîtes».
 
-Il existe trois sortes de boîtes en {\LaTeX}: les boîtes horizontales
+Il existe trois sortes de boîtes en {\LaTeX}: les boîtes horizontales,
 dont le contenu est disposé exclusivement côte à côte; les boîtes
-verticales qui peuvent contenir plusieurs lignes de contenu; les
+verticales, qui peuvent contenir plusieurs lignes de contenu; les
 boîtes de réglure pour former des lignes pleines de largeur et de
 hauteur quelconques.
 
@@ -49,17 +47,19 @@ Les commandes de base pour créer des boîtes horizontales sont:
 \fbox`\marg{texte}'
 \end{lstlisting}
 Elles produisent une boîte de la largeur précise de \meta{texte}. Avec
-la commande \cmd{\fbox}, le texte est au surplus \fbox{encadré}. En
-usage courant, la commande \cmd{\mbox} sert principalement à deux
+la commande \cmd{\fbox}, le texte est au surplus \fbox{encadré}.
+
+En usage courant, la commande \cmd{\mbox} sert principalement à deux
 choses:
 \begin{enumerate}
 \item réunir en un bloc du texte que l'on ne veut pas voir scindé
   entre les lignes ou entre les pages;
-\item \label{item:tableaux:mbox} créer une boîte vide avec
+\item \label{item:boites:mbox} créer une boîte vide avec
   \cs{mbox\{\}} afin de laisser croire à {\TeX} que du contenu
   apparaît à un endroit, sans toutefois qu'il n'occupe aucun espace.
-  %% ça prendrait un exemple de cela dans les exercices!
 \end{enumerate}
+La seconde utilisation fait l'objet de
+l'\autoref{ex:boites:alignement-v}.
 
 Il existe également des versions plus générales des commandes
 \cmd{\mbox} et \cmd{\fbox}:
@@ -202,9 +202,6 @@ produit \\[0.5\baselineskip]
 
 
 
-%%% Exercices: faire le contenu de 4.7.4 de Kopka et Daly (disposition
-%%% verticale des boîtes)
-
 \section{Boîtes de réglure}
 \label{sec:boites:rulebox}
 
@@ -250,6 +247,189 @@ invisible avec
 Ce truc est particulièrement utile pour augmenter la hauteur des
 lignes dans un tableau; voir la \autoref{sec:tableaux:tableaux}.
 
+
+
+%%%
+%%% Exercices
+%%%
+
+\section{Exercices}
+\label{sec:boites:exercices}
+
+\Opensolutionfile{solutions}[solutions-boites]
+
+\begin{Filesave}{solutions}
+\section*{Chapitre \ref*{chap:boites}}
+\addcontentsline{toc}{section}{Chapitre \protect\ref*{chap:boites}}
+
+\end{Filesave}
+
+
+\begin{exercice}
+  Une fois qu'une boîte est définie, {\TeX} n'y voit qu'une unité de
+  contenu avec ses dimensions propres. Il est donc possible de définir
+  une boîte à l'intérieur d'une autre, et ce, peu importe le type de
+  boîte.
+
+  Avec ceci en tête, définir la boîte suivante:
+  \begin{center}
+    \fbox{\fbox{%
+        \parbox{10cm}{Ce bloc de texte est une boîte verticale de
+          10~cm de large, doublement encadrée et centrée sur la
+          ligne.}}}
+  \end{center}
+
+  \begin{sol}
+    Une première boîte verticale de 10~cm de large contient le texte:
+\begin{lstlisting}
+\parbox{10cm}{Ce bloc [...] la ligne.}
+\end{lstlisting}
+    Cette boîte peut être placée dans une boîte horizontale encadrée
+    avec \cmd{\fbox}. Celle-ci peut à son tour être placée dans une autre
+    boîte horizontale encadrée, de manière à obtenir un cadrage
+    double. Pour centrer le tout sur la ligne, on a recours à
+    l'environnement \Ie{center}:
+\begin{lstlisting}
+\begin{center}
+  \fbox{\fbox{\parbox{10cm}{Ce bloc [...] la ligne.}}}
+\end{center}
+\end{lstlisting}
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  \label{ex:boites:alignement-v}
+  Réaliser l'agencement de boîtes verticales suivant:
+  \begin{center}
+    \begin{minipage}{0.8\linewidth}
+      \makebox[0pt][l]{\color{lightgray}\rule{\linewidth}{0.7pt}}\relax
+      \hfill
+        \begin{minipage}[b]{0.95\linewidth}
+          \small
+          \parbox[t]{0.45\linewidth}{Deux boîtes verticales de
+            hauteurs différentes placées côte à côte}
+          \hfill
+          \parbox[t]{0.45\linewidth}{alignées sur
+            leurs premières lignes et le bas de la boîte
+            la plus haute alignée sur la ligne de base (représentée
+            ici par le filet horizontal grisé).} \\
+          \mbox{}
+        \end{minipage}
+      \hfill
+    \end{minipage}
+  \end{center}
+
+  La solution intuitive serait la suivante:
+\begin{lstlisting}
+\begin{minipage}[b]{...}
+  \parbox[t]{...}{...} \hfill \parbox[t]{...}{...}
+\end{minipage}
+\end{lstlisting}
+  Cependant, cette solution produit le résultat suivant (les boîtes
+  sont rendues visibles par des cadres):
+  \begin{center}
+    \begin{minipage}{0.8\linewidth}
+      \makebox[0pt][l]{\color{lightgray}\rule{\linewidth}{0.7pt}}\relax
+      \hfill
+      \fbox{%
+        \begin{minipage}[b]{0.95\linewidth}
+          \small
+          \fbox{%
+            \parbox[t]{0.45\linewidth}{Les deux boîtes sont
+              correctement alignées l'une par rapport à l'autre}} \hfill
+          \fbox{\parbox[t]{0.45\linewidth}{mais l'alignement avec la
+              ligne de base est incorrect.}}
+        \end{minipage}}
+      \hfill
+    \end{minipage}
+  \end{center}
+  La raison: pour {\TeX}, la \Ie{minipage} externe ne contient que
+  deux «caractères» sur une seule ligne de «texte». La \Ie{minipage}
+  est donc correctement alignée sur sa ligne du bas, mais celle-ci se
+  trouve aussi être la ligne du haut.
+
+  Pour parvenir au résultat escompté, utiliser la commande \cmd{\mbox}
+  pour créer une seconde ligne (vide) dans la \Ie{minipage} externe.
+  \begin{sol}
+    L'idée consiste à créer une seconde ligne dans la \Ie{minipage}
+    externe sans que celle-ci n'occupe aucun espace. Pour ce faire, on
+    insère du contenu vide avec \cs{mbox\{\}}, tel qu'expliqué à la
+    \autopageref{item:boites:mbox}. Le code
+\begin{lstlisting}
+\begin{minipage}[b]{...}
+  \parbox[t]{...}{...} \hfill \parbox[t]{...}{...} \\
+  \mbox{}
+\end{minipage}
+\end{lstlisting}
+    produit donc le résultat voulu:
+    \begin{center}
+      \begin{minipage}{0.8\linewidth}
+        \makebox[0pt][l]{\color{lightgray}\rule{\linewidth}{0.7pt}}\relax
+        \hfill
+        \fbox{%
+          \begin{minipage}[b]{0.95\linewidth}
+            \small
+            \fbox{%
+              \parbox[t]{0.45\linewidth}{Les boîtes sont rendues visibles
+                par des cadres}} \hfill
+            \fbox{\parbox[t]{0.45\linewidth}{et le filet horizontal grisé
+                représente la ligne de base du paragraphe courant.}} \\
+            \fbox{\mbox{}}
+          \end{minipage}}
+        \hfill
+      \end{minipage}
+  \end{center}
+  (Sans le cadre, la boîte de la seconde ligne n'occupe aucun espace.)
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  Réaliser l'agencement de boîtes verticales ci-dessous. (La taille de
+  la police de caractères est \cs{footnotesize}.)
+  \begin{center}
+    \begin{minipage}{120mm}
+      \footnotesize
+      \begin{minipage}[b]{80mm}
+        \parbox[t]{30mm}{La première ligne de cette \emph{parbox} de
+          $30$~mm de large est alignée avec celle de la boîte
+          voisine.}
+        \hfill
+        \parbox[t]{45mm}{Cette \emph{parbox} de $45$~mm de large est
+          positionnée de telle sorte que sa première ligne soit
+          alignée avec le haut de la boîte à gauche et la dernière
+          avec le bas de la boîte à droite. La solution intuitive
+          consistant à placer côte à côte trois boîtes avec des
+          arguments de positionnement \code{t}, \code{t} et \code{b}
+          ne fonctionne pas.} \\
+        \mbox{}
+      \end{minipage}
+      \hfill
+      \parbox[b]{35mm}{Pour parvenir à cette disposition, il faut
+        avoir recours à des lignes invisibles comme dans l'exercice
+        précédent.}
+    \end{minipage}
+  \end{center}
+  La troisième boîte fait $35$~mm de large et l'espace entre les
+  boîtes, $5$~mm.
+  \begin{sol}
+    La solution la plus simple consiste à réunir les deux premières
+    boîtes dans une \Ie{minipage} dans laquelle les deux boîtes seront
+    alignées tel que désiré, puis à aligner la \Ie{minipage} avec la
+    troisième boîte. Cependant, il faut insérer une seconde ligne
+    invisible dans la \Ie{minipage} afin de pouvoir l'aligner par le
+    bas avec la boîte de droite:
+\begin{lstlisting}
+\begin{minipage}[b]{80mm}
+  \parbox[t]{30mm}{...} \hfill \parbox[t]{45mm}{...} \\
+  \mbox{}
+\end{minipage}
+\hfill
+\parbox[b]{35mm}{...}
+\end{lstlisting}
+  \end{sol}
+\end{exercice}
+
+\Closesolutionfile{solutions}
 
 %%% Local Variables:
 %%% mode: latex
