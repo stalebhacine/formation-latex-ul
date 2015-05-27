@@ -53,13 +53,12 @@
     pdftitle={Rédaction de thèses et mémoires avec LaTeX - Partie II},
     pdfauthor={Université Laval}}
   \setlength{\XeTeXLinkMargin}{1pt}
-  \renewcommand{\appendixautorefname}{annexe}
+  \renewcommand{\subsectionautorefname}{section}
   \renewcommand{\figureautorefname}{figure}
   % \newcommand{\subfigureautorefname}{figure}
   \renewcommand{\tableautorefname}{tableau}
   % \newcommand{\subtableautorefname}{tableau}
   \newcommand{\exempleautorefname}{exemple}
-  \newcommand{\definitionautorefname}{définition}
   \newcommand{\exerciceautorefname}{exercice}
 
   %% Table des matières (inspirée de classicthesis.sty)
@@ -123,7 +122,6 @@
 
   %% Exercices et réponses
   \Newassociation{sol}{solution}{solutions}
-  \Newassociation{rep}{reponse}{reponses}
   \newcounter{exercice}[chapter]
   \renewcommand{\theexercice}{\thechapter.\arabic{exercice}}
   \newenvironment{exercice}[1][]{%
@@ -153,10 +151,6 @@
         \setlist[enumerate,2]{label=\roman*),labelsep=0.5em,align=right}}
       \item}
     {\end{list}}
-  \renewenvironment{reponse}[1]{%
-    \begin{enumerate}[label=\textbf{#1}]
-      \item}
-    {\end{enumerate}}
 
   %% Remarques importantes
   \newenvironment{important}{%
@@ -249,27 +243,28 @@
   %%%  Page titre (sauf titre de la partie)
   %%% ======================================
   \renewcommand{\year}{2015}
-  % \title{%
-  %   \bfseries\fontsize{42}{33}\selectfont {\fullcaps ACT 2002} \\
-  %   \mdseries\fontsize{32}{33}\selectfont Méthodes numériques \\
-  %                                         en actuariat}
-  % \author{%
-  %   \bfseries\fontsize{16}{20}\selectfont Vincent Goulet \\
-  %   \mdseries\fontsize{14}{18}\selectfont Professeur titulaire \textbar\
-  %                                         École d'actuariat \textbar\
-  %                                         Université Laval}
+  \title{\protect\raggedright
+    \mdseries\fontsize{32}{33}\selectfont Rédaction de thèses \\
+                                          et de mémoires \\
+                                          avec
+    \bfseries\fontsize{62}{33}\selectfont \raisebox{-0.75ex}{\LaTeX} \\[10mm]
+    \mdseries\fontsize{18}{24}\selectfont 2. Concepts avancés}}
+  % \author{\protect\raggedright
+  %   \bfseries\fontsize{16}{20}\selectfont Vincent Goulet}
   % \date{%
   %   \mdseries\fontsize{14}{18}\selectfont Notes de cours \textbar\
   %                                         Exercices \textemdash\
   %                                         édition \year}
 
-\includeonly{include}
+%\includeonly{tableaux+figures,solutions}
 
 \begin{document}
 
 \frontmatter
 
 \pagestyle{empty}
+
+\maketitle
 
 % %% Page couverture avant. Il faut modifier la largeur des graphiques
 % %% puisque Sweave la règle à 0.8\textwidth.
@@ -286,6 +281,8 @@
 
 \pagestyle{companion}
 
+\include{introduction}
+
 \cleartorecto
 \tableofcontents*
 
@@ -298,6 +295,9 @@
 % \include{bibliographie}
 % \include{polices}
 % \include{varia}
+
+\appendix
+\include{solutions}
 
 \bibliography{formation_latex}
 
