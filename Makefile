@@ -22,10 +22,14 @@ SOLUTIONS1=\
 
 FILES2=formation_latex-partie_2.pdf \
 	ul_p.pdf \
-	exercice_gabarit.tex
-	exercice_include.tex
-	exercice_subcaptions.tex
-	exercice_demo.tex
+	exercice_gabarit.tex \
+	exercice_include.tex \
+		pagetitre.tex \
+		presentation.tex \
+		console-screenshot.tex \
+		emacs.tex \
+	exercice_subcaption.tex \
+	exercice_demo.tex \
 
 SOLUTIONS2=
 
