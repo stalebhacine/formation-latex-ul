@@ -388,13 +388,115 @@ Soit
   de \cmd{\dfrac} ou de celle d'une fraction au fil du texte
   (\emph{text}) dans le cas de \cmd{\tfrac}.
   %% quelque chose à cet effet dans exercices ou dans présentation de 'cases'
+\item Il est parfois visuellement plus intéressant, surtout au fil du
+  texte, d'écrire une fraction comme $1/x$ sous le forme $x^{-1}$.
 \end{itemize}
 
 \subsection{Racines}
 \label{sec:math:bases:racines}
 
+La commande
+\begin{lstlisting}
+\sqrt`\oarg{n}\marg{radicande}'
+\end{lstlisting}
+construit un symbole de radical autour de \meta{radicande}, par défaut
+la racine carrée. Si l'argument optionnel \meta{n} est spécifié, c'est
+plutôt un symbole de racine d'ordre $n$ qui est tracé. La longueur et
+la hauteur du radical s'adapte toujours à celles du radicande.
+\begin{trivlist}
+\item
+  \begin{texinput}{0.2\linewidth}
+\begin{lstlisting}
+\sqrt{2}
+\end{lstlisting}
+  \end{texinput}
+  \quad
+  \begin{texoutput}{0.1\linewidth}
+    $\sqrt{2}$
+  \end{texoutput}
+  \hfill
+  \begin{texinput}{0.2\linewidth}
+\begin{lstlisting}
+\sqrt{625}
+\end{lstlisting}
+  \end{texinput}
+  \quad
+  \begin{texoutput}{0.1\linewidth}
+    $\sqrt{625}$
+  \end{texoutput}
+  \hfill
+  \begin{texinput}{0.2\linewidth}
+\begin{lstlisting}
+\sqrt[3]{8}
+\end{lstlisting}
+  \end{texinput}
+  \quad
+  \begin{texoutput}{0.1\linewidth}
+    $\sqrt[3]{8}$
+  \end{texoutput}
+\item
+  \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+\sqrt[n]{x + y + z}
+\end{lstlisting}
+  \end{texinput}
+  \hfill
+  \begin{texoutput}{0.48\linewidth}
+    $\sqrt[n]{x + y + z}$
+  \end{texoutput}
+\item
+  \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+\sqrt{\frac{x + y}{x^2 - y^2}}
+\end{lstlisting}
+  \end{texinput}
+  \hfill
+  \begin{texoutput}[c]{0.48\linewidth}
+    $\displaystyle \sqrt{\frac{x + y}{x^2 - y^2}}$
+  \end{texoutput}
+\end{trivlist}
+
 \subsection{Sommes et intégrales}
 \label{sec:math:bases:sommes-et-integrales}
+
+Les sommes et intégrales requièrent un symbole spécial ainsi que des
+limites inférieures et supérieures, le cas échéant.
+\begin{itemize}
+\item Les commandes \cmd{\sum} et \cmd{\int} servent respectivement à tracer les
+  symboles de somme $\sum$ et d'intégrale $\int$.
+\item On entre les éventuelles limites inférieures et supérieures
+  comme des indices et des exposants.
+  \begin{trivlist}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+\sum_{i = 0}^n x_i
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.48\linewidth}
+      $\displaystyle \sum_{i = 0}^n x_i$
+    \end{texoutput}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+\int_0^{10} f(x)\, dx
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.48\linewidth}
+      $\displaystyle \int_0^{10} f(x)\, dx$
+    \end{texoutput}
+  \end{trivlist}
+\item La taille des symboles et la position des limites s'ajustent
+  automatiquement selon le contexte. Au fil du texte, la somme et
+  l'intégrale ci-dessus apparaîtraient comme $\sum_{i = 0}^n x_i$ et
+  $\int_0^{10} f(x)\, dx$.
+\item Dans une intégrale il est recommandé de séparer l'intégrande de
+  l'opérateur de différentiation $dx$ par une espace fine. C'est ce à
+  quoi sert la commande \cmd{\,} ci-dessus.
+\end{itemize}
+
 
 \subsection{Texte et espaces}
 \label{sec:math:bases:texte}
