@@ -1,0 +1,436 @@
+\chapter{Mathématiques}
+\label{chap:math}
+
+
+S'il est un domaine où {\LaTeX} brille particulièrement, c'est bien
+dans la préparation et la présentation d'équations mathématiques ---
+des plus simples aux plus complexes. Après tout, l'amélioration de la
+qualité typographique des équations mathématiques dans son ouvrage
+phare \emph{The Art of Computer Programming} figurait parmi les
+objectifs premiers de Knuth lorsqu'il a développé {\TeX}.
+
+La première partie de cette formation aborde le sujet des
+mathématiques, mais en s'en tenant qu'aux principes de base
+\citep[section~7]{UL:latex:1}. [...]
+
+Trop de symboles, consulter \citet{comprehensive} %
+\doc[???]{comprehensive}{http://texdoc.net/pkg/comprehensive}
+
+
+\section{Rappel des principes de base}
+\label{sec:math:rappel}
+
+La mise en forme d'équations mathématiques requiert d'indiquer à
+l'ordinateur, dans un langage spécial, le contenu des dites équations
+et la position des symboles: en exposant, en indice, sous forme de
+fraction, etc. L'ordinateur peut ensuite assembler le tout à partir de
+règles typographiques portant, par exemple, sur la représentation des
+variables et des constantes, l'espacement entre les symboles ou la
+disposition des équations selon qu'elles apparaissent au fil du texte
+ou hors d'un paragraphe.
+
+On indique à {\LaTeX} que l'on change de «langage», par l'utilisation
+d'un mode mathématique. Il y a deux grandes manière d'activer le mode
+mathématique:
+\begin{enumerate}
+\item en insérant le code entre les symboles \verb=$ $= pour générer
+  une équation «en ligne», ou au fil du texte;
+  \begin{trivlist}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+on sait que $(a + b)^2 = a^2
++ b^2$, d'où on obtient...
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}[c]{0.48\linewidth}
+      on sait que $(a + b)^2 = a^2 + b^2$, d'où on obtient...
+    \end{texoutput}
+  \end{trivlist}
+\item en utilisant un environnement servant à créer une équation hors
+  paragraphe;
+\begin{trivlist}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+on sait que
+\begin{equation*}
+  (a + b)^2 = a^2 + b^2,
+\end{equation*}
+d'où on obtient...
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}[c]{0.48\linewidth}
+      on sait que
+      \begin{equation*}
+        (a + b)^2 = a^2 + b^2,
+      \end{equation*}
+      d'où on obtient...
+    \end{texoutput}
+  \end{trivlist}
+\end{enumerate}
+
+En mode mathématique, les chiffres sont automatiquement considérés
+comme des constantes, les lettres comme des variables et une suite de
+lettres comme un produit de variables (nous verrons plus loin comment
+représenter des fonctions mathématiques comme $\sin$, $\log$ ou
+$\lim$). Ceci a trois conséquences principales:
+\begin{enumerate}
+\item conformément aux conventions typographiques, les chiffres sont
+  représentés en caractère \textrm{romain} et les variables en
+  \emph{italique};
+  \begin{trivlist}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+123xyz
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.48\linewidth}
+      $123xyz$
+    \end{texoutput}
+  \end{trivlist}
+\item l'espace entre les constantes, les variables et les opérateurs
+  mathématiques est géré automatiquement;
+  \begin{trivlist}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+z = 2 x + 3 x y
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.48\linewidth}
+        $z = 2 x + 3 x y$
+    \end{texoutput}
+  \end{trivlist}
+\item les espaces dans le code source n'ont aucun impact sur la
+  disposition d'une équation.
+  \begin{trivlist}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+z=2x + 3xy
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.48\linewidth}
+      $z=2x + 3xy$
+    \end{texoutput}
+  \end{trivlist}
+\end{enumerate}
+
+
+% Pensez simplement
+% à ce que pourrait être en mots la représentation de l'équation
+% \begin{equation*}
+%   \int_0^\infty \int_0^1 x_1^{\alpha + 1} x_2^{\beta + 1}\, dx_1 dx_2.
+% \end{equation*}
+% Cela ressemblerait sans doute à ceci (avec entre parenthèses les mots
+% habituellement omis et en gras les symboles qu'il faut pouvoir décrire
+% autrement que part un caractère disponible sur le clavier):
+% \begin{quote}
+%   \textbf{intégrale} de (indice) zéro à (exposant) l'\textbf{infini} \\
+%   \textbf{intégrale} de (indice) zéro à (exposant) à un \\
+%   $x$ (indice) un, puissance \textbf{alpha} plus un \\
+%   $x$ (indice) deux, puissance \textbf{beta} plus un \\
+%   $d$ $x$ (indice) un \\
+%   $d$ $x$ (indice) deux.
+% \end{quote}
+
+Quant au langage retenu par {\LaTeX} pour décrire les équations
+mathématiques, il est très similaire à celui que l'on utiliserait pour
+le faire à voix haute; nous y reviendrons. Il faut simplement avoir
+recours à des commandes pour identifier les symboles mathématiques que
+l'on ne retrouve pas sur un clavier usuel, comme les lettres grecques,
+les opérateurs d'inégalité ou les symboles de sommes et d'intégrales.
+
+
+\section{Un paquetage incontournable}
+\label{sec:math:amsmath}
+
+Le paquetage \pkg{amsmath} produit par la prestigieuse \emph{American
+  Mathematical Society} fournit diverses extensions à {\LaTeX} pour
+faciliter encore davantage la saisie d'équations mathématiques
+complexes et en améliorer le rendu. L'utilisation de ce paquetage doit
+être considérée incontournable pour tout document contenant plus que
+quelques équations très simples.
+
+Au chapitre des améliorations fournies par \pkg{amsmath}, notons
+particulièrement:
+\begin{itemize}
+\item plusieurs environnements pour les équations hors paragraphe, en
+  particulier pour les équations multi-lignes;
+\item une meilleure gestion de l'espacement autour des signes
+  d'égalité dans les équations multi-lignes;
+\item une commande pour faciliter l'entrée de texte à l'intérieur du
+  mode mathématique;
+\item un environnement pour la saisie des matrices et des coefficients
+  binomiaux;
+\item des commandes pour les intégrales multiples;
+\item la possibilité de définir de nouveaux opérateurs mathématiques.
+\end{itemize}
+Nous décrivons certaines de ces fonctionnalités dans la suite, mais
+l'utilisateur le moindrement avancé devrait impérativement consulter
+la %
+\doc[documentation complète]{amsldoc}{http://texdoc.net/pkg/amsmath}
+du paquetage.
+
+
+\section{Principaux éléments du mode mathématique}
+\label{sec:math:bases}
+
+\begin{equation*}
+  \frac{\Gamma(\alpha)}{\lambda^\alpha} =
+  \sum_{j = 0}^\infty \int_j^{j + 1} x^{\alpha - 1} e^{-\lambda x}\,
+  dx,
+  \quad
+  \alpha > 0 \text{ et } \lambda > 0.
+\end{equation*}
+
+\subsection{Exposants et indices}
+\label{sec:math:bases:exposants}
+
+{\LaTeX} permet de créer facilement et avec la bonne taille de
+symboles n'importe quelle combinaison d'exposants et d'indices.
+
+\begin{itemize}
+\item On place un caractère en exposant d'un autre avec la commande
+  \verb=^= et en indice avec la commande \verb=_=. Les indices et
+  exposants se combinent naturellement.
+  \begin{trivlist}
+  \item
+    \begin{texinput}{0.2\linewidth}
+\begin{lstlisting}
+x^2
+\end{lstlisting}
+    \end{texinput}
+    \quad
+    \begin{texoutput}{0.1\linewidth}
+      $x^2$
+    \end{texoutput}
+    \hfill
+    \begin{texinput}{0.2\linewidth}
+\begin{lstlisting}
+a_n
+\end{lstlisting}
+    \end{texinput}
+    \quad
+    \begin{texoutput}{0.1\linewidth}
+      $a_n$
+    \end{texoutput}
+    \hfill
+    \begin{texinput}{0.2\linewidth}
+\begin{lstlisting}
+x_i^k
+\end{lstlisting}
+    \end{texinput}
+    \quad
+    \begin{texoutput}{0.1\linewidth}
+      $x_i^k$
+    \end{texoutput}
+  \end{trivlist}
+  (L'ordre de saisie n'a pas d'importance; le troisième exemple
+  donnerait le même résultat avec \verb=x^k_i=.)
+\item Si l'exposant ou l'indice compte plus d'un caractère, il faut
+  regrouper le tout entre accolades \verb={ }=.
+  \begin{trivlist}
+  \item
+    \begin{texinput}{0.2\linewidth}
+\begin{lstlisting}
+x^{2k + 1}
+\end{lstlisting}
+    \end{texinput}
+    \quad
+    \begin{texoutput}{0.1\linewidth}
+      $x^{2k + 1}$
+    \end{texoutput}
+    \hfill
+    \begin{texinput}{0.2\linewidth}
+\begin{lstlisting}
+x_{i,j}
+\end{lstlisting}
+    \end{texinput}
+    \quad
+    \begin{texoutput}{0.1\linewidth}
+      $x_{i,j}$
+    \end{texoutput}
+    \hfill
+    \begin{texinput}{0.2\linewidth}
+\begin{lstlisting}
+x_{ij}^{2n}
+\end{lstlisting}
+    \end{texinput}
+    \quad
+    \begin{texoutput}{0.1\linewidth}
+      $x_{ij}^{2n}$
+    \end{texoutput}
+  \end{trivlist}
+\item Toutes les combinaisons d'exposants et d'indices sont possibles,
+  y compris les puissances de puissances ou les indices d'indices.
+  \begin{trivlist}
+  \item
+    \begin{texinput}{0.2\linewidth}
+\begin{lstlisting}
+e^{-x^2}
+\end{lstlisting}
+    \end{texinput}
+    \quad
+    \begin{texoutput}{0.1\linewidth}
+      $e^{-x^2}$
+    \end{texoutput}
+    \hfill
+    \begin{texinput}{0.4\linewidth}
+\begin{lstlisting}
+A_{i_s, k^n}^{y_i}
+\end{lstlisting}
+    \end{texinput}
+    \quad
+    \begin{texoutput}{0.2\linewidth}
+      $A_{i_s,k^n}^{y_i}$
+    \end{texoutput}
+    \quad \mbox{}     % pour alignement avec bloc d'exemples ci-dessus
+  \end{trivlist}
+\end{itemize}
+
+\begin{important}
+  Les commandes \verb=^= et \verb=_= sont permises dans le mode
+  mathématique seulement. En fait, si {\TeX} rencontre l'une de ces
+  commandes en mode texte, il tentera automatiquement de passer au
+  mode mathématique après avoir émis l'avertissement
+\begin{verbatim}
+! Missing $ inserted.
+\end{verbatim}
+  Il est assez rare que le résultat soit celui souhaité.
+\end{important}
+
+\subsection{Fractions}
+\label{sec:math:bases:fractions}
+
+Il y a plusieurs façons de représenter une fraction selon qu'elle se
+trouve au fil du texte, dans une équation hors paragraphe ou à
+l'intérieur d'une autre fraction.
+\begin{itemize}
+\item Pour les fractions au fil du texte, il vaut souvent mieux
+  utiliser simplement la barre oblique \verb=/= pour séparer le
+  numérateur du dénominateur, quitte à utiliser des parenthèses.
+  Ainsi, on utilise \verb=$(n + 1)/2$= pour obtenir $(n + 1)/2$.
+\item De manière plus générale, la commande
+\begin{lstlisting}
+\frac`\marg{numérateur}\marg{dénominateur}'
+\end{lstlisting}
+  dispose \meta{numérateur} au-dessus de \meta{dénominateur}, séparé
+  par une ligne horizontale. La taille des caractères s'ajuste
+  automatiquement selon que la fraction se trouve au fil
+  du texte ou dans une équation hors paragraphe, ainsi que selon la
+  position de la fraction dans l'équation.
+  \begin{trivlist}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+% taille au fil du texte
+On a $z_1 = \frac{x}{y}$ et
+$z_2 = xy$.
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}[c]{0.48\linewidth}
+      On a $z_1 = \frac{x}{y}$ et $z_2 = xy$.
+    \end{texoutput}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+% taille hors paragraphe
+On a
+\begin{equation*}
+  z_1 = \frac{x}{y}
+\end{equation*}
+et $z_2 = xy$.
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}[c]{0.48\linewidth}
+      On a
+      \begin{equation*}
+        z_1 = \frac{x}{y}
+      \end{equation*}
+      et $z_2 = xy$.
+    \end{texoutput}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+% deux tailles combinées
+Soit
+\begin{equation*}
+  z = \frac{\frac{x}{2}
+    + 1}{y}.
+\end{equation*}
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}[c]{0.48\linewidth}
+      Soit
+      \begin{equation*}
+        z = \frac{\frac{x}{2} + 1}{y}.
+      \end{equation*}
+    \end{texoutput}
+  \end{trivlist}
+\item Les commandes
+\begin{lstlisting}
+\dfrac`\marg{numérateur}\marg{dénominateur}'
+\tfrac`\marg{numérateur}\marg{dénominateur}'
+\end{lstlisting}
+  de \pkg{amsmath} permettent de forcer une fraction à adopter la
+  taille d'une fraction hors paragraphe (\emph{displayed}) dans le cas
+  de \cmd{\dfrac} ou de celle d'une fraction au fil du texte
+  (\emph{text}) dans le cas de \cmd{\tfrac}.
+  %% quelque chose à cet effet dans exercices ou dans présentation de 'cases'
+\end{itemize}
+
+\subsection{Racines}
+\label{sec:math:bases:racines}
+
+\subsection{Sommes et intégrales}
+\label{sec:math:bases:sommes-et-integrales}
+
+\subsection{Texte et espaces}
+\label{sec:math:bases:texte}
+
+
+
+symboles
+
+suites d'équations
+  left ... right
+  numérotation
+
+vecteurs et matrices
+
+%%%
+%%% Exercices
+%%%
+
+\section{Exercices}
+\label{sec:math:exercices}
+
+\Opensolutionfile{solutions}[solutions-mathematiques]
+
+\begin{Filesave}{solutions}
+\section*{Chapitre \ref*{chap:math}}
+\addcontentsline{toc}{section}{Chapitre \protect\ref*{chap:math}}
+
+\end{Filesave}
+
+
+
+\Closesolutionfile{solutions}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% TeX-master: "formation_latex-partie_2"
+%%% coding: utf-8
+%%% End:

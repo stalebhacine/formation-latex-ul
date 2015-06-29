@@ -97,6 +97,24 @@
   \def\frenchfigurename{{\scshape Fig.}}
   \def\frenchtablename{{\scshape Tab.}}
 
+  %% Sections de code source
+  \lstloadlanguages{[LaTeX]TeX}
+  \lstset{language=[LaTeX]TeX,
+    escapeinside=`',
+    extendedchars=true,
+    inputencoding=utf8/latin1,
+    basicstyle=\ttfamily\NoAutoSpacing,
+    commentstyle=\color{comments}\slshape,
+    keywordstyle=\mdseries,
+    emphstyle=\color{emphasis}\bfseries,
+    texcsstyle=*\lst@keywordstyle,
+    backgroundcolor=\color{LightYellow1},
+    frame=lr,
+    rulecolor=\color{LightYellow1},
+    xleftmargin=3.4pt,
+    xrightmargin=3.4pt,
+    showstringspaces=false}
+
   %%% =========================
   %%%  Nouveaux environnements
   %%% =========================
@@ -150,6 +168,14 @@
         \setlist[enumerate,2]{label=\roman*),labelsep=0.5em,align=right}}
       \item}
     {\end{list}}
+
+  %% Entrées et sorties LaTeX
+  \newenvironment{texinput}[1]{%
+    \begin{minipage}{#1}}{%
+    \end{minipage}}
+  \newenvironment{texoutput}[2][t]{%
+    \begin{minipage}[#1]{#2}}{%
+    \end{minipage}}
 
   %% Remarques importantes
   \newenvironment{important}{%
@@ -216,25 +242,6 @@
 
   %% Lien vers documentation dans la marge
   \newcommand{\doc}[3][documentation]{\link{#3}{#1}\marginpar{\faBook~\fichier{#2}}}
-
-  %%% =========================
-  %%%  Sections de code source
-  %%% =========================
-  \lstloadlanguages{[LaTeX]TeX}
-  \lstset{language=[LaTeX]TeX,
-    escapeinside=`',
-    extendedchars=true,
-    inputencoding=utf8/latin1,
-    basicstyle=\ttfamily\NoAutoSpacing,
-    commentstyle=\color{comments}\slshape,
-    keywordstyle=\mdseries,
-    emphstyle=\color{emphasis}\bfseries,
-    backgroundcolor=\color{LightYellow1},
-    frame=lr,
-    rulecolor=\color{LightYellow1},
-    xleftmargin=3.4pt,
-    xrightmargin=3.4pt,
-    showstringspaces=false}
 
   %%% =======
   %%%  Varia
