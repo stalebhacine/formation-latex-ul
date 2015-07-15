@@ -11,7 +11,7 @@
   \usepackage{manfnt}                  % \mantriangleright (puce)
   \usepackage{dirtree}                 % arbre pour exercice ...?
   \usepackage{metalogo}                % \XeLaTeX logo
-  \usepackage{applekeys}               % touches Mac
+  %\usepackage{applekeys}               % touches Mac
   \usepackage{fontawesome}             % \faExclamationSign, \faYouTubePlay
   \usepackage{answers,listings}
   \usepackage[francais]{varioref}
@@ -169,7 +169,10 @@
       \item}
     {\end{list}}
 
-  %% Entrées et sorties LaTeX
+  %% Demo, entrées et sorties LaTeX
+  \newenvironment{demo}{%
+    \begin{trivlist}}{%
+    \end{trivlist}}
   \newenvironment{texinput}[1]{%
     \begin{minipage}{#1}}{%
     \end{minipage}}
@@ -241,7 +244,14 @@
   \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
 
   %% Lien vers documentation dans la marge
-  \newcommand{\doc}[3][documentation]{\link{#3}{#1}\marginpar{\faBook~\fichier{#2}}}
+  \newcommand{\doc}[3][documentation]{\link{#3}{#1}%
+    \ifthenelse{\equal{#2}{}}{}{\marginpar{\faBook~\fichier{#2}}}}
+
+  %% Pour le tableau des commandes d'espacement en mode mathématique.
+  %% Pris de la doc de amsmath.
+  \newcommand{\lspx}{\mathord{\dashv\mkern-3mu}}
+  \newcommand{\rspx}{\mathord{\mkern-2mu\vdash}}
+  \newcommand{\spx}[1]{$\lspx #1\rspx$}
 
   %%% =======
   %%%  Varia
