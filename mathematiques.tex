@@ -35,7 +35,7 @@ mathématique:
 \begin{enumerate}
 \item en insérant le code entre les symboles \verb=$ $= pour générer
   une équation «en ligne», ou au fil du texte;
-  \begin{trivlist}
+  \begin{demo}
   \item
     \begin{texinput}{0.48\linewidth}
 \begin{lstlisting}
@@ -47,10 +47,10 @@ on sait que $(a + b)^2 = a^2
     \begin{texoutput}[c]{0.48\linewidth}
       on sait que $(a + b)^2 = a^2 + b^2$, d'où on obtient...
     \end{texoutput}
-  \end{trivlist}
+  \end{demo}
 \item en utilisant un environnement servant à créer une équation hors
   paragraphe;
-\begin{trivlist}
+\begin{demo}
   \item
     \begin{texinput}{0.48\linewidth}
 \begin{lstlisting}
@@ -69,7 +69,7 @@ d'où on obtient...
       \end{equation*}
       d'où on obtient...
     \end{texoutput}
-  \end{trivlist}
+  \end{demo}
 \end{enumerate}
 
 En mode mathématique, les chiffres sont automatiquement considérés
@@ -81,7 +81,7 @@ $\lim$). Ceci a trois conséquences principales:
 \item conformément aux conventions typographiques, les chiffres sont
   représentés en caractère \textrm{romain} et les variables en
   \emph{italique};
-  \begin{trivlist}
+  \begin{demo}
   \item
     \begin{texinput}{0.48\linewidth}
 \begin{lstlisting}
@@ -92,10 +92,10 @@ $\lim$). Ceci a trois conséquences principales:
     \begin{texoutput}{0.48\linewidth}
       $123xyz$
     \end{texoutput}
-  \end{trivlist}
+  \end{demo}
 \item l'espace entre les constantes, les variables et les opérateurs
   mathématiques est géré automatiquement;
-  \begin{trivlist}
+  \begin{demo}
   \item
     \begin{texinput}{0.48\linewidth}
 \begin{lstlisting}
@@ -106,10 +106,10 @@ z = 2 x + 3 x y
     \begin{texoutput}{0.48\linewidth}
         $z = 2 x + 3 x y$
     \end{texoutput}
-  \end{trivlist}
+  \end{demo}
 \item les espaces dans le code source n'ont aucun impact sur la
   disposition d'une équation.
-  \begin{trivlist}
+  \begin{demo}
   \item
     \begin{texinput}{0.48\linewidth}
 \begin{lstlisting}
@@ -120,7 +120,7 @@ z=2x + 3xy
     \begin{texoutput}{0.48\linewidth}
       $z=2x + 3xy$
     \end{texoutput}
-  \end{trivlist}
+  \end{demo}
 \end{enumerate}
 
 
@@ -201,7 +201,7 @@ symboles n'importe quelle combinaison d'exposants et d'indices.
 \item On place un caractère en exposant d'un autre avec la commande
   \verb=^= et en indice avec la commande \verb=_=. Les indices et
   exposants se combinent naturellement.
-  \begin{trivlist}
+  \begin{demo}
   \item
     \begin{texinput}{0.2\linewidth}
 \begin{lstlisting}
@@ -232,12 +232,12 @@ x_i^k
     \begin{texoutput}{0.1\linewidth}
       $x_i^k$
     \end{texoutput}
-  \end{trivlist}
+  \end{demo}
   (L'ordre de saisie n'a pas d'importance; le troisième exemple
   donnerait le même résultat avec \verb=x^k_i=.)
 \item Si l'exposant ou l'indice compte plus d'un caractère, il faut
   regrouper le tout entre accolades \verb={ }=.
-  \begin{trivlist}
+  \begin{demo}
   \item
     \begin{texinput}{0.2\linewidth}
 \begin{lstlisting}
@@ -268,10 +268,10 @@ x_{ij}^{2n}
     \begin{texoutput}{0.1\linewidth}
       $x_{ij}^{2n}$
     \end{texoutput}
-  \end{trivlist}
+  \end{demo}
 \item Toutes les combinaisons d'exposants et d'indices sont possibles,
   y compris les puissances de puissances ou les indices d'indices.
-  \begin{trivlist}
+  \begin{demo}
   \item
     \begin{texinput}{0.2\linewidth}
 \begin{lstlisting}
@@ -293,7 +293,7 @@ A_{i_s, k^n}^{y_i}
       $A_{i_s,k^n}^{y_i}$
     \end{texoutput}
     \quad \mbox{}     % pour alignement avec bloc d'exemples ci-dessus
-  \end{trivlist}
+  \end{demo}
 \end{itemize}
 
 \begin{important}
@@ -327,7 +327,7 @@ l'intérieur d'une autre fraction.
   automatiquement selon que la fraction se trouve au fil
   du texte ou dans une équation hors paragraphe, ainsi que selon la
   position de la fraction dans l'équation.
-  \begin{trivlist}
+  \begin{demo}
   \item
     \begin{texinput}{0.48\linewidth}
 \begin{lstlisting}
@@ -377,7 +377,7 @@ Soit
         z = \frac{\frac{x}{2} + 1}{y}.
       \end{equation*}
     \end{texoutput}
-  \end{trivlist}
+  \end{demo}
 \item Les commandes
 \begin{lstlisting}
 \dfrac`\marg{numérateur}\marg{dénominateur}'
@@ -403,7 +403,7 @@ construit un symbole de radical autour de \meta{radicande}, par défaut
 la racine carrée. Si l'argument optionnel \meta{n} est spécifié, c'est
 plutôt un symbole de racine d'ordre $n$ qui est tracé. La longueur et
 la hauteur du radical s'adapte toujours à celles du radicande.
-\begin{trivlist}
+\begin{demo}
 \item
   \begin{texinput}{0.2\linewidth}
 \begin{lstlisting}
@@ -454,7 +454,7 @@ la hauteur du radical s'adapte toujours à celles du radicande.
   \begin{texoutput}[c]{0.48\linewidth}
     $\displaystyle \sqrt{\frac{x + y}{x^2 - y^2}}$
   \end{texoutput}
-\end{trivlist}
+\end{demo}
 
 \subsection{Sommes et intégrales}
 \label{sec:math:bases:sommes-et-integrales}
@@ -466,7 +466,7 @@ limites inférieures et supérieures, le cas échéant.
   symboles de somme $\sum$ et d'intégrale $\int$.
 \item On entre les éventuelles limites inférieures et supérieures
   comme des indices et des exposants.
-  \begin{trivlist}
+  \begin{demo}
   \item
     \begin{texinput}{0.48\linewidth}
 \begin{lstlisting}
@@ -487,23 +487,458 @@ limites inférieures et supérieures, le cas échéant.
     \begin{texoutput}{0.48\linewidth}
       $\displaystyle \int_0^{10} f(x)\, dx$
     \end{texoutput}
-  \end{trivlist}
+  \end{demo}
 \item La taille des symboles et la position des limites s'ajustent
   automatiquement selon le contexte. Au fil du texte, la somme et
   l'intégrale ci-dessus apparaîtraient comme $\sum_{i = 0}^n x_i$ et
   $\int_0^{10} f(x)\, dx$.
 \item Dans une intégrale il est recommandé de séparer l'intégrande de
   l'opérateur de différentiation $dx$ par une espace fine. C'est ce à
-  quoi sert la commande \cmd{\,} ci-dessus.
+  quoi sert la commande \cmd{\,} ci-dessus; voir aussi le tableau de
+  la \autopageref{tab:math:espaces}.
 \end{itemize}
 
+\subsection{Points de suspension}
+\label{sec:math:bases:dots}
+
+Les formules mathématiques comportent fréquemment des points de
+suspension dans des suites de variables ou d'opérations. Il faut
+éviter de les entrer comme trois points finaux consécutifs, car
+l'espacement entre ceux-ci sera trop petit et le résultat,
+disgracieux: $...$
+
+\begin{itemize}
+\item {\LaTeX} fournit les commandes suivantes pour générer divers
+  types de points de suspension:
+\begin{center}
+    \label{tab:math:espaces}
+    \begin{tabular}{lll}
+      \toprule
+      commande & type de points & exemple \\
+      \midrule
+      \cmd{\dots} &  sélection automatique \\
+      \cmd{\ldots} & points à la ligne de base & $x_1, \ldots, x_n$ \\
+      \cmd{\cdots} & points centrés & $x_1 + \cdots + x_n$ \\
+      \cmd{\vdots} & points verticaux & $
+                                        \begin{matrix}
+                                          x_1 \\ \vdots \\ x_n
+                                        \end{matrix}$ \\
+      \cmd{\ddots} & points diagonaux & $
+                                        \begin{matrix}
+                                          x_1 &&\\ &\ddots& \\ && x_n
+                                        \end{matrix}$ \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\item Avec \pkg{amsmath}, la commande \cmd{\dots} tâche de
+  sélectionner automatiquement entre les points à la ligne de base ou
+  les points centrés selon le contexte. Comme le résultat est en
+  général le bon, nous recommandons d'utiliser principalement cette
+  commande pour insérer des points de suspension en mode mathématique.
+  \begin{demo}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+$x_1, \dots, x_n$
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}[c]{0.48\linewidth}
+      $x_1, \dots, x_n$
+    \end{texoutput} \\[-\baselineskip]
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+$x_1, \ldots, x_n$
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}[c]{0.48\linewidth}
+      $x_1, \ldots, x_n$
+    \end{texoutput}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+$x_1 + \dots + x_n$
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}[c]{0.48\linewidth}
+      $x_1 + \dots + x_n$
+    \end{texoutput} \\[-\baselineskip]
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+$x_1 + \cdots + x_n$
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}[c]{0.48\linewidth}
+      $x_1 + \cdots + x_n$
+    \end{texoutput}
+  \end{demo}
+\item Le paquetage \pkg{amsmath} définit également les commandes sémantiques
+  \begin{itemize}
+  \item \cmd{\dotsc} pour des «points avec des virgules» (\emph{commas});
+  \item \cmd{\dotsb} pour des «points avec des opérateurs binaires»;
+  \item \cmd{\dotsm} pour des «points de multiplication»;
+  \item \cmd{\dotsi} pour des «points avec des intégrales»;
+  \item \cmd{\dotso} pour des «autres points» (\emph{other}).
+  \end{itemize}
+\end{itemize}
 
 \subsection{Texte et espaces}
 \label{sec:math:bases:texte}
 
+On l'a vu, en mode mathématique {\LaTeX} traite les lettres comme des
+variables et gère automatiquement l'espacement entre les divers
+symboles. Or, il n'est pas rare que des formules mathématiques
+contiennent du texte (notamment des mots comme «où», «si», «quand»).
+De plus, il est parfois souhaitable de pouvoir ajuster les blancs
+entre des éléments.
+\begin{itemize}
+\item La commande de \pkg{amsmath}
+\begin{lstlisting}
+\text`\marg{texte}'
+\end{lstlisting}
+  insère \meta{texte} dans une formule mathématique. Le texte est
+  inséré tel quel, sans aucune gestion des espaces avant ou après le
+  texte. Si des espaces sont nécessaires, ils doivent faire partie de
+  \meta{texte}.
+  \begin{demo}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+f(x) = a e^{-ax}
+\text{ pour } x > 0
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}[c]{0.48\linewidth}
+      $f(x) = a e^{-ax} \text{ pour } x > 0$
+    \end{texoutput}
+  \end{demo}
+\item La commande \cmd{\quad} insère un blanc de $1$~em, soit une
+  longueur égale à la taille de la police de caractère courante en
+  points (donc $11$~points pour une police de $11$~points). La
+  commande \cmd{\qquad} insère le double de cette longueur.\footnote{%
+    Bien qu'elles soient surtout utilisées dans le mode mathématique,
+    les commandes \cmd{\quad} et \cmd{\qquad} sont également valides
+    dans le mode texte.}
+  \begin{demo}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+f(x) = a e^{-ax},
+\quad x > 0
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}[c]{0.48\linewidth}
+      $f(x) = a e^{-ax}, \quad x > 0$
+    \end{texoutput}
+  \end{demo}
+\item Le tableau ci-dessous répertorie et compare les différentes
+  commandes qui permettent d'insérer des espaces plus ou moins fines
+  entre des éléments dans le mode mathématique:
+  \begin{center}
+    \label{tab:math:espaces}
+    \begin{tabular}{lll}
+      \toprule
+      commande & longueur & exemple \\
+      \midrule
+               & pas d'espace & \spx{} \\
+      \cmd{\,} & $3/18$ de \cmdprint{quad} & \spx{\,} \\
+      \cmd{\:} & $4/18$ de \cmdprint{quad} & \spx{\:} \\
+      \cmd{\;} & $5/18$ de \cmdprint{quad} & \spx{\;} \\
+      \cmd{\!} & $-3/18$ de \cmdprint{quad} & \spx{\!} \\
+      \cmd{\quad} & $1$~em & \spx{\quad} \\
+      \cmd{\qquad} & $2$~em & \spx{\qquad} \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\end{itemize}
+
+\subsection{Fonctions et opérateurs}
+\label{sec:math:bases:fonctions}
+
+Les régles typographiques veulent que les variables apparaissent en
+\textit{italique}, mais que les noms de fonctions, eux, apparaissent
+en \textrm{romain}, comme le texte standard. Pensons, ici, à des
+fonctions comme $\sin$ ou $\log$.
+
+On sait que l'on ne peut entrer le nom d'une fonction tel quel en mode
+mathématique, car {\LaTeX} interprétera la suite de lettres comme un
+produit de variables:
+\begin{demo}
+\item
+  \begin{texinput}{0.2\linewidth}
+\begin{lstlisting}
+$sin$
+\end{lstlisting}
+  \end{texinput}
+  \quad
+  \begin{texoutput}{0.2\linewidth}
+    $sin$
+  \end{texoutput}
+  \hfill
+  \begin{texinput}{0.2\linewidth}
+\begin{lstlisting}
+$log$
+\end{lstlisting}
+  \end{texinput}
+  \quad
+  \begin{texoutput}{0.2\linewidth}
+    $log$
+  \end{texoutput}
+\end{demo}
+Utiliser à répétition la commande \cmdprint{text} se révèle peu
+pratique à l'usage.
+
+\begin{itemize}
+\item {\LaTeX} définit des commandes pour un grand nombre de fonctions
+  et d'opérateurs mathématiques standards:
+\begin{lstlisting}
+\arccos   \cosh    \det    \inf      \limsup   \Pr      \tan
+\arcsin   \cot     \dim    \ker      \ln       \sec     \tanh
+\arctan   \coth    \exp    \lg       \log      \sin
+\arg      \csc     \gcd    \lim      \max      \sinh
+\cos      \deg     \hom    \liminf   \min      \sup
+\end{lstlisting}
+\item Certaines des fonctions ci-dessus, notamment \cmd{\lim}, accepte
+  des limites comme les symboles de somme et d'intégrale.
+  \begin{demo}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+% au fil du texte
+\lim_{x \to 0} x = 0
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.48\linewidth}
+      $\lim_{x \to 0} x = 0$
+    \end{texoutput}
+\item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+% hors paragraphe
+\lim_{x \to 0} x = 0
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.48\linewidth}
+      $\displaystyle \lim_{x \to 0} x = 0$
+    \end{texoutput}
+  \end{demo}
+\item La commande \cmd{\DeclareMathOperator} de \pkg{amsmath} permet
+  de définir de nouveaux noms de fonctions; consulter la %
+  \doc[documentation]{amsldoc}{http://texdoc.net/pkg/amsmath} %
+  du paquetage (section 5.1) pour les détails.
+\end{itemize}
 
 
-symboles
+
+\section{Symboles mathématiques}
+\label{sec:math:symboles}
+
+Outre les chiffres et les lettres de l'alphabet, les claviers
+d'ordinateurs comptent somme toute très peu des innombrables symboles
+mathématiques utilisés couramment. Pour les représenter dans {\LaTeX},
+on aura recours à des commandes qui débutent, comme d'habitude, par le
+symbole \verb=\= et dont le nom est habituellement dérivé de la
+signification mathématique du symbole.
+
+Si un symbole mathématique a été utilisé quelque part dans une
+publication, sa version existe dans {\LaTeX}. Il serait donc utopique
+de tenter de faire ici une recension des symboles disponibles. Nous
+nous contenterons d'un avant goût des principales catégories.
+
+L'ouvrage de référence pour connaître les symboles disponibles dans
+{\LaTeX} est la bien nommée %
+\doc[Comprehensive {\LaTeX} Symbol List]{compre\-hen\-sive}{http://texdoc.net/pkg/comprehensive}. %
+Dans l'édition de 2009, la liste comprenait pas moins de \nombre{5913}
+symboles répartis sur plus de 160 pages! On y trouve de tout, des
+symboles mathématiques aux pictogrammes de météo ou d'échecs, en
+passant par\dots\ des figurines des Simpsons.
+
+\begin{important}
+  Les moteurs {\XeTeX} et {\LuaTeX} supportent nativement le code
+  source en format Unicode UTF-8 \citep{Unicode:5.0}. Ce standard
+  contient des définitions pour plusieurs symboles mathématiques
+  \citep{wikipedia:unicode-math}. Cela signifie qu'il est possible
+  d'entrer une partie au moins des équations mathématiques avec des
+  caractères visibles à l'écran, plutôt qu'avec des commandes {\LaTeX}.
+  Nous ne saurions toutefois recommander cette pratique qui rend les
+  fichiers source moins compatibles d'un système à un autre.
+\end{important}
+
+\subsection{Lettres grecques}
+\label{sec:math:symboles:grecques}
+
+On obtient les lettres grecques en {\LaTeX} avec des commandes
+correspondant au nom de chaque lettre. Lorsque la commande débute par
+une capitale, on obtient une lettre grecque majuscule. Certaines
+lettres grecques majuscules n'existent pas car elles sont identiques
+aux lettres romaines.
+
+Les deux tableaux ci-dessous présentent l'ensemble des lettres
+grecques disponibles dans {\LaTeX}.
+
+\begin{table}[h]
+  \caption{Lettres grecques minuscules}
+  \label{tab:math:grecques}
+  \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
+    $\alpha$      & \cmd{\alpha}      & $\theta$    & \cmd{\theta} &
+    $o$           & o                 & $\tau$      & \cmd{\tau} \\
+    $\beta$       & \cmd{\beta}       & $\vartheta$ & \cmd{\vartheta} &
+    $\pi$         & \cmd{\pi}         & $\upsilon$  & \cmd{\upsilon} \\
+    $\gamma$      & \cmd{\gamma}      & $\iota$     & \cmd{\iota} &
+    $\varpi$      & \cmd{\varpi}      & $\phi$      & \cmd{\phi} \\
+    $\delta$      & \cmd{\delta}      & $\kappa$    & \cmd{\kappa} &
+    $\rho$        & \cmd{\rho}        & $\varphi$   & \cmd{\varphi} \\
+    $\epsilon$    & \cmd{\epsilon}    & $\lambda$   & \cmd{\lambda} &
+    $\varrho$     & \cmd{\varrho}     & $\chi$      & \cmd{\chi} \\
+    $\varepsilon$ & \cmd{\varepsilon} & $\mu$       & \cmd{\mu} &
+    $\sigma$      & \cmd{\sigma}      & $\psi$      & \cmd{\psi} \\
+    $\zeta$       & \cmd{\zeta}       & $\nu$       & \cmd{\nu} &
+    $\varsigma$   & \cmd{\varsigma}   & $\omega$    & \cmd{\omega} \\
+    $\eta$        & \cmd{\eta}        & $\xi$       & \cmd{\xi}
+  \end{tabularx}
+\end{table}
+
+\begin{table}[h]
+  \caption{Lettres grecques majuscules}
+  \label{tab:math:Grecques}
+  \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
+    $\Gamma$    & \cmd{\Gamma}   &
+    $\Lambda$   & \cmd{\Lambda}  &
+    $\Sigma$    & \cmd{\Sigma}   &
+    $\Psi$      & \cmd{\Psi}     \\
+    $\Delta$    & \cmd{\Delta}   &
+    $\Xi$       & \cmd{\Xi}      &
+    $\Upsilon$  & \cmd{\Upsilon} &
+    $\Omega$    & \cmd{\Omega}   \\
+    $\Theta$    & \cmd{\Theta}   &
+    $\Pi$       & \cmd{\Pi}      &
+    $\Phi$      & \cmd{\Phi}
+  \end{tabularx}
+\end{table}
+
+\subsection{Lettres modifiées}
+\label{tab:math:symboles:mathcal}
+
+Les lettres de l'alphabet, principalement en majuscule, servent
+parfois en mathématiques dans des versions modifiées pour représenter
+des quantités, notamment les ensembles.
+
+\begin{itemize}
+\item La commande \cmd{\mathcal} permet de transfomer un ou plusieurs
+  caractères en version dite «calligraphique» dans le mode mathématique.
+  \begin{demo}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+\mathcal{ABC\, xyz}
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.48\linewidth}
+      %% pris de lucidaot.tex; apparemment lent
+      \setmathfont[RawFeature=+ss04]{Lucida Bright Math OT}
+      $\mathscr{ABC\, xyz}$
+    \end{texoutput}
+  \end{demo}
+\item La commande \cmd{\mathbb} fournie, entre autres, par les
+  paquetages \pkg{amsfonts} et \pkg{unicode-math} génère des versions
+  majuscule ajourée (\emph{blackboard bold}) des lettres de
+  l'alphabet. Elles sont principalement utilisée pour représenter les
+  ensembles de nombres.
+  \begin{demo}
+  \item
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+\mathbb{NZRC}
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.48\linewidth}
+      $\mathbb{NZRC}$
+    \end{texoutput}
+  \end{demo}
+\item Le tableau~213 de la %
+\doc[Comprehensive {\LaTeX} Symbol List]{}{http://texdoc.net/pkg/comprehensive} %
+  présente plusieurs autres alphabets spéciaux disponibles en
+  mode mathématique.
+\item Certaines polices de caractères contiennent plusieurs versions
+  des symboles mathématiques. Par exemple, la police utilisée dans le
+  présent document contient deux versions de la police calligraphique,
+  celle présentée ci-dessus ou celle-ci: %
+  \setmathfont[RawFeature=-ss04]{Lucida Bright Math OT}
+  $\mathscr{ABC\, xyz}$.
+  Consulter éventuellement la documentation de la police pour les détails.
+\end{itemize}
+
+\subsection{Opérateurs binaires et relations}
+\label{sec:math:symboles:binaires+relations}
+
+Les opérateurs binaires combinent deux quantités pour en former une
+troisième; pensons simplement aux opérateurs d'addition $+$ et de
+soustraction $-$ que l'on retrouve sur un clavier d'ordinateur normal.
+Les relations, quant à elles, servent pour la comparaison entre deux
+quantités, comme  $<$ et $>$.
+
+\begin{itemize}
+\item La %
+  \doc[Comprehensive {\LaTeX} Symbol
+  List]{}{http://texdoc.net/pkg/comprehensive} %
+  consacre plus d'une dizaine de tableaux aux opérateurs binaires et
+  près d'une quarantaire aux relations. Les tableaux ci-dessous ne
+  présentent donc que les principales, à titre indicatif.
+\item Certaines relations existent directement en version opposée, ou
+  négative (comme $\neq$ ou $\notin$) soit dans {\LaTeX} de base, soit
+  avec \pkg{amsmath} ou un autre paquetage. Autrement, il est possible
+  de préfixer toute relation de \cmd{\not} pour y supersposer une
+  barre oblique $/$.
+\end{itemize}
+
+\begin{table}[h]
+  \caption{Quelques opérateurs binaires}
+  \label{tab:math:binaires}
+  \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
+    $\times$    & \cmd{\times} &
+    $\div$      & \cmd{\div}   &
+    $\pm$       & \cmd{\pm}    &
+    $\mp$       & \cmd{\mp}    \\
+    $\cup$      & \cmd{\cup} &
+    $\cap$      & \cmd{\cap} &
+    $\setminus$ & \cmd{\setminus} &
+    $\cdot$     & \cmd{\cdot}  \\
+    $\wedge$    & \cmd{\wedge} &
+    $\vee$      & \cmd{\vee} &
+    $\oplus$    & \cmd{\oplus} &
+    $\otimes$   & \cmd{\otimes}
+  \end{tabularx}
+\end{table}
+
+\begin{table}[h]
+  \caption{Quelques relations et leur négation}
+  \label{tab:math:binaires}
+  \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
+    $\leq$      & \cmd{\leq} &
+    $\geq$      & \cmd{\geq}   &
+    $\neq$      & \cmd{\neq}    &
+    $\equiv$    & \cmd{\equiv}    \\
+    $\subset$   & \cmd{\subset} &
+    $\subseteq$ & \cmd{\subseteq}  &
+    $\in$       & \cmd{\in} &
+    $\notin$    & \cmd{\notin} \\
+    $\nless$    & \cmd{\nless}$^\dagger$ &
+    $\ngtr$     & \cmd{\ngtr}$^\dagger$   &
+    $\nleq$     & \cmd{\nleq}$^\dagger$    &
+    $\ngeq$     & \cmd{\ngeq}$^\dagger$ \\
+    \addlinespace
+  \end{tabularx}
+  \hspace*{1em}{\footnotesize $^\dagger$ requiert \pkg{amsmath}}
+\end{table}
 
 suites d'équations
   left ... right
