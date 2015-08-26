@@ -183,14 +183,6 @@ du paquetage.
 \section{Principaux éléments du mode mathématique}
 \label{sec:math:bases}
 
-\begin{equation*}
-  \frac{\Gamma(\alpha)}{\lambda^\alpha} =
-  \sum_{j = 0}^\infty \int_j^{j + 1} x^{\alpha - 1} e^{-\lambda x}\,
-  dx,
-  \quad
-  \alpha > 0 \text{ et } \lambda > 0.
-\end{equation*}
-
 \subsection{Exposants et indices}
 \label{sec:math:bases:exposants}
 
@@ -389,7 +381,7 @@ Soit
   (\emph{text}) dans le cas de \cmd{\tfrac}.
   %% quelque chose à cet effet dans exercices ou dans présentation de 'cases'
 \item Il est parfois visuellement plus intéressant, surtout au fil du
-  texte, d'écrire une fraction comme $1/x$ sous le forme $x^{-1}$.
+  texte, d'écrire une fraction comme $1/x$ sous la forme $x^{-1}$.
 \end{itemize}
 
 \subsection{Racines}
@@ -464,6 +456,9 @@ limites inférieures et supérieures, le cas échéant.
 \begin{itemize}
 \item Les commandes \cmd{\sum} et \cmd{\int} servent respectivement à tracer les
   symboles de somme $\sum$ et d'intégrale $\int$.
+\item Le paquetage \pkg{amsmath} fournit également des commandes comme
+  \cmd{\iint} et \cmd{\iiint} pour obtenir des symboles d'intégrales
+  multiples finement disposés ($\iint$ et $\iiint$).
 \item On entre les éventuelles limites inférieures et supérieures
   comme des indices et des exposants.
   \begin{demo}
@@ -487,11 +482,20 @@ limites inférieures et supérieures, le cas échéant.
     \begin{texoutput}{0.48\linewidth}
       $\displaystyle \int_0^{10} f(x)\, dx$
     \end{texoutput}
+    \begin{texinput}{0.48\linewidth}
+\begin{lstlisting}
+\iint_D f(x, y)\, dx dy
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.48\linewidth}
+      $\displaystyle \iint_D f(x, y)\, dx dy$
+    \end{texoutput}
   \end{demo}
 \item La taille des symboles et la position des limites s'ajustent
   automatiquement selon le contexte. Au fil du texte, la somme et
-  l'intégrale ci-dessus apparaîtraient comme $\sum_{i = 0}^n x_i$ et
-  $\int_0^{10} f(x)\, dx$.
+  l'intégrale simple ci-dessus apparaîtraient comme
+  $\sum_{i = 0}^n x_i$ et $\int_0^{10} f(x)\, dx$.
 \item Dans une intégrale il est recommandé de séparer l'intégrande de
   l'opérateur de différentiation $dx$ par une espace fine. C'est ce à
   quoi sert la commande \cmd{\,} ci-dessus; voir aussi le tableau de
@@ -508,10 +512,12 @@ l'espacement entre ceux-ci sera trop petit et le résultat,
 disgracieux: $...$
 
 \begin{itemize}
-\item {\LaTeX} fournit les commandes suivantes pour générer divers
-  types de points de suspension:
-\begin{center}
-    \label{tab:math:espaces}
+\item Le \autoref{tab:math:dots} fournit les commandes {\LaTeX}
+  servant à générer divers types de points de suspension.
+  \begin{table}
+    \caption{Points de suspension}
+    \label{tab:math:dots}
+    \centering
     \begin{tabular}{lll}
       \toprule
       commande & type de points & exemple \\
@@ -529,7 +535,7 @@ disgracieux: $...$
                                         \end{matrix}$ \\
       \bottomrule
     \end{tabular}
-  \end{center}
+  \end{table}
 \item Avec \pkg{amsmath}, la commande \cmd{\dots} tâche de
   sélectionner automatiquement entre les points à la ligne de base ou
   les points centrés selon le contexte. Comme le résultat est en
@@ -636,11 +642,13 @@ f(x) = a e^{-ax},
       $f(x) = a e^{-ax}, \quad x > 0$
     \end{texoutput}
   \end{demo}
-\item Le tableau ci-dessous répertorie et compare les différentes
-  commandes qui permettent d'insérer des espaces plus ou moins fines
-  entre des éléments dans le mode mathématique:
-  \begin{center}
+\item Le \autoref{tab:math:espaces} répertorie et compare les
+  différentes commandes qui permettent d'insérer des espaces plus ou
+  moins fines entre des éléments dans le mode mathématique:
+  \begin{table}
+    \caption{Espaces dans le mode mathématique}
     \label{tab:math:espaces}
+    \centering
     \begin{tabular}{lll}
       \toprule
       commande & longueur & exemple \\
@@ -654,7 +662,7 @@ f(x) = a e^{-ax},
       \cmd{\qquad} & $2$~em & \spx{\qquad} \\
       \bottomrule
     \end{tabular}
-  \end{center}
+  \end{table}
 \end{itemize}
 
 \subsection{Fonctions et opérateurs}
@@ -670,24 +678,24 @@ mathématique, car {\LaTeX} interprétera la suite de lettres comme un
 produit de variables:
 \begin{demo}
 \item
-  \begin{texinput}{0.2\linewidth}
+  \begin{texinput}{0.25\linewidth}
 \begin{lstlisting}
-$sin$
+$2 sin 30$
 \end{lstlisting}
   \end{texinput}
   \quad
   \begin{texoutput}{0.2\linewidth}
-    $sin$
+    $2 sin 30$
   \end{texoutput}
   \hfill
-  \begin{texinput}{0.2\linewidth}
+  \begin{texinput}{0.25\linewidth}
 \begin{lstlisting}
-$log$
+$3 log 2$
 \end{lstlisting}
   \end{texinput}
   \quad
   \begin{texoutput}{0.2\linewidth}
-    $log$
+    $3 log 2$
   \end{texoutput}
 \end{demo}
 Utiliser à répétition la commande \cmdprint{text} se révèle peu
@@ -703,7 +711,31 @@ pratique à l'usage.
 \arg      \csc     \gcd    \lim      \max      \sinh
 \cos      \deg     \hom    \liminf   \min      \sup
 \end{lstlisting}
-\item Certaines des fonctions ci-dessus, notamment \cmd{\lim}, accepte
+  L'espacement autour des opérateurs mathématiques sera également géré
+  par {\LaTeX}.
+  \begin{demo}
+  \item
+    \begin{texinput}{0.25\linewidth}
+\begin{lstlisting}
+$2 \sin30$
+\end{lstlisting}
+    \end{texinput}
+    \quad
+    \begin{texoutput}{0.2\linewidth}
+      $2 \sin30$
+    \end{texoutput}
+    \hfill
+    \begin{texinput}{0.25\linewidth}
+\begin{lstlisting}
+$3 \log 2$
+\end{lstlisting}
+    \end{texinput}
+    \quad
+    \begin{texoutput}{0.2\linewidth}
+      $3 \log 2$
+    \end{texoutput}
+  \end{demo}
+\item Certaines des fonctions ci-dessus, notamment \cmd{\lim}, acceptent
   des limites comme les symboles de somme et d'intégrale.
   \begin{demo}
   \item
@@ -741,11 +773,11 @@ pratique à l'usage.
 \label{sec:math:symboles}
 
 Outre les chiffres et les lettres de l'alphabet, les claviers
-d'ordinateurs comptent somme toute très peu des innombrables symboles
-mathématiques utilisés couramment. Pour les représenter dans {\LaTeX},
-on aura recours à des commandes qui débutent, comme d'habitude, par le
-symbole \verb=\= et dont le nom est habituellement dérivé de la
-signification mathématique du symbole.
+d'ordinateurs comptent somme toute un très petit nombre des
+innombrables symboles mathématiques utilisés couramment. Pour les
+représenter dans {\LaTeX}, on aura recours à des commandes qui
+débutent, comme d'habitude, par le symbole \verb=\= et dont le nom est
+habituellement dérivé de la signification mathématique du symbole.
 
 Si un symbole mathématique a été utilisé quelque part dans une
 publication, sa version existe dans {\LaTeX}. Il serait donc utopique
@@ -780,10 +812,10 @@ une capitale, on obtient une lettre grecque majuscule. Certaines
 lettres grecques majuscules n'existent pas car elles sont identiques
 aux lettres romaines.
 
-Les deux tableaux ci-dessous présentent l'ensemble des lettres
-grecques disponibles dans {\LaTeX}.
+Les tableaux \ref{tab:math:grecques} et \ref{tab:math:Grecques}
+présentent l'ensemble des lettres grecques disponibles dans {\LaTeX}.
 
-\begin{table}[h]
+\begin{table}
   \caption{Lettres grecques minuscules}
   \label{tab:math:grecques}
   \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
@@ -805,7 +837,7 @@ grecques disponibles dans {\LaTeX}.
   \end{tabularx}
 \end{table}
 
-\begin{table}[h]
+\begin{table}
   \caption{Lettres grecques majuscules}
   \label{tab:math:Grecques}
   \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
@@ -865,7 +897,7 @@ des quantités, notamment les ensembles.
     \end{texoutput}
   \end{demo}
 \item Le tableau~213 de la %
-\doc[Comprehensive {\LaTeX} Symbol List]{}{http://texdoc.net/pkg/comprehensive} %
+  \doc[Comprehensive {\LaTeX} Symbol List]{}{http://texdoc.net/pkg/comprehensive} %
   présente plusieurs autres alphabets spéciaux disponibles en
   mode mathématique.
 \item Certaines polices de caractères contiennent plusieurs versions
@@ -891,8 +923,9 @@ quantités, comme  $<$ et $>$.
   \doc[Comprehensive {\LaTeX} Symbol
   List]{}{http://texdoc.net/pkg/comprehensive} %
   consacre plus d'une dizaine de tableaux aux opérateurs binaires et
-  près d'une quarantaire aux relations. Les tableaux ci-dessous ne
-  présentent donc que les principales, à titre indicatif.
+  près d'une quarantaine aux relations. C'est dire à quel point les
+  tableaux \ref{tab:math:binaires} et \ref{tab:math:relations} ne
+  présentent que les principaux éléments à titre indicatif.
 \item Certaines relations existent directement en version opposée, ou
   négative (comme $\neq$ ou $\notin$) soit dans {\LaTeX} de base, soit
   avec \pkg{amsmath} ou un autre paquetage. Autrement, il est possible
@@ -900,7 +933,7 @@ quantités, comme  $<$ et $>$.
   barre oblique $/$.
 \end{itemize}
 
-\begin{table}[h]
+\begin{table}
   \caption{Quelques opérateurs binaires}
   \label{tab:math:binaires}
   \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
@@ -919,9 +952,9 @@ quantités, comme  $<$ et $>$.
   \end{tabularx}
 \end{table}
 
-\begin{table}[h]
+\begin{table}
   \caption{Quelques relations et leur négation}
-  \label{tab:math:binaires}
+  \label{tab:math:relations}
   \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
     $\leq$      & \cmd{\leq} &
     $\geq$      & \cmd{\geq}   &
@@ -939,6 +972,166 @@ quantités, comme  $<$ et $>$.
   \end{tabularx}
   \hspace*{1em}{\footnotesize $^\dagger$ requiert \pkg{amsmath}}
 \end{table}
+
+\subsection{Flèches}
+\label{sec:math:symboles:fleches}
+
+Les flèches de différents types sont souvent utilisées en notation
+mathématique, notamment dans les limites ou pour les expressions
+logiques. Le \autoref{tab:math:fleches} en présente une sélection.
+
+\begin{itemize}
+\item On retrouve les flèches utilisables en notation mathématique
+  dans les tableaux 102 à 119 de la %
+  \doc[Comprehensive {\LaTeX} Symbol
+  List]{}{http://texdoc.net/pkg/comprehensive}. %
+  Le document contient divers autres types de flèches, mais celles-ci
+  ne sont généralement pas appropriées pour les mathématiques (pensons
+  à {\manerrarrow} ou {\faArrowRight}).
+\item Le paquetage \pkg{amsmath} fournit plusieurs flèches
+  additionnelles ainsi que la négation des plus communes. Ces
+  dernières sont d'ailleurs présentées dans le
+  \autoref{tab:math:fleches}.
+\end{itemize}
+
+
+\begin{table}
+  \caption{Quelques flèches et leur négation}
+  \label{tab:math:fleches}
+  \begin{tabularx}{1.0\linewidth}{lXlX}
+    $\gets$                & \cmd{\leftarrow}\quad \cmd{\gets} &
+    $\longleftarrow$       & \cmd{\longleftarrow}              \\
+    $\Leftarrow$           & \cmd{\Leftarrow}                  &
+    $\Longleftarrow$       & \cmd{\Longleftarrow}              \\
+    $\to$                  & \cmd{\rightarrow}\quad \cmd{\to}  &
+    $\longrightarrow$      & \cmd{\longrightarrow}             \\
+    $\Rightarrow$          & \cmd{\Rightarrow}                 &
+    $\Longrightarrow$      & \cmd{\Longrightarrow}             \\
+    $\uparrow$             & \cmd{\uparrow}                    &
+    $\downarrow$           & \cmd{\downarrow}                  \\
+    $\Uparrow$             & \cmd{\Uparrow}                    &
+    $\Downarrow$           & \cmd{\Downarrow}                  \\
+    $\updownarrow$         & \cmd{\updownarrow}                &
+    $\Updownarrow$         & \cmd{\Updownarrow}                \\
+    $\leftrightarrow$      & \cmd{\leftrightarrow}             &
+    $\longleftrightarrow$  & \cmd{\longleftrightarrow}         \\
+    $\Leftrightarrow$      & \cmd{\Leftrightarrow}             &
+    $\Longleftrightarrow$  & \cmd{\Longleftrightarrow}         \\
+    $\nleftarrow$          & \cmd{\nleftarrow}$^\dagger$         &
+    $\nleftrightarrow$     & \cmd{\nleftrightarrow}$^\dagger$    \\
+    $\nrightarrow$         & \cmd{\nrightarrow}$^\dagger$        &
+    $\nLeftarrow$          & \cmd{\nLeftarrow}$^\dagger$         \\
+    $\nLeftrightarrow$     & \cmd{\nLeftrightarrow}$^\dagger$    &
+    $\nRightarrow$         & \cmd{\nRightarrow}$^\dagger$        \\
+    \addlinespace
+  \end{tabularx}
+  \hspace*{1em}{\footnotesize $^\dagger$ requiert \pkg{amsmath}}
+\end{table}
+
+\subsection{Autres symboles utiles}
+\label{sec:math:symboles:autres}
+
+Le \autoref{tab:math:autres} présente quelques autres symboles
+mathématiques fournis par {\LaTeX}.
+
+\begin{table}[h]
+  \caption{Symboles mathématiques divers}
+  \label{tab:math:autres}
+  \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
+    $\infty$ & \cmd{\infty} &
+    $\nabla$ & \cmd{\nabla} &
+    $\partial$ & \cmd{\partial} &
+    $\ell$ & \cmd{\ell} \\
+    $\forall$ & \cmd{\forall} &
+    $\exists$ & \cmd{\exists} &
+    $\emptyset$ & \cmd{\emptyset} &
+    $\prime$ & \cmd{\prime} \\
+    $\neg$ & \cmd{\neg} &
+    $\backslash$ & \cmd{\backslash} &
+    $\|$ & \cmd{\|} &
+    $\angle$ & \cmd{\angle}
+  \end{tabularx}
+\end{table}
+
+
+\begin{exemple}
+  Les éléments de cette section et de la précédente permettent déjà de
+  créer des équations élaborées. Considérons l'équation suivante:
+  \begin{equation*}
+    \frac{\Gamma(\alpha)}{\lambda^\alpha} =
+    \sum_{j = 0}^\infty \int_j^{j + 1} x^{\alpha - 1} e^{-\lambda x}\,
+    dx,
+    \quad
+    \alpha > 0 \text{ et } \lambda > 0.
+  \end{equation*}
+  Voici, pièce par pièce, le code {\LaTeX} pour créer cette équation.
+  \begin{demo}
+  \item
+    \begin{texinput}{0.58\linewidth}
+\begin{lstlisting}
+\begin{equation*}
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.38\linewidth}
+      \emph{équation hors paragraphe}
+    \end{texoutput}
+  \item
+    \begin{texinput}{0.58\linewidth}
+\begin{lstlisting}
+\frac{\Gamma(\alpha)}{
+  \lambda^\alpha} =
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.38\linewidth}
+      $\dfrac{\Gamma(\alpha)}{\lambda^\alpha} =$
+    \end{texoutput}
+  \item
+    \begin{texinput}{0.58\linewidth}
+\begin{lstlisting}
+\sum_{j = 0}^\infty \int_j^{j + 1}
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.38\linewidth}
+      $\displaystyle \sum_{j = 0}^\infty \int_j^{j + 1}$
+    \end{texoutput}
+  \item
+    \begin{texinput}{0.58\linewidth}
+\begin{lstlisting}
+x^{\alpha - 1} e^{-\lambda x}\, dx
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.38\linewidth}
+      $\displaystyle x^{\alpha - 1} e^{-\lambda x}\, dx$
+    \end{texoutput}
+  \item
+    \begin{texinput}{0.58\linewidth}
+\begin{lstlisting}
+, \quad \alpha > 0 \text{ et }
+\lambda > 0.
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.38\linewidth}
+      $, \quad \alpha > 0 \text{ et } \lambda > 0.$
+    \end{texoutput}
+  \item
+    \begin{texinput}{0.58\linewidth}
+\begin{lstlisting}
+\end{equation*}
+\end{lstlisting}
+    \end{texinput}
+    \hfill
+    \begin{texoutput}{0.38\linewidth}
+      \emph{fin de l'environnement}
+    \end{texoutput}
+  \end{demo}
+  \qed
+\end{exemple}
+
 
 suites d'équations
   left ... right
