@@ -1,7 +1,7 @@
 \documentclass[aspectratio=54,10pt,xcolor=x11names]{beamer}
   \usepackage[francais]{babel}
   \usepackage[autolanguage]{numprint}
-  \usepackage{amsmath,icomma}
+  \usepackage{amsmath,ncccomma}
   \usepackage{booktabs,tabularx}
   \usepackage{pgfpages}
   \usepackage{metalogo}                % \XeLaTeX logo
@@ -22,9 +22,9 @@
 
   %% Définition de nouveaux symboles de la police Font Awesome pas
   %% encore définis dans le package fontawesome (v. 3.1.1)
-  \def\faFileText{{\FA \symbol{"F0F6}}}
-  \def\faFilePDF{{\FA \symbol{"F1C1}}}
-  \def\faYouTubePlay{{\FA \symbol{"F16A}}}
+  %\def\faFileText{{\FA \symbol{"F0F6}}}
+  % \def\faFilePDF{{\FA \symbol{"F1C1}}}
+  % \def\faYouTubePlay{{\FA \symbol{"F16A}}}
 
   %%% Titre
   \title[]{Rédaction de thèses et de mémoire avec {\LaTeX}: premiers pas}
@@ -82,7 +82,7 @@
     \end{minipage}}
   \newenvironment{conseil}{%
     \begin{minipage}[t]{0.1\textwidth}
-      \color{alert}\raisebox{-2.3em}[0em][0em]{\huge\faThumbsUp}
+      \color{alert}\raisebox{-2.3em}[0em][0em]{\huge\faThumbsOUp}
     \end{minipage}
     \begin{minipage}[t]{0.8\textwidth}
       \begin{alertblock}{Conseil du {\TeX}pert}}{%
@@ -126,17 +126,17 @@
     travail; nous recommandons la distribution {\TeX}~Live
     \begin{itemize}
     \item[] \href{https://www.youtube.com/watch?v=fjcR6lFy0c4}{%
-        {\faYouTubePlay} installation sur Mac OS X}
+        {\faYoutubePlay} installation sur Mac OS X}
     \item[] \href{https://www.youtube.com/watch?v=z_dq3dns-WU}{%
-        {\faYouTubePlay} installation sur Windows}
+        {\faYoutubePlay} installation sur Windows}
     \end{itemize}
     \bigskip
   \item Compiler un premier très simple de type \emph{Hello World!}
     \begin{itemize}
     \item[] \href{https://www.youtube.com/watch?v=QOUx_aOZ42o}{%
-        {\faYouTubePlay} démonstration sur Mac OS X avec TeXShop}
+        {\faYoutubePlay} démonstration sur Mac OS X avec TeXShop}
     \item[] \href{https://www.youtube.com/watch?v=qddRMGwXnNM}{%
-        {\faYouTubePlay} démonstration sur Windows avec Texmaker}
+        {\faYoutubePlay} démonstration sur Windows avec Texmaker}
     \end{itemize}
   \end{enumerate}
 \end{frame}
@@ -213,7 +213,7 @@
   \Huge
   \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \faFileText \\ \bigskip
+    \faFileTextO \\ \bigskip
     \footnotesize
     rédaction du texte et balisage avec un \emph{éditeur de texte}
   \end{minipage}
@@ -227,7 +227,7 @@
   \hfill\faArrowRight\hfill
   \begin{minipage}[t]{0.25\linewidth}
     \centering
-    \faFilePDF \\  \bigskip
+    \faFilePdfO \\  \bigskip
     \footnotesize
     visualisation avec visionneuse externe (Aperçu,
     SumatraPDF, etc.)
@@ -631,7 +631,7 @@ Copyright 2014 D.E. Knuth.
     lettres accentuées dans source & \pkg{inputenc} (\LaTeX) \\
                                    & source en UTF-8 (\XeLaTeX) \\
     \addlinespace[6pt]
-    virgule comme séparateur décimal & \pkg{icomma} \\
+    virgule comme séparateur décimal & \pkg{icomma}, \pkg{ncccomma} \\
     \addlinespace[6pt]
     espace comme séparateur des milliers & \pkg{numprint}
   \end{tabularx}
