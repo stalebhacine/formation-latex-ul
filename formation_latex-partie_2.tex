@@ -30,11 +30,7 @@
   \setsansfont[Scale=1.0,Numbers=OldStyle]{Myriad Pro}
   \setmonofont[Scale=0.88]{Bitstream Vera Sans Mono}
   \newfontfamily\fullcaps[Letters=Uppercase,Numbers=Uppercase]{Myriad Pro}
-  \usepackage{microtype}
-
-  %% Définition de nouveaux symboles de la police Font Awesome pas
-  %% encore définis dans le package fontawesome
-  \def\faYouTubePlay{{\FA \symbol{"F16A}}}
+  \usepackage[babel=true]{microtype}
 
   %% Couleurs
   \usepackage{xcolor}
@@ -185,7 +181,7 @@
     \begin{framed}%
       \noindent
       \begin{minipage}{0.1\linewidth}
-        \raisebox{-1.5em}[0em][0em]{\HUGE\faExclamationSign}
+        \raisebox{-1.5em}[0em][0em]{\HUGE\faExclamationCircle}
       \end{minipage}
       \begin{minipage}[t]{0.88\linewidth}}
       {\end{minipage}%
@@ -196,7 +192,7 @@
     \begin{framed}%
       \noindent
       \begin{minipage}{0.1\linewidth}
-        \raisebox{-1.5em}[0em][0em]{\HUGE\faInfoSign}
+        \raisebox{-1.5em}[0em][0em]{\HUGE\faInfoCircle}
       \end{minipage}
       \begin{minipage}[t]{0.88\linewidth}}
       {\end{minipage}%
@@ -207,7 +203,7 @@
     \begin{framed}%
       \noindent
       \begin{minipage}{0.1\linewidth}
-        \raisebox{-1.5em}[0em][0em]{\HUGE\faThumbsUp}
+        \raisebox{-1.5em}[0em][0em]{\HUGE\faThumbsOUp}
       \end{minipage}
       \begin{minipage}[t]{0.88\linewidth}
         {\bfseries\sffamily Conseil du {\TeX}pert} \newline}
@@ -238,7 +234,7 @@
 
   %% Indications de capsule vidéo dans la marge
   \newcommand{\capsule}[2]{\href{#1}{#2}\marginpar{%
-      \href{#1}{\raisebox{-0.5em}[0em][0em]{\HUGE\faYouTubePlay}}}}
+      \href{#1}{\raisebox{-0.5em}[0em][0em]{\HUGE\faYoutubePlay}}}}
 
   %% Hyperlien avec symbole de lien externe juste après
   \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
