@@ -1235,18 +1235,29 @@ environnements pour les équations hors paragraphe.
   \autoref{tab:math:displays}, comment la commande \cmd{\phantom} sert
   à insérer un blanc exactement de la largeur du symbole $=$ au début
   de la seconde ligne de la suite d'égalités.
-\item L'environnement \Ie{split} est utile pour apposer un seul numéro
-  à une équation affichée sur plusieurs lignes.
 \item Pour supprimer la numérotation d'une ligne dans une série
   d'équations numérotées, placer la commande \cmd{\notag} juste avant
-  la commande de changement de ligne \verb=\\=. À l'inverse, pour
-  ajouter un numéro d'équation dans une série non numérotée, ajouter
-  la commande \cmd{\tag} au même endroit.
+  la commande de changement de ligne \verb=\\=.
+  \begin{demo}
+    \begin{texample}
+\begin{lstlisting}
+\begin{align}
+  a_1 &= b_1 + c_1 \notag \\
+  a_2 &= b_2 + c_2 - d_2 + e_2
+\end{align}
+\end{lstlisting}
+      \producing
+      \begin{align}
+        a_1& =b_1+c_1 \notag \\
+        a_2& =b_2+c_2-d_2+e_2
+      \end{align}
+    \end{texample}
+  \end{demo}
 \item Les renvois vers des équations numérotées fonctionnent, comme
   partout ailleurs en {\LaTeX}, avec le système d'étiquettes et de
   références \citep{UL:latex:1,sec:tableaux:floats}. Le paquetage
-  \pkg{amsmath} fournit également la commande \cmd{\eqref} qui place
-  automatiquement le numéro d'équation entre parenthèses.
+  \pkg{amsmath} fournit également la pratique commande \cmd{\eqref}
+  qui place automatiquement le numéro d'équation entre parenthèses.
   \begin{demo}
     \begin{texample}
 \begin{lstlisting}
@@ -1258,36 +1269,34 @@ tableau `\ref*{tab:math:displays}' que...
       \ref*{tab:math:displays} que\dots
     \end{texample}
   \end{demo}
-\item À l'instar de \Ie{equation}, tous les environnements du
-  \autoref{tab:math:displays} sauf \Ie{split} ont une version étoilée
-  (\cmdprint{align*}, \cmdprint{gather*}, etc.) qui produit des
-  équations non numérotées.
+\item L'environnement \Ie{split} sert à apposer un seul numéro à une
+  équation affichée sur plusieurs lignes. Il doit être employé à
+  l'intérieur d'un autre environnement d'équations hors paragraphe.
 \end{itemize}
-Consulter la %
+Consulter le chapitre 3 de la %
 \doc[documentation]{amsldoc}{http://texdoc.net/pkg/amsmath} %
-(chapitre 3) du paquetage \pkg{amsmath} pour les détails sur
+du paquetage \pkg{amsmath} pour les détails sur
 l'utilisation des environnements du \autoref*{tab:math:displays}.
 
 \begin{conseil}
   Veillez à respecter les règles suivantes pour la mise en forme des
   équations:
   \begin{enumerate}
-  \item Les équations, en ligne ou hors paragraphe, faisant partie
-    intégrante de la phrase, les règles de ponctuation usuelles
-    s'appliquent aux équations.
+  \item Qu'elles apparaissent en ligne ou hors paragraphe, les
+    équations font partie intégrante de la phrase, aussi les règles de
+    ponctuation usuelles s'appliquent-elles aux équations.
   \item Lorsqu'une équation s'étend sur plus d'une ligne, couper
-    chaque ligne \emph{avant} un opérateur (voir les troisième et
-    quatrième exemples du \autoref{tab:math:displays}).
-  \item Éviter de numéroter toutes les équations d'un document. Ne
-    numéroter que les celles auxquelles le texte fait référence.
+    chaque ligne \emph{avant} un opérateur de sorte que chaque ligne
+    constitue une expression mathématique complète (voir les troisième
+    et quatrième exemples du \autoref{tab:math:displays}).
+  \item Ne numéroter que les équations d'un document auxquelles le
+    texte fait référence.
   \end{enumerate}
 \end{conseil}
 
 
 
-suites d'équations
-  left ... right
-  numérotation
+left ... right
 
 vecteurs et matrices
 
