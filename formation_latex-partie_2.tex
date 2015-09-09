@@ -2,7 +2,7 @@
   \usepackage{natbib,url}
   \usepackage[english,francais]{babel}
   \usepackage[autolanguage]{numprint}
-  \usepackage{amsmath,amsthm,icomma}
+  \usepackage{amsmath,amsthm,ncccomma}
   %\usepackage[noae]{Sweave}
   \usepackage{paralist}
   \usepackage[shortlabels]{enumitem}
@@ -165,16 +165,47 @@
       \item}
     {\end{list}}
 
-  %% Demo, entrées et sorties LaTeX
+  %% Démo de code LaTeX. Le code de 'texample' et 'eqxample' est
+  %% repris de amsldoc.tex avec des petits ajustements.
   \newenvironment{demo}{%
-    \begin{trivlist}}{%
+    \begin{trivlist}\item}{%
     \end{trivlist}}
-  \newenvironment{texinput}[1]{%
-    \begin{minipage}{#1}}{%
-    \end{minipage}}
-  \newenvironment{texoutput}[2][t]{%
-    \begin{minipage}[#1]{#2}}{%
-    \end{minipage}}
+  \newenvironment{texample}[1][0.5\linewidth]{%
+    \noindent\begin{minipage}{#1}%
+      \def\producing{\end{minipage}\hfill\begin{minipage}{\dimexpr0.97\linewidth-#1}%
+        \hbox\bgroup\kern-.2pt%
+        \vbox\bgroup\parindent0pt\relax
+        % The 3pt is to cancel the -\lineskip from \displ@y
+        \abovedisplayskip3pt \abovedisplayshortskip\abovedisplayskip
+        \belowdisplayskip0pt \belowdisplayshortskip\belowdisplayskip
+        \noindent}
+    }{%
+      \par
+      % Ensure that a lonely \[\] structure doesn't take up width less than
+      % \hsize.
+      \hrule height0pt width\hsize
+      \egroup\kern-.2pt\egroup
+    \end{minipage}%
+    \par
+  }
+  \newenvironment{eqxample}{%
+    \noindent\begin{minipage}{.5\columnwidth}%
+      \def\producing{\end{minipage}\hfill\begin{minipage}{.45\columnwidth}%
+        \hbox\bgroup\kern-.2pt\vrule width.2pt%
+        \vbox\bgroup\parindent0pt\relax
+        % The 3pt is to cancel the -\lineskip from \displ@y
+        \abovedisplayskip3pt \abovedisplayshortskip\abovedisplayskip
+        \belowdisplayskip0pt \belowdisplayshortskip\belowdisplayskip
+        \noindent}
+    }{%
+      \par
+      % Ensure that a lonely \[\] structure doesn't take up width less than
+      % \hsize.
+      \hrule height0pt width\hsize
+      \egroup\vrule width.2pt\kern-.2pt\egroup
+    \end{minipage}%
+    \par
+  }
 
   %% Remarques importantes
   \newenvironment{important}{%
