@@ -36,41 +36,63 @@ mathématique:
 \item en insérant le code entre les symboles \verb=$ $= pour générer
   une équation «en ligne», ou au fil du texte;
   \begin{demo}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \begin{texample}
 \begin{lstlisting}
-on sait que $(a + b)^2 = a^2
-+ b^2$, d'où on obtient...
+on sait que $(a + b)^2 =
+a^2 + 2ab + b^2$, d'où
+on obtient...
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}[c]{0.48\linewidth}
-      on sait que $(a + b)^2 = a^2 + b^2$, d'où on obtient...
-    \end{texoutput}
+      \producing
+      on sait que $(a + b)^2 = a^2 + 2ab + b^2,$ d'où on obtient...
+    \end{texample}
   \end{demo}
 \item en utilisant un environnement servant à créer une équation hors
   paragraphe;
-\begin{demo}
-  \item
-    \begin{texinput}{0.48\linewidth}
+  \begin{demo}
+    \begin{texample}
 \begin{lstlisting}
 on sait que
 \begin{equation*}
-  (a + b)^2 = a^2 + b^2,
+  (a + b)^2
+  = a^2 + 2ab + b^2,
 \end{equation*}
 d'où on obtient...
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}[c]{0.48\linewidth}
+      \producing
       on sait que
       \begin{equation*}
-        (a + b)^2 = a^2 + b^2,
+        (a + b)^2 = a^2 + 2ab + b^2,
       \end{equation*}
       d'où on obtient...
-    \end{texoutput}
+    \end{texample}
   \end{demo}
 \end{enumerate}
+
+Dans l'exemple ci-dessus, l'environnement \Ie{equation*} crée une
+équation hors paragraphe, centrée sur la ligne et non numérotée.
+Avec l'environnement \Ie{equation} (donc sans \verb=*= dans le nom),
+{\LaTeX} ajoute automatiquement un numéro d'équation séquentiel aligné
+sur la marge de droite:
+\begin{demo}
+  \begin{texample}
+\begin{lstlisting}
+on sait que
+\begin{equation}
+  (a + b)^2 = a^2 + b^2,
+\end{equation}
+d'où on obtient...
+\end{lstlisting}
+    \producing
+    on sait que
+    \begin{equation}
+      (a + b)^2 = a^2 + b^2,
+    \end{equation}
+    d'où on obtient...
+  \end{texample}
+\end{demo}
+Cette disposition est la plus usuelle dans les ouvrages mathématiques.
+Le type de numérotation diffère selon qu'un document comporte des
+chapitres ou non.
 
 En mode mathématique, les chiffres sont automatiquement considérés
 comme des constantes, les lettres comme des variables et une suite de
@@ -82,44 +104,35 @@ $\lim$). Ceci a trois conséquences principales:
   représentés en caractère \textrm{romain} et les variables en
   \emph{italique};
   \begin{demo}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 123xyz
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.48\linewidth}
+      \producing
       $123xyz$
-    \end{texoutput}
+    \end{texample}
   \end{demo}
 \item l'espace entre les constantes, les variables et les opérateurs
   mathématiques est géré automatiquement;
   \begin{demo}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 z = 2 x + 3 x y
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.48\linewidth}
-        $z = 2 x + 3 x y$
-    \end{texoutput}
+    \producing
+    $z = 2 x + 3 x y$
+    \end{texample}
   \end{demo}
 \item les espaces dans le code source n'ont aucun impact sur la
   disposition d'une équation.
   \begin{demo}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 z=2x + 3xy
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.48\linewidth}
-      $z=2x + 3xy$
-    \end{texoutput}
+    \producing
+    $z=2x + 3xy$
+    \end{texample}
   \end{demo}
 \end{enumerate}
 
@@ -143,7 +156,7 @@ z=2x + 3xy
 
 Quant au langage retenu par {\LaTeX} pour décrire les équations
 mathématiques, il est très similaire à celui que l'on utiliserait pour
-le faire à voix haute; nous y reviendrons. Il faut simplement avoir
+le faire à voix haute (??? capsule vidéo???); nous y reviendrons. Il faut simplement avoir
 recours à des commandes pour identifier les symboles mathématiques que
 l'on ne retrouve pas sur un clavier usuel, comme les lettres grecques,
 les opérateurs d'inégalité ou les symboles de sommes et d'intégrales.
@@ -194,96 +207,92 @@ symboles n'importe quelle combinaison d'exposants et d'indices.
   \verb=^= et en indice avec la commande \verb=_=. Les indices et
   exposants se combinent naturellement.
   \begin{demo}
-  \item
-    \begin{texinput}{0.2\linewidth}
+    \begin{minipage}{0.3\linewidth}
+      \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 x^2
 \end{lstlisting}
-    \end{texinput}
+        \producing $x^2$
+      \end{texample}
+    \end{minipage}
     \quad
-    \begin{texoutput}{0.1\linewidth}
-      $x^2$
-    \end{texoutput}
-    \hfill
-    \begin{texinput}{0.2\linewidth}
+    \begin{minipage}{0.3\linewidth}
+      \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 a_n
 \end{lstlisting}
-    \end{texinput}
+        \producing
+        $a_n$
+      \end{texample}
+    \end{minipage}
     \quad
-    \begin{texoutput}{0.1\linewidth}
-      $a_n$
-    \end{texoutput}
-    \hfill
-    \begin{texinput}{0.2\linewidth}
+    \begin{minipage}{0.3\linewidth}
+      \begin{texample}[0.63\linewidth]
 \begin{lstlisting}
 x_i^k
 \end{lstlisting}
-    \end{texinput}
-    \quad
-    \begin{texoutput}{0.1\linewidth}
-      $x_i^k$
-    \end{texoutput}
+        \producing
+        $x_i^k$
+      \end{texample}
+    \end{minipage}
   \end{demo}
   (L'ordre de saisie n'a pas d'importance; le troisième exemple
   donnerait le même résultat avec \verb=x^k_i=.)
 \item Si l'exposant ou l'indice compte plus d'un caractère, il faut
   regrouper le tout entre accolades \verb={ }=.
   \begin{demo}
-  \item
-    \begin{texinput}{0.2\linewidth}
+    \begin{minipage}{0.3\linewidth}
+      \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 x^{2k + 1}
 \end{lstlisting}
-    \end{texinput}
+        \producing
+        $x^{2k + 1}$
+      \end{texample}
+    \end{minipage}
     \quad
-    \begin{texoutput}{0.1\linewidth}
-      $x^{2k + 1}$
-    \end{texoutput}
-    \hfill
-    \begin{texinput}{0.2\linewidth}
+    \begin{minipage}{0.3\linewidth}
+      \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 x_{i,j}
 \end{lstlisting}
-    \end{texinput}
+        \producing
+        $x_{i,j}$
+      \end{texample}
+    \end{minipage}
     \quad
-    \begin{texoutput}{0.1\linewidth}
-      $x_{i,j}$
-    \end{texoutput}
-    \hfill
-    \begin{texinput}{0.2\linewidth}
+    \begin{minipage}{0.3\linewidth}
+      \begin{texample}[0.63\linewidth]
 \begin{lstlisting}
 x_{ij}^{2n}
 \end{lstlisting}
-    \end{texinput}
-    \quad
-    \begin{texoutput}{0.1\linewidth}
-      $x_{ij}^{2n}$
-    \end{texoutput}
+        \producing
+        $x_{ij}^{2n}$
+      \end{texample}
+    \end{minipage}
   \end{demo}
 \item Toutes les combinaisons d'exposants et d'indices sont possibles,
   y compris les puissances de puissances ou les indices d'indices.
   \begin{demo}
-  \item
-    \begin{texinput}{0.2\linewidth}
+    \begin{minipage}{0.3\linewidth}
+      \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 e^{-x^2}
 \end{lstlisting}
-    \end{texinput}
+        \producing
+        $e^{-x^2}$
+      \end{texample}
+    \end{minipage}
     \quad
-    \begin{texoutput}{0.1\linewidth}
-      $e^{-x^2}$
-    \end{texoutput}
-    \hfill
-    \begin{texinput}{0.4\linewidth}
+    \begin{minipage}{0.6\linewidth}
+      \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 A_{i_s, k^n}^{y_i}
 \end{lstlisting}
-    \end{texinput}
-    \quad
-    \begin{texoutput}{0.2\linewidth}
-      $A_{i_s,k^n}^{y_i}$
-    \end{texoutput}
+        \producing
+        $A_{i_s,k^n}^{y_i}$
+      \end{texample}
+    \end{minipage}
     \quad \mbox{}     % pour alignement avec bloc d'exemples ci-dessus
   \end{demo}
 \end{itemize}
@@ -320,20 +329,17 @@ l'intérieur d'une autre fraction.
   du texte ou dans une équation hors paragraphe, ainsi que selon la
   position de la fraction dans l'équation.
   \begin{demo}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 % taille au fil du texte
 On a $z_1 = \frac{x}{y}$ et
 $z_2 = xy$.
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}[c]{0.48\linewidth}
+      \producing
       On a $z_1 = \frac{x}{y}$ et $z_2 = xy$.
-    \end{texoutput}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \end{texample}
+
+    \begin{texample}
 \begin{lstlisting}
 % taille hors paragraphe
 On a
@@ -342,17 +348,15 @@ On a
 \end{equation*}
 et $z_2 = xy$.
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}[c]{0.48\linewidth}
+      \producing
       On a
       \begin{equation*}
         z_1 = \frac{x}{y}
       \end{equation*}
       et $z_2 = xy$.
-    \end{texoutput}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \end{texample}
+
+    \begin{texample}
 \begin{lstlisting}
 % deux tailles combinées
 Soit
@@ -361,15 +365,14 @@ Soit
     + 1}{y}.
 \end{equation*}
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}[c]{0.48\linewidth}
+      \producing
       Soit
       \begin{equation*}
         z = \frac{\frac{x}{2} + 1}{y}.
       \end{equation*}
-    \end{texoutput}
+    \end{texample}
   \end{demo}
+
 \item Les commandes
 \begin{lstlisting}
 \dfrac`\marg{numérateur}\marg{dénominateur}'
@@ -396,56 +399,50 @@ la racine carrée. Si l'argument optionnel \meta{n} est spécifié, c'est
 plutôt un symbole de racine d'ordre $n$ qui est tracé. La longueur et
 la hauteur du radical s'adapte toujours à celles du radicande.
 \begin{demo}
-\item
-  \begin{texinput}{0.2\linewidth}
+  \begin{minipage}{0.3\linewidth}
+    \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 \sqrt{2}
 \end{lstlisting}
-  \end{texinput}
+      \producing $\sqrt{2}$
+    \end{texample}
+  \end{minipage}
   \quad
-  \begin{texoutput}{0.1\linewidth}
-    $\sqrt{2}$
-  \end{texoutput}
-  \hfill
-  \begin{texinput}{0.2\linewidth}
+  \begin{minipage}{0.3\linewidth}
+    \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 \sqrt{625}
 \end{lstlisting}
-  \end{texinput}
+      \producing
+      $\sqrt{625}$
+    \end{texample}
+  \end{minipage}
   \quad
-  \begin{texoutput}{0.1\linewidth}
-    $\sqrt{625}$
-  \end{texoutput}
-  \hfill
-  \begin{texinput}{0.2\linewidth}
+  \begin{minipage}{0.3\linewidth}
+    \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 \sqrt[3]{8}
 \end{lstlisting}
-  \end{texinput}
-  \quad
-  \begin{texoutput}{0.1\linewidth}
-    $\sqrt[3]{8}$
-  \end{texoutput}
-\item
-  \begin{texinput}{0.48\linewidth}
+      \producing
+      $\sqrt[3]{8}$
+    \end{texample}
+  \end{minipage}
+
+  \begin{texample}
 \begin{lstlisting}
 \sqrt[n]{x + y + z}
 \end{lstlisting}
-  \end{texinput}
-  \hfill
-  \begin{texoutput}{0.48\linewidth}
+    \producing
     $\sqrt[n]{x + y + z}$
-  \end{texoutput}
-\item
-  \begin{texinput}{0.48\linewidth}
+  \end{texample}
+
+  \begin{texample}
 \begin{lstlisting}
 \sqrt{\frac{x + y}{x^2 - y^2}}
 \end{lstlisting}
-  \end{texinput}
-  \hfill
-  \begin{texoutput}[c]{0.48\linewidth}
+    \producing
     $\displaystyle \sqrt{\frac{x + y}{x^2 - y^2}}$
-  \end{texoutput}
+  \end{texample}
 \end{demo}
 
 \subsection{Sommes et intégrales}
@@ -462,35 +459,29 @@ limites inférieures et supérieures, le cas échéant.
 \item On entre les éventuelles limites inférieures et supérieures
   comme des indices et des exposants.
   \begin{demo}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 \sum_{i = 0}^n x_i
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.48\linewidth}
+      \producing
       $\displaystyle \sum_{i = 0}^n x_i$
-    \end{texoutput}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \end{texample}
+
+    \begin{texample}
 \begin{lstlisting}
 \int_0^{10} f(x)\, dx
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.48\linewidth}
+      \producing
       $\displaystyle \int_0^{10} f(x)\, dx$
-    \end{texoutput}
-    \begin{texinput}{0.48\linewidth}
+    \end{texample}
+
+    \begin{texample}
 \begin{lstlisting}
 \iint_D f(x, y)\, dx dy
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.48\linewidth}
+      \producing
       $\displaystyle \iint_D f(x, y)\, dx dy$
-    \end{texoutput}
+    \end{texample}
   \end{demo}
 \item La taille des symboles et la position des limites s'ajustent
   automatiquement selon le contexte. Au fil du texte, la somme et
@@ -542,44 +533,37 @@ disgracieux: $...$
   général le bon, nous recommandons d'utiliser principalement cette
   commande pour insérer des points de suspension en mode mathématique.
   \begin{demo}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 $x_1, \dots, x_n$
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}[c]{0.48\linewidth}
+      \producing
       $x_1, \dots, x_n$
-    \end{texoutput} \\[-\baselineskip]
-    \begin{texinput}{0.48\linewidth}
+    \end{texample}
+
+    \begin{texample}
 \begin{lstlisting}
 $x_1, \ldots, x_n$
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}[c]{0.48\linewidth}
+      \producing
       $x_1, \ldots, x_n$
-    \end{texoutput}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \end{texample}
+
+    \begin{texample}
 \begin{lstlisting}
 $x_1 + \dots + x_n$
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}[c]{0.48\linewidth}
+      \producing
       $x_1 + \dots + x_n$
-    \end{texoutput} \\[-\baselineskip]
-    \begin{texinput}{0.48\linewidth}
+    \end{texample}
+
+    \begin{texample}
 \begin{lstlisting}
 $x_1 + \cdots + x_n$
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}[c]{0.48\linewidth}
+      \producing
       $x_1 + \cdots + x_n$
-    \end{texoutput}
+    \end{texample}
   \end{demo}
 \item Le paquetage \pkg{amsmath} définit également les commandes sémantiques
   \begin{itemize}
@@ -610,17 +594,14 @@ entre des éléments.
   texte. Si des espaces sont nécessaires, ils doivent faire partie de
   \meta{texte}.
   \begin{demo}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 f(x) = a e^{-ax}
 \text{ pour } x > 0
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}[c]{0.48\linewidth}
+      \producing
       $f(x) = a e^{-ax} \text{ pour } x > 0$
-    \end{texoutput}
+    \end{texample}
   \end{demo}
 \item La commande \cmd{\quad} insère un blanc de $1$~em, soit une
   longueur égale à la taille de la police de caractère courante en
@@ -630,17 +611,14 @@ f(x) = a e^{-ax}
     les commandes \cmd{\quad} et \cmd{\qquad} sont également valides
     dans le mode texte.}
   \begin{demo}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 f(x) = a e^{-ax},
 \quad x > 0
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}[c]{0.48\linewidth}
+      \producing
       $f(x) = a e^{-ax}, \quad x > 0$
-    \end{texoutput}
+    \end{texample}
   \end{demo}
 \item Le \autoref{tab:math:espaces} répertorie et compare les
   différentes commandes qui permettent d'insérer des espaces plus ou
@@ -668,42 +646,40 @@ f(x) = a e^{-ax},
 \subsection{Fonctions et opérateurs}
 \label{sec:math:bases:fonctions}
 
-Les régles typographiques veulent que les variables apparaissent en
-\textit{italique}, mais que les noms de fonctions, eux, apparaissent
-en \textrm{romain}, comme le texte standard. Pensons, ici, à des
-fonctions comme $\sin$ ou $\log$.
+Les règles de typographie des équations mathématiques veulent que les
+variables apparaissent en \textit{italique}, mais que les noms de
+fonctions, eux, apparaissent en \textrm{romain}, comme le texte
+standard. Pensons, ici, à des fonctions comme $\sin$ ou $\log$.
 
-On sait que l'on ne peut entrer le nom d'une fonction tel quel en mode
-mathématique, car {\LaTeX} interprétera la suite de lettres comme un
-produit de variables:
-\begin{demo}
-\item
-  \begin{texinput}{0.25\linewidth}
+\begin{itemize}
+\item On sait que l'on ne peut entrer le nom d'une fonction tel quel en mode
+  mathématique, car {\LaTeX} interprétera la suite de lettres comme un
+  produit de variables:
+  \begin{demo}
+    \begin{minipage}{0.45\linewidth}
+      \begin{texample}
 \begin{lstlisting}
 $2 sin 30$
 \end{lstlisting}
-  \end{texinput}
-  \quad
-  \begin{texoutput}{0.2\linewidth}
-    $2 sin 30$
-  \end{texoutput}
-  \hfill
-  \begin{texinput}{0.25\linewidth}
+        \producing
+        $2 sin 30$
+      \end{texample}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\linewidth}
+      \begin{texample}
 \begin{lstlisting}
 $3 log 2$
 \end{lstlisting}
-  \end{texinput}
-  \quad
-  \begin{texoutput}{0.2\linewidth}
-    $3 log 2$
-  \end{texoutput}
-\end{demo}
-Utiliser à répétition la commande \cmdprint{text} se révèle peu
-pratique à l'usage.
-
-\begin{itemize}
-\item {\LaTeX} définit des commandes pour un grand nombre de fonctions
-  et d'opérateurs mathématiques standards:
+        \producing
+        $3 log 2$
+      \end{texample}
+    \end{minipage}
+  \end{demo}
+  Utiliser à répétition la commande \cmdprint{text} se révèle peu
+  pratique à l'usage.
+\item {\LaTeX} définit donc des commandes pour un grand nombre de
+  fonctions et d'opérateurs mathématiques standards:
 \begin{lstlisting}
 \arccos   \cosh    \det    \inf      \limsup   \Pr      \tan
 \arcsin   \cot     \dim    \ker      \ln       \sec     \tanh
@@ -711,55 +687,49 @@ pratique à l'usage.
 \arg      \csc     \gcd    \lim      \max      \sinh
 \cos      \deg     \hom    \liminf   \min      \sup
 \end{lstlisting}
-  L'espacement autour des opérateurs mathématiques sera également géré
+  L'espacement autour des opérateurs mathématiques est également géré
   par {\LaTeX}.
   \begin{demo}
-  \item
-    \begin{texinput}{0.25\linewidth}
+    \begin{minipage}{0.45\linewidth}
+      \begin{texample}
 \begin{lstlisting}
 $2 \sin30$
 \end{lstlisting}
-    \end{texinput}
-    \quad
-    \begin{texoutput}{0.2\linewidth}
-      $2 \sin30$
-    \end{texoutput}
+        \producing
+        $2 \sin30$
+      \end{texample}
+    \end{minipage}
     \hfill
-    \begin{texinput}{0.25\linewidth}
+    \begin{minipage}{0.45\linewidth}
+      \begin{texample}
 \begin{lstlisting}
 $3 \log 2$
 \end{lstlisting}
-    \end{texinput}
-    \quad
-    \begin{texoutput}{0.2\linewidth}
-      $3 \log 2$
-    \end{texoutput}
+        \producing
+        $3 \log 2$
+      \end{texample}
+    \end{minipage}
   \end{demo}
 \item Certaines des fonctions ci-dessus, notamment \cmd{\lim}, acceptent
   des limites comme les symboles de somme et d'intégrale.
   \begin{demo}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 % au fil du texte
 \lim_{x \to 0} x = 0
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.48\linewidth}
+      \producing
       $\lim_{x \to 0} x = 0$
-    \end{texoutput}
-\item
-    \begin{texinput}{0.48\linewidth}
+    \end{texample}
+
+    \begin{texample}
 \begin{lstlisting}
 % hors paragraphe
 \lim_{x \to 0} x = 0
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.48\linewidth}
+      \producing
       $\displaystyle \lim_{x \to 0} x = 0$
-    \end{texoutput}
+    \end{texample}
   \end{demo}
 \item La commande \cmd{\DeclareMathOperator} de \pkg{amsmath} permet
   de définir de nouveaux noms de fonctions; consulter la %
@@ -773,16 +743,17 @@ $3 \log 2$
 \label{sec:math:symboles}
 
 Outre les chiffres et les lettres de l'alphabet, les claviers
-d'ordinateurs comptent somme toute un très petit nombre des
-innombrables symboles mathématiques utilisés couramment. Pour les
-représenter dans {\LaTeX}, on aura recours à des commandes qui
-débutent, comme d'habitude, par le symbole \verb=\= et dont le nom est
-habituellement dérivé de la signification mathématique du symbole.
+d'ordinateurs comptent somme toute très peu des innombrables symboles
+mathématiques utilisés couramment. Pour les représenter dans {\LaTeX},
+on aura recours à des commandes qui débutent, comme d'habitude, par le
+symbole \verb=\= et dont le nom est habituellement dérivé de la
+signification mathématique du symbole.
 
 Si un symbole mathématique a été utilisé quelque part dans une
-publication, sa version existe dans {\LaTeX}. Il serait donc utopique
-de tenter de faire ici une recension des symboles disponibles. Nous
-nous contenterons d'un avant goût des principales catégories.
+publication, il y a de fortes chances que sa version existe dans
+{\LaTeX}. Il serait donc utopique de tenter de faire ici une recension
+des symboles disponibles. Nous nous contenterons d'un avant goût des
+principales catégories.
 
 L'ouvrage de référence pour connaître les symboles disponibles dans
 {\LaTeX} est la bien nommée %
@@ -866,18 +837,15 @@ des quantités, notamment les ensembles.
 \item La commande \cmd{\mathcal} permet de transfomer un ou plusieurs
   caractères en version dite «calligraphique» dans le mode mathématique.
   \begin{demo}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 \mathcal{ABC\, xyz}
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.48\linewidth}
+      \producing
       %% pris de lucidaot.tex; apparemment lent
       \setmathfont[RawFeature=+ss04]{Lucida Bright Math OT}
       $\mathscr{ABC\, xyz}$
-    \end{texoutput}
+    \end{texample}
   \end{demo}
 \item La commande \cmd{\mathbb} fournie, entre autres, par les
   paquetages \pkg{amsfonts} et \pkg{unicode-math} génère des versions
@@ -885,28 +853,25 @@ des quantités, notamment les ensembles.
   l'alphabet. Elles sont principalement utilisée pour représenter les
   ensembles de nombres.
   \begin{demo}
-  \item
-    \begin{texinput}{0.48\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 \mathbb{NZRC}
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.48\linewidth}
+      \producing
       $\mathbb{NZRC}$
-    \end{texoutput}
+    \end{texample}
   \end{demo}
 \item Le tableau~213 de la %
   \doc[Comprehensive {\LaTeX} Symbol List]{}{http://texdoc.net/pkg/comprehensive} %
   présente plusieurs autres alphabets spéciaux disponibles en
   mode mathématique.
-\item Certaines polices de caractères contiennent plusieurs versions
-  des symboles mathématiques. Par exemple, la police utilisée dans le
-  présent document contient deux versions de la police calligraphique,
-  celle présentée ci-dessus ou celle-ci: %
+\item Certaines polices de caractères OpenType contiennent plusieurs
+  versions des symboles mathématiques. Par exemple, la police utilisée
+  dans le présent document contient deux versions de la police
+  calligraphique, celle présentée ci-dessus et celle-ci: %
   \setmathfont[RawFeature=-ss04]{Lucida Bright Math OT}
-  $\mathscr{ABC\, xyz}$.
-  Consulter éventuellement la documentation de la police pour les détails.
+  $\mathscr{ABC\, xyz}$. Consulter éventuellement la documentation de
+  la police pour les détails.
 \end{itemize}
 
 \subsection{Opérateurs binaires et relations}
@@ -916,7 +881,9 @@ Les opérateurs binaires combinent deux quantités pour en former une
 troisième; pensons simplement aux opérateurs d'addition $+$ et de
 soustraction $-$ que l'on retrouve sur un clavier d'ordinateur normal.
 Les relations, quant à elles, servent pour la comparaison entre deux
-quantités, comme  $<$ et $>$.
+quantités, comme $<$ et $>$. Le \autoref{tab:math:binaires}
+présente une sélection d'opérateurs binaires et
+le \autoref{tab:math:relations}  une sélection de relations.
 
 \begin{itemize}
 \item La %
@@ -1032,7 +999,7 @@ logiques. Le \autoref{tab:math:fleches} en présente une sélection.
 \label{sec:math:symboles:autres}
 
 Le \autoref{tab:math:autres} présente quelques autres symboles
-mathématiques fournis par {\LaTeX}.
+mathématiques plus fréquemment utilisés fournis par {\LaTeX}.
 
 \begin{table}[h]
   \caption{Symboles mathématiques divers}
@@ -1066,71 +1033,256 @@ mathématiques fournis par {\LaTeX}.
   \end{equation*}
   Voici, pièce par pièce, le code {\LaTeX} pour créer cette équation.
   \begin{demo}
-  \item
-    \begin{texinput}{0.58\linewidth}
+    \begin{texample}[0.58\linewidth]
 \begin{lstlisting}
 \begin{equation*}
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.38\linewidth}
+      \producing
       \emph{équation hors paragraphe}
-    \end{texoutput}
-  \item
-    \begin{texinput}{0.58\linewidth}
+    \end{texample}
+
+    \begin{texample}[0.58\linewidth]
 \begin{lstlisting}
 \frac{\Gamma(\alpha)}{
   \lambda^\alpha} =
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.38\linewidth}
+      \producing
       $\dfrac{\Gamma(\alpha)}{\lambda^\alpha} =$
-    \end{texoutput}
-  \item
-    \begin{texinput}{0.58\linewidth}
+    \end{texample}
+
+    \begin{texample}[0.58\linewidth]
 \begin{lstlisting}
 \sum_{j = 0}^\infty \int_j^{j + 1}
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.38\linewidth}
+      \producing
       $\displaystyle \sum_{j = 0}^\infty \int_j^{j + 1}$
-    \end{texoutput}
-  \item
-    \begin{texinput}{0.58\linewidth}
+    \end{texample}
+
+    \begin{texample}[0.58\linewidth]
 \begin{lstlisting}
 x^{\alpha - 1} e^{-\lambda x}\, dx
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.38\linewidth}
+      \producing
       $\displaystyle x^{\alpha - 1} e^{-\lambda x}\, dx$
-    \end{texoutput}
-  \item
-    \begin{texinput}{0.58\linewidth}
+    \end{texample}
+
+    \begin{texample}[0.58\linewidth]
 \begin{lstlisting}
 , \quad \alpha > 0 \text{ et }
 \lambda > 0.
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.38\linewidth}
+      \producing
       $, \quad \alpha > 0 \text{ et } \lambda > 0.$
-    \end{texoutput}
-  \item
-    \begin{texinput}{0.58\linewidth}
+    \end{texample}
+
+    \begin{texample}[0.58\linewidth]
 \begin{lstlisting}
 \end{equation*}
 \end{lstlisting}
-    \end{texinput}
-    \hfill
-    \begin{texoutput}{0.38\linewidth}
+      \producing
       \emph{fin de l'environnement}
-    \end{texoutput}
+    \end{texample}
   \end{demo}
   \qed
 \end{exemple}
+
+
+\section{Équations sur plusieurs lignes et numérotation}
+\label{sec:math:align}
+
+Dans ce qui précède, nous n'avons présenté que des équations tenant
+sur une seule ligne en mode hors paragraphe. Cette section se penche
+sur la manière de représenter des groupes d'équations du type
+\begin{align}
+  y &= 2x + 4 \\
+  y &= 6x - 1
+\end{align}
+ou des suites d'équations comme
+\begin{align*}
+  x_{\text{max}}
+  &= \sum_{i = 0}^{m - 1} (b - 1) b^i \\
+  &= (b - 1) \sum_{i = 0}^{m - 1} b^i \\
+  &= b^m - 1.
+\end{align*}
+
+Nous recommandons fortement les environnements de \pkg{amsmath} pour
+les équations sur plusieurs lignes: ils sont plus polyvalents, plus
+simples à utiliser et leur rendu est meilleur. Le
+\autoref{tab:math:displays} --- repris presque intégralement de la
+documentation de ce paquetage --- compare les différents
+environnements pour les équations hors paragraphe.
+
+\begin{table}[p]
+  \caption{Comparaison des environnements pour les équations hors
+    paragraphe de \pkg{amsmath} (les lignes verticales indiquent les
+    marges logiques).}
+  \label{tab:math:displays}
+  \renewcommand{\theequation}{\arabic{equation}}
+  \begin{eqxample}
+\begin{lstlisting}
+\begin{equation*}
+  a = b
+\end{equation*}
+\end{lstlisting}
+    \producing
+    \begin{equation*}
+      a = b
+    \end{equation*}
+  \end{eqxample}
+
+  \begin{eqxample}
+\begin{lstlisting}
+\begin{equation}
+  a = b
+\end{equation}
+\end{lstlisting}
+    \producing
+    \begin{equation}
+      a = b
+    \end{equation}
+  \end{eqxample}
+
+  \begin{eqxample}
+\begin{lstlisting}
+\begin{equation}
+  \label{xx}
+  \begin{split}
+    a &= b + c - d \\
+    &\phantom{=} + e - f \\
+    &= g + h \\
+    &= i
+  \end{split}
+\end{equation}
+\end{lstlisting}
+    \producing
+    \begin{equation}\label{eq:math:xx}
+      \begin{split}
+        a& =b+c-d\\
+        &\phantom{=} +e-f\\
+        & =g+h\\
+        & =i
+      \end{split}
+    \end{equation}
+  \end{eqxample}
+
+  \begin{eqxample}
+\begin{lstlisting}
+\begin{multline}
+  a + b + c + d + e + f \\
+  + i + j + k + l + m + n
+\end{multline}
+\end{lstlisting}
+    \producing
+    \begin{multline}
+      a+b+c+d+e+f\\
+      +i+j+k+l+m+n
+    \end{multline}
+  \end{eqxample}
+
+  \begin{eqxample}
+\begin{lstlisting}
+\begin{gather}
+  a_1 = b_1 + c_1 \\
+  a_2 = b_2 + c_2 - d_2 + e_2
+\end{gather}
+\end{lstlisting}
+    \producing
+    \begin{gather}
+      a_1=b_1+c_1\\
+      a_2=b_2+c_2-d_2+e_2
+    \end{gather}
+  \end{eqxample}
+
+  \begin{eqxample}
+\begin{lstlisting}
+\begin{align}
+  a_1 &= b_1 + c_1 \\
+  a_2 &= b_2 + c_2 - d_2 + e_2
+\end{align}
+\end{lstlisting}
+    \producing
+    \begin{align}
+      a_1& =b_1+c_1\\
+      a_2& =b_2+c_2-d_2+e_2
+    \end{align}
+  \end{eqxample}
+
+  \begin{eqxample}
+\begin{lstlisting}
+\begin{align}
+  a_{11} &= b_{11} &
+  a_{12} &= b_{12} \\
+  a_{21} &= b_{21} &
+  a_{22} &= b_{22} + c_{22}
+\end{align}
+\end{lstlisting}
+    \producing
+    \begin{align}
+      a_{11}& =b_{11}&
+      a_{12}& =b_{12}\\
+      a_{21}& =b_{21}&
+      a_{22}& =b_{22}+c_{22}
+    \end{align}
+  \end{eqxample}
+\end{table}
+
+\begin{itemize}
+\item L'environnement de base pour les équations alignées sur un
+  symbole de relation (en une ou plusieurs colonnes) est \Ie{align}.
+  C'est l'environnement le plus utilisé en mode mathématique hormis
+  \Ie{equation}.
+\item Remarquer, dans le troisième exemple du
+  \autoref{tab:math:displays}, comment la commande \cmd{\phantom} sert
+  à insérer un blanc exactement de la largeur du symbole $=$ au début
+  de la seconde ligne de la suite d'égalités.
+\item L'environnement \Ie{split} est utile pour apposer un seul numéro
+  à une équation affichée sur plusieurs lignes.
+\item Pour supprimer la numérotation d'une ligne dans une série
+  d'équations numérotées, placer la commande \cmd{\notag} juste avant
+  la commande de changement de ligne \verb=\\=. À l'inverse, pour
+  ajouter un numéro d'équation dans une série non numérotée, ajouter
+  la commande \cmd{\tag} au même endroit.
+\item Les renvois vers des équations numérotées fonctionnent, comme
+  partout ailleurs en {\LaTeX}, avec le système d'étiquettes et de
+  références \citep{UL:latex:1,sec:tableaux:floats}. Le paquetage
+  \pkg{amsmath} fournit également la commande \cmd{\eqref} qui place
+  automatiquement le numéro d'équation entre parenthèses.
+  \begin{demo}
+    \begin{texample}
+\begin{lstlisting}
+On voit en \eqref{xx} du
+tableau `\ref*{tab:math:displays}' que...
+\end{lstlisting}
+      \producing
+      On voit en \eqref{eq:math:xx} du tableau
+      \ref*{tab:math:displays} que\dots
+    \end{texample}
+  \end{demo}
+\item À l'instar de \Ie{equation}, tous les environnements du
+  \autoref{tab:math:displays} sauf \Ie{split} ont une version étoilée
+  (\cmdprint{align*}, \cmdprint{gather*}, etc.) qui produit des
+  équations non numérotées.
+\end{itemize}
+Consulter la %
+\doc[documentation]{amsldoc}{http://texdoc.net/pkg/amsmath} %
+(chapitre 3) du paquetage \pkg{amsmath} pour les détails sur
+l'utilisation des environnements du \autoref*{tab:math:displays}.
+
+\begin{conseil}
+  Veillez à respecter les règles suivantes pour la mise en forme des
+  équations:
+  \begin{enumerate}
+  \item Les équations, en ligne ou hors paragraphe, faisant partie
+    intégrante de la phrase, les règles de ponctuation usuelles
+    s'appliquent aux équations.
+  \item Lorsqu'une équation s'étend sur plus d'une ligne, couper
+    chaque ligne \emph{avant} un opérateur (voir les troisième et
+    quatrième exemples du \autoref{tab:math:displays}).
+  \item Éviter de numéroter toutes les équations d'un document. Ne
+    numéroter que les celles auxquelles le texte fait référence.
+  \end{enumerate}
+\end{conseil}
+
 
 
 suites d'équations
