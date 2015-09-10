@@ -769,9 +769,9 @@ passant par\dots\ des figurines des Simpsons.
   contient des définitions pour plusieurs symboles mathématiques
   \citep{wikipedia:unicode-math}. Cela signifie qu'il est possible
   d'entrer une partie au moins des équations mathématiques avec des
-  caractères visibles à l'écran, plutôt qu'avec des commandes {\LaTeX}.
-  Nous ne saurions toutefois recommander cette pratique qui rend les
-  fichiers source moins compatibles d'un système à un autre.
+  caractères visibles à l'écran, plutôt qu'avec des commandes
+  {\LaTeX}. Nous ne saurions toutefois recommander cette pratique qui
+  rend les fichiers source moins compatibles d'un système à un autre.
 \end{important}
 
 \subsection{Lettres grecques}
@@ -1294,9 +1294,212 @@ l'utilisation des environnements du \autoref*{tab:math:displays}.
   \end{enumerate}
 \end{conseil}
 
+\begin{exemple}
+  Les deux suites d'équations au début de la section ont été réalisées
+  avec les blocs de code suivants, dans l'ordre:
+\begin{lstlisting}
+\begin{align}
+  y &= 2x + 4 \\
+  y &= 6x - 1
+\end{align}
+\end{lstlisting}
+\begin{lstlisting}
+\begin{align*}
+  x_{\text{max}}
+  &= \sum_{i = 0}^{m - 1} (b - 1) b^i \\
+  &= (b - 1) \sum_{i = 0}^{m - 1} b^i \\
+  &= b^m - 1.
+\end{align*}
+\end{lstlisting}
+  \qed
+\end{exemple}
 
+
+\section{Délimiteurs de taille variable}
+\label{sec:math:delimiteurs}
+
+Les délimiteurs en mathématiques sont des symboles généralement
+utilisés en paire tels que les parenthèses $(~)$, les crochets $[~]$
+ou les accolades $\{~\}$ et qui servent à regrouper des termes d'une
+équation. La taille des délimiteurs doit s'adapter au contenu entre
+ceux-ci afin de non pas se retrouver, par exemple, avec ceci
+\begin{equation*}
+  (1 + \frac{1}{x}),
+\end{equation*}
+mais plutôt avec cela
+\begin{equation*}
+  \left( 1 + \frac{1}{x} \right).
+\end{equation*}
+
+\begin{itemize}
+\item {\LaTeX} fournit les deux commandes
+\begin{lstlisting}
+\left`\meta{delim\_g}'  ...  \right`\meta{delim\_d}'
+\end{lstlisting}
+  qui définissent un délimiteur gauche \meta{delim\_g} et un
+  délimiteur droit \meta{delim\_d} dont la taille s'ajustera
+  automatiquement au contenu entre les deux commandes.
+  \begin{demo}
+    \begin{texample}
+\begin{lstlisting}
+\left( 1 + \frac{1}{x} \right)
+\end{lstlisting}
+      \producing
+      \begin{equation*}
+        \left( 1 + \frac{1}{x} \right)
+      \end{equation*}
+    \end{texample}
+
+    \begin{texample}
+\begin{lstlisting}
+\left(
+  \sum_{i = 1}^n x_i^2
+\right)^{1/2}
+\end{lstlisting}
+      \producing
+      \begin{equation*}
+        \left(
+          \sum_{i = 1}^n x_i^2
+        \right)^{1/2}
+      \end{equation*}
+    \end{texample}
+  \end{demo}
+\item Les commandes \cmd{\left} et \cmd{\right} doivent toujours
+  former une paire, c'est-à-dire qu'à \emph{toute} commande
+  \cmdprint{\left} doit absolument correspondre une commande
+    \cmdprint{\right}. Cette contrainte est facile à oublier!
+
+  Il est possible d'imbriquer des paires de commandes les unes à
+  l'intérieur des autres, pour autant que l'expression compte toujours
+  autant de \cmdprint{\left} que de \cmdprint{\right}.
+  \begin{demo}
+    \begin{texample}
+\begin{lstlisting}
+\left[
+  \int
+  \left(
+    1 + \frac{x}{k}
+  \right) dx
+\right]
+\end{lstlisting}
+      \producing
+      \begin{equation*}
+        \left[
+          \int
+          \left(
+            1 + \frac{x}{k}
+          \right) dx
+        \right]
+      \end{equation*}
+    \end{texample}
+  \end{demo}
+\item Les symboles \meta{delim\_g} et \meta{delim\_d} n'ont pas à
+  former une paire logique; toute combinaison de délimiteurs est valide.
+  \begin{demo}
+    \begin{texample}
+\begin{lstlisting}
+\int_0^1 x\, dx =
+\left[
+  \frac{x^2}{2}
+\right|_0^1
+\end{lstlisting}
+      \producing
+      \begin{equation*}
+        \int_0^1 x\, dx =
+        \left[
+          \frac{x^2}{2}
+        \right|_0^1
+      \end{equation*}
+    \end{texample}
+  \end{demo}
+\item Il arrive qu'un seul délimiteur soit nécessaire. Pour respecter
+  la règle de la paire ci-dessus, on aura recours dans ce cas à un
+  délimiteur \emph{invisible} représenté par le caractère «\verb=.=».
+  \begin{demo}
+    \begin{texample}
+\begin{lstlisting}
+f(x) =
+\left\{
+  \begin{aligned}
+    1 - x, &\quad x < 1 \\
+    x - 1, &\quad x \geq 1
+  \end{aligned}
+\right.
+\end{lstlisting}
+      \producing
+      \begin{equation*}
+        f(x) =
+        \left\{
+          \begin{aligned}
+            1 - x, &\quad x < 1 \\
+            x - 1, &\quad x \geq 1
+          \end{aligned}
+        \right.
+      \end{equation*}
+    \end{texample}
+  \end{demo}
+\item La règle de la paire est tout spécialement délicate dans les
+  équations sur plusieurs lignes car elle s'applique à chaque ligne
+  d'une équation. Par conséquent, si la paire de délimiteurs s'ouvre
+  sur une ligne et se referme sur une autre, il faudra ajouter un
+  délimiteur invisible à la fin de la première ligne ainsi qu'au début
+  de la seconde.
+  \begin{demo}
+    \begin{texample}
+\begin{lstlisting}
+\begin{align*}
+  a
+  &= \left(
+    b + \frac{c}{d}
+    \right. \\
+  &\phantom{=} \left.
+    + \frac{e}{f} - g
+    \right)
+\end{align*}
+\end{lstlisting}
+      \producing
+      \begin{align*}
+        a
+        &= \left(
+          b + \frac{c}{d}
+          \right. \\
+        &\phantom{=} \left.
+          + \frac{e}{f} - g
+          \right)
+      \end{align*}
+    \end{texample}
+  \end{demo}
+\item Quand les choix de taille de délimiteurs de {\LaTeX} ne
+  conviennent pas pour une raison ou pour une autre, on peut
+  sélectionner soi-même leur taille avec les commandes
+  \cmd{\big}, %
+  \cmd{\Big}, %
+  \cmd{\bigg} et %
+  \cmd{\Bigg}. %
+  Elles s'utilisent comme \cmdprint{\left} et \cmdprint{\right} en les
+  faisant immédiatement suivre d'un délimiteur. Le
+  \autoref{tab:math:big_et_al} contient des exemples de délimiteurs
+  pour chaque taille.
+  \begin{table}
+    \centering
+    \caption{Tailles des délimiteurs mathématiques}
+    \label{tab:math:big_et_al}
+    \begin{tabular}{ll}
+      -- & $(~) \quad [~] \quad \{~\}$ \\
+      \addlinespace[6pt]
+      \cmd{\big} & $\big(~\big) \quad \big[~\big] \quad \big\{~\big\}$ \\
+      \addlinespace[6pt]
+      \cmd{\Big} & $\Big(~\Big) \quad \Big[~\Big] \quad \Big\{~\Big\}$ \\
+      \addlinespace[6pt]
+      \cmd{\bigg} & $\bigg(~\bigg) \quad \bigg[~\bigg] \quad \bigg\{~\bigg\}$ \\
+      \addlinespace[6pt]
+      \cmd{\Bigg} & $\Bigg(~\Bigg) \quad \Bigg[~\Bigg] \quad \Bigg\{~\Bigg\}$ \\
+    \end{tabular}
+  \end{table}
+\end{itemize}
 
 left ... right
+cases
 
 vecteurs et matrices
 
