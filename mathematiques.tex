@@ -1438,6 +1438,31 @@ f(x) =
       \end{equation*}
     \end{texample}
   \end{demo}
+  (L'environnement \Ie{aligned} utilisé ci-dessus provient de
+  \pkg{amsmath}.)
+
+  On notera au passage que l'environnement \Ie{cases} de \pkg{amsmath}
+  rend plus simple la réalisation de constructions comme celle
+  ci-dessus.
+  \begin{demo}
+    \begin{texample}
+\begin{lstlisting}
+f(x) =
+\begin{cases}
+  1 - x, & x < 1 \\
+  x - 1, & x \geq 1
+\end{cases}
+\end{lstlisting}
+      \producing
+      \begin{equation*}
+        f(x) =
+        \begin{cases}
+          1 - x, & x < 1 \\
+          x - 1, & x \geq 1
+        \end{cases}
+      \end{equation*}
+    \end{texample}
+  \end{demo}
 \item La règle de la paire est tout spécialement délicate dans les
   équations sur plusieurs lignes car elle s'applique à chaque ligne
   d'une équation. Par conséquent, si la paire de délimiteurs s'ouvre
@@ -1471,15 +1496,15 @@ f(x) =
   \end{demo}
 \item Quand les choix de taille de délimiteurs de {\LaTeX} ne
   conviennent pas pour une raison ou pour une autre, on peut
-  sélectionner soi-même leur taille avec les commandes
+  sélectionner soi-même leur taille avec les commandes %
   \cmd{\big}, %
   \cmd{\Big}, %
   \cmd{\bigg} et %
   \cmd{\Bigg}. %
-  Elles s'utilisent comme \cmdprint{\left} et \cmdprint{\right} en les
-  faisant immédiatement suivre d'un délimiteur. Le
-  \autoref{tab:math:big_et_al} contient des exemples de délimiteurs
-  pour chaque taille.
+  Ces commandes s'utilisent comme \cmdprint{\left} et
+    \cmdprint{\right} en les faisant immédiatement suivre d'un
+  délimiteur. Le \autoref{tab:math:big_et_al} contient des exemples de
+  délimiteurs pour chaque taille.
   \begin{table}
     \centering
     \caption{Tailles des délimiteurs mathématiques}
@@ -1496,6 +1521,11 @@ f(x) =
       \cmd{\Bigg} & $\Bigg(~\Bigg) \quad \Bigg[~\Bigg] \quad \Bigg\{~\Bigg\}$ \\
     \end{tabular}
   \end{table}
+\item À lire également: la section~14 de la %
+  \doc[documentation]{amsldoc}{http://texdoc.net/pkg/amsmath} %
+  de \pkg{amsmath} qui traite de divers enjeux typographiques en lien
+  avec les délimiteurs et qui introduit des nouvelles commandes pour
+  en contrôler la taille.
 \end{itemize}
 
 left ... right
