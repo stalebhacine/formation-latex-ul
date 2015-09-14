@@ -12,7 +12,7 @@
   \usepackage{dirtree}                 % arbre pour exercice ...?
   \usepackage{metalogo}                % \XeLaTeX logo
   %\usepackage{applekeys}               % touches Mac
-  \usepackage{fontawesome}             % \faExclamationSign, \faYouTubePlay
+  \usepackage{fontawesome}             % plusieurs icônes
   \usepackage{answers,listings}
   \usepackage[francais]{varioref}
   \usepackage{pdfpages}                % couvertures
@@ -23,7 +23,7 @@
 
   %% Polices de caractères
   \usepackage{fontspec}
-  \usepackage{unicode-math}
+  \usepackage[bold-style=ISO]{unicode-math}
   \defaultfontfeatures{Ligatures=TeX}
   \setmainfont[Scale=0.92,Numbers=OldStyle]{Lucida Bright OT}
   \setmathfont[Scale=0.92]{Lucida Bright Math OT}
@@ -251,6 +251,8 @@
   \newcommand{\fichier}[1]{\texttt{#1}}
   \newcommand{\class}[1]{\textsf{#1}}
   \newcommand{\pkg}[1]{\textbf{#1}}
+  \newcommand{\mat}[1]{\symbf{#1}} % en mode mathématique
+
 
   \newcommand*{\Pe}[1]{\texttt{#1}}                      % print env name
   \newcommand*{\ixenv}[1]{\index{#1 env?\Pe{#1} (environnement)}% index env
@@ -272,7 +274,7 @@
 
   %% Lien vers documentation dans la marge
   \newcommand{\doc}[3][documentation]{\link{#3}{#1}%
-    \ifthenelse{\equal{#2}{}}{}{\marginpar{\faBook~\fichier{#2}}}}
+    \ifthenelse{\equal{#2}{}}{}{\marginpar{\mbox{\faBook~\fichier{#2}}}}}
 
   %% Pour le tableau des commandes d'espacement en mode mathématique.
   %% Pris de la doc de amsmath.
@@ -311,7 +313,7 @@
   %                                         Exercices \textemdash\
   %                                         édition \year}
 
-\includeonly{mathematiques}
+%\includeonly{mathematiques}
 
 \begin{document}
 

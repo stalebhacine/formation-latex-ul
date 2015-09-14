@@ -9,16 +9,13 @@ qualité typographique des équations mathématiques dans son ouvrage
 phare \emph{The Art of Computer Programming} figurait parmi les
 objectifs premiers de Knuth lorsqu'il a développé {\TeX}.
 
-La première partie de cette formation aborde le sujet des
-mathématiques, mais en s'en tenant qu'aux principes de base
-\citep[section~7]{UL:latex:1}. [...]
-
-Trop de symboles, consulter \citet{comprehensive} %
-\doc[???]{comprehensive}{http://texdoc.net/pkg/comprehensive}
-
 
 \section{Rappel des principes de base}
 \label{sec:math:rappel}
+
+Par souci d'exhaustivité, nous revenons d'abord sur les quelques
+principes de base présentés dans la première partie de cette formation
+\citep[section~7]{UL:latex:1}.
 
 La mise en forme d'équations mathématiques requiert d'indiquer à
 l'ordinateur, dans un langage spécial, le contenu des dites équations
@@ -68,9 +65,10 @@ d'où on obtient...
   \end{demo}
 \end{enumerate}
 
-Dans l'exemple ci-dessus, l'environnement \Ie{equation*} crée une
-équation hors paragraphe, centrée sur la ligne et non numérotée.
-Avec l'environnement \Ie{equation} (donc sans \verb=*= dans le nom),
+Dans l'exemple ci-dessus, l'environnement \Ie{equation*} (tiré du
+paquetage \pkg{amsmath} --- voir la section suivante) crée une
+équation hors paragraphe, centrée sur la ligne et non numérotée. Avec
+l'environnement \Ie{equation} (donc sans \verb=*= dans le nom),
 {\LaTeX} ajoute automatiquement un numéro d'équation séquentiel aligné
 sur la marge de droite:
 \begin{demo}
@@ -106,7 +104,7 @@ $\lim$). Ceci a trois conséquences principales:
   \begin{demo}
     \begin{texample}
 \begin{lstlisting}
-123xyz
+$123xyz$
 \end{lstlisting}
       \producing
       $123xyz$
@@ -117,7 +115,7 @@ $\lim$). Ceci a trois conséquences principales:
   \begin{demo}
     \begin{texample}
 \begin{lstlisting}
-z = 2 x + 3 x y
+$z = 2 x + 3 x y$
 \end{lstlisting}
     \producing
     $z = 2 x + 3 x y$
@@ -128,7 +126,7 @@ z = 2 x + 3 x y
   \begin{demo}
     \begin{texample}
 \begin{lstlisting}
-z=2x + 3xy
+$z=2x + 3xy$
 \end{lstlisting}
     \producing
     $z=2x + 3xy$
@@ -165,12 +163,12 @@ les opérateurs d'inégalité ou les symboles de sommes et d'intégrales.
 \section{Un paquetage incontournable}
 \label{sec:math:amsmath}
 
-Le paquetage \pkg{amsmath} produit par la prestigieuse \emph{American
-  Mathematical Society} fournit diverses extensions à {\LaTeX} pour
-faciliter encore davantage la saisie d'équations mathématiques
-complexes et en améliorer le rendu. L'utilisation de ce paquetage doit
-être considérée incontournable pour tout document contenant plus que
-quelques équations très simples.
+Le paquetage \pkg{amsmath} \citep{amsmath} produit par la prestigieuse
+\emph{American Mathematical Society} fournit diverses extensions à
+{\LaTeX} pour faciliter encore davantage la saisie d'équations
+mathématiques complexes et en améliorer le rendu. L'utilisation de ce
+paquetage doit être considérée incontournable pour tout document
+contenant plus que quelques équations très simples.
 
 Au chapitre des améliorations fournies par \pkg{amsmath}, notons
 particulièrement:
@@ -622,7 +620,7 @@ f(x) = a e^{-ax},
   \end{demo}
 \item Le \autoref{tab:math:espaces} répertorie et compare les
   différentes commandes qui permettent d'insérer des espaces plus ou
-  moins fines entre des éléments dans le mode mathématique:
+  moins fines entre des éléments dans le mode mathématique.
   \begin{table}
     \caption{Espaces dans le mode mathématique}
     \label{tab:math:espaces}
@@ -757,11 +755,11 @@ principales catégories.
 
 L'ouvrage de référence pour connaître les symboles disponibles dans
 {\LaTeX} est la bien nommée %
-\doc[Comprehensive {\LaTeX} Symbol List]{compre\-hen\-sive}{http://texdoc.net/pkg/comprehensive}. %
-Dans l'édition de 2009, la liste comprenait pas moins de \nombre{5913}
-symboles répartis sur plus de 160 pages! On y trouve de tout, des
-symboles mathématiques aux pictogrammes de météo ou d'échecs, en
-passant par\dots\ des figurines des Simpsons.
+\doc[Comprehensive {\LaTeX} Symbol List]{compre\-hen\-sive}{http://texdoc.net/pkg/comprehensive} %
+\citep{comprehensive}. Dans l'édition de 2009, la liste comprenait pas
+moins de \nombre{5913} symboles répartis sur plus de 160 pages! On y
+trouve de tout, des symboles mathématiques aux pictogrammes de météo
+ou d'échecs, en passant par\dots\ des figurines des Simpsons.
 
 \begin{important}
   Les moteurs {\XeTeX} et {\LuaTeX} supportent nativement le code
@@ -779,9 +777,9 @@ passant par\dots\ des figurines des Simpsons.
 
 On obtient les lettres grecques en {\LaTeX} avec des commandes
 correspondant au nom de chaque lettre. Lorsque la commande débute par
-une capitale, on obtient une lettre grecque majuscule. Certaines
-lettres grecques majuscules n'existent pas car elles sont identiques
-aux lettres romaines.
+une capitale, on obtient une lettre grecque majuscule. Les commandes
+de certaines lettres grecques majuscules n'existent pas lorsque celles-ci
+sont identiques aux lettres romaines.
 
 Les tableaux \ref{tab:math:grecques} et \ref{tab:math:Grecques}
 présentent l'ensemble des lettres grecques disponibles dans {\LaTeX}.
@@ -891,16 +889,17 @@ le \autoref{tab:math:relations}  une sélection de relations.
   List]{}{http://texdoc.net/pkg/comprehensive} %
   consacre plus d'une dizaine de tableaux aux opérateurs binaires et
   près d'une quarantaine aux relations. C'est dire à quel point les
-  tableaux \ref{tab:math:binaires} et \ref{tab:math:relations} ne
+  tableaux \ref*{tab:math:binaires} et \ref*{tab:math:relations} de la
+  \autopageref{tab:math:binaires} ne
   présentent que les principaux éléments à titre indicatif.
 \item Certaines relations existent directement en version opposée, ou
   négative (comme $\neq$ ou $\notin$) soit dans {\LaTeX} de base, soit
   avec \pkg{amsmath} ou un autre paquetage. Autrement, il est possible
-  de préfixer toute relation de \cmd{\not} pour y supersposer une
+  de préfixer toute relation de \cmd{\not} pour y superposer une
   barre oblique $/$.
 \end{itemize}
 
-\begin{table}
+\begin{table}[p]
   \caption{Quelques opérateurs binaires}
   \label{tab:math:binaires}
   \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
@@ -919,7 +918,7 @@ le \autoref{tab:math:relations}  une sélection de relations.
   \end{tabularx}
 \end{table}
 
-\begin{table}
+\begin{table}[p]
   \caption{Quelques relations et leur négation}
   \label{tab:math:relations}
   \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
@@ -961,8 +960,7 @@ logiques. Le \autoref{tab:math:fleches} en présente une sélection.
   \autoref{tab:math:fleches}.
 \end{itemize}
 
-
-\begin{table}
+\begin{table}[p]
   \caption{Quelques flèches et leur négation}
   \label{tab:math:fleches}
   \begin{tabularx}{1.0\linewidth}{lXlX}
@@ -1001,7 +999,7 @@ logiques. Le \autoref{tab:math:fleches} en présente une sélection.
 Le \autoref{tab:math:autres} présente quelques autres symboles
 mathématiques plus fréquemment utilisés fournis par {\LaTeX}.
 
-\begin{table}[h]
+\begin{table}[p]
   \caption{Symboles mathématiques divers}
   \label{tab:math:autres}
   \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
@@ -1255,7 +1253,7 @@ environnements pour les équations hors paragraphe.
   \end{demo}
 \item Les renvois vers des équations numérotées fonctionnent, comme
   partout ailleurs en {\LaTeX}, avec le système d'étiquettes et de
-  références \citep{UL:latex:1,sec:tableaux:floats}. Le paquetage
+  références \citep[][ou la \autoref{sec:tableaux:floats}]{UL:latex:1}. Le paquetage
   \pkg{amsmath} fournit également la pratique commande \cmd{\eqref}
   qui place automatiquement le numéro d'équation entre parenthèses.
   \begin{demo}
@@ -1322,23 +1320,23 @@ Les délimiteurs en mathématiques sont des symboles généralement
 utilisés en paire tels que les parenthèses $(~)$, les crochets $[~]$
 ou les accolades $\{~\}$ et qui servent à regrouper des termes d'une
 équation. La taille des délimiteurs doit s'adapter au contenu entre
-ceux-ci afin de non pas se retrouver, par exemple, avec ceci
+ceux-ci afin de se retrouver, par exemple, non pas avec
 \begin{equation*}
   (1 + \frac{1}{x}),
 \end{equation*}
-mais plutôt avec cela
+mais plutôt avec
 \begin{equation*}
   \left( 1 + \frac{1}{x} \right).
 \end{equation*}
 
 \begin{itemize}
-\item {\LaTeX} fournit les deux commandes
+\item La paire de commandes
 \begin{lstlisting}
 \left`\meta{delim\_g}'  ...  \right`\meta{delim\_d}'
 \end{lstlisting}
-  qui définissent un délimiteur gauche \meta{delim\_g} et un
-  délimiteur droit \meta{delim\_d} dont la taille s'ajustera
-  automatiquement au contenu entre les deux commandes.
+  définit un délimiteur gauche \meta{delim\_g} et un délimiteur droit
+  \meta{delim\_d} dont la taille s'ajustera automatiquement au contenu
+  entre les deux commandes.
   \begin{demo}
     \begin{texample}
 \begin{lstlisting}
@@ -1510,7 +1508,7 @@ f(x) =
     \caption{Tailles des délimiteurs mathématiques}
     \label{tab:math:big_et_al}
     \begin{tabular}{ll}
-      -- & $(~) \quad [~] \quad \{~\}$ \\
+      taille standard & $(~) \quad [~] \quad \{~\}$ \\
       \addlinespace[6pt]
       \cmd{\big} & $\big(~\big) \quad \big[~\big] \quad \big\{~\big\}$ \\
       \addlinespace[6pt]
@@ -1525,13 +1523,239 @@ f(x) =
   \doc[documentation]{amsldoc}{http://texdoc.net/pkg/amsmath} %
   de \pkg{amsmath} qui traite de divers enjeux typographiques en lien
   avec les délimiteurs et qui introduit des nouvelles commandes pour
-  en contrôler la taille.
+  contrôler leur taille.
 \end{itemize}
 
-left ... right
-cases
+\begin{exemple}
+  Le développement de la formule d'approximation de Simpson comporte
+  plusieurs des éléments discutés jusqu'à maintenant:
+  \begin{align*}
+    \int_a^b f(x)\, dx
+    &\approx \sum_{j = 0}^{n - 1}
+      \int_{x_{2j}}^{x_{2(j + 1)}} f(x)\, dx \\
+    &= \frac{h}{3} \sum_{j = 0}^{n - 1}
+      \left[
+      f(x_{2j}) + 4 f(x_{2j + 1}) + f(x_{2(j + 1)})
+      \right]
+    \displaybreak[0] \\
+    &= \frac{h}{3}
+      \left[
+      f(x_0) +
+      \sum_{j = 1}^{n - 1} f(x_{2j}) +
+      4 \sum_{j = 0}^{n - 1} f(x_{2j + 1})
+      \right. \displaybreak[0] \\
+    &\phantom{=}  + \left.
+      \sum_{j = 0}^{n - 2} f(x_{2(j + 1)}) +
+      f(x_{2n})
+      \right] \\
+    &= \frac{h}{3}
+      \left[
+      f(a) +
+      2 \sum_{j = 1}^{n - 1} f(x_{2j}) +
+      4 \sum_{j = 0}^{n - 1} f(x_{2j + 1}) +
+      f(b)
+      \right].
+  \end{align*}
+  Le code source de cette suite d'équations est le suivant:
+\begin{lstlisting}
+\begin{align*}
+  \int_a^b f(x)\, dx
+  &\approx \sum_{j = 0}^{n - 1}
+    \int_{x_{2j}}^{x_{2(j + 1)}} f(x)\, dx \\
+  &= \frac{h}{3} \sum_{j = 0}^{n - 1}
+    \left[
+    f(x_{2j}) + 4 f(x_{2j + 1}) + f(x_{2(j + 1)})
+    \right] \\
+  &= \frac{h}{3}
+    \left[
+    f(x_0) +
+    \sum_{j = 1}^{n - 1} f(x_{2j}) +
+    4 \sum_{j = 0}^{n - 1} f(x_{2j + 1})
+    \right. \\
+  &\phantom{=}  + \left.
+    \sum_{j = 0}^{n - 2} f(x_{2(j + 1)}) +
+    f(x_{2n})
+    \right] \\
+  &= \frac{h}{3}
+    \left[
+    f(a) +
+    2 \sum_{j = 1}^{n - 1} f(x_{2j}) +
+    4 \sum_{j = 0}^{n - 1} f(x_{2j + 1}) +
+    f(b)
+    \right].
+\end{align*}
+\end{lstlisting}
+  \qed
+\end{exemple}
 
-vecteurs et matrices
+\begin{conseil}
+  De manière générale, il est déconseillé de scinder une suite
+  d'équations entre deux pages. Le chargement du paquetage
+  \pkg{amsmath} désactive d'ailleurs cette possibilité. Cependant,
+  c'est parfois inévitable pour les longs blocs d'équations.
+
+  La commande \cmd{\displaybreak}, placée immédiatement avant
+  \verb=\\= permet d'indiquer à {\LaTeX} la possibilité d'insérer un
+  saut de page après la ligne courante dans le bloc d'équations.
+
+  La commande accepte en argument optionnel un entier entre $0$ et $4$
+  indiquant à quel point un saut de page est désiré:
+  \cmdprint{\displaybreak[0]} signifie «il est permis de changer de
+  page ici» sans que ce ne soit obligatoire;
+  \cmdprint{\displaybreak[4]} ou, de manière équivalente,
+  \cmdprint{\displaybreak} force un saut de page.
+
+  À moins d'en être vraiment aux toutes dernières étapes d'édition
+  d'un document, il est conseillé d'utiliser la commande
+  \cmdprint{\displaybreak} avec parcimonie et avec un argument
+  optionnel faible.
+\end{conseil}
+
+
+\section{Caractères gras en mathématiques}
+\label{sec:math:gras}
+
+Les caractères gras sont parfois utilisés en mathématiques,
+particulièrement pour représenter les vecteurs et les matrices:
+\begin{equation*}
+  \symbf{A} \symbf{x} = \symbf{b} \Leftrightarrow
+  \symbf{x} = \symbf{A}^{-1} \symbf{b}
+\end{equation*}
+
+Pourquoi consacrer une section spécialement à cette convention
+typographique? Parce que la création de symboles mathématiques en
+gras doit certainement figurer parmi les questions les plus
+fréquemment posées par les utilisateurs de {\LaTeX}\dots\ et que la
+réponse n'est pas unique!
+
+\begin{itemize}
+\item La commande
+\begin{lstlisting}
+\mathbf`\marg{symbole}'
+\end{lstlisting}
+  place \meta{symbole} en caractère gras en mode mathématique. C'est
+  donc l'analogue de la commande \cmd{\textbf} du mode texte. Dans
+  {\LaTeX} de base, la commande n'a toutefois un effet que sur les
+  lettres latines et, parfois, les lettres grecques majuscules.
+  \begin{demo}
+    \begin{texample}[0.6\linewidth]
+\begin{lstlisting}
+\theta \mathbf{\theta} +
+\Gamma \mathbf{\Gamma} \mathbf{+}
+A \mathbf{A}
+\end{lstlisting}
+    \producing
+    %% ok, ici il faut vraiment tricher pour reproduire avec
+    %% unicode-math ce qui se produirait avec pdflatex standard
+    $\theta {\theta} + \Gamma \symbf{\Gamma} {+} A \symbf{A}$
+    \end{texample}
+  \end{demo}
+  On remarquera également que \verb=\mathbf{A}= produit une lettre
+  majuscule droite plutôt qu'italique.
+\item La manière la plus standard et robuste d'obtenir des symboles
+  mathématiques gras semble être, au moment d'écrire ces lignes, via
+  la commande
+\begin{lstlisting}
+\bm`\marg{symbole}'
+\end{lstlisting}
+  fournie par le paquetage \pkg{bm} \citep{bm}.
+\begin{demo}
+    \begin{texample}[0.6\linewidth]
+\begin{lstlisting}
+\theta \bm{\theta} +
+\Gamma \bm{\Gamma} \bm{+}
+A \bm{A}
+\end{lstlisting}
+    \producing
+    %% ok, ici il faut vraiment tricher pour reproduire avec
+    %% unicode-math ce qui se produirait avec pdflatex standard
+    $\theta \symbf{\theta} + \Gamma \symbfup{\Gamma} \symbf{+} A
+    \symbf{A}$
+    \end{texample}
+  \end{demo}
+\item Les utilisateurs de {\XeLaTeX} devraient charger le paquetage
+  \pkg{unicode-math} \citep{unicode-math} pour sélectionner leur
+  police de caractère pour les mathématiques. Ce paquetage fournit la
+  commande
+\begin{lstlisting}
+\symbf`\marg{symbole}'
+\end{lstlisting}
+  pour placer un \meta{symbole} mathématique en gras. Le paquetage
+  offre différentes combinaisons de lettres latines et grecques
+  droites ou italiques en gras selon la valeur de l'option
+  \code{bold-style}; consulter la section~5 de la %
+  \doc[documentation]{unicode-math}{http://texdoc.net/pkg/unicode-math}. %
+  \begin{demo}
+    \begin{texample}[0.6\linewidth]
+\begin{lstlisting}
+% avec l'option bold-style=ISO
+\theta \symbf{\theta} +
+\Gamma \symbf{\Gamma} \symbf{+}
+A \symbf{A}
+\end{lstlisting}
+      \producing
+      $\theta \symbf{\theta} + \Gamma \symbf{\Gamma} \symbf{+}
+      A \symbf{A}$
+    \end{texample}
+  \end{demo}
+\item Si le gras est fréquemment utilisé dans un document pour une
+  notation particulière, il est fortement recommandé de définir une
+  nouvelle commande\footnote{%
+    La définition de nouvelles commandes est couvert plus en détail à
+    la \autoref{misc:newcommands}.} %
+  sémantique plutôt que d'utiliser à répétition l'une ou l'autre des
+  commandes ci-dessus.
+
+  Par exemple, si le gras est utilisé pour les vecteurs et matrices,
+  on pourrait définir une nouvelle commande \cmdprint{\mat} en
+  insérant dans le préambule du document
+\begin{lstlisting}
+\newcommand[1]{\mat}{\bm{#1}}
+\end{lstlisting}
+\end{itemize}
+
+\begin{exemple}
+  Le paquetage \pkg{amsmath} fournit quelques environnements qui
+  facilitent la mise en forme de matrices; ils diffèrent simplement
+  par le type de délimiteur autour de la matrice.
+
+  Supposons que la commande \cmdprint{\mat} ci-dessus est définie dans
+  le préambule du document. On obtient l'équation
+  \begin{align*}
+    \mat{J}(\mat{\theta})
+    &=
+      \begin{bmatrix}
+        \dfrac{\partial f_1(\mat{\theta})}{\partial \theta_1} &
+        \dfrac{\partial f_1(\mat{\theta})}{\partial \theta_2} \\[12pt]
+        \dfrac{\partial f_2(\mat{\theta})}{\partial \theta_1} &
+        \dfrac{\partial f_2(\mat{\theta})}{\partial \theta_2}
+      \end{bmatrix} \\
+    &=
+      \left[
+      \frac{\partial f_i(\mat{\theta})}{\partial \theta_j}
+      \right]_{2 \times 2}, \quad i, j = 1, 2.
+  \end{align*}
+  avec le code source suivant:
+\begin{lstlisting}
+\begin{align*}
+  \mat{J}(\mat{\theta})
+  &=
+    \begin{bmatrix}
+      \dfrac{\partial f_1(\mat{\theta})}{\partial \theta_1} &
+      \dfrac{\partial f_1(\mat{\theta})}{\partial \theta_2}
+      \\[12pt] % augmenter l'espace entre les lignes
+      \dfrac{\partial f_2(\mat{\theta})}{\partial \theta_1} &
+      \dfrac{\partial f_2(\mat{\theta})}{\partial \theta_2}
+    \end{bmatrix} \\
+  &=
+    \left[
+    \frac{\partial f_i(\mat{\theta})}{\partial \theta_j}
+    \right]_{2 \times 2}, \quad i, j = 1, 2.
+\end{align*}
+\end{lstlisting}
+  \qed
+\end{exemple}
+
 
 %%%
 %%% Exercices
