@@ -72,6 +72,7 @@
   \setlength{\headwidth}{\textwidth}
   \addtolength{\headwidth}{\marginparsep}
   \addtolength{\headwidth}{\marginparwidth}
+  \addtolength{\marginparwidth}{15mm} % plus d'espace pour titres de documentation
 
   %% Titres des sections et sous-sections
   \setsecheadstyle{\normalfont\Large\sffamily\bfseries\raggedright}
@@ -274,7 +275,9 @@
 
   %% Lien vers documentation dans la marge
   \newcommand{\doc}[3][documentation]{\link{#3}{#1}%
-    \ifthenelse{\equal{#2}{}}{}{\marginpar{\mbox{\faBook~\fichier{#2}}}}}
+    \ifthenelse{\equal{#2}{}}{}{\marginpar%
+      [\hfill\faBook~\fichier{#2}]%
+      {\faBook~\fichier{#2}}}}
 
   %% Pour le tableau des commandes d'espacement en mode mathématique.
   %% Pris de la doc de amsmath.
@@ -313,7 +316,7 @@
   %                                         Exercices \textemdash\
   %                                         édition \year}
 
-%\includeonly{mathematiques}
+\includeonly{mathematiques}
 
 \begin{document}
 
