@@ -200,100 +200,93 @@ du paquetage.
 {\LaTeX} permet de créer facilement et avec la bonne taille de
 symboles n'importe quelle combinaison d'exposants et d'indices.
 
-\begin{itemize}
-\item On place un caractère en exposant d'un autre avec la commande
-  \verb=^= et en indice avec la commande \verb=_=. Les indices et
-  exposants se combinent naturellement.
-  \begin{demo}
-    \begin{minipage}{0.3\linewidth}
-      \begin{texample}[0.6\linewidth]
+On place un caractère en \textsuperscript{exposant} d'un autre avec la
+commande \verb=^= et en \textsubscript{indice} avec la commande
+\verb=_=. Les indices et exposants se combinent naturellement.
+\begin{demo}
+  \begin{minipage}{0.3\linewidth}
+    \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 x^2
 \end{lstlisting}
-        \producing $x^2$
-      \end{texample}
-    \end{minipage}
-    \quad
-    \begin{minipage}{0.3\linewidth}
-      \begin{texample}[0.6\linewidth]
+      \producing $x^2$
+    \end{texample}
+  \end{minipage}
+  \quad
+  \begin{minipage}{0.3\linewidth}
+    \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 a_n
 \end{lstlisting}
-        \producing
-        $a_n$
-      \end{texample}
-    \end{minipage}
-    \quad
-    \begin{minipage}{0.3\linewidth}
-      \begin{texample}[0.63\linewidth]
+      \producing $a_n$
+    \end{texample}
+  \end{minipage}
+  \quad
+  \begin{minipage}{0.3\linewidth}
+    \begin{texample}[0.63\linewidth]
 \begin{lstlisting}
 x_i^k
 \end{lstlisting}
-        \producing
-        $x_i^k$
-      \end{texample}
-    \end{minipage}
-  \end{demo}
-  (L'ordre de saisie n'a pas d'importance; le troisième exemple
-  donnerait le même résultat avec \verb=x^k_i=.)
-\item Si l'exposant ou l'indice compte plus d'un caractère, il faut
-  regrouper le tout entre accolades \verb={ }=.
-  \begin{demo}
-    \begin{minipage}{0.3\linewidth}
-      \begin{texample}[0.6\linewidth]
+      \producing $x_i^k$
+    \end{texample}
+  \end{minipage}
+\end{demo}
+(L'ordre de saisie n'a pas d'importance; le troisième exemple
+donnerait le même résultat avec \verb=x^k_i=.)
+
+Si l'exposant ou l'indice compte plus d'un caractère, il faut
+regrouper le tout entre accolades \verb={ }=.
+\begin{demo}
+  \begin{minipage}{0.3\linewidth}
+    \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 x^{2k + 1}
 \end{lstlisting}
-        \producing
-        $x^{2k + 1}$
-      \end{texample}
-    \end{minipage}
-    \quad
-    \begin{minipage}{0.3\linewidth}
-      \begin{texample}[0.6\linewidth]
+      \producing $x^{2k + 1}$
+    \end{texample}
+  \end{minipage}
+  \quad
+  \begin{minipage}{0.3\linewidth}
+    \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 x_{i,j}
 \end{lstlisting}
-        \producing
-        $x_{i,j}$
-      \end{texample}
-    \end{minipage}
-    \quad
-    \begin{minipage}{0.3\linewidth}
-      \begin{texample}[0.63\linewidth]
+      \producing $x_{i,j}$
+    \end{texample}
+  \end{minipage}
+  \quad
+  \begin{minipage}{0.3\linewidth}
+    \begin{texample}[0.63\linewidth]
 \begin{lstlisting}
 x_{ij}^{2n}
 \end{lstlisting}
-        \producing
-        $x_{ij}^{2n}$
-      \end{texample}
-    \end{minipage}
-  \end{demo}
-\item Toutes les combinaisons d'exposants et d'indices sont possibles,
-  y compris les puissances de puissances ou les indices d'indices.
-  \begin{demo}
-    \begin{minipage}{0.3\linewidth}
-      \begin{texample}[0.6\linewidth]
+      \producing $x_{ij}^{2n}$
+    \end{texample}
+  \end{minipage}
+\end{demo}
+
+Toutes les combinaisons d'exposants et d'indices sont possibles, y
+compris les puissances de puissances ou les indices d'indices.
+\begin{demo}
+  \begin{minipage}{0.3\linewidth}
+    \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 e^{-x^2}
 \end{lstlisting}
-        \producing
-        $e^{-x^2}$
-      \end{texample}
-    \end{minipage}
-    \quad
-    \begin{minipage}{0.6\linewidth}
-      \begin{texample}[0.6\linewidth]
+      \producing $e^{-x^2}$
+    \end{texample}
+  \end{minipage}
+  \quad
+  \begin{minipage}{0.6\linewidth}
+    \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 A_{i_s, k^n}^{y_i}
 \end{lstlisting}
-        \producing
-        $A_{i_s,k^n}^{y_i}$
-      \end{texample}
-    \end{minipage}
-    \quad \mbox{}     % pour alignement avec bloc d'exemples ci-dessus
-  \end{demo}
-\end{itemize}
+      \producing $A_{i_s,k^n}^{y_i}$
+    \end{texample}
+  \end{minipage}
+  \quad \mbox{} % pour alignement avec bloc d'exemples ci-dessus
+\end{demo}
 
 \begin{important}
   Les commandes \verb=^= et \verb=_= sont permises dans le mode
@@ -312,32 +305,32 @@ A_{i_s, k^n}^{y_i}
 Il y a plusieurs façons de représenter une fraction selon qu'elle se
 trouve au fil du texte, dans une équation hors paragraphe ou à
 l'intérieur d'une autre fraction.
-\begin{itemize}
-\item Pour les fractions au fil du texte, il vaut souvent mieux
-  utiliser simplement la barre oblique \verb=/= pour séparer le
-  numérateur du dénominateur, quitte à utiliser des parenthèses.
-  Ainsi, on utilise \verb=$(n + 1)/2$= pour obtenir $(n + 1)/2$.
-\item De manière plus générale, la commande
+
+Pour les fractions au fil du texte, il vaut souvent mieux utiliser
+simplement la barre oblique \verb=/= pour séparer le numérateur du
+dénominateur, quitte à utiliser des parenthèses. Ainsi, on utilise
+\verb=$(n + 1)/2$= pour obtenir $(n + 1)/2$.
+
+De manière plus générale, la commande
 \begin{lstlisting}
 \frac`\marg{numérateur}\marg{dénominateur}'
 \end{lstlisting}
-  dispose \meta{numérateur} au-dessus de \meta{dénominateur}, séparé
-  par une ligne horizontale. La taille des caractères s'ajuste
-  automatiquement selon que la fraction se trouve au fil
-  du texte ou dans une équation hors paragraphe, ainsi que selon la
-  position de la fraction dans l'équation.
-  \begin{demo}
-    \begin{texample}
+dispose \meta{numérateur} au-dessus de \meta{dénominateur}, séparé par
+une ligne horizontale. La taille des caractères s'ajuste
+automatiquement selon que la fraction se trouve au fil du texte ou
+dans une équation hors paragraphe, ainsi que selon la position de la
+fraction dans l'équation.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 % taille au fil du texte
 On a $z_1 = \frac{x}{y}$ et
 $z_2 = xy$.
 \end{lstlisting}
-      \producing
-      On a $z_1 = \frac{x}{y}$ et $z_2 = xy$.
-    \end{texample}
+    \producing On a $z_1 = \frac{x}{y}$ et $z_2 = xy$.
+  \end{texample}
 
-    \begin{texample}
+  \begin{texample}
 \begin{lstlisting}
 % taille hors paragraphe
 On a
@@ -346,15 +339,14 @@ On a
 \end{equation*}
 et $z_2 = xy$.
 \end{lstlisting}
-      \producing
-      On a
-      \begin{equation*}
-        z_1 = \frac{x}{y}
-      \end{equation*}
-      et $z_2 = xy$.
-    \end{texample}
+    \producing On a
+    \begin{equation*}
+      z_1 = \frac{x}{y}
+    \end{equation*}
+    et $z_2 = xy$.
+  \end{texample}
 
-    \begin{texample}
+  \begin{texample}
 \begin{lstlisting}
 % deux tailles combinées
 Soit
@@ -363,27 +355,27 @@ Soit
     + 1}{y}.
 \end{equation*}
 \end{lstlisting}
-      \producing
-      Soit
-      \begin{equation*}
-        z = \frac{\frac{x}{2} + 1}{y}.
-      \end{equation*}
-    \end{texample}
-  \end{demo}
+    \producing Soit
+    \begin{equation*}
+      z = \frac{\frac{x}{2} + 1}{y}.
+    \end{equation*}
+  \end{texample}
+\end{demo}
 
-\item Les commandes
+Les commandes
 \begin{lstlisting}
 \dfrac`\marg{numérateur}\marg{dénominateur}'
 \tfrac`\marg{numérateur}\marg{dénominateur}'
 \end{lstlisting}
-  de \pkg{amsmath} permettent de forcer une fraction à adopter la
-  taille d'une fraction hors paragraphe (\emph{displayed}) dans le cas
-  de \cmd{\dfrac} ou de celle d'une fraction au fil du texte
-  (\emph{text}) dans le cas de \cmd{\tfrac}.
-  %% quelque chose à cet effet dans exercices ou dans présentation de 'cases'
-\item Il est parfois visuellement plus intéressant, surtout au fil du
+de \pkg{amsmath} permettent de forcer une fraction à adopter la taille
+d'une fraction hors paragraphe (\emph{displayed}) dans le cas de
+\cmd{\dfrac} ou de celle d'une fraction au fil du texte (\emph{text})
+dans le cas de \cmd{\tfrac}.
+
+\begin{conseil}
+  Il est parfois visuellement plus intéressant, surtout au fil du
   texte, d'écrire une fraction comme $1/x$ sous la forme $x^{-1}$.
-\end{itemize}
+\end{conseil}
 
 \subsection{Racines}
 \label{sec:math:bases:racines}
@@ -448,129 +440,126 @@ la hauteur du radical s'adapte toujours à celles du radicande.
 
 Les sommes et intégrales requièrent un symbole spécial ainsi que des
 limites inférieures et supérieures, le cas échéant.
-\begin{itemize}
-\item Les commandes \cmd{\sum} et \cmd{\int} servent respectivement à tracer les
-  symboles de somme $\sum$ et d'intégrale $\int$.
-\item Le paquetage \pkg{amsmath} fournit également des commandes comme
-  \cmd{\iint} et \cmd{\iiint} pour obtenir des symboles d'intégrales
-  multiples finement disposés ($\iint$ et $\iiint$).
-\item On entre les éventuelles limites inférieures et supérieures
-  comme des indices et des exposants.
-  \begin{demo}
-    \begin{texample}
+
+Les commandes \cmd{\sum} et \cmd{\int} servent respectivement à tracer
+les symboles de somme $\sum$ et d'intégrale $\int$. Le paquetage
+\pkg{amsmath} fournit également des commandes comme \cmd{\iint} et
+\cmd{\iiint} pour obtenir des symboles d'intégrales multiples finement
+disposés ($\iint$ et $\iiint$).
+
+On entre les éventuelles limites inférieures et supérieures comme des
+indices et des exposants.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 \sum_{i = 0}^n x_i
 \end{lstlisting}
-      \producing
-      $\displaystyle \sum_{i = 0}^n x_i$
-    \end{texample}
+    \producing $\displaystyle \sum_{i = 0}^n x_i$
+  \end{texample}
 
-    \begin{texample}
+  \begin{texample}
 \begin{lstlisting}
 \int_0^{10} f(x)\, dx
 \end{lstlisting}
-      \producing
-      $\displaystyle \int_0^{10} f(x)\, dx$
-    \end{texample}
+    \producing $\displaystyle \int_0^{10} f(x)\, dx$
+  \end{texample}
 
-    \begin{texample}
+  \begin{texample}
 \begin{lstlisting}
 \iint_D f(x, y)\, dx dy
 \end{lstlisting}
-      \producing
-      $\displaystyle \iint_D f(x, y)\, dx dy$
-    \end{texample}
-  \end{demo}
-\item La taille des symboles et la position des limites s'ajustent
-  automatiquement selon le contexte. Au fil du texte, la somme et
-  l'intégrale simple ci-dessus apparaîtraient comme
-  $\sum_{i = 0}^n x_i$ et $\int_0^{10} f(x)\, dx$.
-\item Dans une intégrale il est recommandé de séparer l'intégrande de
-  l'opérateur de différentiation $dx$ par une espace fine. C'est ce à
-  quoi sert la commande \cmd{\,} ci-dessus; voir aussi le tableau de
-  la \autopageref{tab:math:espaces}.
-\end{itemize}
+    \producing $\displaystyle \iint_D f(x, y)\, dx dy$
+  \end{texample}
+\end{demo}
+
+La taille des symboles et la position des limites s'ajustent
+automatiquement selon le contexte. Au fil du texte, la somme et
+l'intégrale simple ci-dessus apparaîtraient comme $\sum_{i = 0}^n x_i$
+et $\int_0^{10} f(x)\, dx$.
+
+Dans une intégrale il est recommandé de séparer l'intégrande de
+l'opérateur de différentiation $dx$ par une espace fine. C'est ce à
+quoi sert la commande \cmd{\,} ci-dessus; voir aussi le
+\autoref{tab:math:espaces} de la \autopageref{tab:math:espaces}.
 
 \subsection{Points de suspension}
 \label{sec:math:bases:dots}
 
 Les formules mathématiques comportent fréquemment des points de
-suspension dans des suites de variables ou d'opérations. Il faut
-éviter de les entrer comme trois points finaux consécutifs, car
-l'espacement entre ceux-ci sera trop petit et le résultat,
-disgracieux: $...$
+suspension dans des suites de variables ou d'opérations. On recommande
+d'éviter de les entrer comme trois points finaux consécutifs, car
+l'espacement entre les points sera trop petit et le résultat, jugé
+disgracieux\footnote{%
+  Le résultat exact dépend de la police de caractère utilisée.} %
+d'un point de vue typographique: $...$
 
-\begin{itemize}
-\item Le \autoref{tab:math:dots} fournit les commandes {\LaTeX}
-  servant à générer divers types de points de suspension.
-  \begin{table}
-    \caption{Points de suspension}
-    \label{tab:math:dots}
-    \centering
-    \begin{tabular}{lll}
-      \toprule
-      commande & type de points & exemple \\
-      \midrule
-      \cmd{\dots} &  sélection automatique \\
-      \cmd{\ldots} & points à la ligne de base & $x_1, \ldots, x_n$ \\
-      \cmd{\cdots} & points centrés & $x_1 + \cdots + x_n$ \\
-      \cmd{\vdots} & points verticaux & $
-                                        \begin{matrix}
-                                          x_1 \\ \vdots \\ x_n
-                                        \end{matrix}$ \\
-      \cmd{\ddots} & points diagonaux & $
-                                        \begin{matrix}
-                                          x_1 &&\\ &\ddots& \\ && x_n
-                                        \end{matrix}$ \\
-      \bottomrule
-    \end{tabular}
-  \end{table}
-\item Avec \pkg{amsmath}, la commande \cmd{\dots} tâche de
-  sélectionner automatiquement entre les points à la ligne de base ou
-  les points centrés selon le contexte. Comme le résultat est en
-  général le bon, nous recommandons d'utiliser principalement cette
-  commande pour insérer des points de suspension en mode mathématique.
-  \begin{demo}
-    \begin{texample}
+Le \autoref{tab:math:dots} fournit les commandes {\LaTeX} servant à
+générer divers types de points de suspension.
+
+\begin{table}
+  \caption{Points de suspension}
+  \label{tab:math:dots}
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+    commande & type de points & exemple \\
+    \midrule
+    \cmd{\dots} &  sélection automatique \\
+    \cmd{\ldots} & points à la ligne de base & $x_1, \ldots, x_n$ \\
+    \cmd{\cdots} & points centrés & $x_1 + \cdots + x_n$ \\
+    \cmd{\vdots} & points verticaux & $
+                                      \begin{matrix}
+                                        x_1 \\ \vdots \\ x_n
+                                      \end{matrix}$ \\
+    \cmd{\ddots} & points diagonaux & $
+                                      \begin{matrix}
+                                        x_1 &&\\ &\ddots& \\ && x_n
+                                      \end{matrix}$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Avec \pkg{amsmath}, la commande \cmd{\dots} tâche de sélectionner
+automatiquement entre les points à la ligne de base ou les points
+centrés selon le contexte. Comme le résultat est en général le bon,
+nous recommandons d'utiliser principalement cette commande pour
+insérer des points de suspension en mode mathématique.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 $x_1, \dots, x_n$
 \end{lstlisting}
-      \producing
-      $x_1, \dots, x_n$
-    \end{texample}
+    \producing $x_1, \dots, x_n$
+  \end{texample}
 
-    \begin{texample}
+  \begin{texample}
 \begin{lstlisting}
 $x_1, \ldots, x_n$
 \end{lstlisting}
-      \producing
-      $x_1, \ldots, x_n$
-    \end{texample}
+    \producing $x_1, \ldots, x_n$
+  \end{texample}
 
-    \begin{texample}
+  \begin{texample}
 \begin{lstlisting}
 $x_1 + \dots + x_n$
 \end{lstlisting}
-      \producing
-      $x_1 + \dots + x_n$
-    \end{texample}
+    \producing $x_1 + \dots + x_n$
+  \end{texample}
 
-    \begin{texample}
+  \begin{texample}
 \begin{lstlisting}
 $x_1 + \cdots + x_n$
 \end{lstlisting}
-      \producing
-      $x_1 + \cdots + x_n$
-    \end{texample}
-  \end{demo}
-\item Le paquetage \pkg{amsmath} définit également les commandes sémantiques
-  \begin{itemize}
-  \item \cmd{\dotsc} pour des «points avec des virgules» (\emph{commas});
-  \item \cmd{\dotsb} pour des «points avec des opérateurs binaires»;
-  \item \cmd{\dotsm} pour des «points de multiplication»;
-  \item \cmd{\dotsi} pour des «points avec des intégrales»;
-  \item \cmd{\dotso} pour des «autres points» (\emph{other}).
-  \end{itemize}
+    \producing $x_1 + \cdots + x_n$
+  \end{texample}
+\end{demo}
+Le paquetage définit également les commandes sémantiques
+\begin{itemize}
+\item \cmd{\dotsc} pour des «points avec des virgules» (\emph{commas});
+\item \cmd{\dotsb} pour des «points avec des opérateurs binaires»;
+\item \cmd{\dotsm} pour des «points de multiplication»;
+\item \cmd{\dotsi} pour des «points avec des intégrales»;
+\item \cmd{\dotso} pour des «autres points» (\emph{other}).
 \end{itemize}
 
 \subsection{Texte et espaces}
@@ -582,64 +571,65 @@ symboles. Or, il n'est pas rare que des formules mathématiques
 contiennent du texte (notamment des mots comme «où», «si», «quand»).
 De plus, il est parfois souhaitable de pouvoir ajuster les blancs
 entre des éléments.
-\begin{itemize}
-\item La commande de \pkg{amsmath}
+
+La commande de \pkg{amsmath}
 \begin{lstlisting}
 \text`\marg{texte}'
 \end{lstlisting}
-  insère \meta{texte} dans une formule mathématique. Le texte est
-  inséré tel quel, sans aucune gestion des espaces avant ou après le
-  texte. Si des espaces sont nécessaires, ils doivent faire partie de
-  \meta{texte}.
-  \begin{demo}
-    \begin{texample}
+insère \meta{texte} dans une formule mathématique. Le texte est inséré
+tel quel, sans aucune gestion des espaces avant ou après le texte. Si
+des espaces sont nécessaires, ils doivent faire partie de
+\meta{texte}.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 f(x) = a e^{-ax}
 \text{ pour } x > 0
 \end{lstlisting}
-      \producing
-      $f(x) = a e^{-ax} \text{ pour } x > 0$
-    \end{texample}
-  \end{demo}
-\item La commande \cmd{\quad} insère un blanc de $1$~em, soit une
-  longueur égale à la taille de la police de caractère courante en
-  points (donc $11$~points pour une police de $11$~points). La
-  commande \cmd{\qquad} insère le double de cette longueur.\footnote{%
-    Bien qu'elles soient surtout utilisées dans le mode mathématique,
-    les commandes \cmd{\quad} et \cmd{\qquad} sont également valides
-    dans le mode texte.}
-  \begin{demo}
-    \begin{texample}
+    \producing $f(x) = a e^{-ax} \text{ pour } x > 0$
+  \end{texample}
+\end{demo}
+
+La commande \cmd{\quad} insère un blanc de $1$~em, soit une longueur
+égale à la taille de la police de caractère courante en points (donc
+$11$~points pour une police de $11$~points). La commande \cmd{\qquad}
+insère le double de cette longueur.\footnote{%
+  Bien qu'elles soient surtout utilisées dans le mode mathématique,
+  les commandes \cmd{\quad} et \cmd{\qquad} sont également valides
+  dans le mode texte.}
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 f(x) = a e^{-ax},
 \quad x > 0
 \end{lstlisting}
-      \producing
-      $f(x) = a e^{-ax}, \quad x > 0$
-    \end{texample}
-  \end{demo}
-\item Le \autoref{tab:math:espaces} répertorie et compare les
-  différentes commandes qui permettent d'insérer des espaces plus ou
-  moins fines entre des éléments dans le mode mathématique.
-  \begin{table}
-    \caption{Espaces dans le mode mathématique}
-    \label{tab:math:espaces}
-    \centering
-    \begin{tabular}{lll}
-      \toprule
-      commande & longueur & exemple \\
-      \midrule
-               & pas d'espace & \spx{} \\
-      \cmd{\,} & $3/18$ de \cmdprint{quad} & \spx{\,} \\
-      \cmd{\:} & $4/18$ de \cmdprint{quad} & \spx{\:} \\
-      \cmd{\;} & $5/18$ de \cmdprint{quad} & \spx{\;} \\
-      \cmd{\!} & $-3/18$ de \cmdprint{quad} & \spx{\!} \\
-      \cmd{\quad} & $1$~em & \spx{\quad} \\
-      \cmd{\qquad} & $2$~em & \spx{\qquad} \\
-      \bottomrule
-    \end{tabular}
-  \end{table}
-\end{itemize}
+    \producing
+    $f(x) = a e^{-ax}, \quad x > 0$
+  \end{texample}
+\end{demo}
+
+Le \autoref{tab:math:espaces} répertorie et compare les différentes
+commandes qui permettent d'insérer des espaces plus ou moins fines
+entre des éléments dans le mode mathématique.
+
+\begin{table}
+  \caption{Espaces dans le mode mathématique}
+  \label{tab:math:espaces}
+  \centering
+  \begin{tabular}{lll}
+    \toprule
+    commande & longueur & exemple \\
+    \midrule
+             & pas d'espace & \spx{} \\
+    \cmd{\,} & $3/18$ de \cmdprint{quad} & \spx{\,} \\
+    \cmd{\:} & $4/18$ de \cmdprint{quad} & \spx{\:} \\
+    \cmd{\;} & $5/18$ de \cmdprint{quad} & \spx{\;} \\
+    \cmd{\!} & $-3/18$ de \cmdprint{quad} & \spx{\!} \\
+    \cmd{\quad} & $1$~em & \spx{\quad} \\
+    \cmd{\qquad} & $2$~em & \spx{\qquad} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \subsection{Fonctions et opérateurs}
 \label{sec:math:bases:fonctions}
@@ -649,35 +639,35 @@ variables apparaissent en \textit{italique}, mais que les noms de
 fonctions, eux, apparaissent en \textrm{romain}, comme le texte
 standard. Pensons, ici, à des fonctions comme $\sin$ ou $\log$.
 
-\begin{itemize}
-\item On sait que l'on ne peut entrer le nom d'une fonction tel quel en mode
-  mathématique, car {\LaTeX} interprétera la suite de lettres comme un
-  produit de variables:
-  \begin{demo}
-    \begin{minipage}{0.45\linewidth}
-      \begin{texample}
+On sait que l'on ne peut entrer le nom d'une fonction tel quel en mode
+mathématique, car {\LaTeX} interprétera la suite de lettres comme un
+produit de variables:
+\begin{demo}
+  \begin{minipage}{0.45\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 $2 sin 30$
 \end{lstlisting}
-        \producing
-        $2 sin 30$
-      \end{texample}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.45\linewidth}
-      \begin{texample}
+      \producing
+      $2 sin 30$
+    \end{texample}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 $3 log 2$
 \end{lstlisting}
-        \producing
-        $3 log 2$
-      \end{texample}
-    \end{minipage}
-  \end{demo}
-  Utiliser à répétition la commande \cmdprint{text} se révèle peu
-  pratique à l'usage.
-\item {\LaTeX} définit donc des commandes pour un grand nombre de
-  fonctions et d'opérateurs mathématiques standards:
+      \producing
+      $3 log 2$
+    \end{texample}
+  \end{minipage}
+\end{demo}
+Or, utiliser à répétition la commande \cmdprint{text} pour entrer des
+noms de fonction se révèlerait peu pratique à l'usage.
+
+{\LaTeX} définit donc des commandes pour un grand nombre de fonctions
+et d'opérateurs mathématiques standards:
 \begin{lstlisting}
 \arccos   \cosh    \det    \inf      \limsup   \Pr      \tan
 \arcsin   \cot     \dim    \ker      \ln       \sec     \tanh
@@ -685,55 +675,55 @@ $3 log 2$
 \arg      \csc     \gcd    \lim      \max      \sinh
 \cos      \deg     \hom    \liminf   \min      \sup
 \end{lstlisting}
-  L'espacement autour des opérateurs mathématiques est également géré
-  par {\LaTeX}.
-  \begin{demo}
-    \begin{minipage}{0.45\linewidth}
-      \begin{texample}
+L'espacement autour des opérateurs mathématiques est également géré
+par {\LaTeX}.
+\begin{demo}
+  \begin{minipage}{0.45\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 $2 \sin30$
 \end{lstlisting}
-        \producing
-        $2 \sin30$
-      \end{texample}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.45\linewidth}
-      \begin{texample}
+      \producing
+      $2 \sin30$
+    \end{texample}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 $3 \log 2$
 \end{lstlisting}
-        \producing
-        $3 \log 2$
-      \end{texample}
-    \end{minipage}
-  \end{demo}
-\item Certaines des fonctions ci-dessus, notamment \cmd{\lim}, acceptent
-  des limites comme les symboles de somme et d'intégrale.
-  \begin{demo}
-    \begin{texample}
+      \producing
+      $3 \log 2$
+    \end{texample}
+  \end{minipage}
+\end{demo}
+
+Certaines des fonctions ci-dessus, notamment \cmd{\lim}, acceptent des
+limites comme les symboles de somme et d'intégrale.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 % au fil du texte
 \lim_{x \to 0} x = 0
 \end{lstlisting}
-      \producing
-      $\lim_{x \to 0} x = 0$
-    \end{texample}
+    \producing $\lim_{x \to 0} x = 0$
+  \end{texample}
 
-    \begin{texample}
+  \begin{texample}
 \begin{lstlisting}
 % hors paragraphe
 \lim_{x \to 0} x = 0
 \end{lstlisting}
-      \producing
-      $\displaystyle \lim_{x \to 0} x = 0$
-    \end{texample}
-  \end{demo}
-\item La commande \cmd{\DeclareMathOperator} de \pkg{amsmath} permet
-  de définir de nouveaux noms de fonctions; consulter la %
-  \doc[documentation]{amsldoc}{http://texdoc.net/pkg/amsmath} %
-  du paquetage (section 5.1) pour les détails.
-\end{itemize}
+    \producing $\displaystyle \lim_{x \to 0} x = 0$
+  \end{texample}
+\end{demo}
+
+Lorsque des usages particuliers requièrent de nouveaux noms de
+fonctions, la commande \cmd{\DeclareMathOperator} de \pkg{amsmath}
+permet de les définir; consulter la %
+\doc[documentation]{amsldoc}{http://texdoc.net/pkg/amsmath} %
+du paquetage (section 5.1) pour les détails.
 
 
 
@@ -756,10 +746,10 @@ principales catégories.
 L'ouvrage de référence pour connaître les symboles disponibles dans
 {\LaTeX} est la bien nommée %
 \doc[Comprehensive {\LaTeX} Symbol List]{compre\-hen\-sive}{http://texdoc.net/pkg/comprehensive} %
-\citep{comprehensive}. Dans l'édition de 2009, la liste comprenait pas
-moins de \nombre{5913} symboles répartis sur plus de 160 pages! On y
-trouve de tout, des symboles mathématiques aux pictogrammes de météo
-ou d'échecs, en passant par\dots\ des figurines des Simpsons.
+\citep{comprehensive}. La liste comprend près de \nombre{6000}
+symboles répartis sur plus de 160 pages! On y trouve de tout, des
+symboles mathématiques aux pictogrammes de météo ou d'échecs, en
+passant par\dots\ des figurines des Simpsons.
 
 \begin{important}
   Les moteurs {\XeTeX} et {\LuaTeX} supportent nativement le code
@@ -831,46 +821,48 @@ Les lettres de l'alphabet, principalement en majuscule, servent
 parfois en mathématiques dans des versions modifiées pour représenter
 des quantités, notamment les ensembles.
 
-\begin{itemize}
-\item La commande \cmd{\mathcal} permet de transfomer un ou plusieurs
-  caractères en version dite «calligraphique» dans le mode mathématique.
-  \begin{demo}
-    \begin{texample}
+La commande \cmd{\mathcal} permet de transfomer un ou plusieurs
+caractères en version dite «calligraphique» dans le mode mathématique.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 \mathcal{ABC\, xyz}
 \end{lstlisting}
-      \producing
-      %% pris de lucidaot.tex; apparemment lent
-      \setmathfont[RawFeature=+ss04]{Lucida Bright Math OT}
-      $\mathscr{ABC\, xyz}$
-    \end{texample}
-  \end{demo}
-\item La commande \cmd{\mathbb} fournie, entre autres, par les
-  paquetages \pkg{amsfonts} et \pkg{unicode-math} génère des versions
-  majuscule ajourée (\emph{blackboard bold}) des lettres de
-  l'alphabet. Elles sont principalement utilisée pour représenter les
-  ensembles de nombres.
-  \begin{demo}
-    \begin{texample}
+    \producing
+    %% pris de lucidaot.tex; apparemment lent
+    \setmathfont[RawFeature=+ss04]{Lucida Bright Math OT}
+    $\mathscr{ABC\, xyz}$
+  \end{texample}
+\end{demo}
+
+La commande \cmd{\mathbb} fournie, entre autres, par les paquetages
+\pkg{amsfonts} et \pkg{unicode-math} génère des versions majuscule
+ajourée (\emph{blackboard bold}) des lettres de l'alphabet. Elles sont
+principalement utilisée pour représenter les ensembles de nombres.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 \mathbb{NZRC}
 \end{lstlisting}
-      \producing
-      $\mathbb{NZRC}$
-    \end{texample}
-  \end{demo}
-\item Le tableau~213 de la %
-  \doc[Comprehensive {\LaTeX} Symbol List]{}{http://texdoc.net/pkg/comprehensive} %
-  présente plusieurs autres alphabets spéciaux disponibles en
-  mode mathématique.
-\item Certaines polices de caractères OpenType contiennent plusieurs
+    \producing $\mathbb{NZRC}$
+  \end{texample}
+\end{demo}
+
+Le tableau~213 de la %
+\doc[Comprehensive {\LaTeX} Symbol
+List]{}{http://texdoc.net/pkg/comprehensive} %
+présente plusieurs autres alphabets spéciaux disponibles en mode
+mathématique.
+
+\begin{information}
+  Certaines polices de caractères OpenType contiennent plusieurs
   versions des symboles mathématiques. Par exemple, la police utilisée
   dans le présent document contient deux versions de la police
   calligraphique, celle présentée ci-dessus et celle-ci: %
   \setmathfont[RawFeature=-ss04]{Lucida Bright Math OT}
   $\mathscr{ABC\, xyz}$. Consulter éventuellement la documentation de
   la police pour les détails.
-\end{itemize}
+\end{information}
 
 \subsection{Opérateurs binaires et relations}
 \label{sec:math:symboles:binaires+relations}
@@ -883,21 +875,20 @@ quantités, comme $<$ et $>$. Le \autoref{tab:math:binaires}
 présente une sélection d'opérateurs binaires et
 le \autoref{tab:math:relations}  une sélection de relations.
 
-\begin{itemize}
-\item La %
-  \doc[Comprehensive {\LaTeX} Symbol
-  List]{}{http://texdoc.net/pkg/comprehensive} %
-  consacre plus d'une dizaine de tableaux aux opérateurs binaires et
-  près d'une quarantaine aux relations. C'est dire à quel point les
-  tableaux \ref*{tab:math:binaires} et \ref*{tab:math:relations} de la
-  \autopageref{tab:math:binaires} ne
-  présentent que les principaux éléments à titre indicatif.
-\item Certaines relations existent directement en version opposée, ou
-  négative (comme $\neq$ ou $\notin$) soit dans {\LaTeX} de base, soit
-  avec \pkg{amsmath} ou un autre paquetage. Autrement, il est possible
-  de préfixer toute relation de \cmd{\not} pour y superposer une
-  barre oblique $/$.
-\end{itemize}
+La %
+\doc[Comprehensive {\LaTeX} Symbol
+List]{}{http://texdoc.net/pkg/comprehensive} %
+consacre plus d'une dizaine de tableaux aux opérateurs binaires et
+près d'une quarantaine aux relations. C'est dire à quel point les
+tableaux \ref*{tab:math:binaires} et \ref*{tab:math:relations} de la
+\autopageref{tab:math:binaires} ne présentent que les principaux
+éléments à titre indicatif.
+
+Certaines relations existent directement en version opposée, ou
+négative (comme $\neq$ ou $\notin$) soit dans {\LaTeX} de base, soit
+avec \pkg{amsmath} ou un autre paquetage. Autrement, il est possible
+de préfixer toute relation de \cmd{\not} pour y superposer une barre
+oblique $/$.
 
 \begin{table}[p]
   \caption{Quelques opérateurs binaires}
@@ -946,19 +937,17 @@ Les flèches de différents types sont souvent utilisées en notation
 mathématique, notamment dans les limites ou pour les expressions
 logiques. Le \autoref{tab:math:fleches} en présente une sélection.
 
-\begin{itemize}
-\item On retrouve les flèches utilisables en notation mathématique
-  dans les tableaux 102 à 119 de la %
-  \doc[Comprehensive {\LaTeX} Symbol
-  List]{}{http://texdoc.net/pkg/comprehensive}. %
-  Le document contient divers autres types de flèches, mais celles-ci
-  ne sont généralement pas appropriées pour les mathématiques (pensons
-  à {\manerrarrow} ou {\faArrowRight}).
-\item Le paquetage \pkg{amsmath} fournit plusieurs flèches
-  additionnelles ainsi que la négation des plus communes. Ces
-  dernières sont d'ailleurs présentées dans le
-  \autoref{tab:math:fleches}.
-\end{itemize}
+On retrouve les flèches utilisables en notation mathématique dans les
+tableaux 102 à 119 de la %
+\doc[Comprehensive {\LaTeX} Symbol
+List]{}{http://texdoc.net/pkg/comprehensive}. %
+Le document contient divers autres types de flèches, mais celles-ci ne
+sont généralement pas appropriées pour les mathématiques (pensons à
+{\manerrarrow} ou {\faArrowRight}).
+
+Le paquetage \pkg{amsmath} fournit plusieurs flèches additionnelles
+ainsi que la négation des plus communes. Ces dernières sont d'ailleurs
+présentées dans le \autoref{tab:math:fleches}.
 
 \begin{table}[p]
   \caption{Quelques flèches et leur négation}
@@ -1253,7 +1242,7 @@ environnements pour les équations hors paragraphe.
   \end{demo}
 \item Les renvois vers des équations numérotées fonctionnent, comme
   partout ailleurs en {\LaTeX}, avec le système d'étiquettes et de
-  références \citep[][ou la \autoref{sec:tableaux:floats}]{UL:latex:1}. Le paquetage
+  références (\autoref{sec:tableaux:floats}). Le paquetage
   \pkg{amsmath} fournit également la pratique commande \cmd{\eqref}
   qui place automatiquement le numéro d'équation entre parenthèses.
   \begin{demo}
@@ -1329,49 +1318,48 @@ mais plutôt avec
   \left( 1 + \frac{1}{x} \right).
 \end{equation*}
 
-\begin{itemize}
-\item La paire de commandes
+La paire de commandes
 \begin{lstlisting}
 \left`\meta{delim\_g}'  ...  \right`\meta{delim\_d}'
 \end{lstlisting}
-  définit un délimiteur gauche \meta{delim\_g} et un délimiteur droit
-  \meta{delim\_d} dont la taille s'ajustera automatiquement au contenu
-  entre les deux commandes.
-  \begin{demo}
-    \begin{texample}
+définit un délimiteur gauche \meta{delim\_g} et un délimiteur droit
+\meta{delim\_d} dont la taille s'ajustera automatiquement au contenu
+entre les deux commandes.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 \left( 1 + \frac{1}{x} \right)
 \end{lstlisting}
-      \producing
-      \begin{equation*}
-        \left( 1 + \frac{1}{x} \right)
-      \end{equation*}
-    \end{texample}
+    \producing
+    \begin{equation*}
+      \left( 1 + \frac{1}{x} \right)
+    \end{equation*}
+  \end{texample}
 
-    \begin{texample}
+  \begin{texample}
 \begin{lstlisting}
 \left(
   \sum_{i = 1}^n x_i^2
 \right)^{1/2}
 \end{lstlisting}
-      \producing
-      \begin{equation*}
-        \left(
-          \sum_{i = 1}^n x_i^2
-        \right)^{1/2}
-      \end{equation*}
-    \end{texample}
-  \end{demo}
-\item Les commandes \cmd{\left} et \cmd{\right} doivent toujours
-  former une paire, c'est-à-dire qu'à \emph{toute} commande
-  \cmdprint{\left} doit absolument correspondre une commande
-    \cmdprint{\right}. Cette contrainte est facile à oublier!
+    \producing
+    \begin{equation*}
+      \left(
+        \sum_{i = 1}^n x_i^2
+      \right)^{1/2}
+    \end{equation*}
+  \end{texample}
+\end{demo}
+Les commandes \cmd{\left} et \cmd{\right} doivent toujours former une
+paire, c'est-à-dire qu'à \emph{toute} commande \cmdprint{\left} doit
+  absolument correspondre une commande \cmdprint{\right}. Cette
+contrainte est facile à oublier!
 
-  Il est possible d'imbriquer des paires de commandes les unes à
-  l'intérieur des autres, pour autant que l'expression compte toujours
-  autant de \cmdprint{\left} que de \cmdprint{\right}.
-  \begin{demo}
-    \begin{texample}
+Il est possible d'imbriquer des paires de commandes les unes à
+l'intérieur des autres, pour autant que l'expression compte toujours
+autant de \cmdprint{\left} que de \cmdprint{\right}.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 \left[
   \int
@@ -1380,41 +1368,43 @@ mais plutôt avec
   \right) dx
 \right]
 \end{lstlisting}
-      \producing
-      \begin{equation*}
-        \left[
-          \int
-          \left(
-            1 + \frac{x}{k}
-          \right) dx
-        \right]
-      \end{equation*}
-    \end{texample}
-  \end{demo}
-\item Les symboles \meta{delim\_g} et \meta{delim\_d} n'ont pas à
-  former une paire logique; toute combinaison de délimiteurs est valide.
-  \begin{demo}
-    \begin{texample}
+    \producing
+    \begin{equation*}
+      \left[
+        \int
+        \left(
+          1 + \frac{x}{k}
+        \right) dx
+      \right]
+    \end{equation*}
+  \end{texample}
+\end{demo}
+
+Les symboles \meta{delim\_g} et \meta{delim\_d} n'ont pas à former une
+paire logique; toute combinaison de délimiteurs est valide.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 \int_0^1 x\, dx =
 \left[
   \frac{x^2}{2}
 \right|_0^1
 \end{lstlisting}
-      \producing
-      \begin{equation*}
-        \int_0^1 x\, dx =
-        \left[
-          \frac{x^2}{2}
-        \right|_0^1
-      \end{equation*}
-    \end{texample}
-  \end{demo}
-\item Il arrive qu'un seul délimiteur soit nécessaire. Pour respecter
-  la règle de la paire ci-dessus, on aura recours dans ce cas à un
-  délimiteur \emph{invisible} représenté par le caractère «\verb=.=».
-  \begin{demo}
-    \begin{texample}
+    \producing
+    \begin{equation*}
+      \int_0^1 x\, dx =
+      \left[
+        \frac{x^2}{2}
+      \right|_0^1
+    \end{equation*}
+  \end{texample}
+\end{demo}
+
+Il arrive qu'un seul délimiteur soit nécessaire. Pour respecter la
+règle de la paire ci-dessus, on aura recours dans ce cas à un
+délimiteur \emph{invisible} représenté par le caractère «\verb=.=».
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 f(x) =
 \left\{
@@ -1424,26 +1414,24 @@ f(x) =
   \end{aligned}
 \right.
 \end{lstlisting}
-      \producing
-      \begin{equation*}
-        f(x) =
-        \left\{
-          \begin{aligned}
-            1 - x, &\quad x < 1 \\
-            x - 1, &\quad x \geq 1
-          \end{aligned}
-        \right.
-      \end{equation*}
-    \end{texample}
-  \end{demo}
-  (L'environnement \Ie{aligned} utilisé ci-dessus provient de
-  \pkg{amsmath}.)
-
-  On notera au passage que l'environnement \Ie{cases} de \pkg{amsmath}
-  rend plus simple la réalisation de constructions comme celle
-  ci-dessus.
-  \begin{demo}
-    \begin{texample}
+    \producing
+    \begin{equation*}
+      f(x) =
+      \left\{
+        \begin{aligned}
+          1 - x, &\quad x < 1 \\
+          x - 1, &\quad x \geq 1
+        \end{aligned}
+      \right.
+    \end{equation*}
+  \end{texample}
+\end{demo}
+(L'environnement \Ie{aligned} utilisé ci-dessus provient de
+\pkg{amsmath}.) On notera au passage que l'environnement \Ie{cases} de
+\pkg{amsmath} rend plus simple la réalisation de constructions comme
+celle ci-dessus.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 f(x) =
 \begin{cases}
@@ -1451,24 +1439,25 @@ f(x) =
   x - 1, & x \geq 1
 \end{cases}
 \end{lstlisting}
-      \producing
-      \begin{equation*}
-        f(x) =
-        \begin{cases}
-          1 - x, & x < 1 \\
-          x - 1, & x \geq 1
-        \end{cases}
-      \end{equation*}
-    \end{texample}
-  \end{demo}
-\item La règle de la paire est tout spécialement délicate dans les
-  équations sur plusieurs lignes car elle s'applique à chaque ligne
-  d'une équation. Par conséquent, si la paire de délimiteurs s'ouvre
-  sur une ligne et se referme sur une autre, il faudra ajouter un
-  délimiteur invisible à la fin de la première ligne ainsi qu'au début
-  de la seconde.
-  \begin{demo}
-    \begin{texample}
+    \producing
+    \begin{equation*}
+      f(x) =
+      \begin{cases}
+        1 - x, & x < 1 \\
+        x - 1, & x \geq 1
+      \end{cases}
+    \end{equation*}
+  \end{texample}
+\end{demo}
+
+La règle de la paire est tout spécialement délicate dans les équations
+sur plusieurs lignes car elle s'applique à chaque ligne d'une
+équation. Par conséquent, si la paire de délimiteurs s'ouvre sur une
+ligne et se referme sur une autre, il faudra ajouter un délimiteur
+invisible à la fin de la première ligne ainsi qu'au début de la
+seconde.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 \begin{align*}
   a
@@ -1480,51 +1469,53 @@ f(x) =
     \right)
 \end{align*}
 \end{lstlisting}
-      \producing
-      \begin{align*}
-        a
-        &= \left(
-          b + \frac{c}{d}
-          \right. \\
-        &\phantom{=} \left.
-          + \frac{e}{f} - g
-          \right)
-      \end{align*}
-    \end{texample}
-  \end{demo}
-\item Quand les choix de taille de délimiteurs de {\LaTeX} ne
-  conviennent pas pour une raison ou pour une autre, on peut
-  sélectionner soi-même leur taille avec les commandes %
-  \cmd{\big}, %
-  \cmd{\Big}, %
-  \cmd{\bigg} et %
-  \cmd{\Bigg}. %
-  Ces commandes s'utilisent comme \cmdprint{\left} et
-    \cmdprint{\right} en les faisant immédiatement suivre d'un
-  délimiteur. Le \autoref{tab:math:big_et_al} contient des exemples de
-  délimiteurs pour chaque taille.
-  \begin{table}
-    \centering
-    \caption{Tailles des délimiteurs mathématiques}
-    \label{tab:math:big_et_al}
-    \begin{tabular}{ll}
-      taille standard & $(~) \quad [~] \quad \{~\}$ \\
-      \addlinespace[6pt]
-      \cmd{\big} & $\big(~\big) \quad \big[~\big] \quad \big\{~\big\}$ \\
-      \addlinespace[6pt]
-      \cmd{\Big} & $\Big(~\Big) \quad \Big[~\Big] \quad \Big\{~\Big\}$ \\
-      \addlinespace[6pt]
-      \cmd{\bigg} & $\bigg(~\bigg) \quad \bigg[~\bigg] \quad \bigg\{~\bigg\}$ \\
-      \addlinespace[6pt]
-      \cmd{\Bigg} & $\Bigg(~\Bigg) \quad \Bigg[~\Bigg] \quad \Bigg\{~\Bigg\}$ \\
-    \end{tabular}
-  \end{table}
-\item À lire également: la section~14 de la %
-  \doc[documentation]{amsldoc}{http://texdoc.net/pkg/amsmath} %
-  de \pkg{amsmath} qui traite de divers enjeux typographiques en lien
-  avec les délimiteurs et qui introduit des nouvelles commandes pour
-  contrôler leur taille.
-\end{itemize}
+    \producing
+    \begin{align*}
+      a
+      &= \left(
+        b + \frac{c}{d}
+        \right. \\
+      &\phantom{=} \left.
+        + \frac{e}{f} - g
+        \right)
+    \end{align*}
+  \end{texample}
+\end{demo}
+
+Quand les choix de taille de délimiteurs de {\LaTeX} ne conviennent
+pas pour une raison ou pour une autre, on peut sélectionner soi-même
+leur taille avec les commandes %
+\cmd{\big}, %
+\cmd{\Big}, %
+\cmd{\bigg} et %
+\cmd{\Bigg}. %
+Ces commandes s'utilisent comme \cmdprint{\left} et \cmdprint{\right}
+en les faisant immédiatement suivre d'un délimiteur. Le
+\autoref{tab:math:big_et_al} contient des exemples de délimiteurs pour
+chaque taille.
+
+\begin{table}
+  \centering
+  \caption{Tailles des délimiteurs mathématiques}
+  \label{tab:math:big_et_al}
+  \begin{tabular}{ll}
+    taille standard & $(~) \quad [~] \quad \{~\}$ \\
+    \addlinespace[6pt]
+    \cmd{\big} & $\big(~\big) \quad \big[~\big] \quad \big\{~\big\}$ \\
+    \addlinespace[6pt]
+    \cmd{\Big} & $\Big(~\Big) \quad \Big[~\Big] \quad \Big\{~\Big\}$ \\
+    \addlinespace[6pt]
+    \cmd{\bigg} & $\bigg(~\bigg) \quad \bigg[~\bigg] \quad \bigg\{~\bigg\}$ \\
+    \addlinespace[6pt]
+    \cmd{\Bigg} & $\Bigg(~\Bigg) \quad \Bigg[~\Bigg] \quad \Bigg\{~\Bigg\}$ \\
+  \end{tabular}
+\end{table}
+
+La section~14 de la %
+\doc[documentation]{amsldoc}{http://texdoc.net/pkg/amsmath} %
+de \pkg{amsmath} traite de divers enjeux typographiques en lien
+avec les délimiteurs et on y introduit des nouvelles commandes pour
+contrôler leur taille. C'est une lecture suggérée.
 
 \begin{exemple}
   Le développement de la formule d'approximation de Simpson comporte
@@ -1628,17 +1619,16 @@ gras doit certainement figurer parmi les questions les plus
 fréquemment posées par les utilisateurs de {\LaTeX}\dots\ et que la
 réponse n'est pas unique!
 
-\begin{itemize}
-\item La commande
+La commande
 \begin{lstlisting}
 \mathbf`\marg{symbole}'
 \end{lstlisting}
-  place \meta{symbole} en caractère gras en mode mathématique. C'est
-  donc l'analogue de la commande \cmd{\textbf} du mode texte. Dans
-  {\LaTeX} de base, la commande n'a toutefois un effet que sur les
-  lettres latines et, parfois, les lettres grecques majuscules.
-  \begin{demo}
-    \begin{texample}[0.6\linewidth]
+place \meta{symbole} en caractère gras en mode mathématique. C'est
+donc l'analogue de la commande \cmd{\textbf} du mode texte. Dans
+{\LaTeX} de base, la commande n'a toutefois un effet que sur les
+lettres latines et, parfois, les lettres grecques majuscules.
+\begin{demo}
+  \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 \theta \mathbf{\theta} +
 \Gamma \mathbf{\Gamma} \mathbf{+}
@@ -1648,19 +1638,20 @@ A \mathbf{A}
     %% ok, ici il faut vraiment tricher pour reproduire avec
     %% unicode-math ce qui se produirait avec pdflatex standard
     $\theta {\theta} + \Gamma \symbf{\Gamma} {+} A \symbf{A}$
-    \end{texample}
-  \end{demo}
-  On remarquera également que \verb=\mathbf{A}= produit une lettre
-  majuscule droite plutôt qu'italique.
-\item La manière la plus standard et robuste d'obtenir des symboles
-  mathématiques gras semble être, au moment d'écrire ces lignes, via
-  la commande
+  \end{texample}
+\end{demo}
+On remarquera également que \verb=\mathbf{A}= produit une lettre
+majuscule droite plutôt qu'italique.
+
+La manière la plus standard et robuste d'obtenir des symboles
+mathématiques (autres que les lettres) en gras semble être, au moment
+d'écrire ces lignes, via la commande
 \begin{lstlisting}
 \bm`\marg{symbole}'
 \end{lstlisting}
-  fournie par le paquetage \pkg{bm} \citep{bm}.
+fournie par le paquetage \pkg{bm} \citep{bm}.
 \begin{demo}
-    \begin{texample}[0.6\linewidth]
+  \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 \theta \bm{\theta} +
 \Gamma \bm{\Gamma} \bm{+}
@@ -1671,38 +1662,38 @@ A \bm{A}
     %% unicode-math ce qui se produirait avec pdflatex standard
     $\theta \symbf{\theta} + \Gamma \symbfup{\Gamma} \symbf{+} A
     \symbf{A}$
-    \end{texample}
-  \end{demo}
-\item Les utilisateurs de {\XeLaTeX} devraient charger le paquetage
-  \pkg{unicode-math} \citep{unicode-math} pour sélectionner leur
-  police de caractère pour les mathématiques. Ce paquetage fournit la
-  commande
+  \end{texample}
+\end{demo}
+
+Les utilisateurs de {\XeLaTeX} devraient charger le paquetage
+\pkg{unicode-math} \citep{unicode-math} pour sélectionner leur police
+de caractère pour les mathématiques. Ce paquetage fournit la commande
 \begin{lstlisting}
 \symbf`\marg{symbole}'
 \end{lstlisting}
-  pour placer un \meta{symbole} mathématique en gras. Le paquetage
-  offre différentes combinaisons de lettres latines et grecques
-  droites ou italiques en gras selon la valeur de l'option
-  \code{bold-style}; consulter la section~5 de la %
-  \doc[documentation]{unicode-math}{http://texdoc.net/pkg/unicode-math}. %
-  \begin{demo}
-    \begin{texample}[0.6\linewidth]
+pour placer un \meta{symbole} mathématique en gras. Le paquetage offre
+différentes combinaisons de lettres latines et grecques droites ou
+italiques en gras selon la valeur de l'option \code{bold-style};
+consulter la section~5 de la %
+\doc[documentation]{unicode-math}{http://texdoc.net/pkg/unicode-math}. %
+\begin{demo}
+  \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 % avec l'option bold-style=ISO
 \theta \symbf{\theta} +
 \Gamma \symbf{\Gamma} \symbf{+}
 A \symbf{A}
 \end{lstlisting}
-      \producing
-      $\theta \symbf{\theta} + \Gamma \symbf{\Gamma} \symbf{+}
-      A \symbf{A}$
-    \end{texample}
-  \end{demo}
-\item Si le gras est fréquemment utilisé dans un document pour une
+    \producing
+    $\theta \symbf{\theta} + \Gamma \symbf{\Gamma} \symbf{+} A
+    \symbf{A}$
+  \end{texample}
+\end{demo}
+
+\begin{conseil}
+  Si le gras est fréquemment utilisé dans un document pour une
   notation particulière, il est fortement recommandé de définir une
-  nouvelle commande\footnote{%
-    La définition de nouvelles commandes est couvert plus en détail à
-    la \autoref{misc:newcommands}.} %
+  nouvelle commande\footnotemark\
   sémantique plutôt que d'utiliser à répétition l'une ou l'autre des
   commandes ci-dessus.
 
@@ -1712,7 +1703,12 @@ A \symbf{A}
 \begin{lstlisting}
 \newcommand[1]{\mat}{\bm{#1}}
 \end{lstlisting}
-\end{itemize}
+\end{conseil}
+%
+\footnotetext{%
+  La définition de nouvelles commandes est couvert plus en détail à
+  la \autoref{misc:newcommands}.}
+
 
 \begin{exemple}
   Le paquetage \pkg{amsmath} fournit quelques environnements qui
@@ -1772,7 +1768,9 @@ A \symbf{A}
 
 \end{Filesave}
 
-
+\begin{exercice}
+  utilisation de dfrac dans cases
+\end{exercice}
 
 \Closesolutionfile{solutions}
 
