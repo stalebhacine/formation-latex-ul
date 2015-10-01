@@ -66,7 +66,7 @@ d'où on obtient...
 \end{enumerate}
 
 Dans l'exemple ci-dessus, l'environnement \Ie{equation*} (tiré du
-paquetage \pkg{amsmath} --- voir la section suivante) crée une
+paquetage \pkg{amsmath}; voir la section suivante) crée une
 équation hors paragraphe, centrée sur la ligne et non numérotée. Avec
 l'environnement \Ie{equation} (donc sans \verb=*= dans le nom),
 {\LaTeX} ajoute automatiquement un numéro d'équation séquentiel aligné
@@ -166,17 +166,17 @@ les opérateurs d'inégalité ou les symboles de sommes et d'intégrales.
 Le paquetage \pkg{amsmath} \citep{amsmath} produit par la prestigieuse
 \emph{American Mathematical Society} fournit diverses extensions à
 {\LaTeX} pour faciliter encore davantage la saisie d'équations
-mathématiques complexes et en améliorer le rendu. L'utilisation de ce
-paquetage doit être considérée incontournable pour tout document
+mathématiques complexes et en améliorer la présentation. L'utilisation
+de ce paquetage doit être considérée incontournable pour tout document
 contenant plus que quelques équations très simples.
 
 Au chapitre des améliorations fournies par \pkg{amsmath}, notons
 particulièrement:
 \begin{itemize}
 \item plusieurs environnements pour les équations hors paragraphe, en
-  particulier pour les équations multi-lignes;
+  particulier pour les équations multilignes;
 \item une meilleure gestion de l'espacement autour des signes
-  d'égalité dans les équations multi-lignes;
+  d'égalité dans les équations multilignes;
 \item une commande pour faciliter l'entrée de texte à l'intérieur du
   mode mathématique;
 \item un environnement pour la saisie des matrices et des coefficients
@@ -666,8 +666,8 @@ $3 log 2$
     \end{texample}
   \end{minipage}
 \end{demo}
-Or, utiliser à répétition la commande \cmdprint{text} pour entrer des
-noms de fonction se révèlerait peu pratique à l'usage.
+Or, utiliser à répétition la commande \cmdprint{\text} pour entrer des
+noms de fonction se révélerait peu pratique à l'usage.
 
 {\LaTeX} définit donc des commandes pour un grand nombre de fonctions
 et d'opérateurs mathématiques standards:
@@ -678,8 +678,7 @@ et d'opérateurs mathématiques standards:
 \arg      \csc     \gcd    \lim      \max      \sinh
 \cos      \deg     \hom    \liminf   \min      \sup
 \end{lstlisting}
-L'espacement autour des opérateurs mathématiques est également géré
-par {\LaTeX}.
+L'espacement autour des fonctions et opérateurs est géré par {\LaTeX}.
 \begin{demo}
   \begin{minipage}{0.45\linewidth}
     \begin{texample}
@@ -834,7 +833,7 @@ Les lettres de l'alphabet, principalement en majuscule, servent
 parfois en mathématiques dans des versions modifiées pour représenter
 des quantités, notamment les ensembles.
 
-La commande \cmd{\mathcal} permet de transfomer un ou plusieurs
+La commande \cmd{\mathcal} permet de transformer un ou plusieurs
 caractères en version dite «calligraphique» dans le mode mathématique.
 \begin{demo}
   \begin{texample}
@@ -1006,7 +1005,15 @@ présentées dans le \autoref{tab:math:fleches}.
 
 Le \autoref{tab:math:autres} présente quelques uns des accents
 disponibles dans le mode mathématique, ainsi que divers symboles
-fournis par {\LaTeX} fréquemment utilisés en mathématiques.
+fréquemment utilisés en mathématiques.
+
+Pour connaître l'ensemble des accents du mode mathématique de
+{\LaTeX}, consulter le tableau~164 de la %
+\doc[Comprehensive {\LaTeX} Symbol
+List]{}{http://texdoc.net/pkg/comprehensive}. %
+Les versions extensibles de certains accents se trouvent au
+tableau~169. Quant aux symboles mathématiques divers, on en trouve de
+toutes les sortes dans les tableaux 201--212.
 
 \begin{table}[p]
   \caption{Accents et symboles mathématiques divers}
@@ -1033,8 +1040,12 @@ fournis par {\LaTeX} fréquemment utilisés en mathématiques.
 
 
 \begin{exemple}
-  Les éléments de cette section et de la précédente permettent déjà de
-  créer des équations élaborées. Considérons l'équation suivante:
+  Le matériel passé en revue jusqu'à maintenant permet déjà de créer
+  de composer des équations très élaborées, sous réserve qu'elles
+  tiennent sur une seule ligne.
+
+  On présente ci-dessous, pièce par pièce, le code {\LaTeX} pour créer
+  l'équation suivante:
   \begin{equation*}
     \frac{\Gamma(\alpha)}{\lambda^\alpha} =
     \sum_{j = 0}^\infty \int_j^{j + 1} x^{\alpha - 1} e^{-\lambda x}\,
@@ -1042,7 +1053,6 @@ fournis par {\LaTeX} fréquemment utilisés en mathématiques.
     \quad
     \alpha > 0 \text{ et } \lambda > 0.
   \end{equation*}
-  Voici, pièce par pièce, le code {\LaTeX} pour créer cette équation.
   \begin{demo}
     \begin{texample}[0.58\linewidth]
 \begin{lstlisting}
@@ -1244,7 +1254,7 @@ environnements pour les équations hors paragraphe.
   \Ie{equation}.
 \item Dans les environnements \Ie{align} et \Ie{split}, les équations
   successives sont alignées sur le caractère se trouvant immédiatement
-  après le marqueur \verb=&=.
+  après le marqueur de colonne \verb=&=.
 \item Remarquer, dans le troisième exemple du
   \autoref{tab:math:displays}, comment la commande \cmd{\phantom} sert
   à insérer un blanc exactement de la largeur du symbole $=$ au début
@@ -1336,11 +1346,11 @@ Les délimiteurs en mathématiques sont des symboles généralement
 utilisés en paire tels que les parenthèses $(~)$, les crochets $[~]$
 ou les accolades $\{~\}$ et qui servent à regrouper des termes d'une
 équation. La taille des délimiteurs doit s'adapter au contenu entre
-ceux-ci afin de se retrouver, par exemple, non pas avec
+ceux-ci afin d'obtenir, par exemple, non pas
 \begin{equation*}
   (1 + \frac{1}{x}),
 \end{equation*}
-mais plutôt avec
+mais plutôt
 \begin{equation*}
   \left( 1 + \frac{1}{x} \right).
 \end{equation*}
@@ -1606,28 +1616,28 @@ contrôler leur taille. C'est une lecture suggérée.
   \qed
 \end{exemple}
 
-\begin{conseil}
-  De manière générale, il est déconseillé de scinder une suite
-  d'équations entre deux pages. Le chargement du paquetage
-  \pkg{amsmath} désactive d'ailleurs cette possibilité. Cependant,
-  c'est parfois inévitable pour les longs blocs d'équations.
+% \begin{conseil}
+%   De manière générale, il est déconseillé de scinder une suite
+%   d'équations entre deux pages. Le chargement du paquetage
+%   \pkg{amsmath} désactive d'ailleurs cette possibilité. Cependant,
+%   c'est parfois inévitable pour les longs blocs d'équations.
 
-  La commande \cmd{\displaybreak}, placée immédiatement avant
-  \verb=\\= permet d'indiquer à {\LaTeX} la possibilité d'insérer un
-  saut de page après la ligne courante dans le bloc d'équations.
+%   La commande \cmd{\displaybreak}, placée immédiatement avant
+%   \verb=\\= permet d'indiquer à {\LaTeX} la possibilité d'insérer un
+%   saut de page après la ligne courante dans le bloc d'équations.
 
-  La commande accepte en argument optionnel un entier entre $0$ et $4$
-  indiquant à quel point un saut de page est désiré:
-  \cmdprint{\displaybreak[0]} signifie «il est permis de changer de
-  page ici» sans que ce ne soit obligatoire;
-  \cmdprint{\displaybreak[4]} ou, de manière équivalente,
-  \cmdprint{\displaybreak} force un saut de page.
+%   La commande accepte en argument optionnel un entier entre $0$ et $4$
+%   indiquant à quel point un saut de page est désiré:
+%   \cmdprint{\displaybreak[0]} signifie «il est permis de changer de
+%   page ici» sans que ce ne soit obligatoire;
+%   \cmdprint{\displaybreak[4]} ou, de manière équivalente,
+%   \cmdprint{\displaybreak} force un saut de page.
 
-  À moins d'en être vraiment aux toutes dernières étapes d'édition
-  d'un document, il est conseillé d'utiliser la commande
-  \cmdprint{\displaybreak} avec parcimonie et avec un argument
-  optionnel faible.
-\end{conseil}
+%   À moins d'en être vraiment aux toutes dernières étapes d'édition
+%   d'un document, il est conseillé d'utiliser la commande
+%   \cmdprint{\displaybreak} avec parcimonie et avec un argument
+%   optionnel faible.
+% \end{conseil}
 
 
 \section{Caractères gras en mathématiques}
@@ -1664,11 +1674,11 @@ A \mathbf{A}
     \producing
     %% ok, ici il faut vraiment tricher pour reproduire avec
     %% unicode-math ce qui se produirait avec pdflatex standard
-    $\theta {\theta} + \Gamma \symbf{\Gamma} {+} A \symbf{A}$
+    $\theta {\theta} + \Gamma \symbf{\Gamma} {+} A \symbfup{A}$
   \end{texample}
 \end{demo}
-On remarquera également que \verb=\mathbf{A}= produit une lettre
-majuscule droite plutôt qu'italique.
+On remarquera aussi que \verb=\mathbf{A}= produit une lettre
+majuscule droite plutôt qu'en italique.
 
 La manière la plus standard et robuste d'obtenir des symboles
 mathématiques (autres que les lettres) en gras semble être, au moment
@@ -1706,6 +1716,7 @@ consulter la section~5 de la %
 \begin{demo}
   \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
+% XeLaTeX + paquetage unicode-math
 % avec l'option bold-style=ISO
 \theta \symbf{\theta} +
 \Gamma \symbf{\Gamma} \symbf{+}
@@ -1817,11 +1828,11 @@ A \symbf{A}
     (\autoref{tab:math:autres}) ou simplement avec le caractère
     \verb='=.
 \begin{lstlisting}
-La dérivée de la fonction composée $f \circ g(x) = f[g(x)]$ est
-$\{f[g(x)]\}^\prime = f^\prime[g(x)] g^\prime(x)$. La dérivée
-seconde du produit des fonctions $f$ et $g$ est $[f(x)
-g(x)]^{\prime\prime} = f^{\prime\prime}(x) g(x) + 2 f^\prime(x)
-g^\prime(x) + f(x) g^{\prime\prime}(x)$.
+La dérivée de la fonction composée $f \circ g(x) = f[g(x)]$
+est $\{f[g(x)]\}^\prime = f^\prime[g(x)] g^\prime(x)$. La
+dérivée seconde du produit des fonctions $f$ et $g$ est
+$[f(x) g(x)]^{\prime\prime} = f^{\prime\prime}(x) g(x) +
+2 f^\prime(x) g^\prime(x) + f(x) g^{\prime\prime}(x)$.
 \end{lstlisting}
   \end{sol}
 \end{exercice}
@@ -1856,8 +1867,7 @@ g^\prime(x) + f(x) g^{\prime\prime}(x)$.
     opérateurs d'addition, mais pas entre les accolades.
 \begin{lstlisting}
 \begin{align*}
-  f(x +& h, y + k)
-  = f(x, y) +
+  f(x +& h, y + k) = f(x, y) +
     \left\{
     \frac{\partial f(x, y)}{\partial x} h +
     \frac{\partial f(x, y)}{\partial y} k
@@ -1870,7 +1880,8 @@ g^\prime(x) + f(x) g^{\prime\prime}(x)$.
     \frac{\partial^2 f(x, y)}{\partial y^2} k^2
     \right\} \\
   &+
-    \frac{1}{6} \{\cdots\} + \dots + \frac{1}{n!} \{\cdots\} + R_n.
+    \frac{1}{6} \{\cdots\} + \dots +
+    \frac{1}{n!} \{\cdots\} + R_n.
 \end{align*}
 \end{lstlisting}
   \end{sol}
@@ -1902,7 +1913,8 @@ g^\prime(x) + f(x) g^{\prime\prime}(x)$.
   \begin{cases}
     0, & x \leq c_0\\
     \dfrac{F_n(c_j) - F_n(c_{j-1})}{c_j - c_{j-1}} =
-    \dfrac{n_j}{n (c_j - c_{j - 1})}, &  c_{j-1} < x \leq c_j\\
+    \dfrac{n_j}{n (c_j - c_{j - 1})}, &
+      c_{j-1} < x \leq c_j \\
     0, & x > c_r.
   \end{cases}
 \end{equation*}
@@ -1910,7 +1922,7 @@ g^\prime(x) + f(x) g^{\prime\prime}(x)$.
   \end{sol}
 \end{exercice}
 
-\begin{exercice}
+\begin{exercice}[nosol]
   Le fichier \fichier{exercice\_mathematiques.tex} contient un exemple
   complet de développement mathématique. Étudier le contenu du fichier
   puis compiler celui-ci tel quel avec {pdf\LaTeX} ou {\XeLaTeX}.
@@ -1931,7 +1943,7 @@ g^\prime(x) + f(x) g^{\prime\prime}(x)$.
   \item Réduire l'espacement de part et d'autre du symbole
     $\Leftrightarrow$ dans la seconde équation hors paragraphe.
   \item À l'aide de la fonction Rechercher et remplacer de l'éditeur
-    de texte, remplacer toutes les occurences du symbole $\theta$ par
+    de texte, remplacer toutes les occurrences du symbole $\theta$ par
     $\lambda$.
   \end{enumerate}
 \end{exercice}
