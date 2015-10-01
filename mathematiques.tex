@@ -204,12 +204,13 @@ On place un caractère en \textsuperscript{exposant} d'un autre avec la
 commande \verb=^= et en \textsubscript{indice} avec la commande
 \verb=_=. Les indices et exposants se combinent naturellement.
 \begin{demo}
+  \def\strut{\rule[-0.4ex]{0pt}{2ex}}
   \begin{minipage}{0.3\linewidth}
     \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
 x^2
 \end{lstlisting}
-      \producing $x^2$
+      \producing\strut $x^2$
     \end{texample}
   \end{minipage}
   \quad
@@ -218,7 +219,7 @@ x^2
 \begin{lstlisting}
 a_n
 \end{lstlisting}
-      \producing $a_n$
+      \producing\strut $a_n$
     \end{texample}
   \end{minipage}
   \quad
@@ -227,7 +228,7 @@ a_n
 \begin{lstlisting}
 x_i^k
 \end{lstlisting}
-      \producing $x_i^k$
+      \producing\strut $x_i^k$
     \end{texample}
   \end{minipage}
 \end{demo}
@@ -242,7 +243,7 @@ regrouper le tout entre accolades \verb={ }=.
 \begin{lstlisting}
 x^{2k + 1}
 \end{lstlisting}
-      \producing $x^{2k + 1}$
+      \producing\strut $x^{2k + 1}$
     \end{texample}
   \end{minipage}
   \quad
@@ -251,7 +252,7 @@ x^{2k + 1}
 \begin{lstlisting}
 x_{i,j}
 \end{lstlisting}
-      \producing $x_{i,j}$
+      \producing\strut $x_{i,j}$
     \end{texample}
   \end{minipage}
   \quad
@@ -260,7 +261,7 @@ x_{i,j}
 \begin{lstlisting}
 x_{ij}^{2n}
 \end{lstlisting}
-      \producing $x_{ij}^{2n}$
+      \producing\strut $x_{ij}^{2n}$
     \end{texample}
   \end{minipage}
 \end{demo}
@@ -273,7 +274,7 @@ compris les puissances de puissances ou les indices d'indices.
 \begin{lstlisting}
 e^{-x^2}
 \end{lstlisting}
-      \producing $e^{-x^2}$
+      \producing\strut $e^{-x^2}$
     \end{texample}
   \end{minipage}
   \quad
@@ -282,7 +283,7 @@ e^{-x^2}
 \begin{lstlisting}
 A_{i_s, k^n}^{y_i}
 \end{lstlisting}
-      \producing $A_{i_s,k^n}^{y_i}$
+      \producing\strut $A_{i_s,k^n}^{y_i}$
     \end{texample}
   \end{minipage}
   \quad \mbox{} % pour alignement avec bloc d'exemples ci-dessus
@@ -370,7 +371,9 @@ Les commandes
 de \pkg{amsmath} permettent de forcer une fraction à adopter la taille
 d'une fraction hors paragraphe (\emph{displayed}) dans le cas de
 \cmd{\dfrac} ou de celle d'une fraction au fil du texte (\emph{text})
-dans le cas de \cmd{\tfrac}.
+dans le cas de \cmd{\tfrac}. Consulter l'\autoref{ex:math:matrices} à
+la \autopageref{ex:math:matrices} pour visualiser l'effet de la
+commande \cmd{\dfrac}.
 
 \begin{conseil}
   Il est parfois visuellement plus intéressant, surtout au fil du
@@ -731,9 +734,19 @@ du paquetage (section 5.1) pour les détails.
 \label{sec:math:symboles}
 
 Outre les chiffres et les lettres de l'alphabet, les claviers
-d'ordinateurs comptent somme toute très peu des innombrables symboles
-mathématiques utilisés couramment. Pour les représenter dans {\LaTeX},
-on aura recours à des commandes qui débutent, comme d'habitude, par le
+d'ordinateurs ne comptent normalement que les symboles
+mathématiques suivants:
+\begin{center}
+%\begin{verbatim}
+\verb0+  -  =  <  >  /  :  !  '  |  [  ]  (  )0
+%\end{verbatim}
+\end{center}
+Ceux-ci sont utilisables directement dans les équations. Les
+accolades \verb={ }= étant des symboles réservés par {\LaTeX}, il faut
+les entrer avec \cmd{\{} et \cmd{\}}, comme dans du texte normal.
+
+Pour représenter les innombrables autres symboles mathématiques, on
+aura recours à des commandes qui débutent, comme d'habitude, par le
 symbole \verb=\= et dont le nom est habituellement dérivé de la
 signification mathématique du symbole.
 
@@ -854,7 +867,7 @@ List]{}{http://texdoc.net/pkg/comprehensive} %
 présente plusieurs autres alphabets spéciaux disponibles en mode
 mathématique.
 
-\begin{information}
+\begin{conseil}
   Certaines polices de caractères OpenType contiennent plusieurs
   versions des symboles mathématiques. Par exemple, la police utilisée
   dans le présent document contient deux versions de la police
@@ -862,7 +875,7 @@ mathématique.
   \setmathfont[RawFeature=-ss04]{Lucida Bright Math OT}
   $\mathscr{ABC\, xyz}$. Consulter éventuellement la documentation de
   la police pour les détails.
-\end{information}
+\end{conseil}
 
 \subsection{Opérateurs binaires et relations}
 \label{sec:math:symboles:binaires+relations}
@@ -897,16 +910,22 @@ oblique $/$.
     $\times$    & \cmd{\times} &
     $\div$      & \cmd{\div}   &
     $\pm$       & \cmd{\pm}    &
-    $\mp$       & \cmd{\mp}    \\
+    $\cdot$     & \cmd{\cdot}    \\
     $\cup$      & \cmd{\cup} &
     $\cap$      & \cmd{\cap} &
     $\setminus$ & \cmd{\setminus} &
-    $\cdot$     & \cmd{\cdot}  \\
+    $\circ$     & \cmd{\circ}  \\
     $\wedge$    & \cmd{\wedge} &
     $\vee$      & \cmd{\vee} &
     $\oplus$    & \cmd{\oplus} &
-    $\otimes$   & \cmd{\otimes}
+    $\otimes$   & \cmd{\otimes} \\
+    $\ast$      & \cmd{\ast} &
+    $\star$     & \cmd{\star} &
+    $\boxplus$  & \cmd{\boxplus}$^\dagger$ &
+    $\boxtimes$ & \cmd{\boxtimes}$^\dagger$ \\
+    \addlinespace
   \end{tabularx}
+  \hspace*{1em}{\footnotesize $^\dagger$ requiert \pkg{amsmath}}
 \end{table}
 
 \begin{table}[p]
@@ -982,16 +1001,21 @@ présentées dans le \autoref{tab:math:fleches}.
   \hspace*{1em}{\footnotesize $^\dagger$ requiert \pkg{amsmath}}
 \end{table}
 
-\subsection{Autres symboles utiles}
+\subsection{Accents et autres symboles utiles}
 \label{sec:math:symboles:autres}
 
-Le \autoref{tab:math:autres} présente quelques autres symboles
-mathématiques plus fréquemment utilisés fournis par {\LaTeX}.
+Le \autoref{tab:math:autres} présente quelques uns des accents
+disponibles dans le mode mathématique, ainsi que divers symboles
+fournis par {\LaTeX} fréquemment utilisés en mathématiques.
 
 \begin{table}[p]
-  \caption{Symboles mathématiques divers}
+  \caption{Accents et symboles mathématiques divers}
   \label{tab:math:autres}
   \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
+    $\hat{a}$ & \cmd{\hat}\verb={a}= &
+    $\bar{a}$ & \cmd{\bar}\verb={a}= &
+    $\tilde{a}$ & \cmd{\tilde}\verb={a}= &
+    $\ddot{a}$ & \cmd{\ddot}\verb={a}= \\
     $\infty$ & \cmd{\infty} &
     $\nabla$ & \cmd{\nabla} &
     $\partial$ & \cmd{\partial} &
@@ -1218,6 +1242,9 @@ environnements pour les équations hors paragraphe.
   symbole de relation (en une ou plusieurs colonnes) est \Ie{align}.
   C'est l'environnement le plus utilisé en mode mathématique hormis
   \Ie{equation}.
+\item Dans les environnements \Ie{align} et \Ie{split}, les équations
+  successives sont alignées sur le caractère se trouvant immédiatement
+  après le marqueur \verb=&=.
 \item Remarquer, dans le troisième exemple du
   \autoref{tab:math:displays}, comment la commande \cmd{\phantom} sert
   à insérer un blanc exactement de la largeur du symbole $=$ au début
@@ -1711,6 +1738,7 @@ A \symbf{A}
 
 
 \begin{exemple}
+  \label{ex:math:matrices}
   Le paquetage \pkg{amsmath} fournit quelques environnements qui
   facilitent la mise en forme de matrices; ils diffèrent simplement
   par le type de délimiteur autour de la matrice.
@@ -1749,8 +1777,12 @@ A \symbf{A}
     \right]_{2 \times 2}, \quad i, j = 1, 2.
 \end{align*}
 \end{lstlisting}
+  On remarquera l'utilisation de la commande \cmd{\dfrac}
+  (\autoref{sec:math:bases:fractions}) pour composer des grandes
+  fractions à l'intérieur des matrices. %
   \qed
 \end{exemple}
+
 
 
 %%%
@@ -1769,7 +1801,139 @@ A \symbf{A}
 \end{Filesave}
 
 \begin{exercice}
-  utilisation de dfrac dans cases
+  Utiliser le gabarit de document \fichier{exercice\_gabarit.tex} pour
+  reproduire le texte suivant:
+  \begin{quote}
+    La dérivée de la fonction composée $f \circ g(x) = f[g(x)]$ est
+    $\{f[g(x)]\}^\prime = f^\prime[g(x)] g^\prime(x)$. La dérivée
+    seconde du produit des fonctions $f$ et $g$ est $[f(x)
+    g(x)]^{\prime\prime} = f^{\prime\prime}(x) g(x) + 2 f^\prime(x)
+    g^\prime(x) + f(x) g^{\prime\prime}(x)$.
+  \end{quote}
+  \begin{sol}
+    On trouve la commande pour produire le symbole $\circ$ dans le
+    \autoref{tab:math:binaires}. On peut produire les symboles de
+    dérivée $\prime$ avec la commande \cmd{\prime}
+    (\autoref{tab:math:autres}) ou simplement avec le caractère
+    \verb='=.
+\begin{lstlisting}
+La dérivée de la fonction composée $f \circ g(x) = f[g(x)]$ est
+$\{f[g(x)]\}^\prime = f^\prime[g(x)] g^\prime(x)$. La dérivée
+seconde du produit des fonctions $f$ et $g$ est $[f(x)
+g(x)]^{\prime\prime} = f^{\prime\prime}(x) g(x) + 2 f^\prime(x)
+g^\prime(x) + f(x) g^{\prime\prime}(x)$.
+\end{lstlisting}
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  Composer l'équation suivante avec l'environnement \Ie{align*}:
+  \begin{align*}
+    f(x +& h, y + k)
+    = f(x, y) +
+      \left\{
+      \frac{\partial f(x, y)}{\partial x} h +
+      \frac{\partial f(x, y)}{\partial y} k
+      \right\} \\
+    &+
+      \frac{1}{2}
+      \left\{
+      \frac{\partial^2 f(x, y)}{\partial x^2} h^2 +
+      \frac{\partial^2 f(x, y)}{\partial x \partial y} kh +
+      \frac{\partial^2 f(x, y)}{\partial y^2} k^2
+      \right\} \\
+    &+
+      \frac{1}{6} \{\cdots\} + \dots + \frac{1}{n!} \{\cdots\} + R_n.
+  \end{align*}
+  Aligner les deuxième et troisième lignes de l'équation sur divers
+  caractères de la première ligne afin que l'équation ne dépasse pas
+  les marges du document.
+  \begin{sol}
+    Nous avons aligné les lignes de l'équation juste à droite du
+    premier symbole $+$ à la première ligne. Remarquer l'usage des
+    commandes \cmd{\cdots} et \cmd{\dots} dans la dernière ligne:
+    {\LaTeX} choisit correctement la position centrée des points entre les
+    opérateurs d'addition, mais pas entre les accolades.
+\begin{lstlisting}
+\begin{align*}
+  f(x +& h, y + k)
+  = f(x, y) +
+    \left\{
+    \frac{\partial f(x, y)}{\partial x} h +
+    \frac{\partial f(x, y)}{\partial y} k
+    \right\} \\
+  &+
+    \frac{1}{2}
+    \left\{
+    \frac{\partial^2 f(x, y)}{\partial x^2} h^2 +
+    \frac{\partial^2 f(x, y)}{\partial x \partial y} kh +
+    \frac{\partial^2 f(x, y)}{\partial y^2} k^2
+    \right\} \\
+  &+
+    \frac{1}{6} \{\cdots\} + \dots + \frac{1}{n!} \{\cdots\} + R_n.
+\end{align*}
+\end{lstlisting}
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  Composer à l'aide de l'environnement \Ie{cases}
+  (\autoref{sec:math:delimiteurs}) la définition de la fonction
+  $\tilde{f}(x)$:
+  \begin{equation*}
+    \tilde{f}(x) =
+    \begin{cases}
+      0, & x \leq c_0\\
+      \dfrac{F_n(c_j) - F_n(c_{j-1})}{c_j - c_{j-1}} =
+      \dfrac{n_j}{n (c_j - c_{j - 1})}, &  c_{j-1} < x \leq c_j\\
+      0, & x > c_r.
+    \end{cases}
+  \end{equation*}
+  Il est nécessaire d'imposer la taille des fractions dans la seconde
+  branche de la définition à l'aide des fonctions de la
+  \autoref{sec:math:bases:fractions}.
+  \begin{sol}
+    Il faut utiliser \cmd{\dfrac} pour obtenir des fractions dans une
+    branche de \Ie{cases} de la même taille que dans une équation hors
+    paragraphe:
+\begin{lstlisting}
+\begin{equation*}
+  \tilde{f}(x) =
+  \begin{cases}
+    0, & x \leq c_0\\
+    \dfrac{F_n(c_j) - F_n(c_{j-1})}{c_j - c_{j-1}} =
+    \dfrac{n_j}{n (c_j - c_{j - 1})}, &  c_{j-1} < x \leq c_j\\
+    0, & x > c_r.
+  \end{cases}
+\end{equation*}
+\end{lstlisting}
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  Le fichier \fichier{exercice\_mathematiques.tex} contient un exemple
+  complet de développement mathématique. Étudier le contenu du fichier
+  puis compiler celui-ci tel quel avec {pdf\LaTeX} ou {\XeLaTeX}.
+  Effectuer ensuite les modifications suivantes.
+  \begin{enumerate}
+  \item Charger le paquetage \pkg{amsfonts} dans le préambule, puis
+    remplacer \verb=$R^+$= par \verb=$\mathbb{R}^+$= à la ligne
+    débutant par «Le domaine».
+  \item Dans l'équation du Jacobien de la transformation, remplacer
+    successivement l'environnement \Ie{vmatrix} par %
+    \Ie{pmatrix}, %
+    \Ie{bmatrix}, %
+    \Ie{Bmatrix} et %
+    \Ie{Vmatrix}. Observer l'effet sur les délimiteurs de la matrice.
+  \item Toujours dans la même matrice, composer successivement les
+    deux fractions avec les commandes \cmd{\frac}, \cmd{\tfrac} et
+    \cmd{\dfrac}. Observer le résultat.
+  \item Réduire l'espacement de part et d'autre du symbole
+    $\Leftrightarrow$ dans la seconde équation hors paragraphe.
+  \item À l'aide de la fonction Rechercher et remplacer de l'éditeur
+    de texte, remplacer toutes les occurences du symbole $\theta$ par
+    $\lambda$.
+  \end{enumerate}
 \end{exercice}
 
 \Closesolutionfile{solutions}
