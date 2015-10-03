@@ -194,6 +194,12 @@ du paquetage.
 \section{Principaux éléments du mode mathématique}
 \label{sec:math:bases}
 
+Cette section explique comment créer et assembler divers éléments
+d'une formule mathématique: exposants, indices, fractions, texte, etc.
+Les seuls symboles utilisés sont pour le moment les chiffres et les
+lettres latines. La \autoref{sec:math:symboles} présente une
+partie de l'éventail de symboles mathématiques offerts par {\LaTeX}.
+
 \subsection{Exposants et indices}
 \label{sec:math:bases:exposants}
 
@@ -593,9 +599,14 @@ f(x) = a e^{-ax}
   \end{texample}
 \end{demo}
 
-La commande \cmd{\quad} insère un blanc de $1$~em, soit une longueur
-égale à la taille de la police de caractère courante en points (donc
-$11$~points pour une police de $11$~points). La commande \cmd{\qquad}
+Les commandes
+\begin{lstlisting}
+\quad
+\qquad
+\end{lstlisting}
+insèrent un blanc de largeur variable selon la taille de la police en
+vigueur. La commande \cmd{\quad} insère un blanc de $1$~em (la largeur de
+la lettre M dans la police en vigueur), alors que \cmd{\qquad}
 insère le double de cette longueur.\footnote{%
   Bien qu'elles soient surtout utilisées dans le mode mathématique,
   les commandes \cmd{\quad} et \cmd{\qquad} sont également valides
@@ -727,6 +738,69 @@ permet de les définir; consulter la %
 \doc[documentation]{amsldoc}{http://texdoc.net/pkg/amsmath} %
 du paquetage (section 5.1) pour les détails.
 
+
+\begin{exemple}
+  Le matériel passé en revue jusqu'à maintenant permet déjà
+  de composer des équations élaborées --- sous réserve qu'elles
+  tiennent sur une seule ligne comme dans le présent exemple.
+
+  On présente ci-dessous, pièce par pièce, le code {\LaTeX} pour créer
+  l'équation suivante:
+  \begin{equation*}
+    \int_x^\infty (y - x) f_{X|X > x}(y)\, dy =
+    \frac{1}{1 - F_X(x)} \int_x^\infty (y - x) f_X(y)\, dy.
+  \end{equation*}
+  \begin{demo}
+    \begin{texample}[0.58\linewidth]
+\begin{lstlisting}
+\begin{equation*}
+\end{lstlisting}
+      \producing
+      \emph{équation hors paragraphe}
+    \end{texample}
+
+    \begin{texample}[0.58\linewidth]
+\begin{lstlisting}
+\int_x^\infty
+\end{lstlisting}
+      \producing
+      $\displaystyle \int_x^\infty$
+    \end{texample}
+
+    \begin{texample}[0.58\linewidth]
+\begin{lstlisting}
+(y - x) f_{X|X > x}(y)\, dy =
+\end{lstlisting}
+      \producing
+      $(y - x) f_{X|X > x}(y)\, dy =$
+    \end{texample}
+
+    \begin{texample}[0.58\linewidth]
+\begin{lstlisting}
+\frac{1}{1 - F_X(x)}
+\end{lstlisting}
+      \producing
+      $\dfrac{1}{1 - F_X(x)}$
+    \end{texample}
+
+    \begin{texample}[0.58\linewidth]
+\begin{lstlisting}
+\int_x^\infty (y - x) f_X(y)\, dy
+\end{lstlisting}
+      \producing
+      $\displaystyle \int_x^\infty (y - x) f_X(y)\, dy$
+    \end{texample}
+
+    \begin{texample}[0.58\linewidth]
+\begin{lstlisting}
+\end{equation*}
+\end{lstlisting}
+      \producing
+      \emph{fin de l'environnement}
+    \end{texample}
+  \end{demo}
+  \qed
+\end{exemple}
 
 
 \section{Symboles mathématiques}
@@ -1040,12 +1114,8 @@ toutes les sortes dans les tableaux 201--212.
 
 
 \begin{exemple}
-  Le matériel passé en revue jusqu'à maintenant permet déjà de créer
-  de composer des équations très élaborées, sous réserve qu'elles
-  tiennent sur une seule ligne.
-
-  On présente ci-dessous, pièce par pièce, le code {\LaTeX} pour créer
-  l'équation suivante:
+  L'équation suivante contient plusieurs des éléments présentés dans
+  cette section et la précédente:
   \begin{equation*}
     \frac{\Gamma(\alpha)}{\lambda^\alpha} =
     \sum_{j = 0}^\infty \int_j^{j + 1} x^{\alpha - 1} e^{-\lambda x}\,
@@ -1320,7 +1390,7 @@ l'utilisation des environnements du \autoref*{tab:math:displays}.
 
 \begin{exemple}
   Les deux suites d'équations au début de la section ont été réalisées
-  avec les blocs de code suivants, dans l'ordre:
+  avec les blocs de code ci-dessous, dans l'ordre.
 \begin{lstlisting}
 \begin{align}
   y &= 2x + 4 \\
@@ -1584,7 +1654,7 @@ contrôler leur taille. C'est une lecture suggérée.
       f(b)
       \right].
   \end{align*}
-  Le code source de cette suite d'équations est le suivant:
+  On compose ce bloc d'équation avec le code source ci-dessous.
 \begin{lstlisting}
 \begin{align*}
   \int_a^b f(x)\, dx
@@ -1770,7 +1840,7 @@ A \symbf{A}
       \frac{\partial f_i(\mat{\theta})}{\partial \theta_j}
       \right]_{2 \times 2}, \quad i, j = 1, 2.
   \end{align*}
-  avec le code source suivant:
+  avec le code source ci-dessous.
 \begin{lstlisting}
 \begin{align*}
   \mat{J}(\mat{\theta})
