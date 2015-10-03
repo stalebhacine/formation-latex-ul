@@ -210,14 +210,16 @@
 
   %% Remarques importantes
   \newenvironment{important}{%
-    \begin{framed}%
-      \noindent
-      \begin{minipage}{0.1\linewidth}
-        \raisebox{-1.5em}[0em][0em]{\HUGE\faExclamationCircle}
-      \end{minipage}
-      \begin{minipage}[t]{0.88\linewidth}}
-      {\end{minipage}%
-    \end{framed}}
+    \begin{table}[h]%
+      \begin{framed}%
+        \noindent
+        \begin{minipage}{0.1\linewidth}
+          \raisebox{-1.5em}[0em][0em]{\HUGE\faExclamationCircle}
+        \end{minipage}
+        \begin{minipage}[t]{0.88\linewidth}}
+        {\end{minipage}%
+      \end{framed}
+    \end{table}}
 
   %% Informations
   % \newenvironment{information}{%
@@ -232,15 +234,17 @@
 
   %% Conseils du TeXpert
   \newenvironment{conseil}{%
-    \begin{framed}%
-      \noindent
-      \begin{minipage}{0.1\linewidth}
-        \raisebox{-1.5em}[0em][0em]{\HUGE\faThumbsOUp}
-      \end{minipage}
-      \begin{minipage}[t]{0.88\linewidth}
-        {\bfseries\sffamily Conseil du {\TeX}pert} \newline}
-      {\end{minipage}%
-    \end{framed}}
+    \begin{table}[h]%
+      \begin{framed}%
+        \noindent
+        \begin{minipage}{0.1\linewidth}
+          \raisebox{-1.5em}[0em][0em]{\HUGE\faThumbsOUp}
+        \end{minipage}
+        \begin{minipage}[t]{0.88\linewidth}
+          {\bfseries\sffamily Conseil du {\TeX}pert} \newline}
+        {\end{minipage}%
+      \end{framed}
+    \end{table}}
 
   %%% =====================
   %%%  Nouvelles commandes
