@@ -6,6 +6,7 @@
   \usepackage{pgfpages}
   \usepackage{metalogo}                % \XeLaTeX logo
   \usepackage{fontawesome}
+  \usepackage{multicol}
   \usepackage{listings}
   \usepackage[overlay,absolute]{textpos}
 
@@ -19,12 +20,6 @@
   \setmonofont[Scale=0.95]{Bitstream Vera Sans Mono}
   \newfontfamily\titles{Myriad Pro}
   \usepackage{microtype}
-
-  %% Définition de nouveaux symboles de la police Font Awesome pas
-  %% encore définis dans le package fontawesome (v. 3.1.1)
-  %\def\faFileText{{\FA \symbol{"F0F6}}}
-  % \def\faFilePDF{{\FA \symbol{"F1C1}}}
-  % \def\faYouTubePlay{{\FA \symbol{"F16A}}}
 
   %%% Titre
   \title[]{Rédaction de thèses et de mémoire avec {\LaTeX}: premiers pas}
@@ -56,16 +51,29 @@
   \setbeamercolor{block title alerted}{fg=white,bg=alert}
   \setbeamercolor{block title example}{fg=white,bg=exercices}
   \setbeamercolor{example text}{fg=exercices,bg=white}
+  \setbeamertemplate{frametitle continuation}{}
   \setbeamertemplate{theorems}[numbered]
   \setbeamertemplate{section in toc}[sections numbered]
   \setbeamertemplate{navigation symbols}{}
   \setbeamertemplate{section in sidebar}{}
+  \setbeamertemplate{subsection in sidebar}{}
   \setbeamertemplate{section in sidebar shaded}{}
+  \setbeamertemplate{subsection in sidebar shaded}{}
   \AtBeginSection[]
   {
     \begin{frame}
       \frametitle{Sommaire}
-      \small\tableofcontents[currentsection]
+      \small
+      \begin{columns}[t]
+        \begin{column}{.5\textwidth}
+          \tableofcontents[sections={1-5},%
+            currentsection,subsectionstyle=show/show/hide]
+        \end{column}
+        \begin{column}{.5\textwidth}
+          \tableofcontents[sections={6-9},%
+            currentsection,subsectionstyle=show/show/hide]
+        \end{column}
+      \end{columns}
     \end{frame}
   }
 
@@ -116,7 +124,15 @@
 
 \begin{frame}
   \frametitle{Sommaire}
-  \small\tableofcontents
+  \small
+      \begin{columns}[t]
+        \begin{column}{.5\textwidth}
+          \tableofcontents[sections={1-5},hideallsubsections]
+        \end{column}
+        \begin{column}{.5\textwidth}
+          \tableofcontents[sections={6-9},hideallsubsections]
+        \end{column}
+      \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -142,7 +158,7 @@
 \end{frame}
 
 
-\section{{\TeX}, {\LaTeX} et consorts: ce que c'est et ce que ce n'est pas}
+\section{{\TeX}, {\LaTeX} et consorts}
 
 \begin{frame}
   \frametitle{Ce que c'est}
@@ -333,6 +349,8 @@ Copyright 2014 D.E. Knuth.
 
 \section{Principes de base}
 
+\subsection{Rédaction}
+
 \begin{frame}[fragile=singleslide]
   \frametitle{Rédaction}
   \begin{itemize}
@@ -351,6 +369,8 @@ Copyright 2014 D.E. Knuth.
   \item Utilisation de \alert{commandes} pour indiquer la structure du texte
   \end{itemize}
 \end{frame}
+
+\subsection{Structure d'un document}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Structure d'un document {\LaTeX}}
@@ -394,6 +414,8 @@ Copyright 2014 D.E. Knuth.
 \end{frame}
 %%% <<<
 
+\subsection{Commandes}
+
 \begin{frame}[fragile=singleslide]
   \frametitle{Commandes}
   \begin{itemize}
@@ -410,6 +432,8 @@ Copyright 2014 D.E. Knuth.
   \item Portée d'une commande limitée à la zone entre \verb={ }=
   \end{itemize}
 \end{frame}
+
+\subsection{Environnements}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Environnements}
@@ -437,6 +461,8 @@ Copyright 2014 D.E. Knuth.
   \end{center}
 \end{frame}
 %%% <<<
+
+\subsection{Caractères spéciaux}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Caractères spéciaux}
@@ -564,6 +590,8 @@ Copyright 2014 D.E. Knuth.
  \end{itemize}
 \end{frame}
 
+\subsection{Classes et paquetages}
+
 \begin{frame}[fragile]
   \frametitle{Classe de document}
   \begin{itemize}[<+->]
@@ -674,6 +702,8 @@ Copyright 2014 D.E. Knuth.
   \end{conseil}
 \end{frame}
 
+\subsection{Structure logique}
+
 \begin{frame}[fragile]
   \frametitle{Structure logique d'un livre}
   \framesubtitle{(classes \class{book}, \class{memoir}, \class{ulthese})}
@@ -709,6 +739,8 @@ Copyright 2014 D.E. Knuth.
   \item chapitres non numérotés
   \end{itemize}
 \end{frame}
+
+\subsection{Titre et page titre}
 
 \begin{frame}[fragile]
   \frametitle{Titre et page titre}
@@ -747,6 +779,8 @@ Copyright 2014 D.E. Knuth.
   \end{itemize}
 \end{frame}
 
+\subsection{Résumé}
+
 \begin{frame}[fragile=singleslide]
   \frametitle{Résumé}
   \begin{itemize}
@@ -761,6 +795,8 @@ Copyright 2014 D.E. Knuth.
     comme des chapitres normaux (non numérotés)
   \end{itemize}
 \end{frame}
+
+\subsection{Table des matières}
 
 \begin{frame}[fragile]
   \frametitle{Table des matières}
@@ -787,6 +823,8 @@ Copyright 2014 D.E. Knuth.
   \end{itemize}
 \end{frame}
 
+\subsection{Sections}
+
 \begin{frame}[fragile=singleslide]
   \frametitle{Sections}
   \begin{itemize}
@@ -808,6 +846,8 @@ Copyright 2014 D.E. Knuth.
   \item Commande suivie d'une \verb=*= = section non numérotée
   \end{itemize}
 \end{frame}
+
+\subsection{Annexes}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Annexes}
@@ -850,6 +890,8 @@ Copyright 2014 D.E. Knuth.
 
 
 \section{Renvois automatiques}
+
+\subsection{Étiquettes et renvois}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Parce que l'ordinateur le fera mieux que vous}
@@ -894,6 +936,8 @@ on a...
   \end{conseil}
 \end{frame}
 
+\subsection{Hyperliens}
+
 \begin{frame}[fragile]
   \frametitle{Renvois automatiques++}
   \begin{itemize}
@@ -936,6 +980,8 @@ on a...
 
 
 \section{Apparence du texte}
+
+\subsection{Police de caractère}
 
 \begin{frame}
   \frametitle{Police de caractère}
@@ -1020,6 +1066,8 @@ on a...
   \end{picture}
 \end{frame}
 
+\subsection{Taille de la police}
+
 \begin{frame}[fragile]
   \frametitle{Taille de la police}
   \vspace{-2pt}
@@ -1050,6 +1098,8 @@ on a...
     \end{tabbing}
   \end{block}
 \end{frame}
+
+\subsection{Emphase}
 
 \begin{frame}[fragile]
   \frametitle{Emphase}
@@ -1084,6 +1134,8 @@ par moments}»
 
 
 \section{Portions de texte spéciales}
+
+\subsection{Listes}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Listes}
@@ -1129,6 +1181,19 @@ par moments}»
   \end{itemize}
 \end{frame}
 
+\begin{frame}[plain]
+  \begin{conseil}
+    \begin{itemize}
+    \item {\LaTeX} permet de configurer à peu près toutes les facettes
+      de la présentation des listes (puces, alignement, espacement)
+    \item Plusieurs paquetages facilitent la configuration
+    \item Nous suggérons \pkg{enumitem} pour une configuration simple
+    \end{itemize}
+  \end{conseil}
+\end{frame}
+
+\subsection{Texte centré}
+
 \begin{frame}[fragile=singleslide]
   \frametitle{Texte centré}
   \begin{center}
@@ -1150,6 +1215,8 @@ par moments}»
 \end{lstlisting}
 \end{frame}
 
+\subsection{Citations}
+
 \begin{frame}[fragile=singleslide]
   \frametitle{Citations}
   Deux environnements de citation dans {\LaTeX} (et \class{ulthese})
@@ -1166,6 +1233,8 @@ par moments}»
     \end{itemize}
   \end{enumerate}
 \end{frame}
+
+\subsection{Notes de bas de page}
 
 \begin{frame}[fragile]
   \frametitle{Notes de bas de page}
@@ -1184,6 +1253,8 @@ fut d'une grande aide dans la préparation de ...
   \item Numérotation et disposition automatiques
   \end{itemize}
 \end{frame}
+
+\subsection{Code source}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Code source}
@@ -1229,7 +1300,7 @@ dans une police à largeur fixe
 
 
 
-\section{B.a.-ba du mode mathématique}
+\section{B.a.-ba des mathématiques}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Préliminaires}
@@ -1256,6 +1327,8 @@ dans une police à largeur fixe
     \end{itemize}
   \end{itemize}
 \end{frame}
+
+\subsection{Modes mathématiques}
 
 \begin{frame}[fragile]
   \frametitle{Modes mathématiques}
@@ -1294,6 +1367,8 @@ comme $(a + b)^2 = a^2 + 2ab + b^2$
   \vspace{18pt}
   \fbox{\includegraphics[width=0.95\linewidth]{ponctuation}}
 \end{frame}
+
+\subsection{Principes de base}
 
 \begin{frame}[fragile]
   \frametitle{Quelques règles de base}
@@ -1532,6 +1607,8 @@ $x = 0 \text{ si } y < 2$
 %     \end{texoutput}
 %   \end{quote}
 % \end{frame}
+
+\subsection{Équations hors paragraphe}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Environnements pour les équations hors paragraphe}
