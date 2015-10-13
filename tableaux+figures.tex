@@ -50,19 +50,22 @@ chaque ligne et entre les colonnes.
     \lfloor v/b_i \rfloor & v \bmod b_i & x_i \\
     \hline
     0 & \nombre{91492} &  60 & \nombre{1524} & 52 & 52 \\
+    \hline
     1 &  \nombre{1524} &  60 &           25  & 24 & 24 \\
+    \hline
     2 &            25  &  24 &            1  &  1 &  1 \\
+    \hline
     3 &             1  & 365 &            0  &  1 &  1 \\
     \hline\hline
   \end{tabular}
 \end{center}
 
 Le second tableau tire profit des fonctionnalités du paquetage
-\pkg{booktabs} et des recommandations de son auteur: les filets
-horizontaux sont d'épaisseur différente selon qu'ils sont situés dans
-l'entête et dans le pied du tableau ou entre les lignes, l'espace
-autour des filets horizontaux est plus grand et, surtout, il n'y a pas
-de filets verticaux.
+\pkg{booktabs} \citep{booktabs} et des recommandations de son auteur:
+les filets horizontaux sont d'épaisseur différente selon qu'ils sont
+situés dans l'entête et dans le pied du tableau ou entre les lignes,
+l'espace autour des filets horizontaux est plus grand et, surtout, il
+n'y a pas de filets verticaux.
 
 \begin{center}
   \begin{tabular}{>{$}c<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}c<{$}>{$}c<{$}}
@@ -87,8 +90,10 @@ délimiter les colonnes?
 
 Tel que mentionné ci-dessus, le paquetage \pkg{booktabs} ajoute des
 fonctionnalités à {\LaTeX} pour améliorer la qualité typographique des
-tableaux. Dans la documentation du paquetage, son auteur énonce
-quelques règles à suivre pour la mise en forme des tableaux:
+tableaux. Dans la %
+\doc{booktabs}{http://texdoc.net/pkg/booktabs} %
+du paquetage, son auteur énonce quelques règles à suivre pour la mise
+en forme des tableaux:
 \begin{enumerate}
 \item ne \emph{jamais} utiliser de filets verticaux. Si l'information
   du côté gauche du tableau semble si différente de celle du côté
@@ -140,7 +145,8 @@ La signification des arguments\footnote{%
   servant à spécifier l'alignement vertical du tableau par rapport à
   la ligne de base externe.} %
 est la suivante. Nous ne traitons ici que les options les plus souvent
-employées. Pour une liste plus exhaustive, consulter la documentation
+employées. Pour une liste plus exhaustive, consulter la %
+\doc{memman}{http://texdoc.net/pkg/memman} %
 de la classe \class{memoir} (chapitre 11) ou %
 \citet[section \link{http://fr.wikibooks.org/wiki/LaTeX/Tableaux}{Tableaux}]{wikilivres:latex}.
 
@@ -156,7 +162,7 @@ de la classe \class{memoir} (chapitre 11) ou %
 \item[largeur] Largeur hors tout d'un tableau avec les
   environnements \Pe{tabular*} et \Pe{tabularx}. Autrement,
   avec l'environnement \Pe{tabular}, la largeur d'un tableau est
-  déterminée automatiquement pour contenir tout le contenu du tableau,
+  déterminée automatiquement pour contenir tout le tableau,
   quitte à dépasser dans la marge de droite.
 
   La largeur du tableau est généralement exprimée en fraction de la
@@ -243,18 +249,6 @@ auxquelles nous faisions référence à la \autoref{sec:tableaux:booktabs}.} %
   \end{description}
   Une fin de ligne \verb=\\=  doit  obligatoirement précéder chacune
   de ces commandes, sauf évidemment \cmd{\toprule}.
-
-  Un exemple simple de lignes de contenu serait:
-\begin{lstlisting}
-\toprule
-Produit & Quantité & Prix unitaire (\$) & Prix (\$) \\
-\midrule
-Vis à bois    & 2 & 9,90 & 19,80 \\
-Clous vrillés & 5 & 4,35 & 21,75 \\
-\midrule
-TOTAL         & 7 &      & 41,55 \\
-\bottomrule
-\end{lstlisting}
 \end{list}
 
 La hauteur des lignes d'un tableau est déterminée automatiquement en
@@ -262,13 +256,13 @@ fonction du contenu de celles-ci.
 
 \begin{exemple}
   \label{exemple:tableaux:tabular}
-  On reprend le contenu ci-dessus pour en faire un tableau d'une
-  largeur ajustée automatiquement au contenu. La première colonne est
-  alignée à gauche et toutes les autres à droite.
+  On crée d'abord un tableau d'une largeur ajustée automatiquement au
+  contenu. Remarquer comment les lignes de contenu sont définies. La
+  première colonne est alignée à gauche et toutes les autres à droite.
 \begin{lstlisting}
 \begin{tabular}{lrrr}
   \toprule
-  Produit & Quantité & Prix unitaire (\$) & Prix (\$) \\
+  Produit       & Quantité & Prix unitaire (\$) & Prix (\$) \\
   \midrule
   Vis à bois    & 2 & 9,90 & 19,80 \\
   Clous vrillés & 5 & 4,35 & 21,75 \\
@@ -290,7 +284,7 @@ fonction du contenu de celles-ci.
     \end{tabular}
   \end{center}
 
-  Avec quelques modifications, le tableau occupe maintenant toute la
+  Avec quelques modifications, le tableau occupera toute la
   largeur de la page, la largeur de la première colonne étant ajustée
   pour combler l'espace nécessaire. De plus, on modifie l'entête de la
   première colonne avec la commande \cmd{\multicolumn} afin de centrer
@@ -346,7 +340,7 @@ d'un document PDF.
 Couvrir les détails de la création et de la manipulation d'images
 dépasse largement la portée du présent document. Le reste de cette
 section ne présente que les principales fonctionnalités. Le lecteur
-intéressé d'en savoir plus pourra se référer aux sources de documentation habituelles figurant à la
+qui souhaite en savoir plus pourra se référer aux sources de documentation habituelles figurant à la
 bibliographie.
 
 
@@ -864,7 +858,7 @@ contraire il est disposé comme un paragraphe normal.
   les étiquettes plus neutres «\textsc{Tab.}» et «\textsc{Fig.}» dans
   les légendes des tableaux et figures. Pour utiliser ces versions
   plutôt que les versions par défaut --- comme dans le présent
-  document --- ajouter dans le préambule les commandes suivantes:
+  document --- ajoutez dans le préambule les commandes suivantes:
 \begin{lstlisting}
 \def\frenchtablename{{\scshape Tab.}}
 \def\frenchfigurename{{\scshape Fig.}}
