@@ -25,7 +25,7 @@ trois raisons suivantes:
 
 \begin{exemple}
   \label{ex:commandes:intro}
-  Nous avons défini ou redéfini des commandes pour chacune des raisons
+  Nous avons créé ou modifié des commandes pour chacune des raisons
   ci-dessus dans la préparation du présent document.
   \begin{enumerate}
   \item Une nouvelle commande \cmdprint{\doc} facilite et systématise
@@ -47,14 +47,13 @@ trois raisons suivantes:
 \end{exemple}
 
 
-
 \section{Nouvelles commandes}
 \label{sec:commandes:commandes}
 
 Les commandes \cmd{\newcommand} et \cmd{\renewcommand} permettent,
 dans l'ordre, de définir une nouvelle commande ou de redéfinir ---
 c'est-à-dire de modifier la définition --- d'une commande existante.
-Ces deux commandes s'utilisent exclusivement dans le préambule du
+On place généralement les appels à ces commandes dans le préambule du
 document.
 
 \subsection{Commandes sans arguments}
@@ -68,9 +67,9 @@ plus simples à créer. La syntaxe des commandes \cmd{\newcommand} et
 \newcommand{`\bs\meta{nom\_commande}'}`\marg{définition}'
 \renewcommand{`\bs\meta{nom\_commande}'}`\marg{définition}'
 \end{lstlisting}
-Le premier argument, \bs\meta{nom\_commmande}, est le nom, avec le
-caractère \bs, de la commande. Ce nom doit être différent de celui de
-toute commande active\footnote{%
+Le premier argument, \bs\meta{nom\_commande}, est le nom de la
+commande, avec le caractère \bs. Ce nom doit être différent de celui
+de toute commande active\footnote{%
   Les commandes actives dans un document sont les commandes de base de
   {\TeX} et {\LaTeX} ainsi que les commandes de tous les paquetages
   chargés dans le préambule.} %
@@ -150,6 +149,7 @@ doivent apparaître.
 \end{exemple}
 
 \begin{exemple}
+  \label{ex:commandes:doc}
   La commande \cmdprint{\doc} mentionnée à
   l'\autoref{ex:commandes:intro} requiert trois arguments:
   \begin{enumerate}
@@ -187,8 +187,8 @@ Tel que mentionné en introduction du chapitre, {\LaTeX} permet
 également à l'utilisateur de définir ou de modifier des
 environnements. La mécanique est similaire à celle de la définition de
 commandes, sauf qu'un environnement compte trois parties: le début,
-marqué par la déclaration \verb=\begin{\dots}=; le contenu en tant que
-  tel; la fin, marquée par la déclaration \verb=\end{\dots}=.
+marqué par la déclaration \cmdprint{\begin\marg{envir}}; le contenu en tant que
+  tel; la fin, marquée par la déclaration \cmdprint{\end\marg{envir}}.
 
 On crée ou modifie des environnements avec les commandes
 \begin{lstlisting}
@@ -196,35 +196,45 @@ On crée ou modifie des environnements avec les commandes
 \renewenvironment`\marg{nom\_env}\oarg{narg}\marg{début\_déf}\marg{fin\_déf}'
 \end{lstlisting}
 Les nombreux arguments sont les suivants:
-\begin{description}
-\item[\meta{nom\_env}] nom de l'environnement à créer ou à modifier.
+\begin{list}{}{%
+    \setlength{\labelsep}{1.5ex}
+    \settowidth{\labelwidth}{\meta{début\_déf}}
+    \setlength{\leftmargin}{\labelwidth}
+    \addtolength{\leftmargin}{\labelsep}
+    \setlength{\parsep}{0.5ex plus0.2ex minus0.2ex}
+    \setlength{\itemsep}{0.3ex}
+    \renewcommand{\makelabel}[1]{\meta{#1}\hfill}}
+%
+
+\item[nom\_env] nom de l'environnement à créer ou à modifier.
   Il est fortement recommandé de ne pas modifier les environnements de
   base de {\LaTeX};
-\item[\meta{narg}] un nombre entre $1$ et $9$ représentant le nombre
+\item[narg] un nombre entre $1$ et $9$ représentant le nombre
   d'arguments de l'environnement, lorsqu'il y en a. Les arguments sont
   utilisés de la même manière que dans les définitions de commandes;
-\item[\meta{début\_déf}] commandes et texte à insérer au début de
-  l'environnement, lors de l'appel
-  \cs{begin\{}\meta{nom\_env}\code{\}}. C'est dans ce bloc que doivent
-  se trouver les jetons \code{\#1}, \dots, \code{\#}\meta{narg}
-  lorsque l'environnement a des arguments.
-\item[\meta{début\_déf}] commandes et texte à insérer à la fin de
-  l'environnement, lors de l'appel \cs{end\{}\meta{nom\_env}\code{\}}.
-\end{description}
+\item[début\_déf] commandes et texte à insérer au début de
+  l'environnement, lors de l'appel \cmdprint{\begin\marg{nom\_env}}.
+  C'est dans ce bloc que doivent se trouver les jetons \code{\#1},
+  \dots, \code{\#}\meta{narg} lorsque l'environnement a des
+  arguments.
+\item[fin\_déf] commandes et texte à insérer à la fin de
+  l'environnement, lors de l'appel \cmdprint{\end\marg{nom\_env}}.
+  \end{list}
 
 \begin{exemple}
+  \label{ex:commandes:citation}
   On souhaite mettre en forme les citations hors paragraphe de la
   manière suivante:
   \begin{quote}
     \small\itshape%
-    en italique, dans une police de taille inférieure au texte
+    Texte en italique, dans une police de taille inférieure au texte
     normal et en retrait des marges gauche et droite.
   \end{quote}
   Pour ce faire, on construit un nouvel environnement \Ie{citation} à
-  partir de l'environnement standard \Ie{quote} avec la commande
+  partir de l'environnement standard \Ie{quote}:
 \begin{lstlisting}
 \newenvironment{citation}%
-  {\begin{citation}\small\itshape}%
+  {\begin{quote}\small\itshape}%
   {\end{quote}}
 \end{lstlisting}
   \qed
@@ -232,11 +242,11 @@ Les nombreux arguments sont les suivants:
 
 \begin{exemple}
   Nous avons créé pour les fins du présent document un environnement
-  \Ie{conseil} servant à mettre en forme les rubriques «conseils du
+  \Ie{conseil} servant à mettre en forme les rubriques «Conseil du
   {\TeX}pert». La définition --- relativement élaborée --- de
   l'environnement est la suivante:
 \begin{lstlisting}
-\newenvironment{conseil}
+\newenvironment{conseil}%
   {\begin{table}[h]
      \begin{framed}
        \noindent
@@ -247,21 +257,21 @@ Les nombreux arguments sont les suivants:
          {\bfseries\sffamily Conseil du {\TeX}pert} \newline}%
   {\end{minipage}\end{framed}\end{table}}
 \end{lstlisting}
-  Dans le second argument:
+  Dans le second argument, on:
   \begin{enumerate}
-  \item on ouvre un élément flottant pour disposer la rubrique sur la
+  \item ouvre un élément flottant pour disposer la rubrique sur la
     page;
-  \item on ouvre un environnement \Ie{framed} de la classe
+  \item ouvre un environnement \Ie{framed} de la classe
     \class{memoir} pour encadrer la rubrique;
-  \item on crée une première \Ie{minipage} pour disposer le symbole
+  \item crée une première \Ie{minipage} pour disposer le symbole
     {\faThumbsOUp} tiré de la police Font~Awesome;
-  \item on ouvre une seconde \Ie{minipage} à côté de la première, on y
+  \item ouvre une seconde \Ie{minipage} à côté de la première, on y
     dispose le titre de la rubrique en police grasse et sans
-    empattements, puis on insére un retour à la ligne pour préparer la
-    place du texte de la rubrique.
+    empattements, puis on insère un retour à la ligne pour préparer
+    accueillir le texte de la rubrique.
   \end{enumerate}
   Le troisième argument sert à refermer tous les environnements
-  ouverts dans le second argument et qui n'ont pas déjà été fermés.
+  ouverts dans le second argument qui n'ont pas déjà été fermés.
 
   Une fois ce travail accompli, créer une nouvelle rubrique est très
   simple:
@@ -280,6 +290,128 @@ Les nombreux arguments sont les suivants:
   plus d'une ou deux fois dans un document.
 \end{conseil}
 
+
+
+%%%
+%%% Exercices
+%%%
+
+\section{Exercices}
+\label{sec:commandes:exercices}
+
+\Opensolutionfile{solutions}[solutions-commandes]
+
+\begin{Filesave}{solutions}
+\section*{Chapitre \ref*{chap:commandes}}
+\addcontentsline{toc}{section}{Chapitre \protect\ref*{chap:commandes}}
+
+\end{Filesave}
+
+\begin{exercice}
+  Certains auteurs composent les sigles et les acronymes\footnote{%
+    Un sigle est une abréviation formée par une suite de lettres qui
+    sont les initiales d'un groupe de mots. Un acronyme est un sigle
+    qui se prononce comme un mot ordinaire.} %
+  en petites capitales, avec ou sans les points: \textsc{c.q.f.d.},
+  \textsc{nasa}.
+  \begin{enumerate}
+  \item Créer une commande \cmdprint{\NASA} qui insère l'acronyme
+    \textsc{nasa} dans le texte. Rappelons que l'on compose du texte en petites
+    capitales avec la commande \cmd{\textsc}.
+  \item Créer une commande plus générale \cmdprint{\sigle} qui affiche
+    son argument en petites capitales. La commande devra convertir
+    l'argument en minuscules avec \cmd{\MakeLowercase} afin que le
+    résultat soit toujours le même peu importe la casse utilisée dans
+    le code. Ainsi, \lstinline=\sigle{nasa}=, \lstinline=\sigle{Nasa}= et
+    \lstinline=\sigle{NASA}= donneront toujours
+    \textsc{nasa}.
+  \item Après avoir utilisé la commande \cmdprint{\sigle} à quelques
+    reprises dans un document, modifier sa définition pour plutôt
+    composer les sigles en majuscules.
+  \end{enumerate}
+  Utiliser le gabarit de document \fichier{exercice\_gabarit.tex} pour
+  créer et tester les commandes ci-dessus.
+  \begin{sol}
+    \begin{enumerate}
+    \item \lstinline=\newcommand{\NASA}{\textsc{nasa}}=
+    \item \lstinline=\newcommand{\sigle}[1]{\textsc{\MakeLowercase{#1}}}=
+    \item \lstinline=\newcommand{\sigle}[1]{\MakeUppercase{#1}}=
+    \end{enumerate}
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  Nous n'avons pas abordé dans le chapitre une fonctionnalité plus
+  avancée de \cmd{\newcommand} et \cmd{\renewcommand}, soit celle de
+  pouvoir définir des commandes dont un argument est optionnel ou,
+  plus précisément, de donner une valeur par défaut à un argument.
+
+  La syntaxe réellement complète de \cmd{\newcommand} et
+  \cmd{\renewcommand} est la suivante:
+\begin{lstlisting}
+\newcommand{`\bs\meta{nom\_commande}'}`\oarg{narg}\oarg{option}\marg{définition}'
+\renewcommand{`\bs\meta{nom\_commande}'}`\oarg{narg}\oarg{option}\marg{définition}'
+\end{lstlisting}
+  L'argument additionnel \meta{option} contient la valeur par défaut
+  du \emph{premier} argument de \bs\meta{nom\_commande}. On remarquera
+  que, dès lors, la commande ne compte plus \meta{narg} arguments
+  obligatoires, mais bien $\text{\meta{narg}} - 1$ arguments
+  obligatoires et un optionnel.
+
+  Modifier la définition de la commande \cmdprint{\doc} de
+  l'\autoref{ex:commandes:doc} pour que «documentation» soit le texte
+  par défaut de l'hyperlien qui est placé au fil du texte.
+  \begin{sol}
+    Avec la définition
+\begin{lstlisting}
+\newcommand{\doc}[3][documentation]{%
+  \href{#3}{#1~\raisebox{-0.2ex}{\faExternalLink}}%
+  \marginpar{\faBook~\texttt{#2}}}
+\end{lstlisting}
+    la déclaration à deux arguments
+\begin{lstlisting}
+\doc{hyperref}{http://texdoc.net/pkg/hyperref}
+\end{lstlisting}
+    produit toujours \doc{hyperref}{http://texdoc.net/pkg/hyperref}.
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  Modifier l'environnement \Ie{citation} de
+  l'\autoref{ex:commandes:citation} afin de composer les citations
+  hors paragraphe comme suit:
+  \begin{quote}
+    \begin{tabular}{p{\linewidth}}
+      \toprule
+      \small\sffamily%
+      La citation est surmontée et suivie de filets horizontaux. Le
+      texte est toujours en police plus petite, mais sans empattements
+      plutôt qu'en italique. \\
+      \bottomrule
+    \end{tabular}
+  \end{quote}
+  \emph{Astuce}: placer le texte de la citation dans un tableau de
+  largeur \cmdprint{\linewidth}, puis utiliser les commandes
+  \cmdprint{\toprule} et \cmdprint{\bottomrule} pour créer les
+  filets horizontaux.
+  \begin{sol}
+    La définition suivante donne les résultats demandés:
+\begin{lstlisting}
+\newcommand{citation}
+  {\begin{quote}
+     \begin{tabular}{p{\linewidth}}
+       \toprule\small\sffamily}%
+  {\\ \bottomrule
+     \end{tabular}
+   \end{quote}}
+\end{lstlisting}
+    On remarquera dans le troisième argument la présence de la
+    commande de fin de ligne {\bs\bs} qui doit absolument précéder
+    \cmdprint{\bottomrule}.
+  \end{sol}
+\end{exercice}
+
+\Closesolutionfile{solutions}
 
 %%% Local Variables:
 %%% mode: latex

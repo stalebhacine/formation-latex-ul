@@ -2,7 +2,7 @@
   \usepackage{natbib,url}
   \usepackage[english,francais]{babel}
   \usepackage[autolanguage]{numprint}
-  \usepackage{amsmath,amsthm,ncccomma}
+  \usepackage{amsmath,amsthm}
   %\usepackage[noae]{Sweave}
   %\usepackage{paralist}
   \usepackage[shortlabels]{enumitem}
@@ -31,6 +31,7 @@
   \setmonofont[Scale=0.88]{Bitstream Vera Sans Mono}
   \newfontfamily\fullcaps[Letters=Uppercase,Numbers=Uppercase]{Myriad Pro}
   \usepackage[babel=true]{microtype}
+  \usepackage{icomma}
 
   %% Couleurs
   \usepackage{xcolor}
@@ -268,6 +269,7 @@
   %% symboles $\langle$ et $\rangle$ des résultats de \marg et al.
   \makeatletter
   \DeclareRobustCommand{\meta}[1]{{\meta@font@select\hyphenchar\font\m@ne #1}}
+  \def\meta@font@select{\ttfamily\itshape}
   \makeatother
 
   %% Indications de capsule vidéo dans la marge
@@ -320,7 +322,7 @@
   %                                         Exercices \textemdash\
   %                                         édition \year}
 
-%\includeonly{mathematiques}
+%\includeonly{commandes,solutions}
 
 \begin{document}
 
@@ -357,6 +359,7 @@
 \include{tableaux+figures}
 \include{mathematiques}
 % \include{bibliographie}
+\include{commandes}
 % \include{polices}
 % \include{varia}
 

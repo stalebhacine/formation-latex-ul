@@ -215,13 +215,13 @@ de la classe \class{memoir} (chapitre 11) ou %
   %
 \item[lignes] Le contenu des cellules du tableau. Les entrées des
   cellules sont séparées par le symbole \verb=&= et les lignes par
-  \verb=\\=. Une cellule peut être vide.
+  {\bs\bs}. Une cellule peut être vide.
 
   Les lignes de contenu peuvent également contenir certaines commandes
   spéciales pour contrôler la mise en forme. La commande ci-dessous
   permet de fusionner des cellules:
   \begin{description}
-  \item[\normalfont\cmd{\multicolumn\marg{num}\marg{fmt}\marg{texte}}]
+  \item[\normalfont\cmdprint{\multicolumn\marg{num}\marg{fmt}\marg{texte}}]
     fusionne les \meta{num} cellules suivantes en une seule de format
     \meta{fmt} et contenant le texte \meta{texte}. \par%
     Cette commande ne peut apparaître qu'au début d'une ligne ou après
@@ -241,13 +241,13 @@ auxquelles nous faisions référence à la \autoref{sec:tableaux:booktabs}.} %
     suivi d'un espace vertical au début d'un tableau;
   \item[\normalfont\cmd{\midrule}] insère un filet horizontal mince
     précédé et suivi d'un espace vertical entre deux lignes;
-  \item[\normalfont\cmd{\cmidrule\marg{n-m}}] insère un filet
+  \item[\normalfont\cmd{\cmidrule}\marg{n-m}] insère un filet
     horizontal comme \cmd{\midrule}, mais seulement de la gauche de la
     colonne \meta{n} à la droite de la colonne \meta{m};
   \item[\normalfont\cmd{\bottomrule}] insère un filet horizontal épais
     précédé d'un espace vertical à la fin d'un tableau.
   \end{description}
-  Une fin de ligne \verb=\\=  doit  obligatoirement précéder chacune
+  Une fin de ligne {\bs\bs}  doit  obligatoirement précéder chacune
   de ces commandes, sauf évidemment \cmd{\toprule}.
 \end{list}
 
@@ -552,7 +552,7 @@ pour les détails et d'autres options.
   \end{trivlist}
   (Il est préférable d'utiliser une seule de \code{width} ou
   \code{height}. Autrement, ajouter l'option
-  \verb|keepaspectratio=true| pour éviter de déformer l'image.)
+  \lstinline|keepaspectratio=true| pour éviter de déformer l'image.)
 
   L'option \code{angle} permet de faire pivoter l'image dans le sens
   inverse des aiguilles d'une montre autour du coin inférieur gauche
