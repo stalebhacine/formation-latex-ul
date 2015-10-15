@@ -19,7 +19,7 @@ trois raisons suivantes:
   fréquemment;
 \item créer des commandes sémantiques afin d'uniformiser la
   présentation du texte;
-\item modifier le comportement de commandes existantes, puisqu'il est
+\item modifier le comportement de commandes existantes --- car il est
   également possible de redéfinir une commande existante.
 \end{enumerate}
 
@@ -77,13 +77,13 @@ dans le document dans le cas de \cmdprint{\newcommand}. À l'inverse,
 une commande active doit nécessairement porter le même nom dans le cas
 de \cmdprint{\renewcommand}.
 
-Le second argument, \marg{définition}, contient la définition de la
+Le second argument, \meta{définition}, contient la définition de la
 commande. Il peut s'agir de caractères à insérer dans le texte, de
-commandes à exécuter ou une combinaison de tout cela.
+commandes à exécuter ou d'une combinaison de tout cela.
 
 \begin{exemple}
   La commande \cmd{\mathbb}, présentée à la
-  \autoref{sec:math::symboles:mathcal}, permet de créer une lettre
+  \autoref{sec:math:symboles:mathcal}, permet de créer une lettre
   majuscule ajourée pour représenter un ensemble de nombres en
   mathématiques. Plutôt que de l'utiliser à divers endroits dans un
   document, il est préférable de définir une commande sémantique comme
@@ -91,10 +91,10 @@ commandes à exécuter ou une combinaison de tout cela.
 \begin{lstlisting}
 \newcommand{\R}{\mathbb{R}}
 \end{lstlisting}
-  Ainsi, si l'on souhaite modifier la représentation de l'ensemble des
-  nombres réels pour une raison quelconque, il suffit de modifier la
-  définition de la commande \cmdprint{\R} pour que le changement
-  prenne effet dans tout le document. %
+  Ainsi, si l'on souhaite pour une raison quelconque modifier la
+  représentation de l'ensemble des nombres réels, il suffit de
+  modifier la définition de la commande \cmdprint{\R} pour que le
+  changement prenne effet dans tout le document. %
   \qed
 \end{exemple}
 
@@ -102,7 +102,7 @@ commandes à exécuter ou une combinaison de tout cela.
   Tel que mentionné à l'\autoref{ex:commandes:intro}, nous avons
   modifié la police de caractère des titres de chapitres dans ce
   document en redéfinissant la commande \cmdprint{\chaptitlefont} de
-  \class{memoir}. Pour obtenir des titres de chapitres sans
+  la classe \class{memoir}. Pour obtenir des titres de chapitres sans
   empattements, en caractères gras, de dimension \cmdprint{\Huge} et
   alignés à gauche, on trouve dans le préambule du document la
   déclaration
@@ -128,9 +128,9 @@ arguments:
 \newcommand{`\bs\meta{nom\_commande}'}`\oarg{narg}\marg{définition}'
 \renewcommand{`\bs\meta{nom\_commande}'}`\oarg{narg}\marg{définition}'
 \end{lstlisting}
-où \meta{narg} est un nombre entre $1$ et $9$ spécifiant le nombre
-d'arguments de la commande. Dès lors, la \meta{définition} de la
-commande devra contenir des jetons \code{\#1}, \code{\#2},
+Le nouvel argument \meta{narg} est un nombre entre $1$ et $9$
+spécifiant le nombre d'arguments de la commande. La \meta{définition}
+de la commande doit alors contenir des jetons \code{\#1}, \code{\#2},
 \dots\ pour identifier les endroits où les arguments $1$, $2$, \dots\
 doivent apparaître.
 
@@ -167,9 +167,10 @@ doivent apparaître.
 \end{lstlisting}
   La commande \cmd{\href} qui permet d'insérer un hyperlien dans le
   texte provient du paquetage \pkg{hyperref} \citep{hyperref}. Les
-  commandes \cmdprint{\faExternalLink} et \cmdprint{\faBook}
-  insèrent dans le texte des icônes de la police libre Font~Awesome;
-  elles proviennent du paquetage du même nom \citep{fontawesome}.
+  commandes \cmdprint{\faBook} et \cmdprint{\faExternalLink}
+  proviennent du paquetage \pkg{fontawesome} \citep{fontawesome}; elles
+  insèrent dans le texte des icônes de la police libre %
+  \doc[Font Awesome]{}{http://fortawesome.github.io/Font-Awesome/}. %
 
   Avec la définition ci-dessus, la déclaration
 \begin{lstlisting}
@@ -187,8 +188,8 @@ Tel que mentionné en introduction du chapitre, {\LaTeX} permet
 également à l'utilisateur de définir ou de modifier des
 environnements. La mécanique est similaire à celle de la définition de
 commandes, sauf qu'un environnement compte trois parties: le début,
-marqué par la déclaration \cmdprint{\begin\marg{envir}}; le contenu en tant que
-  tel; la fin, marquée par la déclaration \cmdprint{\end\marg{envir}}.
+marqué par la déclaration \cmdprint{\begin\marg{...}}; le contenu en tant que
+  tel; la fin, marquée par la déclaration \cmdprint{\end\marg{...}}.
 
 On crée ou modifie des environnements avec les commandes
 \begin{lstlisting}
@@ -223,19 +224,34 @@ Les nombreux arguments sont les suivants:
 
 \begin{exemple}
   \label{ex:commandes:citation}
-  On souhaite mettre en forme les citations hors paragraphe de la
+  On souhaite composer les citations hors paragraphe de la
   manière suivante:
   \begin{quote}
     \small\itshape%
     Texte en italique, dans une police de taille inférieure au texte
     normal et en retrait des marges gauche et droite.
   \end{quote}
-  Pour ce faire, on construit un nouvel environnement \Ie{citation} à
-  partir de l'environnement standard \Ie{quote}:
+  Ceci est simple à réaliser en se basant sur l'environnement standard
+  \Ie{quote} et en modifiant les attributs de police:
+\begin{lstlisting}
+\begin{quote}
+  \small\itshape%
+  Texte en italique...
+\end{quote}
+\end{lstlisting}
+
+  Pour automatiquement composer toutes les citations de la même
+  manière, il suffit de créer un nouvel environnement \Ie{citation}:
 \begin{lstlisting}
 \newenvironment{citation}%
   {\begin{quote}\small\itshape}%
   {\end{quote}}
+\end{lstlisting}
+  Le bloc de code ci-dessus peut ensuite être remplacé par
+\begin{lstlisting}
+\begin{citation}
+  Texte en italique...
+\end{citation}
 \end{lstlisting}
   \qed
 \end{exemple}
@@ -360,7 +376,8 @@ Les nombreux arguments sont les suivants:
 
   Modifier la définition de la commande \cmdprint{\doc} de
   l'\autoref{ex:commandes:doc} pour que «documentation» soit le texte
-  par défaut de l'hyperlien qui est placé au fil du texte.
+  par défaut de l'hyperlien qui est placé au fil du texte. (Omettre
+  les icônes si la police Font Awesome n'est pas installée
   \begin{sol}
     Avec la définition
 \begin{lstlisting}
@@ -384,15 +401,15 @@ Les nombreux arguments sont les suivants:
     \begin{tabular}{p{\linewidth}}
       \toprule
       \small\sffamily%
-      La citation est surmontée et suivie de filets horizontaux. Le
-      texte est toujours en police plus petite, mais sans empattements
-      plutôt qu'en italique. \\
+      La citation est toujours en retrait des marges gauche et droite,
+      mais également surmontée et suivie de filets horizontaux. Le
+      texte est en police de taille \cmdprint{\small}, droite et sans
+      empattements. \\
       \bottomrule
     \end{tabular}
   \end{quote}
-  \emph{Astuce}: placer le texte de la citation dans un tableau de
-  largeur \cmdprint{\linewidth}, puis utiliser les commandes
-  \cmdprint{\toprule} et \cmdprint{\bottomrule} pour créer les
+  \emph{Astuce}: utiliser un tableau pleine largeur à l'intérieur de
+  l'environnement \Ie{quote} pour disposer le texte et créer les
   filets horizontaux.
   \begin{sol}
     La définition suivante donne les résultats demandés:
