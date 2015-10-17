@@ -82,6 +82,9 @@
   \newcommand{\class}[1]{\textbf{#1}}
   \newcommand{\pkg}[1]{\textbf{#1}}
 
+  \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
+  \newcommand{\capsule}[2]{\href{#1}{\faYoutubePlay~#2}}
+
   \renewenvironment{quote}{%
     \begin{beamercolorbox}[wd=\linewidth,sep=6pt]{block body example}}
     {\end{beamercolorbox}}
@@ -141,24 +144,26 @@
   \item Installer une distribution {\LaTeX} sur votre poste de
     travail; nous recommandons la distribution {\TeX}~Live
     \begin{itemize}
-    \item[] \href{https://www.youtube.com/watch?v=fjcR6lFy0c4}{%
-        {\faYoutubePlay} installation sur Mac OS X}
-    \item[] \href{https://www.youtube.com/watch?v=z_dq3dns-WU}{%
-        {\faYoutubePlay} installation sur Windows}
+    \item[] \capsule{https://www.youtube.com/watch?v=fjcR6lFy0c4}{%
+        installation sur Mac OS X}
+    \item[] \capsule{https://www.youtube.com/watch?v=z_dq3dns-WU}{%
+        installation sur Windows}
     \end{itemize}
     \bigskip
-  \item Compiler un premier très simple de type \emph{Hello World!}
+  \item Compiler un premier document très simple de type \emph{Hello World!}
     \begin{itemize}
-    \item[] \href{https://www.youtube.com/watch?v=QOUx_aOZ42o}{%
-        {\faYoutubePlay} démonstration sur Mac OS X avec TeXShop}
-    \item[] \href{https://www.youtube.com/watch?v=qddRMGwXnNM}{%
-        {\faYoutubePlay} démonstration sur Windows avec Texmaker}
+    \item[] \capsule{https://www.youtube.com/watch?v=QOUx_aOZ42o}{%
+        démonstration sur Mac OS X avec TeXShop}
+    \item[] \capsule{https://www.youtube.com/watch?v=qddRMGwXnNM}{%
+        démonstration sur Windows avec Texmaker}
     \end{itemize}
   \end{enumerate}
 \end{frame}
 
 
 \section{{\TeX}, {\LaTeX} et consorts}
+
+\subsection{Ce que c'est}
 
 \begin{frame}
   \frametitle{Ce que c'est}
@@ -213,6 +218,8 @@
   \end{itemize}
 \end{frame}
 
+\subsection{Ce que ce n'est pas}
+
 \begin{frame}
   \frametitle{Ce que ce n'est pas}
   \begin{itemize}
@@ -223,6 +230,8 @@
   \item Imprévisible
   \end{itemize}
 \end{frame}
+
+\subsection{Processus de création}
 
 \begin{frame}
   \frametitle{Processus de création d'un document {\LaTeX}}
@@ -289,6 +298,8 @@
   \end{itemize}
 \end{frame}
 
+\subsection{Outils de production}
+
 \begin{frame}
   \frametitle{Moteurs et formats}
   \begin{tabular}{r}
@@ -331,17 +342,17 @@
   \item Numéro de version de {\TeX} converge vers $\pi$:
 \begin{lstlisting}
 $ tex --version
-TeX `\textbf{3.14159265}' (TeX Live 2014)
-kpathsea version 6.2.0
-Copyright 2014 D.E. Knuth.
+TeX `\textbf{3.14159265}' (TeX Live 2015)
+kpathsea version 6.2.1
+Copyright 2015 D.E. Knuth.
 [...]
 \end{lstlisting}
   \item Pour en savoir plus:
     \begin{itemize}
-    \item \href{http://www.tug.org/whatis.html}{Histoire de \TeX} (anglais)
+    \item \link{http://www.tug.org/whatis.html}{Histoire de \TeX} (anglais)
     \item {\TeX} sur Wikipedia
-      (\href{http://fr.wikipedia.org/wiki/TeX}{français};
-      \href{http://en.wikipedia.org/wiki/TeX}{anglais}, plus complet)
+      (\link{http://fr.wikipedia.org/wiki/TeX}{français};
+      \link{http://en.wikipedia.org/wiki/TeX}{anglais}, plus complet)
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -1725,27 +1736,27 @@ align*
   \begin{itemize}
   \item Un excellent livre de référence
     \begin{quote}
-      \href{http://ariane.ulaval.ca/cgi-bin/recherche.cgi?qu=a1982705}{%
+      \link{http://ariane.ulaval.ca/cgi-bin/recherche.cgi?qu=a1982705}{%
         \emph{Guide to {\LaTeX}}, 4{\ieme} éd., de H.~Kopka et P.W.~Daly}
     \end{quote}
   \item En français, en ligne, libre
     \begin{quote}
-      \href{http://fr.wikibooks.org/wiki/LaTeX}{%
+      \link{http://fr.wikibooks.org/wiki/LaTeX}{%
         \emph{LaTeX} dans Wikilivre}
     \end{quote}
   \item Foire aux questions bien garnie
     \begin{quote}
-      \href{http://www.tex.ac.uk/cgi-bin/texfaq2html}{%
+      \link{http://www.tex.ac.uk/cgi-bin/texfaq2html}{%
         \emph{UK List of {\TeX} Frequently Asked Questions}}
     \end{quote}
   \item Forum de discussion très actif
     \begin{quote}
-      \href{http://tex.stackexchange.com}{%
+      \link{http://tex.stackexchange.com}{%
         {\TeX}--{\LaTeX} Stack Exchange}
     \end{quote}
   \item Liste de symboles disponibles dans {\LaTeX}
     \begin{quote}
-      \href{http://www.ctan.org/tex-archive/info/symbols/comprehensive/}{%
+      \link{http://www.ctan.org/tex-archive/info/symbols/comprehensive/}{%
         \emph{The Comprehensive {\LaTeX} Symbol List}} \\
       (aussi fournie avec {\TeX}~Live)
     \end{quote}
