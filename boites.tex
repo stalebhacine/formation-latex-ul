@@ -138,7 +138,7 @@ pour le texte normal.
 Les boîtes créées avec \cmd{\parbox} ne peuvent contenir de structures
 «complexes» comme des listes ou des tableaux. Parce que plus général,
 l'outil véritablement utile pour la création de boîtes verticales est
-l'environnement \Ie{minipage}. Cet environnement peut contenir à peu
+l'environnement \Pe{minipage}. Cet environnement peut contenir à peu
 n'importe quel type de contenu. Comme son nom l'indique, c'est ni plus
 ni moins qu'une page miniature à l'intérieur de la page standard.
 
@@ -151,7 +151,7 @@ La syntaxe de l'environnement \Ie{minipage} est la suivante:
 La signification des arguments \meta{largeur} et \meta{pos} est la
 même que pour la commande \cmd{parbox}.
 
-L'environnement \Ie{minipage} est souvent utilisé pour disposer des
+L'environnement \Pe{minipage} est souvent utilisé pour disposer des
 éléments de contenu de manière spécifique sur la page, notamment des
 tableaux ou des figures côte à côte ou en grille (voir
 l'\autoref{exemple:tableaux:grille} à la
@@ -350,14 +350,14 @@ tous les exercices ci-dessous.
     \end{minipage}
   \end{center}
   La raison: pour {\TeX}, la \Ie{minipage} externe ne contient que
-  deux «caractères» sur une seule ligne de «texte». La \Ie{minipage}
+  deux «caractères» sur une seule ligne de «texte». La \Pe{minipage}
   est donc correctement alignée sur sa ligne du bas, mais celle-ci se
   trouve aussi être la ligne du haut.
 
   Pour parvenir au résultat escompté, utiliser la commande \cmd{\mbox}
-  pour créer une seconde ligne (vide) dans la \Ie{minipage} externe.
+  pour créer une seconde ligne (vide) dans la \Pe{minipage} externe.
   \begin{sol}
-    L'idée consiste à créer une seconde ligne dans la \Ie{minipage}
+    L'idée consiste à créer une seconde ligne dans la \Pe{minipage}
     externe sans que celle-ci n'occupe aucun espace. Pour ce faire, on
     insère du contenu vide avec \cs{mbox\{\}}, tel qu'expliqué à la
     \autopageref{item:boites:mbox}. Le code
@@ -419,10 +419,10 @@ tous les exercices ci-dessous.
   boîtes, $5$~mm.
   \begin{sol}
     La solution la plus simple consiste à réunir les deux premières
-    boîtes dans une \Ie{minipage} dans laquelle les deux boîtes seront
-    alignées tel que désiré, puis à aligner la \Ie{minipage} avec la
+    boîtes dans une \Pe{minipage} dans laquelle les deux boîtes seront
+    alignées tel que désiré, puis à aligner la \Pe{minipage} avec la
     troisième boîte. Cependant, il faut insérer une seconde ligne
-    invisible dans la \Ie{minipage} afin de pouvoir l'aligner par le
+    invisible dans la \Pe{minipage} afin de pouvoir l'aligner par le
     bas avec la boîte de droite:
 \begin{lstlisting}
 \begin{minipage}[b]{80mm}
