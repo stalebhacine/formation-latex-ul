@@ -259,7 +259,6 @@
   \newcommand{\pkg}[1]{\textbf{#1}}
   \newcommand{\mat}[1]{\symbf{#1}} % en mode mathématique
 
-
   \newcommand*{\Pe}[1]{\texttt{#1}}                      % print env name
   \newcommand*{\ixenv}[1]{\index{#1 env?\Pe{#1} (environnement)}% index env
     \index{environnement!#1?\Pe{#1}}}
@@ -285,11 +284,17 @@
       [\hfill\faBook~\fichier{#2}]%
       {\faBook~\fichier{#2}}}}
 
+  %% Suppression de l'hyperlien
+  \newcommand{\nolink}[1]{\begin{NoHyper}#1\end{NoHyper}}
+
   %% Pour le tableau des commandes d'espacement en mode mathématique.
   %% Pris de la doc de amsmath.
   \newcommand{\lspx}{\mathord{\dashv\mkern-3mu}}
   \newcommand{\rspx}{\mathord{\mkern-2mu\vdash}}
   \newcommand{\spx}[1]{$\lspx #1\rspx$}
+
+  %% Logo BIBTeX; tiré de http://bit.ly/1RQqUnG
+  \newcommand{\BibTeX}{\rmfamily B\kern-.05em{\scshape i\kern-.025em b}\kern-.08em \TeX}
 
   %%% =======
   %%%  Varia
@@ -322,7 +327,7 @@
   %                                         Exercices \textemdash\
   %                                         édition \year}
 
-%\includeonly{commandes,solutions}
+\includeonly{bibliographie}
 
 \begin{document}
 
@@ -358,7 +363,7 @@
 \include{boites}
 \include{tableaux+figures}
 \include{mathematiques}
-% \include{bibliographie}
+\include{bibliographie}
 \include{commandes}
 % \include{polices}
 % \include{varia}
