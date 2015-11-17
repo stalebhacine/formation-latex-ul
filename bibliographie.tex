@@ -1,6 +1,8 @@
 \chapter{Bibliographie et citations}
 \label{chap:bibliographie}
 
+\nobibliography*
+
 La production de la bibliographie d'un ouvrage d'une certaine ampleur
 --- qu'il s'agisse d'un article scientifique, d'un mémoire, d'une
 thèse --- est une tâche d'une grande importance qui peut rapidement devenir
@@ -32,10 +34,10 @@ des tâches hautement spécialisées. Comme la plupart des traitements de
 texte, {\LaTeX} les confie donc à des outils externes.
 
 %% hack ici pour afficher le logo BibTeX en police sans serif qui n'a
-%% pas de version petites capitales, tout en utilisant la commande
-%% dans la table des matières
+%% pas de version petites capitales tout en utilisant la commande
+%% usuelle dans la table des matières
 \subsection[{\BibTeX} et \pkg{natbib}]{%
-  B\kern-.025em{\small I}\kern-.025em{\small  B}\kern-.08em\TeX %
+  {B\kern-.025em{\small I}\kern-.025em{\small  B}\kern-.08em\TeX} %
   et \pkg{natbib}}
 \label{sec:bibliographie:systeme:bibtex}
 
@@ -45,13 +47,14 @@ est stable et prévisible --- ce que d'aucuns considéreraient des
 bogues passent pour des caractéristiques --- et, surtout, il existe un
 vaste catalogue de références bibliographiques en format {\BibTeX}.
 C'est généralement le seul format accepté par les revues
-scientifiques. Même Wikipedia, dans les rubriques «Citer cette page»
-offre les citations en format {\BibTeX}.
+scientifiques. Non qu'il s'agisse d'un argument massue, mais même
+Wikipedia, dans les rubriques «Citer cette page», offre les citations
+en format {\BibTeX}.
 
 {\BibTeX} est principalement un système de tri d'entrées
 bibliographiques et d'interface avec la base de données. Contrôler
 l'apparence des citations et de la bibliographie requiert un
-\texttt{style}. Les styles standards sont \code{plain}, \code{unsrt},
+\emph{style}. Les styles standards sont \code{plain}, \code{unsrt},
 \code{alpha} et \code{abbrv}; nous y reviendrons. \textbf{*******}
 
 Fonctionnant de pair --- et exclusivement --- avec {\BibTeX},
@@ -71,11 +74,13 @@ D'ailleurs, la classe \class{ulthese} pour les thèses et mémoires de
 l'Université Laval charge par défaut le paquetage.
 
 Il existe plusieurs autres paquetages pour rencontrer des exigences
-particulières avec {\BibTeX}. \citet{Mori:bibliographies:2009} en
-offre un bon survol. Consulter aussi la section \emph{Bibliographies
-  and citations} de la formidable %
+particulières avec {\BibTeX}: bibliographies multiples, bibliographies
+par chapitre, etc. \citet{Mori:bibliographies:2009} en offre un bon
+survol. Consulter aussi la section \emph{Bibliographies and citations}
+de la formidable %
 \doc[\emph{UK List of {\TeX} Frequently Asked
   Questions}]{letterfaq}{http://www.tex.ac.uk/}.
+
 
 \subsection{Biber et biblatex}
 \label{sec:bibliographie:systeme:biblatex}
@@ -89,7 +94,7 @@ fonctionnalités additionnelles. Citons le support natif des caractères
 UTF-8 et de nombreux modes de citation, dont le mode
 auteur-titre populaire en sciences humaines.
 
-Le duo Biber-\pkg{biblatex} a pour lui un développement récent en
+Le duo Biber-\pkg{biblatex} bénéficie d'un développement récent en
 phase avec les technologies et les préoccupations actuelles. Certains
 enjoignent aux débutants de sauter dans ce train. Difficile,
 cependant, de dire si ce nouveau système saura s'établir comme nouveau
@@ -107,7 +112,7 @@ ce chapitre à la fois du système le plus répandu et de celui avec
 lequel nous sommes le plus familier, soit la combinaison {\BibTeX} et
 \pkg{natbib}.
 
-\subsection{Endnote}
+\subsection{EndNote}
 \label{sec:bibliographie:systeme:endnote}
 
 EndNote est un logiciel commercial de gestion bibliographique très
@@ -123,6 +128,159 @@ Il est hors de la portée de ce document de traiter de la conversion
 des données bibliographiques de EndNote. Une simple recherche dans
 Internet sur «EndNote BibTeX» devrait fournir toute l'information
 nécessaire pour réaliser la conversion.
+
+
+
+\section{Création d'une base de données}
+\label{sec:bibliographie:bib}
+
+% Il est tout à fait possible de citer des références et de construire
+% une bibliographie avec {\LaTeX} sans avoir recours à une base de
+% données bibliographiques et à {\BibTeX} pour traiter celles-ci.
+% L'investissement requis en temps et en efforts pour adopter l'approche
+% {\BibTeX} demeure toutefois faible, surtout au regard des avantages:
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+L'utilisation d'une base de données bibliographiques offre
+d'importants avantages par rapport à un traitement manuel:
+\begin{itemize}
+\item on y entre les informations une seule fois pour ensuite les
+  utiliser à l'envi;
+\item le traitement automatisé des informations assure une
+  présentation uniforme de celles-ci;
+\item on peut changer le style de présentation de la bibliographie
+  sans pour autant toucher aux informations bibliographiques.
+\end{itemize}
+
+La base de données n'est en fait qu'un simple fichier texte dans
+lequel sont regroupées dans un format précis les informations
+bibliographiques. Le nom du fichier doit nécessairement comporter
+l'extension \code{.bib}.
+
+La base de données est composée d'entrées de divers \emph{types}:
+livre, article scientifique, thèse, etc. Chaque entrée comporte un
+certain nombre de \emph{champs}: titre, nom de l'auteur, date de
+publication, etc. Pour un type d'entrée donné, certains champs sont
+obligatoires, d'autres optionnels et d'autres simplement ignorés ou
+inactifs.
+
+La structure générale d'une entrée de base de données est la suivante:
+\begin{lstlisting}
+@`\meta{type\_entree}'{`\meta{clé}',
+  `\marg{champs}' = `\marg{valeur}',
+  ...,
+  `\marg{champs}' = `\marg{valeur}'
+}
+\end{lstlisting}
+Ci-dessus, \meta{clé} est un identifiant arbitraire, mais unique ---
+et idéalement mnémonique --- de l'entrée. C'est cette clé qui sera
+utilisée pour faire référence à l'entrée dans le code source du
+document.
+
+Voyons immédiatement quelques exemples pour mieux comprendre ce dont
+il est question. On trouvera ci-dessous les entrées bibliographiques
+d'un livre \citep{Kopka:latex:4e}, d'un article scientifique
+\citep{Mori:bibliographies:2009} et d'un manuel générique, en
+l'occurence la documentation d'un paquetage \citep{natbib}. Pour
+faciliter la comparaison, chaque entrée est immédiatement suivie du
+texte tel qu'il apparait dans la bibliographie.
+
+\begin{lstlisting}
+@Book{Kopka:latex:4e,
+  author = 	 {Kopka, Helmut and Daly, Patrick W.},
+  title = 	 {Guide to {\LaTeX}},
+  publisher = 	 {Addison-Wesley},
+  year = 	 2003,
+  edition = 	 4,
+  isbn = 	 {978-0321173850},
+  language = 	 {english}
+}
+\end{lstlisting}
+
+\begin{framed}
+  \noindent \nolink{\bibentry{Kopka:latex:4e}}.
+\end{framed}
+
+\begin{lstlisting}
+@Article{Mori:bibliographies:2009,
+  author = 	 {Lapo F. Mori},
+  title = 	 {Managing bibliographies with {\LaTeX}},
+  journal = 	 {{TUG}boat},
+  year = 	 2009,
+  volume = 	 30,
+  number = 	 1,
+  pages = 	 {36-48},
+  url =		 {https://www.tug.org/TUGboat/tb30-1/tb94mori.pdf},
+  language = 	 {english}
+}
+\end{lstlisting}
+
+\begin{framed}
+\noindent \nolink{\bibentry{Mori:bibliographies:2009}}.
+\end{framed}
+
+\begin{lstlisting}
+@Manual{natbib,
+  author = 	 {Patrick W. Daly},
+  title = 	 {Natural Sciences Citations and References},
+  year = 	 2010,
+  url = 	 {http://www.ctan.org/pkg/natbib/},
+  language = 	 {english}
+}
+\end{lstlisting}
+
+\begin{framed}
+\noindent \nolink{\bibentry{natbib}}.
+\end{framed}
+
+\begin{itemize}
+\item Les types d'entrées dans les exemples ci-dessus sont
+  \code{Manual}, \code{Article} et \code{Manual}\footnote{%
+    Les identifiants des types d'entrée et des champs sont insensibles
+    à la casse. Par exemple, on pourrait tout aussi bien débuter une
+    entrée par \verb=@Manual=, \verb=@manual= ou \verb=@MANUAL=.}. %
+  On remarquera que les champs utilisés sont différents d'un type à un
+  autre. On trouvera la liste de tous les types d'entrées et es champs
+  obligatoires et optionnels pour chacun dans \citet{wikipedia:bibtex}.
+\item On entre le nom d'un auteur soit sous la forme \code{Prénom
+    Nom}, soit sous le forme \code{Nom, Prénom}. La seconde forme est
+  surtout utile pour distinguer explicitement le nom du prénom, par
+  exemple dans le cas de prénoms ou de noms multiples.
+\item Lorsqu'un ouvrage compte plus d'un auteur, on sépare le nom
+  complet de chacun des auteurs par \code{and}.
+\item {\BibTeX} gère normalement automatiquement les hauts et bas de
+  casse (majuscules et minuscules), en particulier dans les titres
+  d'ouvrages. Pour préserver une casse particulière, il suffit de
+  placer les lettres entre accolades; voir le  dans le titre de
+  journal TUGboat ci-dessus.
+\item accents
+\item
+\item champs isbn, url et language propres à natbib
+\item
+\end{itemize}
+
+
+
+
+\begin{conseil}
+  Tenter d'entretenir une grande base de données bibliographiques
+  unique peut rapidement devenir pénible.
+
+  Vaut mieux scinder ses références dans plusieurs fichiers par
+  thématique, un peu comme dans une bibliothèque: informatique,
+  mathématiques, statistique, droit, etc.
+
+  Nommer ensuite les fichiers du nom de la thématique:
+  \code{informatique.bib}, \code{droit.bib}, etc.
+\end{conseil}
+
+3. base de données
+   - concepts de base et lien vers ressources complètes
+   - style fr
+4. besoins particuliers
+
 
 
 
@@ -240,7 +398,7 @@ inclure dans la bibliographie.
 
 
 \section{Création de la bibliographie}
-\label{sec:bibliographie:creation}
+\label{sec:bibliographie:bibtex}
 
 Les commandes de la section précédente servent à indiquer à {\LaTeX}
 les ouvrages à inclure dans la bibliographie. C'est toutefois l'outil
@@ -308,24 +466,43 @@ une étape de compilation du document avec {\BibTeX}:
 \end{center}
 
 Plus en détails, le processus de préparation d'un document comprenant
-une bibliographie est le suivant:
+une bibliographie est le suivant.
+
 \begin{enumerate}
-\item composer le texte et y insérer des références avec les commandes
-  de la section précédente;
-\item compiler le document une première fois avec un moteur {\TeX}
-  afin que {\LaTeX} détecte les ouvrages à insérer dans la
-  bibliographie (à cette étape, les références dans le texte
-  apparaissent sous forme d'un point d'interrogation «\textbf{?}»);
-\item compiler le document avec {\BibTeX} afin de préparer le texte
-  des références et composer la bibliographie;
-\item compiler à nouveau le document au moins deux fois avec un moteur
-  {\TeX} afin d'y insérer d'abord la bibliographie, puis le texte des
-  références.
+\item Composer le texte et y insérer des références avec les commandes
+  de la section précédente.
+\item Ajouter dans le texte la commande
+\begin{lstlisting}
+\bibliography`\marg{base\_donnees1, base\_donnees2, ...}'
+\end{lstlisting}
+  à l'endroit où l'on veut qu'apparaisse la bibliographie
+  (généralement à la fin du document). Les arguments
+  \meta{base\_donnees1}, \meta{base\_donnees2}, séparés par des
+  virgules, sont les noms (sans l'extension \code{.bib}) des fichiers
+  de données bibliographiques.
+\item Ajouter dans le préambule ou près de la commande
+  \cmdprint{\bibliography} ci-dessus la commande
+\begin{lstlisting}
+\bibliographystyle`\marg{style}'
+\end{lstlisting}
+  où \meta{style} est un nom de style bibliographique.
+\item \label{item:bibliographie:1} Compiler le document une première
+  fois avec un moteur {\TeX} afin que {\LaTeX} détecte les ouvrages à
+  insérer dans la bibliographie. À cette étape, les références dans le
+  texte apparaissent sous forme d'un point d'interrogation
+  «\textbf{?}».
+\item Compiler le document avec {\BibTeX} afin de préparer le texte
+  des références et composer la bibliographie.
+\item \label{item:bibliographie:2} Compiler à nouveau le document au
+  moins deux fois avec un moteur {\TeX} afin d'y insérer d'abord la
+  bibliographie, puis le texte des références.
 \end{enumerate}
-Il faut répéter ces étapes chaque fois qu'une \emph{nouvelle}
-référence est ajoutée dans le document. Autrement, tant que la
-bibliographie demeure inchangée, une compilation standard avec
-seulement le moteur {\TeX} suffit.
+
+Il faut répéter les étapes
+\ref*{item:bibliographie:1}--\ref*{item:bibliographie:2} chaque fois
+qu'une \emph{nouvelle} référence est ajoutée dans le document.
+Autrement, tant que la bibliographie demeure inchangée, une
+compilation standard avec seulement le moteur {\TeX} suffit.
 
 Les éditeurs de texte spécialisés pour la préparation de documents
 {\LaTeX} offrent généralement des raccourcis pour exécuter la
@@ -358,12 +535,10 @@ Ces deux interfaces sont représentées à la
   manquantes (\emph{undefined references}).
 \end{conseil}
 
-1. citer (avec natbib)
-2. construire la bibliographie avec BIBTeX
-3. base de données
-   - concepts de base et lien vers ressources complètes
-   - style fr
-4. conversion depuis Endnote
+Infos additionnelles dans section \href{Gestion de la
+  bibliographie}{https://fr.wikibooks.org/wiki/LaTeX/Gestion_de_la_bibliographie}
+de \citet{wikilivres:latex}
+
 
 %%%
 %%% Exercices
