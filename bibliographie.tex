@@ -55,7 +55,8 @@ en format {\BibTeX}.
 bibliographiques et d'interface avec la base de données. Contrôler
 l'apparence des citations et de la bibliographie requiert un
 \emph{style}. Les styles standards sont \code{plain}, \code{unsrt},
-\code{alpha} et \code{abbrv}; nous y reviendrons. \textbf{*******}
+\code{alpha} et \code{abbrv}; nous y reviendrons à la
+\autoref{sec:bibliographie:style}.
 
 Fonctionnant de pair --- et exclusivement --- avec {\BibTeX},
 \pkg{natbib} \citep{natbib} est un paquetage qui fournit des styles et
@@ -69,7 +70,7 @@ ci-dessus.
 
 Parce qu'il est flexible et qu'il rend facile de produire des
 extensions compatibles, \pkg{natbib} est en quelque sorte devenu un
-standard \emph{de facto} pour la composition des bibliogrpahies.
+standard \emph{de facto} pour la composition des bibliographies.
 D'ailleurs, la classe \class{ulthese} pour les thèses et mémoires de
 l'Université Laval charge par défaut le paquetage.
 
@@ -169,9 +170,9 @@ inactifs.
 La structure générale d'une entrée de base de données est la suivante:
 \begin{lstlisting}
 @`\meta{type\_entree}'{`\meta{clé}',
-  `\marg{champs}' = `\marg{valeur}',
+  `\marg{champ}' = `\marg{valeur}',
   ...,
-  `\marg{champs}' = `\marg{valeur}'
+  `\marg{champ}' = `\marg{valeur}'
 }
 \end{lstlisting}
 Ci-dessus, \meta{clé} est un identifiant arbitraire, mais unique ---
@@ -237,32 +238,55 @@ texte tel qu'il apparait dans la bibliographie.
 
 \begin{itemize}
 \item Les types d'entrées dans les exemples ci-dessus sont
-  \code{Manual}, \code{Article} et \code{Manual}\footnote{%
+  \code{Book}, \code{Article} et \code{Manual}\footnote{%
     Les identifiants des types d'entrée et des champs sont insensibles
     à la casse. Par exemple, on pourrait tout aussi bien débuter une
-    entrée par \verb=@Manual=, \verb=@manual= ou \verb=@MANUAL=.}. %
+    entrée par \code{@Manual}, \code{@manual} ou \code{@MANUAL}.}. %
   On remarquera que les champs utilisés sont différents d'un type à un
-  autre. On trouvera la liste de tous les types d'entrées et es champs
-  obligatoires et optionnels pour chacun dans \citet{wikipedia:bibtex}.
-\item On entre le nom d'un auteur soit sous la forme \code{Prénom
-    Nom}, soit sous le forme \code{Nom, Prénom}. La seconde forme est
-  surtout utile pour distinguer explicitement le nom du prénom, par
-  exemple dans le cas de prénoms ou de noms multiples.
-\item Lorsqu'un ouvrage compte plus d'un auteur, on sépare le nom
-  complet de chacun des auteurs par \code{and}.
+  autre.
+
+  On trouvera la liste de tous les types d'entrées et des champs
+  obligatoires et optionnels pour chacun dans, entre autres, %
+  \doc[Wikipedia]{}{https://fr.wikipedia.org/wiki/BibTeX}, %
+  la \doc[documentation de {\BibTeX}]{btxdoc}{http://www.texdoc.org/pkg/btxdoc} %
+  ou la plupart des bons ouvrages de référence comme
+  \citet{Kopka:latex:4e}.
+\item On entre le nom d'un auteur soit sous la forme \code{\{Prénom
+    Nom\}}, soit sous la forme \code{\{Nom, Prénom\}}. La seconde
+  forme est surtout utile pour distinguer explicitement le nom du
+  prénom, par exemple dans le cas de prénoms ou de noms multiples.
+\item Lorsqu'un ouvrage compte plusieurs auteurs, on distingue ceux-ci
+  en séparant le nom complet de \emph{chacun} des auteurs par
+  \code{and}.
 \item {\BibTeX} gère normalement automatiquement les hauts et bas de
   casse (majuscules et minuscules), en particulier dans les titres
   d'ouvrages. Pour préserver une casse particulière, il suffit de
-  placer les lettres entre accolades; voir le  dans le titre de
-  journal TUGboat ci-dessus.
-\item accents
-\item
-\item champs isbn, url et language propres à natbib
-\item
+  placer les lettres entre accolades.
+
+  Par exemple, ci-dessus, le titre du journal TUGboat est entré sous
+  la forme \code{\{\{TUG\}boat\}} pour éviter que {\BibTeX} ne le
+  transforme en «Tugboat».
+\item {\BibTeX} ne supporte pas les lettres accentuées ou autres
+  caractères spéciaux dans le texte des champs. Il faut entrer ceux-ci
+  avec les commandes {\LaTeX} de base; voir %
+  le tableau~17 de la %
+  \doc[Comprehensive {\LaTeX} Symbol List]{comprehensive}{http://texdoc.net/pkg/comprehensive} %
+  pour les accents.
+\item Les champs \code{isbn}, \code{url} et quelques autres
+  \citep[voir][section~2.8]{natbib} sont fournis par le paquetage
+  \pkg{natbib}. Même si ces champs ne devaient pas s'afficher dans la
+  bibliographie pour le style choisi, c'est une bonne idée d'insérer
+  les informations dans la base de données pour référence future.
+\item Le champ \code{language}, introduit par \pkg{babel}, permet de
+  préciser la langue de l'entrée bibliographique. La césure de mots et
+  la composition de certains éléments seront ainsi adaptées en
+  conséquence.
+
+  Par exemple, si l'entrée d'un document comporte le champ
+  \code{edition = 2}, sa fiche bibliographique contiendra la mention
+  «2{\ieme} édition» ou «2\up{nd} edition» selon que l'on a précisé
+  que l'ouvrage est en français ou en anglais.
 \end{itemize}
-
-
-
 
 \begin{conseil}
   Tenter d'entretenir une grande base de données bibliographiques
@@ -283,6 +307,156 @@ texte tel qu'il apparait dans la bibliographie.
 
 
 
+\section{Style des citations et de la bibliographie}
+\label{sec:bibliographie:style}
+
+Il existe plusieurs manières différentes de présenter une
+bibliographie et {\LaTeX} s'adapte tout naturellement aux divers
+besoins des utilisateurs. Le format général de la bibliographie est
+contrôlé par un \emph{style} choisi avec la commande
+\cmd{\bibliographystyle}. Le style affecte habituellement deux
+composantes de la bibliographie:
+\begin{enumerate}
+\item le mode de citation dans le texte (numérique, alphanumérique,
+  auteur-année, etc.);
+\item la présentation des notices bibliographiques (ordre des
+  éléments, ponctuation, mise en forme, etc.).
+\end{enumerate}
+
+Tel que mentionné précédemment, les styles standards de {\LaTeX} sont
+\code{plain}, \code{unsrt}, \code{alpha} et \code{abbrv}. Ces styles
+ont été développés pour des modes de citation numériques ou
+alphanumériques.
+
+Pour plus de flexibilité, il est recommandé d'utiliser le paquetage
+\pkg{natbib} pour la gestion des références et des styles de la
+bibliographie. Entre autres choses, ce paquetage supporte le style de
+citation auteur-année fréquemment employé en sciences naturelles et
+sociales, plusieurs commandes de citation, un grand nombre de styles
+de bibliographie ainsi que des entrées spécifiques pour les numéros
+ISBN et les URL. Le paquetage fournit des styles de bibliographie
+|plainnat|, |unsrtnat| et |abbrvnat| similaires aux styles standards,
+mais plus complets. Il existe des %
+\doc[versions francisées]{}{http://mirrors.ctan.org/biblio/bibtex/contrib/bib-fr/} %
+de ces styles (et de quelques autres) dans CTAN.
+
+\begin{table}
+  \small
+  \textbf{Styles standards numériques et alphanumériques} \\[6pt]
+  \begin{tabularx}{1.0\linewidth}{p{0.16\linewidth}p{0.35\linewidth}X}
+    \toprule
+    style & mode de citation & format de notice \\
+    \midrule
+    \code{plain} &
+    Un bon ouvrage de référence est [1]  &
+    \begin{bibexample}
+    \item[{[1]}] Helmut Kopka and Patrick~W. Daly.
+      \emph{Guide to {\LaTeX}}. Addison-Wesley, 4 edition, 2003.
+    \end{bibexample}
+    \\ \addlinespace[8pt]
+    \code{plain-fr} &
+    Un bon ouvrage de référence est [1] &
+    \begin{bibexample}
+    \item[{[1]}] Helmut \textsc{Kopka} et Patrick~W. \textsc{Daly}:
+      \emph{Guide to {\LaTeX}}. Addison-Wesley, 4 édition, 2003.
+    \end{bibexample}
+    \\ \addlinespace[8pt]
+    \code{alpha-fr} &
+    Un bon ouvrage de référence est [KD03] &
+    \begin{bibexample}
+    \item[{[KD03]}] Helmut \textsc{Kopka} et Patrick~W. \textsc{Daly}:
+      \emph{Guide to {\LaTeX}}. Addison-Wesley, 4 édition, 2003.
+    \end{bibexample} \\
+  \end{tabularx} \\
+  \bigskip
+
+  \textbf{Styles auteur-année avec \pkg{natbib}} \\[6pt]
+  \begin{tabularx}{1.0\linewidth}{p{0.16\linewidth}p{0.35\linewidth}X}
+    \toprule
+    style & mode de citation & format de notice \\
+    \midrule
+    \code{plainnat-fr} &
+    Un bon ouvrage de référence est Kopka et Daly (2003)  &
+    \begin{bibexample}
+    \item[] Helmut \textsc{Kopka} et Patrick~W. \textsc{Daly}:
+      \emph{Guide to {\LaTeX}}. Addison-Wesley, 4 édition, 2003.
+    \end{bibexample}
+    \\ \addlinespace[8pt]
+    \code{francais} &
+    Un bon ouvrage de référence est Kopka et Daly (2003)  &
+    \begin{bibexample}
+    \item[] Kopka, H.\ et P.~W. Daly. 2003.
+      \emph{Guide to {\LaTeX}}, 4{\ieme} éd., Addison-Wesley.
+    \end{bibexample}
+  \end{tabularx}
+  \caption{Quelques styles de bibliographie et leur effet sur le mode de
+    citation et le format des notices bibliographiques}
+  \label{tab:bibliographie:styles}
+\end{table}
+
+
+Afin d'assurer le bon fonctionnement avec \pkg{babel}, le
+paquetage \pkg{natbib} est chargé par la classe \class{ulthese}
+(à moins que l'option |nonatbib| ne soit spécifiée) avec les options
+par défaut, soit |round|, |semicolon| et |authoryear|. Pour
+spécifier d'autres options, vous avez deux possibilités:
+% \begin{enumerate}
+% \item utiliser l'option |nonatbib| de la classe et ensuite charger
+%   explicitement \pkg{natbib} avec ses options;
+% \item
+%   \begin{DescribeMacro}{\setcitestyle}
+%     passer de nouvelles options à \pkg{natbib} avec la
+%     commande |\setcitestyle|.
+%   \end{DescribeMacro}
+% \end{enumerate}
+
+Par exemple, pour utiliser un style de citation numérique où le
+numéro de la référence se trouve entre crochets, on peut procéder de
+l'une de ces deux manières:
+% \begin{quote}
+%   |\documentclass[nonatbib]{ulthese}| \\
+%   |\usepackage[numbers,square]{natbib}| \\
+%   |...| \\
+%   |\bibliographystyle{plain-fr}|
+% \end{quote}
+% ou
+% \begin{quote}
+%   |\documentclass{ulthese}| \\
+%   |...| \\
+%   |\bibliographystyle{plain-fr}| \\
+%   |\setcitestyle{numbers,square}|
+% \end{quote}
+
+Consulter la %
+\doc{natbib.pdf}{http://texdoc.net/pkg/natbib/} %
+de \pkg{natbib} pour les détails.
+
+On trouve dans CTAN le paquetage
+\href{http://www.ctan.org/pkg/francais-bst/}{\pkg{francais-bst}}
+qui fournit une feuille de style compatible avec \pkg{natbib}.
+Celle-ci permet de composer des bibliographies auteur-année
+respectant les normes de typographie française proposées dans
+\cite{Malo:1996}. Pour utiliser ce style, on spécifiera dans le
+préambule du document LaTeX
+\begin{quote}
+  |\bibliographystyle{francais}|
+\end{quote}
+
+Autrement, la FESP n'a pas d'exigences particulières quant à la
+présentation de la bibliographie (présentation du titre, des auteurs
+et autres informations bibliographiques).
+
+
+Tel que mentionné précédemment, les styles de bibliographie par défaut
+sont plain, unsrt et abbrev. Ils sont orientés vers des styles de
+référencement par numéro. Les deux premiers
+
+
+La plupart des journaux scientifiques et des maisons d'édition ont
+leur propre style que les auteurs sont tenus d'utiliser.
+
+Aucun style prééatabli pour les thèses et mémoires de l'Université
+Laval. Il convient d'utiliser le style courant dans sa discipline.
 
 \section{Insertion de références dans le texte}
 \label{sec:bibliographie:cite}
@@ -535,9 +709,9 @@ Ces deux interfaces sont représentées à la
   manquantes (\emph{undefined references}).
 \end{conseil}
 
-Infos additionnelles dans section \href{Gestion de la
-  bibliographie}{https://fr.wikibooks.org/wiki/LaTeX/Gestion_de_la_bibliographie}
-de \citet{wikilivres:latex}
+Infos additionnelles dans section \href{https://fr.wikibooks.org/wiki/LaTeX/Gestion_de_la_bibliographie}{Gestion de la
+  bibliographie}
+de \citeauthor{wikilivres:latex}
 
 
 %%%
