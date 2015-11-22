@@ -29,7 +29,7 @@ les quelques secondes de compilation nécessaires pour la composer.
 \section{Quel système utiliser?}
 \label{sec:bibliographie:systeme}
 
-La gestion des citations et la composition d'une bibliogrpahie sont
+La gestion des citations et la composition d'une bibliographie sont
 des tâches hautement spécialisées. Comme la plupart des traitements de
 texte, {\LaTeX} les confie donc à des outils externes.
 
@@ -62,8 +62,7 @@ Fonctionnant de pair --- et exclusivement --- avec {\BibTeX},
 \pkg{natbib} \citep{natbib} est un paquetage qui fournit des styles et
 des commandes pour composer des bibliographies dans le format
 auteur-année\footnote{%
-  Comme on peut le voir dans cette phrase, c'est le style utilisé dans
-  le présent document.} %
+  C'est le style utilisé dans le présent document.} %
 fréquemment utilisé dans les sciences naturelles et sociales. Il est
 également compatible avec les styles de citation standards mentionnés
 ci-dessus.
@@ -108,7 +107,7 @@ du site \url{tex.stackexchange.com} qui fournit un excellent sommaire des
 mérites et des inconvénients respectifs des deux systèmes de
 traitement de bibliographie.
 
-En l'absence d'un concensus clair, nous avons choisi de traiter dans
+En l'absence d'un consensus clair, nous avons choisi de traiter dans
 ce chapitre à la fois du système le plus répandu et de celui avec
 lequel nous sommes le plus familier, soit la combinaison {\BibTeX} et
 \pkg{natbib}.
@@ -131,6 +130,29 @@ Internet sur «EndNote BibTeX» devrait fournir toute l'information
 nécessaire pour réaliser la conversion.
 
 
+\section{Processus de création d'une bibliographie}
+\label{sec:bibliographie:processus}
+
+La création d'une bibliographie compte plusieurs étapes. Nous les
+présentons ici afin d'en avoir une vue d'ensemble avant d'aborder les
+détails dans les sections suivantes.
+
+\begin{enumerate}
+\item Construire une ou plusieurs bases de données contenant les
+  informations bibliographiques. On utilise les mêmes bases de données
+  pour tous nos documents. Par conséquent, cette étape s'amenuise au
+  fur et à mesure que l'on complète nos bases de données.
+\item Choisir un style de citation et de présentation de la
+  bibliographie en se fiant aux us et coutumes de sa discipline
+  scientifique.
+\item Insérer dans le texte de son document des références à des
+  ouvrages se trouvant dans les bases de données bibliographiques.
+\item Insérer dans le code source du document les informations
+  relatives au style de bibliographie et aux bases de données à
+  utiliser, puis composer les références et la bibliographie avec
+  {\BibTeX}.
+\end{enumerate}
+
 
 \section{Création d'une base de données}
 \label{sec:bibliographie:bib}
@@ -148,7 +170,7 @@ L'utilisation d'une base de données bibliographiques offre
 d'importants avantages par rapport à un traitement manuel:
 \begin{itemize}
 \item on y entre les informations une seule fois pour ensuite les
-  utiliser à l'envi;
+  utiliser à volonté;
 \item le traitement automatisé des informations assure une
   présentation uniforme de celles-ci;
 \item on peut changer le style de présentation de la bibliographie
@@ -184,19 +206,19 @@ Voyons immédiatement quelques exemples pour mieux comprendre ce dont
 il est question. On trouvera ci-dessous les entrées bibliographiques
 d'un livre \citep{Kopka:latex:4e}, d'un article scientifique
 \citep{Mori:bibliographies:2009} et d'un manuel générique, en
-l'occurence la documentation d'un paquetage \citep{natbib}. Pour
+l'occurrence la documentation d'un paquetage \citep{natbib}. Pour
 faciliter la comparaison, chaque entrée est immédiatement suivie du
-texte tel qu'il apparait dans la bibliographie.
+texte tel qu'il apparaît dans la bibliographie.
 
 \begin{lstlisting}
 @Book{Kopka:latex:4e,
-  author = 	 {Kopka, Helmut and Daly, Patrick W.},
-  title = 	 {Guide to {\LaTeX}},
-  publisher = 	 {Addison-Wesley},
-  year = 	 2003,
-  edition = 	 4,
-  isbn = 	 {978-0321173850},
-  language = 	 {english}
+  author =    {Kopka, Helmut and Daly, Patrick W.},
+  title =     {Guide to {\LaTeX}},
+  publisher = {Addison-Wesley},
+  year =      2003,
+  edition =   4,
+  isbn =      {978-0321173850},
+  language =  {english}
 }
 \end{lstlisting}
 
@@ -206,15 +228,15 @@ texte tel qu'il apparait dans la bibliographie.
 
 \begin{lstlisting}
 @Article{Mori:bibliographies:2009,
-  author = 	 {Lapo F. Mori},
-  title = 	 {Managing bibliographies with {\LaTeX}},
-  journal = 	 {{TUG}boat},
-  year = 	 2009,
-  volume = 	 30,
-  number = 	 1,
-  pages = 	 {36-48},
-  url =		 {https://www.tug.org/TUGboat/tb30-1/tb94mori.pdf},
-  language = 	 {english}
+  author =   {Lapo F. Mori},
+  title =    {Managing bibliographies with {\LaTeX}},
+  journal =  {{TUG}boat},
+  year =     2009,
+  volume =   30,
+  number =   1,
+  pages =    {36-48},
+  url =	     {https://www.tug.org/TUGboat/tb30-1/tb94mori.pdf},
+  language = {english}
 }
 \end{lstlisting}
 
@@ -224,11 +246,11 @@ texte tel qu'il apparait dans la bibliographie.
 
 \begin{lstlisting}
 @Manual{natbib,
-  author = 	 {Patrick W. Daly},
-  title = 	 {Natural Sciences Citations and References},
-  year = 	 2010,
-  url = 	 {http://www.ctan.org/pkg/natbib/},
-  language = 	 {english}
+  author =   {Patrick W. Daly},
+  title =    {Natural Sciences Citations and References},
+  year =     2010,
+  url =      {http://www.ctan.org/pkg/natbib/},
+  language = {english}
 }
 \end{lstlisting}
 
@@ -292,18 +314,13 @@ texte tel qu'il apparait dans la bibliographie.
   Tenter d'entretenir une grande base de données bibliographiques
   unique peut rapidement devenir pénible.
 
-  Vaut mieux scinder ses références dans plusieurs fichiers par
+  Mieux vaut scinder ses références dans plusieurs fichiers par
   thématique, un peu comme dans une bibliothèque: informatique,
   mathématiques, statistique, droit, etc.
 
   Nommer ensuite les fichiers du nom de la thématique:
   \code{informatique.bib}, \code{droit.bib}, etc.
 \end{conseil}
-
-3. base de données
-   - concepts de base et lien vers ressources complètes
-   - style fr
-4. besoins particuliers
 
 
 
@@ -320,25 +337,10 @@ composantes de la bibliographie:
 \item le mode de citation dans le texte (numérique, alphanumérique,
   auteur-année, etc.);
 \item la présentation des notices bibliographiques (ordre des
-  éléments, ponctuation, mise en forme, etc.).
+  éléments, ponctuation, mise en forme des caractères, etc.).
 \end{enumerate}
-
-Tel que mentionné précédemment, les styles standards de {\LaTeX} sont
-\code{plain}, \code{unsrt}, \code{alpha} et \code{abbrv}. Ces styles
-ont été développés pour des modes de citation numériques ou
-alphanumériques.
-
-Pour plus de flexibilité, il est recommandé d'utiliser le paquetage
-\pkg{natbib} pour la gestion des références et des styles de la
-bibliographie. Entre autres choses, ce paquetage supporte le style de
-citation auteur-année fréquemment employé en sciences naturelles et
-sociales, plusieurs commandes de citation, un grand nombre de styles
-de bibliographie ainsi que des entrées spécifiques pour les numéros
-ISBN et les URL. Le paquetage fournit des styles de bibliographie
-|plainnat|, |unsrtnat| et |abbrvnat| similaires aux styles standards,
-mais plus complets. Il existe des %
-\doc[versions francisées]{}{http://mirrors.ctan.org/biblio/bibtex/contrib/bib-fr/} %
-de ces styles (et de quelques autres) dans CTAN.
+On trouvera des exemples de quelques style de bibliographie dans le
+\autoref{tab:bibliographie:styles}.
 
 \begin{table}
   \small
@@ -368,7 +370,7 @@ de ces styles (et de quelques autres) dans CTAN.
       \emph{Guide to {\LaTeX}}. Addison-Wesley, 4 édition, 2003.
     \end{bibexample} \\
   \end{tabularx} \\
-  \bigskip
+  \medskip
 
   \textbf{Styles auteur-année avec \pkg{natbib}} \\[6pt]
   \begin{tabularx}{1.0\linewidth}{p{0.16\linewidth}p{0.35\linewidth}X}
@@ -394,69 +396,50 @@ de ces styles (et de quelques autres) dans CTAN.
   \label{tab:bibliographie:styles}
 \end{table}
 
+Tel que mentionné précédemment, les styles standards de {\LaTeX} sont
+\code{plain}, \code{unsrt}, \code{alpha} et \code{abbrv}. Ces styles
+ont été développés pour des modes de citation numériques ou
+alphanumériques.
 
-Afin d'assurer le bon fonctionnement avec \pkg{babel}, le
-paquetage \pkg{natbib} est chargé par la classe \class{ulthese}
-(à moins que l'option |nonatbib| ne soit spécifiée) avec les options
-par défaut, soit |round|, |semicolon| et |authoryear|. Pour
-spécifier d'autres options, vous avez deux possibilités:
-% \begin{enumerate}
-% \item utiliser l'option |nonatbib| de la classe et ensuite charger
-%   explicitement \pkg{natbib} avec ses options;
-% \item
-%   \begin{DescribeMacro}{\setcitestyle}
-%     passer de nouvelles options à \pkg{natbib} avec la
-%     commande |\setcitestyle|.
-%   \end{DescribeMacro}
-% \end{enumerate}
+Pour plus de flexibilité, il est recommandé d'utiliser le paquetage
+\pkg{natbib} pour la gestion des références et du style de la
+bibliographie. Entre autres choses, ce paquetage supporte le style de
+citation auteur-année fréquemment employé en sciences naturelles et
+sociales, plusieurs commandes de citation, un grand nombre de styles
+de bibliographie ainsi que des entrées spécifiques pour les numéros
+ISBN et les URL. Le paquetage fournit des styles \code{plainnat},
+\code{unsrtnat} et \code{abbrvnat} similaires aux styles standards,
+mais plus complets. Il existe des %
+\doc[versions
+francisées]{}{http://mirrors.ctan.org/biblio/bibtex/contrib/bib-fr/} %
+de ces styles (et de quelques autres) dans CTAN et dans {\TeX}~Live.
+Il est fortement recommandé de consulter la %
+\doc{natbib}{http://texdoc.net/pkg/natbib/} %
+de \pkg{natbib} pour les détails. On y trouvera également des
+informations sur l'utilisation de styles de citation autres que
+auteur-année.
 
-Par exemple, pour utiliser un style de citation numérique où le
-numéro de la référence se trouve entre crochets, on peut procéder de
-l'une de ces deux manières:
-% \begin{quote}
-%   |\documentclass[nonatbib]{ulthese}| \\
-%   |\usepackage[numbers,square]{natbib}| \\
-%   |...| \\
-%   |\bibliographystyle{plain-fr}|
-% \end{quote}
-% ou
-% \begin{quote}
-%   |\documentclass{ulthese}| \\
-%   |...| \\
-%   |\bibliographystyle{plain-fr}| \\
-%   |\setcitestyle{numbers,square}|
-% \end{quote}
+On trouve également dans CTAN et dans {\TeX}~Live le paquetage
+\pkg{francais-bst} \citep{francais-bst} qui fournit deux feuilles de
+style compatibles avec \pkg{natbib}. Celles-ci permettent de composer
+des bibliographies auteur-année respectant les normes de typographie
+française proposées dans \citet{Malo:1996}; voir le dernier exemple
+du \autoref{tab:bibliographie:styles}.
 
-Consulter la %
-\doc{natbib.pdf}{http://texdoc.net/pkg/natbib/} %
-de \pkg{natbib} pour les détails.
+Le paquetage \pkg{natbib} est chargé par défaut par la classe
+\class{ulthese} \citep{ulthese}; consulter la section~6.6 de la %
+\doc{ulthese}{http://texdoc.net/pkg/ulthese/} %
+de la classe pour plus d'information sur l'interaction entre le
+paquetage et celle-ci.
 
-On trouve dans CTAN le paquetage
-\href{http://www.ctan.org/pkg/francais-bst/}{\pkg{francais-bst}}
-qui fournit une feuille de style compatible avec \pkg{natbib}.
-Celle-ci permet de composer des bibliographies auteur-année
-respectant les normes de typographie française proposées dans
-\cite{Malo:1996}. Pour utiliser ce style, on spécifiera dans le
-préambule du document LaTeX
-\begin{quote}
-  |\bibliographystyle{francais}|
-\end{quote}
-
-Autrement, la FESP n'a pas d'exigences particulières quant à la
-présentation de la bibliographie (présentation du titre, des auteurs
-et autres informations bibliographiques).
+En terminant, notons que la plupart des journaux scientifiques et des
+maisons d'édition ont leur propre style que les auteurs sont tenus
+d'utiliser. En ce qui a trait aux thèses et mémoires de l'Université
+Laval, la Faculté des études supérieures et postdoctorales n'impose
+aucune style de bibliographie particulier. Nous recommandons
+d'utiliser le style courant dans sa discipline scientifique.
 
 
-Tel que mentionné précédemment, les styles de bibliographie par défaut
-sont plain, unsrt et abbrev. Ils sont orientés vers des styles de
-référencement par numéro. Les deux premiers
-
-
-La plupart des journaux scientifiques et des maisons d'édition ont
-leur propre style que les auteurs sont tenus d'utiliser.
-
-Aucun style prééatabli pour les thèses et mémoires de l'Université
-Laval. Il convient d'utiliser le style courant dans sa discipline.
 
 \section{Insertion de références dans le texte}
 \label{sec:bibliographie:cite}
@@ -466,13 +449,13 @@ les informations relatives aux ouvrages auxquels un document fait
 référence. Avant de penser créer une bibliographie, il faut donc
 savoir comment insérer des références dans le texte.
 
-D'ici la \autoref{sec:bibliographie:bib}, il faut prendre pour acquis
-que l'on dispose d'une base de données bibliographiques et qu'à chaque
-entrée de cette base de données correspond une \emph{clé} arbitraire,
-mais unique (et idéalement mnémonique). Par exemple, dans la base de
-données employée pour ce document, la référence bibliographique de
-\citet{Mori:bibliographies:2009} est identifiée par la clé
-\code{Mori:bibliographies:2009}.
+% D'ici la \autoref{sec:bibliographie:bib}, il faut prendre pour acquis
+% que l'on dispose d'une base de données bibliographiques et qu'à chaque
+% entrée de cette base de données correspond une \emph{clé} arbitraire,
+% mais unique (et idéalement mnémonique). Par exemple, dans la base de
+% données employée pour ce document, la référence bibliographique de
+% \citet{Mori:bibliographies:2009} est identifiée par la clé
+% \code{Mori:bibliographies:2009}.
 
 La commande de base pour insérer une référence au fil du texte dans
 {\LaTeX} est
@@ -518,27 +501,26 @@ TUGboat a publié un bon survol
 \end{demo}
 
 On ne devrait \emph{jamais} entrer directement dans le texte des
-informations bibliographiques. Par exemple, pour insérer dans le texte
-le nom d'un auteur ou l'année de publication d'un ouvrage, on devrait
-utiliser les commandes de \pkg{natbib}
+informations bibliographiques. Pour insérer dans le texte le nom d'un
+auteur ou l'année de publication d'un ouvrage, on devrait utiliser les
+commandes de \pkg{natbib}
 \begin{lstlisting}
 \citeauthor`\marg{clé}'
 \citeyear`\marg{clé}'
 \end{lstlisting}
 Ainsi, pas de risque de mal orthographier un nom par inadvertance, ou
-d'oublier de modifier dans le texte une année de publication qui aura
-été changée dans la base de données bibliographique.
+d'oublier de modifier dans le texte une année de publication que l'on
+aura changé dans la base de données bibliographique.
 
 Le paquetage fournit plusieurs autres commandes pour manipuler les
-informations bibliographiques et contrôler leur présentation. Il est
-donc fortement recommandé de consulter la %
+informations bibliographiques et contrôler leur présentation;
+consulter la %
 \doc{natbib}{http://www.texdoc.org/pkg/natbib} %
-de \pkg{natbib}. On y trouvera également des informations sur
-l'utilisation de styles de citation autres que auteur-année.
+de \pkg{natbib}.
 
-En terminant, il arrive que l'on souhaite inclure dans la
-bibliographie un ou plusieurs documents qui ne sont pas cités dans le
-texte. Pour ce faire, insérer dans le corps du document la commande
+Il arrive que l'on souhaite inclure dans la bibliographie un ou
+plusieurs documents qui ne sont pas cités dans le texte. Pour ce
+faire, insérer dans le corps du document la commande
 \begin{lstlisting}
 \nocite`\marg{clé1,clé2,...}'
 \end{lstlisting}
@@ -546,7 +528,7 @@ où \meta{clé1}, \meta{clé2}, \dots, sont les clés des documents à
 inclure dans la bibliographie.
 
 \begin{conseil}
-  Lorsque chargé dans le document, le paquetage \pkg{hyperref} fait
+  Le paquetage \pkg{hyperref} fait
   automatiquement d'une référence bibliographique un hyperlien vers
   l'entrée dans la bibliographie. C'est le cas dans le présent
   document.
@@ -555,7 +537,7 @@ inclure dans la bibliographie.
   le supprimer pour une référence particulière, on utilise
   l'environnement \Ie{NoHyper}:
 \begin{lstlisting}
-\begin{NoHyper} \cite`\marg{clé}' \end{NoHyper}
+\begin{NoHyper} \citet`\marg{clé}' \end{NoHyper}
 \end{lstlisting}
   Pour usage fréquent, définir une nouvelle commande. Par exemple,
   avec dans le préambule
@@ -565,8 +547,9 @@ inclure dans la bibliographie.
 \end{lstlisting}
   on pourra utiliser dans le texte
 \begin{lstlisting}
-\nolink{\cite`\marg{clé}'}
+\nolink{\citet`\marg{clé}'}
 \end{lstlisting}
+  pour supprimer l'hyperlien d'une référence bibliographique.
 \end{conseil}
 
 
@@ -579,8 +562,7 @@ les ouvrages à inclure dans la bibliographie. C'est toutefois l'outil
 externe {\BibTeX} qui se chargera de fournir à {\LaTeX} le texte des
 références ainsi que le contenu de la bibliographie.
 
-On l'a vu dans la première partie de cette formation
-\citep{UL:latex:1}, le processus de création d'un document avec
+Le processus de création d'un document avec
 pdf{\LaTeX} ou {\XeLaTeX} se représente schématiquement ainsi:
 \begin{center}
   \sffamily
@@ -645,6 +627,12 @@ une bibliographie est le suivant.
 \begin{enumerate}
 \item Composer le texte et y insérer des références avec les commandes
   de la section précédente.
+\item Ajouter dans le préambule ou près de la commande
+  \cmdprint{\bibliography} ci-dessous la commande
+\begin{lstlisting}
+\bibliographystyle`\marg{style}'
+\end{lstlisting}
+  où \meta{style} est un nom de style bibliographique.
 \item Ajouter dans le texte la commande
 \begin{lstlisting}
 \bibliography`\marg{base\_donnees1, base\_donnees2, ...}'
@@ -654,12 +642,6 @@ une bibliographie est le suivant.
   \meta{base\_donnees1}, \meta{base\_donnees2}, séparés par des
   virgules, sont les noms (sans l'extension \code{.bib}) des fichiers
   de données bibliographiques.
-\item Ajouter dans le préambule ou près de la commande
-  \cmdprint{\bibliography} ci-dessus la commande
-\begin{lstlisting}
-\bibliographystyle`\marg{style}'
-\end{lstlisting}
-  où \meta{style} est un nom de style bibliographique.
 \item \label{item:bibliographie:1} Compiler le document une première
   fois avec un moteur {\TeX} afin que {\LaTeX} détecte les ouvrages à
   insérer dans la bibliographie. À cette étape, les références dans le
@@ -701,6 +683,12 @@ Ces deux interfaces sont représentées à la
   \label{fig:bibliographie:editeurs}
 \end{figure}
 
+On trouvera des informations additionnelles, notamment sur des sources
+de données bibliographiques et des outils de gestion des bases de
+données, dans la section %
+\doc[Gestion de la bibliographie]{}{https://fr.wikibooks.org/wiki/LaTeX/Gestion_de_la_bibliographie} %
+de \citeauthor{wikilivres:latex}.
+
 \begin{conseil}
   Aux toutes dernières étapes avant de rendre un document, s'assurer
   d'exécuter {\BibTeX} une dernière fois et de compiler avec
@@ -709,9 +697,6 @@ Ces deux interfaces sont représentées à la
   manquantes (\emph{undefined references}).
 \end{conseil}
 
-Infos additionnelles dans section \href{https://fr.wikibooks.org/wiki/LaTeX/Gestion_de_la_bibliographie}{Gestion de la
-  bibliographie}
-de \citeauthor{wikilivres:latex}
 
 
 %%%
