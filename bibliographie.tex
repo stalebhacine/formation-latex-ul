@@ -78,8 +78,7 @@ particulières avec {\BibTeX}: bibliographies multiples, bibliographies
 par chapitre, etc. \citet{Mori:bibliographies:2009} en offre un bon
 survol. Consulter aussi la section \emph{Bibliographies and citations}
 de la formidable %
-\doc[\emph{UK List of {\TeX} Frequently Asked
-  Questions}]{letterfaq}{http://www.tex.ac.uk/}.
+\doc[\emph{UK List of {\TeX} Frequently Asked Questions}]{letterfaq}{http://www.tex.ac.uk/}.
 
 
 \subsection{Biber et biblatex}
@@ -101,7 +100,7 @@ cependant, de dire si ce nouveau système saura s'établir comme nouveau
 standard, surtout compte tenu de la masse de matériel disponible pour
 {\BibTeX}.
 
-Pour de l'information additionnelle, consulter
+Pour de l'information additionnelle, consulter %
 \doc[cette entrée]{}{http://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib} %
 du site \url{tex.stackexchange.com} qui fournit un excellent sommaire des
 mérites et des inconvénients respectifs des deux systèmes de
@@ -270,7 +269,8 @@ texte tel qu'il apparaît dans la bibliographie.
   On trouvera la liste de tous les types d'entrées et des champs
   obligatoires et optionnels pour chacun dans, entre autres, %
   \doc[Wikipedia]{}{https://fr.wikipedia.org/wiki/BibTeX}, %
-  la \doc[documentation de {\BibTeX}]{btxdoc}{http://www.texdoc.org/pkg/btxdoc} %
+  la %
+  \doc[documentation de {\BibTeX}]{btxdoc}{http://www.texdoc.org/pkg/btxdoc} %
   ou la plupart des bons ouvrages de référence comme
   \citet{Kopka:latex:4e}.
 \item On entre le nom d'un auteur soit sous la forme \code{\{Prénom
@@ -343,6 +343,9 @@ On trouvera des exemples de quelques style de bibliographie dans le
 \autoref{tab:bibliographie:styles}.
 
 \begin{table}
+  \caption{Quelques styles de bibliographie et leur effet sur le mode de
+    citation et le format des notices bibliographiques}
+  \label{tab:bibliographie:styles}
   \small
   \textbf{Styles standards numériques et alphanumériques} \\[6pt]
   \begin{tabularx}{1.0\linewidth}{p{0.16\linewidth}p{0.35\linewidth}X}
@@ -391,9 +394,6 @@ On trouvera des exemples de quelques style de bibliographie dans le
       \emph{Guide to {\LaTeX}}, 4{\ieme} éd., Addison-Wesley.
     \end{bibexample}
   \end{tabularx}
-  \caption{Quelques styles de bibliographie et leur effet sur le mode de
-    citation et le format des notices bibliographiques}
-  \label{tab:bibliographie:styles}
 \end{table}
 
 Tel que mentionné précédemment, les styles standards de {\LaTeX} sont
@@ -410,8 +410,7 @@ de bibliographie ainsi que des entrées spécifiques pour les numéros
 ISBN et les URL. Le paquetage fournit des styles \code{plainnat},
 \code{unsrtnat} et \code{abbrvnat} similaires aux styles standards,
 mais plus complets. Il existe des %
-\doc[versions
-francisées]{}{http://mirrors.ctan.org/biblio/bibtex/contrib/bib-fr/} %
+\doc[versions francisées]{}{http://mirrors.ctan.org/biblio/bibtex/contrib/bib-fr/} %
 de ces styles (et de quelques autres) dans CTAN et dans {\TeX}~Live.
 Il est fortement recommandé de consulter la %
 \doc{natbib}{http://texdoc.net/pkg/natbib/} %
@@ -539,8 +538,8 @@ inclure dans la bibliographie.
 \begin{lstlisting}
 \begin{NoHyper} \citet`\marg{clé}' \end{NoHyper}
 \end{lstlisting}
-  Pour usage fréquent, définir une nouvelle commande. Par exemple,
-  avec dans le préambule
+  Pour usage fréquent, définir une nouvelle commande
+  (\autoref{chap:commandes}). Par exemple, avec dans le préambule
 \begin{lstlisting}
 \newcommand{\nolink}[1]{%
   \begin{NoHyper}#1\end{NoHyper}}
@@ -554,7 +553,7 @@ inclure dans la bibliographie.
 
 
 
-\section{Création de la bibliographie}
+\section{Composition de la bibliographie}
 \label{sec:bibliographie:bibtex}
 
 Les commandes de la section précédente servent à indiquer à {\LaTeX}
@@ -562,8 +561,8 @@ les ouvrages à inclure dans la bibliographie. C'est toutefois l'outil
 externe {\BibTeX} qui se chargera de fournir à {\LaTeX} le texte des
 références ainsi que le contenu de la bibliographie.
 
-Le processus de création d'un document avec
-pdf{\LaTeX} ou {\XeLaTeX} se représente schématiquement ainsi:
+Le processus de création d'un document avec pdf{\LaTeX} ou {\XeLaTeX}
+se représente schématiquement ainsi \citep{UL:latex:1}:
 \begin{center}
   \sffamily
   \begin{minipage}[t]{0.12\linewidth}
@@ -713,6 +712,8 @@ de \citeauthor{wikilivres:latex}.
 \addcontentsline{toc}{section}{Chapitre \protect\ref*{chap:bibliographie}}
 
 \end{Filesave}
+
+
 
 \Closesolutionfile{solutions}
 
