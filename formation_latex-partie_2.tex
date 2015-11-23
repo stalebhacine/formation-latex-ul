@@ -1,6 +1,6 @@
-\documentclass[letterpaper,11pt,x11names]{memoir}
-  \usepackage{natbib,url}
-  \usepackage[english,francais]{babel}
+\documentclass[letterpaper,11pt,x11names,english,french]{memoir}
+  \usepackage{natbib,url,bibentry}
+  \usepackage{babel}
   \usepackage[autolanguage]{numprint}
   \usepackage{amsmath,amsthm}
   %\usepackage[noae]{Sweave}
@@ -14,7 +14,7 @@
   %\usepackage{applekeys}               % touches Mac
   \usepackage{fontawesome}             % plusieurs icônes
   \usepackage{answers,listings}
-  \usepackage[francais]{varioref}
+  \usepackage{varioref}         % !!! nécessaire ?
   \usepackage{pdfpages}                % couvertures
 
   %%% ===================
@@ -49,13 +49,17 @@
     pdftitle={Rédaction de thèses et mémoires avec LaTeX - Partie II},
     pdfauthor={Université Laval}}
   \setlength{\XeTeXLinkMargin}{1pt}
-  \renewcommand{\subsectionautorefname}{section}
-  \renewcommand{\figureautorefname}{figure}
-  % \newcommand{\subfigureautorefname}{figure}
-  \renewcommand{\tableautorefname}{tableau}
-  % \newcommand{\subtableautorefname}{tableau}
-  \newcommand{\exempleautorefname}{exemple}
-  \newcommand{\exerciceautorefname}{exercice}
+
+  %% Étiquettes de \autoref (redéfinition compatible avec babel)
+  \addto\extrasfrench{%
+    \def\subsectionautorefname{section}
+    \def\figureautorefname{figure}
+    % \newcommand{\subfigureautorefname}{figure}
+    \def\tableautorefname{tableau}
+    % \newcommand{\subtableautorefname}{tableau}
+    % \newcommand{\exempleautorefname}{exemple}
+    \def\exerciceautorefname{exercice}
+  }
 
   %% Table des matières (inspirée de classicthesis.sty)
   \renewcommand{\cftchapterleader}{\hspace{1.5em}}
@@ -209,6 +213,12 @@
     \par
   }
 
+  %% Exemples de notices bibliographiques
+  \newenvironment{bibexample}[1][\linewidth]{%
+    \begin{minipage}[t]{#1}%
+      \begin{trivlist}}
+      {\end{trivlist}\end{minipage}}
+
   %% Remarques importantes
   \newenvironment{important}{%
     \begin{table}[h]%
@@ -279,6 +289,7 @@
   \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
 
   %% Lien vers documentation dans la marge
+  %% usage: \doc[documentation]{nom_fichier}{url}
   \newcommand{\doc}[3][documentation]{\link{#3}{#1}%
     \ifthenelse{\equal{#2}{}}{}{\marginpar%
       [\hfill\faBook~\fichier{#2}]%
@@ -295,6 +306,21 @@
 
   %% Logo BIBTeX; tiré de http://bit.ly/1RQqUnG
   \newcommand{\BibTeX}{\rmfamily B\kern-.05em{\scshape i\kern-.025em b}\kern-.08em \TeX}
+
+  %% Chapitres sur les bibliographies: des références bibliographiques
+  %% sont insérées dans le texte avec \bibentry. Certaines commandes
+  %% de francaisbst.tex sont alors utilisées, mais non encore
+  %% définies. Répétées ici. De plus, il faut définir ici la commande
+  %% \enquote plutôt que dans francais.bst. C'est pourquoi il y a une
+  %% version modifiée de ce fichier dans ces sources.
+  %% Voir http://bit.ly/1MORZmp
+  \global\def\bbland{et}
+  \global\def\bbledn{\'ed.}
+  \global\def\bblfourtho{4{\ieme}}
+  \global\def\bblvol{vol.}
+  \def\bblno{\no{}}
+  \def\bblpp{p.}
+  \newcommand{\enquote}[1]{\guillemotleft#1\guillemotright}
 
   %%% =======
   %%%  Varia
@@ -327,7 +353,7 @@
   %                                         Exercices \textemdash\
   %                                         édition \year}
 
-\includeonly{bibliographie}
+%\includeonly{bibliographie}
 
 \begin{document}
 
