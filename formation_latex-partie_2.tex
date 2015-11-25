@@ -52,13 +52,13 @@
 
   %% Étiquettes de \autoref (redéfinition compatible avec babel)
   \addto\extrasfrench{%
-    \def\subsectionautorefname{section}
-    \def\figureautorefname{figure}
+    \def\subsectionautorefname{section}%
+    \def\figureautorefname{figure}%
     % \newcommand{\subfigureautorefname}{figure}
-    \def\tableautorefname{tableau}
+    \def\tableautorefname{tableau}%
     % \newcommand{\subtableautorefname}{tableau}
-    % \newcommand{\exempleautorefname}{exemple}
-    \def\exerciceautorefname{exercice}
+    \def\exempleautorefname{exemple}%
+    \def\exerciceautorefname{exercice}%
   }
 
   %% Table des matières (inspirée de classicthesis.sty)
@@ -307,7 +307,7 @@
   %% Logo BIBTeX; tiré de http://bit.ly/1RQqUnG
   \newcommand{\BibTeX}{\rmfamily B\kern-.05em{\scshape i\kern-.025em b}\kern-.08em \TeX}
 
-  %% Chapitres sur les bibliographies: des références bibliographiques
+  %% Chapitre sur les bibliographies: des références bibliographiques
   %% sont insérées dans le texte avec \bibentry. Certaines commandes
   %% de francaisbst.tex sont alors utilisées, mais non encore
   %% définies. Répétées ici. De plus, il faut définir ici la commande
@@ -353,7 +353,7 @@
   %                                         Exercices \textemdash\
   %                                         édition \year}
 
-%\includeonly{bibliographie}
+\includeonly{bibliographie}
 
 \begin{document}
 
