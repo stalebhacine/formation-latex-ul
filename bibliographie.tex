@@ -119,7 +119,7 @@ répandu dans certaines disciplines scientifiques. Il n'est donc pas
 rare que les nouveaux utilisateurs de {\LaTeX} demandent: «puis-je
 utiliser EndNote pour ma bibliographie?» La réponse courte est «Non»,
 car {\LaTeX} ne peut traiter directement les données bibliographiques
-de EndNote. La réponse plus longue est «Oui, mais pas directement»,
+de EndNote. La réponse plus longue est «Oui, indirectement»,
 car EndNote possède un filtre pour exporter ses données en format
 {\BibTeX}.
 
@@ -139,13 +139,14 @@ détails dans les sections suivantes.
 \begin{enumerate}
 \item Construire une ou plusieurs bases de données contenant les
   informations bibliographiques. On utilise les mêmes bases de données
-  pour tous nos documents. Par conséquent, cette étape s'amenuise au
-  fur et à mesure que l'on complète nos bases de données.
+  pour tous nos documents. Par conséquent, le temps consacré à cette
+  étape s'amenuise au fur et à mesure que l'on complète nos bases de
+  données.
 \item Choisir un style de citation et de présentation de la
-  bibliographie en se fiant aux us et coutumes de sa discipline
-  scientifique.
+  bibliographie, généralement en se fiant aux us et coutumes dans sa
+  discipline scientifique.
 \item Insérer dans le texte de son document des références à des
-  ouvrages se trouvant dans les bases de données bibliographiques.
+  ouvrages se trouvant dans ses bases de données bibliographiques.
 \item Insérer dans le code source du document les informations
   relatives au style de bibliographie et aux bases de données à
   utiliser, puis composer les références et la bibliographie avec
@@ -156,20 +157,14 @@ détails dans les sections suivantes.
 \section{Création d'une base de données}
 \label{sec:bibliographie:bib}
 
-% Il est tout à fait possible de citer des références et de construire
-% une bibliographie avec {\LaTeX} sans avoir recours à une base de
-% données bibliographiques et à {\BibTeX} pour traiter celles-ci.
-% L'investissement requis en temps et en efforts pour adopter l'approche
-% {\BibTeX} demeure toutefois faible, surtout au regard des avantages:
-% \begin{itemize}
-% \item
-% \end{itemize}
-
-L'utilisation d'une base de données bibliographiques offre
-d'importants avantages par rapport à un traitement manuel:
+Il est tout à fait possible de citer des références et de construire
+une bibliographie avec {\LaTeX} sans avoir recours à une base de
+données bibliographiques et à {\BibTeX} pour traiter celles-ci.
+L'investissement requis en temps et en efforts pour adopter l'approche
+{\BibTeX} demeure toutefois faible, surtout au regard des avantages:
 \begin{itemize}
-\item on y entre les informations une seule fois pour ensuite les
-  utiliser à volonté;
+\item on entre les informations dans une base de données une seule
+  fois pour ensuite les utiliser à répétition;
 \item le traitement automatisé des informations assure une
   présentation uniforme de celles-ci;
 \item on peut changer le style de présentation de la bibliographie
@@ -201,18 +196,20 @@ et idéalement mnémonique --- de l'entrée. C'est cette clé qui sera
 utilisée pour faire référence à l'entrée dans le code source du
 document.
 
-Voyons immédiatement quelques exemples pour mieux comprendre ce dont
-il est question. Suivent des commentaires et précisions sur la
-préparation des entrées bibliographiques.
+Il est beaucoup plus facile de comprendre ce dont il est question ici
+par le biais d'exemples. Suivent l'\autoref{ex:bibliographie:bib} des
+commentaires et précisions sur la préparation des entrées
+bibliographiques.
 
 \begin{exemple}
   \label{ex:bibliographie:bib}
-  On trouvera ci-dessous les entrées bibliographiques d'un livre
+  On trouvera ci-dessous les entrées bibliographiquesd'un livre
   \citep{Kopka:latex:4e}, d'un article scientifique
   \citep{Mori:bibliographies:2009} et d'un manuel générique, en
   l'occurrence la documentation d'un paquetage \citep{natbib}. Pour
   faciliter la comparaison, chaque entrée est immédiatement suivie du
-  texte de la notice tel qu'il apparaît dans la bibliographie.
+  texte de la notice tel qu'il apparaît dans la bibliographie du
+  présent ouvrage.
 
 \begin{lstlisting}
 @Book{Kopka:latex:4e,
@@ -279,8 +276,8 @@ préparation des entrées bibliographiques.
   \doc[Wikipedia]{}{https://fr.wikipedia.org/wiki/BibTeX}, %
   la %
   \doc[documentation de {\BibTeX}]{btxdoc}{http://www.texdoc.org/pkg/btxdoc} %
-  ou la plupart des bons ouvrages de référence comme
-  \citet{Kopka:latex:4e}.
+  ou la plupart des bons ouvrages de référence
+  \citep[comme][]{Kopka:latex:4e}.
 \item On entre le nom d'un auteur soit sous la forme \code{\{Prénom
     Nom\}}, soit sous la forme \code{\{Nom, Prénom\}}. La seconde
   forme est surtout utile pour distinguer explicitement le nom du
@@ -452,7 +449,7 @@ En terminant, notons que la plupart des journaux scientifiques et des
 maisons d'édition ont leur propre style que les auteurs sont tenus
 d'utiliser. En ce qui a trait aux thèses et mémoires de l'Université
 Laval, la Faculté des études supérieures et postdoctorales n'impose
-aucune style de bibliographie particulier. Nous recommandons
+aucun style de bibliographie particulier. Nous recommandons
 d'utiliser le style courant dans sa discipline scientifique.
 
 
@@ -476,8 +473,9 @@ L'effet de la commande est double:
   dans le texte;
 \item ajouter le document dans la bibliographie.
 \end{enumerate}
-En somme, outre la phase de compilation \textbf{****}, c'est tout ce
-qu'il y a à faire pour construire sa bibliographie.
+En somme, outre la phase de compilation qui fait l'objet de la section
+suivante, c'est tout ce qu'il y a à faire pour construire sa
+bibliographie.
 
 Avec \pkg{natbib}, on utilisera plutôt les commandes
 \begin{lstlisting}
@@ -509,9 +507,9 @@ TUGboat a publié un bon survol
 \end{demo}
 
 On ne devrait \emph{jamais} entrer directement dans le texte des
-informations bibliographiques. Pour insérer dans le texte le nom d'un
-auteur ou l'année de publication d'un ouvrage, on devrait utiliser les
-commandes de \pkg{natbib}
+informations bibliographiques, même partielles. Pour insérer dans le
+texte le nom d'un auteur ou l'année de publication d'un ouvrage, on
+devrait utiliser les commandes de \pkg{natbib}
 \begin{lstlisting}
 \citeauthor`\marg{clé}'
 \citeyear`\marg{clé}'
@@ -724,7 +722,13 @@ compilation standard avec seulement le moteur {\TeX} suffit.
   \end{figure}
 \end{exemple}
 
-
+\begin{conseil}
+  Aux toutes dernières étapes avant de rendre un document, s'assurer
+  d'exécuter {\BibTeX} une dernière fois et de compiler avec
+  pdf{\LaTeX} ou {\XeLaTeX} au moins deux fois. Le journal de la
+  compilation (\emph{log file}) ne devrait pas rapporter de références
+  manquantes (\emph{undefined references}).
+\end{conseil}
 
 Les éditeurs de texte spécialisés pour la préparation de documents
 {\LaTeX} offrent généralement des raccourcis pour exécuter la
@@ -755,14 +759,6 @@ données, dans la section %
 \doc[Gestion de la bibliographie]{}{https://fr.wikibooks.org/wiki/LaTeX/Gestion_de_la_bibliographie} %
 de \citeauthor{wikilivres:latex}.
 
-\begin{conseil}
-  Aux toutes dernières étapes avant de rendre un document, s'assurer
-  d'exécuter {\BibTeX} une dernière fois et de compiler avec
-  pdf{\LaTeX} ou {\XeLaTeX} au moins deux fois. Le journal de la
-  compilation (\emph{log file}) ne devrait pas rapporter de références
-  manquantes (\emph{undefined references}).
-\end{conseil}
-
 
 
 %%%
@@ -781,7 +777,107 @@ de \citeauthor{wikilivres:latex}.
 \end{Filesave}
 
 \begin{exercice}
-  toto
+  Composer des entrées de base de données pour les références
+  bibliographiques suivantes.
+  \begin{enumerate}
+  \item \nolink{\bibentry{Mittelbach:floats:2014}}
+
+    \emph{Astuce}: cette entrée est un article tiré d'une revue
+    scientifique.
+
+  \item \nolink{\bibentry{memoir}}
+
+    \emph{Astuces}: traiter cette entrée comme un livre et utiliser le
+    champ \code{note} pour consigner la remarque qui se trouve à la
+    fin de la notice.
+
+  \item \nolink{\bibentry{pstricks}}
+
+    \emph{Astuces}: utiliser le type de document \code{Manual};
+    attention à la casse de certains mots; on obtient le symbole {\ss}
+    avec la commande \cmdprint{\ss}.
+  \end{enumerate}
+  \begin{sol}
+    On trouve les champs obligatoires et optionnels pour chaque type
+    d'entrée dans %
+    \doc[Wikipedia]{}{https://fr.wikipedia.org/wiki/BibTeX}. %
+    La clé est laissée vacante dans les réponses ci-dessous.
+    \begin{enumerate}
+    \item On utilise le type \code{Article} pour cette entrée.
+\begin{lstlisting}
+@Article{,
+  author =  {Frank Mittelbach},
+  title =   {How to Influence the Position of Float
+             Environments Like Figure and Table In
+             {\LaTeX}?},
+  journal = {{TUG}boat},
+  year =    2014,
+  volume =  35,
+  number =  3,
+  pages =   {258-254},
+  url =     {https://www.tug.org/members/TUGboat/tb35-3/
+             tb111mitt-float.pdf},
+  language = {english}
+}
+\end{lstlisting}
+
+    \item On utilise le type \code{Book} pour cette entrée.
+\begin{lstlisting}
+@Book{,
+  author =  {Peter Wilson},
+  title =   {The Memoir Class for Configurable
+             Typesetting},
+  publisher = {The Herries Press},
+  year =     2013,
+  edition =  8,
+  note =    {Maintained by Lars Madsen},
+  url =     {http://www.ctan.org/pkg/memoir/},
+  language = {english}
+}
+\end{lstlisting}
+
+    \item La réponse ci-dessous contient les prénoms des auteurs,
+      simplement afin d'illustrer que {\BibTeX} sait les abréger au
+      moment de composer la notice bibliographique. Remarquer
+      l'utilisation des accolades \verb={ }= dans le titre pour
+      préserver la casse de «PSTricks» et de «PostScript».
+\begin{lstlisting}
+@Manual{,
+  author = {Timothy {V}an Zandt and Denis Girou and
+            Herbert Vo{\ss}},
+  title =  {{PSTricks} --- {PostScript} Macros for
+            Generic {\TeX}},
+  year =   2014,
+  url =    {http://www.ctan.org/pkg/pstricks-base/},
+  language = {english}
+}
+\end{lstlisting}
+    \end{enumerate}
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}[nosol]
+  Utiliser pour cet exercice le fichier
+  \fichier{exercice\_gabarit.tex} ainsi que la base de données
+  bibliographique crée à l'exercice précédent.
+  \begin{enumerate}
+  \item Créer un document simple comprenant des références à une ou
+    plusieurs des entrées bibliographiques de l'exercice précédent.
+    Compiler le document en suivant les étapes mentionnées à la
+    \autoref{sec:bibliographie:bibtex} en utilisant tour à tour les
+    styles par défaut \code{plain}, \code{unsrt}, \code{alpha} et
+    \code{abbrv}.
+  \item Charger dans le document le paquetage \pkg{natbib} (avant
+    \pkg{babel}) et utiliser le style de bibliographie \code{francais}
+    fourni par \pkg{francais-bst} (installé par défaut dans
+    {\TeX}~Live). Recompiler le document et observer les différences
+    par rapport aux documents produit en a).
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[nosol]
+  À partir d'un gabarit fourni avec la classe \class{ulthese},
+  produire un document simple contenant une bibliographie.
 \end{exercice}
 
 \Closesolutionfile{solutions}
