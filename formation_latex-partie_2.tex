@@ -110,6 +110,8 @@
     keywordstyle=\mdseries,
     emphstyle=\color{emphasis}\bfseries,
     texcsstyle=*\lst@keywordstyle,
+    index=[1][keywords],
+    %indexstyle=\indexfonction,
     backgroundcolor=\color{LightYellow1},
     frame=lr,
     rulecolor=\color{LightYellow1},
@@ -257,6 +259,15 @@
       \end{framed}
     \end{table}}
 
+  %%% =======
+  %%%  Index
+  %%% =======
+  \newcommand{\bfhyperpage}[1]{\textbf{\hyperpage{#1}}}
+  \renewcommand{\preindexhook}{%
+    Les numéros de page en caractères gras indiquent les pages où les
+    concepts sont introduits, définis ou expliqués.\vskip\onelineskip}
+  \makeindex
+
   %%% =====================
   %%%  Nouvelles commandes
   %%% =====================
@@ -354,7 +365,7 @@
   %                                         Exercices \textemdash\
   %                                         édition \year}
 
-\includeonly{bibliographie,solutions}
+\includeonly{trucs}
 
 \begin{document}
 
@@ -392,13 +403,15 @@
 \include{mathematiques}
 \include{bibliographie}
 \include{commandes}
-% \include{polices}
-% \include{varia}
+\include{trucs}
 
 \appendix
 \include{solutions}
 
 \bibliography{formation_latex}
+
+\cleardoublepage
+\printindex
 
 \cleartoverso
 
@@ -406,6 +419,9 @@
 
 \cleartoverso
 
+%% Page couverture arrière.
+% \setkeys{Gin}{width=\paperwidth}
+% \includepdf[pages=2]{couvertures}
 
 \end{document}
 
