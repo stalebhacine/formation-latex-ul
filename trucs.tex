@@ -1,0 +1,83 @@
+\chapter{Trucs et astuces divers}
+\label{chap:trucs}
+
+
+\section{Polices de caractères: au-delà de Computer Modern}
+\label{sec:trucs:police}
+
+{\fontfamily{cmr}\selectfont%
+  Les documents {\LaTeX} standards sont facilement reconnaissables par
+  leur police de caractères par défaut, celle utilisée dans ce
+  paragraphe, Computer Modern. Pour qui souhaitait briser la relative
+  monotonie induite par cette uniformité, il a longtemps été difficile
+  d'utiliser une autre police de caractères. Fort heureusement, la
+  situation a beaucoup évolué et il est aujourd'hui assez simple de de
+  produire des documents {\LaTeX} utilisant des polices de caractères
+  variées.}
+
+Avant d'aller plus loin, une mise en garde: si votre document contient
+plus que quelques équations mathématiques très simples, le choix de
+police devient très restreint. La raison: peu de polices de caractères
+comprennent des symboles mathématiques et les informations nécessaires
+pour réaliser une mise en page des mathématiques satisfaisant les
+standards de haute qualité usuels de {\LaTeX}.
+
+Cela dit, pour qui souhaite aller au-delà de la police Computer Modern
+sans trop se compliquer la vie, il existe deux solutions principales.
+
+\begin{enumerate}
+\item Utiliser l'une ou l'autre des polices PostScript standards.
+  C'est très simple avec toute distribution {\LaTeX} moderne: il
+  suffit de charger le paquetage approprié. Consulter la %
+  \doc{psnfss2e}{http://texdoc.net/pkg/psnfss/} %
+  de l'ensemble de paquetages PSNFSS pour connaître les choix
+  disponibles.
+\item Utiliser une police OpenType présente sur son système avec le
+  moteur {\XeLaTeX}. Seule une poignée de ces polices offrent
+  toutefois un support approprié pour les mathématiques. La gestion
+  des polices de caractères avec {\XeLaTeX} se fait avec le paquetage
+  standard \pkg{fontspec}; consulter sa %
+  \doc{fontspec}{http://texdoc.net/pkg/fontspec/}.
+\end{enumerate}
+
+Pour les thèses et mémoires de l'Université Laval, la Faculté des
+études supérieures et postdoctorales accepte les polices %
+{\fontfamily{cmr}\selectfont Computer Modern}, %
+{\fontfamily{ptm}\selectfont Times} et %
+{\fontfamily{ppl}\selectfont Palatino}. Pour utiliser ces deux
+dernières avec {\LaTeX}, on charge respectivement les paquetages
+\pkg{mathptmx} ou \pkg{mathpazo}. Avec {\XeLaTeX}, on utilisera les
+polices {\fontfamily{qtm}\selectfont Termes} et
+{\fontfamily{qpl}\selectfont Pagella} du projet %
+\link{http://www.gust.org.pl/projects/e-foundry/tex-gyre/}{TeX Gyre}.
+Ce sont des polices très similaires à Times et Palatino, disponibles
+en version OpenType et qui fournissent un bon support pour les
+mathématiques via le projet frère %
+\link{http://www.gust.org.pl/projects/e-foundry/tg-math/}{TeX Gyre Math}.
+
+Le texte principal du présent document est en %
+\link{http://tug.org/store/lucida/}{Lucida Bright~OT}, %
+une police commerciale de très haute qualité, offrant un excellent
+support pour les équations mathématiques et dont les auteurs ont
+toujours été des «amis» de la communauté {\LaTeX}. La Bibilothèque de
+l'Université Laval détient une licence d'utilisation de cette police.
+Les membres de la communauté --- étudiants et personnel --- peuvent
+s'en produrer une copie en écrivant à
+\href{mailto:lucida@bibl.ulaval.ca}{lucida@bibl.ulaval.ca}.
+
+Hyperliens: configuration, infos du document
+
+Présentation de code informatique
+
+Analyse et rapport intégrés [de type Sweave]
+
+Diapositives
+
+Contrôle de version
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% TeX-master: "formation_latex-partie_2"
+%%% coding: utf-8
+%%% End:
