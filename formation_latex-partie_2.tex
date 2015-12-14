@@ -33,10 +33,14 @@
   \usepackage[babel=true]{microtype}
   \usepackage{icomma}
 
+  %% Pour le chapitre trucs et astuces
+  \newfontfamily\CM{cmunrm.otf}                       % Computer Modern
+  \newfontfamily\Times{texgyretermes-regular.otf}     % Times
+  \newfontfamily\Palatino{texgyrepagella-regular.otf} % Palatino
+
   %% Couleurs
   \usepackage{xcolor}
   \definecolor{comments}{rgb}{0.7,0,0}
-  \definecolor{emphasis}{named}{orange}
   \definecolor{link}{rgb}{0,0.4,0.6}   % ~RoyalBlue de dvips
   \definecolor{url}{rgb}{0.6,0,0}      % rouge-brun
   \definecolor{citation}{rgb}{0,0.5,0} % vert foncé
@@ -54,9 +58,7 @@
   \addto\extrasfrench{%
     \def\subsectionautorefname{section}%
     \def\figureautorefname{figure}%
-    % \newcommand{\subfigureautorefname}{figure}
     \def\tableautorefname{tableau}%
-    % \newcommand{\subtableautorefname}{tableau}
     \def\exempleautorefname{exemple}%
     \def\exerciceautorefname{exercice}%
   }
@@ -107,7 +109,7 @@
     inputencoding=utf8/latin1,
     basicstyle=\ttfamily\NoAutoSpacing,
     commentstyle=\color{comments}\slshape,
-    keywordstyle=\mdseries,
+    keywordstyle=\bfseries,
     emphstyle=\color{emphasis}\bfseries,
     texcsstyle=*\lst@keywordstyle,
     index=[1][keywords],
