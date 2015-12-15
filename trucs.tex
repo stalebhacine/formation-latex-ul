@@ -99,14 +99,50 @@ L'utilisation de couleur dans un document {\LaTeX} requiert de charger
 le paquetage \pkg{xcolor} \citep{xcolor}. Celui-ci définit d'abord
 plusieurs couleurs que l'on peut utiliser directement; consulter la %
 \doc{xcolor}{http://texdoc.net/pkg/xcolor} %
-pour en connaître les différentes listes. On peut ensuite modifier la
-couleur du texte avec la commande
+pour en connaître les différentes listes. Le
+\autoref{tab:trucs:couleurs} fournit celle des couleurs toujours
+disponibles.
+
+\begin{table}
+  \centering
+  \caption{Couleurs toujours disponibles quand le paquetage
+    \pkg{xcolor} est chargé}
+  \label{tab:trucs:couleurs}
+  \begin{tabularx}{1.0\linewidth}{XlXll}
+    \toprule
+    \fcolorbox{black}{red}{\phantom{xx}}\, red &
+    \fcolorbox{black}{green}{\phantom{xx}}\, green &
+    \fcolorbox{black}{blue}{\phantom{xx}}\, blue &
+    \fcolorbox{black}{cyan}{\phantom{xx}}\, cyan &
+    \fcolorbox{black}{magenta}{\phantom{xx}}\, magenta \\
+    \addlinespace[3pt]
+    \fcolorbox{black}{black}{\phantom{xx}}\, black &
+    \fcolorbox{black}{darkgray}{\phantom{xx}}\, darkgray &
+    \fcolorbox{black}{gray}{\phantom{xx}}\, gray &
+    \fcolorbox{black}{lightgray}{\phantom{xx}}\, lightgray &
+    \fcolorbox{black}{white}{\phantom{xx}}\, white \\
+    \addlinespace[3pt]
+    \fcolorbox{black}{yellow}{\phantom{xx}}\, yellow &
+    \fcolorbox{black}{brown}{\phantom{xx}}\, brown &
+    \fcolorbox{black}{lime}{\phantom{xx}}\, lime &
+    \fcolorbox{black}{olive}{\phantom{xx}}\, olive &
+    \fcolorbox{black}{orange}{\phantom{xx}}\, orange \\
+    \addlinespace[3pt]
+    \fcolorbox{black}{pink}{\phantom{xx}}\, pink &
+    \fcolorbox{black}{purple}{\phantom{xx}}\, purple &
+    \fcolorbox{black}{teal}{\phantom{xx}}\, teal &
+    \fcolorbox{black}{violet}{\phantom{xx}}\, violet \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+On modifie la couleur du texte avec la commande
 \begin{lstlisting}
-\color`\marg{couleur}'
+\color`\marg{nom}'
 \end{lstlisting}
-où \meta{couleur} est le nom d'une couleur. À moins de vouloir
-modifier la couleur de tout ce qui suit, on limitera la portée de la
-commande par des accolades.
+où \meta{nom} est le nom d'une couleur. À moins de vouloir modifier la
+couleur de tout ce qui suit, on limitera la portée de la commande par
+des accolades.
 \begin{demo}
   \begin{texample}
 \begin{lstlisting}
@@ -118,29 +154,41 @@ et {\color{blue} en bleu}
   \end{texample}
 \end{demo}
 
-La commande \cmd{\definecolor} permet de définir de nouvelles
-couleurs. Le paquetage \pkg{xcolor} supporte plusieurs méthodes pour
-ce faire, mais la plus usuelle demeure par une combinaison de
-proportions (entre $0$ et $1$) de rouge, de vert et de bleu. Par
-exemple,
+La commande \cmd{\definecolor} permet de définir de nouvelles couleurs
+selon plusieurs systèmes de codage. Le plus usuel demeure \emph{Rouge,
+  vert, bleu} (RVB ou RGB, en anglais) où une couleur est représentée
+par une combinaison de teintes --- exprimées par un nombre entre $0$
+et $1$ --- de rouge, de vert et de bleu. Dans ce cas, la syntaxe de
+\cmd{\definecolor} est
 \begin{lstlisting}
-\definecolor`\marg{couleur}'{rgb}{0.1,0.4,0.6}
+\definecolor`\marg{nom}'{rgb}`\marg{valeur\_r,valeur\_v,valeur\_b}
 \end{lstlisting}
-définit une nouvelle \meta{couleur} composée de 30~\% rouge, de 40~\%
-vert et de 60~\% bleu: %
-\fcolorbox{black}[rgb]{0.3,0,0}{\phantom{xx}} $+$ %
-\fcolorbox{black}[rgb]{0,0.4,0}{\phantom{xx}} $+$ %
-\fcolorbox{black}[rgb]{0,0,0.6}{\phantom{xx}} $=$ %
-\fcolorbox{black}[rgb]{0.3,0.4,0.6}{\phantom{xx}}.
+où \meta{valeur\_r}, \meta{valeur\_v} et \meta{valeur\_b} sont
+respectivement les teintes de rouge, de vert et de bleu.
 
-La commande \cmd{\definecolor} sert aussi à donner un nom sémantique à
-une couleur déjà existante. Par exemple, insérer dans le préambule de
-son document
+\begin{exemple}
+  La commande
 \begin{lstlisting}
-\definecolor{important}{named}{red}
+\definecolor{acier}{rgb}{0.1,0.4,0.6}
 \end{lstlisting}
-permet d'utiliser la couleur \meta{important} dans le code source.
+  définit une nouvelle couleur nommée \meta{acier} composée de rouge
+  30~\%, de vert 40~\% et de bleu 60~\%: %
+  \fcolorbox{black}[rgb]{0.3,0,0}{\phantom{xx}} $+$ %
+  \fcolorbox{black}[rgb]{0,0.4,0}{\phantom{xx}} $+$ %
+  \fcolorbox{black}[rgb]{0,0,0.6}{\phantom{xx}} $=$ %
+  \fcolorbox{black}[rgb]{0.3,0.4,0.6}{\phantom{xx}}. %
+  On pourra utiliser la couleur \meta{acier} directement dans la
+  commande \cmdprint{\color}. %
+  \qed
+\end{exemple}
 
+La commande \cmd{\colorlet}, dont la syntaxe simplifiée est
+\begin{lstlisting}
+\colorlet`\marg{nom}\marg{couleur}'
+\end{lstlisting}
+permet de faire référence à la \meta{couleur} déjà existante par
+\meta{nom}. C'est pratique pour assigner un nom sémantique à une
+couleur.
 
 
 
