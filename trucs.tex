@@ -94,6 +94,7 @@ gratuitement en écrivant à
 
 
 \section{Couleurs}
+\label{sec:trucs:couleurs}
 
 L'utilisation de couleur dans un document {\LaTeX} requiert de charger
 le paquetage \pkg{xcolor} \citep{xcolor}. Celui-ci définit d'abord
@@ -196,23 +197,101 @@ couleur.
 \label{sec:trucs:hyperliens}
 
 Nous en avons déjà traité à quelques reprises, notamment à la
-section~4 de \citet{UL:latex:1}, le paquetage \pkg{hyperref} permet de
-transformer toutes les références dans le texte en hyperliens
-cliquables lorsque le document est produit avec pdf{\LaTeX} ou
-{\XeLaTeX}. C'est très pratique lors de la consultation électronique
-des documents.
+section~4 de \citet{UL:latex:1}, le paquetage \pkg{hyperref}
+\citep{hyperref} permet de transformer toutes les références dans le
+texte en hyperliens cliquables lorsque le document est produit avec
+pdf{\LaTeX} ou {\XeLaTeX}. C'est très pratique lors de la consultation
+électronique d'un document.
 
-Le paquetage offre une multitudes d'options de configuration. Une des
-principales choses que l'on pourra souhaiter configurer, c'est la
-couleur des divers types d'hyperliens.
+Le paquetage offre une multitudes d'options de configuration; nous
+n'en présenterons que quelques unes. On accède aux options de
+configuration de \pkg{hyperref} via la commande \cmd{\hypersetup} dans
+le préambule. Celle-ci prend en arguments des paires
+\code{option=valeur} séparées par des virgules.
 
+Une des principales choses que l'on pourra souhaiter configurer, c'est
+le comportement et la couleur des divers types d'hyperliens. On
+trouvera ci-dessous les options de configuration pertinentes, leur
+valeur (avec en gras la valeur par défaut) ainsi qu'une brève
+explication de chacune.
 
-% \begin{conseil}
-%   L'interaction du paquetage \pkg{hyperref} avec les autres est
-%   parfois (voire souvent) délicate. Pour cette raison, il est
-%   fortement recommandé de charger \pkg{hyperref} en tout dernier
-%   dans son document.
-% \end{conseil}
+\begin{table}[h]
+  \begin{tabularx}{1.0\linewidth}{@{}p{6em}p{6em}X@{}}
+    \code{colorlinks} & \code{true}|\code{\textbf{false}} & colorer les
+                                                            liens selon
+                                                            leur type \\
+    \code{linktocpage} & \code{true}|\code{\textbf{false}} & faire du
+                                                             numéro de
+                                                             page
+                                                             plutôt que
+                                                             du titre l'hyperlien dans
+                                                             la table
+                                                             des
+                                                             matières \\
+    \code{linkcolor} & \meta{couleur} & couleur des liens internes \\
+    \code{urlcolor}  & \meta{couleur} & couleur des URL externes \\
+    \code{citecolor} & \meta{couleur} & couleur des citations \\
+    \code{allcolor}  & \meta{couleur} & couleur pour tous les types d'hyperliens
+  \end{tabularx}
+\end{table}
+
+La valeur \meta{couleur} est le nom d'une couleur telle que définie
+par \pkg{xcolor} (\autoref{sec:trucs:couleurs}). Lorsque la valeur
+admissible d'une option est \code{true} ou \code{false}, sa seule
+mention équivaut à \code{true}. Par conséquent,
+\begin{lstlisting}
+\hypersetup{colorlinks}
+\end{lstlisting}
+est plus court et équivalent à
+\begin{lstlisting}
+\hypersetup{colorlinks=true}
+\end{lstlisting}
+
+Le paquetage \pkg{hyperref} permet également de définir des
+informations du fichier PDF. Celles-ci seront ou non prises en compte
+par la visionneuse. Mentionnons au moins les deux options ci-dessous.
+
+\begin{table}[h]
+  \begin{tabularx}{1.0\linewidth}{@{}p{6em}p{6em}X@{}}
+    \code{pdftitle}  & texte & titre du document PDF \\
+    \code{pdfauthor} & texte & auteur du document PDF
+  \end{tabularx}
+\end{table}
+
+\begin{exemple}
+  Le présent document a été préparé avec les définitions de couleurs
+  et les options de configuration de \pkg{hyperref} suivantes:
+\begin{lstlisting}
+\definecolor{link}{rgb}{0,0.4,0.6}   % ~RoyalBlue de dvips
+\definecolor{url}{rgb}{0.6,0,0}      % rouge-brun
+\definecolor{citation}{rgb}{0,0.5,0} % vert foncé
+\hypersetup{colorlinks, linktocpage,
+  linkcolor=link, urlcolor=url, citecolor=citation,
+  pdftitle={Rédaction de thèses et mémoires avec LaTeX -
+            Partie II},
+  pdfauthor={Université Laval}}
+\end{lstlisting}
+  \qed
+\end{exemple}
+
+\begin{exemple}
+  Les gabarits de thèses et de mémoires livrés avec la classe
+  \class{ulthese} contiennent dans le préambule la ligne suivante:
+\begin{lstlisting}
+\hypersetup{colorlinks,allcolors=ULlinkcolor}
+\end{lstlisting}
+  Tous les liens de la thèse ou du mémoire seront donc de la même
+  couleur, \code{ULlinkcolor} \fcolorbox{black}{ULlinkcolor}{\phantom{xx}},
+  une couleur définie par la classe. %
+  \qed
+\end{exemple}
+
+\begin{conseil}
+  L'interaction du paquetage \pkg{hyperref} avec les autres est
+  parfois (voire souvent) délicate. Pour cette raison, il est
+  fortement recommandé de charger \pkg{hyperref} en tout dernier
+  dans dans le préambule.
+\end{conseil}
 
 
 
