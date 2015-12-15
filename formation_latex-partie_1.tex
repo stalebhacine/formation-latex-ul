@@ -1,12 +1,11 @@
 \documentclass[aspectratio=54,10pt,xcolor=x11names]{beamer}
-  \usepackage[francais]{babel}
+  \usepackage[french]{babel}
   \usepackage[autolanguage]{numprint}
   \usepackage{amsmath,ncccomma}
   \usepackage{booktabs,tabularx}
   \usepackage{pgfpages}
   \usepackage{metalogo}                % \XeLaTeX logo
   \usepackage{fontawesome}
-  \usepackage{multicol}
   \usepackage{listings}
   \usepackage[overlay,absolute]{textpos}
 
@@ -30,10 +29,10 @@
   %%% Définition de couleurs
   \definecolor{comments}{rgb}{0.7,0,0}
   \definecolor{alert}{rgb}{0,0.7,0}
-  \definecolor{emphasis}{named}{orange}
-  \definecolor{exercices}{named}{gray}
   \definecolor{link}{rgb}{0,0.4,0.6}   % ~RoyalBlue de dvips
   \definecolor{url}{rgb}{0.6,0,0}      % rouge-brun
+  \colorlet{emphasis}{orange}
+  \colorlet{exercices}{gray}
   \hypersetup{colorlinks,allcolors=emphasis,urlcolor=url}
 
   %%% Paramètres de beamer
@@ -128,14 +127,14 @@
 \begin{frame}
   \frametitle{Sommaire}
   \small
-      \begin{columns}[t]
-        \begin{column}{.5\textwidth}
-          \tableofcontents[sections={1-5},hideallsubsections]
-        \end{column}
-        \begin{column}{.5\textwidth}
-          \tableofcontents[sections={6-9},hideallsubsections]
-        \end{column}
-      \end{columns}
+  \begin{columns}[t]
+    \begin{column}{.5\textwidth}
+      \tableofcontents[sections={1-5},hideallsubsections]
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \tableofcontents[sections={6-9},hideallsubsections]
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}
