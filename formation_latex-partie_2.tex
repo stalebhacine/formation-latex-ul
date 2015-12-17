@@ -107,20 +107,17 @@
   \lstset{language=[LaTeX]TeX,
     escapeinside=`',
     extendedchars=true,
-    inputencoding=utf8/latin1,
     basicstyle=\ttfamily\NoAutoSpacing,
     commentstyle=\color{comments}\slshape,
-    keywordstyle=\bfseries,
-    emphstyle=\color{emphasis}\bfseries,
-    texcsstyle=*\lst@keywordstyle,
+    %keywordstyle=\bfseries,
+    showstringspaces=false,
     index=[1][keywords],
     %indexstyle=\indexfonction,
     backgroundcolor=\color{LightYellow1},
     frame=lr,
     rulecolor=\color{LightYellow1},
     xleftmargin=3.4pt,
-    xrightmargin=3.4pt,
-    showstringspaces=false}
+    xrightmargin=3.4pt}
 
   %%% =========================
   %%%  Nouveaux environnements
@@ -217,6 +214,12 @@
     \end{minipage}%
     \par
   }
+
+  %% Un exemple du chapitre Trucs et astuces nécessite des
+  %% environnements 'lstlisting' imbriqués, ce que ne digère pas
+  %% LaTeX. La ruse consiste à définir un environnement équivalent qui
+  %% porte simplement un autre nom.
+  \lstnewenvironment{vglisting}{}{}
 
   %% Exemples de notices bibliographiques
   \newenvironment{bibexample}[1][\linewidth]{%

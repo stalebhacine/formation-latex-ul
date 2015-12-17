@@ -111,28 +111,28 @@ disponibles.
   \label{tab:trucs:couleurs}
   \begin{tabularx}{1.0\linewidth}{XlXll}
     \toprule
-    \fcolorbox{black}{red}{\phantom{xx}}\, red &
-    \fcolorbox{black}{green}{\phantom{xx}}\, green &
+    \fcolorbox{black}{black}{\phantom{xx}}\, black &
     \fcolorbox{black}{blue}{\phantom{xx}}\, blue &
+    \fcolorbox{black}{brown}{\phantom{xx}}\, brown &
     \fcolorbox{black}{cyan}{\phantom{xx}}\, cyan &
+    \fcolorbox{black}{darkgray}{\phantom{xx}}\, darkgray \\
+    \addlinespace[3pt]
+    \fcolorbox{black}{gray}{\phantom{xx}}\, gray &
+    \fcolorbox{black}{green}{\phantom{xx}}\, green &
+    \fcolorbox{black}{lightgray}{\phantom{xx}}\, lightgray &
+    \fcolorbox{black}{lime}{\phantom{xx}}\, lime &
     \fcolorbox{black}{magenta}{\phantom{xx}}\, magenta \\
     \addlinespace[3pt]
-    \fcolorbox{black}{black}{\phantom{xx}}\, black &
-    \fcolorbox{black}{darkgray}{\phantom{xx}}\, darkgray &
-    \fcolorbox{black}{gray}{\phantom{xx}}\, gray &
-    \fcolorbox{black}{lightgray}{\phantom{xx}}\, lightgray &
-    \fcolorbox{black}{white}{\phantom{xx}}\, white \\
-    \addlinespace[3pt]
-    \fcolorbox{black}{yellow}{\phantom{xx}}\, yellow &
-    \fcolorbox{black}{brown}{\phantom{xx}}\, brown &
-    \fcolorbox{black}{lime}{\phantom{xx}}\, lime &
     \fcolorbox{black}{olive}{\phantom{xx}}\, olive &
-    \fcolorbox{black}{orange}{\phantom{xx}}\, orange \\
-    \addlinespace[3pt]
+    \fcolorbox{black}{orange}{\phantom{xx}}\, orange &
     \fcolorbox{black}{pink}{\phantom{xx}}\, pink &
     \fcolorbox{black}{purple}{\phantom{xx}}\, purple &
+    \fcolorbox{black}{red}{\phantom{xx}}\, red \\
+    \addlinespace[3pt]
     \fcolorbox{black}{teal}{\phantom{xx}}\, teal &
-    \fcolorbox{black}{violet}{\phantom{xx}}\, violet \\
+    \fcolorbox{black}{violet}{\phantom{xx}}\, violet &
+    \fcolorbox{black}{white}{\phantom{xx}}\, white &
+    \fcolorbox{black}{yellow}{\phantom{xx}}\, yellow \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -193,7 +193,7 @@ couleur.
 
 
 
-\section{Hyperliens: en tirer le meilleur parti}
+\section{Hyperliens et métadonnées de documents PDF}
 \label{sec:trucs:hyperliens}
 
 Nous en avons déjà traité à quelques reprises, notamment à la
@@ -235,21 +235,18 @@ explication de chacune.
   \end{tabularx}
 \end{table}
 
-La valeur \meta{couleur} est le nom d'une couleur telle que définie
-par \pkg{xcolor} (\autoref{sec:trucs:couleurs}). Lorsque la valeur
-admissible d'une option est \code{true} ou \code{false}, sa seule
-mention équivaut à \code{true}. Par conséquent,
-\begin{lstlisting}
-\hypersetup{colorlinks}
-\end{lstlisting}
-est plus court et équivalent à
-\begin{lstlisting}
-\hypersetup{colorlinks=true}
-\end{lstlisting}
+Lorsque la valeur admissible d'une option est \code{true} ou
+\code{false}, sa seule mention équivaut à \code{true}. La valeur
+\meta{couleur} est le nom d'une couleur telle que définie par
+\pkg{xcolor} (\autoref{sec:trucs:couleurs}).
 
-Le paquetage \pkg{hyperref} permet également de définir des
-informations du fichier PDF. Celles-ci seront ou non prises en compte
-par la visionneuse. Mentionnons au moins les deux options ci-dessous.
+Les fichiers PDF peuvent contenir diverses métadonnées sur leur
+contenu. Le paquetage \pkg{hyperref} permet de définir certaines
+catégories de celles-ci, notamment les informations de document comme
+le titre ou l'auteur. Nous ne mentionnons ici que deux options de
+configutation; la section~3.7 de la %
+\doc{hyperref}{http://texdoc.net/pkg/hyperref} %
+contient la liste complète.
 
 \begin{table}[h]
   \begin{tabularx}{1.0\linewidth}{@{}p{6em}p{6em}X@{}}
@@ -295,9 +292,125 @@ par la visionneuse. Mentionnons au moins les deux options ci-dessous.
 
 
 
-% Hyperliens: configuration, infos du document
+\section{Présentation de code informatique}
+\label{sec:trucs:listings}
 
-% Présentation de code informatique
+L'environnement standard \Ie{verbatim} de {\LaTeX} permet de présenter
+du texte exactement tel qu'il est entré dans le code source du
+document. C'est un environnement particulièrement utile pour afficher
+du code informatique puisque le texte est composé en police non
+proportionnelle et que sa disposition exacte est respectée.
+
+\begin{demo}
+  \begin{texample}
+\begin{lstlisting}
+\begin{verbatim}
+/* Hello World en C */
+#include <stdio.h>
+
+int main()
+{
+    printf("Hello world\n");
+    return 0;
+}
+\end{verbatim}
+\end{lstlisting}
+    \producing
+\begin{verbatim}
+/* Hello World en C */
+#include <stdio.h>
+
+int main()
+{
+    printf("Hello world\n");
+    return 0;
+}
+\end{verbatim}
+  \end{texample}
+\end{demo}
+
+Si un document doit contenir beaucoup de code informatique et que l'on
+souhaite exercer un fin contrôle sur sa disposition et sa mise en
+forme, il vaut mieux se tourner vers un paquetage spécialisé comme
+\pkg{listings} \citep{listings}. La %
+\doc{listings}{http://texdoc.net/pkg/listings} %
+du paquetage compare ses fonctionnalités à celles de plusieurs autres
+paquetages similaires.
+
+Le paquetage \pkg{listings} peut effectuer automatiquement le marquage
+des mots-clés de nombreux langages de programmation, ajouter des
+numéros de ligne, importer du code de fichiers externes ou même
+indexer les mots-clés des extraits de code. À titre d'illustration, en
+utilisant l'environnement \Ie{lstlisting} de \pkg{listings} plutôt que
+\Ie{verbatim}, l'extrait de code C ci-dessus pourrait se présenter
+ainsi:
+\begin{demo}
+  \begin{texample}
+    \begin{vglisting}
+\begin{lstlisting}
+/* Hello World en C */
+#include <stdio.h>
+
+int main()
+{
+    printf("Hello world\n");
+    return 0;
+}
+\end{lstlisting}
+    \end{vglisting}
+    \producing
+\begin{lstlisting}[language=C,%
+  frame=single,%
+  backgroundcolor=\color{Azure2},%
+  rulecolor=\color{black},%
+  numbers=left,%
+  numberstyle=\tiny\sffamily,%
+  stringstyle=\color{orange}\itshape,%
+  identifierstyle=\color{cyan}\mdseries,%
+  xleftmargin=12pt,%
+  keywordstyle=\color{blue}\bfseries]
+/* Hello World en C */
+#include <stdio.h>
+
+int main()
+{
+    printf("Hello world\n");
+    return 0;
+}
+\end{lstlisting}
+  \end{texample}
+\end{demo}
+
+Il serait trop long et nettement hors du mandat du présent document
+d'expliquer les nombreuses fonctionnalités de \pkg{listings}.
+Précisons simplement que le paquetage a servi pour en composer les
+extraits de code {\LaTeX} et pour construire une grande partie de
+l'index.
+
+\begin{exemple}
+  Pour parvenir à la présentation des extraits de code source {\LaTeX}
+  de ce document, le paquetage \pkg{listings} est configuré dans le
+  préambule de la manière suivante:
+\begin{lstlisting}
+%% Couleurs
+\definecolor{comments}{rgb}{0.7,0,0}
+
+%% Configuration de listings
+\lstset{language=[LaTeX]TeX,
+  extendedchars=true,
+  commentstyle=\color{comments}\slshape,
+  showstringspaces=false,
+  index=[1][keywords],
+  backgroundcolor=\color{LightYellow1},
+  frame=lr,
+  rulecolor=\color{LightYellow1},
+  xleftmargin=3.4pt,
+  xrightmargin=3.4pt}
+\end{lstlisting}
+  (La couleur \code{LightYellow1} est définie par \pkg{xcolor} lorsque
+  le paquetage est chargé avec l'option \code{x11names}.)
+  \qed
+\end{exemple}
 
 % Analyse et rapport intégrés [de type Sweave]
 
