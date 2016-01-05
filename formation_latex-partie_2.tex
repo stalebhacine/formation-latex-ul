@@ -9,12 +9,12 @@
   \usepackage{textpos}
   \usepackage{graphicx}
   \usepackage{manfnt}                  % \mantriangleright (puce)
-  \usepackage{dirtree}                 % arbre pour exercice ...?
+  \usepackage{dirtree}                 % arbre pour exercice sur \include
   \usepackage{metalogo}                % \XeLaTeX logo
   %\usepackage{applekeys}               % touches Mac
   \usepackage{fontawesome}             % plusieurs icônes
-  \usepackage{answers,listings}
-  \usepackage{varioref}         % !!! nécessaire ?
+  \usepackage{answers}                 % exercices et solutions
+  \usepackage{listings}                % code informatique
   \usepackage{pdfpages}                % couvertures
 
   %%% ===================
@@ -24,26 +24,26 @@
   %% Polices de caractères
   \usepackage{fontspec}
   \usepackage[bold-style=ISO]{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX}
-  \setmainfont[Scale=0.92,Numbers=OldStyle]{Lucida Bright OT}
-  \setmathfont[Scale=0.92]{Lucida Bright Math OT}
+  \defaultfontfeatures{Ligatures=TeX,Scale=0.92}
+  \setmainfont[Numbers=OldStyle]{Lucida Bright OT}
+  \setmathfont{Lucida Bright Math OT}
+  \setmonofont{Lucida Grande Mono DK}
   \setsansfont[Scale=1.0,Numbers=OldStyle]{Myriad Pro}
-  \setmonofont[Scale=0.88]{Bitstream Vera Sans Mono}
   \newfontfamily\fullcaps[Letters=Uppercase,Numbers=Uppercase]{Myriad Pro}
   \usepackage[babel=true]{microtype}
   \usepackage{icomma}
 
-  %% Pour le chapitre trucs et astuces
+  %% Polices additionnelles pour le chapitre trucs et astuces
   \newfontfamily\CM{cmunrm.otf}                       % Computer Modern
   \newfontfamily\Times{texgyretermes-regular.otf}     % Times
   \newfontfamily\Palatino{texgyrepagella-regular.otf} % Palatino
 
   %% Couleurs
   \usepackage{xcolor}
-  \definecolor{comments}{rgb}{0.7,0,0}
-  \definecolor{link}{rgb}{0,0.4,0.6}   % ~RoyalBlue de dvips
-  \definecolor{url}{rgb}{0.6,0,0}      % rouge-brun
-  \definecolor{citation}{rgb}{0,0.5,0} % vert foncé
+  \definecolor{comments}{rgb}{0.7,0,0}    % rouge foncé
+  \definecolor{link}{rgb}{0,0.4,0.6}      % ~RoyalBlue de dvips
+  \definecolor{url}{rgb}{0.6,0,0}         % rouge-brun
+  \definecolor{citation}{rgb}{0,0.5,0}    % vert foncé
   \definecolor{ULlinkcolor}{rgb}{0,0,0.3} % de ulthese.cls
 
   %% Hyperliens
@@ -55,7 +55,10 @@
     pdfauthor={Université Laval}}
   \setlength{\XeTeXLinkMargin}{1pt}
 
-  %% Étiquettes de \autoref (redéfinition compatible avec babel)
+  %% Étiquettes de \autoref (redéfinitions compatibles avec babel).
+  %% Attention! Les % à la fin des lignes sont importants sinon des
+  %% blancs apparaissent dès que la commande \selectlanguage est
+  %% utilisée... comme dans la bibliographie, par exemple.
   \addto\extrasfrench{%
     \def\subsectionautorefname{section}%
     \def\figureautorefname{figure}%
@@ -105,11 +108,22 @@
   %% Sections de code source
   \lstloadlanguages{[LaTeX]TeX}
   \lstset{language=[LaTeX]TeX,
+    morekeywords={align,align*,aligned,cases,center,equation,equation*,figure,gather,lstlisting,minipage,multline,quote,split,table,tabular,tabularx,verbatim},
+    moretexcs={toprule,midrule,bottomrule,%
+      includegraphics,reflectbox,resizebox,rotatebox,scalebox,%
+      includepdf,frenchfigurename,frenchtablename,%
+      newsubfloat,subcaption,%
+      dfrac,tfrac,iint,text,mathcal,mathbb,eqref,symbf,%
+      citet,citep,citeauthor,citeyear,%
+      setmainfont,setmathfont,%
+      color,definecolor,colorlet,hypersetup},
+    deletetexcs={documentclass,usepackage,begin,end,LaTeX,TeX,%
+      bfseries,emph,Huge,itshape,normalfont,raggedright,sffamily,small,textbf,texttt},
     escapeinside=`',
     extendedchars=true,
     basicstyle=\ttfamily\NoAutoSpacing,
     commentstyle=\color{comments}\slshape,
-    %keywordstyle=\bfseries,
+    keywordstyle=\color{orange}\bfseries,
     showstringspaces=false,
     index=[1][keywords],
     %indexstyle=\indexfonction,
@@ -371,7 +385,7 @@
   %                                         Exercices \textemdash\
   %                                         édition \year}
 
-\includeonly{trucs}
+%\includeonly{trucs}
 
 \begin{document}
 
