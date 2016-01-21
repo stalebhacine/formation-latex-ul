@@ -353,8 +353,8 @@ ainsi:
 
 int main()
 {
-    printf("Hello world\n");
-    return 0;
+  printf("Hello world\n");
+  return 0;
 }
 \end{lstlisting}
     \end{vglisting}
@@ -374,8 +374,8 @@ int main()
 
 int main()
 {
-    printf("Hello world\n");
-    return 0;
+  printf("Hello world\n");
+  return 0;
 }
 \end{lstlisting}
   \end{texample}
@@ -412,9 +412,163 @@ l'index.
   \qed
 \end{exemple}
 
-% Analyse et rapport intégrés [de type Sweave]
 
-% Diapositives
+\section{Production de rapports avec l'analyse intégrée}
+\label{sec:trucs:sweave}
+
+Les publications scientifiques reposent souvent sur une forme ou une
+autre d'analyse numérique ou statistique, la production de code
+informatique, une simulation stochastique, etc. La portion
+développement et analyse est alors produite avec un certain outil
+et la publication, avec un outil d'édition séparé --- {\LaTeX} pour ce
+qui nous occupe. Or, tous les auteurs ont vécu cette situation: les
+résultats de l'analyse changent et il faut modifier le rapport en
+conséquence, refaire les tableaux et les graphiques, retracer cette
+valeur isolée au fil du texte directement tirée de l'analyse\dots\
+Seule la quantité de temps perdu rivalise avec le risque d'erreur.
+
+Il existe pourtant une meilleure façon de travailler.
+
+Cette meilleure façon de faire, tirée du concept de
+\emph{programmation lettrée}, consiste à combiner dans un seul et même
+document l'analyse et le rapport, puis de produire automatiquement une
+partie du second à partir de la première.
+
+Les utilisateurs du système statistique R bénéficient ici d'une mise
+en œuvre simple et élégante du concept ci-dessus avec l'outil Sweave
+\citep{Sweave}. Un fichier Sweave est à la base un document {\LaTeX}
+dans lequel on a inséré du code R à l'intérieur de balises spéciales
+utilisant la syntaxe \code{noweb} \citep{noweb}, comme ceci:
+\begin{lstlisting}
+\section{Commandes R}
+
+L'utilisateur de R interagit avec l'interprète en entrant
+des commandes à l'invite de commande. L'expression est
+immédiatement évaluée et le résultat est affiché à
+l'écran:
+<<>>=
+2 + 3
+pi
+cos(pi/4)
+@
+La commande \verb=exp(1)= donne \Sexpr{exp(1)},
+la valeur du nombre $e$.
+\end{lstlisting}
+
+Par convention, on enregistre un tel document sous un nom se terminant
+par l'extension \code{.Rnw}. Sa compilation s'effectue
+en deux étapes:
+\begin{enumerate}
+\item Le fichier \code{.Rnw} est passé à la commande \code{Sweave()}
+  de R. Celle-ci retrace les extraits de code placés entre les balises
+  \verb|<<>>=| et \verb|@| et les remplace par des environnements
+  {\LaTeX} contenant, par défaut, les expressions R et leur résultat
+  dans des environnements \Ie{Sinout} et \Ie{Soutput}. Elle évalue
+  également les expressions R se trouvant dans les commandes
+  \cmd{\Sexpr} et elle remplace la commande par le résultat de
+  l'expression. Cela produit un fichier \code{.tex}:
+\begin{lstlisting}
+\section{Commandes R}
+
+L'utilisateur de R interagit avec l'interprète en entrant
+des commandes à l'invite de commande. L'expression est
+immédiatement évaluée et le résultat est affiché à
+l'écran:
+\begin{Schunk}
+\begin{Sinput}
+> 2 + 3
+\end{Sinput}
+\begin{Soutput}
+[1] 5
+\end{Soutput}
+\begin{Sinput}
+> pi
+\end{Sinput}
+\begin{Soutput}
+[1] 3.141593
+\end{Soutput}
+\begin{Sinput}
+> cos(pi/4)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.7071068
+\end{Soutput}
+\end{Schunk}
+La commande \verb=exp(1)= donne 2.71828182845905,
+la valeur du nombre $e$.
+\end{lstlisting}
+\item On compile le fichier \code{.tex} comme d'habitude.
+\end{enumerate}
+
+Seave se révèle particulièrement utile pour créer des graphiques à
+partir de R: tout ce que l'on doit conserver dans son fichier
+\code{.Rnw}, c'est le code pour créer le graphique (voir l'exercice
+!!!!). Il est également possible de contrôler l'exécution des blocs de
+code et l'affichage du code source et des résultats.
+
+\link{http://mpastell.com/pweave/}{Pweave} est un système similaire à
+Sweave pour le langage Python.
+
+Inspiré de Sweave, knitr \citep{knitr} permet également d'entrelacer
+du code {\LaTeX} et du code R. Cet outil offre plus d'options de
+traitement que Sweave, mais au prix d'une complexité accrue.
+
+\begin{information}
+  On doit le concept de programmation lettrée au créateur de {\TeX},
+  Donald Knuth.  En fait, tout le code source de {\TeX} est écrit
+  en programmation lettrée! La %
+  \link{https://fr.wikipedia.org/wiki/Programmation_lettrée}{page Wikipedia} %
+  consacrée au sujet offre un très bon survol de l'historique et de la
+  nature du concept.
+
+  Les personnes intéressées peuvent consulter, par exemple, le %
+  \link{http://www.ctan.org/tex-archive/macros/latex/contrib/ulthese}{code source} %
+  de la classe \class{ulthese}. La documentation de la classe, son
+  code {\LaTeX} ainsi que celui des gabarits, tout se trouve entrelacé
+  dans le seul fichier \code{ulthese.dtx}.
+\end{information}
+
+
+
+\section{Diapositives}
+\label{sec:trucs:diapositives}
+
+Il n'est pas rare qu'une publication scientifique fasse l'objet d'une
+présentation dans le cadre d'un colloque ou d'un séminaire. Lorsque le
+texte a été rédigé avec {\LaTeX}, il est tout naturel de souhaiter le
+réutiliser pour la préparation de diapositives --- surtout si le texte
+comporte de nombreuses équations mathématiques qu'il serait
+extrêmement long de retranscrire dans un logiciel de présentation
+comme PowerPoint.
+
+Fort heureusement, il est tout à fait possible de composer ses
+diapositives avec {\LaTeX}. La classe standard \class{slides} produit
+des diapositives élégantes, quoique minimalistes, qui conviendront à
+l'auteur qui ne recherche rien de plus que du texte noir sur fond
+blanc.
+
+Cependant, l'outil devenu le standard \emph{de facto} pour la
+production de diapositives est la classe \class{beamer}
+\citep{beamer}. Celle-ci compte un grand nombre de thèmes et de
+gabarits élaborés, rend très simple l'insertion d'animations d'une
+diapositive à l'autre, gère automatiquement la table des matières
+et\dots\ produit des diapositives en couleur!
+
+Quelle que soit la classe utilisée, les diapositives produites avec
+{\LaTeX} se présentent sous forme de fichier PDF. On les projète avec
+une liseuse PDF en mode plein écran.
+
+Nous n'irons pas plus loin sur le sujet dans ce document. Consulter
+la %
+\doc{beamer}{http://texdoc.net/pkg/beameruserguide} %
+de \class{beamer} pour apprendre à utiliser la classe. Produire des
+diapositives de grande qualité avec les gabarits fournis avec la
+classe est simple et rapide.
+
+Les diapositives de la première partie de la formation
+\citep{UL:latex:1} ont été produites avec \class{beamer}.
+
+
 
 % Contrôle de version
 
