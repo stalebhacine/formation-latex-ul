@@ -241,43 +241,34 @@
       \begin{trivlist}}
       {\end{trivlist}\end{minipage}}
 
-  %% Remarques importantes
-  \newenvironment{important}{%
+  %% Encadré générique pour les remarques importantes et autres
+  %% comportant une icône sur la gauche. Argument: symbole à
+  %% placer sur la gauche (obligatoire).
+  \newenvironment{infobox}[1]{%
+    \setlength{\FrameRule}{1pt}
     \begin{table}[h]%
       \begin{framed}%
         \noindent
         \begin{minipage}{0.1\linewidth}
-          \raisebox{-1.5em}[0em][0em]{\HUGE\faExclamationCircle}
+          \raisebox{-1.5em}[0em][0em]{\HUGE#1}
         \end{minipage}
-        \begin{minipage}[t]{0.88\linewidth}}
-        {\end{minipage}%
-      \end{framed}
-    \end{table}}
+        \begin{minipage}[t]{0.88\linewidth}}%
+        {\end{minipage}\end{framed}\end{table}}
+
+  %% Remarques importantes
+  \newenvironment{important}{%
+    \begin{infobox}{\faExclamationCircle}}%
+    {\end{infobox}}
 
   %% Informations
-  % \newenvironment{information}{%
-  %   \begin{framed}%
-  %     \noindent
-  %     \begin{minipage}{0.1\linewidth}
-  %       \raisebox{-1.5em}[0em][0em]{\HUGE\faInfoCircle}
-  %     \end{minipage}
-  %     \begin{minipage}[t]{0.88\linewidth}}
-  %     {\end{minipage}%
-  %   \end{framed}}
+  \newenvironment{information}{%
+    \begin{infobox}{\faInfoCircle}}%
+    {\end{infobox}}
 
   %% Conseils du TeXpert
   \newenvironment{conseil}{%
-    \begin{table}[h]%
-      \begin{framed}%
-        \noindent
-        \begin{minipage}{0.1\linewidth}
-          \raisebox{-1.5em}[0em][0em]{\HUGE\faThumbsOUp}
-        \end{minipage}
-        \begin{minipage}[t]{0.88\linewidth}
-          {\bfseries\sffamily Conseil du {\TeX}pert} \newline}
-        {\end{minipage}%
-      \end{framed}
-    \end{table}}
+    \begin{infobox}{\faThumbsOUp}}%
+    {\end{infobox}}
 
   %%% =======
   %%%  Index
@@ -385,7 +376,7 @@
   %                                         Exercices \textemdash\
   %                                         édition \year}
 
-%\includeonly{trucs}
+\includeonly{trucs}
 
 \begin{document}
 
