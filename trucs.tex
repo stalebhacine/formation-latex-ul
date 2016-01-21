@@ -443,9 +443,7 @@ utilisant la syntaxe \code{noweb} \citep{noweb}, comme ceci:
 \section{Commandes R}
 
 L'utilisateur de R interagit avec l'interprète en entrant
-des commandes à l'invite de commande. L'expression est
-immédiatement évaluée et le résultat est affiché à
-l'écran:
+des commandes à l'invite de commande:
 <<>>=
 2 + 3
 pi
@@ -461,19 +459,17 @@ en deux étapes:
 \begin{enumerate}
 \item Le fichier \code{.Rnw} est passé à la commande \code{Sweave()}
   de R. Celle-ci retrace les extraits de code placés entre les balises
-  \verb|<<>>=| et \verb|@| et les remplace par des environnements
+  \verb|<< >>=| et \verb|@| et les remplace par des environnements
   {\LaTeX} contenant, par défaut, les expressions R et leur résultat
-  dans des environnements \Ie{Sinout} et \Ie{Soutput}. Elle évalue
+  dans des environnements \Ie{Sinput} et \Ie{Soutput}. Elle évalue
   également les expressions R se trouvant dans les commandes
-  \cmd{\Sexpr} et elle remplace la commande par le résultat de
-  l'expression. Cela produit un fichier \code{.tex}:
+  \cmd{\Sexpr} pour les remplacer par leur résultat. Cela produit un
+  fichier \code{.tex}:
 \begin{lstlisting}
 \section{Commandes R}
 
 L'utilisateur de R interagit avec l'interprète en entrant
-des commandes à l'invite de commande. L'expression est
-immédiatement évaluée et le résultat est affiché à
-l'écran:
+des commandes à l'invite de commande:
 \begin{Schunk}
 \begin{Sinput}
 > 2 + 3
@@ -500,11 +496,11 @@ la valeur du nombre $e$.
 \item On compile le fichier \code{.tex} comme d'habitude.
 \end{enumerate}
 
-Seave se révèle particulièrement utile pour créer des graphiques à
+Sweave se révèle particulièrement utile pour créer des graphiques à
 partir de R: tout ce que l'on doit conserver dans son fichier
-\code{.Rnw}, c'est le code pour créer le graphique (voir l'exercice
-!!!!). Il est également possible de contrôler l'exécution des blocs de
-code et l'affichage du code source et des résultats.
+\code{.Rnw}, c'est le code pour créer le graphique. Il est également
+possible de contrôler l'exécution des blocs de code et l'affichage du
+code source et des résultats.
 
 \link{http://mpastell.com/pweave/}{Pweave} est un système similaire à
 Sweave pour le langage Python.
@@ -521,10 +517,10 @@ traitement que Sweave, mais au prix d'une complexité accrue.
   consacrée au sujet offre un très bon survol de l'historique et de la
   nature du concept.
 
-  Les personnes intéressées peuvent consulter, par exemple, le %
+  Le lecteur intéressé pourra consulter, par exemple, le %
   \link{http://www.ctan.org/tex-archive/macros/latex/contrib/ulthese}{code source} %
-  de la classe \class{ulthese}. La documentation de la classe, son
-  code {\LaTeX} ainsi que celui des gabarits, tout se trouve entrelacé
+  de la classe \class{ulthese}. La documentation de la classe, le
+  code {\LaTeX}, les gabarits, tout se trouve entrelacé
   dans le seul fichier \code{ulthese.dtx}.
 \end{information}
 
