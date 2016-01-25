@@ -22,8 +22,8 @@
   %% Polices de caractères
   \usepackage{fontspec}
   \usepackage[bold-style=ISO]{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=0.92}
-  \setmainfont[Numbers=OldStyle]{Lucida Bright OT}
+  \defaultfontfeatures{Scale=0.92}
+  \setmainfont[Ligatures=TeX,Numbers=OldStyle]{Lucida Bright OT}
   \setmathfont{Lucida Bright Math OT}
   \setmonofont{Lucida Grande Mono DK}
   \setsansfont[Scale=1.0,Numbers=OldStyle]{Myriad Pro}
@@ -272,9 +272,7 @@
       color,definecolor,colorlet,hypersetup},
     deletetexcs={documentclass,usepackage,begin,end,LaTeX,TeX,%
       bfseries,emph,Huge,itshape,normalfont,raggedright,sffamily,small,textbf,texttt,%
-      minipage,hfill,%
-      def,%
-      a,b,c,d,em,i,j,l,r,t},
+      minipage,hfill,def,a,b,c,d,em,i,j,l,r,t},
     index=[1][keywords],        % environnements
     indexstyle=[1]\ixenv,
     index=[2][texcs],           % commandes
@@ -303,16 +301,12 @@
   %% des noms de commandes.
   %% - \cmdprint est modifiée pour que le nom de la commande ne soit
   %%   pas en italique;
-  %% - \meta est modifiée pour enlever les symboles $\langle$ et
-  %%   $\rangle$ des résultats de \marg et al.;
   %% - \cmd est modifiée pour utiliser @ comme séparateur dans \index
   %%   et pour utiliser \cs plutôt que \cmdprint pour afficher le nom de
   %%   la commande (afin d'obtenir le même format d'entrée d'index
   %%   qu'avec \indexcmd ci-dessus).
   \renewcommand{\cmdprint}[1]{\textup{\texttt{\string#1}}}
   \makeatletter
-  \DeclareRobustCommand{\meta}[1]{{\meta@font@select\hyphenchar\font\m@ne #1}}
-  \def\meta@font@select{\ttfamily\itshape}
   \renewcommand{\cmd}[1]{\cmdprint{#1}%
     \index{\expandafter\@gobble\string#1@\string\cs{\expandafter\@gobble\string#1}}}
   \makeatother
