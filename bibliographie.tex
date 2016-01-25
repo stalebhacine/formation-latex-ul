@@ -203,7 +203,7 @@ bibliographiques.
 
 \begin{exemple}
   \label{ex:bibliographie:bib}
-  On trouvera ci-dessous les entrées bibliographiquesd'un livre
+  On trouvera ci-dessous les entrées bibliographiques d'un livre
   \citep{Kopka:latex:4e}, d'un article scientifique
   \citep{Mori:bibliographies:2009} et d'un manuel générique, en
   l'occurrence la documentation d'un paquetage \citep{natbib}. Pour
@@ -211,7 +211,7 @@ bibliographiques.
   texte de la notice tel qu'il apparaît dans la bibliographie du
   présent ouvrage.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 @Book{Kopka:latex:4e,
   author =    {Kopka, Helmut and Daly, Patrick W.},
   title =     {Guide to {\LaTeX}},
@@ -227,7 +227,7 @@ bibliographiques.
     \noindent \nolink{\bibentry{Kopka:latex:4e}}.
   \end{framed}
 
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 @Article{Mori:bibliographies:2009,
   author =   {Lapo F. Mori},
   title =    {Managing bibliographies with {\LaTeX}},
@@ -236,7 +236,7 @@ bibliographiques.
   volume =   30,
   number =   1,
   pages =    {36-48},
-  url =	     {https://www.tug.org/TUGboat/tb30-1/tb94mori.pdf},
+  url =	{https://www.tug.org/TUGboat/tb30-1/tb94mori.pdf},
   language = {english}
 }
 \end{lstlisting}
@@ -245,7 +245,7 @@ bibliographiques.
     \noindent \nolink{\bibentry{Mori:bibliographies:2009}}.
   \end{framed}
 
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 @Manual{natbib,
   author =   {Patrick W. Daly},
   title =    {Natural Sciences Citations and References},
@@ -263,15 +263,15 @@ bibliographiques.
 
 
 \begin{itemize}
-\item Les types d'entrées dans l'exemple ci-dessus sont \code{Book},
-  \code{Article} et \code{Manual}\footnote{%
+\item Les types d'entrée bibliographique dans l'exemple ci-dessus sont
+  \code{Book}, \code{Article} et \code{Manual}\footnote{%
     Les identifiants des types d'entrée et des champs sont insensibles
     à la casse. Par exemple, on pourrait tout aussi bien débuter une
     entrée par \code{@Manual}, \code{@manual} ou \code{@MANUAL}.}. %
   On remarquera que les champs utilisés sont différents d'un type à un
   autre.
 
-  On trouvera la liste de tous les types d'entrées et des champs
+  On trouvera la liste de tous les types d'entrée et des champs
   obligatoires et optionnels pour chacun dans, entre autres, %
   \doc[Wikipedia]{}{https://fr.wikipedia.org/wiki/BibTeX}, %
   la %
@@ -283,8 +283,8 @@ bibliographiques.
   forme est surtout utile pour distinguer explicitement le nom du
   prénom, par exemple dans le cas de prénoms ou de noms multiples.
 \item Lorsqu'un ouvrage compte plusieurs auteurs, on distingue ceux-ci
-  en séparant le nom complet de \emph{chacun} des auteurs par
-  \code{and}.
+  en séparant le nom complet de \emph{chacun} des auteurs par le
+  mot-clé \code{and}.
 \item {\BibTeX} gère normalement automatiquement les hauts et bas de
   casse (majuscules et minuscules), en particulier dans les titres
   d'ouvrages. Pour préserver une casse particulière, il suffit de
@@ -450,7 +450,7 @@ maisons d'édition ont leur propre style que les auteurs sont tenus
 d'utiliser. En ce qui a trait aux thèses et mémoires de l'Université
 Laval, la Faculté des études supérieures et postdoctorales n'impose
 aucun style de bibliographie particulier. Nous recommandons
-d'utiliser le style courant dans sa discipline scientifique.
+d'utiliser le style usuel dans sa discipline scientifique.
 
 
 
@@ -693,7 +693,7 @@ compilation standard avec seulement le moteur {\TeX} suffit.
   \begin{figure}
     \centering
     \code{exemple-bibliographie.bib}
-    \lstinputlisting{exemple-bibliographie.bib}
+    \lstinputlisting[language=]{exemple-bibliographie.bib}
     \medskip
     \code{exemple-bibliographie.tex}
     \lstinputlisting[firstline=3]{exemple-bibliographie.tex}
@@ -804,7 +804,7 @@ de \citeauthor{wikilivres:latex}.
     La clé est laissée vacante dans les réponses ci-dessous.
     \begin{enumerate}
     \item On utilise le type \code{Article} pour cette entrée.
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 @Article{,
   author =  {Frank Mittelbach},
   title =   {How to Influence the Position of Float
@@ -815,14 +815,14 @@ de \citeauthor{wikilivres:latex}.
   volume =  35,
   number =  3,
   pages =   {258-254},
-  url =     {https://www.tug.org/members/TUGboat/tb35-3/
-             tb111mitt-float.pdf},
+  url = {https://www.tug.org/members/TUGboat/tb35-3/
+         tb111mitt-float.pdf},
   language = {english}
 }
 \end{lstlisting}
 
     \item On utilise le type \code{Book} pour cette entrée.
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 @Book{,
   author =  {Peter Wilson},
   title =   {The Memoir Class for Configurable
@@ -841,7 +841,7 @@ de \citeauthor{wikilivres:latex}.
       moment de composer la notice bibliographique. Remarquer
       l'utilisation des accolades \verb={ }= dans le titre pour
       préserver la casse de «PSTricks» et de «PostScript».
-\begin{lstlisting}
+\begin{lstlisting}[language=]
 @Manual{,
   author = {Timothy {V}an Zandt and Denis Girou and
             Herbert Vo{\ss}},

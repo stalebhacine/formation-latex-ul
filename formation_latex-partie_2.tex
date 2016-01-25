@@ -3,15 +3,13 @@
   \usepackage{babel}
   \usepackage[autolanguage]{numprint}
   \usepackage{amsmath,amsthm}
-  %\usepackage[noae]{Sweave}
-  %\usepackage{paralist}
   \usepackage[shortlabels]{enumitem}
   \usepackage{textpos}
   \usepackage{graphicx}
+  \usepackage{framed}                  % environnement titled-frame
   \usepackage{manfnt}                  % \mantriangleright (puce)
   \usepackage{dirtree}                 % arbre pour exercice sur \include
   \usepackage{metalogo}                % \XeLaTeX logo
-  %\usepackage{applekeys}               % touches Mac
   \usepackage{fontawesome}             % plusieurs icônes
   \usepackage{answers}                 % exercices et solutions
   \usepackage{listings}                % code informatique
@@ -58,7 +56,7 @@
   %% Étiquettes de \autoref (redéfinitions compatibles avec babel).
   %% Attention! Les % à la fin des lignes sont importants sinon des
   %% blancs apparaissent dès que la commande \selectlanguage est
-  %% utilisée... comme dans la bibliographie, par exemple.
+  %% utilisée, notamment dans la bibliographie.
   \addto\extrasfrench{%
     \def\subsectionautorefname{section}%
     \def\figureautorefname{figure}%
@@ -97,7 +95,7 @@
   \setlist[enumerate,3]{label=\roman*),labelsep=*,leftmargin=1.5em,align=right}
   \setlist[itemize]{leftmargin=*,align=left}
 
-  %% Options de babel
+  %% Paramétrage de babel
   \frenchbsetup{CompactItemize=false,%
     ThinSpaceInFrenchNumbers=true,
     ItemLabeli=\mantriangleright,
@@ -108,25 +106,12 @@
   %% Sections de code source
   \lstloadlanguages{[LaTeX]TeX}
   \lstset{language=[LaTeX]TeX,
-    morekeywords={align,align*,aligned,cases,center,equation,equation*,figure,gather,lstlisting,minipage,multline,quote,split,table,tabular,tabularx,verbatim},
-    moretexcs={toprule,midrule,bottomrule,%
-      includegraphics,reflectbox,resizebox,rotatebox,scalebox,%
-      includepdf,frenchfigurename,frenchtablename,%
-      newsubfloat,subcaption,%
-      dfrac,tfrac,iint,text,mathcal,mathbb,eqref,symbf,%
-      citet,citep,citeauthor,citeyear,%
-      setmainfont,setmathfont,%
-      color,definecolor,colorlet,hypersetup},
-    deletetexcs={documentclass,usepackage,begin,end,LaTeX,TeX,%
-      bfseries,emph,Huge,itshape,normalfont,raggedright,sffamily,small,textbf,texttt},
     escapeinside=`',
     extendedchars=true,
     basicstyle=\ttfamily\NoAutoSpacing,
     commentstyle=\color{comments}\slshape,
-    keywordstyle=\color{orange}\bfseries,
+    keywordstyle=\mdseries,
     showstringspaces=false,
-    index=[1][keywords],
-    %indexstyle=\indexfonction,
     backgroundcolor=\color{LightYellow1},
     frame=lr,
     rulecolor=\color{LightYellow1},
@@ -137,23 +122,9 @@
   %%%  Nouveaux environnements
   %%% =========================
 
-  %% Environnements d'exemples et al.
+  %% Exemples
   \theoremstyle{definition}
   \newtheorem{exemple}{Exemple}[chapter]
-  \newtheorem*{astuce}{Astuce}
-
-  \theoremstyle{remark}
-  \newtheorem*{remarque}{Remarque}
-  \newtheorem*{remarques}{Remarques}
-  \newenvironment{rem}{\begin{remarque} \mbox{}}{\end{remarque}}
-  \newenvironment{rems}{\begin{remarques} \mbox{}}{\end{remarques}}
-
-  %% Environnements de Sweave
-  % \DefineVerbatimEnvironment{Sinput}{Verbatim}{xleftmargin=\parindent}
-  % \DefineVerbatimEnvironment{Soutput}{Verbatim}{xleftmargin=\parindent}
-  % \DefineVerbatimEnvironment{Scode}{Verbatim}{xleftmargin=\parindent}
-  % \fvset{listparameters={\setlength{\topsep}{0pt}}}
-  % \renewenvironment{Schunk}{\vspace{\topsep}}{\vspace{\topsep}}
 
   %% Exercices et réponses
   \Newassociation{sol}{solution}{solutions}
@@ -265,42 +236,87 @@
     \begin{infobox}{\faInfoCircle}}%
     {\end{infobox}}
 
-  %% Conseils du TeXpert
+  %% Encadré avec titre (basé sur 'titled-frame' de framed pour les
+  %% conseils du TeXpert. Cet environnement est laissé flottant.
   \newenvironment{conseil}{%
-    \begin{infobox}{\faThumbsOUp}}%
-    {\end{infobox}}
+    \colorlet{TFFrameColor}{black}%
+    \colorlet{TFTitleColor}{white}%
+    \begin{table}%
+      \begin{titled-frame}{\sffamily Conseil du {\TeX}pert}%
+        \noindent
+        \begin{minipage}{0.1\linewidth}
+          \raisebox{-1.5em}[0em][0em]{\HUGE\faThumbsOUp}
+        \end{minipage}
+        \begin{minipage}[t]{0.88\linewidth}}%
+        {\end{minipage}\end{titled-frame}\end{table}}
 
   %%% =======
   %%%  Index
   %%% =======
-  \newcommand{\bfhyperpage}[1]{\textbf{\hyperpage{#1}}}
   \renewcommand{\preindexhook}{%
-    Les numéros de page en caractères gras indiquent les pages où les
-    concepts sont introduits, définis ou expliqués.\vskip\onelineskip}
+    Cet index contient des références aux commandes et environnements
+    {\LaTeX}, ainsi qu'aux noms de paquetages et de classes.%
+    \vskip\onelineskip%
+    Le premier numéro indique habituellement, mais pas toujours,
+    la page où un concept est introduit, défini ou expliqué.%
+    \vskip\onelineskip}
+  \lstset{language=[LaTeX]TeX,
+    morekeywords={align,align*,aligned,cases,center,equation,equation*,%
+      figure,gather,lstlisting,minipage,multline,quote,split,%
+      table,tabular,tabularx,verbatim},
+    moretexcs={toprule,midrule,bottomrule,%
+      includegraphics,reflectbox,resizebox,rotatebox,scalebox,%
+      includepdf,frenchfigurename,frenchtablename,%
+      newsubfloat,subcaption,%
+      dfrac,tfrac,iint,text,mathcal,mathbb,eqref,symbf,%
+      citet,citep,citeauthor,citeyear,%
+      setmainfont,setmathfont,%
+      color,definecolor,colorlet,hypersetup},
+    deletetexcs={documentclass,usepackage,begin,end,LaTeX,TeX,%
+      bfseries,emph,Huge,itshape,normalfont,raggedright,sffamily,small,textbf,texttt,%
+      minipage,hfill,%
+      def,%
+      a,b,c,d,em,i,j,l,r,t},
+    index=[1][keywords],        % environnements
+    indexstyle=[1]\ixenv,
+    index=[2][texcs],           % commandes
+    indexstyle=[2]\ixcmd}
+  \newcommand{\ixenv}[1]{\index{#1 env@\Pe{#1} (environnement)}
+    \index{environnement!#1@\Pe{#1}}}
+  \newcommand{\ixcmd}[1]{\index{#1@\string\cs{#1}}}
   \makeindex
 
   %%% =====================
   %%%  Nouvelles commandes
   %%% =====================
 
-  %% Noms de fonctions, code, etc.
-  \renewcommand{\cmdprint}[1]{\textup{\texttt{\string#1}}}
+  %% Noms de fonctions, code, environnement, etc.
   \newcommand{\code}[1]{\texttt{#1}}
   \newcommand{\fichier}[1]{\texttt{#1}}
-  \newcommand{\class}[1]{\textsf{#1}}
-  \newcommand{\pkg}[1]{\textbf{#1}}
-  \newcommand{\mat}[1]{\symbf{#1}} % en mode mathématique
+  \newcommand{\class}[1]{\textsf{#1}\index{#1 class@\textsf{#1} (classe)}%
+    \index{classe!#1}}
+  \newcommand{\pkg}[1]{\textbf{#1}\index{#1 pkg@\textbf{#1} (paquetage)}%
+    \index{paquetage!#1}}
+  \newcommand{\Pe}[1]{\code{#1}}         % tiré de la doc de memoir
+  \newcommand{\Ie}[1]{\Pe{#1}\ixenv{#1}} % idem
+  \newcommand{\mat}[1]{\symbf{#1}}       % en mode mathématique
 
-  \newcommand*{\Pe}[1]{\texttt{#1}}                      % print env name
-  \newcommand*{\ixenv}[1]{\index{#1 env?\Pe{#1} (environnement)}% index env
-    \index{environnement!#1?\Pe{#1}}}
-  \newcommand*{\Ie}[1]{\Pe{#1}\ixenv{#1}}                % print & index env
-
-  %% Redéfinition d'une commande de memoir.cls pour enlever les
-  %% symboles $\langle$ et $\rangle$ des résultats de \marg et al.
+  %% Modification de commandes tirées de memoir.cls servant à afficher
+  %% des noms de commandes.
+  %% - \cmdprint est modifiée pour que le nom de la commande ne soit
+  %%   pas en italique;
+  %% - \meta est modifiée pour enlever les symboles $\langle$ et
+  %%   $\rangle$ des résultats de \marg et al.;
+  %% - \cmd est modifiée pour utiliser @ comme séparateur dans \index
+  %%   et pour utiliser \cs plutôt que \cmdprint pour afficher le nom de
+  %%   la commande (afin d'obtenir le même format d'entrée d'index
+  %%   qu'avec \indexcmd ci-dessus).
+  \renewcommand{\cmdprint}[1]{\textup{\texttt{\string#1}}}
   \makeatletter
   \DeclareRobustCommand{\meta}[1]{{\meta@font@select\hyphenchar\font\m@ne #1}}
   \def\meta@font@select{\ttfamily\itshape}
+  \renewcommand{\cmd}[1]{\cmdprint{#1}%
+    \index{\expandafter\@gobble\string#1@\string\cs{\expandafter\@gobble\string#1}}}
   \makeatother
 
   %% Indications de capsule vidéo dans la marge
@@ -319,6 +335,14 @@
 
   %% Suppression de l'hyperlien
   \newcommand{\nolink}[1]{\begin{NoHyper}#1\end{NoHyper}}
+
+  %% «Bouton» de la page de copyright
+  \newcommand{\browsebutton}{%
+    \setlength{\fboxrule}{1pt}%
+    \framebox[40mm][l]{%
+      \rule[-5pt]{0mm}{16pt}%
+      \makebox[7mm]{\raisebox{-3pt}{\LARGE\faExternalLink}}\;%
+      {\sffamily Accéder au dépôt}}}
 
   %% Pour le tableau des commandes d'espacement en mode mathématique.
   %% Pris de la doc de amsmath.
@@ -349,10 +373,6 @@
   %%%  Varia
   %%% =======
 
-  %% Sous-tableaux et figures
-  % \newsubfloat{table}
-  % \newsubfloat{figure}
-
   %% Style de la bibliographie
   \bibliographystyle{francais}
 
@@ -376,7 +396,7 @@
   %                                         Exercices \textemdash\
   %                                         édition \year}
 
-\includeonly{trucs}
+%  \includeonly{trucs}
 
 \begin{document}
 

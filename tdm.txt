@@ -29,14 +29,15 @@ SÉANCE 1
 
 SÉANCE 2
 
-1. Tableaux et figures
-2. Mathématiques (avec amsmath)
-3. Document contenu dans plusieurs fichiers (utilisation de \include
+1. Boîtes
+2. Tableaux et figures
+3. Mathématiques (avec amsmath)
+4. Document contenu dans plusieurs fichiers (utilisation de \include
    et \input)
-4. Bibliographie avec BIBTeX
-5. (Polices de caractères: au-delà de Computer Modern)
+5. Bibliographie avec BIBTeX
 6. Commandes personnelles
-7. En rafale: trucs et astuces divers (hyperliens, présentation de code
+7. En rafale: trucs et astuces divers (Polices de caractères: au-delà
+   de Computer Modern, hyperliens, présentation de code
    informatique, symboles spéciaux, analyse et rapport intégrés [de
    type Sweave], diapositives, ...)
 

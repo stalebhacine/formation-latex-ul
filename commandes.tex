@@ -32,7 +32,7 @@ trois raisons suivantes:
     l'insertion de liens vers la documentation. D'un seul appel, elle
     crée un hyperlien dans le texte suivi de l'icône {\faExternalLink}
     et elle ajoute le nom du fichier de documentation dans la marge
-    suivi de l'icône {\faBook}.
+    précédé de l'icône {\faBook}.
   \item Une nouvelle commande sémantique \cmdprint{\pkg} sert pour la
     mise en forme des noms de paquetages. Ainsi, leur présentation est
     toujours la même et si nous souhaitons en changer, il suffit de
@@ -50,10 +50,10 @@ trois raisons suivantes:
 \section{Nouvelles commandes}
 \label{sec:commandes:commandes}
 
-Les commandes \cmd{\newcommand} et \cmd{\renewcommand} permettent,
-dans l'ordre, de définir une nouvelle commande ou de redéfinir ---
-c'est-à-dire de modifier la définition --- d'une commande existante.
-On place généralement les appels à ces commandes dans le préambule du
+Les commandes \cmd{\newcommand} et \cmd{\renewcommand} permettent
+respectivement de définir une nouvelle commande et de redéfinir une
+commande existante --- c'est-à-dire d'en modifier la définition. On
+place généralement les appels à ces commandes dans le préambule du
 document.
 
 \subsection{Commandes sans arguments}
@@ -74,8 +74,8 @@ de toute commande active\footnote{%
   {\TeX} et {\LaTeX} ainsi que les commandes de tous les paquetages
   chargés dans le préambule.} %
 dans le document dans le cas de \cmdprint{\newcommand}. À l'inverse,
-une commande active doit nécessairement porter le même nom dans le cas
-de \cmdprint{\renewcommand}.
+une commande active doit nécessairement porter le même nom lorsque
+l'on fait appel à \cmdprint{\renewcommand}.
 
 Le second argument, \meta{définition}, contient la définition de la
 commande. Il peut s'agir de caractères à insérer dans le texte, de
@@ -100,7 +100,7 @@ commandes à exécuter ou d'une combinaison de tout cela.
 
 \begin{exemple}
   Tel que mentionné à l'\autoref{ex:commandes:intro}, nous avons
-  modifié la police de caractère des titres de chapitres dans ce
+  modifié la police de caractère des titres de chapitres dans le présent
   document en redéfinissant la commande \cmdprint{\chaptitlefont} de
   la classe \class{memoir}. Pour obtenir des titres de chapitres sans
   empattements, en caractères gras, de dimension \cmdprint{\Huge} et
@@ -110,7 +110,7 @@ commandes à exécuter ou d'une combinaison de tout cela.
 \renewcommand{\chaptitlefont}{\normalfont%
   \sffamily\bfseries\Huge\raggedright}
 \end{lstlisting}
-  La commande \cmd{\normalfont} est placée au début de la définition à
+  On trouve la commande \cmd{\normalfont} au début de la définition à
   titre préventif afin de «remettre à zéro» toutes les
   caractéristiques de police. %
   \qed
@@ -174,7 +174,8 @@ doivent apparaître.
 
   Avec la définition ci-dessus, la déclaration
 \begin{lstlisting}
-\doc{documentation}{hyperref}{http://texdoc.net/pkg/hyperref}
+\doc{documentation}{hyperref}{%
+  http://texdoc.net/pkg/hyperref}
 \end{lstlisting}
   produit: \doc{hyperref}{http://texdoc.net/pkg/hyperref}. %
   \qed
@@ -262,32 +263,33 @@ Les nombreux arguments sont les suivants:
   {\TeX}pert». La définition --- relativement élaborée --- de
   l'environnement est la suivante:
 \begin{lstlisting}
-\newenvironment{conseil}%
-  {\begin{table}[h]
-     \begin{framed}
-       \noindent
-       \begin{minipage}{0.1\linewidth}
-         \raisebox{-1.5em}[0em][0em]{\HUGE\faThumbsOUp}
-       \end{minipage}
-       \begin{minipage}[t]{0.88\linewidth}
-         {\bfseries\sffamily Conseil du {\TeX}pert} \newline}%
-  {\end{minipage}\end{framed}\end{table}}
+\newenvironment{conseil}{%
+  \colorlet{TFFrameColor}{black}
+  \colorlet{TFTitleColor}{white}
+  \begin{table}
+    \begin{titled-frame}{\sffamily Conseil du {\TeX}pert}
+      \noindent
+      \begin{minipage}{0.1\linewidth}
+        \raisebox{-1.5em}[0em][0em]{\HUGE\faThumbsOUp}
+      \end{minipage}
+      \begin{minipage}[t]{0.88\linewidth}}%
+  {\end{minipage}\end{titled-frame}\end{table}}
 \end{lstlisting}
   Dans le second argument, on:
   \begin{enumerate}
+  \item définit des couleurs requises par l'environnement
+    \Pe{titled-frame};
   \item ouvre un élément flottant pour disposer la rubrique sur la
     page;
-  \item ouvre un environnement \Ie{framed} de la classe
-    \class{memoir} pour encadrer la rubrique;
+  \item ouvre un environnement \Ie{titled-frame} (fourni par le paquetage
+    \pkg{framed}) pour encadrer la rubrique et afficher son titre;
   \item crée une première \Pe{minipage} pour disposer le symbole
     {\faThumbsOUp} tiré de la police Font~Awesome;
-  \item ouvre une seconde \Pe{minipage} à côté de la première, on y
-    dispose le titre de la rubrique en police grasse et sans
-    empattements, puis on insère un retour à la ligne pour préparer
+  \item ouvre une seconde \Pe{minipage} à côté de la première pour
     accueillir le texte de la rubrique.
   \end{enumerate}
   Le troisième argument sert à refermer tous les environnements
-  ouverts dans le second argument qui n'ont pas déjà été fermés.
+  ouverts dans le second argument et qui n'ont pas déjà été fermés.
 
   Une fois ce travail accompli, créer une nouvelle rubrique est très
   simple:
@@ -296,7 +298,7 @@ Les nombreux arguments sont les suivants:
   N'hésitez pas à créer des nouvelles commandes...
 \end{conseil}
 \end{lstlisting}
-  On trouvera le résultat ci-dessous. %
+  On trouvera le résultat ci-dessus. %
   \qed
 \end{exemple}
 
@@ -376,8 +378,7 @@ Les nombreux arguments sont les suivants:
 
   Modifier la définition de la commande \cmdprint{\doc} de
   l'\autoref{ex:commandes:doc} pour que «documentation» soit le texte
-  par défaut de l'hyperlien qui est placé au fil du texte. (Omettre
-  les icônes si la police Font Awesome n'est pas installée
+  par défaut de l'hyperlien qui est placé au fil du texte.
   \begin{sol}
     Avec la définition
 \begin{lstlisting}

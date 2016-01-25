@@ -683,8 +683,8 @@ noms de fonction se révélerait peu pratique à l'usage.
 {\LaTeX} définit donc des commandes pour un grand nombre de fonctions
 et d'opérateurs mathématiques standards:
 \begin{lstlisting}
-\arccos   \cosh    \det    \inf      \limsup   \Pr      \tan
-\arcsin   \cot     \dim    \ker      \ln       \sec     \tanh
+\arccos   \cosh    \det    \inf      \limsup   \Pr     \tan
+\arcsin   \cot     \dim    \ker      \ln       \sec    \tanh
 \arctan   \coth    \exp    \lg       \log      \sin
 \arg      \csc     \gcd    \lim      \max      \sinh
 \cos      \deg     \hom    \liminf   \min      \sup
@@ -1329,7 +1329,7 @@ environnements pour les équations hors paragraphe.
   d'équations numérotées, placer la commande \cmd{\notag} juste avant
   la commande de changement de ligne {\bs\bs}.
   \begin{demo}
-    \begin{texample}
+    \begin{texample}[0.53\linewidth]
 \begin{lstlisting}
 \begin{align}
   a_1 &= b_1 + c_1 \notag \\
@@ -1370,11 +1370,11 @@ l'utilisation des environnements du \autoref*{tab:math:displays}.
 
 \begin{conseil}
   Veillez à respecter les règles suivantes pour la mise en forme des
-  équations:
+  équations.
   \begin{enumerate}
   \item Qu'elles apparaissent en ligne ou hors paragraphe, les
-    équations font partie intégrante de la phrase, aussi les règles de
-    ponctuation usuelles s'appliquent-elles aux équations.
+    équations font partie intégrante de la phrase. Ainsi, les règles
+    de ponctuation usuelles s'appliquent-elles aux équations.
   \item Lorsqu'une équation s'étend sur plus d'une ligne, couper
     chaque ligne \emph{avant} un opérateur de sorte que chaque ligne
     constitue une expression mathématique complète (voir les troisième
@@ -1458,11 +1458,12 @@ paire, c'est-à-dire qu'à \emph{toute} commande \cmdprint{\left} doit
   absolument correspondre une commande \cmdprint{\right}. Cette
 contrainte est facile à oublier!
 
-Il est possible d'imbriquer des paires de commandes les unes à
-l'intérieur des autres, pour autant que l'expression compte toujours
-autant de \cmdprint{\left} que de \cmdprint{\right}.
-\begin{demo}
-  \begin{texample}
+\begin{itemize}
+\item Il est possible d'imbriquer des paires de commandes les unes à
+  l'intérieur des autres, pour autant que l'expression compte toujours
+  autant de \cmdprint{\left} que de \cmdprint{\right}.
+  \begin{demo}
+    \begin{texample}
 \begin{lstlisting}
 \left[
   \int
@@ -1471,43 +1472,44 @@ autant de \cmdprint{\left} que de \cmdprint{\right}.
   \right) dx
 \right]
 \end{lstlisting}
-    \producing
-    \begin{equation*}
-      \left[
-        \int
-        \left(
-          1 + \frac{x}{k}
-        \right) dx
-      \right]
-    \end{equation*}
-  \end{texample}
-\end{demo}
-
-Les symboles \meta{delim\_g} et \meta{delim\_d} n'ont pas à former une
-paire logique; toute combinaison de délimiteurs est valide.
-\begin{demo}
-  \begin{texample}
+      \producing
+      \begin{equation*}
+        \left[
+          \int
+          \left(
+            1 + \frac{x}{k}
+          \right) dx
+        \right]
+      \end{equation*}
+    \end{texample}
+  \end{demo}
+%
+\item Les symboles \meta{delim\_g} et \meta{delim\_d} n'ont pas à
+  former une paire logique; toute combinaison de délimiteurs est
+  valide.
+  \begin{demo}
+    \begin{texample}
 \begin{lstlisting}
 \int_0^1 x\, dx =
 \left[
   \frac{x^2}{2}
 \right|_0^1
 \end{lstlisting}
-    \producing
-    \begin{equation*}
-      \int_0^1 x\, dx =
-      \left[
-        \frac{x^2}{2}
-      \right|_0^1
-    \end{equation*}
-  \end{texample}
-\end{demo}
-
-Il arrive qu'un seul délimiteur soit nécessaire. Pour respecter la
-règle de la paire ci-dessus, on aura recours dans ce cas à un
-délimiteur \emph{invisible} représenté par le caractère «\verb=.=».
-\begin{demo}
-  \begin{texample}
+      \producing
+      \begin{equation*}
+        \int_0^1 x\, dx =
+        \left[
+          \frac{x^2}{2}
+        \right|_0^1
+      \end{equation*}
+    \end{texample}
+  \end{demo}
+%
+\item Il arrive qu'un seul délimiteur soit nécessaire. Pour respecter
+  la règle de la paire ci-dessus, on aura recours dans ce cas à un
+  délimiteur \emph{invisible} représenté par le caractère «\verb=.=».
+  \begin{demo}
+    \begin{texample}
 \begin{lstlisting}
 f(x) =
 \left\{
@@ -1517,24 +1519,24 @@ f(x) =
   \end{aligned}
 \right.
 \end{lstlisting}
-    \producing
-    \begin{equation*}
-      f(x) =
-      \left\{
-        \begin{aligned}
-          1 - x, &\quad x < 1 \\
-          x - 1, &\quad x \geq 1
-        \end{aligned}
-      \right.
-    \end{equation*}
-  \end{texample}
-\end{demo}
-(L'environnement \Ie{aligned} utilisé ci-dessus provient de
-\pkg{amsmath}.) On notera au passage que l'environnement \Ie{cases} de
-\pkg{amsmath} rend plus simple la réalisation de constructions comme
-celle ci-dessus.
-\begin{demo}
-  \begin{texample}
+      \producing
+      \begin{equation*}
+        f(x) =
+        \left\{
+          \begin{aligned}
+            1 - x, &\quad x < 1 \\
+            x - 1, &\quad x \geq 1
+          \end{aligned}
+        \right.
+      \end{equation*}
+    \end{texample}
+  \end{demo}
+  (L'environnement \Ie{aligned} utilisé ci-dessus provient de
+  \pkg{amsmath}.) On notera au passage que l'environnement \Ie{cases}
+  de \pkg{amsmath} rend plus simple la réalisation de constructions
+  comme celle ci-dessus.
+  \begin{demo}
+    \begin{texample}
 \begin{lstlisting}
 f(x) =
 \begin{cases}
@@ -1542,25 +1544,25 @@ f(x) =
   x - 1, & x \geq 1
 \end{cases}
 \end{lstlisting}
-    \producing
-    \begin{equation*}
-      f(x) =
-      \begin{cases}
-        1 - x, & x < 1 \\
-        x - 1, & x \geq 1
-      \end{cases}
-    \end{equation*}
-  \end{texample}
-\end{demo}
-
-La règle de la paire est tout spécialement délicate dans les équations
-sur plusieurs lignes car elle s'applique à chaque ligne d'une
-équation. Par conséquent, si la paire de délimiteurs s'ouvre sur une
-ligne et se referme sur une autre, il faudra ajouter un délimiteur
-invisible à la fin de la première ligne ainsi qu'au début de la
-seconde.
-\begin{demo}
-  \begin{texample}
+      \producing
+      \begin{equation*}
+        f(x) =
+        \begin{cases}
+          1 - x, & x < 1 \\
+          x - 1, & x \geq 1
+        \end{cases}
+      \end{equation*}
+    \end{texample}
+  \end{demo}
+%
+\item La règle de la paire est tout spécialement délicate dans les
+  équations sur plusieurs lignes car elle s'applique à chaque ligne
+  d'une équation. Par conséquent, si la paire de délimiteurs s'ouvre
+  sur une ligne et se referme sur une autre, il faudra ajouter un
+  délimiteur invisible à la fin de la première ligne ainsi qu'au début
+  de la seconde.
+  \begin{demo}
+    \begin{texample}
 \begin{lstlisting}
 \begin{align*}
   a
@@ -1572,47 +1574,48 @@ seconde.
     \right)
 \end{align*}
 \end{lstlisting}
-    \producing
-    \begin{align*}
-      a
-      &= \left(
-        b + \frac{c}{d}
-        \right. \\
-      &\phantom{=} \left.
-        + \frac{e}{f} - g
-        \right)
-    \end{align*}
-  \end{texample}
-\end{demo}
+      \producing
+      \begin{align*}
+        a
+        &= \left(
+          b + \frac{c}{d}
+          \right. \\
+        &\phantom{=} \left.
+          + \frac{e}{f} - g
+          \right)
+      \end{align*}
+    \end{texample}
+  \end{demo}
+%
+\item Quand les choix de taille de délimiteurs de {\LaTeX} ne
+  conviennent pas pour une raison ou pour une autre, on peut
+  sélectionner soi-même leur taille avec les commandes %
+  \cmd{\big}, %
+  \cmd{\Big}, %
+  \cmd{\bigg} et %
+  \cmd{\Bigg}. %
+  Ces commandes s'utilisent comme \cmdprint{\left} et
+    \cmdprint{\right} en les faisant immédiatement suivre d'un
+  délimiteur. Le \autoref{tab:math:big_et_al} contient des exemples de
+  délimiteurs pour chaque taille.
 
-Quand les choix de taille de délimiteurs de {\LaTeX} ne conviennent
-pas pour une raison ou pour une autre, on peut sélectionner soi-même
-leur taille avec les commandes %
-\cmd{\big}, %
-\cmd{\Big}, %
-\cmd{\bigg} et %
-\cmd{\Bigg}. %
-Ces commandes s'utilisent comme \cmdprint{\left} et \cmdprint{\right}
-en les faisant immédiatement suivre d'un délimiteur. Le
-\autoref{tab:math:big_et_al} contient des exemples de délimiteurs pour
-chaque taille.
-
-\begin{table}
-  \centering
-  \caption{Tailles des délimiteurs mathématiques}
-  \label{tab:math:big_et_al}
-  \begin{tabular}{ll}
-    taille standard & $(~) \quad [~] \quad \{~\}$ \\
-    \addlinespace[6pt]
-    \cmd{\big} & $\big(~\big) \quad \big[~\big] \quad \big\{~\big\}$ \\
-    \addlinespace[6pt]
-    \cmd{\Big} & $\Big(~\Big) \quad \Big[~\Big] \quad \Big\{~\Big\}$ \\
-    \addlinespace[6pt]
-    \cmd{\bigg} & $\bigg(~\bigg) \quad \bigg[~\bigg] \quad \bigg\{~\bigg\}$ \\
-    \addlinespace[6pt]
-    \cmd{\Bigg} & $\Bigg(~\Bigg) \quad \Bigg[~\Bigg] \quad \Bigg\{~\Bigg\}$ \\
-  \end{tabular}
-\end{table}
+  \begin{table}
+    \centering
+    \caption{Tailles des délimiteurs mathématiques}
+    \label{tab:math:big_et_al}
+    \begin{tabular}{ll}
+      taille standard & $(~) \quad [~] \quad \{~\}$ \\
+      \addlinespace[6pt]
+      \cmd{\big} & $\big(~\big) \quad \big[~\big] \quad \big\{~\big\}$ \\
+      \addlinespace[6pt]
+      \cmd{\Big} & $\Big(~\Big) \quad \Big[~\Big] \quad \Big\{~\Big\}$ \\
+      \addlinespace[6pt]
+      \cmd{\bigg} & $\bigg(~\bigg) \quad \bigg[~\bigg] \quad \bigg\{~\bigg\}$ \\
+      \addlinespace[6pt]
+      \cmd{\Bigg} & $\Bigg(~\Bigg) \quad \Bigg[~\Bigg] \quad \Bigg\{~\Bigg\}$ \\
+    \end{tabular}
+  \end{table}
+\end{itemize}
 
 La section~14 de la %
 \doc{amsldoc}{http://texdoc.net/pkg/amsmath} %
@@ -1820,8 +1823,27 @@ A \symbf{A}
   facilitent la mise en forme de matrices; ils diffèrent simplement
   par le type de délimiteur autour de la matrice.
 
-  Supposons que la commande \cmdprint{\mat} ci-dessus est définie dans
-  le préambule du document. On obtient l'équation
+  Supposons que la commande \cmdprint{\mat} mentionnée dans la
+  rubrique Conseil du {\TeX}pert est définie dans le préambule du
+  document. Alors le code source
+\begin{lstlisting}
+\begin{align*}
+  \mat{J}(\mat{\theta})
+  &=
+  \begin{bmatrix}
+    \dfrac{\partial f_1(\mat{\theta})}{\partial \theta_1} &
+    \dfrac{\partial f_1(\mat{\theta})}{\partial \theta_2}
+    \\[12pt] % augmenter l'espace entre les lignes
+    \dfrac{\partial f_2(\mat{\theta})}{\partial \theta_1} &
+    \dfrac{\partial f_2(\mat{\theta})}{\partial \theta_2}
+  \end{bmatrix} \\
+  &=
+  \left[
+  \frac{\partial f_i(\mat{\theta})}{\partial \theta_j}
+  \right]_{2 \times 2}, \quad i, j = 1, 2.
+\end{align*}
+\end{lstlisting}
+   produit l'équation
   \begin{align*}
     \mat{J}(\mat{\theta})
     &=
@@ -1836,24 +1858,6 @@ A \symbf{A}
       \frac{\partial f_i(\mat{\theta})}{\partial \theta_j}
       \right]_{2 \times 2}, \quad i, j = 1, 2.
   \end{align*}
-  avec le code source ci-dessous.
-\begin{lstlisting}
-\begin{align*}
-  \mat{J}(\mat{\theta})
-  &=
-    \begin{bmatrix}
-      \dfrac{\partial f_1(\mat{\theta})}{\partial \theta_1} &
-      \dfrac{\partial f_1(\mat{\theta})}{\partial \theta_2}
-      \\[12pt] % augmenter l'espace entre les lignes
-      \dfrac{\partial f_2(\mat{\theta})}{\partial \theta_1} &
-      \dfrac{\partial f_2(\mat{\theta})}{\partial \theta_2}
-    \end{bmatrix} \\
-  &=
-    \left[
-    \frac{\partial f_i(\mat{\theta})}{\partial \theta_j}
-    \right]_{2 \times 2}, \quad i, j = 1, 2.
-\end{align*}
-\end{lstlisting}
   On remarquera l'utilisation de la commande \cmd{\dfrac}
   (\autoref{sec:math:bases:fractions}) pour composer des grandes
   fractions à l'intérieur des matrices. %

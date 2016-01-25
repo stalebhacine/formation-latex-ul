@@ -2,13 +2,14 @@
 \label{chap:trucs}
 
 
+
 \section{Polices de caractères: au-delà de Computer Modern}
 \label{sec:trucs:police}
 
 {\CM%
   Les documents {\LaTeX} standards sont facilement reconnaissables par
-  leur police de caractères par défaut --- celle utilisée dans ce
-  paragraphe ---, Computer Modern. Pour qui souhaitait briser la relative
+  leur police de caractères par défaut, Computer Modern --- celle
+  utilisée dans ce paragraphe. Pour qui souhaitait briser la relative
   monotonie induite par cette uniformité, il a longtemps été difficile
   d'utiliser une autre police de caractères. Fort heureusement, la
   situation a beaucoup évolué et il est aujourd'hui assez simple de
@@ -197,7 +198,7 @@ couleur.
 \label{sec:trucs:hyperliens}
 
 Nous en avons déjà traité à quelques reprises, notamment à la
-section~4 de \citet{UL:latex:1}, le paquetage \pkg{hyperref}
+section~4 de \citet{UL:latex:1}: le paquetage \pkg{hyperref}
 \citep{hyperref} permet de transformer toutes les références dans le
 texte en hyperliens cliquables lorsque le document est produit avec
 pdf{\LaTeX} ou {\XeLaTeX}. C'est très pratique lors de la consultation
@@ -303,7 +304,7 @@ proportionnelle et que sa disposition exacte est respectée.
 
 \begin{demo}
   \begin{texample}
-\begin{lstlisting}
+\begin{lstlisting}[language=,index=]
 \begin{verbatim}
 /* Hello World en C */
 #include <stdio.h>
@@ -346,7 +347,7 @@ utilisant l'environnement \Ie{lstlisting} de \pkg{listings} plutôt que
 ainsi:
 \begin{demo}
   \begin{texample}
-    \begin{vglisting}
+    \begin{vglisting}[language=,index=]
 \begin{lstlisting}
 /* Hello World en C */
 #include <stdio.h>
@@ -368,7 +369,8 @@ int main()
   stringstyle=\color{orange}\itshape,%
   identifierstyle=\color{cyan}\mdseries,%
   xleftmargin=12pt,%
-  keywordstyle=\color{blue}\bfseries]
+  keywordstyle=\color{blue}\bfseries,
+  index=]
 /* Hello World en C */
 #include <stdio.h>
 
@@ -509,6 +511,11 @@ Inspiré de Sweave, knitr \citep{knitr} permet également d'entrelacer
 du code {\LaTeX} et du code R. Cet outil offre plus d'options de
 traitement que Sweave, mais au prix d'une complexité accrue.
 
+En terminant, rappelons que Sweave n'est qu'un exemple de système de
+programmation lettrée. Il en existe plusieurs autres. Il appartient
+dès lors au lecteur de trouver le système qui correspond le mieux à
+ses besoins.
+
 \begin{information}
   On doit le concept de programmation lettrée au créateur de {\TeX},
   Donald Knuth.  En fait, tout le code source de {\TeX} est écrit
@@ -566,7 +573,60 @@ Les diapositives de la première partie de la formation
 
 
 
-% Contrôle de version
+\section{Gestion des versions et travail collaboratif}
+\label{sec:trucs:cvs}
+
+Vous travaillez à plusieurs sur un même fichier ou seul, mais de
+plusieurs postes de travail différents. Quelle est la plus récente
+version du fichier? Mon ajout fait hier dans le fichier a-t-il été
+pris en compte par ma collègue aujourd'hui? Une modification apportée
+au fichier n'est plus nécessaire; comment retourner en arrière
+facilement?
+
+Les informaticiens ont résolu ce genre de problèmes il y a des
+dizaines d'années avec les systèmes de gestion de versions. Les
+systèmes les plus populaires en ce moment sont Subversion
+\citep{subversion} et Git \citep{git}.
+
+Bien que développés à l'origine pour la gestion du code source de
+logiciels, les systèmes de contrôle de versions conviennent
+parfaitement pour les sources {\LaTeX}. L'utilisation d'un tel système
+permet de:
+\begin{itemize}
+\item toujours savoir quelle est la plus récente version d'un fichier;
+\item travailler à plusieurs personnes simultanément sur un même
+  fichier;
+\item revenir aisément à une version antérieure d'un fichier;
+\item comparer deux versions d'un fichier pour connaître les
+  modifications qui y ont été apportées;
+\item gérer automatiquement les éventuels conflits de modification
+  d'un fichier;
+\item disposer en tout temps d'une copie de secours de son travail
+  lorsque l'on a recours à un serveur central (obligatoire avec
+  Subversion; optionnel avec Git\footnote{%
+    Si ce n'est que pour le volet de sauvegarde, nous recommandons
+    d'utiliser avec Git un dépôt central tel que
+    \link{https://github.com}{GitHub}, un serveur public qui héberge
+    des millions de projets.}.
+\end{itemize}
+Un système de gestion de versions est un outil qui permet d'augmenter
+de manière considérable sa productivité ou celle de son équipe de
+travail au moment de rédiger un ouvrage scientifique.
+
+La %
+\link{https://fr.wikipedia.org/wiki/Gestion_de_versions}{page Wikipedia} %
+sur le sujet offre une bonne introduction aux systèmes de gestion de
+versions. Les membres de la communauté de l'Université Laval qui
+souhaitent mettre sur pied un dépôt pour un projet pourront
+consulter leur équipe de soutien informatique facultaire.
+
+\begin{information}
+  La présente documentation est conservée dans un dépôt Subversion
+  public d'où l'on peut toujours obtenir la plus récente version.
+  Consulter la page des notices de copyright au début du document pour
+  accéder au dépôt.
+\end{information}
+
 
 %%% Local Variables:
 %%% mode: latex

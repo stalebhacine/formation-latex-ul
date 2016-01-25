@@ -105,9 +105,10 @@ produit \raisebox{-1ex}{au-dessous} de la ligne de base.
 Attention, toutefois, de ne pas utiliser \cmd{\raisebox} pour placer
 du texte en exposant ou en indice. Selon la nature du texte, employer
 plutôt les commandes \cmd{\textsuperscript} et \cmd{\textsubscript},
-le mode mathématique (\autoref{chap:math}) ou les commandes de la
-famille \cmd{\ieme} de \pkg{babel} (section~1.1 de la %
-\doc{frenchb}{http://texdoc.net/pkg/babel-french/}).
+les commandes de la famille \cmd{\ieme} de \pkg{babel} (section~1.1 de
+la %
+\doc{frenchb}{http://texdoc.net/pkg/babel-french/}) ou, pour des
+symboles mathématiques, le mode mathématique (\autoref{chap:math}).
 
 \section{Boîtes verticales}
 \label{sec:boites:parbox}
@@ -151,9 +152,9 @@ La syntaxe de l'environnement \Ie{minipage} est la suivante:
 La signification des arguments \meta{largeur} et \meta{pos} est la
 même que pour la commande \cmd{parbox}.
 
-L'environnement \Pe{minipage} est souvent utilisé pour disposer des
-éléments de contenu de manière spécifique sur la page, notamment des
-tableaux ou des figures côte à côte ou en grille (voir
+L'environnement \Pe{minipage} est fréquemment utilisé pour disposer
+des éléments de contenu de manière spécifique sur la page, notamment
+des tableaux ou des figures côte à côte ou en grille (voir
 l'\autoref{exemple:tableaux:grille} à la
 \autopageref{exemple:tableaux:grille}).
 
@@ -183,6 +184,8 @@ l'\autoref{exemple:tableaux:grille} à la
         boîtes.
       \end{minipage}}
   \end{minipage}
+  (La commande \cmd{\textwidth} contient la mesure de la largeur de la
+  page courante.) %
   \qed
 \end{exemple}
 
