@@ -106,17 +106,15 @@
   %% Sections de code source
   \lstloadlanguages{[LaTeX]TeX}
   \lstset{language=[LaTeX]TeX,
+    basicstyle=\ttfamily\NoAutoSpacing,
+    keywordstyle=\mdseries,
+    commentstyle=\color{comments}\slshape,
     escapeinside=`',
     extendedchars=true,
-    basicstyle=\ttfamily\NoAutoSpacing,
-    commentstyle=\color{comments}\slshape,
-    keywordstyle=\mdseries,
     showstringspaces=false,
     backgroundcolor=\color{LightYellow1},
-    frame=lr,
-    rulecolor=\color{LightYellow1},
-    xleftmargin=3.4pt,
-    xrightmargin=3.4pt}
+    frame=lr, rulecolor=\color{LightYellow1},
+    xleftmargin=3.4pt, xrightmargin=3.4pt}
 
   %%% =========================
   %%%  Nouveaux environnements
@@ -281,7 +279,7 @@
     indexstyle=[1]\ixenv,
     index=[2][texcs],           % commandes
     indexstyle=[2]\ixcmd}
-  \newcommand{\ixenv}[1]{\index{#1 env@\Pe{#1} (environnement)}
+  \newcommand{\ixenv}[1]{\index{#1 env@\Pe{#1} (environnement)}%
     \index{environnement!#1@\Pe{#1}}}
   \newcommand{\ixcmd}[1]{\index{#1@\string\cs{#1}}}
   \makeindex

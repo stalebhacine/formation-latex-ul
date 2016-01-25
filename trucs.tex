@@ -296,6 +296,13 @@ contient la liste complète.
 \section{Présentation de code informatique}
 \label{sec:trucs:listings}
 
+%%% Certains mots-clés LaTeX présents dans le code C des exemples de
+%%% cette section se retrouvent dans l'index, et ce, même si
+%%% l'environnement lstlisting n'est pas celui qui est «actif». Pour
+%%% contourner le problème, les mots-clés parasites sont supprimés ici
+%%% et réintroduits à la fin de la section.
+\lstset{language=[LaTeX]TeX, deletetexcs={int,include,begin,end}}
+
 L'environnement standard \Ie{verbatim} de {\LaTeX} permet de présenter
 du texte exactement tel qu'il est entré dans le code source du
 document. C'est un environnement particulièrement utile pour afficher
@@ -304,7 +311,7 @@ proportionnelle et que sa disposition exacte est respectée.
 
 \begin{demo}
   \begin{texample}
-\begin{lstlisting}[language=,index=]
+\begin{lstlisting}
 \begin{verbatim}
 /* Hello World en C */
 #include <stdio.h>
@@ -347,7 +354,7 @@ utilisant l'environnement \Ie{lstlisting} de \pkg{listings} plutôt que
 ainsi:
 \begin{demo}
   \begin{texample}
-    \begin{vglisting}[language=,index=]
+    \begin{vglisting}
 \begin{lstlisting}
 /* Hello World en C */
 #include <stdio.h>
@@ -383,7 +390,7 @@ int main()
   \end{texample}
 \end{demo}
 
-Il serait trop long et nettement hors du mandat du présent document
+Il serait trop long et nettement hors de la portée du présent document
 d'expliquer les nombreuses fonctionnalités de \pkg{listings}.
 Précisons simplement que le paquetage a servi pour en composer les
 extraits de code {\LaTeX} et pour construire une grande partie de
@@ -399,20 +406,22 @@ l'index.
 
 %% Configuration de listings
 \lstset{language=[LaTeX]TeX,
-  extendedchars=true,
+  basicstyle=\ttfamily\NoAutoSpacing,
+  keywordstyle=\mdseries,
   commentstyle=\color{comments}\slshape,
+  extendedchars=true,
   showstringspaces=false,
-  index=[1][keywords],
   backgroundcolor=\color{LightYellow1},
-  frame=lr,
-  rulecolor=\color{LightYellow1},
-  xleftmargin=3.4pt,
-  xrightmargin=3.4pt}
+  frame=lr, rulecolor=\color{LightYellow1},
+  xleftmargin=3.4pt, xrightmargin=3.4pt}
 \end{lstlisting}
   (La couleur \code{LightYellow1} est définie par \pkg{xcolor} lorsque
   le paquetage est chargé avec l'option \code{x11names}.)
   \qed
 \end{exemple}
+
+%%% Réactivation des mots-clés.
+\lstset{language=[LaTeX]TeX, moretexcs={int,include,begin,end}}
 
 
 \section{Production de rapports avec l'analyse intégrée}
