@@ -24,7 +24,7 @@
   \title[]{Rédaction de thèses et de mémoire avec {\LaTeX}: premiers pas}
   \author[]{Université Laval}
   \date{}
-  \renewcommand{\year}{2015}    % pour notice de copyright
+  \renewcommand{\year}{2016}    % pour notice de copyright
 
   %%% Définition de couleurs
   \definecolor{comments}{rgb}{0.7,0,0}
@@ -91,13 +91,13 @@
     \begin{minipage}[t]{#1} \small}{%
     \end{minipage}}
   \newenvironment{conseil}{%
-    \begin{minipage}[t]{0.1\textwidth}
-      \color{alert}\raisebox{-2.3em}[0em][0em]{\huge\faThumbsOUp}
-    \end{minipage}
-    \begin{minipage}[t]{0.8\textwidth}
-      \begin{alertblock}{Conseil du {\TeX}pert}}{%
-    \end{alertblock}
-    \end{minipage}}
+    \begin{alertblock}{Conseil du {\TeX}pert}
+      \medskip
+      \begin{minipage}[t]{0.1\textwidth}
+        \color{alert}\raisebox{-1.2em}[0em][0em]{\huge\faThumbsOUp}
+      \end{minipage}
+      \begin{minipage}[t]{0.88\textwidth}}%
+    {\end{minipage}\end{alertblock}}
 
   \theoremstyle{example}
   \newtheorem{exercice}[theorem]{Exercice}
@@ -1061,8 +1061,8 @@ on a...
   \end{block}
   \begin{picture}(0,0)
     \thicklines\color{blue}
-    \put(113,30){\dashbox{2}(62,190){}}
-    \put(100,20){
+    \put(103,30){\dashbox{2}(62,190){}}
+    \put(92,20){
       \begin{minipage}[t]{75\unitlength}
         \footnotesize\centering
         s'applique à tout le texte qui suit
@@ -1070,8 +1070,8 @@ on a...
   \end{picture}
   \begin{picture}(0,0)
     \thicklines\color{blue}
-    \put(185,30){\dashbox{2}(82,190){}}
-    \put(180,20){
+    \put(171,30){\dashbox{2}(82,190){}}
+    \put(167,20){
       \begin{minipage}[t]{85\unitlength}
         \footnotesize\centering
         s'applique au texte en argument
