@@ -1,7 +1,10 @@
 MASTER1 = formation_latex-partie_1.pdf
 MASTER2 = formation_latex-partie_2.pdf
 
-TEXFILES = licence-partie_2.tex \
+TEXFILES1 = licence-partie_1.tex \
+	colophon-partie_1.tex
+
+TEXFILES2 = licence-partie_2.tex \
 	introduction.tex     \
 	include.tex          \
 	boites.tex           \
@@ -11,6 +14,7 @@ TEXFILES = licence-partie_2.tex \
 	commandes.tex        \
 	trucs.tex            \
 	solutions.tex        \
+	colophon-partie_2.tex
 
 FILES1 = formation_latex-partie_1.pdf \
 	exercice_minimal.tex \
@@ -57,10 +61,10 @@ RM = rm -rf
 
 pdf : $(MASTER1) $(MASTER2)
 
-$(MASTER1):
+$(MASTER1): $(MASTER1:.pdf=.tex) $(TEXFILES1) #couvertures-partie_1.pdf
 	$(TEXI2DVI) $(MASTER1:.pdf=.tex)
 
-$(MASTER2): $(TEXFILES) #couvertures.pdf
+$(MASTER2): $(MASTER2:.pdf=.tex) $(TEXFILES2) #couvertures-partie_2.pdf
 	$(TEXI2DVI) $(MASTER2:.pdf=.tex)
 
 zip :
