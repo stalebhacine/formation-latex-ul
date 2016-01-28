@@ -31,6 +31,49 @@ Une fois créée, une boîte ne peut être scindée en parties, notamment
 entre les lignes ou entre les pages.
 
 
+\section{Longueurs}
+\label{sec:boites:longueurs}
+
+Plusieurs des commandes de ce chapitre requièrent de spécifier une
+largeur ou une hauteur. Dans la terminologie de {\LaTeX}, on parle
+plus généralement de longueur (\emph{length}).
+
+Une longueur est un nombre positif, négatif ou nul
+\emph{obligatoirement} et \emph{immédiatement} suivi d'un symbole
+d'unité de mesure. Le \autoref{tab:boites:longueurs} présente les
+principales unités de mesure utilisées par {\LaTeX} et le symbole
+correspondant.
+
+\begin{table}
+  \caption{Principales unités de mesure pour les longueurs dans
+    {\LaTeX}}
+  \label{tab:boites:longueurs}
+  \centering
+  \begin{tabular}{lcl}
+    \toprule
+    nom ou description & symbole & longueur équivalente \\
+    \midrule
+    millimètre & \texttt{mm} \\
+    centimètre & \texttt{cm} & $10$~mm \\
+    pouce      & \texttt{in} & $2,54$~cm \\
+    point      & \texttt{pt} & $1/72,27$~pouce \\
+    point PostScript     & \texttt{bp}   & $1/72$~pouce \\
+    largeur de la lettre M & \texttt{em} & fonction de la police \\
+    hauteur de la lettre x & \texttt{ex} & fonction de la police \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Il existe un certain nombre de longueurs prédéfinies. Les plus utiles sont
+\begin{lstlisting}
+\linewidth
+\textwidth
+\end{lstlisting}
+La première contient la largeur de la ligne de texte courante et la
+seconde, la largeur de la page courante. Dans du texte normal, les
+deux mesures sont habituellement égales.
+
+
 
 \section{Boîtes horizontales}
 \label{sec:boites:lrbox}
@@ -84,15 +127,16 @@ produit \framebox[3.5cm][l]{aligné à gauche}, alors que
 \end{lstlisting}
 produit \makebox[3.5cm]{centré}.
 
-Il arrive que l'on doive ajuster légèrement le positionnement vertical
-d'éléments de contenu, notamment pour les images. La commande
+Il est parfois nécessaire d'ajuster le positionnement vertical
+d'éléments de contenu, notamment pour les symboles ou les images. La
+commande
 \begin{lstlisting}
 \raisebox`\marg{déplacement}\marg{texte}'
 \end{lstlisting}
-produit une boîte horizontale avec le contenu \meta{texte} surélevé de
-\meta{déplacement} par rapport à la ligne de base. Si
-\meta{déplacement} est négatif, la boîte est positionnée sous la ligne
-de base. Ainsi
+produit une boîte horizontale dont le contenu \meta{texte} est
+surélevé de la longueur \meta{déplacement} par rapport à la ligne de
+base. Si \meta{déplacement} est négatif, la boîte est positionnée sous
+la ligne de base. Ainsi
 \begin{lstlisting}
 \raisebox{1ex}{au-dessus} de la ligne de base
 \end{lstlisting}
@@ -108,7 +152,8 @@ plutôt les commandes \cmd{\textsuperscript} et \cmd{\textsubscript},
 les commandes de la famille \cmd{\ieme} de \pkg{babel} (section~1.1 de
 la %
 \doc{frenchb}{http://texdoc.net/pkg/babel-french/}) ou, pour des
-symboles mathématiques, le mode mathématique (\autoref{chap:math}).
+symboles mathématiques, les commandes d'exposant et d'indice
+spécifiques au mode mathématique (\autoref{sec:math:bases:exposants}).
 
 \section{Boîtes verticales}
 \label{sec:boites:parbox}
@@ -184,27 +229,25 @@ l'\autoref{exemple:tableaux:grille} à la
         boîtes.
       \end{minipage}}
   \end{minipage}
-  (La commande \cmd{\textwidth} contient la mesure de la largeur de la
-  page courante.) %
   \qed
 \end{exemple}
 
-La commande \cmd{\hfill} utilisée entre les boîtes dans l'exemple
+La commande \cmd{\hfill} utilisée entre les boîtes dans l'exemple ci-dessus
 indique à {\LaTeX} d'insérer de l'espace blanc entre les éléments de
 contenu de manière à remplir entièrement la ligne de texte. C'est une
 commande très utile pour disposer automatiquement des éléments à
 intervalles égaux sur la largeur du bloc de texte. Ainsi,
 \begin{lstlisting}
-\framebox[\textwidth]{gauche  \hfill droite}
+\framebox[\linewidth]{gauche \hfill droite}
 \end{lstlisting}
 produit \\[0.5\baselineskip]
-\framebox[\textwidth]{gauche \hfill droite} \\[0.5\baselineskip]
+\framebox[\linewidth]{gauche \hfill droite} \\[0.5\baselineskip]
 alors que
 \begin{lstlisting}
-\framebox[\textwidth]{gauche \hfill centre \hfill droite.}
+\framebox[\linewidth]{gauche \hfill centre \hfill droite.}
 \end{lstlisting}
 produit \\[0.5\baselineskip]
-\framebox[\textwidth]{gauche \hfill centre \hfill droite.}
+\framebox[\linewidth]{gauche \hfill centre \hfill droite.}
 
 
 
@@ -232,7 +275,7 @@ est donc une ligne pleine de $2$~cm de long et de $6$~points d'épais:
 
 L'argument optionnel \meta{déplacement} permet de déplacer
 verticalement la réglure au-dessus ou au-dessous de la ligne de base
-selon que \meta{déplacement} est positif ou négatif. Avec les deux
+selon que la longueur \meta{déplacement} est positive ou négative. Avec les deux
 commandes
 \begin{lstlisting}
 \rule[3pt]{2cm}{6pt}
