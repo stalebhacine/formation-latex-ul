@@ -2,7 +2,6 @@
 \label{chap:trucs}
 
 
-
 \section{Polices de caractères: au-delà de Computer Modern}
 \label{sec:trucs:police}
 
@@ -61,6 +60,7 @@ mathématiques via le projet frère %
 \link{http://www.gust.org.pl/projects/e-foundry/tg-math/}{TeX~Gyre Math}.
 
 \begin{exemple}
+  \label{ex:trucs:palatino}
   Pour utiliser la police PostScript classique Palatino avec {\LaTeX}
   tant pour le texte que pour les mathématiques, il suffit d'insérer
   dans le préambule de son document la commande
@@ -257,6 +257,7 @@ contient la liste complète.
 \end{table}
 
 \begin{exemple}
+  \label{ex:trucs:couleurs}
   Le présent document a été préparé avec les définitions de couleurs
   et les options de configuration de \pkg{hyperref} suivantes:
 \begin{lstlisting}
@@ -397,6 +398,7 @@ extraits de code {\LaTeX} et pour construire une grande partie de
 l'index.
 
 \begin{exemple}
+  \label{ex:trucs:listings}
   Pour parvenir à la présentation des extraits de code source {\LaTeX}
   de ce document, le paquetage \pkg{listings} est configuré dans le
   préambule de la manière suivante:
@@ -470,7 +472,7 @@ en deux étapes:
 \begin{enumerate}
 \item Le fichier \code{.Rnw} est passé à la commande \code{Sweave()}
   de R. Celle-ci retrace les extraits de code placés entre les balises
-  \verb|<< >>=| et \verb|@| et les remplace par des environnements
+  \verb|<<>>=| et \verb|@| et les remplace par des environnements
   {\LaTeX} contenant, par défaut, les expressions R et leur résultat
   dans des environnements \Ie{Sinput} et \Ie{Soutput}. Elle évalue
   également les expressions R se trouvant dans les commandes
@@ -638,6 +640,209 @@ consulter leur équipe de soutien informatique facultaire.
   Consulter la page des notices de copyright au début du document pour
   accéder au dépôt.
 \end{information}
+
+
+
+%%%
+%%% Exercices
+%%%
+
+\section{Exercices}
+\label{sec:trucs:exercices}
+
+\Opensolutionfile{solutions}[solutions-trucs]
+
+\begin{Filesave}{solutions}
+\section*{Chapitre \ref*{chap:trucs}}
+\addcontentsline{toc}{section}{Chapitre \protect\ref*{chap:trucs}}
+
+\end{Filesave}
+
+\noindent%
+Pour les exercices
+\nolink{\ref{exercice:trucs:1}}--\nolink{\ref{exercice:trucs:n}},
+utiliser le fichier \fichier{exercices\_trucs.tex}. Celui-ci reprend
+une partie de la documentation de la classe \class{ulthese}. De plus,
+on remarquera que le document:
+\begin{itemize}
+\item doit être compilé avec pdf{\LaTeX} puisqu'il charge les
+  paquetages \pkg{inputenc} et \pkg{fontenc};
+\item définit des nouvelles commandes \cmdprint{\class} et
+  \cmdprint{\fichier} pour composer, respectivement, les noms de
+  classe et les noms de fichier;
+\item utilise la commande \cmdprint{\doc} de
+  l'\autoref{ex:commandes:doc};
+\item charge le paquetage \pkg{hyperref}, ce qui transforme les titres
+  de la table des matières, les renvois aux notes de bas de page et
+  les liens externes en hyperliens.
+\end{itemize}
+\medskip
+
+\begin{exercice}
+  \label{exercice:trucs:1}
+  Compiler et visualiser le fichier sans aucune modification. Le texte
+  est composé dans la police par défaut Computer Modern.
+
+  Ensuite, modifier le préambule du document pour composer le document
+  dans la police Palatino, tel qu'expliqué à
+  l'\autoref{ex:trucs:palatino}. Charger également le paquetage
+  \pkg{helvet} afin d'utiliser Helvetica pour le texte en police sans
+  empattements (\cmdprint{\textsf}).
+  \begin{sol}
+    On doit ajouter dans le préambule les commandes
+\begin{lstlisting}
+\usepackage{mathpazo}
+\usepackage{helvet}
+\end{lstlisting}
+    Tel que mentionné à la section~4 de la %
+    \doc{psnfss2e}{http://texdoc.net/pkg/psnfss/} %
+    de l'ensemble de paquetages PSNFSS, il est généralement préférable
+    de charger le paquetage \pkg{helvet} avec, par exemple,
+\begin{lstlisting}
+\usepackage[scaled=0.92]{helvet}
+\end{lstlisting}
+    pour que le texte en Helvetica se marie mieux à celui dans une
+    autre police.
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  Configurer le paquetage \pkg{hyperref} pour que les hyperliens dans
+  la table des matières soient ancrés aux numéros de page plutôt
+  qu'aux titres de section.
+  \begin{sol}
+    Tel qu'expliqué à la \autoref{sec:trucs:hyperliens}, on doit
+    insérer dans le préambule du document la commande
+\begin{lstlisting}
+\hypersetup{linktocpage=true}
+\end{lstlisting}
+    ou, plus simplement,
+\begin{lstlisting}
+\hypersetup{linktocpage}
+\end{lstlisting}
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  Charger le paquetage \pkg{xcolor} et ajouter l'option
+  \code{colorlinks} à \pkg{hyperref}, puis recompiler le document.
+  Observer les changements.
+  \begin{sol}
+    En conservant l'ajout de l'exercice précédent, on a dans le
+    préambule la commande
+\begin{lstlisting}
+\hypersetup{colorlinks, linktocpage}
+\end{lstlisting}
+    Les hyperliens se présentent maintenant en couleur selon les
+    paramètres par défaut de \pkg{hyperref}.
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  En s'inspirant de l'\autoref{ex:trucs:couleurs}, modifier la couleur
+  des liens internes et externes.
+  \begin{sol}
+    On peut soit utiliser des couleurs prédéfinies de \pkg{xcolor}
+    (\autoref{tab:trucs:couleurs}), soit en  définir de nouvelles avec
+    \cmd{\definecolor}. On fait ensuite appel aux couleurs choisies
+    pour les options \code{linkcolor} (liens internes) et
+    \code{urlcolor} (liens externes) de \pkg{hyperref}.
+
+    Exemple utilisant des couleurs prédéfinies:
+\begin{lstlisting}
+\hypersetup{colorlinks, linktocpage,
+  linkcolor=brown, urlcolor=blue}
+\end{lstlisting}
+
+    Exemple avec de nouvelles couleurs:
+\begin{lstlisting}
+\definecolor{link}{rgb}{0,0.4,0.6}
+\definecolor{url}{rgb}{0.6,0,0}
+\hypersetup{colorlinks, linktocpage,
+  urlcolor=url, linkcolor=link}
+\end{lstlisting}
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  \label{exercice:trucs:n}
+  Charger le paquetage \pkg{listings} et modifier l'environnement
+  \Pe{verbatim} que l'on trouve dans le document pour un environnement
+  \Pe{lstlisting}. En s'inspirant de l'\autoref{ex:trucs:listings},
+  configurer la présentation de l'environnement pour utiliser une
+  police non proportionnelle (\cmdprint{\ttfamily}) et une couleur de
+  fond \code{lightgray}.
+  \begin{sol}
+    S'il y avait plusieurs extraits de code dans le document, mieux
+    vaudrait les configurer tous à l'identique dans le préambule du
+    document avec
+\begin{lstlisting}
+\lstset{basicstyle=\ttfamily,
+  backgroundcolor=\color{lightgray}}
+\end{lstlisting}
+    Pour un seul extrait, il est également possible d'effectuer la
+    configuration à l'ouverture de l'environnement ainsi:
+\begin{vglisting}
+\begin{lstlisting}[basicstyle=\ttfamily,
+  backgroundcolor=\color{lightgray}]
+latex ulthese.ins
+\end{lstlisting}
+\end{vglisting}
+  \end{sol}
+\end{exercice}
+
+\begin{exercice}
+  Accéder au dépôt qui héberge le code source de cette formation
+  {\LaTeX} en suivant le lien à la page des notices de copyright.
+  Télécharger le fichier maître de la première partie de la formation
+  et ses fichiers auxiliaires:
+
+  \medskip
+  \begin{minipage}{\linewidth}
+    \dirtree{%
+      .1 formation\_latex-partie\_1.tex.
+      .2 licence-partie\_1.tex.
+      .2 colophon-partie\_1.tex.
+      .2 exercice\_commandes-output.pdf.
+      .2 renvoi.pdf.
+      .2 renvoi\_avec\_ref.pdf.
+      .2 renvoi\_avec\_autoref.pdf.
+      .2 ponctuation.pdf.
+    }
+  \end{minipage}
+  \medskip
+
+  (Les lecteurs curieux pourront aussi installer sur leur poste de
+  travail un %
+  \link{http://subversion.apache.org/packages.html}{client Subversion} %
+  et l'utiliser pour extraire l'ensemble des fichiers du dépôt.)
+
+  Une fois les fichiers en main, examiner le code source du fichier
+  maître. Il s'agit d'un document utilisant la classe \class{beamer}
+  pour créer des diapositives.
+
+  Désactiver (effacer ou mettre en commentaire) les lignes suivantes
+  du préambule:
+\begin{lstlisting}
+\defaultfontfeatures{Ligatures=TeX,Scale=0.92}
+\setmainfont{Lucida Bright OT}
+\setsansfont{Lucida Sans OT}
+\setmathfont{Lucida Bright Math OT}
+\setmonofont{Lucida Grande Mono DK}
+\newfontfamily\titles{Myriad Pro}
+\end{lstlisting}
+  et, plus loin dans le fichier,
+\begin{lstlisting}
+\setbeamerfont{frametitle}{family=\titles}
+\end{lstlisting}
+  Compiler ensuite le document avec {\XeLaTeX}. En comparant le code
+  source et les diapositives, observer comment \class{beamer} peut
+  afficher des listes une puce à la fois à partir d'un environnement
+  \Pe{itemize} usuel une fois qu'on lui a ajouté une option
+  \verb=[<+->]=.
+\end{exercice}
+
+\Closesolutionfile{solutions}
 
 
 %%% Local Variables:

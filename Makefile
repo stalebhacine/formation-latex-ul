@@ -49,6 +49,7 @@ FILES2 = formation_latex-partie_2.pdf \
 	exercice_subcaption.tex \
 	exercice_demo.tex \
 	exercice_mathematiques.tex \
+	exercice_trucs.tex \
 	formation_latex.bib
 
 SOLUTIONS2 =
