@@ -624,7 +624,7 @@ permet de:
     déjà des millions de projets.}.)
 \end{itemize}
 Un système de gestion de versions est un outil qui permet d'augmenter
-de manière considérable sa productivité ou celle de son équipe de
+considérablement sa productivité ou celle de son équipe de
 travail au moment de rédiger un ouvrage scientifique.
 
 La %
@@ -694,10 +694,10 @@ on remarquera que le document:
 \usepackage{mathpazo}
 \usepackage{helvet}
 \end{lstlisting}
-    Tel que mentionné à la section~4 de la %
+    La police Helvetica est très grande. Tel que mentionné dans la %
     \doc{psnfss2e}{http://texdoc.net/pkg/psnfss/} %
-    de l'ensemble de paquetages PSNFSS, il est généralement préférable
-    de charger le paquetage \pkg{helvet} avec, par exemple,
+    de PSNFSS (section~4), il est généralement préférable de charger
+    le paquetage \pkg{helvet} avec, par exemple,
 \begin{lstlisting}
 \usepackage[scaled=0.92]{helvet}
 \end{lstlisting}
@@ -769,10 +769,13 @@ on remarquera que le document:
   Charger le paquetage \pkg{listings} et modifier l'environnement
   \Pe{verbatim} que l'on trouve dans le document pour un environnement
   \Pe{lstlisting}. En s'inspirant de l'\autoref{ex:trucs:listings},
-  configurer la présentation de l'environnement pour utiliser une
-  police non proportionnelle (\cmdprint{\ttfamily}) et une couleur de
-  fond \code{lightgray}.
+  configurer la présentation des extraits de code pour utiliser une
+  police non proportionnelle (\cmdprint{\ttfamily}) et un arrière-plan
+  de la couleur standard «lightgray».
   \begin{sol}
+    %%% Encore le problème de mots-clés parasites.
+    \lstset{language=[LaTeX]TeX, deletetexcs={begin,end,ttfamily}}
+
     S'il y avait plusieurs extraits de code dans le document, mieux
     vaudrait les configurer tous à l'identique dans le préambule du
     document avec
@@ -780,18 +783,30 @@ on remarquera que le document:
 \lstset{basicstyle=\ttfamily,
   backgroundcolor=\color{lightgray}}
 \end{lstlisting}
-    Pour un seul extrait, il est également possible d'effectuer la
-    configuration à l'ouverture de l'environnement ainsi:
+    Ensuite,
+\begin{vglisting}
+\begin{lstlisting}
+latex ulthese.ins
+\end{lstlisting}
+\end{vglisting}
+    donne le résultat demandé.
+
+    Pour un seul extrait, il est également possible de simplement
+    charger le paquetage dans le préambule et d'effectuer la
+    configuration à l'ouverture de l'environnement, comme ceci:
 \begin{vglisting}
 \begin{lstlisting}[basicstyle=\ttfamily,
   backgroundcolor=\color{lightgray}]
 latex ulthese.ins
 \end{lstlisting}
 \end{vglisting}
+
+    %%% Réactivation des mots-clés
+    \lstset{language=[LaTeX]TeX, moretexcs={begin,end,ttfamily}}
   \end{sol}
 \end{exercice}
 
-\begin{exercice}
+\begin{exercice}[nosol]
   Accéder au dépôt qui héberge le code source de cette formation
   {\LaTeX} en suivant le lien à la page des notices de copyright.
   Télécharger le fichier maître de la première partie de la formation
