@@ -1819,6 +1819,32 @@ A \symbf{A}
   \autoref{chap:commandes}.}
 
 
+\begin{information}
+  On l'a vu ci-dessus: le paquetage \pkg{unicode-math} offre l'option
+  \code{ISO} pour le traitement du gras dans les mathématiques. En
+  fait, c'est toute la composition des mathématiques qui fait l'objet
+  d'un standard ISO!
+
+  Plusieurs prescriptions du standard --- comme les noms de variables
+  en italique --- sont déjà prises en compte par {\LaTeX}. Le respect
+  de certaines autres règles est moins répandu, notamment celle qui
+  veut que les constantes mathématiques dont la valeur de change pas
+  (ce sont des constantes, après tout) soient représentées en police
+  droite. On pense, par exemple, au nombre d'Euler $\mathrm{e}$, au
+  nombre imaginaire $\mathrm{i} = \sqrt{-1}$. Même chose pour les
+  opérateurs mathématiques, dont le $\mathrm{d}$ dans les dérivées et
+  les intégrales.
+
+  Voici un exemple d'intégrale composée avec ces régles:
+  \begin{equation*}
+    \int_C \frac{\mathrm{e}^z}{z}\, \mathrm{d}z = 2 \pi \mathrm{i}.
+  \end{equation*}
+  Pour en savoir plus sur l'utilisation du standard ISO dans {\LaTeX},
+  consulter \citet{Beccari:ISO} ou, pour un sommaire rapide, l'%
+  \link{https://nickhigham.wordpress.com/2016/01/28/typesetting-mathematics-according-to-the-iso-standard/}{entrée de blogue} %
+  de Nick Higham.
+\end{information}
+
 \begin{exemple}
   \label{ex:math:matrices}
   Le paquetage \pkg{amsmath} fournit quelques environnements qui
@@ -1865,7 +1891,6 @@ A \symbf{A}
   fractions à l'intérieur des matrices. %
   \qed
 \end{exemple}
-
 
 
 %%%
