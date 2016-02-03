@@ -24,7 +24,8 @@
   \title[]{Rédaction de thèses et de mémoire avec {\LaTeX}: premiers pas}
   \author[]{Université Laval}
   \date{}
-  \renewcommand{\year}{2016}    % pour notice de copyright
+  \renewcommand{\year}{2016}        % pour notice de copyright
+  \newcommand{\ISBN}{XXX-XXXXXXX-X} % pour dépôt légal
 
   %%% Définition de couleurs
   \definecolor{comments}{rgb}{0.7,0,0}
@@ -84,6 +85,13 @@
   \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
   \newcommand{\capsule}[2]{\href{#1}{\faYoutubePlay~#2}}
 
+  %% «Bouton» de la page de copyright
+  \newcommand{\browsebutton}{%
+    \setlength{\fboxrule}{0.5pt}%
+    \framebox[20mm][l]{%
+      \makebox[2.5mm]{\raisebox{-1.5pt}{\scriptsize\faExternalLink}}\;%
+      {\sffamily Accéder au dépôt}}}
+
   \renewenvironment{quote}{%
     \begin{beamercolorbox}[wd=\linewidth,sep=6pt]{block body example}}
     {\end{beamercolorbox}}
@@ -124,8 +132,13 @@
 
 \begin{document}
 
-%% Le code de la page couverture est conservé dans un fichier séparé
-\input{couverture}
+%% Page titre; image dans fichier séparé
+{
+  \usebackgroundtemplate{%
+    \includegraphics[height=\paperheight,width=\paperwidth]{couvertures-partie_1}}
+  \begin{frame}[plain]
+  \end{frame}
+}
 
 %% Le texte du contrat de licence est conservé dans un fichier séparé
 \input{licence-partie_1}
