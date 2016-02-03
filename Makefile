@@ -21,10 +21,10 @@ FILES1 = formation_latex-partie_1.pdf \
 	exercice_demo.tex \
 	exercice_commandes.tex \
 	exercice_classe+paquetages.tex \
-	exercice_sections.tex \
+	exercice_parties.tex \
 	exercice_renvois.tex \
-	exercice_tdm+annexe.tex \
 	exercice_complet.tex \
+	exercice_tdm+annexe.tex \
 	exercice_ulthese.tex \
 		includes/mathematiques.tex \
 	formation_latex.bib
@@ -32,7 +32,7 @@ FILES1 = formation_latex-partie_1.pdf \
 SOLUTIONS1 = \
 	exercice_commandes-solution.tex \
 	exercice_classe+paquetages-solution.tex \
-	exercice_sections-solution.tex \
+	exercice_parties-solution.tex \
 	exercice_renvois-solution.tex \
 	exercice_tdm+annexe-solution.tex \
 	exercice_complet-solution.tex \
