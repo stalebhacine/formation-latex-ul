@@ -4,7 +4,6 @@
   \usepackage[autolanguage]{numprint}
   \usepackage{amsmath,amsthm}
   \usepackage[shortlabels]{enumitem}
-  \usepackage{textpos}
   \usepackage{graphicx}
   \usepackage{framed}                  % environnement titled-frame
   \usepackage{manfnt}                  % \mantriangleright (puce)
@@ -14,6 +13,7 @@
   \usepackage{answers}                 % exercices et solutions
   \usepackage{listings}                % code informatique
   \usepackage{pdfpages}                % couvertures
+  \usepackage{eso-pic}
 
   %%% ===================
   %%%  Style du document
@@ -304,7 +304,7 @@
   %% - \cmd est modifiée pour utiliser @ comme séparateur dans \index
   %%   et pour utiliser \cs plutôt que \cmdprint pour afficher le nom de
   %%   la commande (afin d'obtenir le même format d'entrée d'index
-  %%   qu'avec \indexcmd ci-dessus).
+  %%   qu'avec \ixcmd ci-dessus).
   \renewcommand{\cmdprint}[1]{\textup{\texttt{\string#1}}}
   \makeatletter
   \renewcommand{\cmd}[1]{\cmdprint{#1}%
@@ -374,21 +374,21 @@
   %%% ======================================
   %%%  Page titre (sauf titre de la partie)
   %%% ======================================
+  \newcommand{\ISBN}{XXX-XXXXXXX-X}
   \renewcommand{\year}{2016}
-  \title{\protect\raggedright
-    \mdseries\fontsize{32}{33}\selectfont Rédaction de thèses \\
-                                          et de mémoires \\
-                                          avec
-    \bfseries\fontsize{62}{33}\selectfont \raisebox{-0.75ex}{\LaTeX} \\[10mm]
-    \mdseries\fontsize{18}{24}\selectfont 2. Concepts avancés}
-  % \author{\protect\raggedright
-  %   \bfseries\fontsize{16}{20}\selectfont Vincent Goulet}
-  % \date{%
-  %   \mdseries\fontsize{14}{18}\selectfont Notes de cours \textbar\
-  %                                         Exercices \textemdash\
-  %                                         édition \year}
+  \title{\protect\raggedright%
+    \bfseries\fontsize{32}{32}\selectfont Rédaction de thèses \\
+                                          et de mémoires avec {\LaTeX} \\[10mm]
+    \bfseries\fontsize{24}{24}\selectfont {\fullcaps 2} \textbar\ Concepts avancés}
+  \author{\protect\raggedright%
+    \bfseries\fontsize{16}{20}\selectfont Vincent Goulet \\
+    \mdseries\fontsize{14}{18}\selectfont Professeur titulaire \textbar\
+                                          École d'actuariat \textbar\
+                                          Université Laval}
+  \date{%
+    \mdseries\fontsize{14}{18}\selectfont Édition \fullcaps\year}
 
-%  \includeonly{trucs}
+%  \includeonly{frontispice,licence-partie_2}
 
 \begin{document}
 
@@ -396,21 +396,19 @@
 
 \pagestyle{empty}
 
-\maketitle
+%% Page couverture avant.
+\includepdf[pages=1]{couvertures-partie_2}
+\cleardoublepage
 
-% %% Page couverture avant. Il faut modifier la largeur des graphiques
-% %% puisque Sweave la règle à 0.8\textwidth.
-% \setkeys{Gin}{width=\paperwidth}
-% \includepdf[pages=1]{couvertures-partie_1}
-% \setkeys{Gin}{width=0.8\textwidth}
-% \cleardoublepage
+%% Page frontispice
+\include{frontispice}
+\clearpage
 
-% \include{pagegarde}
-% \clearpage
-
+%% Page de copyright
 \include{licence-partie_2}
 \clearpage
 
+%% Corps du document
 \pagestyle{companion}
 
 \include{introduction}
@@ -443,8 +441,13 @@
 \cleartoverso
 
 %% Page couverture arrière.
-% \setkeys{Gin}{width=\paperwidth}
-% \includepdf[pages=2]{couvertures}
+\AddToShipoutPictureFG*{%
+  \AtStockLowerLeft{\raisebox{45mm}{\includegraphics{codebarre}}}
+}
+\includepdf[pages=2]{couvertures-partie_2}
+% \begin{textblock*}{123mm}[0,0](10mm,240mm)
+%   \includegraphics[keepaspectratio=true]{codebarre} \\
+% \end{textblock*}
 
 \end{document}
 
