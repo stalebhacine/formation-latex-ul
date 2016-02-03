@@ -12,7 +12,7 @@
   %%% Polices de caractères
   \usepackage{fontspec}
   \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=0.92}
+  \defaultfontfeatures{Ligatures=TeX,Scale=0.88}
   \setmainfont{Lucida Bright OT}
   \setsansfont{Lucida Sans OT}
   \setmathfont{Lucida Bright Math OT}
@@ -115,6 +115,12 @@
     backgroundcolor=\color{LightYellow1},
     frame=none,
     showstringspaces=false}
+
+  %%% Nouveaux compteurs requis pour ajouter les numéros d'exercices
+  %%% dans la table des matières. Une page compte deux exercices;
+  %%% besoin de deux compteurs pour celle-là.
+  \newcounter{exerciceref}
+  \newcounter{exercicerefb}
 
 \begin{document}
 
@@ -270,6 +276,9 @@
 \end{frame}
 
 %%% >>>
+\stepcounter{exerciceref}
+\subsection{[~Exercice \theexerciceref~]}
+
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     \begin{enumerate}
@@ -404,6 +413,11 @@ Copyright 2015 D.E. Knuth.
 \end{frame}
 
 %%% >>>
+\stepcounter{exerciceref}
+\setcounter{exercicerefb}{\value{exerciceref}}
+\stepcounter{exerciceref}
+\subsection{[~Exercices  {\theexercicerefb} et \theexerciceref~]}
+
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_minimal.tex}.
@@ -464,6 +478,9 @@ Copyright 2015 D.E. Knuth.
 \end{frame}
 
 %%% >>>
+\stepcounter{exerciceref}
+\subsection{[~Exercice \theexerciceref~]}
+
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     Modifier le fichier \fichier{exercice\_commandes.tex} afin
@@ -679,6 +696,9 @@ Copyright 2015 D.E. Knuth.
 \end{frame}
 
 %%% >>>
+\stepcounter{exerciceref}
+\subsection{[~Exercice \theexerciceref~]}
+
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     \begin{enumerate}
@@ -865,9 +885,9 @@ Copyright 2015 D.E. Knuth.
 \begin{frame}[fragile=singleslide]
   \frametitle{Annexes}
   \begin{itemize}
-  \item Annexes sont des sections ou chapitres avec une numérotation
+  \item Les annexes sont des sections ou des chapitres avec une numérotation
     alphanumérique (A, A.1, ...)
-  \item Prochaines sections identifiées comme des annexes par la
+  \item Sections suivantes identifiées comme des annexes par la
     commande
 \begin{lstlisting}
 \appendix
@@ -877,6 +897,9 @@ Copyright 2015 D.E. Knuth.
 \end{frame}
 
 %%% >>>
+\stepcounter{exerciceref}
+\subsection{[~Exercice \theexerciceref~]}
+
 \begin{frame}[fragile=singleslide,plain]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_parties.tex}.
@@ -977,6 +1000,9 @@ on a...
 \end{frame}
 
 %%% >>>
+\stepcounter{exerciceref}
+\subsection{[~Exercice \theexerciceref~]}
+
 \begin{frame}[plain]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_renvois.tex}.
@@ -1290,14 +1316,17 @@ dans une police à largeur fixe
 \end{frame}
 
 %%% >>>
+\stepcounter{exerciceref}
+\subsection{[~Exercice \theexerciceref~]}
+
 \begin{frame}[plain]
   \begin{exercice}
     \begin{enumerate}
     \item Ouvrir le fichier \fichier{exercice\_complet.tex} et en
       étudier le code source, puis le compiler.
-    \item En comparant le résultat avec le fichier produit avec le
-      fichier \fichier{exercice\_tdm+annexes.tex}, déterminer l'effet
-      de l'option \texttt{article} dans la classe.
+    \item Supprimer l'option \texttt{article} au chargement de la
+      classe et compilier de nouveau le document. Observer l'effet de
+      cette option.
     \item Effectuer les modifications suivantes au document.
       \begin{enumerate}[a)]
       \item Dernier paragraphe de la première section, placer toute la
@@ -1707,6 +1736,9 @@ align*
 \end{frame}
 
 %%% >>>
+\stepcounter{exerciceref}
+\subsection{[~Exercice \theexerciceref~]}
+
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_ulthese.tex} --- qui est
