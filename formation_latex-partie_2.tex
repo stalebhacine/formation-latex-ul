@@ -107,7 +107,8 @@
   \lstloadlanguages{[LaTeX]TeX}
   \lstset{language=[LaTeX]TeX,
     basicstyle=\ttfamily\NoAutoSpacing,
-    keywordstyle=\mdseries,
+    keywordstyle=\color{red}\itshape,
+    texcsstyle=\color{violet}\bfseries,
     commentstyle=\color{comments}\slshape,
     escapeinside=`',
     extendedchars=true,
@@ -202,7 +203,7 @@
   %% environnements 'lstlisting' imbriqués, ce que ne digère pas
   %% LaTeX. La ruse consiste à définir un environnement équivalent qui
   %% porte simplement un autre nom.
-  \lstnewenvironment{vglisting}{}{}
+  \lstnewenvironment{vglisting}{\lstset{deletetexcs={int,include}}}{}
 
   %% Exemples de notices bibliographiques
   \newenvironment{bibexample}[1][\linewidth]{%
@@ -258,21 +259,23 @@
     Le premier numéro indique habituellement, mais pas toujours,
     la page où un concept est introduit, défini ou expliqué.%
     \vskip\onelineskip}
-  \lstset{language=[LaTeX]TeX,
-    morekeywords={align,align*,aligned,cases,center,equation,equation*,%
-      figure,gather,lstlisting,minipage,multline,quote,split,%
-      table,tabular,tabularx,verbatim},
+  \lstset{language=[AlLaTeX]TeX,
+    morekeywords={align,align*,aligned,cases,equation*,%
+      figure,gather,lstlisting,multline,quote,split,%
+      table,tabular,tabularx},
+    deletekeywords={document},
     moretexcs={toprule,midrule,bottomrule,%
       includegraphics,reflectbox,resizebox,rotatebox,scalebox,%
       includepdf,frenchfigurename,frenchtablename,%
       newsubfloat,subcaption,%
-      dfrac,tfrac,iint,text,mathcal,mathbb,eqref,symbf,%
+      bm,dfrac,tfrac,iint,text,mathcal,mathbb,eqref,symbf,%
       citet,citep,citeauthor,citeyear,%
-      setmainfont,setmathfont,%
+      setmainfont,setsansfont,setmonofont,setmathfont,%
       color,definecolor,colorlet,hypersetup},
     deletetexcs={documentclass,usepackage,begin,end,LaTeX,TeX,%
-      bfseries,emph,Huge,itshape,normalfont,raggedright,sffamily,small,textbf,texttt,%
-      minipage,hfill,def,a,b,c,d,em,i,j,l,r,t},
+      normalfont,bfseries,textbf,itshape,scshape,sffamily,ttfamily,texttt,%
+      emph,small,Huge,raggedright,%
+      hfill,def,a,b,c,d,em,i,j,l,r,t},
     index=[1][keywords],        % environnements
     indexstyle=[1]\ixenv,
     index=[2][texcs],           % commandes
@@ -280,6 +283,7 @@
   \newcommand{\ixenv}[1]{\index{#1 env@\Pe{#1} (environnement)}%
     \index{environnement!#1@\Pe{#1}}}
   \newcommand{\ixcmd}[1]{\index{#1@\string\cs{#1}}}
+  \newcommand{\ixccmd}[1]{\index{#1@\string\toto{#1}}}
   \makeindex
 
   %%% =====================

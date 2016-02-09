@@ -297,13 +297,6 @@ contient la liste complète.
 \section{Présentation de code informatique}
 \label{sec:trucs:listings}
 
-%%% Certains mots-clés LaTeX présents dans le code C des exemples de
-%%% cette section se retrouvent dans l'index, et ce, même si
-%%% l'environnement lstlisting n'est pas celui qui est «actif». Pour
-%%% contourner le problème, les mots-clés parasites sont supprimés ici
-%%% et réintroduits à la fin de la section.
-\lstset{language=[LaTeX]TeX, deletetexcs={int,include,begin,end}}
-
 L'environnement standard \Ie{verbatim} de {\LaTeX} permet de présenter
 du texte exactement tel qu'il est entré dans le code source du
 document. C'est un environnement particulièrement utile pour afficher
@@ -312,7 +305,7 @@ proportionnelle et que sa disposition exacte est respectée.
 
 \begin{demo}
   \begin{texample}
-\begin{lstlisting}
+\begin{lstlisting}[deletetexcs={int,include}]
 \begin{verbatim}
 /* Hello World en C */
 #include <stdio.h>
@@ -369,6 +362,7 @@ int main()
     \end{vglisting}
     \producing
 \begin{lstlisting}[language=C,%
+  deletetexcs={int,include},
   frame=single,%
   backgroundcolor=\color{Azure2},%
   rulecolor=\color{black},%
@@ -423,7 +417,7 @@ l'index.
 \end{exemple}
 
 %%% Réactivation des mots-clés.
-\lstset{language=[LaTeX]TeX, moretexcs={int,include,begin,end}}
+%\lstset{language=[LaTeX]TeX, moretexcs={int,include}}
 
 
 \section{Production de rapports avec l'analyse intégrée}
@@ -773,9 +767,6 @@ on remarquera que le document:
   police non proportionnelle (\cmdprint{\ttfamily}) et un arrière-plan
   de la couleur standard «lightgray».
   \begin{sol}
-    %%% Encore le problème de mots-clés parasites.
-    \lstset{language=[LaTeX]TeX, deletetexcs={begin,end,ttfamily}}
-
     S'il y avait plusieurs extraits de code dans le document, mieux
     vaudrait les configurer tous à l'identique dans le préambule du
     document avec
@@ -800,9 +791,6 @@ latex ulthese.ins
 latex ulthese.ins
 \end{lstlisting}
 \end{vglisting}
-
-    %%% Réactivation des mots-clés
-    \lstset{language=[LaTeX]TeX, moretexcs={begin,end,ttfamily}}
   \end{sol}
 \end{exercice}
 
