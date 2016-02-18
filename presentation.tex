@@ -1,0 +1,273 @@
+\chapter{Présentation de {\TeX}, {\LaTeX} et consorts}
+\label{chap:presentation}
+
+
+{\LaTeX} est certainement
+
+{\TeX}, {\LaTeX}, {\XeLaTeX}, {\LuaTeX}
+
+Un peu de phonétique avant d'aller plus loin. La dernière lettre de
+tous les acronymes ci-dessus étant non pas un X, mais plutôt la lettre
+grecque khi majuscule (visuellement identique), la terminaison se
+prononce «tek». Voilà qui devrait permettre de distinguer
+immédiatement le système de mise en page du matériau élastique.
+
+
+\section{Ce que c'est}
+\label{sec:presentation:c-est}
+
+À la base de {\LaTeX} et de ses dérivés, il y a toujours le système
+{\TeX} développé par Donald Knuth à partir de la fin des années 1970
+alors qu'il travaillait à la rédaction de son {\oe}uvre phare
+\emph{The Art of Computer Programming}. Comme il n'était pas satisfait
+de la qualité typographique des systèmes de mise en page alors
+disponibles, il a tout naturellement décidé d'en créer un à la hauteur
+de ses exigences!
+
+\begin{itemize}
+\item {\TeX} est un système de mise en page (\emph{typesetting}) ou de
+  préparation de documents.
+\item {\LaTeX} est un ensemble de macro-commandes développé par Leslie
+  Lamport en 1983 pour faciliter l'utilisation de {\TeX}. Le terme
+  {\LaTeX} en est venu, chez les utilisateurs, à nommer l'ensemble du
+  système.
+\item {\TeX} et {\LaTeX} sont des langages de balisage (\emph{Markup
+    Languages}) qui indiquent la mise en forme du texte à l'intérieur
+  de celui-ci.
+\item {\TeX} met l'accent sur la production de documents de grande
+  qualité à la typographie soignée, surtout pour les mathématiques.
+\end{itemize}
+
+\begin{exemple}
+  Les traitements de texte sont d'abord et avant tout conçus pour
+  reproduire à l'identique ce que l'utilisateur produit à l'écran
+  (d'où l'appellation \emph{What You See is What You Get}, WYSIWYG).
+  Les systèmes de mise en page, eux, visent plutôt à produire une mise
+  en page et une typographie de grande qualité pour un texte donné.
+
+  Voici deux exemples de typographie soignée. D'abord, l'utilisation
+  de \emph{ligatures} (jonctions) entre certaines lettres. À gauche,
+  ce que produisent les traitements de texte, qui ne voient qu'une
+  série de lettres individuelles. À droite, le résultat avec {\LaTeX},
+  qui peut analyser le texte et identifier les ligatures.
+  \begin{demo}
+    \centering
+    \begin{minipage}{0.3\linewidth}
+      \rmfamily f\/f \quad f\/i \quad f\/l \quad f\/f\/i \quad
+      f\/f\/l
+    \end{minipage}
+    \qquad
+    \begin{minipage}{0.3\linewidth}
+      \rmfamily ff \quad fi \quad fl \quad ffi \quad ffl
+    \end{minipage}
+  \end{demo}
+
+  Ensuite, l'espacement entre les lettres. {\LaTeX} l'ajustera selon
+  le contexte. Comparer la disposition pour du texte normal, à gauche,
+  à celle pour des mathématiques, à droite.
+  \begin{demo}
+    \centering
+    \begin{minipage}{0.3\linewidth}
+      \rmfamily xy \quad \emph{xy}
+    \end{minipage}
+    \qquad
+    \begin{minipage}{0.3\linewidth}
+      $xy$
+    \end{minipage}
+  \end{demo}
+  \qed
+\end{exemple}
+
+
+\section{Ce que ce n'est pas}
+\label{sec:presentation:n-est-pas}
+
+\begin{itemize}
+\item Un traitement de texte --- {\LaTeX} impose un mode de travail
+  qui permet de séparer \emph{structure} et \emph{apparence} du texte.
+\item WYSIWYG --- un système de mise en page est davantage qualité de
+  \emph{What You See is What You Mean}.
+\item Incompatible --- le code source {\LaTeX} peut être lu et le
+  document reproduit à l'identique sur tous les types de systèmes
+  informatiques.
+\item Instable --- le moteur {\TeX} est considéré exempt de bogues.
+\item Imprévisible --- {\LaTeX} fait uniquement et exactement ce qu'on
+  lui demande, sans prétendre pouvoir deviner ce que nous voulons
+  faire ou, pire, le savoir mieux que nous.
+\end{itemize}
+
+
+\section{Processus de création d'un document}
+
+Le processus de création d'un document {\LaTeX} compte trois phases:
+la rédaction, la compilation (ou composition par le système) et la
+visualisation du résultat. On peut le représenter schématiquement
+ainsi:
+\begin{center}
+  \begin{minipage}[t]{0.25\linewidth}
+    \centering
+    {\Huge\faFileTextO} \\ \medskip
+    rédaction du texte et balisage avec un \emph{éditeur de texte}
+  \end{minipage}
+  \quad{\Large\faArrowRight}\quad
+  \begin{minipage}[t]{0.25\linewidth}
+    \centering
+    {\Huge\faCogs} \\ \medskip
+    compilation avec un \emph{moteur} {\TeX} depuis la ligne de commande
+  \end{minipage}
+  \quad{\Large\faArrowRight}\quad
+  \begin{minipage}[t]{0.25\linewidth}
+    \centering
+    {\Huge\faFilePdfO} \\ \medskip
+    visualisation avec une visionneuse externe (Aperçu,
+    SumatraPDF, etc.)
+  \end{minipage}
+\end{center}
+
+Les logiciels de rédaction intégrés facilitent grandement les deux
+premières étapes --- certains intègrent même une visionneuse PDF pour
+englober le processus au complet. Il existe plusieurs de ces
+logiciels. Mentionnons, par exemple:
+\link{http://www.xm1math.net/texmaker/index_fr.html}{texmaker}, %
+\link{http://www.tug.org/texworks/}{TeXworks}, %
+\link{http://www.texshop.org/}{TeXShop} (OS~X seulement), %
+\link{http://www.winedt.com}{WinEdt} (Windows seulement), %
+\link{http://kile.sourceforge.net}{Kile} (Linux), %
+à peu près tous les bons éditeurs de texte pour programmeur.
+
+
+\section{Quelques choses simples à réaliser avec {\LaTeX} }
+
+Quiconque a travaillé un tant soit peu les logiciels de traitement de
+texte reconnaîtra ci-dessous des éléments de mise en page qui ne sont
+pas toujours faciles à réaliser. C'est tout le contraire avec
+{\LaTeX}: quand ce n'est pas le comportement par défaut, il suffit en
+général d'insérer une commande dans le code source pour obtenir le
+résultat souhaité.
+
+\begin{itemize}
+\item Page titre standard avec le titre du document, le nom de
+  l'auteur et la date.
+\item Table des matières.
+\item Numérotation des pages.
+\item Disposition sur la page des Figures et tableaux, numérotation et
+  renvois.
+\item Numérotation des équations mathématiques et renvois.
+\item Citations et composition de la bibliographie.
+\item Coupure de mots.
+\item Document recto-verso avec marges distinctes pour le recto et le
+  verso.
+\end{itemize}
+
+
+\section{Outils de production}
+
+Le \autoref{tab:presentation:moteurs} dresse la liste des divers
+\emph{moteurs} {\TeX} et formats (ensembles de macro commandes)
+couramment utilisés aujourd'hui.
+
+\begin{table}
+  \centering
+  \begin{tabular}{llc}
+    \toprule
+    Moteur & Format & Fichier de sortie \\
+    \midrule
+    \code{tex} & \emph{plain} \TeX & DVI \\
+    \code{tex} (\code{latex}) & \LaTeX & DVI \\
+    \code{pdftex} (\code{pdflatex}) & pdf\LaTeX & PDF \\
+    \code{xetex} (\code{xelatex}) & \XeLaTeX & PDF \\
+    \code{luatex} (\code{lualatex}) & \LuaLaTeX & PDF \\
+    \bottomrule
+  \end{tabular}
+  \caption{Moteurs et formats les plus courants}
+  \label{tab:presentation:moteurs}
+\end{table}
+
+\begin{itemize}
+\item Les formats les plus usuels sont pdf{\LaTeX} et {\XeLaTeX}. La
+  classe \class{ulthese} les supporte tous deux.
+\item Le moteur \code{pdftex} est le moteur par défaut des
+  distributions {\LaTeX} modernes. Comme son nom l'indique, ce moteur
+  produit directement un fichier de sortie en format PDF. C'est la
+  principale différence par rapport au moteur \code{tex}.
+\item Le moteur \code{xetex} peut utiliser directement les polices de
+  caractères du système d'exploitation. On traite des polices de
+  caractères plus en détail à la \autoref{trucs:polices}.
+\item Le format de fichier de sortie DVI, qui est antérieur aux
+  formats PostScript et PDF, permet de décrire la disposition d'un
+  document exactement telle qu'elle devrait apparaître à l'écran ou à
+  l'impression. C'est un format aujourd'hui plus ou moins tombé en
+  désuétude depuis la standardisation autour du format PDF.
+\end{itemize}
+
+Le système {\LaTeX} est formé d'un grand nombre de composantes réunies
+sont forme d'une \emph{distribution}. La plus populaire distribution
+aujourd'hui est %
+\link{https://www.tug.org/texlive}{{\TeX}~Live}. %
+Elle est administrée par le {\TeX} Users Group. C'est la distribution que
+recommandent la Bibliothèque et la Faculté des études supérieures de
+l'Université Laval.
+
+\begin{itemize}
+\item Sous OS~X, on installera plutôt la distribution %
+  \link{https://www.tug.org/mactex/}{Mac{\TeX}}, %
+  qui est étroitement dérivée de {\TeX}~Live.
+\item Sous Windows, la distribution %
+  \link{http://www.miktex.org}{MiK\TeX} %
+  demeure aussi très populaire.
+\end{itemize}
+
+La philosophie de {\TeX}~Live: tout installer. Cette façon de faire
+est aujourd'hui réalisable puisque l'espace disque est disponible à
+profusion dans les ordinateurs. C'est également la plus simple puisque
+à peu près tout ce que vous êtes susceptible d'utiliser dans un
+système {\TeX} est déjà installé.
+
+\begin{information}
+  Quelques faits amusants au sujet de {\TeX}.
+  \begin{itemize}
+  \item {\TeX} est aujourd'hui considéré essentiellement exempt de
+    bogue.
+  \item Donald Knuth vous offre une récompense (symbolique) si vous en
+    trouvez un!
+  \item Le numéro de version de {\TeX} converge vers $\pi$:
+\begin{lstlisting}
+$ tex --version
+TeX `\textbf{3.14159265}' (TeX Live 2015)
+kpathsea version 6.2.1
+Copyright 2015 D.E. Knuth.
+[...]
+\end{lstlisting}
+  \end{itemize}
+  Pour en savoir plus:
+  \begin{itemize}
+  \item \link{https://www.tug.org/whatis.html}{Histoire de \TeX} sur le
+    site du {\TeX} Users Group (en anglais);
+  \item {\TeX} sur Wikipedia
+    (\link{http://fr.wikipedia.org/wiki/TeX}{version française};
+    \link{http://en.wikipedia.org/wiki/TeX}{version anglaise}, plus
+    complète).
+  \end{itemize}
+\end{information}
+
+
+%%%
+%%% Exercices
+%%%
+
+\section{Exercice}
+\label{sec:presentation:exercices}
+
+\begin{exercice}[nosol]
+  Démarrer le logiciel Texmaker (ou tout autre éditeur ou logiciel
+  intégré de rédaction de votre choix), puis ouvrir et compiler le
+  fichier \fichier{exercice\_minimal.tex}.
+\end{exercice}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-engine: xetex
+%%% TeX-master: "formation_latex-partie_2"
+%%% coding: utf-8
+%%% End:
