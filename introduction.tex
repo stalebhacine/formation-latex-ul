@@ -1,27 +1,34 @@
 \chapter{Introduction}
 \label{chap:introduction}
 
-Ce document constitue la seconde partie d'une formation sur
-l'utilisation de {\LaTeX} pour la rédaction de thèses et de mémoires
-développée pour la Bibliothèque de l'Université Laval. La première
-partie de la formation se déroulant en classe, sa documentation
-n'existe que sous forme de diapositives \citep{UL:latex:1}.
+Ce document constitue la seconde partie d'une formation sur la
+rédaction de thèses et de mémoires avec {\LaTeX} développée pour la
+Bibliothèque de l'Université Laval. La première partie de
+la formation se déroule en classe; la documentation qui
+l'accompagne consiste en une série de diapositives
+\citep{UL:latex:1}.
 
-On reprend ici la formation une fois présentés les concepts de base de
-{\LaTeX} pour un nouvel utilisateur: processus d'édition, compilation,
-visualisation; séparation du contenu et de l'apparence du texte; mise
-en forme du texte; séparation du document en parties; rudiments du
-mode mathématique. Avec cette seconde partie, une personne devrait
-être en mesure de composer des documents relativement complexes
-comportant des tableaux, des figures, des équations mathématiques
-élaborées, une bibliographie, etc.
+L'ouvrage traite ici et là de \class{ulthese} \citep{ulthese}, la
+classe pour les thèses et mémoires de l'Université Laval. Outre ces
+quelques aspects spécifiques, le traitement demeure général et le
+document devrait convenir à toute personne en phase d'apprentissage de
+{\LaTeX}.
 
-Le présent manuel n'a aucune prétention d'exhaustivité. La
+Nous reprenons ici la formation une fois présentés les concepts de
+base de {\LaTeX} pour un nouvel utilisateur: processus d'édition,
+compilation, visualisation; séparation du contenu et de l'apparence du
+texte; mise en forme du texte; séparation du document en parties;
+rudiments du mode mathématique. Avec cette seconde partie, une
+personne devrait être en mesure de composer des documents relativement
+complexes comportant des tableaux, des figures, des équations
+mathématiques élaborées, une bibliographie, etc.
+
+Le présent ouvrage n'a aucune prétention d'exhaustivité. La
 consultation de documentation additionnelle peut s'avérer nécessaire
 pour réaliser des mises en page plus élaborées. À cet égard, nous
 recommandons chaudement le livre de \citet{Kopka:latex:4e} --- il a
 servi d'inspiration pour ce document à maints endroits. La très
-complète (plus de 600 pages!) documentation de la classe
+complète documentation (plus de 600 pages!) de la classe
 \class{memoir} \citep{memoir}, sur laquelle se base la classe
 \class{ulthese}, constitue une autre référence de choix. Nous
 recommandons également:
@@ -31,8 +38,8 @@ recommandons également:
   libre;
 \item le très actif forum de discussion
   \link{http://tex.stackexchange.com}{{\TeX}--{\LaTeX} Stack Exchange}
-  (avant de poser une question, vérifiez que la réponse ne se trouve
-  pas déjà dans ce forum... ce qui risque fort d'être le cas);
+  (avant d'y poser une question, vérifier que la réponse ne se trouve
+  pas déjà dans ce forum\dots\ ce qui risque fort d'être le cas);
 \item la très complète
   \link{http://www.tex.ac.uk/cgi-bin/texfaq2html}{%
     \emph{foire aux questions}} (en anglais) du groupe des
@@ -43,13 +50,17 @@ recommandons également:
 la documentation d'un paquetage ou d'une classe, par exemple vers la %
 \doc{ulthese}{http://texdoc.net/pkg/ulthese/} %
 de la classe \class{ulthese}. Le format du renvoi est toujours tel
-qu'illustré ici: un hyperlien mène vers la version en ligne de la
-documentation dans le site %
-\link{http://texdoc.net}{TeXdoc Online}. De plus, on indique dans la
-marge le nom du fichier (sans l'extension \code{.pdf}) correspondant
-sur un système doté de {\TeX}~Live. Sur la plupart des systèmes, il
-est possible de consulter hors ligne la documentation
-\meta{fichier}\code{.pdf} en entrant à une invite de commande
+qu'illustré ici:
+\begin{enumerate}
+\item un hyperlien mène vers la version en ligne de la documentation
+  dans le site %
+  \link{http://texdoc.net}{TeXdoc Online};
+\item on trouve dans la marge le nom du fichier correspondant (sans
+  l'extension \code{.pdf}) sur un système doté de {\TeX}~Live.
+\end{enumerate}
+Sur la plupart des systèmes, il est possible de consulter hors ligne
+le fichier de documentation \meta{fichier}\code{.pdf} en entrant à une
+invite de commande
 \begin{quote}
 \begin{lstlisting}[backgroundcolor=\color{white}]
 texdoc `\meta{fichier}'
