@@ -20,10 +20,14 @@
   \newfontfamily\titles{Myriad Pro}
   \usepackage{microtype}
 
-  %%% Titre
-  \title[]{Rédaction de thèses et de mémoire avec {\LaTeX}: premiers pas}
-  \author[]{Université Laval}
-  \date{}
+  %%% Titre et al. (utilisés seulement pour les informations du
+  %%% fichier PDF). La page titre et la page frontispice sont montées
+  %%% «à la main» dans les deux premières diapos.
+  \title[]{Rédaction de thèses et de mémoires avec {\LaTeX}}
+  \subtitle{Premiers pas}
+  \author[]{Vincent Goulet}
+  \institute{Professeur titulaire, École d'actuariat, Université Laval}
+  \date{\year}
   \renewcommand{\year}{2016}        % pour notice de copyright
   \newcommand{\ISBN}{XXX-XXXXXXX-X} % pour dépôt légal
 
@@ -136,9 +140,23 @@
 {
   \usebackgroundtemplate{%
     \includegraphics[height=\paperheight,width=\paperwidth]{couvertures-partie_1}}
-  \begin{frame}[plain]
-  \end{frame}
+  \frame[plain]{}
 }
+
+%% Page frontispice similaire à celle du document de la partie II
+\begin{frame}[plain]
+  \titles
+  \bfseries\fontsize{16}{16}\selectfont Rédaction de thèses \\
+                                        et de mémoires avec {\LaTeX} \\[5mm]
+  \bfseries\fontsize{12}{12}\selectfont 1 \textbar\ Premiers pas \\
+  \vspace*{\fill}
+  \bfseries\fontsize{10}{12}\selectfont Vincent Goulet \\
+  \mdseries\fontsize{8}{10}\selectfont Professeur titulaire \textbar\
+                                        École d'actuariat \textbar\
+                                        Université Laval \\
+  \vspace*{\fill}
+  \mdseries\fontsize{8}{10}\selectfont Édition \year
+\end{frame}
 
 %% Le texte du contrat de licence est conservé dans un fichier séparé
 \input{licence-partie_1}
