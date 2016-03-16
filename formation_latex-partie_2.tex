@@ -110,6 +110,7 @@
     keywordstyle=\color{red}\itshape,
     texcsstyle=\color{violet}\bfseries,
     commentstyle=\color{comments}\slshape,
+    emphstyle=\bfseries,
     escapeinside=`',
     extendedchars=true,
     showstringspaces=false,
@@ -263,7 +264,7 @@
     morekeywords={align,align*,aligned,cases,equation*,%
       figure,gather,lstlisting,multline,quote,split,%
       table,tabular,tabularx},
-    deletekeywords={document},
+    deletekeywords={document},   % répéter dans deletetexcs
     moretexcs={toprule,midrule,bottomrule,%
       includegraphics,reflectbox,resizebox,rotatebox,scalebox,%
       includepdf,frenchfigurename,frenchtablename,%
@@ -272,7 +273,7 @@
       citet,citep,citeauthor,citeyear,%
       setmainfont,setsansfont,setmonofont,setmathfont,%
       color,definecolor,colorlet,hypersetup},
-    deletetexcs={documentclass,usepackage,begin,end,LaTeX,TeX,%
+    deletetexcs={document,documentclass,usepackage,begin,end,LaTeX,TeX,%
       normalfont,bfseries,textbf,itshape,scshape,sffamily,ttfamily,texttt,%
       emph,small,Huge,raggedright,%
       hfill,def,a,b,c,d,em,i,j,l,r,t},
@@ -283,7 +284,6 @@
   \newcommand{\ixenv}[1]{\index{#1 env@\Pe{#1} (environnement)}%
     \index{environnement!#1@\Pe{#1}}}
   \newcommand{\ixcmd}[1]{\index{#1@\string\cs{#1}}}
-  \newcommand{\ixccmd}[1]{\index{#1@\string\toto{#1}}}
   \makeindex
 
   %%% =====================
@@ -372,14 +372,16 @@
   %% Style de la bibliographie
   \bibliographystyle{francais}
 
+  %% Compteur nécessaire pour conserver le numéro de chapitre pendant
+  %% un exemple sur les renvois automatiques
+  \newcounter{temp}
+
   %% Aide pour la césure
   \hyphenation{}
 
-  %%% ======================================
-  %%%  Page titre (sauf titre de la partie)
-  %%% ======================================
-  \newcommand{\ISBN}{XXX-XXXXXXX-X}
-  \renewcommand{\year}{2016}
+  %%% ============
+  %%%  Page titre
+  %%% ============
   \title{\protect\raggedright%
     \bfseries\fontsize{32}{32}\selectfont Rédaction de thèses \\
                                           et de mémoires avec {\LaTeX} \\[10mm]
@@ -391,8 +393,10 @@
                                           Université Laval}
   \date{%
     \mdseries\fontsize{14}{18}\selectfont Édition \fullcaps\year}
+  \renewcommand{\year}{2016}
+  \newcommand{\ISBN}{978-2-9811416-5-1}
 
-%  \includeonly{frontispice,licence-partie_2}
+%  \includeonly{}
 
 \begin{document}
 
@@ -446,12 +450,9 @@
 
 %% Page couverture arrière.
 \AddToShipoutPictureFG*{%
-  \AtStockLowerLeft{\raisebox{45mm}{\includegraphics{codebarre}}}
+  \AtStockLowerLeft{\raisebox{45mm}{\hspace{5mm}\includegraphics{codebarre_\ISBN}}}
 }
 \includepdf[pages=2]{couvertures-partie_2}
-% \begin{textblock*}{123mm}[0,0](10mm,240mm)
-%   \includegraphics[keepaspectratio=true]{codebarre} \\
-% \end{textblock*}
 
 \end{document}
 

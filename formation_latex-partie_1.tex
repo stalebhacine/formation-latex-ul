@@ -28,8 +28,8 @@
   \author[]{Vincent Goulet}
   \institute{Professeur titulaire, École d'actuariat, Université Laval}
   \date{\year}
-  \renewcommand{\year}{2016}        % pour notice de copyright
-  \newcommand{\ISBN}{XXX-XXXXXXX-X} % pour dépôt légal
+  \renewcommand{\year}{2016}            % pour notice de copyright
+  \newcommand{\ISBN}{978-2-9811416-4-4} % pour dépôt légal
 
   %%% Définition de couleurs
   \definecolor{comments}{rgb}{0.7,0,0}
@@ -139,7 +139,7 @@
 %% Page titre; image dans fichier séparé
 {
   \usebackgroundtemplate{%
-    \includegraphics[height=\paperheight,width=\paperwidth]{couvertures-partie_1}}
+    \includegraphics[page=1,height=\paperheight,width=\paperwidth]{couvertures-partie_1}}
   \frame[plain]{}
 }
 
@@ -1829,6 +1829,18 @@ align*
 \end{frame}
 
 \input{colophon-partie_1}
+
+%% Page couverture arrière. Avec 'aspectratio=54', les dimensions des
+%% diapos sont 125 x 100 mm (section 8.3 du manuel de Beamer).
+{
+  \usebackgroundtemplate{%
+    \includegraphics[page=2,height=\paperheight,width=\paperwidth]{couvertures-partie_1}}
+  \begin{frame}[plain]
+    \begin{textblock*}{15mm}[0,1](2mm,77mm)
+      \includegraphics[height=13mm]{codebarre_\ISBN}
+    \end{textblock*}
+  \end{frame}
+}
 
 \end{document}
 
