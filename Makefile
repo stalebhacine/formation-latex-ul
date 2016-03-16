@@ -62,10 +62,10 @@ RM = rm -rf
 
 pdf : $(MASTER1) $(MASTER2)
 
-$(MASTER1): $(MASTER1:.pdf=.tex) $(TEXFILES1) #couvertures-partie_1.pdf
+$(MASTER1): $(MASTER1:.pdf=.tex) $(TEXFILES1)
 	$(TEXI2DVI) $(MASTER1:.pdf=.tex)
 
-$(MASTER2): $(MASTER2:.pdf=.tex) $(TEXFILES2) #couvertures-partie_2.pdf
+$(MASTER2): $(MASTER2:.pdf=.tex) $(TEXFILES2)
 	$(TEXI2DVI) $(MASTER2:.pdf=.tex)
 
 zip :
