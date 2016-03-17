@@ -13,7 +13,8 @@
   \usepackage{answers}                 % exercices et solutions
   \usepackage{listings}                % code informatique
   \usepackage{pdfpages}                % couvertures
-  \usepackage{eso-pic}
+  \usepackage{eso-pic}                 % disposition d'images
+
 
   %%% ===================
   %%%  Style du document
@@ -99,7 +100,8 @@
   \frenchbsetup{CompactItemize=false,%
     ThinSpaceInFrenchNumbers=true,
     ItemLabeli=\mantriangleright,
-    ItemLabelii=\textendash}
+    ItemLabelii=\textendash,
+    og=«, fg=»}
   \def\frenchfigurename{{\scshape Fig.}}
   \def\frenchtablename{{\scshape Tab.}}
 
@@ -107,8 +109,7 @@
   \lstloadlanguages{[LaTeX]TeX}
   \lstset{language=[LaTeX]TeX,
     basicstyle=\ttfamily\NoAutoSpacing,
-    keywordstyle=\color{red}\itshape,
-    texcsstyle=\color{violet}\bfseries,
+    keywordstyle=\mdseries,
     commentstyle=\color{comments}\slshape,
     emphstyle=\bfseries,
     escapeinside=`',
@@ -261,7 +262,7 @@
     la page où un concept est introduit, défini ou expliqué.%
     \vskip\onelineskip}
   \lstset{language=[AlLaTeX]TeX,
-    morekeywords={align,align*,aligned,cases,equation*,%
+    morekeywords={align,align*,aligned,bmatrix,cases,equation*,%
       figure,gather,lstlisting,multline,quote,split,%
       table,tabular,tabularx},
     deletekeywords={document},   % répéter dans deletetexcs
@@ -339,6 +340,14 @@
       \rule[-5pt]{0mm}{16pt}%
       \makebox[7mm]{\raisebox{-3pt}{\LARGE\faExternalLink}}\;%
       {\sffamily Accéder au dépôt}}}
+
+  %% «Bouton» pour accéder à CTAN
+  \newcommand{\ctanbutton}{%
+    \setlength{\fboxrule}{1pt}%
+    \framebox[62mm][l]{%
+      \rule[-5pt]{0mm}{16pt}%
+      \makebox[7mm]{\raisebox{-3pt}{\LARGE\faExternalLink}}\;%
+      {\sffamily Accéder aux fichiers dans CTAN}}}
 
   %% Pour le tableau des commandes d'espacement en mode mathématique.
   %% Pris de la doc de amsmath.
@@ -419,6 +428,7 @@
 \pagestyle{companion}
 
 \include{introduction}
+\include{modedemploi}
 
 \cleartorecto
 \tableofcontents*
