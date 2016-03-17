@@ -154,7 +154,7 @@ $z=2x + 3xy$
 
 Quant au langage retenu par {\LaTeX} pour décrire les équations
 mathématiques, il est très similaire à celui que l'on utiliserait pour
-le faire à voix haute (??? capsule vidéo???); nous y reviendrons. Il faut simplement avoir
+le faire à voix haute. Il faut simplement avoir
 recours à des commandes pour identifier les symboles mathématiques que
 l'on ne retrouve pas sur un clavier usuel, comme les lettres grecques,
 les opérateurs d'inégalité ou les symboles de sommes et d'intégrales.
@@ -1371,7 +1371,7 @@ du paquetage \pkg{amsmath} pour les détails sur
 l'utilisation des environnements du \autoref*{tab:math:displays}.
 
 \begin{conseil}
-  Veillez à respecter les règles suivantes pour la mise en forme des
+  Veillez à respecter les règles suivantes pour la composition des
   équations.
   \begin{enumerate}
   \item Qu'elles apparaissent en ligne ou hors paragraphe, les
@@ -1388,7 +1388,7 @@ l'utilisation des environnements du \autoref*{tab:math:displays}.
 
 \begin{exemple}
   Les deux suites d'équations au début de la section ont été réalisées
-  avec les blocs de code ci-dessous, dans l'ordre.
+  avec les extraits de code ci-dessous, dans l'ordre.
 \begin{lstlisting}
 \begin{align}
   y &= 2x + 4 \\
@@ -1655,7 +1655,7 @@ contrôler leur taille. C'est une lecture suggérée.
       f(b)
       \right].
   \end{align*}
-  On compose ce bloc d'équation avec le code source ci-dessous.
+  On compose ce bloc d'équations avec le code source ci-dessous.
 \begin{lstlisting}
 \begin{align*}
   \int_a^b f(x)\, dx
@@ -1671,7 +1671,7 @@ contrôler leur taille. C'est une lecture suggérée.
     \sum_{j = 1}^{n - 1} f(x_{2j}) +
     4 \sum_{j = 0}^{n - 1} f(x_{2j + 1})
     \right. \\
-  &\phantom{=}  + \left.
+  &\phantom{=} + \left.
     \sum_{j = 0}^{n - 2} f(x_{2(j + 1)}) +
     f(x_{2n})
     \right] \\
@@ -1914,9 +1914,12 @@ A \symbf{A}
   \begin{quote}
     La dérivée de la fonction composée $f \circ g(x) = f[g(x)]$ est
     $\{f[g(x)]\}^\prime = f^\prime[g(x)] g^\prime(x)$. La dérivée
-    seconde du produit des fonctions $f$ et $g$ est $[f(x)
-    g(x)]^{\prime\prime} = f^{\prime\prime}(x) g(x) + 2 f^\prime(x)
-    g^\prime(x) + f(x) g^{\prime\prime}(x)$.
+    seconde du produit des fonctions $f$ et $g$ est
+    \begin{equation*}
+      [f(x) g(x)]^{\prime\prime} =
+      f^{\prime\prime}(x) g(x) + 2 f^\prime(x) g^\prime(x) +
+      f(x) g^{\prime\prime}(x).
+    \end{equation*}
   \end{quote}
   \begin{sol}
     On trouve la commande pour produire le symbole $\circ$ dans le
@@ -1928,9 +1931,12 @@ A \symbf{A}
 La dérivée de la fonction composée $f \circ g(x) =
 f[g(x)]$ est $\{f[g(x)]\}^\prime = f^\prime[g(x)]
 g^\prime(x)$. La dérivée seconde du produit des
-fonctions $f$ et $g$ est $[f(x) g(x)]^{\prime\prime} =
-f^{\prime\prime}(x) g(x) + 2 f^\prime(x) g^\prime(x) +
-f(x) g^{\prime\prime}(x)$.
+fonctions $f$ et $g$ est
+\begin{equation*}
+  [f(x) g(x)]^{\prime\prime} =
+  f^{\prime\prime}(x) g(x) + 2 f^\prime(x) g^\prime(x) +
+  f(x) g^{\prime\prime}(x).
+\end{equation*}
 \end{lstlisting}
   \end{sol}
 \end{exercice}

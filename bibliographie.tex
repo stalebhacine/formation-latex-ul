@@ -96,7 +96,7 @@ auteur-titre populaire en sciences humaines.
 Le duo Biber-\pkg{biblatex} bénéficie d'un développement récent en
 phase avec les technologies et les préoccupations actuelles. Certains
 enjoignent aux débutants de sauter dans ce train. Difficile,
-cependant, de dire si ce nouveau système saura s'établir comme nouveau
+cependant, de dire si ce système saura s'établir comme nouveau
 standard, surtout compte tenu de la masse de matériel disponible pour
 {\BibTeX}.
 
@@ -197,9 +197,8 @@ utilisée pour faire référence à l'entrée dans le code source du
 document.
 
 Il est beaucoup plus facile de comprendre ce dont il est question ici
-par le biais d'exemples. Suivent l'\autoref{ex:bibliographie:bib} des
-commentaires et précisions sur la préparation des entrées
-bibliographiques.
+par le biais d'exemples. Des commentaires et précisions additionnels sur la
+préparation des entrées bibliographiques suivent l'\autoref*{ex:bibliographie:bib}.
 
 \begin{exemple}
   \label{ex:bibliographie:bib}
@@ -353,7 +352,7 @@ composantes de la bibliographie:
 \item la présentation des notices bibliographiques (ordre des
   éléments, ponctuation, mise en forme des caractères, etc.).
 \end{enumerate}
-On trouvera des exemples de quelques style de bibliographie dans le
+On trouvera des exemples de quelques styles de bibliographie dans le
 \autoref{tab:bibliographie:styles}.
 
 \begin{table}
@@ -406,7 +405,7 @@ On trouvera des exemples de quelques style de bibliographie dans le
     \begin{bibexample}
     \item[] Kopka, H.\ et P.~W. Daly. 2003.
       \emph{Guide to {\LaTeX}}, 4{\ieme} éd., Addison-Wesley.
-    \end{bibexample}
+    \end{bibexample} \\
   \end{tabularx}
 \end{table}
 
@@ -415,7 +414,7 @@ Tel que mentionné précédemment, les styles standards de {\LaTeX} sont
 ont été développés pour des modes de citation numériques ou
 alphanumériques.
 
-Pour plus de flexibilité, il est recommandé d'utiliser le paquetage
+Pour plus de flexibilité, nous recommandons d'utiliser le paquetage
 \pkg{natbib} pour la gestion des références et du style de la
 bibliographie. Entre autres choses, ce paquetage supporte le style de
 citation auteur-année fréquemment employé en sciences naturelles et
@@ -440,7 +439,7 @@ française proposées dans \citet{Malo:1996}; voir le dernier exemple
 du \autoref{tab:bibliographie:styles}.
 
 Le paquetage \pkg{natbib} est chargé par défaut par la classe
-\class{ulthese} \citep{ulthese}; consulter la section~6.6 de la %
+\class{ulthese}; consulter la section~6.6 de la %
 \doc{ulthese}{http://texdoc.net/pkg/ulthese/} %
 de la classe pour plus d'information sur l'interaction entre le
 paquetage et celle-ci.
@@ -641,7 +640,7 @@ une bibliographie est le suivant.
   où \meta{style} est un nom de style bibliographique.
 \item Ajouter dans le texte la commande
 \begin{lstlisting}
-\bibliography`\marg{base\_donnees1, base\_donnees2, ...}'
+\bibliography{`\meta{base\_donnees1}', `\meta{base\_donnees2}', ...}
 \end{lstlisting}
   à l'endroit où l'on veut qu'apparaisse la bibliographie
   (généralement à la fin du document). Les arguments
