@@ -1,11 +1,14 @@
-MASTER1 = formation_latex-partie_1.pdf
-MASTER2 = formation_latex-partie_2.pdf
+BASENAME = formation_latex_UL
+
+MASTER1 = ${BASENAME}-partie_1.pdf
+MASTER2 = ${BASENAME}-partie_2.pdf
 
 TEXFILES1 = licence-partie_1.tex \
 	colophon-partie_1.tex
 
 TEXFILES2 = licence-partie_2.tex \
 	introduction.tex     \
+	modedemploi.tex      \
 	include.tex          \
 	boites.tex           \
 	tableaux+figures.tex \
@@ -16,7 +19,7 @@ TEXFILES2 = licence-partie_2.tex \
 	solutions.tex        \
 	colophon-partie_2.tex
 
-FILES1 = formation_latex-partie_1.pdf \
+FILES1 = ${MASTER1} \
 	exercice_minimal.tex \
 	exercice_demo.tex \
 	exercice_commandes.tex \
@@ -27,7 +30,7 @@ FILES1 = formation_latex-partie_1.pdf \
 	exercice_tdm+annexe.tex \
 	exercice_ulthese.tex \
 		includes/mathematiques.tex \
-	formation_latex.bib
+	formation_latex_UL.bib
 
 SOLUTIONS1 = \
 	exercice_commandes-solution.tex \
@@ -38,7 +41,7 @@ SOLUTIONS1 = \
 	exercice_complet-solution.tex \
 	exercice_ulthese-solution.tex
 
-FILES2 = formation_latex-partie_2.pdf \
+FILES2 = ${MASTER2} \
 	ul_p.pdf \
 	exercice_gabarit.tex \
 	exercice_include.tex \
@@ -50,13 +53,13 @@ FILES2 = formation_latex-partie_2.pdf \
 	exercice_demo.tex \
 	exercice_mathematiques.tex \
 	exercice_trucs.tex \
-	formation_latex.bib
+	formation_latex_UL.bib
 
 SOLUTIONS2 =
 
 # Outils de travail
 TEXI2DVI = LATEX=xelatex TEXINDY=makeindex texi2dvi -b
-RM = rm -rf
+RM = rm -r
 
 .PHONY: pdf zip clean
 
@@ -69,7 +72,11 @@ $(MASTER2): $(MASTER2:.pdf=.tex) $(TEXFILES2)
 	$(TEXI2DVI) $(MASTER2:.pdf=.tex)
 
 zip :
-	zip -j formation_latex.zip ${FILES1} ${SOLUTIONS1} ${FILES2} ${SOLUTIONS2}
+	if [ -d ${BASENAME} ]; then ${RM} ${BASENAME}; fi
+	mkdir ${BASENAME}
+	cp README ${FILES1} ${SOLUTIONS1} ${FILES2} ${SOLUTIONS2} ${BASENAME}
+	zip -r ${BASENAME}.zip ${BASENAME}
+	${RM} ${BASENAME}
 
 clean:
 	$(RM) *.aux *.log *.blg *.bbl *.out *.ilg *.idx *.ind

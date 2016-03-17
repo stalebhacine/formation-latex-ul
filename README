@@ -1,0 +1,41 @@
+This package contains the supporting documentation, exercice files and
+templates for a two-part introductory LaTeX course (in French)
+prepared for Université Laval, Québec, Canada.
+
+LICENCE
+
+Creative Commons Attribution-ShareAlike 4.0 International.
+
+*** The rest of this file is in French ***
+
+Ce paquetage contient tous les fichiers relatifs à une formation sur
+la rédaction de thèses et de mémoires avec LaTeX développée pour la
+Bibliothèque de l'Université Laval.
+
+La formation se divise en deux parties.
+
+La première partie de la formation se déroulant en classe, la
+documentation qui l'accompagne consiste en une série de diapositives;
+voir le fichier
+
+  formation_latex_UL-partie_1.pdf
+
+Cette première partie couvre les concepts de base de LaTeX pour un
+nouvel utilisateur: processus d'édition, compilation, visualisation;
+séparation du contenu et de l'apparence du texte; mise en forme du
+texte; séparation du document en parties; rudiments du mode
+mathématique.
+
+La seconde partie a été conçue comme un ouvrage de référence pour une
+étude autonome; voir le fichier
+
+  formation_latex_UL-partie_2.pdf
+
+Avec cette seconde partie, une personne devrait être en mesure de
+composer des documents relativement complexes comportant des tableaux,
+des figures, des équations mathématiques élaborées, une bibliographie,
+etc.
+
+Le paqeutage contient également les fichiers nécessaires pour
+compléter certains exercices, ainsi qu'un gabarit pour composer les
+solutions des autres exercices.

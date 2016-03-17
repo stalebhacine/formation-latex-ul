@@ -10,20 +10,21 @@ Structure des fichiers
 
 La formation se compose de deux documents principaux:
 
-1. formation_latex-partie_1.pdf - Premiers pas
+1. formation_latex-partie_1_UL.pdf - Premiers pas
 
    Diapositives beamer. Tout le contenu du document se trouve dans le
-   fichier source formation_latex-partie_1.tex, sauf les couvertures
+   fichier source formation_latex_UL-partie_1.tex, sauf les couvertures
    (couvertures-partie_1.pdf), la licence d'utilisation
    (licence-partie_1.tex), le colophon (colophon_partie-1.tex) et
    quelques images en format PDF.
 
-2. formation_latex-partie_2.pdf - Concepts avancés
+2. formation_latex_UL-partie_2.pdf - Concepts avancés
 
-   Le fichier maître formation_latex-partie_2.tex appelle les fichiers
+   Le fichier maître formation_latex_UL-partie_2.tex appelle les fichiers
    de chacun des chapitres:
 
       introduction.tex
+      modedemploi.tex
       include.tex
       boites.tex
       tableaux+figures.tex
@@ -59,7 +60,7 @@ système:
     Lucida Math OT
     Lucida Grande Mono DK
     Myriad Pro
-    
+
 La Bibliothèque de l'Université Laval détient une licence
 d'utilisation les polices commerciales Lucida; voir aussi
 http://tug.org/lucida. La police Myriad Pro est livrée gratuitement
