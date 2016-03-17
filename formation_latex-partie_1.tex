@@ -96,6 +96,14 @@
       \makebox[2.5mm]{\raisebox{-1.5pt}{\scriptsize\faExternalLink}}\;%
       {\sffamily Accéder au dépôt}}}
 
+  %% «Bouton» pour accéder à CTAN
+  \newcommand{\ctanbutton}{%
+    \setlength{\fboxrule}{1pt}%
+    \framebox[60mm][l]{%
+      \rule[-5pt]{0mm}{16pt}%
+      \makebox[7mm]{\raisebox{-2.5pt}{\Large\faExternalLink}}\;%
+      {\sffamily Accéder aux fichiers dans CTAN}}}
+
   \renewenvironment{quote}{%
     \begin{beamercolorbox}[wd=\linewidth,sep=6pt]{block body example}}
     {\end{beamercolorbox}}
@@ -164,16 +172,19 @@
 \input{licence-partie_1}
 
 \begin{frame}
-  \frametitle{Sommaire}
-  \small
-  \begin{columns}[t]
-    \begin{column}{.5\textwidth}
-      \tableofcontents[sections={1-5},hideallsubsections]
-    \end{column}
-    \begin{column}{.5\textwidth}
-      \tableofcontents[sections={6-9},hideallsubsections]
-    \end{column}
-  \end{columns}
+  \frametitle{Fichiers d'accompagnement}
+
+  Ce document devrait être accompagné de fichiers nécessaires pour
+  compléter les exercices.
+  \bigskip
+
+  Si vous n'avez pas obtenu ces fichiers avec le document, vous pouvez
+  les récupérer dans le site \emph{Comprehensive TeX Archive Network}
+  (CTAN).
+  \medskip
+  \begin{center}
+    \href{https://ctan.org/tex-archive/info/formation_latex/}{\ctanbutton}
+  \end{center}
 \end{frame}
 
 \begin{frame}
@@ -196,6 +207,19 @@
         démonstration sur Windows avec Texmaker}
     \end{itemize}
   \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Sommaire}
+  \small
+  \begin{columns}[t]
+    \begin{column}{.5\textwidth}
+      \tableofcontents[sections={1-5},hideallsubsections]
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \tableofcontents[sections={6-9},hideallsubsections]
+    \end{column}
+  \end{columns}
 \end{frame}
 
 
