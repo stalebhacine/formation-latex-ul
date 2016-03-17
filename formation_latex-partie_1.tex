@@ -149,13 +149,15 @@
   \bfseries\fontsize{16}{16}\selectfont Rédaction de thèses \\
                                         et de mémoires avec {\LaTeX} \\[5mm]
   \bfseries\fontsize{12}{12}\selectfont 1 \textbar\ Premiers pas \\
-  \vspace*{\fill}
+  \vspace*{15mm}
   \bfseries\fontsize{10}{12}\selectfont Vincent Goulet \\
-  \mdseries\fontsize{8}{10}\selectfont Professeur titulaire \textbar\
-                                        École d'actuariat \textbar\
-                                        Université Laval \\
-  \vspace*{\fill}
+  \mdseries\fontsize{8}{10}\selectfont  Professeur titulaire \textbar\
+                                        École d'actuariat \\
+  \vspace*{25mm}
   \mdseries\fontsize{8}{10}\selectfont Édition \year
+  \begin{textblock*}{50mm}(60mm,45mm)
+    \includegraphics[width=50mm]{ctanlion}
+  \end{textblock*}
 \end{frame}
 
 %% Le texte du contrat de licence est conservé dans un fichier séparé
@@ -297,11 +299,12 @@
   \begin{picture}(0,0)
     \thicklines\color{blue}
     \put(-8,-5){\dashbox{2}(200,100){}}
-    \put(40,-8){
-      \begin{minipage}[t]{105\unitlength}
+    \put(15,-15){
+      \begin{minipage}[t]{150\unitlength}
         \footnotesize\centering
-        \mbox{} \\ facilité par l'utilisation
-        d'un logiciel intégré de rédaction
+        facilité par l'utilisation d'un \\
+        logiciel intégré de rédaction \\[4pt]
+        (Texmaker, TeXShop, Emacs, RStudio, \dots)
       \end{minipage}}
   \end{picture}
 \end{frame}
@@ -984,7 +987,7 @@ adipiscing elit. Duis in auctor dui. Vestibulum
 Tel que vu à la section \ref{sec:definitions},
 on a...
 \end{lstlisting}
-  \fbox{\includegraphics[width=\linewidth]{renvoi}}
+  \fbox{\includegraphics[width=0.9\linewidth]{renvoi}}
 \end{frame}
 
 \begin{frame}[plain,fragile=singleslide]
@@ -1014,7 +1017,7 @@ on a...
 Tel que vu à la section \ref{sec:definitions},
 on a...
 \end{lstlisting}
-  \fbox{\includegraphics[width=0.7\linewidth]{renvoi_avec_ref}}
+  \fbox{\includegraphics[width=0.6\linewidth]{renvoi_avec_ref}}
   \vfill
   \item<2-> Commande \verb=\autoref= permet de
     \begin{enumerate}
@@ -1026,7 +1029,7 @@ on a...
 Tel que vu à la \autoref{sec:definitions},
 on a...
 \end{lstlisting}
-  \fbox{\includegraphics[width=0.7\linewidth]{renvoi_avec_autoref}}
+  \fbox{\includegraphics[width=0.6\linewidth]{renvoi_avec_autoref}}
   \end{itemize}
 \end{frame}
 
