@@ -381,16 +381,9 @@
   %% Style de la bibliographie
   \bibliographystyle{francais}
 
-  %% Compteur nécessaire pour conserver le numéro de chapitre pendant
-  %% un exemple sur les renvois automatiques
-  \newcounter{temp}
-
-  %% Aide pour la césure
-  \hyphenation{}
-
-  %%% ============
-  %%%  Page titre
-  %%% ============
+  %%% ==================================================
+  %%%  Page titre et autres informations de publication
+  %%% ==================================================
   \title{\protect\raggedright%
     \bfseries\fontsize{32}{32}\selectfont Rédaction de thèses \\
                                           et de mémoires avec {\LaTeX} \\[10mm]
@@ -403,6 +396,7 @@
     \mdseries\fontsize{14}{18}\selectfont Édition \fullcaps\year}
   \renewcommand{\year}{2016}
   \newcommand{\ISBN}{978-2-9811416-5-1}
+  \newcommand{\ctanurl}{https://ctan.org/pkg/formation-latex-ul/}
 
 %  \includeonly{frontispice}
 

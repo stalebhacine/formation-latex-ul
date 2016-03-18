@@ -1,7 +1,7 @@
-BASENAME = formation_latex_UL
+PACKAGENAME = formation-latex-ul
 
-MASTER1 = ${BASENAME}-partie_1.pdf
-MASTER2 = ${BASENAME}-partie_2.pdf
+MASTER1 = formation_latex_UL-partie_1.pdf
+MASTER2 = formation_latex_UL-partie_2.pdf
 
 TEXFILES1 = licence-partie_1.tex \
 	colophon-partie_1.tex
@@ -72,11 +72,11 @@ $(MASTER2): $(MASTER2:.pdf=.tex) $(TEXFILES2)
 	$(TEXI2DVI) $(MASTER2:.pdf=.tex)
 
 zip :
-	if [ -d ${BASENAME} ]; then ${RM} ${BASENAME}; fi
-	mkdir ${BASENAME}
-	cp README ${FILES1} ${SOLUTIONS1} ${FILES2} ${SOLUTIONS2} ${BASENAME}
-	zip -r ${BASENAME}.zip ${BASENAME}
-	${RM} ${BASENAME}
+	if [ -d ${PACKAGENAME} ]; then ${RM} ${PACKAGENAME}; fi
+	mkdir ${PACKAGENAME}
+	cp README ${FILES1} ${SOLUTIONS1} ${FILES2} ${SOLUTIONS2} ${PACKAGENAME}
+	zip -r ${PACKAGENAME}.zip ${PACKAGENAME}
+	${RM} ${PACKAGENAME}
 
 clean:
 	$(RM) *.aux *.log *.blg *.bbl *.out *.ilg *.idx *.ind
