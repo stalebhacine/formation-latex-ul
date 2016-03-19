@@ -50,7 +50,7 @@
   \setbeamercolor{frametitle}{fg=white,bg=black}
   \setbeamerfont{frametitle}{family=\titles}
   \setbeamercolor{structure}{fg=emphasis,bg=white}
-  \setbeamercolor{block title}{fg=white,bg=black}
+  \setbeamercolor{block title}{fg=white,bg=LightBlue3}
   \setbeamercolor{alerted text}{fg=black}
   \setbeamerfont{alerted text}{series=\bfseries}
   \setbeamercolor{block title alerted}{fg=white,bg=alert}
@@ -230,16 +230,26 @@
 
 \begin{frame}
   \frametitle{Ce que c'est}
-  \begin{itemize}
-  \item Un système de mise en page (\emph{typesetting}) ou de préparation de
-    documents
-  \item {\LaTeX} est un ensemble de macro commandes pour faciliter
-    l'utilisation de {\TeX}
-  \item Langage de balisage (\emph{Markup Language}) pour indiquer la
-    mise en forme du texte
-  \item Accent mis sur la production de documents de grande qualité à
-    la typographie soignée (surtout pour les mathématiques)
-  \end{itemize}
+  \begin{columns}
+    \begin{column}{.5\textwidth}
+      \begin{itemize}
+      \item {\TeX} est un système de mise en page (\emph{typesetting})
+        ou de préparation de documents
+      \item {\LaTeX} est un ensemble de macro commandes pour faciliter
+        l'utilisation de {\TeX}
+      \item Langage de balisage (\emph{Markup Language}) pour indiquer
+        la mise en forme du texte
+      \item Accent mis sur la production de documents de grande
+        qualité à la typographie soignée (surtout pour les
+        mathématiques)
+      \end{itemize}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \centering
+      \includegraphics[width=\linewidth]{Knuth} \\
+      \footnotesize Donald Knuth, créateur de \TeX
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}
@@ -247,18 +257,18 @@
   \begin{itemize}
   \item Ligatures
     \begin{quote}
-      \begin{minipage}{0.45\linewidth}
+      \begin{minipage}{0.42\linewidth}
         \vspace{-12pt}
         \begin{block}{\small Word}
-          \rmfamily f\/f \quad f\/i \quad f\/l \quad f\/f\/i \quad
+          \LARGE\rmfamily f\/f \quad f\/i \quad f\/l \\ f\/f\/i \quad
           f\/f\/l
         \end{block}
       \end{minipage}
       \hfill
-      \begin{minipage}{0.4\linewidth}
+      \begin{minipage}{0.42\linewidth}
         \vspace{-12pt}
         \begin{block}{\small \LaTeX}
-          \rmfamily ff \quad fi \quad fl \quad ffi \quad ffl
+          \LARGE\rmfamily ff \quad fi \quad fl \\ ffi \quad ffl
         \end{block}
       \end{minipage}
     \end{quote}
@@ -267,14 +277,14 @@
       \begin{minipage}{0.45\linewidth}
         \vspace{-12pt}
         \begin{block}{\small texte}
-          \rmfamily xy \quad \emph{xy}
+          \LARGE\rmfamily xy \quad \emph{xy}
         \end{block}
       \end{minipage}
       \hfill
       \begin{minipage}{0.4\linewidth}
         \vspace{-12pt}
         \begin{block}{\small mathématiques}
-          $xy$
+          \LARGE $xy$
         \end{block}
       \end{minipage}
     \end{quote}
@@ -287,10 +297,25 @@
   \frametitle{Ce que ce n'est pas}
   \begin{itemize}
   \item Un traitement de texte
+    \begin{itemize}
+    \item priorité accordée à la qualité de la mise en page
+    \end{itemize}
   \item WYSIWYG
+    \begin{itemize}
+    \item plutôt What You See Is What You \emph{Mean}
+    \end{itemize}
   \item Incompatible
+    \begin{itemize}
+    \item format identique sur tous les systèmes d'exploitation
+    \end{itemize}
   \item Instable
+    \begin{itemize}
+    \item noyau arrivé à maturité
+    \end{itemize}
   \item Imprévisible
+    \begin{itemize}
+    \item {\LaTeX} fait ce qu'on lui demande, sans plus et sans moins
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -358,7 +383,7 @@
   \item Table des matières
   \item Numérotation des pages
   \item Numérotation des équations et renvois
-  \item Bibliographie et renvois
+  \item Citations et création de la bibliographie
   \item Figures et tableaux: disposition sur la page, numérotation, renvois
   \item Coupure de mots
   \item Document recto-verso
@@ -390,15 +415,24 @@
 \begin{frame}
   \frametitle{Distributions}
 
-  Le système {\LaTeX} est rendu disponible sous forme de \emph{distributions}
+  Le système {\LaTeX} est rendu disponible sous forme de \emph{distributions}.
 
-  \begin{itemize}
-  \item Windows: {\TeX}~Live et MiK{\TeX}
-  \item OS~X: Mac{\TeX} (dérivée de {\TeX}~Live)
-  \item Linux: {\TeX}~Live
-  \end{itemize}
-  La Bibliothèque et la Faculté des études supérieures et
-  post-doctorales recommandent {\TeX}~Live
+  \begin{columns}
+    \begin{column}{.58\textwidth}
+      \begin{itemize}
+      \item La Bibliothèque et la FESP recommandent %
+        \link{https://www.tug.org/texlive}{{\TeX}~Live}
+      \item OS~X: %
+        \link{https://www.tug.org/mactex}{Mac{\TeX}} \\ %
+        (dérivée de {\TeX}~Live)
+      \end{itemize}
+    \end{column}
+    \begin{column}{.42\textwidth}
+    \end{column}
+  \end{columns}
+  \begin{textblock*}{70mm}(60mm,40mm)
+    \includegraphics[width=\linewidth]{TeXFZoneColor}
+  \end{textblock*}
 \end{frame}
 
 \begin{frame}[fragile=singleslide]
@@ -984,99 +1018,6 @@ Copyright 2015 D.E. Knuth.
 %%% <<<
 
 
-\section{Renvois automatiques}
-
-\subsection{Étiquettes et renvois}
-
-\begin{frame}[fragile=singleslide]
-  \frametitle{Parce que l'ordinateur le fera mieux que vous}
-  \begin{itemize}
-  \item Ne \alert{jamais} renvoyer manuellement à un numéro de
-    section, d'équation, de tableau, etc.
-  \item «Nommer» un élément avec \verb=\label=
-  \item Faire référence par son nom avec \verb=\ref=
-  \item Requiert 2 à 3 compilations
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[plain,fragile=singleslide]
-  \begin{lstlisting}[emph={\label,\ref}]
-\section{Définitions}
-\label{sec:definitions}
-
-Lorem ipsum dolor sit amet, consectetur
-adipiscing elit. Duis in auctor dui. Vestibulum
-
-\section{Historique}
-
-Tel que vu à la section \ref{sec:definitions},
-on a...
-\end{lstlisting}
-  \fbox{\includegraphics[width=0.9\linewidth]{renvoi}}
-\end{frame}
-
-\begin{frame}[plain,fragile=singleslide]
-  \begin{conseil}
-    Adoptez une manière systématique et mnémotechnique de nommer les
-    éléments dans un long document afin de vous y retrouver.
-
-    \bigskip %
-    Exemple:
-\begin{lstlisting}
-\label{chap:`\textit{chapitre}'}         % chapitre
-\label{sec:`\textit{chapitre}':`\textit{section}'}  % section
-\label{tab:`\textit{chapitre}':`\textit{tableau}'}  % tableau
-\label{eq:`\textit{chapitre}':`\textit{equation}'}  % équation
-\end{lstlisting}
-  \end{conseil}
-\end{frame}
-
-\subsection{Hyperliens}
-
-\begin{frame}[fragile]
-  \frametitle{Renvois automatiques++}
-  \begin{itemize}
-  \item Paquetage \pkg{hyperref} insère des hyperliens vers les
-    renvois dans les fichiers PDF
-\begin{lstlisting}
-Tel que vu à la section \ref{sec:definitions},
-on a...
-\end{lstlisting}
-  \fbox{\includegraphics[width=0.6\linewidth]{renvoi_avec_ref}}
-  \vfill
-  \item<2-> Commande \verb=\autoref= permet de
-    \begin{enumerate}
-    \item nommer automatiquement le type de renvoi (section, équation,
-      tableau, etc.)
-    \item transformer en hyperlien le texte \textbf{et} le numéro
-    \end{enumerate}
-\begin{lstlisting}
-Tel que vu à la \autoref{sec:definitions},
-on a...
-\end{lstlisting}
-  \fbox{\includegraphics[width=0.6\linewidth]{renvoi_avec_autoref}}
-  \end{itemize}
-\end{frame}
-
-%%% >>>
-\stepcounter{exerciceref}
-\subsection{[~Exercice \theexerciceref~]}
-
-\begin{frame}[plain]
-  \begin{exercice}
-    Utiliser le fichier \fichier{exercice\_renvois.tex}.
-    \begin{enumerate}
-    \item Insérer dans le texte un renvoi au numéro d'une section.
-    \item Activer le paquetage \pkg{hyperref} avec l'option
-      \texttt{colorlinks} et comparer l'effet d'utiliser
-      \texttt{{\textbackslash}ref} ou \texttt{{\textbackslash}autoref}
-      pour le renvoi.
-    \end{enumerate}
-  \end{exercice}
-\end{frame}
-%%% <<<
-
-
 \section{Apparence du texte}
 
 \subsection{Police de caractère}
@@ -1146,8 +1087,8 @@ on a...
   \end{block}
   \begin{picture}(0,0)
     \thicklines\color{blue}
-    \put(103,30){\dashbox{2}(62,190){}}
-    \put(92,20){
+    \put(98,30){\dashbox{2}(62,190){}}
+    \put(88,20){
       \begin{minipage}[t]{75\unitlength}
         \footnotesize\centering
         s'applique à tout le texte qui suit
@@ -1155,8 +1096,8 @@ on a...
   \end{picture}
   \begin{picture}(0,0)
     \thicklines\color{blue}
-    \put(171,30){\dashbox{2}(82,190){}}
-    \put(167,20){
+    \put(162,30){\dashbox{2}(82,190){}}
+    \put(158,20){
       \begin{minipage}[t]{85\unitlength}
         \footnotesize\centering
         s'applique au texte en argument
@@ -1399,6 +1340,98 @@ dans une police à largeur fixe
 \end{frame}
 %%% <<<
 
+
+\section{Renvois automatiques}
+
+\subsection{Étiquettes et renvois}
+
+\begin{frame}[fragile=singleslide]
+  \frametitle{Parce que l'ordinateur le fera mieux que vous}
+  \begin{itemize}
+  \item Ne \alert{jamais} renvoyer manuellement à un numéro de
+    section, d'équation, de tableau, etc.
+  \item «Nommer» un élément avec \verb=\label=
+  \item Faire référence par son nom avec \verb=\ref=
+  \item Requiert 2 à 3 compilations
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain,fragile=singleslide]
+  \begin{lstlisting}[emph={\label,\ref}]
+\section{Définitions}
+\label{sec:definitions}
+
+Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Duis in auctor dui. Vestibulum
+
+\section{Historique}
+
+Tel que vu à la section \ref{sec:definitions},
+on a...
+\end{lstlisting}
+  \fbox{\includegraphics[width=0.9\linewidth]{renvoi}}
+\end{frame}
+
+\begin{frame}[plain,fragile=singleslide]
+  \begin{conseil}
+    Adoptez une manière systématique et mnémotechnique de nommer les
+    éléments dans un long document afin de vous y retrouver.
+
+    \bigskip %
+    Exemple:
+\begin{lstlisting}
+\label{chap:`\textit{chapitre}'}         % chapitre
+\label{sec:`\textit{chapitre}':`\textit{section}'}  % section
+\label{tab:`\textit{chapitre}':`\textit{tableau}'}  % tableau
+\label{eq:`\textit{chapitre}':`\textit{equation}'}  % équation
+\end{lstlisting}
+  \end{conseil}
+\end{frame}
+
+\subsection{Hyperliens}
+
+\begin{frame}[fragile]
+  \frametitle{Renvois automatiques++}
+  \begin{itemize}
+  \item Paquetage \pkg{hyperref} insère des hyperliens vers les
+    renvois dans les fichiers PDF
+\begin{lstlisting}
+Tel que vu à la section \ref{sec:definitions},
+on a...
+\end{lstlisting}
+  \fbox{\includegraphics[width=0.6\linewidth]{renvoi_avec_ref}}
+  \vfill
+  \item<2-> Commande \verb=\autoref= permet de
+    \begin{enumerate}
+    \item nommer automatiquement le type de renvoi (section, équation,
+      tableau, etc.)
+    \item transformer en hyperlien le texte \textbf{et} le numéro
+    \end{enumerate}
+\begin{lstlisting}
+Tel que vu à la \autoref{sec:definitions},
+on a...
+\end{lstlisting}
+  \fbox{\includegraphics[width=0.6\linewidth]{renvoi_avec_autoref}}
+  \end{itemize}
+\end{frame}
+
+%%% >>>
+\stepcounter{exerciceref}
+\subsection{[~Exercice \theexerciceref~]}
+
+\begin{frame}[plain]
+  \begin{exercice}
+    Utiliser le fichier \fichier{exercice\_renvois.tex}.
+    \begin{enumerate}
+    \item Insérer dans le texte un renvoi au numéro d'une section.
+    \item Activer le paquetage \pkg{hyperref} avec l'option
+      \texttt{colorlinks} et comparer l'effet d'utiliser
+      \texttt{{\textbackslash}ref} ou \texttt{{\textbackslash}autoref}
+      pour le renvoi.
+    \end{enumerate}
+  \end{exercice}
+\end{frame}
+%%% <<<
 
 
 \section{B.a.-ba des mathématiques}
