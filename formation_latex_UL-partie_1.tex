@@ -50,7 +50,7 @@
   \setbeamercolor{frametitle}{fg=white,bg=black}
   \setbeamerfont{frametitle}{family=\titles}
   \setbeamercolor{structure}{fg=emphasis,bg=white}
-  \setbeamercolor{block title}{fg=white,bg=LightBlue3}
+  \setbeamercolor{block title}{fg=white,bg=black}
   \setbeamercolor{alerted text}{fg=black}
   \setbeamerfont{alerted text}{series=\bfseries}
   \setbeamercolor{block title alerted}{fg=white,bg=alert}
@@ -83,7 +83,7 @@
   }
 
   %%% Nouvelles commandes et nouveaux environnements
-  \newcommand{\fichier}[1]{\texttt{#1}}
+  \newcommand{\fichier}[1]{\fbox{\texttt{#1}}}
   \newcommand{\class}[1]{\textbf{#1}}
   \newcommand{\pkg}[1]{\textbf{#1}}
 
@@ -447,7 +447,7 @@ TeX `\textbf{3.14159265}' (TeX Live 2015)
 kpathsea version 6.2.1
 Copyright 2015 D.E. Knuth.
 [...]
-\end{lstlisting}
+\end{lstlisting} %$
   \item Pour en savoir plus:
     \begin{itemize}
     \item \link{http://www.tug.org/whatis.html}{Histoire de \TeX} (anglais)
@@ -484,23 +484,62 @@ Copyright 2015 D.E. Knuth.
 
 \subsection{Structure d'un document}
 
+\begin{frame}[fragile]
+  \frametitle{Structure d'un document {\LaTeX}}
+
+  Un fichier source {\LaTeX} est toujours composé de deux parties:
+
+  \hfill
+  \begin{minipage}{0.75\linewidth}
+\begin{lstlisting}[emph={documentclass,begin,end,document}]
+\documentclass[11pt,article,french]{memoir}
+  \usepackage{babel}
+  \usepackage[autolanguage]{numprint}
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+
+\begin{document}
+
+Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Donec quam nulla, bibendum
+vitae ipsum vel, fermentum pellentesque orci.
+
+\end{document}
+\end{lstlisting}
+  \end{minipage}
+
+  \begin{textblock*}{\linewidth}(0mm,0mm)
+    \begin{picture}(0,0)
+      \thicklines\color{blue}
+      \onslide<2>{\put(114,-155){\dashbox{2}(230,60){}}}
+      \onslide<3>{\put(114,-243){\dashbox{2}(230,82){}}}
+      \color{black}
+      \onslide<2>{\put(40,-125){\alert{préambule}}}
+      \onslide<3>{\put(40,-202){\parbox{25mm}{\alert{corps} du\\ document}}}
+    \end{picture}
+  \end{textblock*}
+\end{frame}
+
 \begin{frame}[fragile=singleslide]
   \frametitle{Structure d'un document {\LaTeX}}
-  Un fichier source {\LaTeX} est toujours composé de deux
-  parties:
+  \framesubtitle{Détails pour référence}
+
+  Un fichier source {\LaTeX} est toujours composé de deux parties:
+
   \begin{enumerate}
   \item le \alert{préambule}
     \begin{itemize}
-    \item suite de commandes spécifiant la mise en forme \emph{globale} du
-      document (format du papier, marges, entête et pied de page, etc.)
+    \item suite de commandes spécifiant la mise en forme
+      \emph{globale} du document (format du papier, marges, entête et
+      pied de page, etc.)
     \item au minimum \verb=\documentclass=
     \end{itemize}
   \item le \alert{corps} du document
     \begin{itemize}
     \item débute par \verb=\begin{document}=
-    \item texte du document
-    \item commandes à effet \emph{local}
-    \item termine par \verb=\end{document}=
+      \item texte du document
+      \item commandes à effet \emph{local}
+      \item termine par \verb=\end{document}=
     \end{itemize}
   \end{enumerate}
 \end{frame}
@@ -570,14 +609,29 @@ Copyright 2015 D.E. Knuth.
   \end{itemize}
 \end{frame}
 
+\subsection{Commentaires}
+
+\begin{frame}[fragile=singleslide]
+  \frametitle{Commentaires}
+  \begin{itemize}
+  \item Le caractère \verb=%= sert à identifier les commentaires dans
+    le code source
+  \item Tout ce qui suit \verb=%= sur la ligne est ignoré
+\begin{lstlisting}
+%% Police de caractères
+\usepackage{mathpazo}        % texte et math. en Palatino
+\end{lstlisting}
+  \end{itemize}
+\end{frame}
+
 %%% >>>
 \stepcounter{exerciceref}
 \subsection{[~Exercice \theexerciceref~]}
 
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
-    Modifier le fichier \fichier{exercice\_commandes.tex} afin
-    de produire le texte ci-dessous.
+    Modifier le fichier \fichier{exercice\_commandes.tex} afin de
+    produire le texte ci-dessous.
   \end{exercice}
   \begin{center}
     \colorbox{white}{\includegraphics[width=0.95\linewidth]{exercice_commandes-output}}
@@ -765,28 +819,44 @@ Copyright 2015 D.E. Knuth.
   \end{itemize}
 \end{frame}
 
-\begin{frame}
-  \frametitle{{\LaTeX} en français}
-    \small
-  \begin{tabularx}{1.0\linewidth}{Xl}
-    \toprule
-    \textbf{Enjeu} & \textbf{Solution} \\
-    \midrule
-    \addlinespace[6pt]
-    traduction des mots-clés prédéfinis & \pkg{babel} \\
-    \addlinespace[6pt]
-    coupure de mots & \pkg{babel} \\
-    \addlinespace[6pt]
-    typographie française & \pkg{babel} \\
-    \addlinespace[6pt]
-    lettres accentuées dans source & \pkg{inputenc} (\LaTeX) \\
-                                   & source en UTF-8 (\XeLaTeX) \\
-    \addlinespace[6pt]
-    virgule comme séparateur décimal & \pkg{icomma}, \pkg{ncccomma} \\
-    \addlinespace[6pt]
-    espace comme séparateur des milliers & \pkg{numprint}
-  \end{tabularx}
+\begin{frame}[fragile]
+  \frametitle{{\LaTeX} en français --- préambule pour pdf{\LaTeX}}
+
+  Il faut charger un certain nombre de paquetages pour franciser \LaTeX.
+\begin{lstlisting}
+\documentclass[`\alt<2>{\textbf{french}}{french}']{memoir}
+  \usepackage{`\alt<2>{\textbf{babel}}{babel}'}
+  \usepackage[autolanguage]{`\alt<5>{\textbf{numprint}}{numprint}'}
+  \usepackage[utf8]{`\alt<3>{\textbf{inputenc}}{inputenc}'}
+  \usepackage[T1]{`\alt<3>{\textbf{fontenc}}{fontenc}'}
+  \usepackage{`\alt<4>{\textbf{icomma}}{icomma}'}
+\end{lstlisting}
+  \begin{itemize}
+  \item<2> \pkg{babel}: traduction des mots-clés prédéfinis,
+    typographie française, coupure de mots, document multilingue
+  \item<3> \pkg{inputenc} et \pkg{fontenc}: lettres accentuées dans le
+    code source
+  \item<4> \pkg{icomma}: virgule comme séparateur décimal
+  \item<5> \pkg{numprint}: espace comme séparateur des milliers
+  \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{{\LaTeX} en français --- préambule pour {\XeLaTeX}}
+
+  {\XeLaTeX} supporte nativement les caractères UTF-8 dans le code source.
+\begin{lstlisting}
+\documentclass[french]{memoir}
+  \usepackage{babel}
+  \usepackage[autolanguage]{numprint}
+  \usepackage{fontspec}
+  \usepackage{icomma}
+\end{lstlisting}
+
+  Pour plus de détails, consulter la rubrique «Rédaction en français» du
+  \link{http://www.theses.ulaval.ca/wiki/}{Wiki Thèses UL}.
+\end{frame}
+
 
 %%% >>>
 \stepcounter{exerciceref}
@@ -801,7 +871,7 @@ Copyright 2015 D.E. Knuth.
       puis 12~points. Changer la classe du document pour
       \class{memoir}. Observer l'effet sur les marges et sur la
       coupure automatique des mots.
-    \item Charger le paquetage \pkg{icomma} et observer l'effet sur
+    \item Activer le paquetage \pkg{icomma} et observer l'effet sur
       la formule mathématique.
     \item Charger le paquetage \pkg{numprint} avec l'option
       \verb=autolanguage= (\emph{après} le paquetage \pkg{babel}).
@@ -1176,7 +1246,7 @@ par moments}»
 
 \subsection{Listes}
 
-\begin{frame}[fragile=singleslide]
+\begin{frame}[fragile]
   \frametitle{Listes}
   \begin{itemize}
   \item Deux principales sortes de listes:
@@ -1187,10 +1257,8 @@ par moments}»
   \item Possible de les imbriquer les unes dans les autres
   \item Marqueurs alors adaptés automatiquement
   \end{itemize}
-\end{frame}
+  \pause
 
-\begin{frame}[fragile]
-  \frametitle{Code de la diapositive précédente}
 \begin{lstlisting}
 \begin{itemize}
 \item Deux principales sortes de listes:
@@ -1834,7 +1902,7 @@ align*
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
     Utiliser le fichier \fichier{exercice\_ulthese.tex} --- qui est
-    basé sur le gabarit \fichier{gabarit-doctorat.tex} livré avec
+    basé sur le gabarit \texttt{gabarit-doctorat.tex} livré avec
     \class{ulthese}.
     \begin{enumerate}
     \item Étudier le code source du fichier.
