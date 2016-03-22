@@ -40,6 +40,25 @@ composer des documents relativement complexes comportant des tableaux,
 des figures, des équations mathématiques élaborées, une bibliographie,
 etc.
 
-Le paqeutage contient également les fichiers nécessaires pour
+Le paquetage contient également les fichiers nécessaires pour
 compléter certains exercices, ainsi qu'un gabarit pour composer les
 solutions des autres exercices.
+
+
+HISTORIQUE DES VERSIONS
+
+o 2015-03-XX
+
+- Partie I: révision des diapositives pour baser davantage la
+  présentation sur des exemples de code source.
+- Partie I: ajout d'images dans les diapos.
+- Partie I: correction du fichier exemple_demo.tex qui ne compilait
+  pas correctement.
+- Partie II: ajout d'une introduction au chapitre 7 (tous les autres
+  en avaient une) ainsi qu'une nouvelle section 7.1 sur le contrôle
+  des sauts de ligne, sauts de page et coupures de mots.
+- Partie II: corrections mineures à l'index.
+
+o 2015-03-18
+
+- Première publication sur CTAN.
