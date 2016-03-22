@@ -50,7 +50,7 @@
   \setbeamercolor{frametitle}{fg=white,bg=black}
   \setbeamerfont{frametitle}{family=\titles}
   \setbeamercolor{structure}{fg=emphasis,bg=white}
-  \setbeamercolor{block title}{fg=white,bg=black}
+  \setbeamercolor{block title}{fg=black,bg=Snow2}
   \setbeamercolor{alerted text}{fg=black}
   \setbeamerfont{alerted text}{series=\bfseries}
   \setbeamercolor{block title alerted}{fg=white,bg=alert}
@@ -105,6 +105,27 @@
       \makebox[7mm]{\raisebox{-2.5pt}{\Large\faExternalLink}}\;%
       {\sffamily Accéder aux fichiers dans CTAN}}}
 
+  \newenvironment{demo}{%
+    \begin{beamercolorbox}[wd=\linewidth,sep=6pt]{block body example}}
+    {\end{beamercolorbox}}
+  \newenvironment{texample}[1][0.45\linewidth]{%
+    \noindent\begin{minipage}{#1}%
+      \def\producing{\end{minipage}\hfill\begin{minipage}{\dimexpr0.9\linewidth-#1}%
+        \hbox\bgroup\kern-.2pt%
+        \vbox\bgroup\parindent0pt\relax
+        % The 3pt is to cancel the -\lineskip from \displ@y
+        \abovedisplayskip3pt \abovedisplayshortskip\abovedisplayskip
+        \belowdisplayskip0pt \belowdisplayshortskip\belowdisplayskip
+        \noindent}
+    }{%
+      \par
+      % Ensure that a lonely \[\] structure doesn't take up width less than
+      % \hsize.
+      \hrule height0pt width\hsize
+      \egroup\kern-.2pt\egroup
+    \end{minipage}%
+    \par
+  }
   \renewenvironment{quote}{%
     \begin{beamercolorbox}[wd=\linewidth,sep=6pt]{block body example}}
     {\end{beamercolorbox}}
@@ -256,7 +277,7 @@
   \frametitle{Exemples de typographie soignée}
   \begin{itemize}
   \item Ligatures
-    \begin{quote}
+    \begin{demo}
       \begin{minipage}{0.42\linewidth}
         \vspace{-12pt}
         \begin{block}{\small Word}
@@ -271,9 +292,9 @@
           \LARGE\rmfamily ff \quad fi \quad fl \\ ffi \quad ffl
         \end{block}
       \end{minipage}
-    \end{quote}
+    \end{demo}
   \item Espacement des lettres
-    \begin{quote}
+    \begin{demo}
       \begin{minipage}{0.45\linewidth}
         \vspace{-12pt}
         \begin{block}{\small texte}
@@ -287,7 +308,7 @@
           \LARGE $xy$
         \end{block}
       \end{minipage}
-    \end{quote}
+    \end{demo}
   \end{itemize}
 \end{frame}
 
@@ -649,122 +670,143 @@ vitae ipsum vel, fermentum pellentesque orci.
       \verb=# $ & ~ _ ^ % { }=
     \end{quote}
   \item Pour les utiliser, précéder par \verb=\=:
-   \begin{quote}
-     \begin{minipage}{0.07\linewidth}
+    \begin{demo}
+      \begin{minipage}{0.15\linewidth}
+        \begin{texample}
 \begin{lstlisting}
 \#
 \end{lstlisting}
+          \producing
+          \#
+        \end{texample}
       \end{minipage}
-      \quad
-      \begin{texoutput}{0.07\linewidth}
-        \#
-      \end{texoutput}
       \hfill
-     \begin{minipage}{0.07\linewidth}
+      \begin{minipage}{0.15\linewidth}
+        \begin{texample}
 \begin{lstlisting}
 \$
 \end{lstlisting}
-     \end{minipage}
-     \quad
-     \begin{texoutput}{0.07\linewidth}
-       \$
-     \end{texoutput}
-     \hfill
-     \begin{minipage}{0.07\linewidth}
+          \producing
+          \$
+        \end{texample}
+      \end{minipage}
+      \hfill
+      \begin{minipage}{0.15\linewidth}
+        \begin{texample}
 \begin{lstlisting}
 \%
 \end{lstlisting}
-     \end{minipage}
-     \quad
-     \begin{texoutput}{0.07\linewidth}
-       \%
-     \end{texoutput}
-     \\[-0.8\baselineskip]
-     \begin{minipage}{0.07\linewidth}
+          \producing
+          \%
+        \end{texample}
+      \end{minipage}
+      \\
+      \begin{minipage}{0.15\linewidth}
+        \begin{texample}
 \begin{lstlisting}
 \_
 \end{lstlisting}
-     \end{minipage}
-     \quad
-     \begin{texoutput}{0.07\linewidth}
-       \_
-     \end{texoutput}
-     \hfill
-     \begin{minipage}{0.07\linewidth}
+          \producing
+          \_
+        \end{texample}
+      \end{minipage}
+      \hfill
+      \begin{minipage}{0.15\linewidth}
+        \begin{texample}
 \begin{lstlisting}
 \{
 \end{lstlisting}
-     \end{minipage}
-     \quad
-     \begin{texoutput}{0.07\linewidth}
-       \}
-     \end{texoutput}
-     \hfill
-     \begin{minipage}{0.07\linewidth}
+          \producing
+          \}
+        \end{texample}
+      \end{minipage}
+      \hfill
+      \begin{minipage}{0.15\linewidth}
+        \begin{texample}
 \begin{lstlisting}
 \}
 \end{lstlisting}
-     \end{minipage}
-     \quad
-     \begin{texoutput}{0.07\linewidth}
-       \}
-     \end{texoutput}
-    \end{quote}
+          \producing
+          \}
+        \end{texample}
+      \end{minipage}
+    \end{demo}
+  \item On écrira donc
+    \begin{demo}
+      \begin{texample}
+\begin{lstlisting}
+L'augmentation de 2~\$
+représente une hausse
+de 5~\%.
+\end{lstlisting}
+        \producing
+        L'augmentation de 2~\$ représente une
+        hausse de 5~\%.
+      \end{texample}
+    \end{demo}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+  \frametitle{Caractères spéciaux (suite)}
+  \begin{itemize}
+  \item Espace insécable: \verb= ~ =
+    \begin{demo}
+\begin{lstlisting}
+M.~Tremblay me doit 200~\$.
+\end{lstlisting}
+    \end{demo}
   \item Guillemets:
-    \begin{quote}
-     \begin{minipage}{0.45\linewidth}
+    \begin{demo}
+      \begin{texample}
 \begin{lstlisting}[escapeinside={}]
 ``guillemets anglais''
 \end{lstlisting}
-     \end{minipage}
-     \quad
-     \begin{texoutput}{0.45\linewidth}
-       ``guillemets anglais''
-     \end{texoutput}
-     \\[-0.8\baselineskip]
-     \begin{minipage}{0.45\linewidth}
+        \producing
+        ``guillemets anglais''
+      \end{texample}
+      \begin{texample}
 \begin{lstlisting}
 «guillemets français»
 \end{lstlisting}
-     \end{minipage}
-     \quad
-     \begin{texoutput}{0.45\linewidth}
-       «guillemets français»
-     \end{texoutput}
-   \end{quote}
+        \producing
+        «guillemets français»
+      \end{texample}
+   \end{demo}
   \item Tiret, tiret demi-cadratin, tiret cadratin:
-    \begin{quote}
-     \begin{minipage}{0.07\linewidth}
+    \begin{demo}
+      \begin{minipage}{0.15\linewidth}
+        \begin{texample}
 \begin{lstlisting}
 -
 \end{lstlisting}
-     \end{minipage}
-     \quad
-     \begin{texoutput}{0.07\linewidth}
-       -
-     \end{texoutput}
-     \hfill
-     \begin{minipage}{0.07\linewidth}
+          \producing
+          -
+        \end{texample}
+      \end{minipage}
+      \hfill
+      \begin{minipage}{0.15\linewidth}
+        \begin{texample}
 \begin{lstlisting}
 --
 \end{lstlisting}
-     \end{minipage}
-     \quad
-     \begin{texoutput}{0.07\linewidth}
-       --
-     \end{texoutput}
-     \hfill
-     \begin{minipage}{0.07\linewidth}
+          \producing
+          --
+        \end{texample}
+      \end{minipage}
+      \hfill
+      \begin{minipage}{0.15\linewidth}
+        \begin{texample}
 \begin{lstlisting}
 ---
 \end{lstlisting}
-     \end{minipage}
-     \quad
-     \begin{texoutput}{0.07\linewidth}
-       ---
-     \end{texoutput}
-   \end{quote}
- \end{itemize}
+          \producing
+          ---
+        \end{texample}
+      \end{minipage}
+      \hfill
+    \end{demo}
+  \end{itemize}
 \end{frame}
 
 \subsection{Classes et paquetages}
@@ -793,7 +835,7 @@ vitae ipsum vel, fermentum pellentesque orci.
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}[fragile=singleslide]
   \frametitle{Paquetages}
   \begin{itemize}
   \item Permettent de modifier des commandes ou d'ajouter des
@@ -804,18 +846,6 @@ vitae ipsum vel, fermentum pellentesque orci.
 \usepackage[`\textit{options}']{`\textit{paquetage}'}
 \usepackage{`\textit{paquetage1,paquetage2,...}'}
     \end{lstlisting}
-  \item<2-> Les incontournables:
-    \begin{description}
-      \small
-      %% \hfill = PMLA (Poor Man's Left Align) !
-    \item[babel*\hfill] typographie multilingue
-    \item[inputenc*\hfill] composition en français (\LaTeX)
-    \item[fontspec*\hfill] contrôle des polices (\XeLaTeX)
-    \item[amsmath\hfill] extensions mathématiques
-    \item[booktabs*\hfill] amélioration des tableaux
-    \item[hyperref*\hfill] hyperliens dans PDF
-    \end{description}
-    {\footnotesize * = chargé par défaut dans \class{ulthese}}
   \end{itemize}
 \end{frame}
 
@@ -849,9 +879,13 @@ vitae ipsum vel, fermentum pellentesque orci.
 \documentclass[french]{memoir}
   \usepackage{babel}
   \usepackage[autolanguage]{numprint}
-  \usepackage{fontspec}
+  \usepackage{`\textbf{fontspec}'}
   \usepackage{icomma}
 \end{lstlisting}
+  \begin{itemize}
+  \item \pkg{fontspec}: gestion des polices et lettres accentuées dans
+    le fichier PDF
+  \end{itemize}
 
   Pour plus de détails, consulter la rubrique «Rédaction en français» du
   \link{http://www.theses.ulaval.ca/wiki/}{Wiki Thèses UL}.
@@ -864,9 +898,9 @@ vitae ipsum vel, fermentum pellentesque orci.
 
 \begin{frame}[plain,fragile=singleslide]
   \begin{exercice}
+    Utiliser le fichier \fichier{exercice\_classe+paquetages.tex}.
     \begin{enumerate}
-    \item Compiler tel que fourni le fichier
-      \fichier{exercice\_classe+paquetages.tex}.
+    \item Compiler le fichier tel que fourni.
     \item Changer la police de caractère du document pour 11~points,
       puis 12~points. Changer la classe du document pour
       \class{memoir}. Observer l'effet sur les marges et sur la
@@ -960,7 +994,6 @@ vitae ipsum vel, fermentum pellentesque orci.
 \end{titlepage}
 \end{lstlisting}
       \end{block}
-
     \end{minipage}
     \hfill
     \begin{minipage}{0.45\linewidth}
@@ -1578,30 +1611,26 @@ comme $(a + b)^2 = a^2 + 2ab + b^2$
   \item En mode mathématique, {\TeX} respecte automatiquement la
     convention d'écrire les constantes en \rmfamily{romain} et les
     variables en \textit{italique}
-    \begin{quote}
-      \begin{minipage}{0.45\linewidth}
+    \begin{demo}
+      \begin{texample}
 \begin{lstlisting}
 $z = 2a + 3y$
 \end{lstlisting}
-      \end{minipage}
-      \hfill
-      \begin{texoutput}{0.45\linewidth}
+        \producing
         $z = 2a + 3y$
-      \end{texoutput}
-    \end{quote}
+      \end{texample}
+    \end{demo}
   \item Espace entre les éléments géré automatiquement, peu importe le
     code source
-\begin{quote}
-      \begin{minipage}{0.45\linewidth}
+    \begin{demo}
+      \begin{texample}
 \begin{lstlisting}
 $z=2 a+3 y$
 \end{lstlisting}
-      \end{minipage}
-      \hfill
-      \begin{texoutput}{0.45\linewidth}
+        \producing
         $z=2 a+3 y$
-      \end{texoutput}
-    \end{quote}
+      \end{texample}
+    \end{demo}
   \end{itemize}
 \end{frame}
 
@@ -1610,205 +1639,36 @@ $z=2 a+3 y$
   \begin{itemize}
   \item \alert{Ne pas} utiliser le mode mathématique pour obtenir du
     texte en italique!
-    \begin{quote}
-      \begin{minipage}{0.45\linewidth}
+    \begin{demo}
+      \begin{texample}
 \begin{lstlisting}
 \emph{xyz}
 \end{lstlisting}
-      \end{minipage}
-      \hfill
-      \begin{texoutput}{0.45\linewidth}
+        \producing
         \rmfamily\emph{xyz}
-      \end{texoutput} \\
-      \begin{minipage}{0.45\linewidth}
+      \end{texample}
+      \begin{texample}
 \begin{lstlisting}
 $xyz$
 \end{lstlisting}
-      \end{minipage}
-      \hfill
-      \begin{texoutput}{0.45\linewidth}
+        \producing
         $xyz$
-      \end{texoutput}
-    \end{quote}
+      \end{texample}
+    \end{demo}
   \item Utiliser la commande \verb=\text{}= de \pkg{amsmath} pour
     obtenir du texte à l'intérieur du mode mathématique
-\begin{quote}
-      \begin{minipage}{0.55\linewidth}
+    \begin{demo}
+      \begin{texample}
 \begin{lstlisting}
 $x = 0 \text{ si } y < 2$
 \end{lstlisting}
-      \end{minipage}
-      \hfill
-      \begin{texoutput}{0.35\linewidth}
-          $x = 0 \text{ si } y < 2$
-      \end{texoutput}
-    \end{quote}
+        \producing
+        $x = 0 \text{ si } y < 2$
+      \end{texample}
+    \end{demo}
   \end{itemize}
 \end{frame}
 
-% \begin{frame}[fragile]
-%   \frametitle{Exposants et indices}
-%   \begin{itemize}
-%   \item Utiliser \verb=^= pour mettre le caractère suivant en exposant
-%   \item Utiliser \verb=_= pour mettre le caractère suivant en indice
-%   \item Pour plus d'un caractère, regrouper entre \verb={ }=
-%   \item Toutes les combinaisons possibles
-%   \end{itemize}
-%   \pause
-%   \begin{quote}
-%     \begin{minipage}{0.2\linewidth}
-% \begin{lstlisting}
-% $x^2$
-% \end{lstlisting}
-%     \end{minipage}
-%     \quad
-%     \begin{texoutput}{0.2\linewidth}
-%         $x^2$
-%       \end{texoutput}
-%     \hfill
-%     \begin{minipage}{0.2\linewidth}
-% \begin{lstlisting}
-% $x_4$
-% \end{lstlisting}
-%     \end{minipage}
-%     \quad
-%     \begin{texoutput}{0.2\linewidth}
-%       $x_4$
-%     \end{texoutput}
-%     \\
-%     \begin{minipage}{0.2\linewidth}
-% \begin{lstlisting}
-% $x^{2n}$
-% \end{lstlisting}
-%     \end{minipage}
-%     \quad
-%     \begin{texoutput}{0.2\linewidth}
-%       $x^{2n}$
-%     \end{texoutput}
-%     \hfill
-%     \begin{minipage}{0.2\linewidth}
-% \begin{lstlisting}
-% $x^{y^2}$
-% \end{lstlisting}
-%     \end{minipage}
-%     \quad
-%     \begin{texoutput}{0.2\linewidth}
-%       $x^{y^2}$
-%     \end{texoutput}
-%     \\
-%     \begin{minipage}{0.5\linewidth}
-% \begin{lstlisting}
-% $A_{j_{(k, l)}}^{x_i^2}$
-% \end{lstlisting}
-%     \end{minipage}
-%     \quad
-%     \begin{texoutput}{0.3\linewidth}
-%       $A_{j_{(k, l)}}^{x_i^2}$
-%     \end{texoutput}
-%   \end{quote}
-% \end{frame}
-
-% \begin{frame}[fragile]
-%   \frametitle{Fractions}
-%   \begin{itemize}
-%   \item Pour les équations en ligne, utiliser tout simplement la barre
-%     oblique \verb=/=
-%     \begin{quote}
-%       \begin{minipage}{0.5\linewidth}
-% \begin{lstlisting}
-% On a $y = (n + m)/2$.
-% \end{lstlisting}
-%       \end{minipage}
-%       \quad
-%       \begin{texoutput}{0.4\linewidth}
-%         \rmfamily On a $y = (n + m)/2$.
-%       \end{texoutput}
-%     \end{quote}
-%   \item Pour écrire le numérateur au-dessus du dénominateur, utiliser
-%     la commande \verb=\frac{}{}=
-%     \begin{quote}
-%       \begin{minipage}{0.75\linewidth}
-% \begin{lstlisting}
-% $\frac{x}{2}$
-% \end{lstlisting}
-%       \end{minipage}
-%       \quad
-%       \begin{texoutput}{0.15\linewidth}
-%         $\dfrac{x}{2}$
-%       \end{texoutput}
-%       \\
-%       \begin{minipage}{0.75\linewidth}
-% \begin{lstlisting}
-% $\frac{x_i + \frac{1}{2}}{y^2 + k}$
-% \end{lstlisting}
-%       \end{minipage}
-%       \quad
-%       \begin{texoutput}{0.15\linewidth}
-%         $\dfrac{x_i + \frac{1}{2}}{y^2 + k}$
-%       \end{texoutput}
-%     \end{quote}
-%   \end{itemize}
-% \end{frame}
-
-% \begin{frame}[fragile]
-%   \frametitle{Lettres grecques \\ et autres symboles mathématiques}
-
-%   La plupart des symboles mathématiques sont invoqués par une commande
-%   dont le nom correspond au nom ou à la signification mathématique du
-%   symbole
-
-%   \begin{quote}
-%     \begin{minipage}{0.55\linewidth}
-% \begin{lstlisting}
-% $\mu + \sigma^2 + \gamma$
-% \end{lstlisting}
-%     \end{minipage}
-%     \quad
-%     \begin{texoutput}{0.35\linewidth}
-%       $\mu + \sigma^2 + \gamma$
-%     \end{texoutput}
-%     \\
-%     \begin{minipage}{0.55\linewidth}
-% \begin{lstlisting}
-% $\Lambda + \Delta + \Gamma$
-% \end{lstlisting}
-%     \end{minipage}
-%     \quad
-%     \begin{texoutput}{0.35\linewidth}
-%       $\Lambda + \Delta + \Gamma$
-%     \end{texoutput}
-%     \\
-%     \begin{minipage}{0.55\linewidth}
-% \begin{lstlisting}
-% $\times \div \leq \geq \neq$
-% \end{lstlisting}
-%     \end{minipage}
-%     \quad
-%     \begin{texoutput}{0.35\linewidth}
-%       $\times \div \leq \geq \neq$
-%     \end{texoutput}
-%     \\
-%     \begin{minipage}{0.55\linewidth}
-% \begin{lstlisting}
-% $\dots \cdots \cdot$
-% \end{lstlisting}
-%     \end{minipage}
-%     \quad
-%     \begin{texoutput}{0.35\linewidth}
-%       $\cdot \dots \cdots$
-%     \end{texoutput}
-%     \\
-%     \begin{minipage}{0.71\linewidth}
-% \begin{lstlisting}
-% $\sum_{x = 0}^\infty \int_0^x y\, dy$
-% \end{lstlisting}
-%     \end{minipage}
-%     \quad
-%     \begin{texoutput}{0.15\linewidth}
-%       $\displaystyle \sum_{x = 0}^\infty \int_0^x y\, dy$
-%     \end{texoutput}
-%   \end{quote}
-% \end{frame}
 
 \subsection{Équations hors paragraphe}
 
@@ -1816,9 +1676,9 @@ $x = 0 \text{ si } y < 2$
   \frametitle{Environnements pour les équations hors paragraphe}
   \begin{itemize}
   \item Équations d'une seule ligne \newline
-    \begin{quote}
+    \begin{demo}
       \begin{minipage}[t]{0.4\linewidth}
-        \begin{block}{numérotées}
+        \begin{block}{\small numérotées}
 \begin{lstlisting}
 equation
 \end{lstlisting}
@@ -1826,18 +1686,18 @@ equation
       \end{minipage}
       \hfill
       \begin{minipage}[t]{0.4\linewidth}
-        \begin{block}{non numérotées}
+        \begin{block}{\small non numérotées}
 \begin{lstlisting}
 displaymath
 equation*
 \end{lstlisting}
         \end{block}
       \end{minipage}
-    \end{quote}
+    \end{demo}
   \item Séries d'équations alignées, généralement sur \verb|=|
     \begin{quote}
       \begin{minipage}[t]{0.4\linewidth}
-        \begin{block}{numérotées}
+        \begin{block}{\small numérotées}
 \begin{lstlisting}
 align
 \end{lstlisting}
@@ -1845,7 +1705,7 @@ align
       \end{minipage}
       \hfill
       \begin{minipage}[t]{0.4\linewidth}
-        \begin{block}{non numérotées}
+        \begin{block}{\small non numérotées}
 \begin{lstlisting}
 align*
 \end{lstlisting}
@@ -1904,17 +1764,19 @@ align*
     Utiliser le fichier \fichier{exercice\_ulthese.tex} --- qui est
     basé sur le gabarit \texttt{gabarit-doctorat.tex} livré avec
     \class{ulthese}.
-    \begin{enumerate}
-    \item Étudier le code source du fichier.
+    \medskip
 
-      Remarquer que le fichier \fichier{mathematiques.tex} est inséré
-      dans le document avec la commande \verb=\include=. Étudier
-      brièvement le code source de ce fichier.
+    Ce fichier insère \fichier{mathematiques.tex} dans le document
+    avec la commande \verb=\include=.
+    \begin{enumerate}
+    \item Étudier le code source des deux fichiers et identifier à
+      quel endroit \texttt{mathematiques.tex} est chargé dans le
+      document.
     \item Activer les paquetages \pkg{amsmath} et \pkg{icomma},
-      puis compiler \fichier{exercice\_ulthese.tex}.
+      puis compiler \texttt{exercice\_ulthese.tex}.
     \item Modifier un environnement \texttt{align*} pour
-      \texttt{align} dans \fichier{mathematiques.tex} et observer le
-      résultat dans la compilation de \fichier{exercice\_ulthese.tex}.
+      \texttt{align} dans \texttt{mathematiques.tex} et observer le
+      résultat dans la compilation de \texttt{exercice\_ulthese.tex}.
     \item Compiler de nouveau le fichier en utilisant une police de
       caractères différente.
     \end{enumerate}
