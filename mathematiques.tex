@@ -640,7 +640,7 @@ entre des éléments dans le mode mathématique.
     \cmd{\,} & $3/18$ de \cmdprint{quad} & \spx{\,} \\
     \cmd{\:} & $4/18$ de \cmdprint{quad} & \spx{\:} \\
     \cmd{\;} & $5/18$ de \cmdprint{quad} & \spx{\;} \\
-    \cmd{\!} & $-3/18$ de \cmdprint{quad} & \spx{\!} \\
+    \pixabang & $-3/18$ de \cmdprint{quad} & \spx{\!} \\
     \cmd{\quad} & $1$~em & \spx{\quad} \\
     \cmd{\qquad} & $2$~em & \spx{\qquad} \\
     \bottomrule
@@ -818,7 +818,7 @@ mathématiques suivants:
 \end{center}
 Ceux-ci sont utilisables directement dans les équations. Les
 accolades \verb={ }= étant des symboles réservés par {\LaTeX}, il faut
-les entrer avec \cmd{\{} et \cmd{\}}, comme dans du texte normal.
+les entrer avec \cmdprint{\{} et \cmdprint{\}}, comme dans du texte normal.
 
 Pour représenter les innombrables autres symboles mathématiques, on
 aura recours à des commandes qui débutent, comme d'habitude, par le
@@ -1105,7 +1105,7 @@ toutes les sortes dans les tableaux 201--212.
     $\prime$ & \cmd{\prime} \\
     $\neg$ & \cmd{\neg} &
     $\backslash$ & \cmd{\backslash} &
-    $\|$ & \cmd{\|} &
+    $\|$ & \pixbar &
     $\angle$ & \cmd{\angle}
   \end{tabularx}
 \end{table}
@@ -1323,7 +1323,7 @@ environnements pour les équations hors paragraphe.
 \item Dans les environnements \Pe{align} et \Ie{split}, les équations
   successives sont alignées sur le caractère se trouvant immédiatement
   après le marqueur de colonne \verb=&=.
-\item Comme dans les tableaux, la commande \cmd{\\} sert à
+\item Comme dans les tableaux, la commande {\pixbsbs} sert à
   délimiter les lignes de la suite d'équations.
 \item Remarquer, dans le troisième exemple du
   \autoref{tab:math:displays}, comment la commande \cmd{\phantom} sert
