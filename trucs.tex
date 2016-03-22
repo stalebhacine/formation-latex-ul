@@ -8,14 +8,14 @@
 Des algorithmes élaborés permettent à {\LaTeX} de généralement
 disposer le texte harmonieusement sur la page. Néanmoins, il
 est parfois nécessaire  d'effectuer soi-même de menus ajustements,
-notamment pour les sauts de page.
+notamment pour les sauts de page et la coupure de mots.
 
 \subsection{Sauts de ligne et de page}
 \label{sec:trucs:controle:sauts}
 
-Il est assez rarement nécessaire de forcer les retours à la ligne dans
-{\LaTeX}. Chose certaine, l'on devrait toujours utiliser une ligne
-blanche dans le code source pour identifier un changement de
+Il est assez rarement nécessaire avec {\LaTeX} de devoir forcer les
+retours à la ligne. Chose certaine, l'on devrait toujours utiliser une
+ligne blanche dans le code source pour identifier un changement de
 paragraphe.
 
 Cela dit, les commandes suivantes permettent d'insérer un saut de
@@ -34,13 +34,16 @@ longueur.
 
 Généralement équivalente à {\bs\bs}, la commande \cmd{\newline} est
 parfois nécessaire, notamment pour insérer un changement de ligne à
-l'intérieur d'une cellule d'un tableau.
+l'intérieur d'une cellule d'un tableau ou à l'intérieur d'un titre de
+section. Quand {\bs\bs} ne fonctionne pas, essayer
+\cmdprint{\newline}.
 
 \begin{exemple}
   La commande {\bs\bs} est particulièrement utile --- voire nécessaire
   --- pour disposer des boîtes à l'intérieur d'une figure.
   L'utilisation de l'argument \meta{longueur} permet alors de
-  contrôler l'espacement vertical entre les éléments. Comparer
+  contrôler l'espacement vertical entre les éléments. Comparer les
+  deux exemples ci-dessous.
   \begin{demo}
     \begin{texample}[0.55\linewidth]
 \begin{lstlisting}
@@ -59,9 +62,7 @@ l'intérieur d'une cellule d'un tableau.
         \framebox[\linewidth]{texte}
       \end{minipage}
     \end{texample}
-  \end{demo}
-  et
-  \begin{demo}
+
     \begin{texample}[0.55\linewidth]
 \begin{lstlisting}
 \begin{minipage}{1.0\linewidth}
@@ -98,7 +99,7 @@ les éléments flottants (\autoref{sec:tableaux:floats}) en attente de
 disposition.
 
 Les commandes \cmd{\cleartorecto} et \cmd{\cleartoverso}, propres à la
-classe \class{memoir} permettent, respectivement, de passer
+classe \class{memoir} permettent respectivement de passer
 automatiquement à une page recto ou une page verso. Évidemment, elles
 n'ont d'utilité que dans les documents recto-verso.
 
@@ -109,11 +110,11 @@ Moins directives, les commandes
 \end{lstlisting}
 permettent de seulement aider {\LaTeX} à gérer les sauts de page à un
 endroit précis. La commande \cmd{\pagebreak} est intéressante
-lorsqu'utilisée avec son argument optionnel \meta{n}: il indique, par
-le biais d'un nombre entier entre 0 et 4, à quel point nous
-\emph{recommandons} à {\LaTeX} d'insérer un saut de page à l'endroit
-où la commande apparaît (0 étant une faible recommandation et 4, une
-forte).
+lorsqu'utilisée avec son argument optionnel \meta{n}: celui-ci
+indique, par le biais d'un nombre entier entre 0 et 4, à quel point
+nous \emph{recommandons} à {\LaTeX} d'insérer un saut de page à
+l'endroit où la commande apparaît (0 étant une faible recommandation
+et 4, une forte).
 
 La commande \cmd{\enlargethispage}, comme son nom l'indique, permet
 d'allonger une page de \meta{longueur} pour y faire tenir plus de
