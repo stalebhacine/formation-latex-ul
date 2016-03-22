@@ -2,6 +2,168 @@
 \label{chap:trucs}
 
 
+\section{Contrôle de la disposition du texte}
+\label{sec:trucs:controle}
+
+Des algorithmes élaborés permettent à {\LaTeX} de généralement
+disposer le texte harmonieusement sur la page. Néanmoins, il
+est parfois nécessaire  d'effectuer soi-même de menus ajustements,
+notamment pour les sauts de page.
+
+\subsection{Sauts de ligne et de page}
+\label{sec:trucs:controle:sauts}
+
+Il est assez rarement nécessaire de forcer les retours à la ligne dans
+{\LaTeX}. Chose certaine, l'on devrait toujours utiliser une ligne
+blanche dans le code source pour identifier un changement de
+paragraphe.
+
+Cela dit, les commandes suivantes permettent d'insérer un saut de
+ligne manuellement lorsque requis:
+\begin{lstlisting}
+\\
+\\`\oarg{longueur}'
+\newline
+\end{lstlisting}
+La commande \cmd{\\} est connue: elle sert aussi à délimiter les
+lignes dans les tableaux (\autoref{sec:tableaux:tableaux}) et les lignes
+d'une suite d'équations (\autoref{sec:math:align}). L'argument optionnel
+\oarg{longueur} permet d'insérer un blanc entre les deux lignes; la
+\autoref{sec:boites:longueurs} explique comment spécifier une
+longueur.
+
+Généralement équivalente à {\bs\bs}, la commande \cmd{\newline} est
+parfois nécessaire, notamment pour insérer un changement de ligne à
+l'intérieur d'une cellule d'un tableau.
+
+\begin{exemple}
+  La commande {\bs\bs} est particulièrement utile --- voire nécessaire
+  --- pour disposer des boîtes à l'intérieur d'une figure.
+  L'utilisation de l'argument \meta{longueur} permet alors de
+  contrôler l'espacement vertical entre les éléments. Comparer
+  \begin{demo}
+    \begin{texample}[0.55\linewidth]
+\begin{lstlisting}
+\begin{minipage}{1.0\linewidth}
+  \framebox[\linewidth]{texte}
+\end{minipage} \\
+\begin{minipage}{1.0\linewidth}
+  \framebox[\linewidth]{texte}
+\end{minipage}
+\end{lstlisting}
+      \producing
+      \begin{minipage}{1.0\linewidth}
+        \framebox[\linewidth]{texte}
+      \end{minipage}
+      \begin{minipage}{1.0\linewidth}
+        \framebox[\linewidth]{texte}
+      \end{minipage}
+    \end{texample}
+  \end{demo}
+  et
+  \begin{demo}
+    \begin{texample}[0.55\linewidth]
+\begin{lstlisting}
+\begin{minipage}{1.0\linewidth}
+  \framebox[\linewidth]{texte}
+\end{minipage} \\`\textbf{[6pt]}'
+\begin{minipage}{1.0\linewidth}
+  \framebox[\linewidth]{texte}
+\end{minipage}
+\end{lstlisting}
+      \producing
+      \begin{minipage}{1.0\linewidth}
+        \framebox[\linewidth]{texte}
+      \end{minipage} \\[6pt]
+      \begin{minipage}{1.0\linewidth}
+        \framebox[\linewidth]{texte}
+      \end{minipage}
+    \end{texample}
+  \end{demo}
+  \qed
+\end{exemple}
+
+Les commandes
+\begin{lstlisting}
+\newpage
+\clearpage
+\cleartorecto              % classe memoir seulement
+\cleartoverso              % classe memoir seulement
+\end{lstlisting}
+permettent d'insérer manuellement un saut de page pour éviter une
+coupure malheureuse. La commande de base pour insérer un saut
+n'importe où dans la page est \cmd{\newpage}. La commande
+\cmd{\clearpage}, quant à elle, va également s'assurer d'afficher tous
+les éléments flottants (\autoref{sec:tableaux:floats}) en attente de
+disposition.
+
+Les commandes \cmd{\cleartorecto} et \cmd{\cleartoverso}, propres à la
+classe \class{memoir} permettent, respectivement, de passer
+automatiquement à une page recto ou une page verso. Évidemment, elles
+n'ont d'utilité que dans les documents recto-verso.
+
+Moins directives, les commandes
+\begin{lstlisting}
+\pagebreak`\oarg{n}'
+\enlargethispage`\marg{longueur}'
+\end{lstlisting}
+permettent de seulement aider {\LaTeX} à gérer les sauts de page à un
+endroit précis. La commande \cmd{\pagebreak} est intéressante
+lorsqu'utilisée avec son argument optionnel \meta{n}: il indique, par
+le biais d'un nombre entier entre 0 et 4, à quel point nous
+\emph{recommandons} à {\LaTeX} d'insérer un saut de page à l'endroit
+où la commande apparaît (0 étant une faible recommandation et 4, une
+forte).
+
+La commande \cmd{\enlargethispage}, comme son nom l'indique, permet
+d'allonger une page de \meta{longueur} pour y faire tenir plus de
+texte. C'est une commande particulièrement utile pour éviter que la
+toute dernière ligne d'un chapitre ou d'un document se retrouve seule sur
+une page.
+
+\subsection{Coupure de mots}
+\label{sec:trucs:controle:coupure}
+
+La coupure automatique des mots en fin de ligne est toujours active
+avec {\LaTeX}. C'est d'ailleurs pourquoi il importe d'indiquer à
+{\LaTeX} dans quelle langue est le texte (lorsque ce n'est pas en
+anglais) avec les commandes du paquetage \pkg{babel}.
+
+Il existe deux façons de contrôler la coupure de mots. La première,
+principalement utilisée lorsque {\LaTeX} refuse de couper un mot en
+fin de ligne, consiste à insérer des \emph{suggestions} d'endroits où
+couper le mot avec la commande \cmd{\-}. Par exemple, en écrivant
+\verb=vrai\-sem\-blance=, on indique à {\LaTeX} qu'il est possible de
+diviser le mot en \emph{vrai-semblance} ou \emph{vraisem-blance}.
+
+La seconde méthode, celle-là surtout utilisée lorsque {\LaTeX} ne
+reconnaît pas des mots qui reviennent souvent dans le document,
+consiste à fournir dans le préambule une liste d'exceptions avec la
+commande
+\begin{lstlisting}
+\hyphenation`\marg{liste}'
+\end{lstlisting}
+La \meta{liste} est une suite de mots, séparés par des virgules, des
+blancs ou des retours à la ligne, dans lesquels les points de coupure
+sont identifiés par un trait d'union.
+
+\begin{exemple}
+  La commande suivante, insérée dans le préambule, permet d'ajouter
+  des points de coupure aux mots «puisque», «constante» et
+  «vraisemblance» pour l'ensemble du document.
+\begin{lstlisting}
+\hyphenation{puis-que,cons-tante,vrai-sem-blance}
+\end{lstlisting}
+  \qed
+\end{exemple}
+
+\begin{important}
+  Règle générale, garder les opérations d'ajustements de la mise en
+  page --- position des éléments flottants, sauts de page, lignes trop
+  longues, etc. --- pour la toute fin de la rédaction.
+\end{important}
+
+
 \section{Polices de caractères: au-delà de Computer Modern}
 \label{sec:trucs:police}
 
