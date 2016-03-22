@@ -750,12 +750,10 @@ de 5~\%.
 \begin{frame}[fragile=singleslide]
   \frametitle{Caractères spéciaux (suite)}
   \begin{itemize}
-  \item Espace insécable: \verb= ~ =
-    \begin{demo}
+  \item Espace insécable: \verb=~= %
 \begin{lstlisting}
 M.~Tremblay me doit 200~\$.
 \end{lstlisting}
-    \end{demo}
   \item Guillemets:
     \begin{demo}
       \begin{texample}
@@ -861,13 +859,14 @@ M.~Tremblay me doit 200~\$.
   \usepackage[T1]{`\alt<3>{\textbf{fontenc}}{fontenc}'}
   \usepackage{`\alt<4>{\textbf{icomma}}{icomma}'}
 \end{lstlisting}
-  \begin{itemize}
-  \item<2> \pkg{babel}: traduction des mots-clés prédéfinis,
+  \pause
+  \begin{itemize}[<+->]
+  \item \pkg{babel}: traduction des mots-clés prédéfinis,
     typographie française, coupure de mots, document multilingue
-  \item<3> \pkg{inputenc} et \pkg{fontenc}: lettres accentuées dans le
+  \item \pkg{inputenc} et \pkg{fontenc}: lettres accentuées dans le
     code source
-  \item<4> \pkg{icomma}: virgule comme séparateur décimal
-  \item<5> \pkg{numprint}: espace comme séparateur des milliers
+  \item \pkg{icomma}: virgule comme séparateur décimal
+  \item \pkg{numprint}: espace comme séparateur des milliers
   \end{itemize}
 \end{frame}
 
