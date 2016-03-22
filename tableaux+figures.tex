@@ -523,37 +523,33 @@ pour les détails et d'autres options.
 \includegraphics{ul_p}
 \end{lstlisting}
   insère le fichier en pleine grandeur dans le document:
-  \begin{trivlist}
-  \item \includegraphics{ul_p}
-  \end{trivlist}
+  \begin{demo}
+    \includegraphics{ul_p}
+  \end{demo}
 
   On peut redimensionner l'image en valeur relative avec l'option
   \code{scale} ou en valeur absolue avec les options \code{width} ou
   \code{height}:
-  \begin{trivlist}
-  \item %
-    \begin{minipage}[t]{0.62\linewidth}
+  \begin{demo}
+    \begin{texample}[0.62\linewidth]
 \begin{lstlisting}
 %% réduction à 40 % de taille réelle
 \includegraphics[scale=0.4]{ul_p}
 \end{lstlisting}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.35\linewidth}
-      \mbox{}\\ \includegraphics[scale=0.4]{ul_p}
-    \end{minipage}
-  \item %
-    \begin{minipage}[t]{0.62\linewidth}
+      \producing
+      \includegraphics[scale=0.4]{ul_p}
+    \end{texample}
+    \medskip
+
+    \begin{texample}[0.62\linewidth]
 \begin{lstlisting}
 %% réduction à 15 mm de haut
 \includegraphics[height=15mm]{ul_p}
 \end{lstlisting}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.35\linewidth}
-      \mbox{}\\ \includegraphics[height=15mm]{ul_p}
-    \end{minipage}
-  \end{trivlist}
+      \producing
+      \includegraphics[height=15mm]{ul_p}
+    \end{texample}
+  \end{demo}
   (Il est préférable d'utiliser une seule de \code{width} ou
   \code{height}. Autrement, ajouter l'option
   \lstinline|keepaspectratio=true| pour éviter de déformer l'image.)
@@ -561,39 +557,33 @@ pour les détails et d'autres options.
   L'option \code{angle} permet de faire pivoter l'image dans le sens
   inverse des aiguilles d'une montre autour du coin inférieur gauche
   de l'image:
-  \begin{trivlist}
-  \item %
-    \begin{minipage}[t]{0.72\linewidth}
+  \begin{demo}
+    \begin{texample}[0.72\linewidth]
 \begin{lstlisting}
 %% réduction à 25 % et rotation à 45 degrés
 \includegraphics[angle=45,scale=0.25]{ul_p}
 \end{lstlisting}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.25\linewidth}
-      \mbox{}\\ \includegraphics[angle=45,scale=0.25]{ul_p}
-    \end{minipage}
-  \end{trivlist}
+      \producing
+      \includegraphics[angle=45,scale=0.25]{ul_p}
+    \end{texample}
+  \end{demo}
 
   Enfin, il y a diverses manières de sélectionner une partie seulement
   d'une image. L'option \code{bb} (pour \emph{Bounding Box}) prend
   quatre mesures en points PostScript (\code{bp}; $1~\text{bp} =
   1/72~\text{pouce}$) définissant le coin inférieur gauche et le coin
   supérieur droit de la zone à inclure:
-  \begin{trivlist}
-  \item %
-    \begin{minipage}[t]{0.72\linewidth}
+  \begin{demo}
+    \begin{texample}[0.72\linewidth]
 \begin{lstlisting}
 %% extraction du logo seul et réduction
 \includegraphics[bb=0 0 102 129,clip=true,
   scale=0.4]{ul_p}
 \end{lstlisting}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.25\linewidth}
-      \mbox{}\\ \includegraphics[bb=0 0 102 129, clip=true, scale=0.4]{ul_p}
-    \end{minipage}
-  \end{trivlist}
+      \producing
+      \includegraphics[bb=0 0 102 129, clip=true, scale=0.4]{ul_p}
+    \end{texample}
+  \end{demo}
   \qed
 \end{exemple}
 
@@ -630,58 +620,47 @@ pour éviter de déformer \meta{texte}.
 \begin{exemple}
   Voici des exemples d'utilisation des commandes \cmd{\rotatebox},
   \cmd{\scalebox}, \cmd{\resizebox} et \cmd{\reflectbox} avec du texte:
-  \begin{trivlist}
-  \item %
-    \begin{minipage}{0.55\linewidth}
+  \begin{demo}
+    \begin{texample}[0.55\linewidth]
 \begin{lstlisting}
 \rotatebox{135}{texte}
 \end{lstlisting}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.35\linewidth}
+      \producing
       \rotatebox{135}{texte}
-    \end{minipage}
-  \item %
-    \begin{minipage}{0.55\linewidth}
+    \end{texample}
+
+    \begin{texample}[0.55\linewidth]
 \begin{lstlisting}
 \scalebox{1.5}{texte}
 \end{lstlisting}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.35\linewidth}
+      \producing
       \scalebox{1.5}{texte}
-    \end{minipage}
-  \item %
-    \begin{minipage}{0.55\linewidth}
+    \end{texample}
+
+    \begin{texample}[0.55\linewidth]
 \begin{lstlisting}
 \scalebox{1.5}[0.75]{texte}
 \end{lstlisting}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.35\linewidth}
+      \producing
       \scalebox{1.5}[0.75]{texte}
-    \end{minipage}
-  \item %
-    \begin{minipage}{0.55\linewidth}
+    \end{texample}
+
+    \begin{texample}[0.55\linewidth]
 \begin{lstlisting}
 \resizebox{3cm}{!}{texte}
 \end{lstlisting}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.35\linewidth}
+      \producing
       \resizebox{3cm}{!}{texte}
-    \end{minipage}
-  \item %
-    \begin{minipage}{0.55\linewidth}
+    \end{texample}
+
+    \begin{texample}[0.55\linewidth]
 \begin{lstlisting}
 \reflectbox{texte}
 \end{lstlisting}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.35\linewidth}
+      \producing
       \reflectbox{texte}
-    \end{minipage}
-  \end{trivlist}
+    \end{texample}
+  \end{demo}
   \qed
 \end{exemple}
 
