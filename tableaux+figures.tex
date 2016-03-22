@@ -188,8 +188,9 @@ de la classe \class{memoir} (chapitre 11) ou %
   \item[\normalfont\code{l}] contenu de la colonne aligné à gauche;
   \item[\normalfont\code{r}] contenu de la colonne aligné à droite;
   \item[\normalfont\code{c}] contenu de la colonne centré;
-  \item[\normalfont\code{p\{}\textit{lgr}\code{\}}] contenu de la colonne traité comme un
-    paragraphe de texte de largeur \textit{lgr};
+  \item[\normalfont\code{p\{}\textit{lgr}\code{\}}] contenu de la
+    colonne traité comme un paragraphe de texte de largeur
+    \textit{lgr};
   \item[\normalfont\code{X}] [environnement \Pe{tabularx} seulement]
     colonne dont la largeur peut être ajustée pour obtenir un tableau
     de la largeur prescrite; identique à \code{p} par ailleurs.
@@ -217,7 +218,7 @@ de la classe \class{memoir} (chapitre 11) ou %
   %
 \item[lignes] Le contenu des cellules du tableau. Les entrées des
   cellules sont séparées par le symbole \verb=&= et les lignes par
-  {\bs\bs}. Une cellule peut être vide.
+  \cmd{\\}. Une cellule peut être vide.
 
   Les lignes de contenu peuvent également contenir certaines commandes
   spéciales pour contrôler la mise en forme. La commande ci-dessous
@@ -850,7 +851,7 @@ qui sera utilisée dans la liste des tableaux ou dans la liste des
 figures.
 
 La commande \cmd{\caption} insère,  à l'endroit où elle
-apparait dans l'environnement, une légende de la forme «\textsc{Table}
+apparaît dans l'environnement, une légende de la forme «\textsc{Table}
 \emph{n}~--~\meta{texte}» pour un tableau ou «\textsc{Figure}
 \emph{n}~--~\meta{texte}» pour une figure. Le texte de la légende est
 centré sur la page lorsqu'il fait moins d'une ligne; dans le cas
