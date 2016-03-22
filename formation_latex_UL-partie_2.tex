@@ -310,10 +310,12 @@
   %%   et pour utiliser \cs plutôt que \cmdprint pour afficher le nom de
   %%   la commande (afin d'obtenir le même format d'entrée d'index
   %%   qu'avec \ixcmd ci-dessus);
-  %% - \pixbsbs et \pixabang servent à afficher et indexer \\ et \!,
-  %%   respectivement;
-  %% - \pixbar sert à afficher et indexer \|, mais pour une raison que
-  %%   j'ignore, l'entrée n'est pas traitée par hyperref.
+  %% - \pixbsbs et \pixabang servent respectivement à afficher et
+  %%   indexer \\ et \! ;
+  %% - \pixbar sert à afficher et indexer \| avec un hack pour
+  %%   contourner un problème d'insertion de l'hyperlien vers le
+  %%   numéro de page: l'entrée est triée sur le symbole [ plutôt que
+  %%   sur |.
   \renewcommand{\cmdprint}[1]{\textup{\texttt{\string#1}}}
   \makeatletter
   \renewcommand{\cmd}[1]{\cmdprint{#1}%
@@ -321,7 +323,7 @@
   \makeatother
   \newcommand*{\pixbsbs}{\cmdprint{\\}\index{"\ @\string\cs{}\bs}}
   \newcommand*{\pixabang}{\cmdprint{\!}\index{"!@\string\cs{}\texttt{"!}}}
-  \newcommand*{\pixbar}{\cmdprint{\|}\index{"|@\string\cs{}\texttt{\textbar}}}
+  \newcommand*{\pixbar}{\cmdprint{\|}\index{[@\string\cs{}\texttt{\textbar}}}
 
   %% Indications de capsule vidéo dans la marge
   \newcommand{\capsule}[2]{\href{#1}{#2}\marginpar{%
