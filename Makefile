@@ -35,7 +35,6 @@ FILES1 = ${MASTER1} \
 	exercice_parties.tex \
 	exercice_renvois.tex \
 	exercice_complet.tex \
-	exercice_tdm+annexe.tex \
 	exercice_ulthese.tex \
 		includes/mathematiques.tex \
 	formation_latex_UL.bib
@@ -45,7 +44,6 @@ SOLUTIONS1 = \
 	exercice_classe+paquetages-solution.tex \
 	exercice_parties-solution.tex \
 	exercice_renvois-solution.tex \
-	exercice_tdm+annexe-solution.tex \
 	exercice_complet-solution.tex \
 	exercice_ulthese-solution.tex
 
@@ -85,7 +83,7 @@ zip :
 	mkdir ${PACKAGENAME}
 	sed -e 's/<VERSION>/${VERSION}/g' README.in > README
 	cp README ${FILES1} ${SOLUTIONS1} ${FILES2} ${SOLUTIONS2} ${PACKAGENAME}
-	zip -r ${PACKAGENAME}.zip ${PACKAGENAME}
+	zip --filesync -r ${PACKAGENAME}.zip ${PACKAGENAME}
 	${RM} ${PACKAGENAME}
 
 clean:
