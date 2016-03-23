@@ -335,7 +335,7 @@
     \end{itemize}
   \item Imprévisible
     \begin{itemize}
-    \item {\LaTeX} fait ce qu'on lui demande, sans plus et sans moins
+    \item {\LaTeX} fait ce qu'on lui demande, ni plus, ni moins
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -852,12 +852,12 @@ M.~Tremblay me doit 200~\$.
 
   Il faut charger un certain nombre de paquetages pour franciser \LaTeX.
 \begin{lstlisting}
-\documentclass[`\alt<2>{\textbf{french}}{french}']{memoir}
-  \usepackage{`\alt<2>{\textbf{babel}}{babel}'}
-  \usepackage[autolanguage]{`\alt<5>{\textbf{numprint}}{numprint}'}
-  \usepackage[utf8]{`\alt<3>{\textbf{inputenc}}{inputenc}'}
-  \usepackage[T1]{`\alt<3>{\textbf{fontenc}}{fontenc}'}
-  \usepackage{`\alt<4>{\textbf{icomma}}{icomma}'}
+\documentclass[`\alt<2>{\textcolor{emphasis}{french}}{french}']{memoir}
+  \usepackage{`\alt<2>{\textcolor{emphasis}{babel}}{babel}'}
+  \usepackage[autolanguage]{`\alt<5>{\textcolor{emphasis}{numprint}}{numprint}'}
+  \usepackage[utf8]{`\alt<3>{\textcolor{emphasis}{inputenc}}{inputenc}'}
+  \usepackage[T1]{`\alt<3>{\textcolor{emphasis}{fontenc}}{fontenc}'}
+  \usepackage{`\alt<4>{\textcolor{emphasis}{icomma}}{icomma}'}
 \end{lstlisting}
   \pause
   \begin{itemize}[<+->]
@@ -878,7 +878,7 @@ M.~Tremblay me doit 200~\$.
 \documentclass[french]{memoir}
   \usepackage{babel}
   \usepackage[autolanguage]{numprint}
-  \usepackage{`\textbf{fontspec}'}
+  \usepackage{`\textcolor{emphasis}{fontspec}'}
   \usepackage{icomma}
 \end{lstlisting}
   \begin{itemize}
@@ -1246,6 +1246,7 @@ M.~Tremblay me doit 200~\$.
   \frametitle{Emphase}
   \begin{itemize}
   \item<1-> Une des propriétés les \emph{plus utilisées} dans le texte
+    \vfill
   \item<1-> Commande spécifique:
 \begin{lstlisting}
 \emph{`\textit{texte}'}
