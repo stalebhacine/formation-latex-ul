@@ -57,6 +57,12 @@ o <VERSION>
   en avaient une) ainsi qu'une nouvelle section 7.1 sur le contrôle
   des sauts de ligne, sauts de page et coupures de mots.
 - Partie II: corrections mineures à l'index.
+- Fichiers d'exercices et gabarits: langue déclarée comme 'french'
+  plutôt que 'francais' et dans \documentclass plutôt que dans
+  \usepackage.
+- Fichiers d'exercices et gabarits: chargement du paquetage icomma
+  déplacé vers la fin de la liste, plus particulièrement après
+  fontspec.
 
 o 2015-03-18
 
