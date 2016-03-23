@@ -1,11 +1,18 @@
+## Prendre le numéro de version dans le fichier Makeconf
+include ./Makeconf
+
+## Nom du paquetage sur CTAN
 PACKAGENAME = formation-latex-ul
 
+## Fichiers maîtres
 MASTER1 = formation_latex_UL-partie_1.pdf
 MASTER2 = formation_latex_UL-partie_2.pdf
 
+## Liste des fichiers source de la partie I
 TEXFILES1 = licence-partie_1.tex \
 	colophon-partie_1.tex
 
+## Liste des fichiers source de la partie II
 TEXFILES2 = licence-partie_2.tex \
 	introduction.tex     \
 	modedemploi.tex      \
@@ -19,6 +26,7 @@ TEXFILES2 = licence-partie_2.tex \
 	solutions.tex        \
 	colophon-partie_2.tex
 
+## Liste des fichiers à include dans l'archive pour la partie I
 FILES1 = ${MASTER1} \
 	exercice_minimal.tex \
 	exercice_demo.tex \
@@ -41,6 +49,7 @@ SOLUTIONS1 = \
 	exercice_complet-solution.tex \
 	exercice_ulthese-solution.tex
 
+## Liste des fichiers à include dans l'archive pour la partie II
 FILES2 = ${MASTER2} \
 	ul_p.pdf \
 	exercice_gabarit.tex \
@@ -74,6 +83,7 @@ $(MASTER2): $(MASTER2:.pdf=.tex) $(TEXFILES2)
 zip :
 	if [ -d ${PACKAGENAME} ]; then ${RM} ${PACKAGENAME}; fi
 	mkdir ${PACKAGENAME}
+	sed -e 's/<VERSION>/${VERSION}/g' README.in > README
 	cp README ${FILES1} ${SOLUTIONS1} ${FILES2} ${SOLUTIONS2} ${PACKAGENAME}
 	zip -r ${PACKAGENAME}.zip ${PACKAGENAME}
 	${RM} ${PACKAGENAME}

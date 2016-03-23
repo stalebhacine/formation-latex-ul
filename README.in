@@ -8,7 +8,7 @@ Creative Commons Attribution-ShareAlike 4.0 International.
 
 VERSION
 
-2016-03-18
+<VERSION>
 
 *** The rest of this file is in French ***
 
@@ -44,10 +44,9 @@ Le paquetage contient également les fichiers nécessaires pour
 compléter certains exercices, ainsi qu'un gabarit pour composer les
 solutions des autres exercices.
 
-
 HISTORIQUE DES VERSIONS
 
-o 2015-03-XX
+o <VERSION>
 
 - Partie I: révision des diapositives pour baser davantage la
   présentation sur des exemples de code source.
