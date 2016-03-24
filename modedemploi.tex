@@ -1,21 +1,18 @@
 \chapter{Mode d'emploi}
 \label{chap:modedemploi}
 
-
-\section{Hyperliens vers la documentation}
+\section*{Hyperliens vers la documentation}
 
 À plusieurs endroits dans le document nous renvoyons le lecteur vers
 la documentation d'un paquetage ou d'une classe, par exemple vers la %
 \doc{ulthese}{http://texdoc.net/pkg/ulthese/} %
 de la classe \class{ulthese}. Le format du renvoi est toujours tel
-qu'illustré ici:
-\begin{itemize}
-\item un hyperlien mène vers la version en ligne de la documentation
-  dans le site %
-  \link{http://texdoc.net}{TeXdoc Online};
-\item on trouve dans la marge le nom du fichier correspondant (sans
-  l'extension \code{.pdf}) sur un système doté de {\TeX}~Live.
-\end{itemize}
+qu'illustré ici: un hyperlien mène vers la version en ligne de la
+documentation dans le site %
+\link{http://texdoc.net}{TeXdoc Online}; on trouve dans la marge le
+nom du fichier correspondant (sans l'extension \code{.pdf}) sur un
+système doté de {\TeX}~Live.
+
 Sur la plupart des systèmes, il est possible de consulter hors ligne
 le fichier de documentation \meta{fichier}\code{.pdf} en entrant à une
 invite de commande
@@ -25,6 +22,17 @@ texdoc `\meta{fichier}'
 \end{lstlisting}
 \end{quote}
 
+Plusieurs logiciels intégrés de rédaction offrent une inferface pour
+accéder à cette documentation. Quelques exemples.
+\begin{itemize}
+\item TeXShop: menu \code{Aide|Afficher l'aide pour le
+    package} (\optkey\,\cmdkey\, I);
+\item Texmaker: menu \code{Aide|TeXDoc [selection]};
+\item GNU Emacs: commande \code{TeX-doc} (\code{C-c ?}).
+\end{itemize}
+Consulter l'aide de votre éditeur pour savoir s'il offre une
+interface à \code{texdoc}.
+
 % \section{Capsules d'aide additionnelle}
 %
 % Un symbole de lecture vidéo dans la marge indique qu'une capsule vidéo
@@ -33,15 +41,16 @@ texdoc `\meta{fichier}'
 %   YouTube} %
 % de la formation sur le sujet en hyperlien.
 
-\section{Fichiers d'accompagnement}
+\section*{Fichiers d'accompagnement}
+\enlargethispage{5mm}
 
-Ce document devrait être accompagné de fichiers nécessaires pour
+Ce document devrait être accompagné des fichiers nécessaires pour
 compléter certains exercices figurant à la fin des chapitres, ainsi
 que d'un fichier \fichier{exercice\_gabarit.tex} pouvant servir de
 gabarit pour composer les solutions des autres exercices.
 
-Si vous n'avez pas obtenu ces fichiers avec le document, vous pouvez
-les récupérer dans le site \emph{Comprehensive TeX Archive Network}
+Vous pouvez
+récupérer ces fichiers dans le site \emph{Comprehensive TeX Archive Network}
 (CTAN).
 \begin{center}
   \href{\ctanurl}{\ctanbutton}
