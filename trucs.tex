@@ -111,7 +111,7 @@ disposition.
 
 Les commandes \cmd{\cleartorecto} et \cmd{\cleartoverso}, propres à la
 classe \class{memoir} permettent respectivement de passer
-automatiquement à une page recto ou une page verso. Évidemment, elles
+automatiquement à une page recto ou à une page verso. Évidemment, elles
 n'ont d'utilité que dans les documents recto-verso.
 
 Moins directives, les commandes
@@ -206,7 +206,7 @@ sans trop se compliquer la vie, il existe deux solutions principales.
   \doc{psnfss2e}{http://texdoc.net/pkg/psnfss/} %
   de l'ensemble de paquetages PSNFSS pour connaître les choix
   disponibles.
-\item Utiliser une police OpenType présente sur son système avec le
+\item Utiliser une police OpenType ou TrueType présente sur son système avec le
   moteur {\XeLaTeX}. Seule une poignée de ces polices offrent
   toutefois un support approprié pour les mathématiques. La gestion
   des polices de caractères avec {\XeLaTeX} se fait avec le paquetage
@@ -312,21 +312,23 @@ disponibles.
   \end{tabularx}
 \end{table}
 
-On modifie la couleur du texte avec la commande
+Un peu comme pour les changements d'attributs de police, il existe
+deux commandes pour modifier la couleur du texte:
 \begin{lstlisting}
 \color`\marg{nom}'
+\textcolor`\marg{nom}\marg{texte}'
 \end{lstlisting}
-où \meta{nom} est le nom d'une couleur. À moins de vouloir modifier la
-couleur de tout ce qui suit, on limitera la portée de la commande par
-des accolades.
+La première modifie la couleur de tout ce qui suit (à moins d'en
+limiter la portée avec des accolades) et la seconde, seulement pour
+\meta{texte}. Dans les deux cas, \meta{nom} est le nom d'une couleur.
 \begin{demo}
   \begin{texample}
 \begin{lstlisting}
 texte {\color{red} en rouge}
-et {\color{blue} en bleu}
+et \textcolor{blue}{en bleu}
 \end{lstlisting}
   \producing
-  texte {\color{red} en rouge} et {\color{blue} en bleu}
+  texte {\color{red} en rouge} et \textcolor{blue}{en bleu}
   \end{texample}
 \end{demo}
 
@@ -353,8 +355,8 @@ respectivement les teintes de rouge, de vert et de bleu.
   \fcolorbox{black}[rgb]{0,0.4,0}{\phantom{xx}} $+$ %
   \fcolorbox{black}[rgb]{0,0,0.6}{\phantom{xx}} $=$ %
   \fcolorbox{black}[rgb]{0.3,0.4,0.6}{\phantom{xx}}. %
-  On pourra utiliser la couleur \code{acier} directement dans la
-  commande \cmdprint{\color}. %
+  On pourra utiliser la couleur \code{acier} directement dans les
+  commandes \cmdprint{\color} et \cmdprint{\textcolor}. %
   \qed
 \end{exemple}
 
@@ -372,7 +374,7 @@ couleur.
 \label{sec:trucs:hyperliens}
 
 Nous en avons déjà traité à quelques reprises, notamment à la
-section~4 de \citet{UL:latex:1}: le paquetage \pkg{hyperref}
+section~6 de \citet{UL:latex:1}: le paquetage \pkg{hyperref}
 \citep{hyperref} permet de transformer toutes les références dans le
 texte en hyperliens cliquables lorsque le document est produit avec
 pdf{\LaTeX} ou {\XeLaTeX}. C'est très pratique lors de la consultation
@@ -436,13 +438,13 @@ contient la liste complète.
   et aux options de configuration de \pkg{hyperref} suivantes:
 \begin{lstlisting}
 \definecolor{link}{rgb}{0,0.4,0.6}   % ~RoyalBlue de dvips
-\definecolor{url}{rgb}{0.6,0,0}      % rouge-brun
+\definecolor{url}{rgb}{0.6,0,0}      % rouge foncé
 \definecolor{citation}{rgb}{0,0.5,0} % vert foncé
 \hypersetup{colorlinks, linktocpage,
   linkcolor=link, urlcolor=url, citecolor=citation,
-  pdftitle={Rédaction de thèses et mémoires avec LaTeX -
-            Partie II},
-  pdfauthor={Université Laval}}
+  pdftitle={Rédaction de thèses et mémoires avec LaTeX:
+            Concepts avancés},
+  pdfauthor={Vincent Goulet}}
 \end{lstlisting}
   \qed
 \end{exemple}
@@ -462,8 +464,8 @@ contient la liste complète.
 \begin{conseil}
   L'interaction du paquetage \pkg{hyperref} avec les autres est
   parfois (voire souvent) délicate. Pour cette raison, il est
-  fortement recommandé de charger \pkg{hyperref} en tout dernier
-  dans dans le préambule.
+  fortement recommandé que \pkg{hyperref} soit le tout dernier
+  paquetage chargé dans le préambule.
 \end{conseil}
 
 
@@ -601,7 +603,7 @@ Les publications scientifiques reposent souvent sur une forme ou une
 autre d'analyse numérique ou statistique, la production de code
 informatique, une simulation stochastique, etc. La portion
 développement et analyse est alors produite avec un certain outil
-et la publication, avec un outil d'édition séparé --- {\LaTeX} pour ce
+et la publication, avec un outil d'édition séparé --- {\LaTeX} dans le cas
 qui nous occupe. Or, tous les auteurs ont vécu cette situation: les
 résultats de l'analyse changent et il faut modifier le rapport en
 conséquence, refaire les tableaux et les graphiques, retracer cette
@@ -615,7 +617,7 @@ Cette meilleure façon de faire, tirée du concept de
 document l'analyse et le rapport, puis de produire automatiquement une
 partie du second à partir de la première.
 
-Les utilisateurs du système statistique R bénéficient ici d'une mise
+Les utilisateurs du système statistique R bénéficient d'une mise
 en œuvre simple et élégante du concept ci-dessus avec l'outil Sweave
 \citep{Sweave}. Un fichier Sweave est à la base un document {\LaTeX}
 dans lequel on a inséré du code R à l'intérieur de balises spéciales
@@ -737,7 +739,7 @@ production de diapositives est la classe \class{beamer}
 \citep{beamer}. Celle-ci compte un grand nombre de thèmes et de
 gabarits élaborés, rend très simple l'insertion d'animations d'une
 diapositive à l'autre, gère automatiquement la table des matières
-et\dots\ produit des diapositives en couleur!
+et\dots\ produit des diapositives en couleur.
 
 Quelle que soit la classe utilisée, les diapositives produites avec
 {\LaTeX} se présentent sous forme de fichier PDF. On les projète avec
@@ -758,7 +760,7 @@ Les diapositives de la première partie de la formation
 \section{Gestion des versions et travail collaboratif}
 \label{sec:trucs:cvs}
 
-Vous travaillez à plusieurs sur un même fichier ou seul, mais de
+Vous travaillez à plusieurs sur un même fichier, ou seul, mais de
 plusieurs postes de travail différents. Quelle est la plus récente
 version du fichier? Mon ajout fait hier dans le fichier a-t-il été
 pris en compte par ma collègue aujourd'hui? Une modification apportée
