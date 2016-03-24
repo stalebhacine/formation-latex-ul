@@ -21,9 +21,11 @@ machine peut ensuite se charger:
 \item de recommencer ces opérations autant de fois que nécessaire pour
   un même document ou pour chaque nouveau document.
 \end{itemize}
+
 Avec en main une base de données bibliographique, la création de la
 bibliographie devient une tâche triviale qui ne prend guère plus que
 les quelques secondes de compilation nécessaires pour la composer.
+
 
 
 \section{Quel système utiliser?}
@@ -52,10 +54,10 @@ Wikipedia, dans les rubriques «Citer cette page», offre les citations
 en format {\BibTeX}.
 
 {\BibTeX} est principalement un système de tri d'entrées
-bibliographiques et d'interface avec la base de données. Contrôler
-l'apparence des citations et de la bibliographie requiert un
-\emph{style}. Les styles standards sont \code{plain}, \code{unsrt},
-\code{alpha} et \code{abbrv}; nous y reviendrons à la
+bibliographiques et d'interface avec la base de données. La
+présentation des citations et de la bibliographie, on la contrôle par
+le biais d'un \emph{style}. Les styles standards sont \code{plain},
+\code{unsrt}, \code{alpha} et \code{abbrv}; nous y reviendrons à la
 \autoref{sec:bibliographie:style}.
 
 Fonctionnant de pair --- et exclusivement --- avec {\BibTeX},
@@ -139,8 +141,8 @@ détails dans les sections suivantes.
 \begin{enumerate}
 \item Construire une ou plusieurs bases de données contenant les
   informations bibliographiques. On utilise les mêmes bases de données
-  pour tous nos documents. Par conséquent, le temps consacré à cette
-  étape s'amenuise au fur et à mesure que l'on complète nos bases de
+  pour tous ses documents. Par conséquent, le temps consacré à cette
+  étape s'amenuise au fur et à mesure que l'on complète ses bases de
   données.
 \item Choisir un style de citation et de présentation de la
   bibliographie, généralement en se fiant aux us et coutumes dans sa
@@ -159,9 +161,10 @@ détails dans les sections suivantes.
 
 Il est tout à fait possible de citer des références et de construire
 une bibliographie avec {\LaTeX} sans avoir recours à une base de
-données bibliographiques et à {\BibTeX} pour traiter celles-ci.
-L'investissement requis en temps et en efforts pour adopter l'approche
-{\BibTeX} demeure toutefois faible, surtout au regard des avantages:
+données bibliographiques et à {\BibTeX} pour traiter celles-ci. Nous
+recommandons toutefois fortement d'adopter cette approche.
+L'investissement requis en temps et en efforts demeure relativement
+faible, surtout au regard des avantages:
 \begin{itemize}
 \item on entre les informations dans une base de données une seule
   fois pour ensuite les utiliser à répétition;
@@ -284,7 +287,7 @@ préparation des entrées bibliographiques suivent l'\autoref*{ex:bibliographie:
 \item Lorsqu'un ouvrage compte plusieurs auteurs, on distingue ceux-ci
   en séparant le nom complet de \emph{chacun} des auteurs par le
   mot-clé \code{and}.
-\item {\BibTeX} gère normalement automatiquement les hauts et bas de
+\item {\BibTeX} gère automatiquement les hauts et bas de
   casse (majuscules et minuscules), en particulier dans les titres
   d'ouvrages. Pour préserver une casse particulière, il suffit de
   placer les lettres entre accolades.
@@ -324,15 +327,16 @@ préparation des entrées bibliographiques suivent l'\autoref*{ex:bibliographie:
 \end{itemize}
 
 \begin{conseil}
-  Entretenir une base de données bibliographiques
-  unique peut rapidement devenir pénible.
+  Entretenir une base de données bibliographiques unique peut
+  rapidement devenir pénible quand le nombre d'entrée devient grand.
 
-  Mieux vaut scinder ses références dans plusieurs fichiers par
-  thématique, un peu comme dans une bibliothèque: informatique,
-  mathématiques, statistique, droit, etc.
+  Mieux vaut alors scinder ses références dans plusieurs fichiers par
+  thématique, un peu comme dans une bibliothèque:
+  droit, finance, informatique, mathématiques, etc.
 
-  Nommer ensuite les fichiers du nom de la thématique:
-  \code{informatique.bib}, \code{droit.bib}, etc.
+  On nommera ensuite les fichiers du nom de la thématique:
+  \code{droit.bib}, \code{finance.bib},
+  \code{informatique.bib}, etc.
 \end{conseil}
 
 
@@ -661,9 +665,10 @@ une bibliographie est le suivant.
 
 Il faut répéter les étapes
 \ref*{item:bibliographie:1}--\ref*{item:bibliographie:2} chaque fois
-qu'une \emph{nouvelle} référence est ajoutée dans le document.
-Autrement, tant que la bibliographie demeure inchangée, une
-compilation standard avec seulement le moteur {\TeX} suffit.
+qu'une nouvelle référence est ajoutée dans le document ou que l'entrée
+bibliographique est modifiée. Autrement, tant que la bibliographie
+demeure inchangée, une compilation standard avec seulement le moteur
+{\TeX} suffit.
 
 \begin{exemple}
   La \autoref{fig:bibliographie:bibtex:1} présente le contenu d'un
@@ -680,7 +685,7 @@ compilation standard avec seulement le moteur {\TeX} suffit.
     bibliographie.
   \item Le paquetage \pkg{babel} est activé avec l'anglais et le
     français, les deux langues utilisées dans la bibliographie. Nommé
-    en dernier dans les options de chargement du paquetage, le
+    en dernier dans les options de chargement de la classe, le
     français est la langue par défaut du document.
   \end{itemize}
 
@@ -729,17 +734,19 @@ compilation standard avec seulement le moteur {\TeX} suffit.
   manquantes (\emph{undefined references}).
 \end{conseil}
 
-Les éditeurs de texte spécialisés pour la préparation de documents
-{\LaTeX} offrent généralement des raccourcis pour exécuter la
+Les logiciels intégrés de rédaction offrent généralement des raccourcis pour exécuter la
 compilation avec {\BibTeX}.
 \begin{itemize}
 \item Dans TeXShop, on sélectionne un autre programme dans le menu à
   côté du bouton «Composition».
 \item Dans Texmaker, on choisit le programme approprié dans le menu de
   composition rapide.
+\item Dans GNU~Emacs, on choisit \code{BibTeX} dans le menu
+  \code{Command} ou après avoir lancé la commande
+  \code{TeX-command-master} avec \code{C-c C-c}.
 \end{itemize}
-Ces deux interfaces sont représentées à la
-\autoref{fig:bibliographie:editeurs}.
+La \autoref{fig:bibliographie:editeurs} présente les deux premières
+interfaces.
 
 \begin{figure}
   \centering
