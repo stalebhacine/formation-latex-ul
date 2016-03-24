@@ -136,15 +136,28 @@ commande
 produit une boîte horizontale dont le contenu \meta{texte} est
 surélevé de la longueur \meta{déplacement} par rapport à la ligne de
 base. Si \meta{déplacement} est négatif, la boîte est positionnée sous
-la ligne de base. Ainsi
+la ligne de base.
+\begin{demo}
+  \begin{texample}[0.55\textwidth]
 \begin{lstlisting}
-\raisebox{1ex}{au-dessus} de la ligne de base
+Texte \raisebox{1ex}{au-dessus}
+de la ligne de base.
 \end{lstlisting}
-produit  \raisebox{1ex}{au-dessus} de la ligne de base et
+    \producing
+    Texte \raisebox{1ex}{au-dessus}
+    de la ligne de base.
+  \end{texample}
+
+  \begin{texample}[0.55\textwidth]
 \begin{lstlisting}
-\raisebox{-1ex}{au-dessous} de la ligne de base
+Texte \raisebox{-1ex}{au-dessous}
+de la ligne de base.
 \end{lstlisting}
-produit \raisebox{-1ex}{au-dessous} de la ligne de base.
+    \producing
+    Texte \raisebox{-1ex}{au-dessous}
+    de la ligne de base.
+  \end{texample}
+\end{demo}
 
 Attention, toutefois, de ne pas utiliser \cmd{\raisebox} pour placer
 du texte en exposant ou en indice. Selon la nature du texte, employer

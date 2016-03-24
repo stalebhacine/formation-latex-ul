@@ -12,8 +12,8 @@ pire, de prétendre savoir mieux que nous ce que nous voulons faire. À
 ce chapitre, les traitements de texte ne brillent plus! Peut-être avez-vous
 déjà eu de la difficulté à contrôler les bordures d'un tableau, la
 hauteur des lignes ou la largeur des colonnes dans un traitement de
-texte? Alors vous comprenez que l'exercice de composition d'un tableau
-peut rapidement devenir frustrant.
+texte? Alors vous comprenez combien l'exercice de composition d'un tableau
+avec ces outils peut rapidement devenir frustrant.
 
 Avant de discuter de la création ou de l'insertion de tableaux, de
 graphiques et d'images dans un document {\LaTeX}, il convient de
@@ -136,9 +136,9 @@ environnements \Ie{tabular}, \Ie{tabular*} et \Ie{tabularx} (ce
 dernier fourni par le paquetage \pkg{tabularx} ou par la classe
 \class{memoir}). La syntaxe de ces environnements est:
 \begin{lstlisting}
-\begin{tabular}`\marg{format}'           `\textit{lignes}' \end{tabular}
-\begin{tabular*}`\marg{largeur}\marg{format}' `\textit{lignes}' \end{tabular*}
-\begin{tabularx}`\marg{largeur}\marg{format}' `\textit{lignes}' \end{tabularx}
+\begin{tabular}`\marg{format}' `\meta{lignes}' \end{tabular}
+\begin{tabular*}`\marg{largeur}\marg{format}' `\meta{lignes}' \end{tabular*}
+\begin{tabularx}`\marg{largeur}\marg{format}' `\meta{lignes}' \end{tabularx}
 \end{lstlisting}
 La signification des arguments\footnote{%
   Nous avons omis un argument optionnel à peu près jamais utilisé
@@ -188,9 +188,9 @@ de la classe \class{memoir} (chapitre 11) ou %
   \item[\normalfont\code{l}] contenu de la colonne aligné à gauche;
   \item[\normalfont\code{r}] contenu de la colonne aligné à droite;
   \item[\normalfont\code{c}] contenu de la colonne centré;
-  \item[\normalfont\code{p\{}\textit{lgr}\code{\}}] contenu de la
+  \item[\normalfont\code{p\marg{lgr}}] contenu de la
     colonne traité comme un paragraphe de texte de largeur
-    \textit{lgr};
+    \meta{lgr};
   \item[\normalfont\code{X}] [environnement \Pe{tabularx} seulement]
     colonne dont la largeur peut être ajustée pour obtenir un tableau
     de la largeur prescrite; identique à \code{p} par ailleurs.
@@ -710,14 +710,14 @@ Pourquoi voudrait-on laisser {\LaTeX} décider où un élément de contenu
 devrait se retrouver dans notre document? D'abord et avant tout pour
 les tableaux et les figures.
 
-En effet, les tableaux et les figures sont des éléments de contenu qui occupent
-souvent beaucoup d'espace vertical dans la page. S'il ne reste plus
-assez de place pour y afficher un tel élément, {\LaTeX} devra
-le déplacer au début de la page suivante et cela risque de produire une
-page inesthétique car insuffisamment remplie\footnote{%
+En effet, les tableaux et les figures occupent souvent beaucoup
+d'espace vertical dans la page. S'il ne reste plus assez de place pour
+y afficher un tel élément de contenu, {\LaTeX} devra le déplacer au
+début de la page suivante et cela risque de produire une page
+inesthétique car insuffisamment remplie\footnote{%
   \emph{Underful \cs{vbox}} dans le jargon de {\TeX}.}. %
-Les traitements de texte génèrent sans rechigner des pages
-à demi remplies dans de telles situations.
+Les traitements de texte génèrent sans rechigner des pages à demi
+remplies dans de telles situations.
 
 En définissant un élément comme flottant, on laisse plutôt à
 {\LaTeX} la possibilité de le disposer au meilleur endroit en fonction
@@ -839,9 +839,9 @@ contraire il est disposé comme un paragraphe normal.
 \begin{conseil}
   Les anciennes version du style français de \pkg{babel} utilisaient
   les étiquettes plus neutres «\textsc{Tab.}» et «\textsc{Fig.}» dans
-  les légendes des tableaux et figures. Pour utiliser ces versions
-  plutôt que les versions par défaut --- comme dans le présent
-  document --- ajoutez dans le préambule les commandes suivantes:
+  les légendes des tableaux et figures. Pour utiliser --- comme dans
+  le présent document --- ces versions plutôt que les versions par
+  défaut ajoutez dans le préambule les commandes suivantes:
 \begin{lstlisting}
 \def\frenchtablename{{\scshape Tab.}}
 \def\frenchfigurename{{\scshape Fig.}}

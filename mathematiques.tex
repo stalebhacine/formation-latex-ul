@@ -134,24 +134,6 @@ $z=2x + 3xy$
   \end{demo}
 \end{enumerate}
 
-
-% Pensez simplement
-% à ce que pourrait être en mots la représentation de l'équation
-% \begin{equation*}
-%   \int_0^\infty \int_0^1 x_1^{\alpha + 1} x_2^{\beta + 1}\, dx_1 dx_2.
-% \end{equation*}
-% Cela ressemblerait sans doute à ceci (avec entre parenthèses les mots
-% habituellement omis et en gras les symboles qu'il faut pouvoir décrire
-% autrement que part un caractère disponible sur le clavier):
-% \begin{quote}
-%   \textbf{intégrale} de (indice) zéro à (exposant) l'\textbf{infini} \\
-%   \textbf{intégrale} de (indice) zéro à (exposant) à un \\
-%   $x$ (indice) un, puissance \textbf{alpha} plus un \\
-%   $x$ (indice) deux, puissance \textbf{beta} plus un \\
-%   $d$ $x$ (indice) un \\
-%   $d$ $x$ (indice) deux.
-% \end{quote}
-
 Quant au langage retenu par {\LaTeX} pour décrire les équations
 mathématiques, il est très similaire à celui que l'on utiliserait pour
 le faire à voix haute. Il faut simplement avoir
@@ -206,7 +188,7 @@ partie de l'éventail de symboles mathématiques offerts par {\LaTeX}.
 {\LaTeX} permet de créer facilement et avec la bonne taille de
 symboles n'importe quelle combinaison d'exposants et d'indices.
 
-On place un caractère en \textsuperscript{exposant} d'un autre avec la
+On place un caractère en \textsuperscript{exposant} avec la
 commande \verb=^= et en \textsubscript{indice} avec la commande
 \verb=_=. Les indices et exposants se combinent naturellement.
 \begin{demo}
@@ -1037,8 +1019,8 @@ sont généralement pas appropriées pour les mathématiques (pensons à
 {\manerrarrow} ou {\faArrowRight}).
 
 Le paquetage \pkg{amsmath} fournit plusieurs flèches additionnelles
-ainsi que la négation des plus communes. Ces dernières sont d'ailleurs
-présentées dans le \autoref{tab:math:fleches}.
+ainsi que la négation des plus communes. Ces dernières apparaissent
+d'ailleurs dans le \autoref{tab:math:fleches}.
 
 \begin{table}[p]
   \caption{Quelques flèches et leur négation}
@@ -1320,6 +1302,9 @@ environnements pour les équations hors paragraphe.
   symbole de relation (en une ou plusieurs colonnes) est \Ie{align}.
   C'est l'environnement le plus utilisé en mode mathématique hormis
   \Pe{equation}.
+\item Les environnements \Pe{multline}, \Pe{gather} et \Pe{align}
+  existent également en version étoilée (\Ie{multline*}, \Ie{gather*},
+  \Ie{align*}) qui ne numérotent pas les équations.
 \item Dans les environnements \Pe{align} et \Ie{split}, les équations
   successives sont alignées sur le caractère se trouvant immédiatement
   après le marqueur de colonne \verb=&=.
@@ -1389,8 +1374,8 @@ l'utilisation des environnements du \autoref*{tab:math:displays}.
 \end{conseil}
 
 \begin{exemple}
-  Les deux suites d'équations au début de la section ont été réalisées
-  avec les extraits de code ci-dessous, dans l'ordre.
+  Nous avons réalisé les deux suites d'équations au début de la
+  section avec les extraits de code ci-dessous, dans l'ordre.
 \begin{lstlisting}
 \begin{align}
   y &= 2x + 4 \\
