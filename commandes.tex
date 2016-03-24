@@ -128,10 +128,10 @@ arguments:
 \newcommand{`\bs\meta{nom\_commande}'}`\oarg{narg}\marg{définition}'
 \renewcommand{`\bs\meta{nom\_commande}'}`\oarg{narg}\marg{définition}'
 \end{lstlisting}
-Le nouvel argument \meta{narg} est un nombre entre $1$ et $9$
+Le nouvel argument \meta{narg} est un nombre entre 1 et 9
 spécifiant le nombre d'arguments de la commande. La \meta{définition}
 de la commande doit alors contenir des jetons \code{\#1}, \code{\#2},
-\dots\ pour identifier les endroits où les arguments $1$, $2$, \dots\
+\dots\ pour identifier les endroits où les arguments 1, 2, \dots\
 doivent apparaître.
 
 \begin{exemple}
@@ -189,8 +189,10 @@ Tel que mentionné en introduction du chapitre, {\LaTeX} permet
 également à l'utilisateur de définir ou de modifier des
 environnements. La mécanique est similaire à celle de la définition de
 commandes, sauf qu'un environnement compte trois parties: le début,
-marqué par la déclaration \cmdprint{\begin\marg{...}}; le contenu en tant que
-  tel; la fin, marquée par la déclaration \cmdprint{\end\marg{...}}.
+marqué par la déclaration \cmdprint{\begin\marg{...}} et, parfois, des
+  commandes de configuration de l'environnement; le contenu en tant
+  que tel; la fin, marquée par la déclaration
+  \cmdprint{\end\marg{...}}.
 
 On crée ou modifie des environnements avec les commandes
 \begin{lstlisting}
@@ -211,7 +213,7 @@ Les nombreux arguments sont les suivants:
 \item[nom\_env] nom de l'environnement à créer ou à modifier.
   Il est fortement recommandé de ne pas modifier les environnements de
   base de {\LaTeX};
-\item[narg] un nombre entre $1$ et $9$ représentant le nombre
+\item[narg] un nombre entre 1 et 9 représentant le nombre
   d'arguments de l'environnement, lorsqu'il y en a. Les arguments sont
   utilisés de la même manière que dans les définitions de commandes;
 \item[début\_déf] commandes et texte à insérer au début de
@@ -279,7 +281,7 @@ Les nombreux arguments sont les suivants:
   \begin{enumerate}
   \item définit des couleurs requises par l'environnement
     \Pe{titled-frame};
-  \item ouvre un élément flottant pour disposer la rubrique sur la
+  \item ouvre un élément flottant \Pe{table} pour disposer la rubrique sur la
     page;
   \item ouvre un environnement \Ie{titled-frame} (fourni par le paquetage
     \pkg{framed}) pour encadrer la rubrique et afficher son titre;
