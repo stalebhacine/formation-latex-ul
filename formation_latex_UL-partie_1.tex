@@ -84,6 +84,9 @@
     \end{frame}
   }
 
+  %%% Paramétrage de babel pour les guillemets
+  \frenchbsetup{og=«, fg=»}
+
   %%% Nouvelles commandes et nouveaux environnements
   \newcommand{\fichier}[1]{\fbox{\texttt{#1}}}
   \newcommand{\class}[1]{\textbf{#1}}
@@ -217,6 +220,7 @@
   \item Installer une distribution {\LaTeX} sur votre poste de
     travail; nous recommandons la distribution {\TeX}~Live
     \begin{itemize}
+      \normalsize
     \item[] \capsule{https://www.youtube.com/watch?v=fjcR6lFy0c4}{%
         installation sur Mac OS X}
     \item[] \capsule{https://www.youtube.com/watch?v=z_dq3dns-WU}{%
@@ -225,6 +229,7 @@
     \bigskip
   \item Compiler un premier document très simple de type \emph{Hello World!}
     \begin{itemize}
+      \normalsize
     \item[] \capsule{https://www.youtube.com/watch?v=QOUx_aOZ42o}{%
         démonstration sur Mac OS X avec TeXShop}
     \item[] \capsule{https://www.youtube.com/watch?v=qddRMGwXnNM}{%
@@ -889,7 +894,7 @@ M.~Tremblay me doit 200~\$.
   \end{itemize}
 
   Pour plus de détails, consulter la rubrique «Rédaction en français» du
-  \link{http://www.theses.ulaval.ca/wiki/}{Wiki Thèses UL}.
+  \link{http://www.theses.ulaval.ca/wiki/}{WikiThèse UL}.
 \end{frame}
 
 
@@ -1255,22 +1260,27 @@ M.~Tremblay me doit 200~\$.
 \end{lstlisting}
     \vfill
   \item<2-> Par défaut: texte en italique dans texte droit et vice versa
-
+    \begin{demo}
+      \small
+      \begin{texample}[0.48\linewidth]
 \begin{lstlisting}
-C'était un peu \emph{rough} par moments
+C'était un peu \emph{rough}
+par moments
 \end{lstlisting}
-    \begin{texoutput}{\textwidth}
-      C'était un peu \emph{rough} par moments
-    \end{texoutput}
+        \producing
+        C'était un peu \emph{rough} par moments
+      \end{texample}
 
+      \begin{texample}[0.48\linewidth]
 \begin{lstlisting}
-Il m'a dit: «\emph{C'était un peu \emph{rough}
-par moments}»
+Il m'a dit: «\emph{C'était
+un peu \emph{rough} par
+moments}»
 \end{lstlisting}
-    \begin{texoutput}{\textwidth}
-      Il m'a dit: «\emph{C'était un peu \emph{rough} par moments}»
-    \end{texoutput}
-    \vfill
+        \producing
+        Il m'a dit: «\emph{C'était un peu \emph{rough} par moments}»
+      \end{texample}
+    \end{demo}
   \item<3-> Pas de commande pour souligner en {\LaTeX\dots} et ce n'est
     pas une omission!
   \end{itemize}
