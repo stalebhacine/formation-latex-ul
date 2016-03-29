@@ -98,11 +98,13 @@
   \setlist[itemize]{leftmargin=*,align=left}
 
   %% Paramétrage de babel
-  \frenchbsetup{StandardItemizeEnv=true,
-    ThinSpaceInFrenchNumbers=true,
-    ItemLabeli=\mantriangleright,
-    ItemLabelii=\textendash,
-    og=«, fg=»}
+  \frenchbsetup{%
+    StandardItemizeEnv=true,       % format standard des listes
+    ThinSpaceInFrenchNumbers=true, % espace fine dans les nombres
+    ItemLabeli=\mantriangleright,  % puce premier niveau
+    ItemLabelii=\textendash,       % puce second niveau
+    og=«, fg=»                     % caractères « et » sont les guillemets
+  }
   \def\frenchfigurename{{\scshape Fig.}}
   \def\frenchtablename{{\scshape Tab.}}
 
