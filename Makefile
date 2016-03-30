@@ -26,7 +26,7 @@ TEXFILES2 = licence-partie_2.tex \
 	solutions.tex        \
 	colophon-partie_2.tex
 
-## Liste des fichiers à include dans l'archive pour la partie I
+## Liste des fichiers à inclure dans l'archive pour la partie I
 FILES1 = ${MASTER1} \
 	exercice_minimal.tex \
 	exercice_demo.tex \
@@ -47,7 +47,7 @@ SOLUTIONS1 = \
 	exercice_complet-solution.tex \
 	exercice_ulthese-solution.tex
 
-## Liste des fichiers à include dans l'archive pour la partie II
+## Liste des fichiers à inclure dans l'archive pour la partie II
 FILES2 = ${MASTER2} \
 	ul_p.pdf \
 	exercice_gabarit.tex \
@@ -78,7 +78,7 @@ $(MASTER1): $(MASTER1:.pdf=.tex) $(TEXFILES1)
 $(MASTER2): $(MASTER2:.pdf=.tex) $(TEXFILES2)
 	$(TEXI2DVI) $(MASTER2:.pdf=.tex)
 
-zip :
+zip : ${FILES1} ${SOLUTIONS1} ${FILES2} ${SOLUTIONS2}
 	if [ -d ${PACKAGENAME} ]; then ${RM} ${PACKAGENAME}; fi
 	mkdir ${PACKAGENAME}
 	sed -e 's/<VERSION>/${VERSION}/g' README.in > README
