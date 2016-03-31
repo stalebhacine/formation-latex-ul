@@ -8,11 +8,11 @@ PACKAGENAME = formation-latex-ul
 MASTER1 = formation_latex_UL-partie_1.pdf
 MASTER2 = formation_latex_UL-partie_2.pdf
 
-## Liste des fichiers source de la partie I
+## Liste des autres fichiers source de la partie I
 TEXFILES1 = licence-partie_1.tex \
 	colophon-partie_1.tex
 
-## Liste des fichiers source de la partie II
+## Liste des autres fichiers source de la partie II
 TEXFILES2 = licence-partie_2.tex \
 	introduction.tex     \
 	modedemploi.tex      \
