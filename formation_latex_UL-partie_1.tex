@@ -174,7 +174,8 @@
 %% Page titre; image dans fichier séparé
 {
   \usebackgroundtemplate{%
-    \includegraphics[page=1,height=\paperheight,width=\paperwidth]{couvertures-partie_1}}
+    \includegraphics[page=1,height=\paperheight,width=\paperwidth]{%
+      couvertures-partie_1}}
   \frame[plain]{}
 }
 
@@ -520,7 +521,7 @@ Copyright 2015 D.E. Knuth.
   \hfill
   \begin{minipage}{0.75\linewidth}
 \begin{lstlisting}[emph={documentclass,begin,end,document}]
-\documentclass[11pt,article,french]{memoir}
+\documentclass[11pt,french]{article}
   \usepackage{babel}
   \usepackage[autolanguage]{numprint}
   \usepackage[utf8]{inputenc}
