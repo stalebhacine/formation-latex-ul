@@ -48,6 +48,14 @@ HISTORIQUE DES VERSIONS
 
 o <VERSION>
 
+- Fichier exercice_demo.tex: utilisation du style de bibliographie
+  'plainnat' puisque le paquetage francais-bst ne fait pas partie de la
+  distribution standard de TeX Live 2015.
+- Fichiers d'exercices: utilisation systématique des options 'og' et
+  'fg' dans \frenchbsetup.
+
+o 2016-03-24
+
 - Partie I: révision des diapositives pour baser davantage la
   présentation sur des exemples de code source.
 - Partie I: ajout d'images dans les diapos.
