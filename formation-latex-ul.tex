@@ -418,7 +418,7 @@
 \pagestyle{empty}
 
 %% Page couverture avant.
-\includepdf[pages=1]{couvertures-partie_2}
+\includepdf[pages=1]{couvertures}
 \cleardoublepage
 
 %% Page frontispice
@@ -426,7 +426,7 @@
 \clearpage
 
 %% Page de copyright
-\include{licence-partie_2}
+\include{licence}
 \clearpage
 
 %% Corps du document
@@ -451,14 +451,14 @@
 \appendix
 \include{solutions}
 
-\bibliography{formation_latex_UL}
+\bibliography{formation-latex-ul}
 
 \cleardoublepage
 \printindex
 
 \cleartoverso
 
-\input{colophon-partie_2}
+\input{colophon}
 
 \cleartoverso
 
@@ -466,7 +466,7 @@
 \AddToShipoutPictureFG*{%
   \AtStockLowerLeft{\raisebox{45mm}{\hspace{5mm}\includegraphics{codebarre_\ISBN}}}
 }
-\includepdf[pages=2]{couvertures-partie_2}
+\includepdf[pages=2]{couvertures}
 
 \end{document}
 
