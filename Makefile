@@ -5,8 +5,8 @@ include ./Makeconf
 PACKAGENAME = formation-latex-ul
 
 ## Fichiers maîtres
-MASTER1 = formation_latex_UL-partie_1.pdf
-MASTER2 = formation_latex_UL-partie_2.pdf
+MASTER1 = formation-latex-ul-diapos.pdf
+MASTER2 = formation-latex-ul.pdf
 
 ## Liste des autres fichiers source de la partie I
 TEXFILES1 = licence-partie_1.tex \
