@@ -1,18 +1,44 @@
 \chapter{Présentation de {\TeX} et {\LaTeX}}
 \label{chap:presentation}
 
+La production d'un document à l'aide d'un ordinateur se compose
+toujours de trois grandes étapes:
+\begin{enumerate}
+\item la saisie du texte dans l'ordinateur;
+\item la composition du texte sur la page en lignes de longueur égale
+  et en paragraphes, ainsi que la disposition des éléments tels que les
+  figures et les tableaux;
+\item la production du document final pour consultation à l'écran ou
+  pour l'impression.
+\end{enumerate}
+Les logiciels de traitement de texte combinent les trois étapes de
+manière transparente pour l'utilisateur.
 
-{\LaTeX} est certainement
+Le système {\LaTeX}, lui, n'est qu'un logiciel de mise en page qui se
+charge de la seconde étape de production. La préparation d'un document
+avec {\LaTeX} requiert donc d'utiliser trois outils bien différents,
+un pour chaque étape de production. Nous verrons rapidement que ce qui
+peut à priori sembler un inconvénient constitue en fait un grand
+avantage.
 
-{\TeX}, {\LaTeX}, {\XeLaTeX}, {\LuaLaTeX}
+{\LaTeX} est certainement l'un des systèmes de mise en page les plus
+utilisés dans le monde, particulièrement dans la production de
+documents scientifiques intégrant de multiples équations
+mathématiques, des graphiques, du code informatique, etc. En fait, le
+nom {\LaTeX} agit généralement comme terme générique pour toute une
+famille de programmes. Ce chapitre explique donc non seulement la
+philosophie derrière {\LaTeX}, mais également le lien qui unit ce
+programme aux autres dont on croise couramment le nom aujourd'hui:
+{\TeX}, pdf{\LaTeX}, {\XeLaTeX}, {\LuaLaTeX}.
 
-Un peu de phonétique avant d'aller plus loin. La dernière lettre de
-tous les acronymes ci-dessus étant non pas un X, mais plutôt la lettre
-grecque khi majuscule (visuellement identique), la terminaison se
-prononce «tek». Voilà qui devrait permettre de distinguer
-immédiatement le système de mise en page du matériau élastique.
+Un peu de phonétique avant d'aller plus loin. La racine {\TeX} est une
+transcription en majuscules des lettres grecques $\tau\epsilon\chi$.
+La dernière lettre des acronymes ci-dessus n'est donc non pas un X,
+mais plutôt la lettre grecque khi majuscule, qui est visuellement
+identique. Pour cette raison, la terminaison des acronymes se prononce
+«tek». Voilà qui devrait permettre de distinguer le système de mise en
+page du matériau élastique.
 
-de {\TeX}, {\LaTeX} et consorts
 
 \section{Ce que c'est}
 \label{sec:presentation:c-est}
@@ -86,7 +112,7 @@ de ses exigences!
 \begin{itemize}
 \item Un traitement de texte --- {\LaTeX} impose un mode de travail
   qui permet de séparer \emph{structure} et \emph{apparence} du texte.
-\item WYSIWYG --- un système de mise en page est davantage qualité de
+\item WYSIWYG --- un système de mise en page est davantage qualifié de
   \emph{What You See is What You Mean}.
 \item Incompatible --- le code source {\LaTeX} peut être lu et le
   document reproduit à l'identique sur tous les types de systèmes
