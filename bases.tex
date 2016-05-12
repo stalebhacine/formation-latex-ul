@@ -3,52 +3,118 @@
 
 \section{Rédaction}
 
-On se concentre sur le contenu et la \emph{structure} du document,
-pas sur son \emph{apparence}.
+Lors de l'apprentissage de {\LaTeX} la personne habituée à utiliser un
+traitement de texte  devra fort probablement se défaire d'une vilaine
+habitude: se préoccuper sans cesse de la disposition et de l'apparence
+du texte au moment de la rédaction.
+
+En effet, avec un système de mise en page tel que {\LaTeX}, on se
+concentre sur le contenu et la \emph{structure} du document à la
+rédaction, et non pas sur son \emph{apparence}. Par exemple:
+\begin{itemize}
+\item au lieu de prescrire qu'un titre de section doit être en gras
+  14~points, on indique simplement à {\LaTeX} que le texte doit être
+  traité comme un titre de section
+  \begin{demo}
+    \begin{minipage}{0.45\linewidth}
+\begin{lstlisting}
+\textbf{\large Titre}
+\end{lstlisting}
+    \end{minipage}
+    \hfill \faArrowRight \hfill
+    \begin{minipage}{0.45\linewidth}
+\begin{lstlisting}
+\section{Titre}
+\end{lstlisting}
+    \end{minipage}
+  \end{demo}
+\item au lieu de décider qu'un mot sur lequel l'on souhaite insister
+  sera en italique, on indique à {\LaTeX} de mettre de l'emphase sur
+  ce mot sans se soucier de la mise en forme
+  \begin{demo}
+    \begin{minipage}{0.45\linewidth}
+\begin{lstlisting}
+\textit{texte}
+\end{lstlisting}
+    \end{minipage}
+    \hfill \faArrowRight \hfill
+    \begin{minipage}{0.45\linewidth}
+\begin{lstlisting}
+\emph{texte}
+\end{lstlisting}
+    \end{minipage}
+  \end{demo}
+\end{itemize}
+
+L'apparence du texte sera prise en charge par {\LaTeX}. Comme les
+gabarits sont l'{\oe}uvre de spécialistes en typographie, il est
+généralement préférable de ne pas les modifier. À titre d'exemple,
+{\LaTeX} détermine automatiquement la largeur des marges en fonction
+de la taille de la police de caractère de manière à ce que les lignes
+de texte ne dépassent pas approximativement 70~caractères. La raison:
+lorsqu'une ligne de texte est trop longue, notre {\oe}il a de la
+difficulté à la suivre sur toute sa longueur. Il a tendance à passer à
+la ligne inférieure, ce qui rend la lecture plus difficile.
+
+Lors de l'entrée du texte, on veillera également à respecter ces
+quelques règles simples:
 
 \begin{itemize}
-\item Par exemple: \bigskip
-  \begin{tabbing}
-    \verb=\textbf{titre}= \qquad\= \faArrowRight \qquad\= \verb|\section{titre}| \\[6pt]
-    \verb|\textit{texte}| \> \faArrowRight \> \verb|\emph{texte}|
-  \end{tabbing}
-  \bigskip
-\item L'apparence du texte est prise en charge par {\LaTeX}. Les
-  gabarits étant l'{\oe}uvre de spécialistes, il est généralement
-  préférable de ne pas les modifier.
-\item Dans {\LaTeX}, on sépare:
-  \begin{itemize}
-  \item les mots par une ou plusieurs \emph{espaces} (la mise en page
-    sera la même peu importe le nombre d'espaces dans le code source);
-  \item les paragraphes par une ou plusieurs lignes blanches
-    (celles-ci n'apparaîtront pas nécessairement dans le texte final).
-  \end{itemize}
-\item On aura recours à des \emph{commandes} pour indiquer la
+\item on sépare les mots par une ou plusieurs \emph{espaces} (la mise
+  en page sera la même peu importe le nombre d'espaces dans le code
+  source);
+\item on sépare les paragraphes par une ou plusieurs lignes blanches
+  (celles-ci n'apparaîtront pas nécessairement dans le texte final);
+\item on aura recours à des \emph{commandes} pour indiquer la
   structure du texte dans le code source.
 \end{itemize}
 
 
 \section{Structure d'un document}
 
-Un fichier source {\LaTeX} est toujours composé de deux parties.
+Un fichier source {\LaTeX} --- dont on trouvera un exemple simple à la
+\autoref{fig:bases:parties} --- est toujours composé de deux parties.
 
-\begin{enumerate}
-\item Le \emph{préambule}:
-  \begin{itemize}
-  \item suite de commandes spécifiant la mise en forme globale
-    du document (format du papier, marges, entête et pied de page,
-    etc.);
-  \item contient au minimum la commande \cmd{\documentclass}.
-  \end{itemize}
-\item Le \emph{corps} du document:
-  \begin{itemize}
-  \item débute par \verb=\begin{document}=;
-    \item contient le texte du document;
-    \item contient presque toujours des commandes à effet
-      \emph{local};
-    \item se termine par \verb=\end{document}=.
-  \end{itemize}
-\end{enumerate}
+\begin{figure}
+  \centering
+  \begin{minipage}{0.75\linewidth}
+\begin{lstlisting}[numbers=left, numberstyle=\tiny]
+\documentclass[11pt,french]{article} `\label{lst:bases:preambule_debut}'
+  \usepackage{babel}
+  \usepackage[autolanguage]{numprint}
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc} `\label{lst:bases:preambule_fin}'
+
+\begin{document} `\label{lst:bases:corps_debut}'
+
+Lorem ipsum dolor sit amet, consectetur
+adipiscing elit. Donec quam nulla, bibendum
+vitae ipsum vel, fermentum pellentesque orci.
+
+\end{document} `\label{lst:bases:corps_fin}'
+\end{lstlisting}
+  \end{minipage}
+  \caption{Fichier source {\LaTeX} simple comportant les deux parties
+    obligatoires: le préambule et le corps du document.}
+  \label{fig:bases:parties}
+\end{figure}
+
+\begin{description}
+\item[Le préambule] Suite de commandes spécifiant la mise en forme
+  globale du document (format du papier, marges, entête et pied de
+  page, etc.). Il contient au minimum la commande
+  \cmd{\documentclass}. Le préambule s'étend de la ligne
+  \ref*{lst:bases:preambule_debut} à la ligne
+  \ref*{lst:bases:preambule_fin} dans la \autoref{fig:bases:parties}.
+\item[Le \emph{corps} du document] Texte du document en tant que tel.
+  Il débute par \verb=\begin{document}= et se termine par
+    \verb=\end{document}=. Le corps du document peut aussi contenir
+  des commandes, mais l'effet de celles-ci est presque toujours local.
+  Les lignes
+  \ref*{lst:bases:corps_debut}--\ref*{lst:bases:corps_fin} de
+  la \autoref{fig:bases:parties} forment le corps de ce document
+  simple.
+\end{description}
 
 
 \section{Commandes}
