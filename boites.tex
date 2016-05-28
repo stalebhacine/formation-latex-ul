@@ -31,50 +31,6 @@ Une fois créée, une boîte ne peut être scindée en parties, notamment
 entre les lignes ou entre les pages.
 
 
-\section{Longueurs}
-\label{sec:boites:longueurs}
-
-Plusieurs des commandes de ce chapitre requièrent de spécifier une
-largeur ou une hauteur. Dans la terminologie de {\LaTeX}, on parle
-plus généralement de longueur\index{longueur} (\emph{length}).
-
-Une longueur est un nombre positif, négatif ou nul
-\emph{obligatoirement} et \emph{immédiatement} suivi d'un symbole
-d'unité de mesure. Le \autoref{tab:boites:longueurs} présente les
-principales unités de mesure utilisées par {\LaTeX} et le symbole
-correspondant.
-
-\begin{table}
-  \caption{Principales unités de mesure pour les longueurs dans
-    {\LaTeX}}
-  \label{tab:boites:longueurs}
-  \centering
-  \begin{tabular}{lcl}
-    \toprule
-    nom ou description & symbole & longueur équivalente \\
-    \midrule
-    millimètre & \texttt{mm} \\
-    centimètre & \texttt{cm} & $10$~mm \\
-    pouce      & \texttt{in} & $2,54$~cm \\
-    point      & \texttt{pt} & $1/72,27$~pouce \\
-    point PostScript     & \texttt{bp}   & $1/72$~pouce \\
-    largeur de la lettre M & \texttt{em} & fonction de la police \\
-    hauteur de la lettre x & \texttt{ex} & fonction de la police \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-Il existe un certain nombre de longueurs prédéfinies. Les plus utiles sont
-\begin{lstlisting}
-\linewidth
-\textwidth
-\end{lstlisting}
-La première contient la largeur de la ligne de texte courante et la
-seconde, la largeur de la page courante. Dans du texte normal, les
-deux mesures sont habituellement égales.
-
-
-
 \section{Boîtes horizontales}
 \label{sec:boites:lrbox}
 
