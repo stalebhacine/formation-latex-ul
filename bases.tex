@@ -1,6 +1,8 @@
 \chapter{Principes de base}
 \label{chap:bases}
 
+
+
 \section{Rédaction}
 \label{chap:bases:redaction}
 
@@ -15,7 +17,7 @@ rédaction, et non pas sur son \emph{apparence}. Par exemple:
 \begin{itemize}
 \item au lieu de prescrire qu'un titre de section doit être en gras
   14~points, on indique simplement à {\LaTeX} que le texte doit être
-  traité comme un titre de section
+  traité comme un titre de section;
   \begin{demo}
     \begin{minipage}{0.45\linewidth}
 \begin{lstlisting}
@@ -31,7 +33,7 @@ rédaction, et non pas sur son \emph{apparence}. Par exemple:
   \end{demo}
 \item au lieu de décider qu'un mot sur lequel l'on souhaite insister
   sera en italique, on indique à {\LaTeX} de mettre de l'emphase sur
-  ce mot sans se soucier de la mise en forme
+  ce mot sans se soucier de la mise en forme.
   \begin{demo}
     \begin{minipage}{0.45\linewidth}
 \begin{lstlisting}
@@ -52,7 +54,7 @@ gabarits sont l'{\oe}uvre de spécialistes en typographie, il est
 généralement préférable de ne pas les modifier. À titre d'exemple,
 {\LaTeX} détermine automatiquement la largeur des marges en fonction
 de la taille de la police de caractère de manière à ce que les lignes
-de texte ne dépassent pas approximativement 70~caractères. La raison:
+de texte comptent approximativement 70~caractères. La raison:
 lorsqu'une ligne de texte est trop longue, notre {\oe}il a de la
 difficulté à la suivre sur toute sa longueur. Il a tendance à passer à
 la ligne inférieure, ce qui rend la lecture plus difficile.
@@ -66,7 +68,7 @@ respecter les règles simples suivantes.
   page sera la même.
   \begin{demo}
     \begin{texample}
-\begin{lstlisting}[showspaces=true]
+\begin{lstlisting}
 Les espaces délimitent les
 mots. Leur nombre n'a pas
 d'importance.
@@ -192,6 +194,66 @@ vitae ipsum vel, fermentum pellentesque orci.
   du code de la \autoref{fig:bases:parties} forment le corps de ce
   document.
 \end{description}
+
+
+\section{Classes et paquetages}
+
+La première commande du préambule est normalement la déclaration de la
+\emph{classe} du document. La forme de la déclaration est la suivante:
+\begin{lstlisting}
+\documentclass`\oarg{options}\marg{classe}'
+\end{lstlisting}
+Les classes standards de {\LaTeX} sont \class{article},
+\class{report}, \class{book}, \class{letter} et \class{slides}. La
+classe pour les thèses et mémoires de l'Université Laval se nomme
+\class{ulthese} \citep{ulthese}. Celle-ci se base sur la classe
+\class{memoir} et, par conséquent, hérite de toutes ses (nombreuses)
+fonctionnalités; consulter la %
+\doc{ulthese}{http://texdoc.net/pkg/ulthese} %
+de la classe \class{ulthese} pour les détails.
+
+Les \meta{options} disponibles varient d'une classe à l'autre. Les
+plus courantes sont les suivantes:
+\begin{description}
+\item[\mdseries \code{10pt}, \code{11pt}*, \code{12pt}] taille
+  de la police du document;
+\item[\mdseries \code{oneside}*, \code{twoside}] document
+  recto seulement ou recto-verso;
+\item[\mdseries \code{openright}*, \code{openany}] ouverture
+  des chapitres toujours à droite ou immédiatement après la dernière
+  page du chapitre précédent;
+\item[\mdseries \code{article}] mise en page d'un article plutôt que celle d'un
+  livre (classe \class{memoir}).
+\end{description}
+Les options marquées d'un astérisque * sont actives par défaut avec
+la classe \class{ulthese}.
+
+Les \emph{paquetages} permettent de modifier des commandes ou
+d'ajouter des fonctionnalités à {\LaTeX}. On charge les paquetages
+dans le préambule avec des commandes de la forme
+\begin{lstlisting}
+\usepackage`\marg{paquetage}'
+\usepackage`\oarg{options}\marg{paquetage}'
+\usepackage`\marg{paquetage1,paquetage2, ...}'
+\end{lstlisting}
+La première et la troisième forme permettent de charger un ou
+plusieurs paquetages sans options. La seconde permet de spécifier des
+\meta{options} au chargement du paquetage. Il n'est évidemment pas
+possible de préciser des options avec la troisième forme puisque
+{\LaTeX} ne saurait à quel paquetage celles-ci se rapportent.
+
+Certains paquetages permettent que leurs options apparaissent parmi
+les \meta{options} de la commande \cmdprint{\documentclass}. Elles
+sont ainsi plus «visibles» pour d'autres paquetages. Par exemple,
+l'option \code{french} que l'on retrouve dans la déclaration de la
+classe à la \autoref{fig:bases:parties} est en fait une option du
+paquetage \pkg{babel}.
+
+La classe \class{ulthese} charge par défaut un certain nombre de
+paquetages essentiels ou incontournables pour la rédaction en
+français. Encore ici, consulter la %
+\doc{}{http://texdoc.net/pkg/ulthese} %
+pour les détails.
 
 
 \section{Commandes}
@@ -437,6 +499,49 @@ Knuth.
 \end{exemple}
 
 
+\section{Longueurs}
+\label{sec:bases:longueurs}
+
+Plusieurs commandes {\LaTeX} requièrent en argument une mesure de
+largeur ou de hauteur. Dans la terminologie de {\LaTeX}, on parle plus
+généralement de longueur\index{longueur} (\emph{length}).
+
+Une longueur est un nombre positif, négatif ou nul
+\emph{obligatoirement} et \emph{immédiatement} suivi d'un symbole
+d'unité de mesure. Le \autoref{tab:bases:longueurs} présente les
+principales unités de mesure utilisées par {\LaTeX} et le symbole
+correspondant.
+
+\begin{table}
+  \caption{Principales unités de mesure pour les longueurs dans
+    {\LaTeX}}
+  \label{tab:bases:longueurs}
+  \centering
+  \begin{tabular}{lcl}
+    \toprule
+    nom ou description & symbole & longueur équivalente \\
+    \midrule
+    millimètre & \texttt{mm} \\
+    centimètre & \texttt{cm} & $10$~mm \\
+    pouce      & \texttt{in} & $2,54$~cm \\
+    point      & \texttt{pt} & $1/72,27$~pouce \\
+    point PostScript     & \texttt{bp}   & $1/72$~pouce \\
+    largeur de la lettre M & \texttt{em} & fonction de la police \\
+    hauteur de la lettre x & \texttt{ex} & fonction de la police \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Il existe un certain nombre de longueurs prédéfinies. Les plus utiles sont
+\begin{lstlisting}
+\linewidth
+\textwidth
+\end{lstlisting}
+La première contient la largeur de la ligne de texte courante et la
+seconde, la largeur de la page courante. Dans du texte normal, les
+deux mesures sont habituellement égales.
+
+
 \section{Caractères spéciaux}
 \label{chap:bases:caracteres}
 
@@ -449,60 +554,69 @@ certains symboles sont reservés. De plus, certains symboles d'usage
 courant ne sont pas disponibles sur les claviers.
 
 \subsection{Espaces et retours à la ligne}
+\label{chap:bases:caracteres:espaces}
 
-Nous avons déjà mentionné à la \label{chap:bases:redaction} le
+Nous avons déjà mentionné à la \autoref{chap:bases:redaction} le
 traitement spécial réservé par {\LaTeX} aux espaces et aux retours à
-la ligne dans le code source. Ajoutons simplement ici les deux astuces
-suivantes.
+la ligne dans le code source. Plus précisément:
 \begin{itemize}
-\item Pour forcer une espace à un endroit où {\LaTeX} la supprimerait
-  normalement, utiliser la commande \verb*=\ = (le symbole \bs\ suivi
-  d'une espace, représentée ici par le symbole \textvisiblespace).
-  \begin{demo}
-    \begin{texample}
+\item seule la première espace entre deux éléments compte;
+\item les espaces en début de ligne sont ignorées;
+\item un retour à la ligne simple est traité comme une espace;
+\item il faut deux retours à la ligne consécutifs (ce qui résulte en
+  une ligne blanche dans le code source) pour identifier un changement
+  de paragraphe.
+\end{itemize}
+
+Pour forcer une espace à un endroit où {\LaTeX} la supprimerait
+normalement, utiliser la commande \verb*=\ = (le symbole \bs\ suivi
+d'une espace, représentée ici par le symbole \textvisiblespace).
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 Apprendre \LaTeX\ c'est
 formidable!
 \end{lstlisting}
-      \producing
-      Apprendre \LaTeX\ c'est
-      formidable!
-    \end{texample}
-  \end{demo}
-\item Un retour à la ligne \emph{simple} est traité comme une espace
-  qui, parfois, s'avère indésirable. Dans de tels cas, placer un
-  symbole de commentaire \verb=%= à la fin de la ligne.
+    \producing
+    Apprendre \LaTeX\ c'est
+    formidable!
+  \end{texample}
+\end{demo}
+
+Il arrive que l'espace générée par un retour à la ligne \emph{simple}
+s'avère indésirable. Dans de tels cas, placer un symbole de
+commentaire \verb=%= à la fin de la ligne.
 \begin{demo}
-    \begin{texample}
+  \begin{texample}
 \begin{lstlisting}
 Donald Knuth est un dieu
 \textsuperscript{[citation]}
 .
 \end{lstlisting}
-      \producing
-      Donald Knuth est un dieu
-      \textsuperscript{[citation]}
-      .
-    \end{texample}
-    \begin{texample}
+    \producing
+    Donald Knuth est un dieu
+    \textsuperscript{[citation]}
+    .
+  \end{texample}
+  \begin{texample}
 \begin{lstlisting}
 Donald Knuth est un dieu%
 \textsuperscript{[citation]}%
 .
 \end{lstlisting}
-      \producing
-      Donald Knuth est un dieu%
-      \textsuperscript{[citation]}%
-      .
-    \end{texample}
-  \end{demo}
-\end{itemize}
+    \producing
+    Donald Knuth est un dieu%
+    \textsuperscript{[citation]}%
+    .
+  \end{texample}
+\end{demo}
 
 \subsection{Caractères réservés}
+\label{chap:bases:caracteres:reserves}
 
 Comme à peu près tous les langages de programmation, {\TeX} réserve
-certains symboles pour son usage interne. Il s'agit des symboles
-suivants:
+certains symboles pour son usage interne. Les symboles suivants sont
+interprétés comme des commandes:
 \begin{center}
   \verb=# $ & ~ _ ^ % { }=
 \end{center}
@@ -565,141 +679,401 @@ précéder par le caractère {\bs}:
 \end{demo}
 
 \subsection{Guillemets}
+\label{chap:bases:caracteres:guillemets}
 
-Les guillemets nécessitent une attention particulière dans {\LaTeX}.
+L'usage des guillemets nécessite une attention particulière dans {\LaTeX}.
 
-:
-  \begin{demo}
-    \begin{texample}
+Tout d'abord, on ne devrait pas utiliser dans le code source les
+guillemets doubles (\verb="=) que l'on trouve couramment sur les
+claviers d'ordinateurs.
+
+Ensuite, pour obtenir les guillemets anglais, on utilisera deux
+symboles d'accent grave côte-à-côte pour les guillemets ouvrants (``)
+et deux apostrophes côte-à-côte pour les guillemets fermants ('').
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}[escapeinside={}]
 ``guillemets anglais''
 \end{lstlisting}
-      \producing
-      ``guillemets anglais''
-    \end{texample} \\
-    \begin{texample}
+    \producing
+    ``guillemets anglais''
+  \end{texample}
+\end{demo}
+
+En typographie française, il convient d'utiliser les chevrons («\ »)
+comme guillemets. Avec la configuration appropriée de \pkg{babel}
+(voir la \autoref{sec:bases:francais}), il suffit d'utiliser dans le
+code source les symboles \,\verb=«=\, et \,\verb=»=\, que l'on
+trouvera normalement sur un clavier français pour obtenir les chevrons
+dans le document final. L'espacement requis autour des symboles est
+géré automatiquement.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 «guillemets français»
 \end{lstlisting}
-      \producing
-      «guillemets français»
-    \end{texample}
-  \end{demo}
-%
-\item {\LaTeX} permet de créer facilement le tiret, le tiret
-  demi-cadratin et le tiret cadratin:
-  \begin{demo}
-    \begin{minipage}{0.3\linewidth}
-      \begin{texample}
+    \producing
+    «guillemets français»
+  \end{texample}
+  \begin{texample}
+\begin{lstlisting}
+« guillemets français »
+\end{lstlisting}
+    \producing
+    « guillemets français »
+  \end{texample}
+\end{demo}
+Les guillemets anglais ne servent, en français, que pour les citations
+incluses, c'est-à-dire pour les citations à l'intérieur d'une
+citation.
+\begin{demo}
+  \begin{texample}
+\begin{lstlisting}[escapeinside={}]
+Elle m'a dit: «Laurent fait
+dire ``non merci''.»
+\end{lstlisting}
+    \producing
+    Elle m'a dit: «Laurent fait
+    dire ``non merci''.»
+  \end{texample}
+\end{demo}
+
+Les bons éditeurs de texte adaptés pour {\LaTeX} redéfinissent
+l'action de la touche \fbox{\texttt{\textquotedbl}} du clavier pour
+insérer les symboles appropriés selon la langue du document.
+
+Le paquetage \pkg{csquotes} \citep{csquotes} propose une autre option
+pour l'entrée des guillemets. Il fournit une commande
+\cmdprint{\enquote} qui entoure son argument des guillemets appropriés
+selon le contexte et la langue du texte. Cette solution peut s'avérer
+intéressante pour les nouveaux venus à {\LaTeX} qui n'ont pas encore
+pris l'habitude de taper les bons guillemets par eux-mêmes.
+
+\subsection{Trait d'union et tirets}
+\label{chap:bases:caracteres:tirets}
+
+On trouve en typographie trois sortes de tirets de longueurs différentes:
+\begin{enumerate}
+\item le trait d'union (-) qui sert à relier des mots entre eux;
+\item le tiret demi-cadratin (--) qui sert à joindre deux éléments qui
+  comportent déjà des trait d'union (\emph{Trois-Rivières--Québec});
+\item le tiret cadratin (---) qui sert dans les dialogues à identifier
+  le changement d'interlocuteur, ou encore parfois à la place des
+  parenthèses.
+\end{enumerate}
+
+S'il est simple d'entrer un trait d'union, il est rare que les
+claviers d'ordinateurs comportent des touches pour entrer les tirets
+demi-cadratin et cadratin (ou alors cela se fait via une obscure
+combinaison de touches). {\LaTeX} permet de créer facilement tous les
+tirets ci-dessus en répétant le trait d'union.
+\begin{demo}
+  \begin{minipage}{0.2\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 -
 \end{lstlisting}
-        \producing
-        -
-      \end{texample}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.3\linewidth}
-      \begin{texample}
+      \producing\ -
+    \end{texample}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.2\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 --
 \end{lstlisting}
-        \producing
-        --
-      \end{texample}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.3\linewidth}
-      \begin{texample}
+      \producing\ --
+    \end{texample}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.2\linewidth}
+    \begin{texample}
 \begin{lstlisting}
 ---
 \end{lstlisting}
-        \producing
-        ---
-      \end{texample}
-    \end{minipage}
-  \end{demo}
-\end{itemize}
+      \producing\ ---
+    \end{texample}
+  \end{minipage}
+\end{demo}
 
+\subsection{Accents et ligatures}
+\label{chap:bases:caracteres:accents}
 
-\doc[Comprehensive {\LaTeX} Symbol List]{compre\-hen\-sive}{http://texdoc.net/pkg/comprehensive} %
-\citep{comprehensive}
-
-\section{Classes et paquetages}
-
-La première commande du préambule est normalement la déclaration de la
-\emph{classe} du document.
-\begin{itemize}
-\item La forme de la déclaration est la suivante:
+À la base, {\LaTeX} ne reconnait pas les lettres accentuées et
+ligatures comme {\ae} et {\oe} qui ne sont pas courantes en anglais.
+Néanmoins, il est possible de créer ces symboles avec une des
+commandes.
+\begin{demo}
+  \begin{minipage}{0.2\linewidth}
+    \begin{texample}
 \begin{lstlisting}
-\documentclass`\oarg{options}\marg{classe}'
+\'{a}
 \end{lstlisting}
-\item Les classes standards de {\LaTeX} sont \class{article},
-  \class{report}, \class{book}, \class{letter} et \class{slides}.
-\item La classe pour les thèses et mémoires de l'Université Laval se
-  nomme \class{ulthese}. Celle-ci se base sur la classe \class{memoir}
-  et, par conséquent, hérite de toutes ses (nombreuses)
-  fonctionnalités.
-\item Les options disponibles varient d'une classe à l'autre. Les
-  options les plus courantes sont les suivantes:
-  \begin{description}
-  \item[\code{10pt}, \textbf{\code{11pt}}, \code{12pt}] taille de la
-    police du document;
-  \item[\textbf{\code{oneside}}, \code{twoside}] document recto
-    seulement ou recto-verso;
-  \item[\textbf{\code{openright}}, \code{openany}] ouverture des
-    chapitres toujours à droite ou immédiatement après la dernière
-    page du chapitre précédent;
-  \item[\code{article}] mise en page d'un article plutôt que celle
-    d'un livre (classe \class{memoir}).
-  \end{description}
-  Les options en caractères gras sont actives par défaut avec la
-  classe \class{ulthese}.
-\end{itemize}
-
-Les \emph{paquetages} permettent de modifier des commandes ou
-d'ajouter des fonctionnalités à {\LaTeX}.
-\begin{itemize}
-\item On charge les paquetages dans le préambule avec des commandes de
-  la forme
+      \producing\ \'{a}
+    \end{texample}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.2\linewidth}
+    \begin{texample}
 \begin{lstlisting}
-\usepackage`\marg{paquetage}'
-\usepackage`\oarg{options}\marg{paquetage}'
-\usepackage`\marg{paquetage1,paquetage2,...}'
+\`{a}
 \end{lstlisting}
-\item Les incontournables:
-  \begin{description}
-    %% \hfill = PMLA (Poor Man's Left Align) !
-  \item[babel*\hfill] typographie multilingue
-  \item[inputenc*\hfill] composition en français (\LaTeX)
-  \item[fontspec*\hfill] contrôle des polices (\XeLaTeX)
-  \item[amsmath\hfill] extensions mathématiques
-  \item[booktabs*\hfill] amélioration des tableaux
-  \item[hyperref*\hfill] hyperliens dans PDF
-  \end{description}
-  {\footnotesize * = chargé par défaut dans \class{ulthese}}
-\end{itemize}
+      \producing\ \`{a}
+    \end{texample}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.2\linewidth}
+    \begin{texample}
+\begin{lstlisting}
+\^{a}
+\end{lstlisting}
+      \producing\ \^{a}
+    \end{texample}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.2\linewidth}
+    \begin{texample}
+\begin{lstlisting}
+\"{a}
+\end{lstlisting}
+      \producing\ \"{a}
+    \end{texample}
+  \end{minipage} \\
+  \hfill
+  \begin{minipage}{0.2\linewidth}
+    \begin{texample}
+\begin{lstlisting}
+{\ae}
+\end{lstlisting}
+      \producing\ \ae
+    \end{texample}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.2\linewidth}
+    \begin{texample}
+\begin{lstlisting}
+{\AE}
+\end{lstlisting}
+      \producing\ \AE
+    \end{texample}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.2\linewidth}
+    \begin{texample}
+\begin{lstlisting}
+{\oe}
+\end{lstlisting}
+      \producing\ \oe
+    \end{texample}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.2\linewidth}
+    \begin{texample}
+\begin{lstlisting}
+{\OE}
+\end{lstlisting}
+      \producing\ \OE
+    \end{texample}
+  \end{minipage}
+\end{demo}
+
+Évidemment, entrer tous les accents d'un texte en français avec les
+commandes ci-dessous se révélerait un vrai cauchemar. Heureusement,
+avec la configuration appropriée, il est possible d'entrer directement
+les lettres accentuées que l'on trouve couramment sur un clavier,
+voire même les ligatures si l'on utilise l'encodage UTF-8. La
+\autoref{sec:bases:francais} fournit les détails.
+
+Les commandes pour les accents demeurent utiles pour composer les
+lettres accentuées des langues européennes autres que le français. On
+trouvera la liste de ces commandes, ainsi que celles pour composer une
+multitude d'autres symboles à la section~2 de la très utile %
+\doc[Comprehensive {\LaTeX} Symbol
+List]{compre\-hen\-sive}{http://texdoc.net/pkg/comprehensive} %
+\citep{comprehensive}.
+
 
 \section{{\LaTeX} en français}
+\label{sec:bases:francais}
 
+Par défaut, LaTeX prévoit la rédaction de documents en anglais.
+L'entrée de texte en français de façon simple et conviviale requiert
+de charger quelques paquetages bien choisis. Le choix dépend lui-même
+du moteur {\TeX} utilisé.
+
+\subsection{Moteur pdf\TeX}
+\label{sec:bases:francais:pdftex}
+
+Afin de pouvoir entrer directement les lettres accentuées dans le code
+source sans avoir recours aux commandes de la section précédente, il
+faut s'assurer que les lettres accentuées soient reconnues par
+{\LaTeX}. C'est le rôle du paquetage \pkg{inputenc} \citep{inputenc}.
+Il faut spécifier le type de codage utilisé, ce qui parfois demande
+quelques essais et erreurs. Le type de codage le plus universel en ce
+moment est l'Unicode \citep{Unicode:5.0}. C'est le type utilisé par
+défaut dans Mac OS~X et les distributions Linux; il est aussi
+disponible sous Windows. Si le fichier source est sauvegardé dans le
+format %
+\link{https://fr.wikipedia.org/wiki/UTF-8}{UTF-8} %
+de l'Unicode, on ajoutera dans le préambule la commande:
+\begin{lstlisting}
+\usepackage[utf8]{inputenc}
+\end{lstlisting}
+
+Les autres types de codage les plus répandus sont
+l'\link{http://fr.wikipedia.org/wiki/Iso_8859-1}{ISO 8859-1}, ou
+Latin-1, et l'\link{http://fr.wikipedia.org/wiki/Windows-1252}{ANSI}
+de Windows. Pour utiliser ces types, on remplacera \code{utf8}
+ci-dessus par \code{latin1} ou \code{ansiwin}, respectivement.
+
+L'entrée du texte n'est pas tout, il faut également se soucier de la
+sortie, afin que les lettres accentuées apparaissent dans le texte.
+{\LaTeX} utilise par défaut un codage de sortie des caractères nommé
+OT1. Il est recommandé de ne pas utiliser ce codage pour les textes en
+français, notamment parce que la césure automatique ne fonctionnera
+pas pour les mots contenant des lettres accentuées. On préférera donc
+le plus récent codage T1, que l'on active avec le paquetage
+\pkg{fontenc} \citep{fontenc}:
+\begin{lstlisting}
+\usepackage[T1]{fontenc}
+\end{lstlisting}
+
+\subsection{Moteur \XeTeX}
+\label{sec:bases:francais:xetex}
+
+Le plus récent et moderne moteur {\XeTeX} utilise par défaut des
+fichiers source en format Unicode UTF-8. Il n'y a donc rien de spécial
+à faire pour l'entrée du texte avec ce moteur.
+
+Pour la sortie, le paquetage \pkg{fontspec} \citep{fontspec} est
+requis obtenir les lettres accentuées dans le fichier PDF. Cela ne
+représente pas véritablement une étape de configuration additionnelle
+puisque l'on charge normalement ce paquetage avec {\XeLaTeX} pour
+contrôler le chargement des polices de caractères (plus de détails à
+la \autoref{sec:trucs:police}).
+
+
+\subsection{Typographie et mots clés français}
+\label{sec:bases:francais:babel}
+
+Entrer du texte en français dans le code source n'est pas tout. Il
+faut adapter {\LaTeX} au français, qu'il s'agisse des mots clés (tels
+«Table des matières» ou «Bibliographie»), de la typographie ou de la
+césure des mots. La solution standard provient du paquetage
+\pkg{babel} \citep{babel}. Celui-ci permet de combiner plusieurs
+langues dans un même document et de passer de l'une à l'autre
+facilement. Consulter la %
+\doc{frenchb}{http://texdoc.net/pkg/babel-french/}) %
+pour connaître toutes les adaptations au français offertes par ce
+paquetage incontournable.
+
+Le paquetage \pkg{babel} est chargé par défaut par la classe
+\class{ulthese}.
+
+\subsection{Guillemets français}
+\label{sec:bases:francais:guillemets}
+
+Une espace fine devrait séparer les guillemets du ou des mots qu'ils
+entourent. Pour que l'espace autour des symboles soit géré
+automatiquement par \pkg{babel}, il suffit d'ajouter dans le préambule
+la commande
+\begin{lstlisting}
+\frenchbsetup{og=«, fg=»}
+\end{lstlisting}
+On trouve cette configuration dans les gabarits livrés avec la classe
+\class{ulthese}.
+
+\subsection{Séparateur décimal}
+\label{sec:bases:francais:virgule}
+
+Le séparateur décimal en français est la virgule et non le point. Or,
+en mode mathématique, LaTeX ajoute automatiquement une espace fine
+après une virgule comme s'il s'agissait d'une énumération.
+
+Afin de pouvoir utiliser de manière conviviale la virgule comme
+séparateur décimal en mode mathématique, charger le très pratique
+paquetage \pkg{icomma} \citep{icomma}. Avec ce paquetage, la virgule
+agira comme séparateur décimal en mode mathématique seulement
+lorsqu'elle est suivie d'un caractère autre que l'espace.
+\begin{demo}
+  \begin{minipage}{0.45\linewidth}
+    \begin{texample}
+\begin{lstlisting}
+$x = 1,2$
+\end{lstlisting}
+      \producing
+      $x = 1,2$
+    \end{texample}
+  \end{minipage}
+  \hfill
+\begin{minipage}{0.45\linewidth}
+    \begin{texample}
+\begin{lstlisting}
+$x = 1, 2$
+\end{lstlisting}
+      \producing
+      $x = 1, 2$
+    \end{texample}
+  \end{minipage}
+\end{demo}
+
+\begin{important}
+  Le paquetage \pkg{icomma} peut interagir avec d'autres. Aussi
+  vaut-il mieux le charger parmi les derniers dans le préambule, et
+  certainement après les paquetages \pkg{fontspec} et
+  \pkg{unicode-math} avec {\XeLaTeX}.
+\end{important}
+
+\subsection{Séparateur des milliers}
+\label{sec:bases:francais:milliers}
+
+Le séparateur des milliers en français est l'espace. Lorsque le
+paquetage \pkg{numprint} \citep{numprint} est chargé, \pkg{babel}
+fournit la commande \cmd{\nombre} pour formater automatiquement les
+nombres.
+\begin{demo}
+  \begin{texample}
+\begin{lstlisting}
+\nombre{123456789}
+\end{lstlisting}
+    \producing
+    \nombre{123456789}
+  \end{texample}
+\end{demo}
+
+Le \autoref{tab:bases:francais} résume les divers enjeux liés à la
+rédaction en français avec {\LaTeX} et les paquetages qui offrent des
+solutions.
+
+\begin{table}
+  \centering
+  \caption{Enjeux de rédaction en français et paquetages offrant des
+    solutions}
+  \label{tab:bases:francais}
   \begin{tabularx}{1.0\linewidth}{Xl}
     \toprule
-    \textbf{Enjeu} & \textbf{Solution} \\
+    Enjeu & Solution \\
     \midrule
     \addlinespace[6pt]
-    traduction des mots-clés prédéfinis & \pkg{babel} \\
+    Traduction des mots clés prédéfinis & \pkg{babel} \\
     \addlinespace[6pt]
-    coupure de mots & \pkg{babel} \\
+    Coupure de mots & \pkg{babel} \\
     \addlinespace[6pt]
-    typographie française & \pkg{babel} \\
+    Typographie française & \pkg{babel} \\
     \addlinespace[6pt]
-    lettres accentuées dans source & \pkg{inputenc} (\LaTeX) \\
+    Lettres accentuées dans source & \pkg{inputenc} (\LaTeX) \\
                                    & source en UTF-8 (\XeLaTeX) \\
     \addlinespace[6pt]
-    virgule comme séparateur décimal & \pkg{icomma}, \pkg{ncccomma} \\
+    Lettres accentuées dans sortie & \pkg{fontenc} (\LaTeX) \\
+                                   & \pkg{fontspec} (\XeLaTeX) \\
     \addlinespace[6pt]
-    espace comme séparateur des milliers & \pkg{numprint}
+    Virgule comme séparateur décimal & \pkg{icomma} \\
+    \addlinespace[6pt]
+    Espace comme séparateur des milliers & \pkg{numprint} et
+                                           \pkg{babel} \\
+    \bottomrule
   \end{tabularx}
+\end{table}
 
 
 %%%
