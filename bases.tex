@@ -1,19 +1,28 @@
 \chapter{Principes de base}
 \label{chap:bases}
 
+Un système de mise en page tel que {\LaTeX} repose sur une logique de
+séparation entre le contenu d'un document et sa structure. La personne
+habituée à utiliser un traitement de texte devra fort probablement se
+défaire d'une vilaine habitude: se préoccuper sans cesse de la
+disposition et de l'apparence du texte au moment de la rédaction.
+
+Il faut néanmoins indiquer au logiciel la structure du document. Avec
+{\LaTeX} cela s'effectue par le biais de diverses instructions que
+l'on insére au fil du texte.
+
+Ce chapitre explique comme aborder la rédaction d'un document avec
+{\LaTeX} ainsi que la syntaxe de base des différents types
+d'instructions que l'on peut insérer dans un texte pour en spécifier
+la structure et la mise en forme.
 
 
 \section{Rédaction}
 \label{chap:bases:redaction}
 
-Lors de l'apprentissage de {\LaTeX} la personne habituée à utiliser un
-traitement de texte  devra fort probablement se défaire d'une vilaine
-habitude: se préoccuper sans cesse de la disposition et de l'apparence
-du texte au moment de la rédaction.
-
-En effet, avec un système de mise en page tel que {\LaTeX}, on se
-concentre sur le contenu et la \emph{structure} du document à la
-rédaction, et non pas sur son \emph{apparence}. Par exemple:
+Lors de la rédaction avec un système de mise en page tel que {\LaTeX},
+on se concentre sur le contenu et la \emph{structure} du document, et
+non pas sur son \emph{apparence}. Par exemple:
 \begin{itemize}
 \item au lieu de prescrire qu'un titre de section doit être en gras
   14~points, on indique simplement à {\LaTeX} que le texte doit être
@@ -138,7 +147,26 @@ d'importance.
   \end{demo}
 %
 \item On utilise des \emph{commandes} pour indiquer la structure du
-  texte dans le code source.
+  texte dans le code source. Celles-ci débutent presque toujours par
+  le caractère {\bs}. À la différence des logiciel de traitement de
+  texte, les instructions de mise en forme du document sont donc
+  toujours visibles et, par conséquent, modifiables facilement et sans
+  surprise (on ne se demande jamais où termine le gras, par exemple).
+  \begin{demo}
+    \begin{texample}
+\begin{lstlisting}
+Les commandes sont visibles
+dans le \textbf{code source},
+mais évidemment pas dans le
+\emph{document} fini.
+\end{lstlisting}
+      \producing
+      Les commandes sont visibles
+      dans le \textbf{code source},
+      mais évidemment pas dans le
+      \emph{document} fini.
+    \end{texample}
+  \end{demo}
 \end{enumerate}
 
 
@@ -259,11 +287,8 @@ pour les détails.
 \section{Commandes}
 \label{chap:bases:commandes}
 
-{\LaTeX} étant un langage de programmation servant à indiquer la
-disposition du texte sur une page par le biais de commandes, il
-convient d'étudier la syntaxe du langage afin de pouvoir l'utiliser.
-Cette courte section se penche spécifiquement sur la syntaxe des
-commandes.
+Nous avons déjà fait référence à quelques reprises au concept de
+commande {\LaTeX}. Cette section se penche sur leur syntaxe.
 
 Les formes générales des commandes {\LaTeX} sont:
 \begin{lstlisting}
@@ -272,10 +297,15 @@ Les formes générales des commandes {\LaTeX} sont:
 \end{lstlisting}
 Ici, \meta{nomcommande} est le nom de la commande. Il débute par le
 caractère {\bs} et est exclusivement formé de lettres, habituellement
-des minuscules ({\LaTeX} est sensible à la casse). Lorsque la commande
-prend des arguments, les arguments obligatoires sont placés entre
-accolades \verb={ }= et les arguments optionnels sont placés entre
-crochets \verb=[ ]=.
+des minuscules ({\LaTeX} est sensible à la casse). La forme étoilée
+d'une commande réalise généralement une action légèrement différente
+de la version sans étoile. Par exemple, la commande \cmd{\section}
+crée une nouvelle section numérotée, alors que \cmd{\section*}
+n'insère aucune numérotation.
+
+Lorsque la commande prend des arguments, les arguments obligatoires
+sont placés entre accolades \verb={ }= et les arguments optionnels
+sont placés entre crochets \verb=[ ]=.
 
 Certaines commandes n'ont aucun argument. Leur forme est alors
 \begin{lstlisting}
@@ -288,11 +318,6 @@ marqueur de la fin du nom de celle-ci. Cette règle joue parfois de
 vilains tours en «avalant» l'espace entre une commande et le mot qui
 suit; voir l'\autoref{exemple:base:commandes} et
 l'\autoref{ex:base:commandes}.
-
-La forme étoilée d'une commande réalise généralement une action
-légèrement différente de la version sans étoile. Par exemple, la
-commande \cmd{\section} crée une nouvelle section numérotée, alors que
-\cmd{\section*} n'insère aucune numérotation.
 
 La portée d'une commande est limitée à la zone entre accolades
 \verb={ }=, le cas échéant.
@@ -417,8 +442,8 @@ trait} ou d'un caractère.
   \qed
 \end{exemple}
 
-L'usager de {\LaTeX} peut définir de nouvelles commandes à loisir, tel
-qu'expliqué à la \autoref{sec:commandes:commandes}.
+L'usager de {\LaTeX} peut définir de nouvelles commandes à loisir.
+Ceci est expliqué à la \autoref{sec:commandes:commandes}.
 
 
 \section{Environnements}
