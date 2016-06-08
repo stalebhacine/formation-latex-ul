@@ -311,15 +311,11 @@ préparation des entrées bibliographiques suivent l'\autoref*{ex:bibliographie:
   «2{\ieme} édition» ou «2\up{nd} edition» selon que l'on a précisé
   que l'ouvrage est en français ou en anglais.
 \item {\BibTeX} supportera les lettres accentuées ou autres caractères
-  spéciaux dans le texte des champs seulement si les paquetages requis
-  pour entrer ces caractères dans le texte sont chargés
-  (\pkg{inputenc} avec pdf{\LaTeX}; \pkg{fontspec} avec {\XeLaTeX}).
-  Autrement, il faut entrer ceux-ci avec les commandes {\LaTeX} de
-  base; voir %
-  le tableau~17 de la %
-  \doc[Comprehensive {\LaTeX} Symbol
-  List]{comprehensive}{http://texdoc.net/pkg/comprehensive} %
-  pour les accents.
+  spéciaux dans le texte des champs seulement si le document utilisant
+  la bibliographie supporte lui-même ces caractères; voir la
+  \autoref{sec:bases:francais}. Autrement, il faut entrer les
+  caractères spéciaux avec les commandes {\LaTeX} de base tel
+  qu'expliqué sommairement à la \autoref{sec:bases:caracteres}.
 
   Notre recommandation: éviter les lettres accentuées dans les
   entrées susceptibles d'être utilisées dans un document entièrement
