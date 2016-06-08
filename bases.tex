@@ -777,21 +777,23 @@ pris l'habitude de taper les bons guillemets par eux-mêmes.
 \subsection{Trait d'union et tirets}
 \label{chap:bases:caracteres:tirets}
 
-On trouve en typographie trois sortes de tirets de longueurs différentes:
+On trouve en typographie soignée trois sortes de tirets de longueurs
+différentes:
 \begin{enumerate}
 \item le trait d'union (-) qui sert à relier des mots entre eux;
 \item le tiret demi-cadratin (--) qui sert à joindre deux éléments qui
-  comportent déjà des trait d'union (\emph{Trois-Rivières--Québec});
-\item le tiret cadratin (---) qui sert dans les dialogues à identifier
-  le changement d'interlocuteur, ou encore parfois à la place des
-  parenthèses.
+  comportent déjà des traits d'union (\emph{Trois-Rivières--Québec});
+\item le tiret cadratin (---) qui sert à identifier le changement
+  d'interlocuteur dans les dialogues ou qui remplacent parfois les
+  parenthèses dans du texte normal.
 \end{enumerate}
 
-S'il est simple d'entrer un trait d'union, il est rare que les
-claviers d'ordinateurs comportent des touches pour entrer les tirets
+S'il est simple d'entrer un trait d'union à l'ordinateur, il est rare
+que les claviers comportent des touches pour entrer les tirets
 demi-cadratin et cadratin (ou alors cela se fait via une obscure
 combinaison de touches). {\LaTeX} permet de créer facilement tous les
-tirets ci-dessus en répétant le trait d'union.
+tirets ci-dessus en répétant simplement le trait d'union deux ou trois
+fois.
 \begin{demo}
   \begin{minipage}{0.2\linewidth}
     \begin{texample}
@@ -824,10 +826,9 @@ tirets ci-dessus en répétant le trait d'union.
 \subsection{Accents et ligatures}
 \label{chap:bases:caracteres:accents}
 
-À la base, {\LaTeX} ne reconnait pas les lettres accentuées et
+À la base, {\LaTeX} ne reconnait pas les lettres accentuées ni les
 ligatures comme {\ae} et {\oe} qui ne sont pas courantes en anglais.
-Néanmoins, il est possible de créer ces symboles avec une des
-commandes.
+Néanmoins, il est possible de créer ces symboles avec des commandes.
 \begin{demo}
   \begin{minipage}{0.2\linewidth}
     \begin{texample}
@@ -840,7 +841,7 @@ commandes.
   \hfill
   \begin{minipage}{0.2\linewidth}
     \begin{texample}
-\begin{lstlisting}
+\begin{lstlisting}[escapeinside={}]
 \`{a}
 \end{lstlisting}
       \producing\ \`{a}
