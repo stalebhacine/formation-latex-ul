@@ -2,23 +2,34 @@
 \label{chap:bases}
 
 Un système de mise en page tel que {\LaTeX} repose sur une logique de
-séparation entre le contenu d'un document et sa structure. La personne
-habituée à utiliser un traitement de texte devra fort probablement se
-défaire d'une vilaine habitude: se préoccuper sans cesse de la
-disposition et de l'apparence du texte au moment de la rédaction.
+séparation entre l'apparence d'un document et sa structure. La
+personne habituée à utiliser un traitement de texte devra fort
+probablement se défaire d'une vilaine habitude: se préoccuper sans
+cesse de la disposition du texte au moment de la rédaction.
 
-Il faut néanmoins indiquer au logiciel la structure du document. Avec
-{\LaTeX} cela s'effectue par le biais de diverses instructions que
-l'on insére au fil du texte.
+Ce principe accepté, il faudra néanmoins indiquer au logiciel la
+structure du document. Avec {\LaTeX} cela s'effectue par le biais de
+diverses instructions que l'on insére au fil du texte. À la base, les
+logiciels de traitements de texte n'opèrent pas différemment, sauf
+qu'ils cachent les codes aux utilisateurs\footnote{%
+  Le leader du traitement de texte jusqu'au milieu des années 1990,
+  Word~Perfect, offrait l'option d'afficher l'ensemble des codes de
+  mise en page. C'est malheureusement une caractéristique brillante
+  que Microsoft Word et les autres progiciels développés depuis ont
+  choisi d'omettre.}. %
+Sous prétexte de simplicité d'utilisation, ils causent en fait bien
+des mots de tête. En utilisant un traitement de texte moderne, vous
+vous êtes sans doute déjà demandé: «Pourquoi mon texte est-il
+soudainement en gras?»
 
-Ce chapitre explique comme aborder la rédaction d'un document avec
+Ce chapitre explique comment aborder la rédaction d'un document avec
 {\LaTeX} ainsi que la syntaxe de base des différents types
 d'instructions que l'on peut insérer dans un texte pour en spécifier
 la structure et la mise en forme.
 
 
-\section{Rédaction}
-\label{chap:bases:redaction}
+\section{Séparation du contenu et de l'apparence}
+\label{sec:bases:separation}
 
 Lors de la rédaction avec un système de mise en page tel que {\LaTeX},
 on se concentre sur le contenu et la \emph{structure} du document, et
@@ -68,7 +79,11 @@ lorsqu'une ligne de texte est trop longue, notre {\oe}il a de la
 difficulté à la suivre sur toute sa longueur. Il a tendance à passer à
 la ligne inférieure, ce qui rend la lecture plus difficile.
 
-Une fois ce principe de séparation du contenu et de l'apparence
+
+\section{Règles de saisie}
+\label{sec:bases:saisie}
+
+Une fois le principe de séparation du contenu et de l'apparence
 compris et accepté, on veillera, lors de la saisie du texte, à
 respecter les règles simples suivantes.
 \begin{enumerate}
@@ -151,7 +166,7 @@ d'importance.
   le caractère {\bs}. À la différence des logiciel de traitement de
   texte, les instructions de mise en forme du document sont donc
   toujours visibles et, par conséquent, modifiables facilement et sans
-  surprise (on ne se demande jamais où termine le gras, par exemple).
+  surprise (on ne se demande donc jamais où termine le gras).
   \begin{demo}
     \begin{texample}
 \begin{lstlisting}
@@ -170,8 +185,8 @@ mais évidemment pas dans le
 \end{enumerate}
 
 
-\section{Structure d'un document}
-\label{chap:bases:structure}
+\section{Structure d'un fichier}
+\label{sec:bases:structure}
 
 Un fichier source {\LaTeX} --- dont on trouvera un exemple simple à la
 \autoref{fig:bases:parties} --- est toujours composé de deux parties.
@@ -238,23 +253,9 @@ classe pour les thèses et mémoires de l'Université Laval se nomme
 \class{memoir} et, par conséquent, hérite de toutes ses (nombreuses)
 fonctionnalités; consulter la %
 \doc{ulthese}{http://texdoc.net/pkg/ulthese} %
-de la classe \class{ulthese} pour les détails.
-
-Les \meta{options} disponibles varient d'une classe à l'autre. Les
-plus courantes sont les suivantes:
-\begin{description}
-\item[\mdseries \code{10pt}, \code{11pt}*, \code{12pt}] taille
-  de la police du document;
-\item[\mdseries \code{oneside}*, \code{twoside}] document
-  recto seulement ou recto-verso;
-\item[\mdseries \code{openright}*, \code{openany}] ouverture
-  des chapitres toujours à droite ou immédiatement après la dernière
-  page du chapitre précédent;
-\item[\mdseries \code{article}] mise en page d'un article plutôt que celle d'un
-  livre (classe \class{memoir}).
-\end{description}
-Les options marquées d'un astérisque * sont actives par défaut avec
-la classe \class{ulthese}.
+de la classe \class{ulthese} pour les détails. La
+\autoref{sec:organisation:classe} revient sur les différences entre les
+diverses classes et les \meta{options} disponibles.
 
 Les \emph{paquetages} permettent de modifier des commandes ou
 d'ajouter des fonctionnalités à {\LaTeX}. On charge les paquetages
@@ -285,7 +286,7 @@ pour les détails.
 
 
 \section{Commandes}
-\label{chap:bases:commandes}
+\label{sec:bases:commandes}
 
 Nous avons déjà fait référence à quelques reprises au concept de
 commande {\LaTeX}. Cette section se penche sur leur syntaxe.
@@ -447,7 +448,7 @@ Ceci est expliqué à la \autoref{sec:commandes:commandes}.
 
 
 \section{Environnements}
-\label{chap:bases:environnements}
+\label{sec:bases:environnements}
 
 Un environnement {\LaTeX} est simplement une zone de texte délimitée
 une construction du type
@@ -568,7 +569,7 @@ deux mesures sont habituellement égales.
 
 
 \section{Caractères spéciaux}
-\label{chap:bases:caracteres}
+\label{sec:bases:caracteres}
 
 Les claviers d'ordinateur mettent à la disposition des auteurs toutes
 les lettres de l'alphabet (en versions minuscule et majuscule), les
@@ -579,11 +580,11 @@ certains symboles sont reservés. De plus, certains symboles d'usage
 courant ne sont pas disponibles sur les claviers.
 
 \subsection{Espaces et retours à la ligne}
-\label{chap:bases:caracteres:espaces}
+\label{sec:bases:caracteres:espaces}
 
-Nous avons déjà mentionné à la \autoref{chap:bases:redaction} le
+Nous avons déjà mentionné à la \autoref{sec:bases:saisie} le
 traitement spécial réservé par {\LaTeX} aux espaces et aux retours à
-la ligne dans le code source. Plus précisément:
+la ligne dans le code source. Ajoutons des précisions suivantes:
 \begin{itemize}
 \item seule la première espace entre deux éléments compte;
 \item les espaces en début de ligne sont ignorées;
@@ -595,7 +596,7 @@ la ligne dans le code source. Plus précisément:
 
 Pour forcer une espace à un endroit où {\LaTeX} la supprimerait
 normalement, utiliser la commande \verb*=\ = (le symbole \bs\ suivi
-d'une espace, représentée ici par le symbole \textvisiblespace).
+d'une espace, représentée ici par le symbole \verb*| |.
 \begin{demo}
   \begin{texample}
 \begin{lstlisting}
@@ -637,7 +638,7 @@ Donald Knuth est un dieu%
 \end{demo}
 
 \subsection{Caractères réservés}
-\label{chap:bases:caracteres:reserves}
+\label{sec:bases:caracteres:reserves}
 
 Comme à peu près tous les langages de programmation, {\TeX} réserve
 certains symboles pour son usage interne. Les symboles suivants sont
@@ -704,17 +705,16 @@ précéder par le caractère {\bs}:
 \end{demo}
 
 \subsection{Guillemets}
-\label{chap:bases:caracteres:guillemets}
+\label{sec:bases:caracteres:guillemets}
 
-L'usage des guillemets nécessite une attention particulière dans {\LaTeX}.
-
-Tout d'abord, on ne devrait pas utiliser dans le code source les
+L'usage des guillemets nécessite une attention particulière dans
+{\LaTeX}. On ne devrait pas utiliser dans le code source les
 guillemets doubles (\verb="=) que l'on trouve couramment sur les
 claviers d'ordinateurs.
 
-Ensuite, pour obtenir les guillemets anglais, on utilisera deux
-symboles d'accent grave côte-à-côte pour les guillemets ouvrants (``)
-et deux apostrophes côte-à-côte pour les guillemets fermants ('').
+Pour obtenir les guillemets anglais, on utilisera deux symboles
+d'accent grave côte-à-côte pour les guillemets ouvrants (``) et deux
+apostrophes côte-à-côte pour les guillemets fermants ('').
 \begin{demo}
   \begin{texample}
 \begin{lstlisting}[escapeinside={}]
@@ -729,9 +729,8 @@ En typographie française, il convient d'utiliser les chevrons («\ »)
 comme guillemets. Avec la configuration appropriée de \pkg{babel}
 (voir la \autoref{sec:bases:francais}), il suffit d'utiliser dans le
 code source les symboles \,\verb=«=\, et \,\verb=»=\, que l'on
-trouvera normalement sur un clavier français pour obtenir les chevrons
-dans le document final. L'espacement requis autour des symboles est
-géré automatiquement.
+retrouve normalement sur un clavier français. L'espacement requis
+autour des symboles est géré automatiquement.
 \begin{demo}
   \begin{texample}
 \begin{lstlisting}
@@ -772,10 +771,10 @@ pour l'entrée des guillemets. Il fournit une commande
 \cmdprint{\enquote} qui entoure son argument des guillemets appropriés
 selon le contexte et la langue du texte. Cette solution peut s'avérer
 intéressante pour les nouveaux venus à {\LaTeX} qui n'ont pas encore
-pris l'habitude de taper les bons guillemets par eux-mêmes.
+pris l'habitude d'entrer directement les bons guillemets.
 
 \subsection{Trait d'union et tirets}
-\label{chap:bases:caracteres:tirets}
+\label{sec:bases:caracteres:tirets}
 
 On trouve en typographie soignée trois sortes de tirets de longueurs
 différentes:
@@ -824,7 +823,7 @@ fois.
 \end{demo}
 
 \subsection{Accents et ligatures}
-\label{chap:bases:caracteres:accents}
+\label{sec:bases:caracteres:accents}
 
 À la base, {\LaTeX} ne reconnait pas les lettres accentuées ni les
 ligatures comme {\ae} et {\oe} qui ne sont pas courantes en anglais.
@@ -833,36 +832,36 @@ Néanmoins, il est possible de créer ces symboles avec des commandes.
   \begin{minipage}{0.2\linewidth}
     \begin{texample}
 \begin{lstlisting}
-\'{a}
+\'{o}
 \end{lstlisting}
-      \producing\ \'{a}
+      \producing\ \'{o}
     \end{texample}
   \end{minipage}
   \hfill
   \begin{minipage}{0.2\linewidth}
     \begin{texample}
 \begin{lstlisting}[escapeinside={}]
-\`{a}
+\`{o}
 \end{lstlisting}
-      \producing\ \`{a}
+      \producing\ \`{o}
     \end{texample}
   \end{minipage}
   \hfill
   \begin{minipage}{0.2\linewidth}
     \begin{texample}
 \begin{lstlisting}
-\^{a}
+\^{o}
 \end{lstlisting}
-      \producing\ \^{a}
+      \producing\ \^{o}
     \end{texample}
   \end{minipage}
   \hfill
   \begin{minipage}{0.2\linewidth}
     \begin{texample}
 \begin{lstlisting}
-\"{a}
+\"{o}
 \end{lstlisting}
-      \producing\ \"{a}
+      \producing\ \"{o}
     \end{texample}
   \end{minipage} \\
   \hfill
@@ -904,11 +903,11 @@ Néanmoins, il est possible de créer ces symboles avec des commandes.
 \end{demo}
 
 Évidemment, entrer tous les accents d'un texte en français avec les
-commandes ci-dessous se révélerait un vrai cauchemar. Heureusement,
-avec la configuration appropriée, il est possible d'entrer directement
-les lettres accentuées que l'on trouve couramment sur un clavier,
-voire même les ligatures si l'on utilise l'encodage UTF-8. La
-\autoref{sec:bases:francais} fournit les détails.
+commandes ci-dessus se révélerait un véritable cauchemar.
+Heureusement, avec la configuration appropriée, il est possible
+d'entrer directement les lettres accentuées que l'on trouve couramment
+sur un clavier, voire même certaines ligatures si l'on utilise
+l'encodage UTF-8. La \autoref{sec:bases:francais} fournit les détails.
 
 Les commandes pour les accents demeurent utiles pour composer les
 lettres accentuées des langues européennes autres que le français. On
@@ -950,19 +949,23 @@ Les autres types de codage les plus répandus sont
 l'\link{http://fr.wikipedia.org/wiki/Iso_8859-1}{ISO 8859-1}, ou
 Latin-1, et l'\link{http://fr.wikipedia.org/wiki/Windows-1252}{ANSI}
 de Windows. Pour utiliser ces types, on remplacera \code{utf8}
-ci-dessus par \code{latin1} ou \code{ansiwin}, respectivement.
+ci-dessus par, respectivement, \code{latin1} ou \code{ansiwin}.
 
 L'entrée du texte n'est pas tout, il faut également se soucier de la
-sortie, afin que les lettres accentuées apparaissent dans le texte.
-{\LaTeX} utilise par défaut un codage de sortie des caractères nommé
-OT1. Il est recommandé de ne pas utiliser ce codage pour les textes en
-français, notamment parce que la césure automatique ne fonctionnera
-pas pour les mots contenant des lettres accentuées. On préférera donc
-le plus récent codage T1, que l'on active avec le paquetage
-\pkg{fontenc} \citep{fontenc}:
+sortie, afin que les lettres accentuées apparaissent dans le document
+final. {\LaTeX} utilise par défaut un codage de sortie des caractères
+nommé OT1. Il est recommandé de ne pas utiliser ce codage pour les
+textes en français, notamment parce que la césure automatique ne
+fonctionnera pas pour les mots contenant des lettres accentuées. On
+préférera donc le plus récent codage T1, que l'on active avec le
+paquetage \pkg{fontenc} \citep{fontenc}:
 \begin{lstlisting}
 \usepackage[T1]{fontenc}
 \end{lstlisting}
+
+La classe \class{ulthese} charge par défaut le paquetage \pkg{fontenc}
+avec l'option T1 et les gabarits de documents fournis avec la classe
+contiennent l'instruction pour charger \pkg{inputenc}.
 
 \subsection{Moteur \XeTeX}
 \label{sec:bases:francais:xetex}
@@ -972,12 +975,14 @@ fichiers source en format Unicode UTF-8. Il n'y a donc rien de spécial
 à faire pour l'entrée du texte avec ce moteur.
 
 Pour la sortie, le paquetage \pkg{fontspec} \citep{fontspec} est
-requis obtenir les lettres accentuées dans le fichier PDF. Cela ne
+requis pour obtenir les lettres accentuées dans le fichier PDF. Cela ne
 représente pas véritablement une étape de configuration additionnelle
 puisque l'on charge normalement ce paquetage avec {\XeLaTeX} pour
 contrôler le chargement des polices de caractères (plus de détails à
 la \autoref{sec:trucs:police}).
 
+La classe \class{ulthese} charge par défaut le paquetage
+\pkg{fontspec} avec {\XeLaTeX}.
 
 \subsection{Typographie et mots clés français}
 \label{sec:bases:francais:babel}
@@ -989,7 +994,7 @@ césure des mots. La solution standard provient du paquetage
 \pkg{babel} \citep{babel}. Celui-ci permet de combiner plusieurs
 langues dans un même document et de passer de l'une à l'autre
 facilement. Consulter la %
-\doc{frenchb}{http://texdoc.net/pkg/babel-french/}) %
+\doc{frenchb}{http://texdoc.net/pkg/babel-french/} %
 pour connaître toutes les adaptations au français offertes par ce
 paquetage incontournable.
 
