@@ -409,7 +409,7 @@
   \newcommand{\ISBN}{978-2-9811416-5-1}
   \newcommand{\ctanurl}{https://ctan.org/pkg/formation-latex-ul/}
 
-%  \includeonly{frontispice}
+  \includeonly{bases,organisation}
 
 \begin{document}
 
@@ -441,10 +441,14 @@
 \mainmatter
 
 
-\include{presentation}       % tex et consorts; exercices 1 et 2
-\include{base}               % principes de base du langage
-\include{redaction}          % tout pour faire un document simple sans math
+%\part{Premiers pas}
 
+\include{presentation}
+\include{bases}
+\include{organisation}
+\include{apparence}
+
+%\part{Concepts avancés}
 
 \include{include}
 \include{boites}
