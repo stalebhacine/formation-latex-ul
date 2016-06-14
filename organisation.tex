@@ -8,9 +8,9 @@
 La toute première chose à faire au moment de se lancer dans la
 rédaction d'un document avec {\LaTeX} consiste normalement à choisir
 une classe pour celui-ci. Nous avons déjà expliqué à la
-\autoref{sec:bases:classes} comment spécifier la classe à utiliser
-et les diverses options; la présente section détaille les différences
-entre les principales classes.
+\autoref{sec:bases:classes} comment spécifier la classe à utiliser. La
+présente section présente les différences entre les classes ainsi que
+les principales options disponibles.
 
 Les classes standards sont \class{article}, \class{report},
 \class{book}, \class{letter} et \class{slides}.
@@ -18,8 +18,8 @@ Les classes standards sont \class{article}, \class{report},
 \begin{description}
 \item[\normalfont\class{article}] Articles scientifiques et autres
   documents de longueur modérée ne nécessitant pas une mise en page
-  élaborée. Le folio\footnote{Numéro de page} est placé au centre du
-  pied de page. Le titre apparait dans le haut de la première page,
+  élaborée. Le folio (numéro de page) est placé au centre du pied de
+  page. Le titre apparait dans le haut de la première page,
   immédiatement suivi du texte.
 \item[\normalfont\class{report}] Rapports et autres documents plus
   longs pouvant être divisés en chapitres. Le titre apparait sur une
@@ -99,12 +99,12 @@ fournissent des exemples de mise en page pour ces trois classes.
   \label{fig:organisation:classes:book}
 \end{figure}
 
-Ce document fait une large place à la classe \class{memoir}, une
-extension de la classe standard \class{book} qui facilite à plusieurs
-égards la préparation de documents d'allure professionnelle dans
-{\LaTeX}. Nous recommandons d'utiliser cette classe en lieu et place
-de la classe \class{book}, ou même de la classe \class{article} (voir
-ci-dessous).
+Ce document fait une large place à la classe \class{memoir}
+\citep{memoir}, une extension de la classe standard \class{book} qui
+facilite à plusieurs égards la préparation de documents d'allure
+professionnelle dans {\LaTeX}. Nous recommandons d'utiliser cette
+classe en lieu et place de la classe \class{book}, ou même de la
+classe \class{article} (voir ci-dessous).
 
 La classe \class{memoir} est très configurable et elle incorpore
 d'office plus de 30 des paquetages les plus populaires\footnote{%
@@ -134,8 +134,8 @@ plus courantes sont les suivantes.
 \begin{description}
 \item[\mdseries \code{10pt}, \code{11pt}, \code{12pt}] Taille de la
   police du document en points. La valeur par défaut est \code{10pt}.
-  Nous recommandons d'utiliser plutôt \code{11pt}. C'est d'ailleurs la
-  taille par défaut avec la classe \class{ulthese}.
+  Nous recommandons d'utiliser plutôt \code{11pt}. C'est la taille par
+  défaut avec la classe \class{ulthese}.
 \item[\mdseries \code{oneside}, \code{twoside}] Disposition du
   document en recto seulement ou en recto-verso. Ces options ne sont
   utiles que pour modifier la disposition par défaut de la classe. Les
@@ -147,30 +147,108 @@ plus courantes sont les suivantes.
   valeur par défaut, \code{openany}, {\LaTeX} insérera une page
   blanche dans le document si un chapitre se termine sur une page
   impaire.
-\item[\mdseries \code{article}] Mise en page comme celle d'un article
-  (classe \class{memoir} seulement). Avec cette option, \class{memoir}
-  peut remplacer la classe \class{article}.
+\item[\mdseries \code{article} (classe \class{memoir} seulement)] Mise
+  en page comme celle d'un article. Avec cette option, \class{memoir}
+  peut remplacer la classe \class{article}, ce qui permet d'utiliser
+  une seule et même classe pour les deux principaux types de document
+  (article et livre).
 \end{description}
+
+D'autres options permettent de contrôler la position du titre, la
+disposition en une ou deux colonnes, ou encore la position des
+équations hors paragraphe. \citet{Thurnherr:class-options} offre une
+présentation succincte des options standards. Le chapitre~1 de la %
+\doc{memman}{http://texdoc.net/pkg/memoir} %
+de \class{memoir} traite en plus des ajouts propres à la classe.
 
 
 \section{Titre et page de titre}
+\label{sec:organisation:titre}
 
-\begin{itemize}
-\item Mise en forme automatique
+{\LaTeX} rend très simple la composition du titre d'un article
+scientifique ou d'une page de titre simple (classes \class{report},
+\class{book}, \class{memoir}). En premier lieu, on spécifie,
+habituellement dans le préambule, le titre du document, le nom du ou
+des auteurs et la date de publication avec les commandes suivantes:
 \begin{lstlisting}
-%% préambule
 \title`\marg{Titre du document}'
-\author`\marg{Prénom Nom}'
-\date`\marg{1{\ier} janvier 1970}' % automatique si omis
+\author`\marg{Prénom Nom {\bs\bs} Affiliation {\bs\bs} Adresse}'
+\date`\marg{Date ou autre texte}'
+\end{lstlisting}
+Un long titre sera scindé automatiquement. L'auteur peut aussi scinder
+le titre manuellement en insérant la commande {\bs\bs} aux points de
+coupure. %
+Si l'ouvrage comporte deux auteurs ou plus, on insère les informations
+dans la commande \cmd{\author} les unes après les autres en séparant
+chaque entrée par la commande \cmdprint{\and}. %
+La commande \cmd{\date} insère le texte donné en argument (qu'il
+s'agisse d'une date ou non) à l'endroit prévu à cet effet par
+{\LaTeX}. Si l'on omet la commande, {\LaTeX} insère la date du jour au
+moment de la compilation. Pour ne pas afficher la date, on laisse
+l'argument vide:
+\begin{lstlisting}
+\date{}
+\end{lstlisting}
 
-option titlepage avec classe article
+Dans les articles scientifiques, le nom d'un auteur est fréquemment
+suivi d'un appel de note renvoyant à des remerciements à un organisme
+subventionnaire ou à quelque autre information additionnelle sur
+l'auteur. On insère une telle note et son appel à l'endroit approprié
+dans les commandes \cmd{\title} ou \cmd{\author} avec la commande
+\begin{lstlisting}
+\thanks`\marg{Texte}'
+\end{lstlisting}
 
-%% corps du document
+Les commandes ci-dessus ne permettent que de saisir les informations
+relatives au titre. Pour produire le titre il faut, en second lieu,
+insérér dans le corps du document la commande
+\begin{lstlisting}
 \maketitle
 \end{lstlisting}
-\item Mise en forme libre
-  \begin{minipage}{0.45\linewidth}
-    classes standards
+
+\begin{exemple}
+  \label{ex:organisation:titre}
+  Le code ci-dessous permet de créer un titre d'article standard. La
+  page composée avec {\XeLaTeX} (puisque nous utilisons le paquetage
+  \pkg{fontspec}) se trouve à la \autoref{fig:organisation:titre}.
+  \begin{demo}
+    \lstinputlisting[lastline=19]{exemple-titre.tex}
+  \end{demo}
+
+  La date de publication apparaissant dans l'illustration de la
+  \autoref*{fig:organisation:titre} est celle de la compilation
+  puisque la commande \cmdprint{\date} n'apparait pas dans le code
+  source.
+
+  On remarquera également que nous avons placé un symbole de
+  commentaire \% immédiatement après le nom de l'auteur dans le code
+  source. Tel qu'expliqué à la \ref{sec:bases::caracteres:espaces},
+  c'est pour éviter que {\LaTeX} transforme le retour à la ligne avant
+  la commande \cmd{\thanks} en une espace entre le nom et l'appel de
+  note.
+
+  (Le paquetage \pkg{lorem} utilisé dans cet exemple permet
+  d'insérer du faux texte \link{http://fr.lipsum.com}{«Lorem Ipsum»}
+  dans un document \LaTeX.)
+  \begin{figure}
+    \centering
+    \begin{minipage}{0.7\linewidth}
+      \fbox{\includegraphics[width=\linewidth]{exemple-titre}}
+    \end{minipage}
+    \caption{Illustration d'un titre d'article standard.}
+    \label{fig:organisation:titre}
+  \end{figure}
+  \qed
+\end{exemple}
+
+Nous avons mentionné plus haut que {\LaTeX} peut aussi produire
+automatiquement la page de titre d'un rapport ou d'un livre. Il est
+toutefois peu probable qu'elle convienne, surtout dans le cas d'un
+livre. Fort heureusement, une option plus flexible existe: les
+environnements
+\begin{demo}
+  \begin{minipage}{0.48\linewidth}
+    \centering classes standards
 \begin{lstlisting}
 \begin{titlepage}
   ...
@@ -178,32 +256,50 @@ option titlepage avec classe article
 \end{lstlisting}
   \end{minipage}
   \hfill
-  \begin{minipage}{0.45\linewidth}
-    classe \class{memoir}
+  \begin{minipage}{0.48\linewidth}
+    \centering classe \class{memoir}
 \begin{lstlisting}
 \begin{titlingpage}
   ...
 \end{titlingpage}
 \end{lstlisting}
   \end{minipage}
-\end{itemize}
+\end{demo}
+permettent de définir librement une page de
+titre. L'auteur contrôle alors entièrement la disposition et la
+composition des éléments de la page de titre. Nous renvoyons le
+lecteur au chapitre~4 de la %
+\doc{memman}{http://texdoc.net/pkg/memoir} %
+de \class{memoir} pour une liste de bonnes pratiques en matière de
+composition de page de titre et pour des exemples détaillés.
+
+Comme c'est souvent le cas dans les universités, le format de la page
+de titre des thèses et mémoires de l'Université Laval est
+prédéterminé. La classe \class{ulthese} fournit donc ses propres
+commandes de composition; consulter sa %
+\doc{ulthese}{http://texdoc.net/pkg/ulthese}.
+
 
 \section{Résumé}
+\label{sec:organisation:resume}
 
-\begin{itemize}
-\item Classes \class{article}, \class{report} ou \class{memoir}:
-  résumé créé avec l'environnement
+Les articles scientifiques et les rapports comportent souvent un
+résumé, habituellement composé en retrait des marges gauche et droite
+et dans une police de caractère plus petite. On produit le résumé avec
+l'environnement \Ie{abstract} des classes \class{article},
+\class{report} ou \class{memoir}:
 \begin{lstlisting}
 \begin{abstract}
-
+  `\meta{Texte du résumé}'
 \end{abstract}
 \end{lstlisting}
-\item Classe \class{ulthese}: résumés français et anglais traités
-  comme des chapitres normaux (non numérotés).
-\end{itemize}
 
+Dans les thèses et mémoires de l'Université Laval, on n'aura pas
+recours à l'environnement \Pe{abstract} puique les résumés sont
+traités comme des chapitres normaux non numérotés.
 
 \section{Table des matières}
+\label{sec:organisation:tdm}
 
 \begin{itemize}
 \item Table des matières produite automatiquement avec
