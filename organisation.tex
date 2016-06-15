@@ -162,8 +162,23 @@ présentation succincte des options standards. Le chapitre~1 de la %
 de \class{memoir} traite en plus des ajouts propres à la classe.
 
 
-\section{Titre et page de titre}
-\label{sec:organisation:titre}
+
+\section{Parties d'un document}
+
+Tout document de plus de quelques pages est normalement divisé en
+chapitres, sections, sous-sections, etc. Il peut comporter une ou
+plusieurs annexes et débuter par un résumé, notamment s'il s'agit d'un
+article scientifique. Le document est habituellement coiffé d'un
+titre, mais celui-ci est parfois affiché sur une page de titre
+séparée.
+
+Toutes ces considérations relevant essentiellement de la mise en page,
+{\LaTeX} s'en charge pour nous. L'auteur n'a qu'à spécifier la
+strucure logique du document à l'aide des commandes de la présente
+section.
+
+\subsection{Titre et page de titre}
+\label{sec:organisation:parties:titre}
 
 {\LaTeX} rend très simple la composition du titre d'un article
 scientifique ou d'une page de titre simple (classes \class{report},
@@ -232,9 +247,7 @@ insérér dans le corps du document la commande
   dans un document \LaTeX.)
   \begin{figure}
     \centering
-    \begin{minipage}{0.7\linewidth}
-      \fbox{\includegraphics[width=\linewidth]{exemple-titre}}
-    \end{minipage}
+    \fbox{\includegraphics[width=0.7\linewidth]{exemple-titre}}
     \caption{Illustration d'un titre d'article standard.}
     \label{fig:organisation:titre}
   \end{figure}
@@ -244,29 +257,28 @@ insérér dans le corps du document la commande
 Nous avons mentionné plus haut que {\LaTeX} peut aussi produire
 automatiquement la page de titre d'un rapport ou d'un livre. Il est
 toutefois peu probable qu'elle convienne, surtout dans le cas d'un
-livre. Fort heureusement, une option plus flexible existe: les
-environnements
+livre. Une option plus flexible existe: les environnements
+\Ie{titlepage} (classes standards) et \Ie{titlingpage} (classe
+\class{memoir}) permettent de définir librement une page de
+titre:
 \begin{demo}
   \begin{minipage}{0.48\linewidth}
-    \centering classes standards
 \begin{lstlisting}
 \begin{titlepage}
-  ...
+  `\meta{Texte de la page de titre}'
 \end{titlepage}
 \end{lstlisting}
   \end{minipage}
   \hfill
   \begin{minipage}{0.48\linewidth}
-    \centering classe \class{memoir}
 \begin{lstlisting}
 \begin{titlingpage}
-  ...
+  `\meta{Texte de la page de titre}'
 \end{titlingpage}
 \end{lstlisting}
   \end{minipage}
 \end{demo}
-permettent de définir librement une page de
-titre. L'auteur contrôle alors entièrement la disposition et la
+L'auteur contrôle alors entièrement la disposition et la
 composition des éléments de la page de titre. Nous renvoyons le
 lecteur au chapitre~4 de la %
 \doc{memman}{http://texdoc.net/pkg/memoir} %
@@ -279,9 +291,8 @@ prédéterminé. La classe \class{ulthese} fournit donc ses propres
 commandes de composition; consulter sa %
 \doc{ulthese}{http://texdoc.net/pkg/ulthese}.
 
-
-\section{Résumé}
-\label{sec:organisation:resume}
+\subsection{Résumé}
+\label{sec:organisation:parties:resume}
 
 Les articles scientifiques et les rapports comportent souvent un
 résumé, habituellement composé en retrait des marges gauche et droite
@@ -294,101 +305,188 @@ l'environnement \Ie{abstract} des classes \class{article},
 \end{abstract}
 \end{lstlisting}
 
-Dans les thèses et mémoires de l'Université Laval, on n'aura pas
-recours à l'environnement \Pe{abstract} puique les résumés sont
-traités comme des chapitres normaux non numérotés.
+Il est plutôt rare que les livres comportent un résumé ou alors, comme
+d'ailleurs pour les thèses et mémoires de l'Université Laval, celui-ci
+est simplement traité comme un chapitre normal non numéroté.
+
+\subsection{Sections}
+\label{sec:organisation:parties:sections}
+
+Les commandes ci-dessous servent à découper un document en sections
+qui seront automatiquement numérotées par {\LaTeX} de manière
+séquentielle:
+\begin{lstlisting}
+\part`\oarg{titre court}\marg{titre}'
+\chapter`\oarg{titre court}\marg{titre}'
+\section`\oarg{titre court}\marg{titre}'
+\subsection`\oarg{titre court}\marg{titre}'
+\subsubsection`\oarg{titre court}\marg{titre}'
+\paragraph`\oarg{titre court}\marg{titre}'
+\subparagraph`\oarg{titre court}\marg{titre}'
+\end{lstlisting}
+Les commandes forment, dans l'ordre où elles sont données, une
+hiérarchie des titres d'un document\footnote{%
+  Nous n'avons jamais utilisé les niveaux de division
+  \cmdprint{\paragraph} et \cmdprint{\subparagraph}.}. %
+Tel que mentionné précédemment, la commande \cmd{\chapter} n'est pas
+disponible avec la classe \class{article}.
+
+Chaque commande prend en argument obligatoire le \meta{titre} de la
+section. Si celui-ci est très long, il peut être utile de fournir en
+argument optionnel un \meta{titre court}; c'est ce dernier qui
+apparaitra dans la table des matières et les entêtes de page, le cas
+échéant.
+
+Toutes les commandes existent en version suivie d'une \verb=*= qui
+supprime la numérotation ainsi que l'insertion éventuelle dans la
+table des matières (plus de détails à la \autoref{sec:organisation:tdm}).
+
+\begin{conseil}
+  Éviter d'utiliser des sous-sous-sections numérotées (commande
+  \cmdprint{\subsubsection}) dans un livre. Cela résulte en une
+  numérotation à quatre niveaux qui s'avère difficile à suivre pour le
+  lecteur.
+\end{conseil}
+
+\subsection{Annexes}
+\label{sec:organisation:parties:annexes}
+
+Les annexes sont des sections ou des chapitres avec une numérotation
+alphanumérique (A, A.1, ...) plutôt qu'entièrement numérique. On
+informe {\LaTeX} que les sections suivantes doivent être traitées
+comme des annexes en insérant dans le document la commande
+\begin{lstlisting}
+\appendix
+\end{lstlisting}
+En plus de modifier le style de numérotation, la commande a pour effet
+de changer le mot clé «Chapitre» pour «Annexe» dans les titres de
+chapitre.
+
+\subsection{Structure logique d'un livre}
+\label{sec:oganisation:parties:livre}
+
+Un livre se compose normalement de trois grandes parties logiques: les
+pages liminaires (avant-propos, table des matières, tout ce qui
+précède le chapitre premier); le corps du livre (chapitres et
+annexes); les parties en fin d'ouvrage (bibliographie, index). Les
+commandes
+\begin{lstlisting}
+\frontmatter
+\mainmatter
+\backmatter
+\end{lstlisting}
+qui sont disponibles avec les classes \class{book}, \class{memoir} et
+\class{ulthese}, permettent d'identifier ces trois parties. Le
+\autoref{tab:organisation:livre} résume l'effet de chaque commande.
+
+\begin{table}
+  \centering
+  \caption{Commandes d'identification de la structure logique d'un
+    livre et leurs effets}
+  \label{tab:organisation:livre}
+  \begin{tabular}{ll}
+    \toprule
+    Commande & Effets \\
+    \midrule
+    \cmd{\frontmatter} & numérotation des
+                              pages en chiffres romains (i, ii, ...) \\
+             & chapitres non numérotés \\
+    \addlinespace[0.5\normalbaselineskip]
+    \cmd{\mainmatter} & numérotation des pages
+                             à partir de 1 en chiffres arabes \\
+             & chapitres numérotés \\
+    \addlinespace[0.5\normalbaselineskip]
+    \cmd{\backmatter} & numérotation des pages
+                             se poursuit \\
+             & chapitres non numérotés \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
 
 \section{Table des matières}
 \label{sec:organisation:tdm}
 
-\begin{itemize}
-\item Table des matières produite automatiquement avec
+Dans la mesure où l'on a bien identifié les différentes divisions d'un
+ouvrage avec les commandes mentionnées à la section précédente, la
+production de la table des matières est on ne peut plus simple avec
+{\LaTeX}: il suffit d'insérer la commande
 \begin{lstlisting}
 \tableofcontents
 \end{lstlisting}
-\item Requiert plusieurs compilations
-\item Sections non numérotées pas incluses
-\item Avec \pkg{hyperref}, produit également la table des matières du
-  fichier PDF
-\item Classe \class{memoir} fournit également
+dans le corps du document à l'endroit où la table des matières doit
+apparaître. C'est tout!
+
+Lorsque le paquetage \pkg{hyperref} \citep{hyperref} est chargé, la
+commande \cmdprint{\tableofcontents} produit également la table des
+matières du fichier PDF. Cela permet de naviguer dans le document
+directement depuis la visionneuse PDF. La
+\autoref{fig:organisation:tdm-dans-pdf} illustre cette fonctionnalité
+avec la visionneuse Aperçu de macOS.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.7\linewidth,angle=-90]{tdm-dans-pdf}
+  \caption{Consultation d'un document PDF avec la visionneuse Aperçu
+    de macOS. La barre latérale de gauche affiche la table des
+    matières du fichier PDF, ce qui permet de naviguer dans le
+    document sans devoir revenir à celle du document.}
+  \label{fig:organisation:tdm-dans-pdf}
+\end{figure}
+
+\begin{important}
+  La production initiale de la table des matières et la prise en
+  compte de toute modification requiert jusqu'à trois compilations
+  consécutives du document.
+\end{important}
+
+Par défaut, une section non numérotée ne figure pas dans la table des
+matières. Si l'on souhaite néanmoins l'y insérer, il faut utiliser la
+commande suivante:
 \begin{lstlisting}
-\tableofcontents*
+\addtocontentsline{toc}`\marg{niveau}\marg{titre}'
 \end{lstlisting}
-  qui n'insère pas la table des matières dans la table des matières
-\item Aussi disponibles:
+où \meta{niveau} est le nom de la commande de division sans le
+caractère {\bs} (\code{chapter}, \code{section}, etc.) et \meta{titre}
+est le texte qui apparaitra dans la table des matières.
+
+\begin{exemple}
+  Selon les normes de présentation visuelle de la Faculté des études
+  supérieures et postdoctorales pour les thèses et mémoires de
+  l'Université Laval, les résumés, la liste des abbréviations et des
+  sigles, les remerciements et l'avant-propos doivent être composés
+  comme des chapitres normaux non numérotés. Cependant, ils doivent
+  apparaître dans la table des matières. Pour ce faire, les gabarits
+  fournis avec la classe \class{ulthese} comportent des lignes de la
+  forme:
+\begin{lstlisting}
+\chapter*{Résumé}
+\phantomsection\addcontentsline{toc}{chapter}{Résumé}
+\end{lstlisting}
+  La commande \cmd{\phantomsection} est rendue nécessaire (ou
+  recommandée) par le paquetage \pkg{hyperref}. %
+  \qed
+\end{exemple}
+
+Outre une table des matières, les longs ouvrages scientifiques
+comptent parfois une liste des figures et une liste des tableaux. On
+obtient celles-ci avec les commandes
 \begin{lstlisting}
 \listoffigures
 \listoftables
 \end{lstlisting}
-  (et leurs versions \verb=*= dans \class{memoir})
-\end{itemize}
 
-
-\section{Sections}
-
-\begin{itemize}
-\item Découpage du document en sections avec les commandes
+Dans les classes \class{memoir} et \class{ulthese}, les commandes
+ci-dessus insèrent leur propre titre de section dans la table des
+matière (autrement dit, la table des matières apparait dans la table
+des matières). Les versions
 \begin{lstlisting}
-\part`\marg{titre}'
-\chapter`\marg{titre}'
-\section`\marg{titre}'
-\subsection`\marg{titre}'
-\subsubsection`\marg{titre}'
-\paragraph`\marg{titre}'
+\tableofcontents*
+\listoffigures*
+\listoftables*
 \end{lstlisting}
-\item Prennent le titre en argument
-\item Numérotation automatique
-\item Commande suivie d'une \verb=*= = section non numérotée
-\item Éviter d'utiliser des sous-sous-sections
-  (\cmdprint{\subsubsection}) dans un livre puisque cela résulte en
-  une numérotation à quatre niveaux qui s'avère difficile à suivre pour le
-  lecteur.
-\item Nous n'avons jamais utilisé le niveau de division \cmdprint{\paragraph}.
-\end{itemize}
-
-
-\section{Annexes}
-
-\begin{itemize}
-\item Les annexes sont des sections ou des chapitres avec une
-  numérotation alphanumérique (A, A.1, ...)
-\item Sections suivantes identifiées comme des annexes par la commande
-\begin{lstlisting}
-\appendix
-\end{lstlisting}
-\item Dans le titre, «Chapitre» changé pour «Annexe» le cas échéant
-\end{itemize}
-
-
-\section{Structure logique d'un livre}
-
-
-\begin{lstlisting}
-\frontmatter
-\end{lstlisting}
-\begin{itemize}
-\item préface, table des matières, etc.
-\item numérotation des pages en chiffres romains (i, ii, ...)
-\item chapitres non numérotés
-\end{itemize}
-
-\begin{lstlisting}
-\mainmatter
-\end{lstlisting}
-\begin{itemize}
-\item le contenu à proprement parler
-\item numérotation des pages à partir de 1 en chiffres arabes
-\item chapitres numérotés
-\end{itemize}
-
-\begin{lstlisting}
-\backmatter
-\end{lstlisting}
-\begin{itemize}
-\item tout le reste (bibliographie, index, etc.)
-\item numérotation des pages se poursuit
-\item chapitres non numérotés
-\end{itemize}
+adoptent le comportement des classes standards, soit d'omettre ces
+parties dans la table des matières.
 
 
 \section{Renvois automatiques}
