@@ -237,7 +237,7 @@ insérér dans le corps du document la commande
 
   On remarquera également que nous avons placé un symbole de
   commentaire \% immédiatement après le nom de l'auteur dans le code
-  source. Tel qu'expliqué à la \ref{sec:bases::caracteres:espaces},
+  source. Tel qu'expliqué à la \ref{sec:bases:caracteres:espaces},
   c'est pour éviter que {\LaTeX} transforme le retour à la ligne avant
   la commande \cmd{\thanks} en une espace entre le nom et l'appel de
   note.
@@ -464,7 +464,8 @@ est le texte qui apparaitra dans la table des matières.
 \phantomsection\addcontentsline{toc}{chapter}{Résumé}
 \end{lstlisting}
   La commande \cmd{\phantomsection} est rendue nécessaire (ou
-  recommandée) par le paquetage \pkg{hyperref}. %
+  recommandée) par le paquetage \pkg{hyperref} qui est chargé dans le
+  préambule. %
   \qed
 \end{exemple}
 
@@ -490,88 +491,190 @@ parties dans la table des matières.
 
 
 \section{Renvois automatiques}
-\label{sec:construction:renvois}
+\label{sec:organisation:renvois}
 
+Un document d'une certaine ampleur contiendra souvent des renvois à
+une section, à un tableau, à une équation, voire à une page
+spécifique. Évidemment, le numéro de la section, du tableau, de
+l'équation ou de la page est susceptible de changer au fil de la
+rédaction du document. C'est pourquoi l'auteur ne devrait
+\emph{jamais} insérer les revois manuellement dans le texte. C'est une
+tâche qu'il vaut mieux confier à l'ordinateur: il la fera mieux que
+nous.
 
 \subsection{Étiquettes et renvois}
+\label{sec:organisation:renvois:etiquettes}
 
-Parce que l'ordinateur le fera mieux que vous
+Le système de renvois automatiques de {\LaTeX} repose sur une logique
+d'étiquettes (ou noms) donnés à des éléments de contenu et de
+référencement par ces étiquettes.
 
-\begin{itemize}
-\item Ne \emph{jamais} renvoyer manuellement à un numéro de section,
-  d'équation, de tableau, etc.
-\item «Nommer» un élément avec \verb=\label=
-\item Faire référence par son nom avec \verb=\ref=
-\item Requiert 2 à 3 compilations
-\end{itemize}
-
-\begin{demo}
-\begin{lstlisting}[emph={\label,\ref}]
-\section{Définitions}
-\label{sec:definitions}
-
-Lorem ipsum dolor sit amet, consectetur
-adipiscing elit. Duis in auctor dui. Vestibulum
-
-\section{Historique}
-
-Tel que vu à la section \ref{sec:definitions},
-on a...
+Ainsi, pour renvoyer le lecteur à un élément de contenu, il faut
+d'abord le nommer en insérant la commande
+\begin{lstlisting}
+\label`\marg{nom}'
 \end{lstlisting}
-  \begin{framed}
-    \includegraphics[width=\linewidth]{renvoi}
-  \end{framed}
-\end{demo}
+près de l'élément. Le choix du \meta{nom} est tout à fait libre. Il
+peut être constitué de toute combinaison de lettres, de chiffres et de
+symboles autres que les symboles réservés mentionnés à la
+\autoref{sec:bases:caracteres:reserves}.
+
+Ensuite, il est possible d'insérer un renvoi à cet élément de contenu
+n'importe où dans le document avec la commande
+\begin{lstlisting}
+\ref`\marg{nom}'
+\end{lstlisting}
+Pour renvoyer à la page où se trouve l'élément, on utilise la commande
+\begin{lstlisting}
+\pageref`\marg{nom}'
+\end{lstlisting}
+
+La production des renvois requiert deux à trois compilations.
+D'ailleurs, si {\LaTeX} n'a pas complété les renvois, le journal de
+compilation contiendra, vers la toute fin, le message
+\begin{verbatim}
+LaTeX Warning: Label(s) may have changed. Rerun to get
+cross-references right.
+\end{verbatim}
+
+On prendra également garde aux alertes suivantes dans le journal de
+compilation. Elles identifient des correctifs à apporter dans le
+réseau d'étiquettes et de renvois. D'abord, le message
+\begin{verbatim}
+LaTeX Warning: There were undefined references.
+\end{verbatim}
+indique qu'une ou plusieurs commandes \cmd{\ref} renvoient à un
+\meta{nom} qui n'est pas défini avec \cmd{\label}. On trouvera alors
+dans le document le caractère \textbf{?} en lieu et place du renvoi. À
+l'inverse, le message
+\begin{verbatim}
+LaTeX Warning: There were multiply-defined labels.
+\end{verbatim}
+indique que plusieurs commandes \cmdprint{\label} utilisent le même
+\meta{nom}. Cela est susceptible de causer des renvois vers le mauvais
+élément de contenu.
 
 \begin{conseil}
-  Adoptez une manière systématique et mnémotechnique de nommer les
-  éléments dans un long document afin de vous y retrouver.
+  Un long document contiendra vraisemblablement un grand nombre
+  d'étiquettes et de renvois. Afin de s'y retrouver et pour éviter les
+  doublons, adopter une manière systématique et mnémotechnique de
+  nommer les éléments.
 
-  \bigskip %
-  Exemple:
+  Pour le présent document, nous avons utilisé un système de la forme
+  suivante:
 \begin{lstlisting}
-\label{chap:`\meta{chapitre}'}          % chapitre
+\label{chap:`\meta{chapitre}'}`\phantom{\meta{}}'         % chapitre
 \label{sec:`\meta{chapitre}':`\meta{section}'}  % section
 \label{tab:`\meta{chapitre}':`\meta{tableau}'}  % tableau
 \label{eq:`\meta{chapitre}':`\meta{equation}'}  % équation
 \end{lstlisting}
 \end{conseil}
 
+\begin{exemple}
+  \label{ex:organisation:renvoi}
+  Le code ci-dessous permet d'insérer un renvoi automatique à un
+  numéro de section dans un document. Le résultat se trouve à la
+  \autoref{fig:organisation:renvoi}.
+\begin{lstlisting}[emph={\label,\ref}]
+\section{Définitions}
+\label{sec:definitions}
 
-\subsection{Hyperliens}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Duis in auctor dui. Vestibulum ut, placerat ac, adipiscing
+vitae, felis.
 
-Renvois automatiques++
+\section{Historique}
 
-\begin{itemize}
-\item Paquetage \pkg{hyperref} insère des hyperliens vers les renvois
-  dans les fichiers PDF
-  \begin{demo}
-\begin{lstlisting}
-Tel que vu à la section \ref{sec:definitions},
-on a...
+Tel que vu à la section \ref{sec:definitions}, on a...
 \end{lstlisting}
-    \begin{framed}
-      \includegraphics{renvoi_avec_ref}
-    \end{framed}
-  \end{demo}
-\item Commande \verb=\autoref= permet de
-  \begin{enumerate}
-  \item nommer automatiquement le type de renvoi (section, équation,
-    tableau, etc.)
-  \item transformer en hyperlien le texte \textbf{et} le numéro
-  \end{enumerate}
-  \begin{demo}
+
+  \begin{figure}
+    \fbox{\includegraphics*[viewport=124 550 484 664,width=\linewidth]{exemple-renvoi}}
+    \caption{Texte produit par le code de
+      l'\autoref{ex:organisation:renvoi} illustrant un renvoi
+      automatique standard}
+    \label{fig:organisation:renvoi}
+  \end{figure}
+  \qed
+\end{exemple}
+
+\subsection{Renvois avec hyperliens}
+\label{sec:organisation:renvois:hyperliens}
+
+Lorsque chargé dans le document, le paquetage \pkg{hyperref} insère
+des hyperliens vers les renvois dans les fichiers PDF. C'est très
+pratique en consultation électronique d'un document.
+
+\begin{exemple}
+  \label{ex:organisation:renvoi-hyperref}
+  Avec l'ajout de
 \begin{lstlisting}
-Tel que vu à la \autoref{sec:definitions},
-on a...
+\usepackage{hyperref}
 \end{lstlisting}
-    \begin{framed}
-      \includegraphics{renvoi_avec_autoref}
-    \end{framed}
-  \end{demo}
-\end{itemize}
+  dans le préambule, le code de l'\autoref{ex:organisation:renvoi}
+  produit maintenant le type de renvoi illustré à la
+  \autoref{fig:organisation:renvoi-hyperref}. Le texte en couleur
+  contrastante est un hyperlien vers le titre de la section.
 
+  \begin{figure}
+    \centering
+    \fbox{\includegraphics[viewport=124 550 484 664,width=\linewidth]{exemple-renvoi-hyperref}}
+    \caption{Texte produit par le code de
+      l'\autoref{ex:organisation:renvoi} après l'ajout du paquetage
+      \pkg{hyperref}}
+    \label{fig:organisation:renvoi-hyperref}
+  \end{figure}
+  \qed
+\end{exemple}
 
+L'inconvénient avec la procédure illustrée dans l'exemple précédent,
+c'est que seul le numéro de la référence est transformé en hyperlien.
+La zone disponible pour cliquer s'en trouve plutôt restreinte. Une
+fonctionnalité du paquetage \pkg{hyperref} --- à laquelle nous avons eu
+recours dans le présent document --- permet d'agrandir cette zone. La
+commande
+\begin{lstlisting}
+\autoref`\marg{nom}'
+\end{lstlisting}
+permet à la fois de nommer automatiquement le type de renvoi (section,
+équation, tableau, etc.) et de transformer à la fois ce texte et le
+numéro en hyperlien.
+
+\begin{exemple}
+  \label{ex:organisation:renvoi-autoref}
+  On reprend le texte de l'\autoref{ex:organisation:renvoi}, mais en
+  utilisant cette fois la commande \cmd{\autoref} pour insérer un
+  renvoi dans le texte. On remarque que le mot «section» a été
+  supprimé du code source pour laisser le soin à la commande d'insérer
+  le vocable approprié dans le document.
+\begin{lstlisting}[emph={\label,\autoref}]
+\section{Définitions}
+\label{sec:definitions}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Duis in auctor dui. Vestibulum ut, placerat ac, adipiscing
+vitae, felis.
+
+\section{Historique}
+
+Tel que vu à la \autoref{sec:definitions}, on a...
+\end{lstlisting}
+  Comme on peut le voir à la
+  \autoref{fig:organisation:renvoi-autoref}, le mot «section» ainsi
+  que son numéro forment maintenant l'hyperlien.
+
+  \begin{figure}
+    \centering
+    \fbox{\includegraphics[viewport=124 550 484 664,width=\linewidth]{exemple-renvoi-autoref}}
+    \caption{Texte produit par le code de
+      l'\autoref{ex:organisation:renvoi-autoref}}
+    \label{fig:organisation:renvoi-autoref}
+  \end{figure}
+  \qed
+\end{exemple}
+
+On trouvera à la \autoref{sec:trucs:hyperliens} des détails
+additionnels sur la gestion des hyperliens dans un document PDF.
 
 
 %%%
@@ -581,7 +684,7 @@ on a...
 \section{Exercices}
 \label{sec:apparence:exercices}
 
-\begin{exercice}[nosol]
+\begin{exercice}
   Utiliser le fichier \fichier{exercice\_parties.tex}.
   \begin{enumerate}
   \item Étudier la structure du document dans le code source.
@@ -592,17 +695,19 @@ on a...
     dans le document.
   \item Vous remarquerez que la numérotation cesse à partir des
     sous-sections. C'est une particularité de la classe
-    \class{memoir}.
-
-    Recompiler le document après avoir ajouté au préambule la commande
+    \class{memoir}. Recompiler le document après avoir ajouté au
+    préambule la commande
 \begin{lstlisting}
 \maxsecnumdepth{subsection}
 \end{lstlisting}
   \item Ajouter une annexe au document.
   \end{enumerate}
+  \begin{sol}
+    Consulter le fichier \fichier{exercice\_parties-solution.tex}.
+  \end{sol}
 \end{exercice}
 
-\begin{exercice}[nosol]
+\begin{exercice}
   Utiliser le fichier \fichier{exercice\_renvois.tex}.
   \begin{enumerate}
   \item Insérer dans le texte un renvoi au numéro d'une section.
@@ -610,6 +715,9 @@ on a...
     \code{colorlinks} et comparer l'effet d'utiliser \cmd{\ref} ou
     \cmd{\autoref} pour le renvoi.
   \end{enumerate}
+  \begin{sol}
+    Consulter le fichier \fichier{exercice\_renvois-solution.tex}.
+  \end{sol}
 \end{exercice}
 
 
