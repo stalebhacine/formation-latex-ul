@@ -1023,14 +1023,15 @@ en mode mathématique, LaTeX ajoute automatiquement une espace fine
 après une virgule comme s'il s'agissait d'une énumération.
 
 Afin de pouvoir utiliser de manière conviviale la virgule comme
-séparateur décimal en mode mathématique, charger le très pratique
+séparateur décimal en mode mathématique, on chargera le très pratique
 paquetage \pkg{icomma} \citep{icomma}. Avec ce paquetage, la virgule
 agira comme séparateur décimal en mode mathématique seulement
 lorsqu'elle est suivie d'un caractère autre que l'espace.
 \begin{demo}
-  \begin{minipage}{0.45\linewidth}
-    \begin{texample}
+  \begin{minipage}{0.5\linewidth}
+    \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
+% nombre décimal
 $x = 1,2$
 \end{lstlisting}
       \producing
@@ -1038,13 +1039,14 @@ $x = 1,2$
     \end{texample}
   \end{minipage}
   \hfill
-\begin{minipage}{0.45\linewidth}
-    \begin{texample}
+  \begin{minipage}{0.5\linewidth}
+    \begin{texample}[0.6\linewidth]
 \begin{lstlisting}
-$x = 1, 2$
+% énumération
+$x = 1, 2, 3$
 \end{lstlisting}
       \producing
-      $x = 1, 2$
+      $x = 1, 2, 3$
     \end{texample}
   \end{minipage}
 \end{demo}
