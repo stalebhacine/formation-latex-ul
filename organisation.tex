@@ -679,6 +679,180 @@ On trouvera à la \autoref{sec:trucs:hyperliens} des détails
 additionnels sur la gestion des hyperliens dans un document PDF.
 
 
+\section{Document contenu dans plusieurs fichiers}
+\label{sec:organisation:include}
+
+Lorsque le préambule et le corps du texte demeurent relativement
+courts (peu de commandes spéciales et moins d'une vingtaine de pages
+de texte), il demeure assez simple et convivial d'en faire l'édition
+dans un seul fichier à l'aide de son éditeur de texte favori.
+
+Cependant, si le préambule devient long et complexe ou, surtout,
+lorsque l'ampleur du document augmente jusqu'à compter un grand nombre
+de pages sur plusieurs chapitres, il convient de répartir les divers
+éléments du document dans des fichiers séparés.
+
+La segmentation en plusieurs fichiers rend l'édition du texte plus
+simple et plus efficace. De plus, durant la phase de rédaction, elle
+peut significativement accélérer la compilation des documents très
+longs ou comptant plusieurs images.
+
+\subsection{Insertion du contenu d'un autre fichier}
+\label{sec:organisation:include:input}
+
+La commande \cmd{\input} permet d'insérer le contenu d'un autre
+fichier dans un document {\LaTeX}. La syntaxe de la commande est
+\begin{lstlisting}
+\input`\marg{fichier}'
+\end{lstlisting}
+où le nom du fichier à insérer est \meta{fichier}\code{.tex}. On
+laisse donc tomber l'extension \code{.tex}, qui est implicite. Le
+contenu du fichier est inséré tel quel dans le document, comme s'il
+avait été tapé dans le fichier qui contient l'appel à \cmd{\input}.
+
+Le procédé est surtout utile pour sauvegarder séparément des bouts de
+code qui pourraient nuire à l'édition du texte (figures, longs
+tableaux) ou qui sont communs entre plusieurs documents (licence
+d'utilisation, auteur et affiliation).
+
+La commande peut aussi être utilisée dans le préambule pour charger
+une partie ou l'ensemble de celui-ci. Cela permet de composer un même
+préambule pour plusieurs documents. Il suffit alors de faire
+d'éventuelles modifications à un seul endroit pour les voir prendre
+effet dans tous les documents.
+
+\subsection{Insertion de parties d'un document}
+\label{sec:organisation:include:include}
+
+Extrait de la %
+\doc{ulthese}{http://texdoc.net/pkg/ulthese/} %
+de la classe \class{ulthese}:
+\begin{quote}
+  «Il est recommandé de segmenter tout document d'une certaine ampleur
+  dans des fichiers \verb=.tex= distincts pour chaque partie ---
+  habituellement un fichier par chapitre. Le document complet est
+  composé à l'aide d'un fichier maître qui contient le préambule
+  {\LaTeX} et un ensemble de commandes \cmdprint{\include} pour réunir les
+  parties dans un tout.»
+\end{quote}
+La \autoref{fig:organisation:maitre} présente un exemple type de
+fichier maître. On y utilise la commande \cmd{\include} pour composer
+un document chapitre par chapitre.
+
+\begin{figure}
+  \centering
+  \begin{minipage}{0.75\linewidth}
+\begin{lstlisting}[numbers=left, numberstyle=\tiny,
+                   frame=single, rulecolor=\color{black}, framesep=6pt]
+\documentclass{ulthese}
+  [...]
+
+\begin{document}
+
+\frontmatter
+
+\include{introduction}
+\tableofcontents*
+
+\mainmatter
+\include{historique}
+\include{rappels}
+\include{modele}
+[...]
+
+\end{document}
+\end{lstlisting}
+  \end{minipage}
+  \caption{Structure type d'un fichier maître. Les fichiers
+    \code{historique.tex}, \code{rappels.tex} et \code{modele.tex}
+    contiennent le texte des trois premiers chapitres.}
+  \label{fig:organisation:maitre}
+\end{figure}
+
+Comme \cmd{\input}, la commande \cmd{\include} insère le contenu
+d'un autre fichier dans un document {\LaTeX}. Son effet est cependant
+différent et c'est son utilisation qui permet d'accélérer la
+compilation d'un long document.
+
+L'insertion d'un fichier avec \cmd{\include} débute toujours une
+nouvelle page. On utilisera donc \cmd{\include} principalement pour
+insérer des chapitres entiers plutôt que seulement des portions de
+texte. De plus, un fichier inséré avec \cmd{\include} peut contenir
+des appels à \cmd{\input}, mais pas à \cmd{\include}.
+
+La syntaxe de la commande \cmd{\include} est
+\begin{lstlisting}
+\include`\marg{fichier}'
+\end{lstlisting}
+où le nom du fichier à insérer est \meta{fichier}\code{.tex}. Ici
+aussi on laisse tomber l'extension \code{.tex} qui est implicite.
+
+
+\begin{conseil}
+  Utilisez des noms de fichiers qui permettent de facilement
+  identifier leur contenu. Par exemple, un nom comme
+  \fichier{rappels.tex} est plus parlant et résiste mieux aux
+  changements à l'ordre des chapitres que \fichier{chapitre1.tex}.
+\end{conseil}
+
+Le principal avantage de \cmd{\include} par rapport à \cmd{\input}
+réside dans le fait que {\LaTeX} peut préserver entre les compilations
+les informations telles que les numéros de pages, de sections ou
+d'équations, ainsi que les références. Cela permet, par exemple, de
+compiler le texte d'un seul chapitre --- plutôt que le document entier
+--- et néanmoins obtenir une image représentative du chapitre.
+Procéder ainsi accélère significativement la compilation des documents
+longs ou complexes.
+
+La commande \cmd{\includeonly}, que l'on utilise exclusivement dans le
+préambule, sert à spécifier le ou les fichiers à compiler tout en
+préservant la numérotation et les références. Sa syntaxe est
+\begin{lstlisting}
+\includeonly`\marg{liste\_fichiers}'
+\end{lstlisting}
+où \meta{liste\_fichiers} contient les noms des fichiers à
+inclure dans la compilation, séparés par des virgules et sans
+l'extension \code{.tex}.
+
+Lors de l'utilisation de la commande \cmd{\includeonly}, toute la
+numérotation dans les fichiers \meta{liste\_fichiers} suivra celle
+établie lors de la compilation précédente. Si l'édition des fichiers
+de \meta{liste\_fichiers} cause des changements dans la numérotation
+et les références dans les autres parties du document, une nouvelle
+compilation de l'ensemble ou d'une partie de celui-ci s'avérera
+nécessaire.
+
+\begin{exemple}
+  Un document est composé en plusieurs parties avec les commandes
+  suivantes:
+\begin{lstlisting}
+\include{historique}            % chapitre 1
+\include{rappels}               % chapitre 2
+\include{modele}                % chapitre 3
+\end{lstlisting}
+  Les chapitres débutent respectivement aux pages~1, 23 et 41.
+  \begin{itemize}
+  \item Si l'on ajoute au préambule du document la commande
+\begin{lstlisting}
+\includeonly{rappels}
+\end{lstlisting}
+    le numéro du chapitre sera toujours 2 et le folio de
+    la première page sera toujours 23, même si les 22 pages
+    précédentes ne se trouvent pas dans le document.
+  \item Si l'on modifie le fichier \fichier{rappels.tex} de telle
+    sorte que le chapitre se termine maintenant à la page 46, il
+    faudra recompiler le document avec au moins les fichiers
+    \fichier{rappels.tex} et \code{modele.tex} pour que les pages du
+    chapitre~3 soient renumérotées à partir de 47.
+  \end{itemize}
+  \qed
+\end{exemple}
+
+L'\autoref{ex:include} illustre mieux le cycle typique
+d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
+
+
+
 %%%
 %%% Exercices
 %%%
@@ -722,6 +896,70 @@ additionnels sur la gestion des hyperliens dans un document PDF.
   \end{sol}
 \end{exercice}
 
+\begin{exercice}[nosol]
+  \label{ex:include}
+  Cet exercice fait appel au fichier maître
+  \fichier{exercice\_include.tex} et à plusieurs fichiers auxiliaires.
+  Schématiquement, le document est composé ainsi:
+
+  \medskip
+  \begin{minipage}{\linewidth}
+    \dirtree{%
+      .1 exercice\_include.tex.
+      .2 {\textbackslash}input pagetitre.tex.
+      .2 {\textbackslash}include presentation.tex.
+      .3 {\textbackslash}includegraphics console-screenshot.pdf.
+      .2 {\textbackslash}include emacs.tex.
+    }
+  \end{minipage}
+  \medskip
+
+  La commande \cmd{\includegraphics} permet d'insérer une image dans
+  un document {\LaTeX}. Elle provient du paquetage \pkg{graphicx}.
+
+  \begin{enumerate}
+  \item Étudier le code source du fichier maître
+    \fichier{exercice\_include.tex}, puis le compiler deux à trois
+    fois jusqu'à ce que toutes les références internes soient à jour.
+    Il est normal à ce stade que la figure~1 du document soit vide.
+  \item Ajouter dans le préambule du fichier maître la commande
+\begin{lstlisting}
+\includeonly{emacs}
+\end{lstlisting}
+    puis compiler le document.
+
+    Observer que, malgré l'absence du chapitre~1, la numérotation et
+    les références demeurent à jour, notamment la table des matières.
+  \item Remplacer la commande ajoutée en b) dans le préambule du
+    fichier maître par la commande
+\begin{lstlisting}
+\includeonly{presentation}
+\end{lstlisting}
+    Vers la fin du fichier \fichier{presentation.tex}, activer la
+    commande
+\begin{lstlisting}
+\includegraphics[width=\textwidth]{console-screenshot}
+\end{lstlisting}
+    en supprimant le symbole \% au début de la ligne. Compiler de
+    nouveau le document deux fois.
+
+    Les modifications ont eu pour effet d'ajouter une page au
+    chapitre~1. Observer que selon la table des matières, le
+    chapitre~2 débute toujours à la page~3 alors que celle-ci est
+    maintenant occupée par la figure~1.
+  \item Afin de corriger la table des matières, désactiver dans le
+    préambule du fichier maître la commande \cmd{\includeonly}, puis
+    compiler de nouveau le document quelques fois.
+  \end{enumerate}
+\end{exercice}
+
+\begin{exercice}[nosol]
+  Déplacer dans un fichier \fichier{preambule.tex} toutes les lignes
+  du préambule du fichier \fichier{exercice\_include.tex} utilisé à
+  l'exercice précédent, à l'exception de celles relatives à la page
+  titre (titre, auteur, date). Insérer le préambule dans
+  \fichier{exercice\_include.tex} avec la commande \cmd{\input}.
+\end{exercice}
 
 %%% Local Variables:
 %%% mode: latex
