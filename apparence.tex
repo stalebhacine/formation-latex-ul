@@ -2,41 +2,47 @@
 \label{chap:apparence}
 
 
+Les bonnes pratiques dictent de séparer le contenu du texte de son
+apparence lorsque l'on utilise un système de mise en page comme
+{\LaTeX}. Néanmoins, vient un moment où l'on peut souhaiter modifier
+l'apparence générale du document ou disposer le texte d'une manière
+particulière. {\LaTeX} offre tous les outils nécessaires pour
+contrôler les attributs et la taille des polices de caractères,
+disposer du texte sous forme de liste numérotée ou à puce, centrer du
+texte ou créer des notes de base de page et des citations.
 
 \section{Police de caractère}
+\label{sec:apparence:police}
 
-\begin{itemize}
-\item Par défaut, tous les documents {\LaTeX} utilisent la même police
-  de caractère, {\fontfamily{cmr}\selectfont Computer Modern}
-\item Aujourd'hui plus facile d'utiliser d'autres polices, surtout
-  avec {\XeLaTeX}
-  \begin{itemize}
-  \item voir les fichiers d'exercices et les gabarits de
-    \class{ulthese} pour des exemples
-  \end{itemize}
-\item Privilégier les polices de grande qualité et très complètes
-  (lettres accentuées, grand choix de symboles)
-  \begin{itemize}
-  \item polices Postscript standards ou leurs clones du projet
-    TeX~Gyre
-  \end{itemize}
-\item Peu de polices sont adaptées pour les mathématiques
-  \begin{itemize}
-  \item {\fontfamily{ppl}\selectfont Palatino},
-    {\fontfamily{ptm}\selectfont Times}, \textrm{Lucida} (\$) sont des
-    choix sûrs
-  \end{itemize}
-\item Voir le \autoref{tab:apparence:police} pour les commandes de
-  changement d'attribut de la police de caractères.
-\end{itemize}
+Par défaut, tous les documents {\LaTeX} utilisent la même police de
+caractère\footnote{%
+  Donald~Knuth a créé la police en même temps que {\TeX}.}, %
+{\fontfamily{cmr}\selectfont Computer Modern}. Chose qui ne manquera
+pas de surprendre les utilisateurs débutants: le système n'a pas été
+conçu pour changer facilement la police de caractère du document.
+
+Cela dit, il est aujourd'hui devenu assez simple d'utiliser d'autres
+polices de caractère pour son document, surtout avec les moteurs
+{\TeX} modernes comme {\XeTeX}. La \autoref{sec:trucs:police} traite
+du sujet plus en détail. On pourra également consulter les fichiers
+d'exercices et les gabarits de la classe \class{ulthese} pour des
+exemples.
+
+Cette section se concentre plutôt sur le changement d'\emph{attribut}
+de la police de caractère du document, qu'il s'agisse de la famille
+(avec ou sans empattements, à largeur fixe ou variable), de la forme
+(droit, italique, penché) ou de la graisse (normal, gras). On trouvera
+au \autoref{tab:apparence:police} les commandes de changement
+d'attribut de la police de caractères.
 
 \begin{table}
+  \centering
   \caption{Commandes de changement d'attribut de la police de
     caractères. Les commandes de la deuxième colonne s'appliquent à
     tout le texte qui suit. Celles de la troisième colonne
     s'appliquent uniquement au texte en argument.}
   \label{tab:apparence:police}
-  \begin{tabularx}{\linewidth}{Xll}
+  \begin{tabularx}{0.9\linewidth}{p{0.35\linewidth}Xl}
     \toprule
     \textbf{famille} \\
     \textrm{romain} & \cmd{\rmfamily} & \cmdprint{\textrm{\meta{texte}}} \\
@@ -46,7 +52,7 @@
     \textbf{forme} \\
     \textup{\rmfamily droit} & \cmd{\upshape} & \cmdprint{\textup{\meta{texte}}} \\
     \textit{\rmfamily italique} & \cmd{\itshape} & \cmdprint{\textit{\meta{texte}}} \\
-    \textsl{penché} & \cmd{\slshape} & \cmdprint{\textsl{\meta{texte}}} \\
+    \textsl{penché}$^\dagger$ & \cmd{\slshape} & \cmdprint{\textsl{\meta{texte}}} \\
     \textsc{\rmfamily petites capitales} & \cmd{\scshape} & \cmdprint{\textsc{\meta{texte}}} \\
 
     \addlinespace[6pt]
@@ -54,116 +60,236 @@
     \textmd{\rmfamily moyen} & \cmd{\mdseries} & \cmdprint{\textmd{\meta{texte}}} \\
     \textbf{\rmfamily gras} & \cmd{\bfseries} & \cmdprint{\textbf{\meta{texte}}} \\
     \bottomrule
-  \end{tabularx}
+  \end{tabularx} \\
+  \raggedright
+  \hspace*{3em}{\footnotesize $^\dagger$ diffère de l'italique selon
+    la police de caractère utilisée}
 \end{table}
 
+\begin{exemple}
+  \label{ex:apparence:police}
+  La commande \cmd{\setsecheadstyle} de la classe \class{memoir}
+  permet de modifier facilement le style des titres de section pour
+  tout le document. Pour obtenir des titres de section en gras sans
+  empattements, on placera dans le préambule du document la commande
+  suivante:
+\begin{lstlisting}
+\setsecheadstyle{\normalfont\sffamily\bfseries}
+\end{lstlisting}
+  L'utilisation de \cmd{\normalfont} au début de la série de commandes
+  permet de réinitialiser le style des titres, question d'éviter
+  d'éventuels conflits avec une configuration antérieure. %
+  \qed
+\end{exemple}
 
 \section{Taille du texte}
+\label{sec:apparence:taille}
+
+Les commandes du \autoref{tab:apparence:taille} permettent de réduire
+ou d'agrandir la taille des caractères. On se souviendra que l'on
+règle la taille de base du texte au chargement de la classe du
+document, tel qu'expliqué à la \autoref{sec:bases:classes}. Ces
+commandes ne devraient donc servir que pour modifier temporairement la
+taille des caractères pour une section du texte, ou encore pour la
+configuration de l'apparence générale du document dans le préambule.
 
 \begin{table}
-  \caption{Commandes de changement de la taille de la police de caractère}
+  \centering
+  \caption{Commandes de changement de la taille de la police de
+    caractère. Les tailles sont déterminées en fonction de
+    celle de la police de base du document.}
   \label{tab:apparence:taille}
-  \begin{tabular}{ll}
+  \begin{tabularx}{0.9\linewidth}{Xl}
     \toprule
     \cmd{\miniscule}$^\dagger$ & {\miniscule minuscule} \\
-    \cmd{\tiny} & {\tiny très, très petit} \\
-    \cmd{\scriptsize} & {\scriptsize très petit} \\
+    \cmd{\tiny} & {\tiny vraiment petit} \\
+    \cmd{\scriptsize} & {\scriptsize encore plus petit} \\
     \cmd{\footnotesize} & {\footnotesize plus petit} \\
     \cmd{\small} & {\small petit} \\
-    \cmd{\normalsize} & {\normalsize normal} \\
+    \cmd{\normalsize} & {\normalsize taille normale} \\
     \cmd{\large} & {\large grand} \\
     \cmd{\Large} & {\Large plus grand} \\
-    \cmd{\LARGE} & {\LARGE un peu plus grand} \\
-    \cmd{\huge} & {\huge encore plus grand} \\
-    \cmd{\Huge} & {\Huge énorme} \\
+    \cmd{\LARGE} & {\LARGE encore plus grand} \\
+    \cmd{\huge} & {\huge énorme} \\
+    \cmd{\Huge} & {\Huge encore plus énorme} \\
     \cmd{\HUGE}$^\dagger$ & {\HUGE vraiment énorme} \\
     \bottomrule
-  \end{tabular}
-  \hspace*{1em}{\footnotesize $^\dagger$ ajout de la classe
+  \end{tabularx} \\
+  \raggedright
+  \hspace*{3em}{\footnotesize $^\dagger$ ajout de la classe
     \class{memoir} (et donc aussi de \class{ulthese})}
 \end{table}
 
+\begin{exemple}
+  \label{ex:taille-du-texte}
+  Les titres de sections sont généralement composés dans une taille
+  supérieure à celle du texte. La commande suivante permet d'augmenter
+  de deux échelons la taille des titres de
+  l'\autoref{ex:apparence:police}:
+\begin{lstlisting}
+\setsecheadstyle{\normalfont\Large\sffamily\bfseries}
+\end{lstlisting}
+  \qed
+\end{exemple}
 
-\section{Emphase}
+\section{Italique}
 
-\begin{itemize}
-\item Une des propriétés les \emph{plus utilisées} dans le texte
-\item Commande spécifique:
+L'italique est l'un des attributs de police de caractères les plus
+fréquemment employés dans le texte. Il sert, notamment, à insister sur
+des mots, à composer les expressions et locutions en langue étrangère
+ou à détacher des titres d'{\oe}uvres du fil du texte.
+
+Évidemment, il est possible d'obtenir de l'italique avec la commande
+\cmd{\textit} du \autoref{tab:apparence:police}. Cependant, nous
+recommandons de plutôt utiliser une commande spécifiquement dédiée à
+mettre en évidence une portion de texte:
 \begin{lstlisting}
 \emph`\marg{texte}'
 \end{lstlisting}
-\item Par défaut: texte en italique dans texte droit et vice versa
-  \begin{demo}
-    \begin{texample}
+Par défaut, la commande \cmd{\emph} (pour \emph{emphasis}, «emphase»)
+placera \meta{texte} en italique dans du texte en romain (droit), ou
+encore en romain dans du texte déjà en italique.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
-C'était un peu \emph{rough} par moments
+C'était un peu \emph{rough}
+par moments.
 \end{lstlisting}
-      \producing
-      C'était un peu \emph{rough} par moments
-    \end{texample}
-    \begin{texample}
+    \producing
+    C'était un peu \emph{rough} par moments.
+  \end{texample}
+  \begin{texample}
 \begin{lstlisting}
-Il m'a dit: «\emph{C'était un peu \emph{rough}
-par moments}»
+Il m'a dit: «\emph{Enough
+\emph{poutine} for the week!»
 \end{lstlisting}
-      \producing
-      Il m'a dit: «\emph{C'était un peu \emph{rough} par moments}»
-    \end{texample}
-  \end{demo}
-\item Pas de commande pour souligner en {\LaTeX\dots} et ce n'est
-  pas une omission!
-\end{itemize}
+    \producing
+    Il m'a dit: «\emph{Enough \emph{poutine} for the week!}»
+  \end{texample}
+\end{demo}
+
+\begin{conseil}
+  Le soulignement\index{soulignement} servait pour remplacer
+  l'italique à l'ère des dactylos. C'est aujourd'hui une marque de
+  typographie très rarement utilisée, voire à éviter. Ce n'est donc
+  pas pour rien qu'il n'existe pas de commande de soulignement dans
+  les classes {\LaTeX} standards.
+\end{conseil}
 
 
 \section{Listes}
+\label{sec:apparence:listes}
 
-\begin{itemize}
-\item Deux principales sortes de listes:
-  \begin{enumerate}
-  \item à puce avec environnement \Ie{itemize}
-  \item numérotée avec environnement \Ie{enumerate}
-  \end{enumerate}
-\item Possible de les imbriquer les unes dans les autres
-\item Marqueurs alors adaptés automatiquement
-\end{itemize}
-
+{\LaTeX} offre deux environnements pour la composition de listes ou
+d'énumérations:
 \begin{demo}
+  \begin{minipage}{0.48\linewidth}
 \begin{lstlisting}
 \begin{itemize}
-\item Deux principales sortes de listes:
-  \begin{enumerate}
-  \item à puce avec environnement \verb=itemize=
-  \item numérotée avec environnement \verb=enumerate=
-  \end{enumerate}
-\item Possible de les imbriquer les unes
-  dans les autres
-\item Marqueurs adaptés automatiquement
+\item `\meta{texte}'
+\item `\meta{texte}'
+...
 \end{itemize}
 \end{lstlisting}
-\end{demo}
-
-\begin{information}
-  \begin{itemize}
-  \item Mode français de \pkg{babel} redéfinit la puce de 1{\ier}
-    niveau par défaut de {\textbullet} à {\textemdash}
-  \item Pour changer, utiliser dans le préambule
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.48\linewidth}
 \begin{lstlisting}
-\frenchbsetup{
-  ItemLabeli=\`\textit{commande}',
-  ItemLabelii=\`\textit{commande}'}
+\begin{enumerate}
+\item `\meta{texte}'
+\item `\meta{texte}'
+...
+\end{enumerate}
 \end{lstlisting}
-  \item Voir les ressources pour une vaste sélection de symboles
+  \end{minipage}
+\end{demo}
+L'environnement \Ie{itemize} crée une liste à puce, alors que
+l'environnement \Ie{enumerate} crée une énumération. Il est possible
+d'imbriquer les listes les unes dans les autres, peu importe leur
+type. {\LaTeX} se chargera d'adapter les marqueurs ou la numérotation
+de chaque niveau.
+
+\begin{exemple}
+  Les étapes de création d'une liste sont les suivantes.
+  \begin{enumerate}
+  \item Décider s'il s'agit d'une liste à puce ou d'une énumération;
+    \begin{itemize}
+    \item pour une liste à puce utiliser environnement \Ie{itemize};
+      \begin{itemize}
+      \item chaque niveau d'une liste à puce possède un marqueur
+        différent;
+      \end{itemize}
+    \item pour une énumération utiliser environnement \Ie{enumerate};
+    \end{itemize}
+  \item Débuter chaque élément de la liste par la commande
+    \cmdprint{\item}.
+    \begin{enumerate}
+    \item utiliser simplement un autre environnement \Pe{itemize} ou
+      \Pe{enumerate} comme texte d'un élément pour créer des listes
+      imbriquées;
+    \item {\LaTeX} ajustera automatiquement les marqueurs jusqu'à
+      quatre niveaux de profondeur;
+    \end{enumerate}
+  \item S'assurer de fermer tous les environnements dans le bon ordre
+    pour retourner au texte normal.
+  \end{enumerate}
+
+  L'énumération ci-dessus constitue évidemment un exemple de listes
+  mixtes imbriquées. On l'a composée avec le texte suivant.
+  \begin{demo}
+\begin{lstlisting}
+\begin{enumerate}
+\item Décider s'il s'agit d'une liste à puce ou ...
+  \begin{itemize}
+  \item pour une liste à puce utiliser ...
+    \begin{itemize}
+    \item chaque niveau d'une liste à puce ...
+    \end{itemize}
+  \item pour une énumération utiliser ...
   \end{itemize}
-\end{information}
+\item Débuter chaque élément de la liste par la commande
+  \verb=\item=.
+  \begin{enumerate}
+  \item utiliser simplement un autre environnement ...
+  \item {\LaTeX} ajustera automatiquement les marqueurs ...
+  \end{enumerate}
+\item S'assurer de fermer tous les environnements ...
+\end{enumerate}
+\end{lstlisting}
+  \end{demo}
+  \qed
+\end{exemple}
+
+{\LaTeX} permet de configurer à peu près toutes les facettes de la
+présentation des listes: puces, folios, alignement, espacement entre
+les éléments, etc. Une telle flexibilité implique aussi une certaine
+complexité. Heureusement, plusieurs paquetages visent à faciliter la
+configuration des listes. Nous recommandons à ce titre le paquetage
+\pkg{enumitem} \citep{enumitem}.
 
 \begin{conseil}
-  \begin{itemize}
-  \item {\LaTeX} permet de configurer à peu près toutes les facettes
-    de la présentation des listes (puces, alignement, espacement).
-  \item Plusieurs paquetages facilitent la configuration.
-  \item Nous suggérons \pkg{enumitem} pour une configuration simple.
-  \end{itemize}
+  Le mode français de \pkg{babel} remplace les puces par défaut en
+  anglais ({\textbullet}, {\textendash}, $\ast$ et $.$ pour chacun
+  des quatre niveaux de l'environnement \Ie{itemize}) par le tiret
+  quadratin {\textemdash}. On peut désactiver cette fonctionnalité de
+  \pkg{babel} en insérant dans le préambule:
+\begin{lstlisting}
+\frenchbsetup{StardardItemLabels=true}
+\end{lstlisting}
+  Il est également possible de modifier le symbole utilisé comme
+  puce pour l'un, l'autre ou chacun des quatre niveaux avec:
+\begin{lstlisting}
+\frenchbsetup{
+  ItemLabeli=\`\meta{commande}',
+  ItemLabelii=\`\meta{commande}',
+  ItemLabeliii=\`\meta{commande}',
+  ItemLabeliv=\`\meta{commande}'}
+\end{lstlisting}
+  La \emph{Comprehensive {\LaTeX} Symbol List} \citep{comprehensive}
+  propose une immense sélection de symboles pouvant faire office de
+  puces.
 \end{conseil}
+
 
 
 \section{Texte centré}
