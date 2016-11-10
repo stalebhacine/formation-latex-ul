@@ -23,7 +23,7 @@ conçu pour changer facilement la police de caractère du document.
 
 Cela dit, il est aujourd'hui devenu assez simple d'utiliser d'autres
 polices de caractère pour son document, surtout avec les moteurs
-{\TeX} modernes comme {\XeTeX}. La \autoref{sec:trucs:police} traite
+{\TeX} modernes comme {\XeTeX}. La \autoref{sec:trucs:polices} traite
 du sujet plus en détail. On pourra également consulter les fichiers
 d'exercices et les gabarits de la classe \class{ulthese} pour des
 exemples.
@@ -180,8 +180,8 @@ Il m'a dit: «\emph{Enough
 \section{Listes}
 \label{sec:apparence:listes}
 
-{\LaTeX} offre deux environnements pour la composition de listes ou
-d'énumérations:
+{\LaTeX} offre deux environnements principaux pour la composition de
+listes ou d'énumérations:
 \begin{demo}
   \begin{minipage}{0.48\linewidth}
 \begin{lstlisting}
@@ -262,10 +262,11 @@ de chaque niveau.
 
 {\LaTeX} permet de configurer à peu près toutes les facettes de la
 présentation des listes: puces, folios, alignement, espacement entre
-les éléments, etc. Une telle flexibilité implique aussi une certaine
-complexité. Heureusement, plusieurs paquetages visent à faciliter la
-configuration des listes. Nous recommandons à ce titre le paquetage
-\pkg{enumitem} \citep{enumitem}.
+les éléments, etc. Cette grande flexibilité implique une certaine
+complexité, aussi l'explication de la configuration des listes
+dépasse-t-elle le cadre du présent document. Heureusement, plusieurs
+paquetages visent à faciliter la configuration des listes. Nous
+recommandons à ce titre le paquetage \pkg{enumitem} \citep{enumitem}.
 
 \begin{conseil}
   Le mode français de \pkg{babel} remplace les puces par défaut en
@@ -290,85 +291,237 @@ configuration des listes. Nous recommandons à ce titre le paquetage
   puces.
 \end{conseil}
 
+Il existe un troisième environnement, plus rarement utilisé, pour
+composer du texte sous une forme s'apparentant à une liste.
+L'environnement \Ie{description} permet d'associer une suite de termes
+et une définition ou une description pour chacun.
+\begin{demo}
+  \begin{texample}
+\begin{lstlisting}
+\begin{description}
+\item[rouge] première couleur
+  primaire
+\item[vert] seconde couleur
+  primaire
+\item[bleu] troisième couleur
+  primaire
+\end{description}
+\end{lstlisting}
+    \producing
+\begin{description}
+\item[rouge] première couleur primaire
+\item[vert] seconde couleur primaire
+\item[bleu] troisième couleur primaire
+\end{description}
+  \end{texample}
+\end{demo}
 
 
 \section{Texte centré}
+\label{sec:apparence:centering}
 
-\begin{center}
-  Pour obtenir du texte centré on utilise l'environnement
-  \Ie{center}
-\end{center}
-
+On obtient du texte centré avec l'environnement \Ie{center} ou à
+l'aide de la commande \cmd{\centering}. L'environnement sert
+principalement pour centrer un bloc de texte.
+\begin{demo}
+  \begin{eqxample}
 \begin{lstlisting}
 \begin{center}
-  Pour obtenir du texte centré on utilise
-  l'environnement \verb=center=
+  Centrer un mot ou une
+  expression les met en
+  évidence.
 \end{center}
 \end{lstlisting}
-
-{\centering ou encore la commande \cmd{\centering}}
-
+    \producing
+\begin{center}
+  Centrer un mot ou une expression
+  les met en évidence.
+\end{center}
+  \end{eqxample}
+\end{demo}
+On remarquera que le texte centré n'est pas placé en retrait des
+marges gauche et droite (illustrées par les lignes verticales
+ci-dessus). Lorsque le texte fait plus d'une ligne, on pourra
+souhaiter forcer des retours à la ligne avec la commande {\bs\bs}.
+\begin{demo}
+  \begin{eqxample}
 \begin{lstlisting}
-\centering ou encore la commande \verb=\centering=
+\begin{center}
+  Centrer un mot \\
+  ou une expression \\
+  les met en évidence.
+\end{center}
 \end{lstlisting}
+    \producing
+\begin{center}
+  Centrer un mot \\
+  ou une expression \\
+  les met en évidence.
+\end{center}
+  \end{eqxample}
+\end{demo}
+
+La commande \cmd{\centering} s'applique à tout le texte qui suit. Elle
+s'avère surtout utile à l'intérieur d'environnements comme \Pe{table}
+ou \Pe{figure} pour centrer un tableau ou une figure sur la page. On
+trouvera plusieurs exemples de son utilisation
+au \autoref{chap:tableaux}.
 
 
 \section{Citations}
+\label{sec:apparence:citations}
 
-Deux environnements de citation dans {\LaTeX} (et \class{ulthese})
-\begin{enumerate}
-\item \Ie{quote} pour les citations courtes, quelques lignes seulement
-  \begin{itemize}
-  \item retrait à gauche et à droite
-  \end{itemize}
-\item \Ie{quotation} pour les citations plus longues se comptant
-  en paragraphes
-  \begin{itemize}
-  \item retrait à gauche et à droite
-  \item gestion des marques de paragraphes
-  \end{itemize}
-\end{enumerate}
+Une citation est une reproduction d'un propos ou d'un écrit antérieur
+d'un auteur qui est habituellement mentionné. Il existe deux
+environnements dans {\LaTeX} pour composer les citations.
+
+\begin{quote}
+  L'environnement \Ie{quote} est utilisé pour les citations courtes,
+  de quelques lignes seulement. Le texte est placé en retrait des
+  marges gauches et droites. Le présent texte a été placé dans cet
+  environnement.
+\end{quote}
+
+\begin{quotation}
+  L'environnement \Ie{quotation}, lui, sert pour les citations plus
+  longues se comptant en paragraphes.
+
+  La principale différence par rapport à l'environnement \Pe{quote},
+  c'est que \Pe{quotation} prend en charge les marques de paragraphes.
+
+  Ce paragraphe et les deux précédents sont composés dans
+  un environnement \Pe{quotation}.
+\end{quotation}
 
 
 \section{Notes de bas de page}
+\label{sec:apparence:notes}
 
-\begin{itemize}
-\item Note de bas de page insérée avec la commande
+Une note de bas de page --- ou tout simplement \emph{note},
+puisqu'elle peut apparaître ailleurs qu'au bas de la page --- est un
+court texte qui sert à expliquer un mot ou une phrase du texte
+principal. L'\emph{appel de note} désigne le signe, le chiffre ou la
+lettre que l'on place après la partie à expliquer.
+
+La commande
 \begin{lstlisting}
 \footnote`\marg{texte de la note}'
 \end{lstlisting}
-\item Commande doit suivre immédiatement le texte à annoter
-\item Méthode recommandée
+insère un appel de note à l'endroit où la commande apparait dans le
+texte et affiche \meta{texte de la note} à l'endroit
+approprié\footnote{%
+  Au bas de la page par défaut, comme ici. La note est composée dans
+  un corps plus petit et elle est séparée du texte par un trait.}. %
+{\LaTeX} se charge automatiquement de la numérotation et de la
+disposition des notes.
+
+Pour éviter que l'appel de note ne soit séparé du texte à expliquer,
+la commande \cmd{\footnote} doit immédiatement suivre celui-ci. La
+gestion des espaces peut alors devenir délicate, surtout si l'appel de
+note se trouve en fin de phrase. Nous recommandons de faire bon usage
+du caractère \% pour délimiter le contenu de \cmdprint{\footnote} du
+texte courant.
 \begin{lstlisting}[emph=footnote]
-... fera remarquer que Pierre Lasou\footnote{%
-  Spécialiste en ressources documentaires} %
+%% note en fin de phrase
+Nous remercions Pierre Lasou\footnote{%
+  Spécialiste en ressources documentaires.}. %
+Il fut d'une grande aide dans la préparation de ...
+\end{lstlisting}
+\begin{lstlisting}[emph=footnote]
+%% note au fil de la phrase
+Nous soulignons que Pierre Lasou\footnote{%
+  Spécialiste en ressources documentaires.} %
 fut d'une grande aide dans la préparation de ...
 \end{lstlisting}
-\item Numérotation et disposition automatiques
-\end{itemize}
+
+Les usages en matière de numérotation et de disposition des notes
+varient beaucoup d'une discipline à l'autre: numérotation consécutive
+pour tout le document, notes dans la marge plutôt qu'au bas de la
+page, notes rassemblées à la fin de chaque chapitre ou à la toute fin
+du document, etc. Différents paquetages permettent de réaliser ce type
+de disposition, notamment \pkg{footmisc} \citep{footmisc}. Les
+utilisateurs de la classe \class{ulthese} pourront également tirer
+profit des nombreuses fonctionnalités de la classe \class{memoir} pour
+la gestion des notes; consulter le chapitre~12 de la %
+\doc{memman}{http://texdoc.net/pkg/memoir}.
 
 
-\section{Code source}
+\section{Texte brut et code source}
+\label{sec::apparence:code}
 
-\begin{itemize}
-\item Environnement \Ie{verbatim}
+Il est parfois utile d'afficher du texte exactement comme il a été
+entré dans un fichier, sans que {\LaTeX} n'interprète les commandes
+qui s'y trouvent ou n'en modifie la disposition. Les nombreux extraits
+de code du présent document sont là pour le démontrer.
+
+L'environnement \Ie{verbatim} permet de présenter du texte tel qu'il
+est entré dans le code source du document.
+\begin{demo}
+  \begin{texample}
 \begin{lstlisting}
 \begin{verbatim}
-Texte disposé exactement tel qu'il est tapé
-dans une police à largeur fixe
+Texte disposé exactement tel
+qu'il est tapé et
+présenté dans une police
+à largeur fixe
 \end{verbatim}
 \end{lstlisting}
-\item Commande \cmd{\verb} dont la syntaxe est
+    \producing
+\begin{verbatim}
+Texte disposé exactement tel
+qu'il est tapé et
+présenté dans une police
+à largeur fixe
+\end{verbatim}
+\end{texample}
+\end{demo}
+La variante \Ie{verbatim*} affiche les espaces de manière explicite en
+les remplaçant par le symbole \verb*| |. C'est surtout utile pour le
+code de langages informatiques où le nombre d'espaces joue un rôle
+important.
+
+Pour afficher du texte brut ou une commande {\LaTeX} au fil du texte,
+on aura recours à la commande
+\cmd{\verb}. Sa syntaxe est un peu particulière:
 \begin{lstlisting}
 \verb`\meta{c}' `\meta{source}' `\meta{c}'
 \end{lstlisting}
-  où \meta{c} est un caractère quelconque ne se trouvant pas dans
-  \meta{source}
-\item Pour usage plus intensif, voir le paquetage \pkg{listings}.
-\item Plus de détails à la \autoref{sec:trucs:listings}.
-\end{itemize}
+où \meta{c} est un caractère quelconque ne se trouvant pas dans
+\meta{source} et qui sert à délimiter le début et la fin de
+\meta{source}. La variante
+\cmd{\verb*} affiche elle aussi les espaces.
+\begin{demo}
+  \begin{texample}
+\begin{lstlisting}
+{\LaTeX} n'interprète pas la
+commande \verb=\bfseries=
+lorsqu'elle est placée
+dans \verb=\verb=.
+\end{lstlisting}
+    \producing
+    {\LaTeX} n'interprète pas la
+    commande \verb=\bfseries=
+    lorsqu'elle est placée
+    dans \verb=\verb=.
+  \end{texample}
+  \begin{texample}
+\begin{lstlisting}
+Le nombre d'espaces entre les
+mots ne compte pas dans
+{\LaTeX}: \verb*=a b= et
+\verb*=a  b= donnent «a b».
+\end{lstlisting}
+    \producing
+    Le nombre d'espaces entre les mots ne
+    compte pas dans {\LaTeX}: \verb*=a b= et
+    \verb*=a  b= donnent «a b».
+  \end{texample}
+\end{demo}
 
-
+Pour tout document comportant une grande quantité de texte brut ou de
+code source, nous recommandons d'avoir recours au paquetage
+\pkg{listings} \citep{listings}. On trouvera plus de détails à la
+\autoref{sec:trucs:listings}.
 
 
 %%%
