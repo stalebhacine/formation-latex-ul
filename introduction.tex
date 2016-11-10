@@ -1,31 +1,36 @@
 \chapter{Introduction}
 \label{chap:introduction}
 
-Ce document constitue la seconde partie d'une formation sur la
-rédaction de thèses et de mémoires avec {\LaTeX} développée pour la
-Bibliothèque de l'Université Laval. La première partie de
-la formation se déroulant en classe, la documentation qui
-l'accompagne consiste en une série de diapositives
-\citep{UL:latex:1}.
+À l'origine du présent ouvrage, il y a une formation sur la rédaction
+de thèses et de mémoires avec {\LaTeX} développée pour la Bibliothèque
+de l'Université Laval. La formation aborde les concepts de base pour
+un nouvel utilisateur: processus d'édition, compilation,
+visualisation; séparation du contenu et de l'apparence du texte; mise
+en forme du texte; séparation du document en parties; rudiments du
+mode mathématique. Transformée en prose, la série de diapositives qui
+appuie la présentation correspond grosso modo aux quatre premiers
+chapitres de l'ouvrage.
 
-Nous reprenons ici la formation une fois présentés les concepts de
-base de {\LaTeX} pour un nouvel utilisateur: processus d'édition,
-compilation, visualisation; séparation du contenu et de l'apparence du
-texte; mise en forme du texte; séparation du document en parties;
-rudiments du mode mathématique. Avec cette seconde partie, une
-personne devrait être en mesure de composer des documents relativement
-complexes comportant des tableaux, des figures, des équations
-mathématiques élaborées, une bibliographie, etc.
+Les six autres chapitres visent à rendre l'utilisateur de {\LaTeX}
+débutant ou intermédiaire autonome dans la rédaction de documents
+relativement complexes comportant: tableaux, figures, équations
+mathématiques élaborées, une bibliographie, etc. Nous avons émaillé le
+texte de conseils et d'astuces glanés au fil de nos vingt années
+d'utilisation du système de mise en page.
 
-Le présent ouvrage n'a aucune prétention d'exhaustivité. La
-consultation de documentation additionnelle peut s'avérer nécessaire
-pour réaliser des mises en page plus élaborées. À cet égard, nous
-recommandons chaudement le livre de \citet{Kopka:latex:4e} --- il a
-servi d'inspiration pour ce document à maints endroits. La très
-complète documentation (plus de 600 pages!) de la classe
-\class{memoir} \citep{memoir}, sur laquelle se base la classe
-\class{ulthese} pour les thèses et mémoires de l'Université Laval,
-constitue une autre référence de choix. Nous recommandons également:
+Les nombreuses références à la classe \class{ulthese} s'adressent au
+premier public de l'ouvrage: les étudiantes et étudiants de
+l'Université Laval occupés à la rédaction de leur thèse ou de leur
+mémoire. Les autres lecteurs pourront sans mal escamoter ces passages.
+
+L'ouvrage n'a aucune prétention d'exhaustivité. La consultation de
+documentation additionnelle pourra s'avérer nécessaire pour réaliser
+des mises en page plus élaborées. À cet égard, nous recommandons
+chaudement le livre de \citet{Kopka:latex:4e} --- il a servi
+d'inspiration pour ce document à maints endroits. La très complète
+documentation (plus de 600~pages!) de la classe \class{memoir}
+\citep{memoir} constitue une autre référence de choix. Nous
+recommandons également:
 \begin{itemize}
 \item \link{http://fr.wikibooks.org/wiki/LaTeX}{\emph{LaTeX} dans
     Wikilivre} pour de la documentation en ligne, en français et
@@ -39,6 +44,55 @@ constitue une autre référence de choix. Nous recommandons également:
     \emph{foire aux questions}} (en anglais) du groupe des
   utilisateurs de {\LaTeX} du Royaume-Uni.
 \end{itemize}
+
+Le texte comporte plusieurs renvois vers la documentation d'un
+paquetage ou d'une classe, par exemple vers la %
+\doc{memoir}{http://texdoc.net/pkg/memoir/} %
+de la classe \class{memoir}. L'hyperlien mène vers la version en ligne
+de la documentation dans le site %
+\link{http://texdoc.net}{TeXdoc Online} et la marge contient le nom du
+fichier correspondant (sans l'extension \code{.pdf}) sur un système
+doté de {\TeX}~Live.
+
+Sur la plupart des systèmes, il est possible de consulter hors ligne
+le fichier de documentation \meta{fichier}\code{.pdf} en entrant à une
+invite de commande
+\begin{quote}
+\begin{lstlisting}[backgroundcolor=\color{white}]
+texdoc `\meta{fichier}'
+\end{lstlisting}
+\end{quote}
+Plusieurs logiciels intégrés de rédaction offrent une inferface pour
+accéder à cette documentation.
+\begin{itemize}
+\item TeXShop: menu \code{Aide|Afficher l'aide pour le
+    package} (\optkey\,\cmdkey\, I).
+\item Texmaker: menu \code{Aide|TeXDoc [selection]}.
+\item GNU~Emacs: commande \code{TeX-doc} (\code{C-c ?}) du mode
+  spécialisé AUC{\TeX}.
+\end{itemize}
+Consulter la rubrique d'aide de votre éditeur pour savoir s'il offre
+une interface à \code{texdoc}.
+
+% \section{Capsules d'aide additionnelle}
+%
+% Un symbole de lecture vidéo dans la marge indique qu'une capsule vidéo
+% est disponible dans la %
+% \capsule{http://www.youtube.com/user/ULFormationLaTeX}{chaîne
+%   YouTube} %
+% de la formation sur le sujet en hyperlien.
+
+Enfin, cet ouvrage devrait être accompagné des fichiers nécessaires
+pour compléter certains exercices figurant à la fin des chapitres,
+ainsi que d'un gabarit \fichier{exercice\_gabarit.tex} pour composer
+les solutions des autres exercices. Si ce n'est pas le cas, il est
+possible de récupérer les fichiers dans le site
+\href{\ctanurl}{\emph{Comprehensive TeX Archive Network}} (CTAN).
+
+\begin{flushright}
+  Vincent Goulet \\
+  Québec, novembre \year
+\end{flushright}
 
 %%% Local Variables:
 %%% mode: latex
