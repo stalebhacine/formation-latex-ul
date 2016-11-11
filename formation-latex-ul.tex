@@ -13,8 +13,9 @@
   \usepackage{applekeys}               % touches Mac
   \usepackage{answers}                 % exercices et solutions
   \usepackage{listings}                % code informatique
-  \usepackage{pdfpages}                % couvertures
-  \usepackage{eso-pic}                 % disposition d'images
+  \usepackage[absolute]{textpos}       % disposition d'images
+  \usepackage{pgf}                     % transparence pour couverture avant
+  \usepackage{ifthen}                  % exécution conditionnelle
 
 
   %%% ===================
@@ -45,6 +46,8 @@
   \definecolor{url}{rgb}{0.6,0,0}         % rouge-brun
   \definecolor{citation}{rgb}{0,0.5,0}    % vert foncé
   \definecolor{ULlinkcolor}{rgb}{0,0,0.3} % de ulthese.cls
+  \definecolor{rouge}{rgb}{0.85,0,0.07}   % rouge bandeau identitaire
+  \definecolor{or}{rgb}{1,0.8,0}          % or bandeau identitaire
 
   %% Hyperliens
   \usepackage{hyperref}
@@ -404,32 +407,46 @@
   %%%  Page titre et autres informations de publication
   %%% ==================================================
   \title{\protect\raggedright%
-    \bfseries\fontsize{32}{32}\selectfont Rédaction avec {\LaTeX}}
+    \sffamily\bfseries
+    \fontsize{40}{40}\selectfont
+    Rédaction avec \\
+    \rmfamily\mdseries
+    \fontsize{45}{45}\selectfont
+    \raisebox{12pt}{{\protect\bs}title}%
+    \fontsize{80}{80}\selectfont%
+    \{%
+    \fontsize{70}{70}\selectfont%
+    \LaTeX
+    \fontsize{80}{80}\selectfont%
+    \}}
   \author{\protect\raggedright%
-    \bfseries\fontsize{16}{20}\selectfont Vincent Goulet \\
-    \mdseries\fontsize{14}{18}\selectfont Professeur titulaire \textbar\
-                                          École d'actuariat}
+    \sffamily\bfseries
+    \fontsize{17}{20}\selectfont
+    Vincent Goulet \\
+    \mdseries
+    \fontsize{15}{20}\selectfont
+    Professeur titulaire \textbar\ École d'actuariat}
   \date{%
-    \mdseries\fontsize{14}{18}\selectfont Édition \fullcaps\year}
+    \sffamily\mdseries\fontsize{14}{18}\selectfont
+    Édition \fullcaps\year}
   \renewcommand{\year}{2016}
   \newcommand{\ISBN}{978-2-9811416-5-1}
   \newcommand{\ctanurl}{https://ctan.org/pkg/formation-latex-ul/}
 
-%  \includeonly{apparence}
+  \includeonly{frontispice,licence}
 
 \begin{document}
 
 \frontmatter
 
-\pagestyle{empty}
-
 %% Page couverture avant.
-\includepdf[pages=1]{couvertures}
-\cleardoublepage
+\pagestyle{empty}
+\input{couverture-avant}
+\null\cleardoublepage           % cf. section 2.2 textpos.pdf
 
 %% Page frontispice
 \include{frontispice}
-\clearpage
+\null\clearpage                 % idem
 
 %% Page de copyright
 \include{licence}
@@ -472,10 +489,8 @@
 \cleartoverso
 
 %% Page couverture arrière.
-\AddToShipoutPictureFG*{%
-  \AtStockLowerLeft{\raisebox{45mm}{\hspace{5mm}\includegraphics{codebarre_\ISBN}}}
-}
-\includepdf[pages=2]{couvertures}
+\pagestyle{empty}
+\input{couverture-arriere}
 
 \end{document}
 

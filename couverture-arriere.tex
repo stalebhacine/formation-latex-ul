@@ -1,0 +1,24 @@
+\begingroup
+
+\TPGrid{3}{36}
+\textblockorigin{0mm}{0mm}
+\setlength{\parindent}{0mm}
+
+%% bandeau identitaire arrière
+\begin{textblock*}{8.5in}(0mm,30\TPVertModule)
+  \textcolor{or}{\rule{\TPHorizModule}{\TPVertModule}}     % bande or
+  \textcolor{rouge}{\rule{2\TPHorizModule}{\TPVertModule}} % bande rouge
+\end{textblock*}
+
+% code-barre
+\begin{textblock*}{0.9\TPHorizModule}(0.1\TPHorizModule,26\TPVertModule)
+  \includegraphics[height=4\TPVertModule]{codebarre_\ISBN}
+\end{textblock*}
+
+\endgroup
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "formation-latex-ul"
+%%% TeX-engine: xetex
+%%% End:
