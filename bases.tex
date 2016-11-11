@@ -766,8 +766,13 @@ dire ``non merci''.»
 \end{demo}
 
 Les bons éditeurs de texte adaptés pour {\LaTeX} redéfinissent
-l'action de la touche \fbox{\texttt{\textquotedbl}} du clavier pour
-insérer les symboles appropriés selon la langue du document.
+l'action de la touche %
+%% simili touche de clavier faite main à partir; utilisation de
+%% \ooalign tirée de comprehensive.pdf, section 10.3
+\raisebox{-2pt}{%
+  \ooalign{\hfil\Large\faSquareO\hfil\cr\hfil\ttfamily\textquotedbl\hfil}} %
+du clavier pour insérer les symboles appropriés selon la langue du
+document.
 
 Le paquetage \pkg{csquotes} \citep{csquotes} propose une autre option
 pour l'entrée des guillemets. Il fournit une commande
