@@ -355,8 +355,9 @@ Les annexes sont des sections ou des chapitres avec une numérotation
 alphanumérique (A, A.1, ...) plutôt qu'entièrement numérique. On
 informe {\LaTeX} que les sections suivantes doivent être traitées
 comme des annexes en insérant dans le document la commande
+%% [hack ci-dessous pour cacher la commande \appendix à reftex]
 \begin{lstlisting}
-\appendix
+`\verb=\appendix='
 \end{lstlisting}
 En plus de modifier le style de numérotation, la commande a pour effet
 de changer le mot clé «Chapitre» pour «Annexe» dans les titres de
