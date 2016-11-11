@@ -349,8 +349,8 @@
   %% usage: \doc[documentation]{nom_fichier}{url}
   \newcommand{\doc}[3][documentation]{\link{#3}{#1}%
     \ifthenelse{\equal{#2}{}}{}{\marginpar%
-      [\hfill\faBook~\fichier{#2}]%
-      {\faBook~\fichier{#2}}}}
+      [\hfill\faBookmark~\fichier{#2}]%
+      {\faBookmark~\fichier{#2}}}}
 
   %% Suppression de l'hyperlien
   \newcommand{\nolink}[1]{\begin{NoHyper}#1\end{NoHyper}}
@@ -427,13 +427,14 @@
     \fontsize{15}{20}\selectfont
     Professeur titulaire \textbar\ École d'actuariat}
   \date{%
-    \sffamily\mdseries\fontsize{14}{18}\selectfont
-    Édition \fullcaps\year}
+    \sffamily\mdseries\fontsize{15}{20}\selectfont
+    Édition {\fullcaps\year}.\month}
   \renewcommand{\year}{2016}
-  \newcommand{\ISBN}{978-2-9811416-5-1}
+  \renewcommand{\month}{11}
+  \newcommand{\ISBN}{978-2-9811416-7-5}
   \newcommand{\ctanurl}{https://ctan.org/pkg/formation-latex-ul/}
 
-  \includeonly{frontispice,licence}
+%  \includeonly{frontispice,licence}
 
 \begin{document}
 
