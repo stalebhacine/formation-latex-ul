@@ -8,7 +8,8 @@
   \usepackage{framed}                  % environnement titled-frame
   \usepackage{manfnt}                  % \mantriangleright (puce)
   \usepackage{dirtree}                 % arbre pour exercice sur \include
-  \usepackage{metalogo}                % \XeLaTeX logo
+  \usepackage{metalogo}                % logo de \XeLaTeX logo
+  \usepackage{mflogo}                  % logo de Metafont
   \usepackage{fontawesome}             % plusieurs icônes
   \usepackage{applekeys}               % touches Mac
   \usepackage{answers}                 % exercices et solutions
@@ -339,8 +340,7 @@
   \newcommand*{\pixbar}{\cmdprint{\|}\index{[@\string\cs{}\texttt{\textbar}}}
 
   %% Indications de capsule vidéo dans la marge
-  \newcommand{\capsule}[2]{\href{#1}{#2}\marginpar{%
-      \href{#1}{\raisebox{-0.5em}[0em][0em]{\HUGE\faYoutubePlay}}}}
+  \newcommand{\capsule}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\Large\faYoutubePlay}}}
 
   %% Hyperlien avec symbole de lien externe juste après
   \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
@@ -434,7 +434,7 @@
   \newcommand{\ISBN}{978-2-9811416-7-5}
   \newcommand{\ctanurl}{https://ctan.org/pkg/formation-latex-ul/}
 
-%  \includeonly{frontispice,licence}
+  \includeonly{presentation}
 
 \begin{document}
 
