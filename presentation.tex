@@ -1,14 +1,14 @@
 \chapter{Présentation de {\TeX} et {\LaTeX}}
 \label{chap:presentation}
 
-La production d'un document à l'aide d'un ordinateur se compose
-toujours de trois grandes étapes:
+La production d'un document à l'aide d'un ordinateur comprend toujours
+trois grandes étapes:
 \begin{enumerate}
 \item la saisie du texte dans l'ordinateur;
 \item la composition du texte sur la page en lignes de longueur égale
   et en paragraphes, ainsi que la disposition des éléments tels que les
   figures et les tableaux;
-\item la production du document final pour consultation à l'écran ou
+agit\item la production du document final pour consultation à l'écran ou
   pour l'impression.
 \end{enumerate}
 Les logiciels de traitement de texte combinent les trois étapes de
@@ -25,7 +25,7 @@ avantage.
 utilisés dans le monde, particulièrement dans la production de
 documents scientifiques intégrant de multiples équations
 mathématiques, des graphiques, du code informatique, etc. En fait, le
-nom {\LaTeX} agit généralement comme terme générique pour toute une
+nom {\LaTeX} sert généralement de terme générique pour toute une
 famille de programmes. Ce chapitre explique donc non seulement la
 philosophie derrière {\LaTeX}, mais également le lien qui unit ce
 programme aux autres dont on croise couramment le nom aujourd'hui:
@@ -53,8 +53,9 @@ de ses exigences!
 
 {\TeX} est un système de mise en page (\emph{typesetting}) ou de
 préparation de documents. De manière plus technique, {\TeX} est un
-langage de programmation spécialisé dans la disposition de caratères
-sur une page.
+langage de programmation spécialisé dans la disposition de caractères
+sur une page. Il met l'accent sur la production de documents de grande
+qualité à la typographie soignée, surtout pour les mathématiques.
 
 Comme le système et le langage {\TeX} ne sont pas des plus faciles à
 apprendre, Leslie Lamport a créé en 1983 un ensemble de
@@ -65,9 +66,6 @@ l'ensemble du système.
 {\TeX} et {\LaTeX} sont des langages de balisage (\emph{Markup
   Languages}) qui indiquent la mise en forme du texte à l'intérieur de
 celui-ci par le biais de commandes spéciales.
-
-{\TeX} met l'accent sur la production de documents de grande qualité à
-la typographie soignée, surtout pour les mathématiques.
 
 \begin{exemple}
   Les traitements de texte sont d'abord et avant tout conçus pour
@@ -121,9 +119,9 @@ système \emph{n'est pas}.
   document reproduit à l'identique sur tous les types de systèmes
   informatiques.
 \item Instable --- le moteur {\TeX} est considéré exempt de bogues.
-\item Imprévisible --- {\LaTeX} fait uniquement et exactement ce qu'on
-  lui demande, sans prétendre pouvoir deviner ce que nous voulons
-  faire ou, pire, le savoir mieux que nous.
+\item Imprévisible --- {\LaTeX} fait uniquement et exactement ce que
+  nous lui demandons, sans prétendre pouvoir deviner ce que nous
+  voulons faire ou, pire, le savoir mieux que nous.
 \end{itemize}
 
 
@@ -166,31 +164,33 @@ logiciels. Mentionnons, par exemple:
 \item \link{http://www.texshop.org/}{TeXShop} (macOS seulement);
 \item \link{http://www.winedt.com}{WinEdt} (Windows seulement);
 \item \link{http://kile.sourceforge.net}{Kile} (Linux);
-\item à peu près tous les bons éditeurs de texte pour programmeur.
+\item à peu près tous les bons éditeurs de texte pour programmeur,
+  dont \link{http://www.gnu.org/software/emacs/}{GNU~Emacs}
+  (multiplateforme).
 \end{itemize}
 
 
 \section{Quelques choses simples à réaliser avec {\LaTeX}}
 
-Quiconque a travaillé un tant soit peu les logiciels de traitement de
-texte reconnaîtra ci-dessous des éléments de mise en page qui ne sont
-pas toujours faciles à réaliser. C'est tout le contraire avec
+Quiconque a travaillé un tant soit peu avec un logiciel de traitement
+de texte reconnaîtra ci-dessous des éléments de mise en page qui ne
+sont pas toujours simples à réaliser. C'est tout le contraire avec
 {\LaTeX}: quand ce n'est pas le comportement par défaut, il suffit en
 général d'insérer une commande dans le code source pour obtenir le
 résultat souhaité.
 
 \begin{itemize}
 \item Page titre standard avec le titre du document, le nom de
-  l'auteur et la date (une commande).
-\item Table des matières (une commande).
-\item Numérotation des pages (automatique).
+  l'auteur et la date.
+\item Table des matières.
+\item Numérotation des pages.
 \item Disposition sur la page des figures et tableaux, numérotation et
   renvois.
-\item Numérotation des équations mathématiques et renvois (automatique).
+\item Numérotation des équations mathématiques et renvois.
 \item Citations et composition de la bibliographie.
-\item Coupure de mots (automatique).
+\item Coupure de mots.
 \item Document recto-verso avec marges distinctes pour le recto et le
-  verso (une commande).
+  verso.
 \end{itemize}
 
 
@@ -233,9 +233,8 @@ couramment utilisés aujourd'hui.
   produit directement un fichier de sortie en format PDF. C'est la
   principale différence par rapport au moteur \code{tex}.
 \item Le moteur \code{xetex} peut utiliser directement les polices de
-  caractères du système d'exploitation. On traite de l'utilisation des
-  polices de caractères plus en détail à la
-  \autoref{sec:trucs:polices}.
+  caractères du système d'exploitation. La \autoref{sec:trucs:polices}
+  traite plus en détail de ce sujet.
 \item Le moteur \code{luatex} et le format {\LuaLaTeX} offrent les mêmes
   avantages que \code{xetex} et {\XeLaTeX} en plus d'intégrer les
   fonctionnalités du langage de programmation
@@ -255,20 +254,22 @@ Elle est administrée par le {\TeX} Users Group. C'est la distribution que
 recommandent la Bibliothèque et la Faculté des études supérieures de
 l'Université Laval.
 
-\begin{itemize}
-\item Sous macOS, on installera plutôt la distribution %
-  \link{https://www.tug.org/mactex/}{Mac{\TeX}}, %
-  qui est étroitement dérivée de {\TeX}~Live.
-\item Sous Windows, la distribution %
-  \link{http://www.miktex.org}{MiK\TeX} %
-  demeure aussi très populaire.
-\item La philosophie de {\TeX}~Live: tout installer. Cette façon de
-  faire est aujourd'hui réalisable puisque l'espace disque est
-  disponible à profusion dans les ordinateurs. C'est également la plus
-  simple puisque à peu près tout ce que vous êtes susceptible
-  d'utiliser dans un système {\TeX} est déjà installé.
-\end{itemize}
+La philosophie de {\TeX}~Live: tout installer. Cette façon de faire
+est aujourd'hui réalisable puisque l'espace disque est disponible à
+profusion dans les ordinateurs. C'est également la plus simple puisque
+à peu près tout ce que l'on est susceptible d'utiliser dans un système
+{\TeX} est déjà installé. Sur macOS, on installera plutôt la
+distribution %
+\link{https://www.tug.org/mactex/}{Mac{\TeX}}, %
+qui est étroitement dérivée de {\TeX}~Live.
 
+L'\hyperref[chap:introduction]{introduction} fournit des liens vers
+des vidéos expliquant comment installer la distribution {\TeX}~Live
+sur macOS et Windows.
+
+La distribution %
+\link{http://www.miktex.org}{MiK\TeX} %
+demeure également très populaire sur Windows.
 
 \begin{information}
   Quelques faits amusants au sujet de {\TeX}.
@@ -280,9 +281,9 @@ l'Université Laval.
   \item Le numéro de version de {\TeX} converge vers $\pi$:
 \begin{lstlisting}
 $ tex --version
-TeX `\textbf{3.14159265}' (TeX Live 2015)
-kpathsea version 6.2.1
-Copyright 2015 D.E. Knuth.
+TeX `\textbf{3.14159265}' (TeX Live 2016)
+kpathsea version 6.2.2
+Copyright 2016 D.E. Knuth.
 [...]
 \end{lstlisting} %$
   \end{itemize}
@@ -293,7 +294,9 @@ Copyright 2015 D.E. Knuth.
   \item {\TeX} sur Wikipedia
     (\link{http://fr.wikipedia.org/wiki/TeX}{version française};
     \link{http://en.wikipedia.org/wiki/TeX}{version anglaise}, plus
-    complète).
+    complète);
+  \item Texte de la conférence de \citet{Beebe:keynote:2004} à
+    l'occasion des 25 ans de {\TeX} et \textlogo{METAFONT}.
   \end{itemize}
 \end{information}
 
@@ -306,9 +309,9 @@ Copyright 2015 D.E. Knuth.
 \label{sec:presentation:exercices}
 
 \begin{exercice}[nosol]
-  Démarrer le logiciel intégré de rédaction de votre choix (Texmaker
-  et TeXShop constituent des bonnes options pour débuter), puis ouvrir
-  et compiler le fichier \fichier{exercice\_minimal.tex}.
+  À l'aide d'un logiciel intégré de rédaction (Texmaker et TeXShop
+  constituent des bonnes options pour débuter), ouvrir et compiler le
+  fichier \fichier{exercice\_minimal.tex}.
 \end{exercice}
 
 \begin{exercice}[nosol]
