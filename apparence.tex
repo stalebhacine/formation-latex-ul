@@ -531,7 +531,15 @@ code source, nous recommandons d'avoir recours au paquetage
 \section{Exercices}
 \label{sec:apparence:exercices}
 
-\begin{exercice}[nosol]
+\Opensolutionfile{solutions}[solutions-apparence]
+
+\begin{Filesave}{solutions}
+\section*{Chapitre \ref*{chap:apparence}}
+\addcontentsline{toc}{section}{Chapitre \protect\ref*{chap:apparence}}
+
+\end{Filesave}
+
+\begin{exercice}
   Utiliser le fichier \fichier{exercice\_parties.tex}.
   \begin{enumerate}
   \item Étudier la structure du document dans le code source.
@@ -550,9 +558,12 @@ code source, nous recommandons d'avoir recours au paquetage
 \end{lstlisting}
   \item Ajouter une annexe au document.
   \end{enumerate}
+  \begin{sol}
+    Consulter le fichier \fichier{exercice\_parties-solution.tex}.
+  \end{sol}
 \end{exercice}
 
-\begin{exercice}[nosol]
+\begin{exercice}
   Utiliser le fichier \fichier{exercice\_renvois.tex}.
   \begin{enumerate}
   \item Insérer dans le texte un renvoi au numéro d'une section.
@@ -560,6 +571,9 @@ code source, nous recommandons d'avoir recours au paquetage
     \code{colorlinks} et comparer l'effet d'utiliser \cmd{\ref} ou
     \cmd{\autoref} pour le renvoi.
   \end{enumerate}
+  \begin{sol}
+    Consulter le fichier \fichier{exercice\_renvois-solution.tex}.
+  \end{sol}
 \end{exercice}
 
 \begin{exercice}
@@ -569,15 +583,18 @@ code source, nous recommandons d'avoir recours au paquetage
   \item Supprimer l'option \code{article} au chargement de la classe
     et compilier de nouveau le document. Observer l'effet de cette
     option.
-  \item Effectuer les modifications suivantes au document.
-    \begin{enumerate}[a)]
-    \item Dernier paragraphe de la première section, placer toute la
-      phrase débutant par \code{«De simple dérivé»} à l'intérieur
-      d'une commande \cmd{\emph}.
-    \item Changer la puce des listes pour le caractère \code{\$>\$}.
-    \end{enumerate}
+  \item Au dernier paragraphe de la première section, placer toute la
+    phrase débutant par \code{«De simple dérivé»} à l'intérieur d'une
+    commande \cmd{\emph} et compilier de nouveau le document.
+  \item Changer la puce des listes pour le caractère \code{\$>\$} et
+    compiler de nouveau le document.
   \end{enumerate}
+  \begin{sol}
+    Consulter le fichier \fichier{exercice\_complet-solution.tex}.
+  \end{sol}
 \end{exercice}
+
+\Closesolutionfile{solutions}
 
 %%% Local Variables:
 %%% mode: latex
