@@ -5,7 +5,7 @@ Un système de mise en page tel que {\LaTeX} repose sur une logique de
 séparation entre l'apparence d'un document et sa structure. La
 personne habituée à utiliser un traitement de texte devra fort
 probablement se défaire d'une vilaine habitude: se préoccuper sans
-cesse de la disposition du texte au moment de la rédaction.
+cesse, au moment de la rédaction, de la disposition du texte.
 
 Ce principe accepté, il faudra néanmoins indiquer au logiciel la
 structure du document. Avec {\LaTeX} cela s'effectue par le biais de
@@ -18,8 +18,8 @@ qu'ils cachent les codes aux utilisateurs\footnote{%
   que Microsoft Word et les autres progiciels développés depuis ont
   choisi d'omettre.}. %
 Sous prétexte de simplicité d'utilisation, ils causent en fait bien
-des mots de tête. En utilisant un traitement de texte moderne, vous
-vous êtes sans doute déjà demandé: «Pourquoi mon texte est-il
+des mots de tête. Qui ne s'est pas déjà demandé, en utilisant un
+traitement de texte moderne: «Pourquoi donc mon texte est-il
 soudainement en gras?»
 
 Ce chapitre explique comment aborder la rédaction d'un document avec
@@ -125,30 +125,27 @@ d'importance.
     \begin{texample}
 \begin{lstlisting}
 Les lignes blanches
-délimitent les
-paragraphes.
+délimitent les paragraphes.
 
-Leur nombre n'a pas
-d'importance.
+Une ou plusieurs, ça ne fait
+aucune différence!
 \end{lstlisting}
       \producing
 Les lignes blanches
 délimitent les
 paragraphes.
 
-        Leur nombre n'a pas
-        d'importance.
+        Une ou plusieurs, ça ne fait aucune différence!
     \end{texample}
 \begin{texample}
 \begin{lstlisting}
 Les lignes blanches
-délimitent les
-paragraphes.
+délimitent les paragraphes.
 
 
 
-Leur nombre n'a pas
-d'importance.
+Une ou plusieurs, ça ne fait
+aucune différence!
 \end{lstlisting}
       \producing
         Les lignes blanches  délimitent
@@ -156,14 +153,13 @@ d'importance.
 
 
 
-        Leur nombre n'a pas
-        d'importance.
+        Une ou plusieurs, ça ne fait aucune différence!
     \end{texample}
   \end{demo}
 %
 \item On utilise des \emph{commandes} pour indiquer la structure du
   texte dans le code source. Celles-ci débutent presque toujours par
-  le caractère {\bs}. À la différence des logiciel de traitement de
+  le caractère {\bs}. À la différence des logiciels de traitement de
   texte, les instructions de mise en forme du document sont donc
   toujours visibles et, par conséquent, modifiables facilement et sans
   surprise (on ne se demande donc jamais où termine le gras).
@@ -232,10 +228,10 @@ vitae ipsum vel, fermentum pellentesque orci.
 \item[Corps du document] Contenu du document en tant que tel.
   Il débute par \verb=\begin{document}= et se termine par
     \verb=\end{document}=. Le corps du document peut aussi contenir
-  des commandes, mais l'effet de celles-ci est presque toujours local.
+  des commandes, mais l'effet de celles-ci demeure presque toujours local.
 
   Les lignes \ref*{lst:bases:corps_debut}--\ref*{lst:bases:corps_fin}
-  du code de la \autoref{fig:bases:parties} forment le corps de ce
+  du code de la \autoref{fig:bases:parties} forment le corps du
   document.
 \end{description}
 
@@ -252,12 +248,12 @@ Les classes standards de {\LaTeX} sont \class{article},
 \class{report}, \class{book}, \class{letter} et \class{slides}. La
 classe pour les thèses et mémoires de l'Université Laval se nomme
 \class{ulthese} \citep{ulthese}. Celle-ci se base sur la classe
-\class{memoir} et, par conséquent, hérite de toutes ses (nombreuses)
+\class{memoir} et, par conséquent, elle hérite de toutes ses (nombreuses)
 fonctionnalités; consulter la %
 \doc{ulthese}{http://texdoc.net/pkg/ulthese} %
 de la classe \class{ulthese} pour les détails. La
-\autoref{sec:organisation:classe} revient sur les différences entre les
-diverses classes et les \meta{options} disponibles.
+\autoref{sec:organisation:classe} traite des différences entre les
+diverses classes et des \meta{options} disponibles.
 
 Les \emph{paquetages} permettent de modifier des commandes ou
 d'ajouter des fonctionnalités à {\LaTeX}. On charge les paquetages
@@ -279,12 +275,6 @@ sont ainsi plus «visibles» pour d'autres paquetages. Par exemple,
 l'option \code{french} que l'on retrouve dans la déclaration de la
 classe à la \autoref{fig:bases:parties} est en fait une option du
 paquetage \pkg{babel}.
-
-La classe \class{ulthese} charge par défaut un certain nombre de
-paquetages essentiels ou incontournables pour la rédaction en
-français. Encore ici, consulter la %
-\doc{}{http://texdoc.net/pkg/ulthese} %
-pour les détails.
 
 
 \section{Commandes}
@@ -314,10 +304,10 @@ Certaines commandes n'ont aucun argument. Leur forme est alors
 \begin{lstlisting}
 \`\meta{nomcommande}
 \end{lstlisting}
-Dans ce cas, le nom d'une commande se termine par tout caractère qui
+Dans ce cas, le nom de la commande se termine par tout caractère qui
 n'est pas une lettre --- y compris l'espace! Cette règle fait en sorte
-qu'une espace après le nom d'une commande est considéré comme un
-marqueur de la fin du nom de celle-ci. Cette règle joue parfois de
+qu'une espace après le nom d'une commande est considérée comme un
+marqueur de la fin du nom de la commande. Cette règle joue parfois de
 vilains tours en «avalant» l'espace entre une commande et le mot qui
 suit; voir l'\autoref{exemple:base:commandes} et
 l'\autoref{ex:base:commandes}.
@@ -343,7 +333,7 @@ formidable!
         formidable!
       \end{texample}
     \end{demo}
-    On constate ici l'effet de la règle mentionnée précédemment:
+    On constate ici l'effet de la règle mentionnée ci-dessus:
     l'espace suivant le nom de la commande a été interprété par
     {\LaTeX} comme un marqueur de la fin de la commande et il a été
     supprimé du texte. Pour contourner ce problème, nous pouvons soit
@@ -445,15 +435,15 @@ trait} ou d'un caractère.
   \qed
 \end{exemple}
 
-L'usager de {\LaTeX} peut définir de nouvelles commandes à loisir.
-Ceci est expliqué à la \autoref{sec:commandes:commandes}.
+L'utilisateur de {\LaTeX} peut définir de nouvelles commandes à
+loisir. Ceci est expliqué au \autoref{chap:commandes}.
 
 
 \section{Environnements}
 \label{sec:bases:environnements}
 
-Un environnement {\LaTeX} est simplement une zone de texte délimitée
-par une construction du type
+Un environnement {\LaTeX} est une zone de texte délimitée par une
+construction du type
 \begin{lstlisting}
 \begin`\marg{environnement}'
    ...
@@ -547,7 +537,7 @@ correspondant.
   \centering
   \begin{tabular}{lcl}
     \toprule
-    nom ou description & symbole & longueur équivalente \\
+    Nom ou description & Symbole & Longueur équivalente \\
     \midrule
     millimètre & \texttt{mm} \\
     centimètre & \texttt{cm} & $10$~mm \\
@@ -587,7 +577,7 @@ courant ne sont pas disponibles sur les claviers.
 
 Nous avons déjà mentionné à la \autoref{sec:bases:saisie} le
 traitement spécial réservé par {\LaTeX} aux espaces et aux retours à
-la ligne dans le code source. Ajoutons des précisions suivantes:
+la ligne dans le code source. Ajoutons les précisions suivantes:
 \begin{itemize}
 \item seule la première espace entre deux éléments compte;
 \item les espaces en début de ligne sont ignorées;
@@ -649,10 +639,11 @@ interprétés comme des commandes:
 \begin{center}
   \verb=# $ & ~ _ ^ % { }=
 \end{center}
-Pour utiliser ces symboles tels quels dans le texte, il faut les
-précéder par le caractère {\bs}:
+
+Pour utiliser les symboles ci-dessus tels quels dans le texte, il faut
+les précéder par le caractère {\bs}:
 \begin{demo}
-  \begin{minipage}{0.2\linewidth}
+  \begin{minipage}{0.15\linewidth}
     \begin{texample}
 \begin{lstlisting}
 \#
@@ -661,7 +652,7 @@ précéder par le caractère {\bs}:
     \end{texample}
   \end{minipage}
   \hfill
-  \begin{minipage}{0.2\linewidth}
+  \begin{minipage}{0.15\linewidth}
     \begin{texample}
 \begin{lstlisting}
 \$
@@ -670,16 +661,16 @@ précéder par le caractère {\bs}:
     \end{texample}
   \end{minipage}
   \hfill
-  \begin{minipage}{0.2\linewidth}
+  \begin{minipage}{0.15\linewidth}
     \begin{texample}
-\begin{lstlisting}[commentstyle=\mdseries]
-\%
+\begin{lstlisting}
+\&
 \end{lstlisting}
-      \producing\ \%
+      \producing\ \&
     \end{texample}
   \end{minipage}
-  \\
-  \begin{minipage}{0.2\linewidth}
+  \hfill
+  \begin{minipage}{0.15\linewidth}
     \begin{texample}
 \begin{lstlisting}
 \_
@@ -687,17 +678,26 @@ précéder par le caractère {\bs}:
       \producing\rule{0pt}{1em}\ \_
     \end{texample}
   \end{minipage}
+  \\
+  \begin{minipage}{0.15\linewidth}
+    \begin{texample}
+\begin{lstlisting}[commentstyle=\mdseries]
+\%
+\end{lstlisting}
+      \producing\ \%
+    \end{texample}
+  \end{minipage}
   \hfill
-  \begin{minipage}{0.2\linewidth}
+  \begin{minipage}{0.15\linewidth}
     \begin{texample}
 \begin{lstlisting}
 \{
 \end{lstlisting}
-      \producing\ \}
+      \producing\ \{
     \end{texample}
   \end{minipage}
   \hfill
-  \begin{minipage}{0.2\linewidth}
+  \begin{minipage}{0.15\linewidth}
     \begin{texample}
 \begin{lstlisting}
 \}
@@ -705,6 +705,26 @@ précéder par le caractère {\bs}:
       \producing\ \}
     \end{texample}
   \end{minipage}
+  \hfill
+  \begin{minipage}{0.15\linewidth}
+    \mbox{}
+  \end{minipage}
+  \hfill
+\end{demo}
+(Les commandes \verb=\^= et \verb=\~= servent à créer des accents;
+voir la \autoref{sec:bases:caracteres:accents}.)
+
+Le symbole \verb=%= indique un commentaire dans le code source: tout
+le texte après le symbole jusqu'à la fin de la ligne est ignoré par
+{\LaTeX}.
+\begin{demo}
+  \begin{texample}
+\begin{lstlisting}
+texte % ignoré par LaTeX
+\end{lstlisting}
+    \producing
+    texte % ignoré par LaTeX
+  \end{texample}
 \end{demo}
 
 \subsection{Guillemets}
@@ -750,7 +770,7 @@ autour des symboles est géré automatiquement.
     « guillemets français »
   \end{texample}
 \end{demo}
-Les guillemets anglais ne servent, en français, que pour les citations
+En français, les guillemets anglais ne servent que pour les citations
 incluses, c'est-à-dire pour les citations à l'intérieur d'une
 citation.
 \begin{demo}
@@ -774,8 +794,8 @@ l'action de la touche %
 du clavier pour insérer les symboles appropriés selon la langue du
 document.
 
-Le paquetage \pkg{csquotes} \citep{csquotes} propose une autre option
-pour l'entrée des guillemets. Il fournit une commande
+Le paquetage \pkg{csquotes} \citep{csquotes} propose une autre approche
+pour la saisie des guillemets. Il fournit une commande
 \cmdprint{\enquote} qui entoure son argument des guillemets appropriés
 selon le contexte et la langue du texte. Cette solution peut s'avérer
 intéressante pour les nouveaux venus à {\LaTeX} qui n'ont pas encore
@@ -963,7 +983,7 @@ L'entrée du texte n'est pas tout, il faut également se soucier de la
 sortie, afin que les lettres accentuées apparaissent dans le document
 final. {\LaTeX} utilise par défaut un codage de sortie des caractères
 nommé OT1. Il est recommandé de ne pas utiliser ce codage pour les
-textes en français, notamment parce que la césure automatique ne
+textes en français, notamment parce que la coupure automatique ne
 fonctionnera pas pour les mots contenant des lettres accentuées. On
 préférera donc le plus récent codage T1, que l'on active avec le
 paquetage \pkg{fontenc} \citep{fontenc}:
@@ -998,7 +1018,7 @@ La classe \class{ulthese} charge par défaut le paquetage
 Entrer du texte en français dans le code source n'est pas tout. Il
 faut adapter {\LaTeX} au français, qu'il s'agisse des mots clés (tels
 «Table des matières» ou «Bibliographie»), de la typographie ou de la
-césure des mots. La solution standard provient du paquetage
+coupure des mots. La solution standard provient du paquetage
 \pkg{babel} \citep{babel}. Celui-ci permet de combiner plusieurs
 langues dans un même document et de passer de l'une à l'autre
 facilement. Consulter la %
@@ -1146,19 +1166,32 @@ solutions.
   \label{ex:base:commandes}
   Modifier le fichier \fichier{exercice\_commandes.tex} afin
   de produire le texte ci-dessous.
-  \begin{center}
+  \begin{demo}
     \fbox{\includegraphics[viewport=108 551 502
-      665,width=\linewidth]{exercice_commandes-solution}}
-  \end{center}
+      665,clip=true,width=0.98\linewidth]{exercice_commandes-solution}}
+  \end{demo}
   \begin{sol}
-    Consulter le fichier \fichier{exercice\_commandes-solution.tex}.
+    Il y a trois modifications principales à apporter au fichier.
+    \begin{enumerate}[1.]
+    \item La commande {\LaTeX} qui imprime le logo de LaTeX n'ayant
+      pas d'argument, il faut l'écrire sous la forme
+      \verb={\LaTeX}\verb= ou \verb=\LaTeX{}= pour éviter que l'espace
+      qui suit ne soit avalée par la commande.
+    \item Il faut délimiter par des accolades la zone à laquelle la
+      commande \cmdprint{\bfseries} doit s'appliquer:
+\begin{lstlisting}
+{\bfseries limitée}
+\end{lstlisting}
+    \item Il faut utiliser l'environnement \Pe{enumerate} pour les
+      listes numérotées. L'environnement \Pe{itemize} sert pour les
+      listes à puces.
+    \end{enumerate}
   \end{sol}
 \end{exercice}
 
-\begin{exercice}
+\begin{exercice}[nosol]
   \begin{enumerate}
-  \item Compiler tel que fourni le fichier
-    \fichier{exercice\_classe+paquetages.tex}.
+  \item Compiler le fichier \fichier{exercice\_classe+paquetages.tex}.
   \item Changer la police de caractère du document pour 11~points,
     puis 12~points. Changer la classe du document pour \class{memoir}.
     Observer l'effet sur les marges et sur la coupure automatique des
