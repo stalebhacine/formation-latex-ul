@@ -131,7 +131,7 @@ Les boîtes verticales se distinguent des boîtes horizontales par le
 fait qu'elles peuvent contenir plusieurs lignes de contenu empilées
 les unes au-dessus des autres. Lorsque le contenu en question est du
 texte, on obtient des paragraphes\footnote{%
-  D'où l'appellation, cette fois, de \emph{paragraph boxes} en anglais
+  D'où l'appellation de \emph{paragraph boxes} en anglais
   ou \emph{parboxes} dans le jargon {\LaTeX}.}. %
 
 La commande de base pour créer une boîte verticale est:
@@ -148,7 +148,7 @@ ligne de base. Cet argument n'a aucun effet si la boîte est le seul
 On remarquera que l'argument \meta{largeur} est ici obligatoire.
 Autrement dit, on doit nécessairement définir la largeur des boîtes
 verticales, un peu comme il faut bien définir la largeur de la page
-pour le texte normal.
+pour le texte normal (la classe se charge de ce détail).
 
 Les boîtes créées avec \cmd{\parbox} ne peuvent contenir de structures
 «complexes» comme des listes ou des tableaux. Parce que plus général,
@@ -173,19 +173,8 @@ l'\autoref{exemple:tableaux:grille} à la
 \autopageref{exemple:tableaux:grille}).
 
 \begin{exemple}
-  Le code ci-dessous
-\begin{lstlisting}
-\begin{minipage}[b]{0.3\textwidth}
-  La ligne inférieure de cette \emph{minipage} [...]
-\end{minipage}
-\hfill
-\parbox{0.3\textwidth}{le centre de cette boîte [...] }
-\hfill
-\begin{minipage}[t]{0.3\textwidth}
-  la ligne supérieure de cette \emph{minipage}. [...]
-\end{minipage}
-\end{lstlisting}
-  produit: \\[0.5\baselineskip]
+  L'agencement de boîtes ci-dessous est produit avec le code qui suit
+  immédiatement.  \\[0.5\baselineskip]
   \begin{minipage}{\textwidth}
     \makebox[0pt][l]{\color{lightgray}\rule{\textwidth}{0.7pt}}\relax
     \fbox{\begin{minipage}[b]{0.3\textwidth} La ligne inférieure de
@@ -198,6 +187,17 @@ l'\autoref{exemple:tableaux:grille} à la
         boîtes.
       \end{minipage}}
   \end{minipage}
+\begin{lstlisting}
+\begin{minipage}[b]{0.3\textwidth}
+  La ligne inférieure de cette \emph{minipage} [...]
+\end{minipage}
+\hfill
+\parbox{0.3\textwidth}{le centre de cette boîte [...] }
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+  la ligne supérieure de cette \emph{minipage}. [...]
+\end{minipage}
+\end{lstlisting}
   \qed
 \end{exemple}
 
