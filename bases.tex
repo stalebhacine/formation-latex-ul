@@ -73,11 +73,11 @@ L'apparence du texte sera prise en charge par {\LaTeX}. Comme les
 gabarits sont l'{\oe}uvre de spécialistes en typographie, il est
 généralement préférable de ne pas les modifier. À titre d'exemple,
 {\LaTeX} détermine automatiquement la largeur des marges en fonction
-de la taille de la police de caractère de manière à ce que les lignes
-de texte comptent approximativement 70~caractères. La raison:
-lorsqu'une ligne de texte est trop longue, notre {\oe}il a de la
-difficulté à la suivre sur toute sa longueur. Il a tendance à passer à
-la ligne inférieure, ce qui rend la lecture plus difficile.
+de la taille de la police de manière à ce que les lignes de texte
+comptent approximativement 70~caractères. La raison: lorsqu'une ligne
+de texte est trop longue, notre {\oe}il a de la difficulté à la suivre
+sur toute sa longueur. Il a tendance à passer à la ligne inférieure,
+ce qui rend la lecture plus difficile.
 
 
 \section{Règles de saisie}
@@ -159,7 +159,7 @@ aucune différence!
 %
 \item On utilise des \emph{commandes} pour indiquer la structure du
   texte dans le code source. Celles-ci débutent presque toujours par
-  le caractère {\bs}. À la différence des logiciels de traitement de
+  le symbole {\bs}. À la différence des logiciels de traitement de
   texte, les instructions de mise en forme du document sont donc
   toujours visibles et, par conséquent, modifiables facilement et sans
   surprise (on ne se demande donc jamais où termine le gras).
@@ -289,12 +289,12 @@ Les formes générales des commandes {\LaTeX} sont:
 \`\meta{nomcommande}'*`\oarg{arg\_optionnel}\marg{arg\_obligatoire}'
 \end{lstlisting}
 Ici, \meta{nomcommande} est le nom de la commande. Il débute par le
-caractère {\bs} et est exclusivement formé de lettres, habituellement
+symbole {\bs} et est exclusivement formé de lettres, habituellement
 des minuscules ({\LaTeX} est sensible à la casse). La forme étoilée
 d'une commande réalise généralement une action légèrement différente
-de la version sans étoile. Par exemple, la commande \cmd{\section}
-crée une nouvelle section numérotée, alors que \cmd{\section*}
-n'insère aucune numérotation.
+de la version sans étoile. Par exemple, \cmd{\section} crée une
+nouvelle section numérotée, alors que \cmd{\section*} n'insère aucune
+numérotation.
 
 Lorsque la commande prend des arguments, les arguments obligatoires
 sont placés entre accolades \verb={ }= et les arguments optionnels
@@ -304,7 +304,7 @@ Certaines commandes n'ont aucun argument. Leur forme est alors
 \begin{lstlisting}
 \`\meta{nomcommande}
 \end{lstlisting}
-Dans ce cas, le nom de la commande se termine par tout caractère qui
+Dans ce cas, le nom de la commande se termine par tout symbole qui
 n'est pas une lettre --- y compris l'espace! Cette règle fait en sorte
 qu'une espace après le nom d'une commande est considérée comme un
 marqueur de la fin du nom de la commande. Cette règle joue parfois de
@@ -402,7 +402,7 @@ ligne de base:
 \end{exemple}
 
 \begin{exemple}
-  La commande \cmd{\bfseries} sélectionne une police de caractère
+  La commande \cmd{\bfseries} sélectionne une police
   grasse pour tout le texte qui suit.
   \begin{demo}
     \begin{texample}
@@ -467,10 +467,11 @@ l'intérieur d'un environnement.
 \begin{lstlisting}
 La phrase
 \begin{quote}
-  Attention aux bogues dans le
-  code ci-dessus; je ne l'ai
-  pas testé, j'ai seulement
-  prouvé qu'il était correct.
+  Attention aux bogues dans
+  le code ci-dessus; je ne
+  l'ai pas testé, j'ai
+  seulement prouvé qu'il
+  était correct.
 \end{quote}
 est une citation célèbre du
 créateur de {\TeX}, Donald
@@ -634,14 +635,19 @@ Donald Knuth est un dieu%
 \label{sec:bases:caracteres:reserves}
 
 Comme à peu près tous les langages de programmation, {\TeX} réserve
-certains symboles pour son usage interne. Les symboles suivants sont
+certains caractères pour son usage interne. Les caractères suivants sont
 interprétés comme des commandes:
 \begin{center}
   \verb=# $ & ~ _ ^ % { }=
 \end{center}
 
 Pour utiliser les symboles ci-dessus tels quels dans le texte, il faut
-les précéder par le caractère {\bs}:
+les précéder par le symbole {\bs}:
+\index{#@\cs{}\texttt{\#}}
+\index{$@\cs{}\texttt{\$}} %$
+\index{&@\cs{}\texttt{\&}}
+\index{_@\cs{}\texttt{\_}}
+\index{%@\cs{}\texttt{\%}}
 \begin{demo}
   \begin{minipage}{0.15\linewidth}
     \begin{texample}
@@ -941,8 +947,7 @@ Les commandes pour les accents demeurent utiles pour composer les
 lettres accentuées des langues européennes autres que le français. On
 trouvera la liste de ces commandes, ainsi que celles pour composer une
 multitude d'autres symboles à la section~2 de la très utile %
-\doc[Comprehensive {\LaTeX} Symbol
-List]{compre\-hen\-sive}{http://texdoc.net/pkg/comprehensive} %
+\doc[\emph{Comprehensive {\LaTeX} Symbol List}]{comprehensive}{http://texdoc.net/pkg/comprehensive} %
 \citep{comprehensive}.
 
 
@@ -1192,8 +1197,7 @@ solutions.
 \begin{exercice}[nosol]
   \begin{enumerate}
   \item Compiler le fichier \fichier{exercice\_classe+paquetages.tex}.
-  \item Changer la police de caractère du document pour 11~points,
-    puis 12~points. Changer la classe du document pour \class{memoir}.
+  \item Changer la police du document pour 11~points, puis 12~points.
     Observer l'effet sur les marges et sur la coupure automatique des
     mots.
   \item Charger le paquetage \pkg{icomma} et observer l'effet sur la

@@ -68,7 +68,7 @@ plus simples à créer. La syntaxe des commandes \cmd{\newcommand} et
 \renewcommand{`\bs\meta{nom\_commande}'}`\marg{définition}'
 \end{lstlisting}
 Le premier argument, \bs\meta{nom\_commande}, est le nom de la
-commande, avec le caractère \bs. Ce nom doit être différent de celui
+commande, avec le symbole \bs. Ce nom doit être différent de celui
 de toute commande active\footnote{%
   Les commandes actives dans un document sont les commandes de base de
   {\TeX} et {\LaTeX} ainsi que les commandes de tous les paquetages
@@ -152,11 +152,10 @@ doivent apparaître.
   \begin{enumerate}
   \item le texte de l'hyperlien qui sera placé au fil du texte;
   \item le nom du fichier de documentation à placer dans la marge dans
-    une police de caractère non proportionnelle;
+    une police non proportionnelle;
   \item l'URL vers le fichier de documentation en ligne.
   \end{enumerate}
-  Une version simplifiée de la définition de la commande est la
-  suivante:
+  Voic une version simplifiée de la définition de la commande:
 \begin{lstlisting}
 \newcommand{\doc}[3]{%
   \href{#3}{#1~\raisebox{-0.2ex}{\faExternalLink}}%
@@ -164,7 +163,7 @@ doivent apparaître.
 \end{lstlisting}
   La commande \cmd{\href} qui permet d'insérer un hyperlien dans le
   texte provient du paquetage \pkg{hyperref} \citep{hyperref}. Les
-  commandes \cmdprint{\faBookmark} et \cmdprint{\faExternalLink}
+  commandes \cmdprint{\faEx\-ter\-nal\-Link} et \cmdprint{\faBookmark}
   proviennent du paquetage \pkg{fontawesome} \citep{fontawesome}; elles
   insèrent dans le texte des icônes de la police libre %
   \doc[Font Awesome]{}{http://fortawesome.github.io/Font-Awesome/}. %

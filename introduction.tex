@@ -1,7 +1,7 @@
 \chapter{Introduction}
 \label{chap:introduction}
 
-À l'origine du présent ouvrage, il y a une formation sur la rédaction
+Le présent ouvrage tire son origine d'une formation sur la rédaction
 de thèses et de mémoires avec {\LaTeX} développée pour la Bibliothèque
 de l'Université Laval. La formation aborde les concepts de base pour
 un nouvel utilisateur: processus d'édition, compilation,
@@ -18,10 +18,23 @@ relativement complexes comportant des tableaux, des figures, des
 aussi émaillé le texte de conseils et d'astuces glanés au fil de nos
 vingt années d'utilisation du système de mise en page.
 
-Les nombreuses références à la classe \class{ulthese} s'adressent au
-premier public de l'ouvrage: les étudiantes et étudiants de
-l'Université Laval occupés à la rédaction de leur thèse ou de leur
-mémoire. Les autres lecteurs pourront sans mal escamoter ces passages.
+Les nombreuses références à la classe de documents \class{ulthese}
+s'adressent au premier public de l'ouvrage: les étudiantes et
+étudiants de l'Université Laval occupés à la rédaction de leur thèse
+ou de leur mémoire. Ils devront utiliser cette classe pour composer un
+document conforme aux règles générales de présentation matérielle de
+la Faculté des études supérieures et postdoctorales. Les autres
+lecteurs pourront sans mal escamoter ces passages.
+
+Chaque chapitre comporte quelques exercices. Les solutions se trouvent
+en annexe. En consultation électronique, le numéro d'un exercice est,
+le cas échéant, un hyperlien vers sa solution, et vice versa.
+
+Un index en fin d'ouvrage collige les références aux commandes et
+environnements {\LaTeX}, ainsi qu'aux noms de paquetages et de
+classes.
+
+\subsection*{Autres références utiles}
 
 L'ouvrage n'a aucune prétention d'exhaustivité. La consultation de
 documentation additionnelle pourra s'avérer nécessaire pour réaliser
@@ -69,16 +82,8 @@ de la documentation dans le site %
 marge le nom du fichier correspondant (sans l'extension \code{.pdf})
 sur un système doté de {\TeX}~Live.
 
-Sur la plupart des systèmes, il est possible de consulter hors ligne
-le fichier de documentation \meta{fichier}\code{.pdf} en entrant à une
-invite de commande
-\begin{quote}
-\begin{lstlisting}[backgroundcolor=\color{white}]
-texdoc `\meta{fichier}'
-\end{lstlisting}
-\end{quote}
-Plusieurs logiciels intégrés de rédaction offrent une inferface pour
-accéder à cette documentation.
+La plupart des logiciels intégrés de rédaction {\LaTeX} offrent une
+inferface pour accéder à cette documentation.
 \begin{itemize}
 \item TeXShop: menu \code{Aide|Afficher l'aide pour le
     package} (\optkey\,\cmdkey\, I).
@@ -86,8 +91,9 @@ accéder à cette documentation.
 \item GNU~Emacs: commande \code{TeX-doc} (\code{C-c ?}) du mode
   spécialisé AUC{\TeX}.
 \end{itemize}
-Consulter la rubrique d'aide de votre éditeur pour savoir s'il offre
-une interface à \code{texdoc}.
+Le lecteur devrait consulter la rubrique d'aide de son éditeur pour
+savoir s'il offre une interface au système de gestion de la
+documentation \code{texdoc} de {\TeX}~Live.
 
 \subsection*{Fichiers d'accompagnement}
 

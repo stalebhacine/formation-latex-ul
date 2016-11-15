@@ -39,6 +39,10 @@
   \newfontfamily\CM{cmunrm.otf}                       % Computer Modern
   \newfontfamily\Times{texgyretermes-regular.otf}     % Times
   \newfontfamily\Palatino{texgyrepagella-regular.otf} % Palatino
+  \newfontfamily\Bookman{texgyrebonum-regular.otf}    % Bookman
+  \newfontfamily\NewCent{texgyreschola-regular.otf}   % New Cent. Sch.
+  \newfontfamily\Charter{XCharter-Roman.otf}          % Charter
+  \newfontfamily\Helvet{texgyreheros-regular.otf}     % Helvetica
 
   %% Couleurs
   \usepackage{xcolor}
@@ -53,8 +57,8 @@
   %% Hyperliens
   \usepackage{hyperref}
   \hypersetup{%
-    pdfauthor={Vincent Goulet},
-    pdftitle={Rédaction de thèses et mémoires avec LaTeX},
+    pdfauthor = {Vincent Goulet},
+    pdftitle = {Rédaction avec LaTeX},
     colorlinks = {true},
     linktocpage = {true},
     urlcolor = {url},
@@ -339,7 +343,7 @@
   \newcommand*{\pixabang}{\cmdprint{\!}\index{"!@\string\cs{}\texttt{"!}}}
   \newcommand*{\pixbar}{\cmdprint{\|}\index{[@\string\cs{}\texttt{\textbar}}}
 
-  %% Indications de capsule vidéo dans la marge
+  %% Indications de capsule vidéo
   \newcommand{\capsule}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\Large\faYoutubePlay}}}
 
   %% Hyperlien avec symbole de lien externe juste après
@@ -362,14 +366,6 @@
       \rule[-5pt]{0mm}{16pt}%
       \makebox[7mm]{\raisebox{-3pt}{\LARGE\faExternalLink}}\;%
       {\sffamily Accéder au dépôt}}}
-
-  %% «Bouton» pour accéder à CTAN
-  \newcommand{\ctanbutton}{%
-    \setlength{\fboxrule}{1pt}%
-    \framebox[62mm][l]{%
-      \rule[-5pt]{0mm}{16pt}%
-      \makebox[7mm]{\raisebox{-3pt}{\LARGE\faExternalLink}}\;%
-      {\sffamily Accéder aux fichiers dans CTAN}}}
 
   %% Pour le tableau des commandes d'espacement en mode mathématique.
   %% Pris de la doc de amsmath.
@@ -403,6 +399,13 @@
   %% Style de la bibliographie
   \bibliographystyle{francais}
 
+  %% Longueurs pour la composition des pages couvertures avant et
+  %% arrière.
+  \newlength{\banderougewidth}
+  \newlength{\bandeorwidth}
+  \newlength{\imageheight}
+  \newlength{\gapwidth}
+
   %%% ==================================================
   %%%  Page titre et autres informations de publication
   %%% ==================================================
@@ -434,7 +437,7 @@
   \newcommand{\ISBN}{978-2-9811416-7-5}
   \newcommand{\ctanurl}{https://ctan.org/pkg/formation-latex-ul/}
 
-  \includeonly{presentation}
+  %\includeonly{tableaux+figures}
 
 \begin{document}
 

@@ -70,36 +70,36 @@ fournissent des exemples de mise en page pour ces trois classes.
 \end{table}
 
 \begin{figure}
-  \begin{minipage}{0.48\linewidth}
-    \fbox{\includegraphics[page=1,width=\linewidth]{exemple-classe-article}}
+  \begin{minipage}{0.49\linewidth}
+    \fbox{\includegraphics[page=1,width=0.95\linewidth]{exemple-classe-article}}
   \end{minipage}
   \hfill
-  \begin{minipage}{0.48\linewidth}
-    \fbox{\includegraphics[page=2,width=\linewidth]{exemple-classe-article}}
+  \begin{minipage}{0.49\linewidth}
+    \fbox{\includegraphics[page=2,width=0.95\linewidth]{exemple-classe-article}}
   \end{minipage}
   \caption{Exemple de mise en page avec la classe \class{article}}
   \label{fig:organisation:classes:article}
 \end{figure}
 
 \begin{figure}
-  \begin{minipage}{0.48\linewidth}
-    \fbox{\includegraphics[page=1,width=\linewidth]{exemple-classe-report}}
+  \begin{minipage}{0.49\linewidth}
+    \fbox{\includegraphics[page=1,width=0.95\linewidth]{exemple-classe-report}}
   \end{minipage}
   \hfill
-  \begin{minipage}{0.48\linewidth}
-    \fbox{\includegraphics[page=2,width=\linewidth]{exemple-classe-report}}
+  \begin{minipage}{0.49\linewidth}
+    \fbox{\includegraphics[page=2,width=0.95\linewidth]{exemple-classe-report}}
   \end{minipage}
   \caption{Exemple de mise en page avec la classe \class{report}}
   \label{fig:organisation:classes:report}
 \end{figure}
 
 \begin{figure}
-  \begin{minipage}{0.48\linewidth}
-    \fbox{\includegraphics[page=1,width=\linewidth]{exemple-classe-book}}
+  \begin{minipage}{0.49\linewidth}
+    \fbox{\includegraphics[page=1,width=0.95\linewidth]{exemple-classe-book}}
   \end{minipage}
   \hfill
-  \begin{minipage}{0.48\linewidth}
-    \fbox{\includegraphics[page=2,width=\linewidth]{exemple-classe-book}}
+  \begin{minipage}{0.49\linewidth}
+    \fbox{\includegraphics[page=2,width=0.95\linewidth]{exemple-classe-book}}
   \end{minipage}
   \caption{Exemple de mise en page avec la classe \class{book}}
   \label{fig:organisation:classes:book}
@@ -432,8 +432,7 @@ directement depuis la visionneuse PDF. La
 avec la visionneuse Aperçu de macOS.
 
 \begin{figure}
-  \centering
-  \includegraphics[width=0.8\textwidth,angle=-90]{tdm-dans-pdf}
+  \resizebox{\textwidth}{!}{\includegraphics[angle=-90]{tdm-dans-pdf}}
   \caption{Consultation d'un document PDF avec la visionneuse Aperçu
     de macOS. La barre latérale de gauche affiche la table des
     matières du fichier PDF, ce qui permet de naviguer dans le
@@ -454,7 +453,7 @@ commande suivante:
 \addtocontentsline{toc}`\marg{niveau}\marg{titre}'
 \end{lstlisting}
 où \meta{niveau} est le nom de la commande de division sans le
-symbole {\bs} (\code{chapter}, \code{section}, etc.) et \meta{titre}
+caractère {\bs} (\code{chapter}, \code{section}, etc.) et \meta{titre}
 est le texte qui apparaitra dans la table des matières.
 
 \begin{exemple}
@@ -476,7 +475,7 @@ est le texte qui apparaitra dans la table des matières.
   \qed
 \end{exemple}
 
-Outre une table des matières, les longs ouvrages scientifiques
+Outre une table des matières, les ouvrages scientifiques
 comportent parfois une liste des figures et une liste des tableaux. On
 obtient celles-ci avec les commandes
 \begin{lstlisting}
@@ -552,7 +551,7 @@ Tel que vu à la section \ref{sec:definitions}, on a...
 \end{lstlisting}
 
   \begin{figure}
-    \fbox{\includegraphics*[viewport=124 550 484 664,width=\linewidth]{exemple-renvoi}}
+    \fbox{\includegraphics*[viewport=124 550 484 664,width=0.98\linewidth]{exemple-renvoi}}
     \caption{Texte produit par le code de
       l'\autoref{ex:organisation:renvoi} illustrant un renvoi
       automatique standard}
@@ -625,7 +624,7 @@ pratique en consultation électronique d'un document.
 
   \begin{figure}
     \centering
-    \fbox{\includegraphics[viewport=124 550 484 664,width=\linewidth]{exemple-renvoi-hyperref}}
+    \fbox{\includegraphics[viewport=124 550 484 664,width=0.98\linewidth]{exemple-renvoi-hyperref}}
     \caption{Texte produit par le code de
       l'\autoref{ex:organisation:renvoi} après l'ajout du paquetage
       \pkg{hyperref}}
@@ -672,7 +671,7 @@ Tel que vu à la \autoref{sec:definitions}, on a...
 
   \begin{figure}
     \centering
-    \fbox{\includegraphics[viewport=124 550 484 664,width=\linewidth]{exemple-renvoi-autoref}}
+    \fbox{\includegraphics[viewport=124 550 484 664,width=0.98\linewidth]{exemple-renvoi-autoref}}
     \caption{Texte produit par le code de
       l'\autoref{ex:organisation:renvoi-autoref}}
     \label{fig:organisation:renvoi-autoref}
@@ -928,10 +927,9 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
   un document {\LaTeX}. Elle provient du paquetage \pkg{graphicx}.
 
   \begin{enumerate}
-  \item Étudier le code source du fichier maître
-    \fichier{exercice\_include.tex}, puis le compiler deux à trois
-    fois jusqu'à ce que tous les renvois soient à jour. Il est normal
-    à ce stade que la figure~1 du document soit vide.
+  \item Étudier le code source du fichier maître, puis le compiler
+    deux à trois fois jusqu'à ce que tous les renvois soient à jour.
+    Il est normal à ce stade que la figure~1 du document soit vide.
   \item Ajouter dans le préambule du fichier maître la commande
 \begin{lstlisting}
 \includeonly{emacs}

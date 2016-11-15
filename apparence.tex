@@ -1,7 +1,6 @@
 \chapter{Apparence et disposition du texte}
 \label{chap:apparence}
 
-
 Les bonnes pratiques dictent de séparer le contenu du texte de son
 apparence lorsque l'on utilise un système de mise en page comme
 {\LaTeX}. Néanmoins, vient un moment où l'on peut souhaiter modifier
@@ -31,14 +30,14 @@ de la police du document, qu'il s'agisse de la famille (avec ou sans
 empattements, à largeur fixe ou variable), de la forme (droit,
 italique, penché) ou de la graisse (normal, gras). Le
 \autoref{tab:apparence:police} dresse la liste des commandes de
-changement d'attribut de la police de caractères.
+changement d'attribut de la police.
 
 \begin{table}
   \centering
-  \caption{Commandes de changement d'attribut de la police de
-    caractères. Les commandes de la deuxième colonne s'appliquent à
-    tout le texte qui suit. Celles de la troisième colonne
-    s'appliquent uniquement au texte en argument.}
+  \caption{Commandes de changement d'attribut de la police. Les
+    commandes de la deuxième colonne s'appliquent à tout le texte qui
+    suit. Celles de la troisième colonne s'appliquent uniquement au
+    texte en argument.}
   \label{tab:apparence:police}
   \begin{tabularx}{0.9\linewidth}{p{0.35\linewidth}Xl}
     \toprule
@@ -61,7 +60,7 @@ changement d'attribut de la police de caractères.
   \end{tabularx} \\
   \raggedright
   \hspace*{3em}{\footnotesize $^\dagger$ diffère de l'italique selon
-    la police de caractère utilisée}
+    la police utilisée}
 \end{table}
 
 La commande
@@ -140,10 +139,10 @@ La taille des car
 
 \section{Italique}
 
-L'italique est l'un des attributs de police de caractères les plus
-fréquemment employés dans le texte. Il sert, notamment, à insister sur
-des mots, à composer les expressions et locutions en langue étrangère
-ou à détacher les titres d'{\oe}uvres du fil du texte.
+L'italique est l'un des attributs de police les plus fréquemment
+employés dans le texte. Il sert, notamment, à insister sur des mots, à
+composer les expressions et locutions en langue étrangère ou à
+détacher les titres d'{\oe}uvres du fil du texte.
 
 Évidemment, il est possible d'obtenir de l'italique avec la commande
 \cmd{\textit} du \autoref{tab:apparence:police}. Cependant, nous
@@ -242,8 +241,7 @@ Illustrons ces concepts par le biais d'un exemple.
     pour retourner au texte normal.
   \end{enumerate}
 
-  L'énumération ci-dessus constitue évidemment un exemple de listes
-  mixtes imbriquées. On l'a composée avec le texte suivant.
+  On a composé la liste ci-dessus avec le texte suivant.
   \begin{demo}
 \begin{lstlisting}[emph={enumerate,itemize}]
 \begin{enumerate}
@@ -384,10 +382,9 @@ d'un auteur qui est habituellement mentionné. Il existe deux
 environnements dans {\LaTeX} pour composer les citations.
 
 \begin{quote}
-  L'environnement \Ie{quote} est utilisé pour les citations courtes,
-  de quelques lignes seulement. Le texte est placé en retrait des
-  marges gauches et droites. Le présent texte a été placé dans cet
-  environnement.
+  L'environnement \Ie{quote} est utilisé pour les citations courtes.
+  Le texte est placé en retrait des marges gauche et droite. Le
+  présent texte a été placé dans cet environnement.
 \end{quote}
 
 \begin{quotation}
@@ -395,7 +392,8 @@ environnements dans {\LaTeX} pour composer les citations.
   longues se comptant en paragraphes.
 
   La principale différence par rapport à l'environnement \Pe{quote},
-  c'est que \Pe{quotation} prend en charge les marques de paragraphes.
+  c'est que \Pe{quotation} prend aussi en charge les marques de
+  paragraphes.
 
   Ce paragraphe et les deux précédents sont composés dans
   un environnement \Pe{quotation}.
@@ -494,7 +492,7 @@ on aura recours à la commande
 \begin{lstlisting}
 \verb`\meta{c}'`\meta{source}'`\meta{c}'
 \end{lstlisting}
-où \meta{c} est un caractère quelconque ne se trouvant pas dans
+où \meta{c} est un symbole quelconque ne se trouvant pas dans
 \meta{source} et qui sert à délimiter le début et la fin de
 \meta{source}. La variante
 \cmd{\verb*} affiche elle aussi les espaces.
@@ -557,7 +555,7 @@ sujet.
   \item Au dernier paragraphe de la première section, placer toute la
     phrase débutant par \code{«De simple dérivé»} à l'intérieur d'une
     commande \cmd{\emph} et compilier de nouveau le document.
-  \item Changer la puce des listes pour le caractère \code{\$>\$} et
+  \item Changer la puce des listes pour le symbole \code{\$>\$} et
     compiler de nouveau le document.
   \end{enumerate}
 \end{exercice}

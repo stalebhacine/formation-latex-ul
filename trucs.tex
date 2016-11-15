@@ -4,14 +4,13 @@
 En clôture de l'ouvrage, ce chapitre traite de différents sujets que
 même une personne débutant avec {\LaTeX} voudra assez rapidement
 aborder, comme le contrôle des sauts de ligne et des sauts de page, la
-modification de la police de caractères du document, l'utilisation de
-la couleur ou l'insertion d'hyperliens dans le fichier de sortie PDF.
-Nous offrons également de courtes introductions à des usages plus
-spécialisés de {\LaTeX} comme la mise en page de code informatique, la
-production de diapositives ou la programmation lettrée. Enfin, nous
-expliquons sommairement comme assurer de manière efficace la gestion
-des versions de ses documents, surtout dans un contexte de travail
-collaboratif.
+modification de la police du document, l'utilisation de la couleur ou
+l'insertion d'hyperliens dans le fichier de sortie PDF. Nous offrons
+également de courtes introductions à des usages plus spécialisés de
+{\LaTeX} comme la mise en page de code informatique, la production de
+diapositives ou la programmation lettrée. Enfin, nous expliquons
+sommairement comme assurer de manière efficace la gestion des versions
+de ses documents, surtout dans un contexte de travail collaboratif.
 
 \section{Contrôle de la disposition du texte}
 \label{sec:trucs:controle}
@@ -181,12 +180,12 @@ sont identifiés par un trait d'union.
 
 {\CM%
   Les documents {\LaTeX} standards sont facilement reconnaissables par
-  leur police de caractères par défaut, Computer Modern --- celle
-  utilisée dans ce paragraphe. Pour qui souhaitait briser la relative
-  monotonie induite par cette uniformité, il a longtemps été difficile
-  d'utiliser une autre police. Fort heureusement, la situation a
-  beaucoup évolué et il est aujourd'hui assez simple de produire des
-  documents {\LaTeX} utilisant des polices variées.}
+  leur police par défaut, Computer Modern --- celle utilisée dans ce
+  paragraphe. Pour qui souhaitait briser la relative monotonie induite
+  par cette uniformité, il a longtemps été difficile d'utiliser une
+  autre police. Fort heureusement, la situation a beaucoup évolué et
+  il est aujourd'hui assez simple de produire des documents {\LaTeX}
+  utilisant des polices variées.}
 
 Avant d'aller plus loin, une mise en garde: si un document contient
 plus que quelques équations mathématiques très simples, le choix de
@@ -213,8 +212,8 @@ sans trop se compliquer la vie, il existe deux solutions principales.
 \item Utiliser une police OpenType ou TrueType présente sur son
   système avec le moteur {\XeLaTeX}. Seule une poignée de ces polices
   offre toutefois un support approprié pour les mathématiques. La
-  gestion des polices de caractères avec {\XeLaTeX} se fait avec le
-  paquetage standard \pkg{fontspec}; consulter sa %
+  gestion des polices avec {\XeLaTeX} se fait avec le paquetage
+  standard \pkg{fontspec}; consulter sa %
   \doc{fontspec}{http://texdoc.net/pkg/fontspec/}.
 \end{enumerate}
 
@@ -248,10 +247,10 @@ mathématiques via le projet frère %
 \end{lstlisting}
 
   Avec le moteur {\XeLaTeX}, il est possible d'utiliser n'importe
-  quelle police de caractères OpenType et TrueType installée dans le
-  système d'exploitation de l'ordinateur. Pour obtenir un résultat
-  équivalent à celui de \pkg{mathpazo}, installer les polices TeX~Gyre
-  dans le système, puis insèrer dans le préambule les commandes
+  quelle police OpenType et TrueType installée dans le système
+  d'exploitation de l'ordinateur. Pour obtenir un résultat équivalent
+  à celui de \pkg{mathpazo}, installer les polices TeX~Gyre dans le
+  système, puis insèrer dans le préambule les commandes
 \begin{lstlisting}
 \usepackage{fontspec}
 \setmainfont{TeX Gyre Pagella}
@@ -398,7 +397,7 @@ valeur (avec en gras la valeur par défaut) ainsi qu'une brève
 explication de chacune.
 
 \begin{table}[h]
-  \begin{tabularx}{1.0\linewidth}{@{}p{6em}p{6em}X@{}}
+  \begin{tabularx}{1.0\linewidth}{@{}p{7em}p{6em}X@{}}
     \code{colorlinks} & \code{true}|\code{\textbf{false}} & colorer les
                                                             liens selon
                                                             leur type \\
@@ -427,7 +426,7 @@ contenu. Le paquetage \pkg{hyperref} permet d'en définir certaines,
 notamment le titre ou l'auteur du document.
 
 \begin{table}[!h]
-  \begin{tabularx}{1.0\linewidth}{@{}p{6em}p{6em}X@{}}
+  \begin{tabularx}{1.0\linewidth}{@{}p{7em}p{6em}X@{}}
     \code{pdftitle}  & texte & titre du document PDF \\
     \code{pdfauthor} & texte & auteur du document PDF
   \end{tabularx}
