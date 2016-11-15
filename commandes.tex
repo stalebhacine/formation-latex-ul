@@ -32,14 +32,14 @@ trois raisons suivantes:
     l'insertion de liens vers la documentation. D'un seul appel, elle
     crée un hyperlien dans le texte suivi de l'icône {\faExternalLink}
     et elle ajoute le nom du fichier de documentation dans la marge
-    précédé de l'icône {\faBook}.
+    précédé de l'icône {\faBookmark}.
   \item Une nouvelle commande sémantique \cmdprint{\pkg} sert pour la
     mise en forme des noms de paquetages. Ainsi, leur présentation est
     toujours la même et si nous souhaitons en changer, il suffit de
     modifier la définition de la commande.
   \item La redéfinition de la commande \cmd{\chaptitlefont} de la
-    classe \class{memoir} permet de modifier la police de caractère et
-    la mise en forme des titres de chapitres.
+    classe \class{memoir} permet de modifier la police et la mise en
+    forme des titres de chapitres.
   \end{enumerate}
   Nous reviendrons sur les détails de ces exemples dans la suite du
   chapitre. %
@@ -100,9 +100,9 @@ commandes à exécuter ou d'une combinaison de tout cela.
 
 \begin{exemple}
   Tel que mentionné à l'\autoref{ex:commandes:intro}, nous avons
-  modifié la police de caractère des titres de chapitres dans le présent
-  document en redéfinissant la commande \cmdprint{\chaptitlefont} de
-  la classe \class{memoir}. Pour obtenir des titres de chapitres sans
+  modifié la police des titres de chapitres dans le présent document
+  en redéfinissant la commande \cmdprint{\chaptitlefont} de la classe
+  \class{memoir}. Pour obtenir des titres de chapitres sans
   empattements, en caractères gras, de dimension \cmdprint{\Huge} et
   alignés à gauche, on trouve dans le préambule du document la
   déclaration
@@ -110,9 +110,6 @@ commandes à exécuter ou d'une combinaison de tout cela.
 \renewcommand{\chaptitlefont}{\normalfont%
   \sffamily\bfseries\Huge\raggedright}
 \end{lstlisting}
-  On trouve la commande \cmd{\normalfont} au début de la définition à
-  titre préventif afin de «remettre à zéro» toutes les
-  caractéristiques de police. %
   \qed
 \end{exemple}
 
@@ -163,11 +160,11 @@ doivent apparaître.
 \begin{lstlisting}
 \newcommand{\doc}[3]{%
   \href{#3}{#1~\raisebox{-0.2ex}{\faExternalLink}}%
-  \marginpar{\faBook~\texttt{#2}}}
+  \marginpar{\faBookmark~\texttt{#2}}}
 \end{lstlisting}
   La commande \cmd{\href} qui permet d'insérer un hyperlien dans le
   texte provient du paquetage \pkg{hyperref} \citep{hyperref}. Les
-  commandes \cmdprint{\faBook} et \cmdprint{\faExternalLink}
+  commandes \cmdprint{\faBookmark} et \cmdprint{\faExternalLink}
   proviennent du paquetage \pkg{fontawesome} \citep{fontawesome}; elles
   insèrent dans le texte des icônes de la police libre %
   \doc[Font Awesome]{}{http://fortawesome.github.io/Font-Awesome/}. %
@@ -373,10 +370,9 @@ Les nombreux arguments sont les suivants:
 \renewcommand{`\bs\meta{nom\_commande}'}`\oarg{narg}\oarg{option}\marg{déf}'
 \end{lstlisting}
   L'argument additionnel \meta{option} contient la valeur par défaut
-  du \emph{premier} argument de \bs\meta{nom\_commande}. On remarquera
-  que, dès lors, la commande ne compte plus \meta{narg} arguments
-  obligatoires, mais bien $\text{\meta{narg}} - 1$ arguments
-  obligatoires et un optionnel.
+  du \emph{premier} argument de \bs\meta{nom\_commande}. Dès lors, la
+  commande ne compte plus \meta{narg} arguments obligatoires, mais
+  bien $\text{\meta{narg}} - 1$ arguments obligatoires et un optionnel.
 
   Modifier la définition de la commande \cmdprint{\doc} de
   l'\autoref{ex:commandes:doc} pour que «documentation» soit le texte
@@ -386,7 +382,7 @@ Les nombreux arguments sont les suivants:
 \begin{lstlisting}
 \newcommand{\doc}[3][documentation]{%
   \href{#3}{#1~\raisebox{-0.2ex}{\faExternalLink}}%
-  \marginpar{\faBook~\texttt{#2}}}
+  \marginpar{\faBookmark~\texttt{#2}}}
 \end{lstlisting}
     la déclaration à deux arguments
 \begin{lstlisting}
