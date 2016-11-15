@@ -10,7 +10,7 @@ phare \emph{The Art of Computer Programming} figurait parmi les
 objectifs premiers de Knuth lorsqu'il a développé {\TeX}.
 
 
-\section{Quelques principes de base}
+\section{Principes de base du mode mathématique}
 \label{sec:math:base}
 
 La mise en forme d'équations mathématiques requiert d'indiquer à
@@ -153,8 +153,9 @@ particulièrement:
 \begin{itemize}
 \item plusieurs environnements pour les équations hors paragraphe, en
   particulier pour les équations multilignes;
-\item une meilleure gestion de l'espacement autour des signes
-  d'égalité dans les équations multilignes;
+\item une meilleure gestion de l'espacement autour des symboles de
+  relation (comme les signes d'égalité) dans les équations
+  multilignes;
 \item une commande pour faciliter l'entrée de texte à l'intérieur du
   mode mathématique;
 \item un environnement pour la saisie des matrices et des coefficients
@@ -163,10 +164,8 @@ particulièrement:
 \item la possibilité de définir de nouveaux opérateurs mathématiques.
 \end{itemize}
 Nous décrivons certaines de ces fonctionnalités dans la suite, mais
-l'utilisateur le moindrement avancé devrait impérativement consulter
-la %
-\doc[documentation complète]{amsldoc}{http://texdoc.net/pkg/amsmath}
-du paquetage.
+tout utilisateur du paquetage devrait impérativement consulter sa %
+\doc[documentation complète]{amsldoc}{http://texdoc.net/pkg/amsmath}.
 
 
 \section{Principaux éléments du mode mathématique}
@@ -175,8 +174,9 @@ du paquetage.
 Cette section explique comment créer et assembler divers éléments
 d'une formule mathématique: exposants, indices, fractions, texte, etc.
 Les seuls symboles utilisés sont pour le moment les chiffres et les
-lettres latines. La \autoref{sec:math:symboles} présente une
-partie de l'éventail de symboles mathématiques offerts par {\LaTeX}.
+lettres latines. La présentation d'une partie de l'éventail de
+symboles mathématiques offerts par {\LaTeX} fera l'objet de la
+\autoref{sec:math:symboles}.
 
 \subsection{Exposants et indices}
 \label{sec:math:bases:exposants}
@@ -354,7 +354,7 @@ Les commandes
 \end{lstlisting}
 de \pkg{amsmath} permettent de forcer une fraction à adopter la taille
 d'une fraction hors paragraphe (\emph{displayed}) dans le cas de
-\cmd{\dfrac} ou de celle d'une fraction au fil du texte (\emph{text})
+\cmd{\dfrac}, ou de celle d'une fraction au fil du texte (\emph{text})
 dans le cas de \cmd{\tfrac}. Consulter l'\autoref{ex:math:matrices} à
 la \autopageref{ex:math:matrices} pour visualiser l'effet de la
 commande \cmd{\dfrac}.
@@ -425,8 +425,8 @@ la hauteur du radical s'adapte toujours à celles du radicande.
 \subsection{Sommes et intégrales}
 \label{sec:math:bases:sommes-et-integrales}
 
-Les sommes et intégrales requièrent un symbole spécial ainsi que des
-limites inférieures et supérieures, le cas échéant.
+Les sommes et les intégrales requièrent un symbole spécial ainsi que
+des limites inférieures et supérieures, le cas échéant.
 
 Les commandes \cmd{\sum} et \cmd{\int} servent respectivement à tracer
 les symboles de somme $\sum$ et d'intégrale $\int$. Le paquetage
@@ -477,7 +477,7 @@ suspension dans des suites de variables ou d'opérations. On recommande
 d'éviter de les entrer comme trois points finaux consécutifs, car
 l'espacement entre les points sera trop petit et le résultat, jugé
 disgracieux\footnote{%
-  Le résultat exact dépend de la police de caractère utilisée.} %
+  Le résultat exact dépend de la police utilisée.} %
 d'un point de vue typographique: $...$
 
 Le \autoref{tab:math:dots} fournit les commandes {\LaTeX} servant à
@@ -542,13 +542,13 @@ $x_1 + \cdots + x_n$
     \producing $x_1 + \cdots + x_n$
   \end{texample}
 \end{demo}
-Le paquetage définit également les commandes sémantiques
+Le paquetage définit également les commandes sémantiques suivantes:
 \begin{itemize}
 \item \cmd{\dotsc} pour des «points avec des virgules» (\emph{commas});
 \item \cmd{\dotsb} pour des «points avec des opérateurs binaires»;
 \item \cmd{\dotsm} pour des «points de multiplication»;
 \item \cmd{\dotsi} pour des «points avec des intégrales»;
-\item \cmd{\dotso} pour des «autres points» (\emph{other}).
+\item \cmd{\dotso} pour d'«autres points» (\emph{other}).
 \end{itemize}
 
 \subsection{Texte et espaces}
@@ -587,10 +587,10 @@ Les commandes
 insèrent un blanc de largeur variable selon la taille de la police en
 vigueur. La commande \cmd{\quad} insère un blanc de $1$~em (la largeur de
 la lettre M dans la police en vigueur), alors que \cmd{\qquad}
-insère le double de cette longueur.\footnote{%
+insère le double de cette longueur\footnote{%
   Bien qu'elles soient surtout utilisées dans le mode mathématique,
   les commandes \cmd{\quad} et \cmd{\qquad} sont également valides
-  dans le mode texte.}
+  dans le mode texte.}.
 \begin{demo}
   \begin{texample}
 \begin{lstlisting}
@@ -612,7 +612,7 @@ entre des éléments dans le mode mathématique.
   \centering
   \begin{tabular}{lll}
     \toprule
-    commande & longueur & exemple \\
+    Commande & Longueur & Exemple \\
     \midrule
              & pas d'espace & \spx{} \\
     \cmd{\,} & $3/18$ de \cmdprint{quad} & \spx{\,} \\
@@ -628,14 +628,13 @@ entre des éléments dans le mode mathématique.
 \subsection{Fonctions et opérateurs}
 \label{sec:math:bases:fonctions}
 
-Les règles de typographie des équations mathématiques veulent que les
-variables apparaissent en \textit{italique}, mais que les noms de
+Les règles de typographie pour les équations mathématiques exigent que
+les variables apparaissent en \textit{italique}, mais que les noms de
 fonctions, eux, apparaissent en \textrm{romain}, comme le texte
 standard. Pensons, ici, à des fonctions comme $\sin$ ou $\log$.
 
-On sait que l'on ne peut entrer le nom d'une fonction tel quel en mode
-mathématique, car {\LaTeX} interprétera la suite de lettres comme un
-produit de variables:
+On sait que {\LaTeX} interprétera un nom de fonction saisi tel quel
+comme un produit de variables:
 \begin{demo}
   \begin{minipage}{0.45\linewidth}
     \begin{texample}
@@ -657,11 +656,13 @@ $3 log 2$
     \end{texample}
   \end{minipage}
 \end{demo}
-Or, utiliser à répétition la commande \cmdprint{\text} pour entrer des
-noms de fonction se révélerait peu pratique à l'usage.
+La commande \cmdprint{\text} permettrait d'afficher les noms de
+fonction en romain, mais l'utiliser à répétition se révèlerait
+rapidement peu pratique. De plus, un nom de fonction n'est pas du
+texte à proprement parler, mais plutôt un opérateur mathématique.
 
-{\LaTeX} définit donc des commandes pour un grand nombre de fonctions
-et d'opérateurs mathématiques standards:
+La solution de {\LaTeX} consiste à définir des commandes pour un grand
+nombre de fonctions et d'opérateurs mathématiques standards:
 \begin{lstlisting}
 \arccos   \cosh    \det    \inf      \limsup   \Pr     \tan
 \arcsin   \cot     \dim    \ker      \ln       \sec    \tanh
@@ -712,11 +713,11 @@ limites comme les symboles de somme et d'intégrale.
   \end{texample}
 \end{demo}
 
-Lorsque des usages particuliers requièrent de nouveaux noms de
-fonctions, la commande \cmd{\DeclareMathOperator} de \pkg{amsmath}
-permet de les définir; consulter la %
+La commande \cmd{\DeclareMathOperator} de \pkg{amsmath} permet de
+définir de nouveaux opérateurs mathématiques lorsque nécessaire;
+consulter la %
 \doc{amsldoc}{http://texdoc.net/pkg/amsmath} %
-du paquetage (section 5.1) pour les détails.
+du paquetage (section~5.1) pour les détails.
 
 
 \begin{exemple}
@@ -791,12 +792,13 @@ d'ordinateurs ne comptent normalement que les symboles
 mathématiques suivants:
 \begin{center}
 %\begin{verbatim}
-\verb0+  -  =  <  >  /  :  !  '  |  [  ]  (  )0
+\verb0+  -  =  <  >  /  :  !  '  |  [  ]  (  ) { }0
 %\end{verbatim}
 \end{center}
-Ceux-ci sont utilisables directement dans les équations. Les
-accolades \verb={ }= étant des symboles réservés par {\LaTeX}, il faut
-les entrer avec \cmdprint{\{} et \cmdprint{\}}, comme dans du texte normal.
+Ils s'emploient directement dans les équations, sauf les accolades
+\verb={ }= qui sont des symboles réservés par {\LaTeX}. Il faut donc
+entrer celles-ci avec \cmdprint{\{} et \cmdprint{\}}, comme dans du
+texte normal.
 
 Pour représenter les innombrables autres symboles mathématiques, on
 aura recours à des commandes qui débutent, comme d'habitude, par le
@@ -810,8 +812,7 @@ des symboles disponibles. Nous nous contenterons d'un avant goût des
 principales catégories.
 
 L'ouvrage de référence pour connaître les symboles disponibles dans
-{\LaTeX} est la bien nommée %
-\doc[Comprehensive {\LaTeX} Symbol List]{compre\-hen\-sive}{http://texdoc.net/pkg/comprehensive} %
+{\LaTeX} est la bien nommée \emph{Comprehensive {\LaTeX} Symbol List}
 \citep{comprehensive}. La liste comprend près de \nombre{6000}
 symboles répartis sur plus de 160 pages! On y trouve de tout, des
 symboles mathématiques aux pictogrammes de météo ou d'échecs, en
@@ -915,7 +916,7 @@ principalement utilisée pour représenter les ensembles de nombres.
 \end{demo}
 
 Le tableau~213 de la %
-\doc[Comprehensive {\LaTeX} Symbol List]{}{http://texdoc.net/pkg/comprehensive} %
+\doc[\emph{Comprehensive {\LaTeX} Symbol List}]{comprehensive}{http://texdoc.net/pkg/comprehensive} %
 présente plusieurs autres alphabets spéciaux disponibles en mode
 mathématique.
 
@@ -923,9 +924,9 @@ mathématique.
   Certaines polices de caractères OpenType contiennent plusieurs
   versions des symboles mathématiques. Par exemple, la police utilisée
   dans le présent document contient deux versions de la police
-  calligraphique, celle présentée ci-dessus et celle-ci: %
+  calligraphique, celle présentée ci-contre et celle-ci: %
   \setmathfont[RawFeature=-ss04]{Lucida Bright Math OT}
-  $\mathscr{ABC\, xyz}$. Consultez éventuellement la documentation de
+  $\mathscr{ABC\, xyz}$. Consulter éventuellement la documentation de
   la police pour les détails.
 \end{conseil}
 
@@ -941,7 +942,7 @@ présente une sélection d'opérateurs binaires et
 le \autoref{tab:math:relations}  une sélection de relations.
 
 La %
-\doc[Comprehensive {\LaTeX} Symbol List]{}{http://texdoc.net/pkg/comprehensive} %
+\doc[\emph{Comprehensive {\LaTeX} Symbol List}]{}{http://texdoc.net/pkg/comprehensive} %
 consacre plus d'une dizaine de tableaux aux opérateurs binaires et
 près d'une quarantaine aux relations. C'est dire à quel point les
 tableaux \ref*{tab:math:binaires} et \ref*{tab:math:relations} de la
@@ -1009,7 +1010,7 @@ logiques. Le \autoref{tab:math:fleches} en présente une sélection.
 
 On retrouve les flèches utilisables en notation mathématique dans les
 tableaux 102 à 119 de la %
-\doc[Comprehensive {\LaTeX} Symbol List]{}{http://texdoc.net/pkg/comprehensive}. %
+\doc[\emph{Comprehensive {\LaTeX} Symbol List}]{}{http://texdoc.net/pkg/comprehensive}. %
 Le document contient divers autres types de flèches, mais celles-ci ne
 sont généralement pas appropriées pour les mathématiques (pensons à
 {\manerrarrow} ou {\faArrowRight}).
@@ -1060,7 +1061,7 @@ fréquemment utilisés en mathématiques.
 
 Pour connaître l'ensemble des accents du mode mathématique de
 {\LaTeX}, consulter le tableau~164 de la %
-\doc[Comprehensive {\LaTeX} Symbol List]{}{http://texdoc.net/pkg/comprehensive}. %
+\doc[\emph{Comprehensive {\LaTeX} Symbol List}]{}{http://texdoc.net/pkg/comprehensive}. %
 Les versions extensibles de certains accents se trouvent au
 tableau~169. Quant aux symboles mathématiques divers, on en trouve de
 toutes les sortes dans les tableaux 201--212.
@@ -1212,7 +1213,7 @@ environnements pour les équations hors paragraphe.
   \begin{eqxample}
 \begin{lstlisting}
 \begin{equation}
-  \label{xx}
+  \label{eq:5}
   \begin{split}
     a &= b + c - d \\
     &\phantom{=} + e - f \\
@@ -1222,7 +1223,7 @@ environnements pour les équations hors paragraphe.
 \end{equation}
 \end{lstlisting}
     \producing
-    \begin{equation}\label{eq:math:xx}
+    \begin{equation}\label{eq:math:5}
       \begin{split}
         a& =b+c-d\\
         &\phantom{=} +e-f\\
@@ -1336,12 +1337,12 @@ environnements pour les équations hors paragraphe.
   \begin{demo}
     \begin{texample}
 \begin{lstlisting}
-On voit en \eqref{xx} du
-tableau `\ref*{tab:math:displays}' que...
+L'équation \eqref{eq:5} du
+tableau `\ref*{tab:math:displays}' démontre que...
 \end{lstlisting}
       \producing
-      On voit en \eqref{eq:math:xx} du tableau
-      \ref*{tab:math:displays} que\dots
+      L'équation \eqref{eq:math:5} du tableau
+      \ref*{tab:math:displays} démontre que\dots
     \end{texample}
   \end{demo}
 \item L'environnement \Ie{split} sert à apposer un seul numéro à une
@@ -1397,13 +1398,13 @@ Les délimiteurs en mathématiques sont des symboles généralement
 utilisés en paire tels que les parenthèses $(~)$, les crochets $[~]$
 ou les accolades $\{~\}$ et qui servent à regrouper des termes d'une
 équation. La taille des délimiteurs doit s'adapter au contenu entre
-ceux-ci afin d'obtenir, par exemple, non pas
+ceux-ci afin d'obtenir, par exemple,
 \begin{equation*}
-  (1 + \frac{1}{x}),
+  \left( 1 + \frac{1}{x} \right)
 \end{equation*}
-mais plutôt
+plutôt que la peu esthétique composition
 \begin{equation*}
-  \left( 1 + \frac{1}{x} \right).
+  (1 + \frac{1}{x}).
 \end{equation*}
 
 La paire de commandes
@@ -1440,7 +1441,7 @@ entre les deux commandes.
 \end{demo}
 Les commandes \cmd{\left} et \cmd{\right} doivent toujours former une
 paire, c'est-à-dire qu'à \emph{toute} commande \cmdprint{\left} doit
-  absolument correspondre une commande \cmdprint{\right}. Cette
+absolument correspondre une commande \cmdprint{\right}. Cette
 contrainte est facile à oublier!
 
 \begin{itemize}
@@ -1555,7 +1556,7 @@ f(x) =
     b + \frac{c}{d}
     \right. \\
   &\phantom{=} \left.
-    + \frac{e}{f} - g
+    + \frac{e}{d} - f
     \right)
 \end{align*}
 \end{lstlisting}
@@ -1566,7 +1567,7 @@ f(x) =
           b + \frac{c}{d}
           \right. \\
         &\phantom{=} \left.
-          + \frac{e}{f} - g
+          + \frac{e}{d} - f
           \right)
       \end{align*}
     \end{texample}
@@ -1574,7 +1575,7 @@ f(x) =
 %
 \item Quand les choix de taille de délimiteurs de {\LaTeX} ne
   conviennent pas pour une raison ou pour une autre, on peut
-  sélectionner soi-même leur taille avec les commandes %
+  sélectionner leur taille avec les commandes %
   \cmd{\big}, %
   \cmd{\Big}, %
   \cmd{\bigg} et %
@@ -1589,6 +1590,7 @@ f(x) =
     \caption{Tailles des délimiteurs mathématiques}
     \label{tab:math:big_et_al}
     \begin{tabular}{ll}
+      \toprule
       taille standard & $(~) \quad [~] \quad \{~\}$ \\
       \addlinespace[0.5\normalbaselineskip]
       \cmd{\big} & $\big(~\big) \quad \big[~\big] \quad \big\{~\big\}$ \\
@@ -1598,6 +1600,7 @@ f(x) =
       \cmd{\bigg} & $\bigg(~\bigg) \quad \bigg[~\bigg] \quad \bigg\{~\bigg\}$ \\
       \addlinespace[0.5\normalbaselineskip]
       \cmd{\Bigg} & $\Bigg(~\Bigg) \quad \Bigg[~\Bigg] \quad \Bigg\{~\Bigg\}$ \\
+      \addlinespace[4pt]\bottomrule
     \end{tabular}
   \end{table}
 \end{itemize}
@@ -1670,28 +1673,29 @@ contrôler leur taille. C'est une lecture suggérée.
   \qed
 \end{exemple}
 
-% \begin{conseil}
-%   De manière générale, il est déconseillé de scinder une suite
-%   d'équations entre deux pages. Le chargement du paquetage
-%   \pkg{amsmath} désactive d'ailleurs cette possibilité. Cependant,
-%   c'est parfois inévitable pour les longs blocs d'équations.
+\begin{conseil}
+  De manière générale, il est déconseillé de scinder une suite
+  d'équations entre deux pages. Le chargement du paquetage
+  \pkg{amsmath} désactive d'ailleurs cette possibilité. Cependant,
+  c'est parfois inévitable pour les longs blocs d'équations.
 
-%   La commande \cmd{\displaybreak}, placée immédiatement avant
-%   \verb=\\= permet d'indiquer à {\LaTeX} la possibilité d'insérer un
-%   saut de page après la ligne courante dans le bloc d'équations.
+  La commande \cmd{\displaybreak}, placée immédiatement avant {\bs\bs}
+  dans un environnement comme \Ie{align} permet d'indiquer à {\LaTeX}
+  la possibilité d'insérer un saut de page après la ligne courante
+  dans le bloc d'équations.
 
-%   La commande accepte en argument optionnel un entier entre $0$ et $4$
-%   indiquant à quel point un saut de page est désiré:
-%   \cmdprint{\displaybreak[0]} signifie «il est permis de changer de
-%   page ici» sans que ce ne soit obligatoire;
-%   \cmdprint{\displaybreak[4]} ou, de manière équivalente,
-%   \cmdprint{\displaybreak} force un saut de page.
+  La commande accepte en argument optionnel un entier entre $0$ et $4$
+  indiquant à quel point un saut de page est désiré:
+  \cmdprint{\displaybreak[0]} signifie «il est permis de changer de
+  page ici» sans que ce ne soit obligatoire;
+  \cmdprint{\displaybreak[4]} ou, de manière équivalente,
+  \cmdprint{\displaybreak} force un saut de page.
 
-%   À moins d'en être vraiment aux toutes dernières étapes d'édition
-%   d'un document, il est conseillé d'utiliser la commande
-%   \cmdprint{\displaybreak} avec parcimonie et avec un argument
-%   optionnel faible.
-% \end{conseil}
+  À moins d'en être vraiment aux toutes dernières étapes d'édition
+  d'un document, il est conseillé d'utiliser la commande
+  \cmdprint{\displaybreak} avec parcimonie et avec un argument
+  optionnel faible.
+\end{conseil}
 
 
 \section{Caractères gras en mathématiques}
@@ -1756,9 +1760,9 @@ A \bm{A}
   \end{texample}
 \end{demo}
 
-Les utilisateurs de {\XeLaTeX} devraient charger le paquetage
-\pkg{unicode-math} \citep{unicode-math} pour sélectionner leur police
-de caractère pour les mathématiques. Ce paquetage fournit la commande
+Les utilisateurs de {\XeLaTeX} chargent normalement le paquetage
+\pkg{unicode-math} \citep{unicode-math} pour sélectionner la police
+pour les mathématiques. Ce paquetage fournit la commande
 \begin{lstlisting}
 \symbf`\marg{symbole}'
 \end{lstlisting}
@@ -1783,6 +1787,7 @@ A \symbf{A}
 \end{demo}
 
 \begin{conseil}
+  \label{conseil:math:mat}
   Si le gras est fréquemment utilisé dans un document pour une
   notation particulière, il est fortement recommandé de définir une
   nouvelle commande\footnotemark\
@@ -1834,9 +1839,22 @@ A \symbf{A}
   facilitent la mise en forme de matrices; ils diffèrent simplement
   par le type de délimiteur autour de la matrice.
 
-  Supposons que la commande \cmdprint{\mat} mentionnée dans la
-  rubrique Conseil du {\TeX}pert est définie dans le préambule du
-  document. Alors le code source
+  Considérer le bloc d'équations suivant:
+  \begin{align*}
+    \mat{J}(\mat{\theta})
+    &=
+      \begin{bmatrix}
+        \dfrac{\partial f_1(\mat{\theta})}{\partial \theta_1} &
+        \dfrac{\partial f_1(\mat{\theta})}{\partial \theta_2} \\[12pt]
+        \dfrac{\partial f_2(\mat{\theta})}{\partial \theta_1} &
+        \dfrac{\partial f_2(\mat{\theta})}{\partial \theta_2}
+      \end{bmatrix} \\
+    &=
+      \left[
+      \frac{\partial f_i(\mat{\theta})}{\partial \theta_j}
+      \right]_{2 \times 2}, \quad i, j = 1, 2.
+  \end{align*}
+  Le code pour composer ces équations est:
 \begin{lstlisting}
 \begin{align*}
   \mat{J}(\mat{\theta})
@@ -1854,24 +1872,11 @@ A \symbf{A}
   \right]_{2 \times 2}, \quad i, j = 1, 2.
 \end{align*}
 \end{lstlisting}
-   produit l'équation
-  \begin{align*}
-    \mat{J}(\mat{\theta})
-    &=
-      \begin{bmatrix}
-        \dfrac{\partial f_1(\mat{\theta})}{\partial \theta_1} &
-        \dfrac{\partial f_1(\mat{\theta})}{\partial \theta_2} \\[12pt]
-        \dfrac{\partial f_2(\mat{\theta})}{\partial \theta_1} &
-        \dfrac{\partial f_2(\mat{\theta})}{\partial \theta_2}
-      \end{bmatrix} \\
-    &=
-      \left[
-      \frac{\partial f_i(\mat{\theta})}{\partial \theta_j}
-      \right]_{2 \times 2}, \quad i, j = 1, 2.
-  \end{align*}
   On remarquera l'utilisation de la commande \cmd{\dfrac}
   (\autoref{sec:math:bases:fractions}) pour composer des grandes
-  fractions à l'intérieur des matrices. %
+  fractions à l'intérieur des matrices. Nous avons également eu
+  recours à la commande \cmdprint{\mat} mentionnée dans la
+  rubrique Conseil du {\TeX}pert de la \autopageref{conseil:math:mat}. %
   \qed
 \end{exemple}
 
