@@ -6,34 +6,32 @@ Les bonnes pratiques dictent de séparer le contenu du texte de son
 apparence lorsque l'on utilise un système de mise en page comme
 {\LaTeX}. Néanmoins, vient un moment où l'on peut souhaiter modifier
 l'apparence générale du document ou disposer le texte d'une manière
-particulière. {\LaTeX} offre tous les outils nécessaires pour
-contrôler les attributs et la taille des polices de caractères,
+particulière. {\LaTeX} offre toute la flexibilité voulue, que ce soit
+pour contrôler les attributs et la taille des polices de caractères,
 disposer du texte sous forme de liste numérotée ou à puce, centrer du
 texte ou créer des notes de base de page et des citations.
 
-\section{Police de caractère}
+\section{Police de caractères}
 \label{sec:apparence:police}
 
 Par défaut, tous les documents {\LaTeX} utilisent la même police de
-caractère\footnote{%
+caractères\footnote{%
   Donald~Knuth a créé la police en même temps que {\TeX}.}, %
-{\fontfamily{cmr}\selectfont Computer Modern}. Chose qui ne manquera
+{\fontfamily{lmr}\selectfont Computer Modern}. Chose qui ne manquera
 pas de surprendre les utilisateurs débutants: le système n'a pas été
-conçu pour changer facilement la police de caractère du document.
+conçu pour changer facilement la police du document!
 
 Cela dit, il est aujourd'hui devenu assez simple d'utiliser d'autres
-polices de caractère pour son document, surtout avec les moteurs
+polices pour son document, surtout avec les moteurs
 {\TeX} modernes comme {\XeTeX}. La \autoref{sec:trucs:polices} traite
-du sujet plus en détail. On pourra également consulter les fichiers
-d'exercices et les gabarits de la classe \class{ulthese} pour des
-exemples.
+du sujet plus en détail.
 
 Cette section se concentre plutôt sur le changement d'\emph{attribut}
-de la police de caractère du document, qu'il s'agisse de la famille
-(avec ou sans empattements, à largeur fixe ou variable), de la forme
-(droit, italique, penché) ou de la graisse (normal, gras). On trouvera
-au \autoref{tab:apparence:police} les commandes de changement
-d'attribut de la police de caractères.
+de la police du document, qu'il s'agisse de la famille (avec ou sans
+empattements, à largeur fixe ou variable), de la forme (droit,
+italique, penché) ou de la graisse (normal, gras). Le
+\autoref{tab:apparence:police} dresse la liste des commandes de
+changement d'attribut de la police de caractères.
 
 \begin{table}
   \centering
@@ -44,21 +42,21 @@ d'attribut de la police de caractères.
   \label{tab:apparence:police}
   \begin{tabularx}{0.9\linewidth}{p{0.35\linewidth}Xl}
     \toprule
-    \textbf{famille} \\
-    \textrm{romain} & \cmd{\rmfamily} & \cmdprint{\textrm{\meta{texte}}} \\
-    \texttt{largeur fixe} & \cmd{\ttfamily} & \cmd{\texttt{\meta{texte}}} \\
-    \textsf{sans empattements} & \cmd{\sffamily} & \cmdprint{\textsf{\meta{texte}}} \\
+    \textbf{Famille} \\
+    \textrm{romain} & \cmd{\rmfamily} & \cmd{\textrm}\marg{texte} \\
+    \texttt{largeur fixe} & \cmd{\ttfamily} & \cmd{\texttt}\marg{texte} \\
+    \textsf{sans empattements} & \cmd{\sffamily} & \cmd{\textsf}\marg{texte} \\
     \addlinespace[6pt]
-    \textbf{forme} \\
-    \textup{\rmfamily droit} & \cmd{\upshape} & \cmdprint{\textup{\meta{texte}}} \\
-    \textit{\rmfamily italique} & \cmd{\itshape} & \cmdprint{\textit{\meta{texte}}} \\
-    \textsl{penché}$^\dagger$ & \cmd{\slshape} & \cmdprint{\textsl{\meta{texte}}} \\
-    \textsc{\rmfamily petites capitales} & \cmd{\scshape} & \cmdprint{\textsc{\meta{texte}}} \\
+    \textbf{Forme} \\
+    \textup{\rmfamily droit} & \cmd{\upshape} & \cmd{\textup}\marg{texte} \\
+    \textit{\rmfamily italique} & \cmd{\itshape} & \cmd{\textit}\marg{texte} \\
+    \textsl{penché}$^\dagger$ & \cmd{\slshape} & \cmd{\textsl}\marg{texte} \\
+    \textsc{\rmfamily petites capitales} & \cmd{\scshape} & \cmd{\textsc}\marg{texte} \\
 
     \addlinespace[6pt]
-    \textbf{série} \\
-    \textmd{\rmfamily moyen} & \cmd{\mdseries} & \cmdprint{\textmd{\meta{texte}}} \\
-    \textbf{\rmfamily gras} & \cmd{\bfseries} & \cmdprint{\textbf{\meta{texte}}} \\
+    \textbf{Série} \\
+    \textmd{\rmfamily moyen} & \cmd{\mdseries} & \cmd{\textmd}\marg{texte} \\
+    \textbf{\rmfamily gras} & \cmd{\bfseries} & \cmd{\textbf}\marg{texte} \\
     \bottomrule
   \end{tabularx} \\
   \raggedright
@@ -66,13 +64,20 @@ d'attribut de la police de caractères.
     la police de caractère utilisée}
 \end{table}
 
+La commande
+\begin{lstlisting}
+\normalfont
+\end{lstlisting}
+permet de revenir d'un trait à la police par défaut, soit le romain,
+droit de graisse moyenne.
+
 \begin{exemple}
   \label{ex:apparence:police}
   La commande \cmd{\setsecheadstyle} de la classe \class{memoir}
   permet de modifier facilement le style des titres de section pour
   tout le document. Pour obtenir des titres de section en gras sans
-  empattements, on placera dans le préambule du document la commande
-  suivante:
+  empattements, on placera dans le préambule d'un document utilisant
+  cette classe la commande suivante:
 \begin{lstlisting}
 \setsecheadstyle{\normalfont\sffamily\bfseries}
 \end{lstlisting}
@@ -85,19 +90,20 @@ d'attribut de la police de caractères.
 \section{Taille du texte}
 \label{sec:apparence:taille}
 
-Les commandes du \autoref{tab:apparence:taille} permettent de réduire
-ou d'agrandir la taille des caractères. On se souviendra que l'on
-règle la taille de base du texte au chargement de la classe du
-document, tel qu'expliqué à la \autoref{sec:bases:classes}. Ces
-commandes ne devraient donc servir que pour modifier temporairement la
-taille des caractères pour une section du texte, ou encore pour la
-configuration de l'apparence générale du document dans le préambule.
+On se souviendra que l'on règle la taille de base du texte au
+chargement de la classe du document, tel qu'expliqué à la
+\autoref{sec:bases:classes}. Les commandes du
+\autoref{tab:apparence:taille} permettent néanmoins de réduire ou
+d'agrandir la taille des caractères pour une section du texte. Les
+commandes servent également pour la configuration de l'apparence
+générale du document dans le préambule.
+
+La taille des car
 
 \begin{table}
   \centering
-  \caption{Commandes de changement de la taille de la police de
-    caractère. Les tailles sont déterminées en fonction de
-    celle de la police de base du document.}
+  \caption{Commandes de changement de la taille des caractères. Toutes
+    les tailles sont relatives à celle de police de base du document.}
   \label{tab:apparence:taille}
   \begin{tabularx}{0.9\linewidth}{Xl}
     \toprule
@@ -137,11 +143,11 @@ configuration de l'apparence générale du document dans le préambule.
 L'italique est l'un des attributs de police de caractères les plus
 fréquemment employés dans le texte. Il sert, notamment, à insister sur
 des mots, à composer les expressions et locutions en langue étrangère
-ou à détacher des titres d'{\oe}uvres du fil du texte.
+ou à détacher les titres d'{\oe}uvres du fil du texte.
 
 Évidemment, il est possible d'obtenir de l'italique avec la commande
 \cmd{\textit} du \autoref{tab:apparence:police}. Cependant, nous
-recommandons de plutôt utiliser une commande spécifiquement dédiée à
+recommandons plutôt d'utiliser une commande spécifiquement dédiée à
 mettre en évidence une portion de texte:
 \begin{lstlisting}
 \emph`\marg{texte}'
@@ -205,12 +211,15 @@ listes ou d'énumérations:
 \end{demo}
 L'environnement \Ie{itemize} crée une liste à puce, alors que
 l'environnement \Ie{enumerate} crée une énumération. Il est possible
-d'imbriquer les listes les unes dans les autres, peu importe leur
-type. {\LaTeX} se chargera d'adapter les marqueurs ou la numérotation
-de chaque niveau.
+d'imbriquer les listes les unes dans les autres, et ce, peu importe
+leur type. {\LaTeX} se chargera d'adapter les marqueurs ou la
+numérotation jusqu'à quatre niveaux de profondeur.
+
+Illustrons ces concepts par le biais d'un exemple.
 
 \begin{exemple}
-  Les étapes de création d'une liste sont les suivantes.
+  La liste mixte suivante résume les étapes de création d'une liste
+  avec {\LaTeX}.
   \begin{enumerate}
   \item Décider s'il s'agit d'une liste à puce ou d'une énumération;
     \begin{itemize}
@@ -227,8 +236,7 @@ de chaque niveau.
     \item utiliser simplement un autre environnement \Pe{itemize} ou
       \Pe{enumerate} comme texte d'un élément pour créer des listes
       imbriquées;
-    \item {\LaTeX} ajustera automatiquement les marqueurs jusqu'à
-      quatre niveaux de profondeur;
+    \item {\LaTeX} ajustera automatiquement les marqueurs;
     \end{enumerate}
   \item S'assurer de fermer tous les environnements dans le bon ordre
     pour retourner au texte normal.
@@ -237,23 +245,23 @@ de chaque niveau.
   L'énumération ci-dessus constitue évidemment un exemple de listes
   mixtes imbriquées. On l'a composée avec le texte suivant.
   \begin{demo}
-\begin{lstlisting}
+\begin{lstlisting}[emph={enumerate,itemize}]
 \begin{enumerate}
-\item Décider s'il s'agit d'une liste à puce ou ...
+\item Décider s'il s'agit d'une liste à puce ou [...]
   \begin{itemize}
-  \item pour une liste à puce utiliser ...
+  \item pour une liste à puce utiliser [...]
     \begin{itemize}
-    \item chaque niveau d'une liste à puce ...
+    \item chaque niveau d'une liste à puce [...]
     \end{itemize}
-  \item pour une énumération utiliser ...
+  \item pour une énumération utiliser [...]
   \end{itemize}
 \item Débuter chaque élément de la liste par la commande
   \verb=\item=.
   \begin{enumerate}
-  \item utiliser simplement un autre environnement ...
-  \item {\LaTeX} ajustera automatiquement les marqueurs ...
+  \item utiliser simplement un autre environnement [...]
+  \item {\LaTeX} ajustera automatiquement les marqueurs;
   \end{enumerate}
-\item S'assurer de fermer tous les environnements ...
+\item S'assurer de fermer tous les environnements [...]
 \end{enumerate}
 \end{lstlisting}
   \end{demo}
@@ -263,10 +271,10 @@ de chaque niveau.
 {\LaTeX} permet de configurer à peu près toutes les facettes de la
 présentation des listes: puces, folios, alignement, espacement entre
 les éléments, etc. Cette grande flexibilité implique une certaine
-complexité, aussi l'explication de la configuration des listes
-dépasse-t-elle le cadre du présent document. Heureusement, plusieurs
-paquetages visent à faciliter la configuration des listes. Nous
-recommandons à ce titre le paquetage \pkg{enumitem} \citep{enumitem}.
+complexité et la configuration des listes dépasse le cadre du présent
+document. Plusieurs paquetages facilitent teoutefois la configuration
+des listes; nous recommandons à ce titre le paquetage \pkg{enumitem}
+\citep{enumitem}.
 
 \begin{conseil}
   Le mode français de \pkg{babel} remplace les puces par défaut en
@@ -293,8 +301,8 @@ recommandons à ce titre le paquetage \pkg{enumitem} \citep{enumitem}.
 
 Il existe un troisième environnement, plus rarement utilisé, pour
 composer du texte sous une forme s'apparentant à une liste.
-L'environnement \Ie{description} permet d'associer une suite de termes
-et une définition ou une description pour chacun.
+L'environnement \Ie{description} permet d'associer des termes à une
+définition ou une description pour chacun.
 \begin{demo}
   \begin{texample}
 \begin{lstlisting}
@@ -419,7 +427,7 @@ Pour éviter que l'appel de note ne soit séparé du texte à expliquer,
 la commande \cmd{\footnote} doit immédiatement suivre celui-ci. La
 gestion des espaces peut alors devenir délicate, surtout si l'appel de
 note se trouve en fin de phrase. Nous recommandons de faire bon usage
-du caractère \% pour délimiter le contenu de \cmdprint{\footnote} du
+du symbole \% pour délimiter le contenu de \cmdprint{\footnote} du
 texte courant.
 \begin{lstlisting}[emph=footnote]
 %% note en fin de phrase
@@ -443,16 +451,16 @@ de disposition, notamment \pkg{footmisc} \citep{footmisc}. Les
 utilisateurs de la classe \class{ulthese} pourront également tirer
 profit des nombreuses fonctionnalités de la classe \class{memoir} pour
 la gestion des notes; consulter le chapitre~12 de la %
-\doc{memman}{http://texdoc.net/pkg/memoir}.
+\doc{memman}{http://texdoc.net/pkg/memoir} de \class{memoir}.
 
 
 \section{Texte brut et code source}
 \label{sec::apparence:code}
 
 Il est parfois utile d'afficher du texte exactement comme il a été
-entré dans un fichier, sans que {\LaTeX} n'interprète les commandes
-qui s'y trouvent ou n'en modifie la disposition. Les nombreux extraits
-de code du présent document sont là pour le démontrer.
+saisi dans un fichier, sans que {\LaTeX} n'interprète les commandes
+qui s'y trouvent ou n'en modifie la disposition. C'est ainsi que nous
+avons composé les nombreux extraits de code du présent document.
 
 L'environnement \Ie{verbatim} permet de présenter du texte tel qu'il
 est entré dans le code source du document.
@@ -477,14 +485,14 @@ présenté dans une police
 \end{demo}
 La variante \Ie{verbatim*} affiche les espaces de manière explicite en
 les remplaçant par le symbole \verb*| |. C'est surtout utile pour le
-code de langages informatiques où le nombre d'espaces joue un rôle
+code source de langages informatiques où le nombre d'espaces joue un rôle
 important.
 
 Pour afficher du texte brut ou une commande {\LaTeX} au fil du texte,
 on aura recours à la commande
 \cmd{\verb}. Sa syntaxe est un peu particulière:
 \begin{lstlisting}
-\verb`\meta{c}' `\meta{source}' `\meta{c}'
+\verb`\meta{c}'`\meta{source}'`\meta{c}'
 \end{lstlisting}
 où \meta{c} est un caractère quelconque ne se trouvant pas dans
 \meta{source} et qui sert à délimiter le début et la fin de
@@ -519,64 +527,27 @@ mots ne compte pas dans
 \end{demo}
 
 Pour tout document comportant une grande quantité de texte brut ou de
-code source, nous recommandons d'avoir recours au paquetage
-\pkg{listings} \citep{listings}. On trouvera plus de détails à la
-\autoref{sec:trucs:listings}.
+code source, nous recommandons d'avoir le paquetage \pkg{listings}
+\citep{listings}. La \autoref{sec:trucs:listings} approfondit le
+sujet.
 
 
 %%%
 %%% Exercices
 %%%
 
-\section{Exercices}
+\section{Exercice}
 \label{sec:apparence:exercices}
 
-\Opensolutionfile{solutions}[solutions-apparence]
+% \Opensolutionfile{solutions}[solutions-apparence]
 
-\begin{Filesave}{solutions}
-\section*{Chapitre \ref*{chap:apparence}}
-\addcontentsline{toc}{section}{Chapitre \protect\ref*{chap:apparence}}
+% \begin{Filesave}{solutions}
+% \section*{Chapitre \ref*{chap:apparence}}
+% \addcontentsline{toc}{section}{Chapitre \protect\ref*{chap:apparence}}
 
-\end{Filesave}
+% \end{Filesave}
 
-\begin{exercice}
-  Utiliser le fichier \fichier{exercice\_parties.tex}.
-  \begin{enumerate}
-  \item Étudier la structure du document dans le code source.
-  \item Ajouter un titre et un auteur au document.
-  \item Créer la table des matières du document en le compilant 2 à 3
-    fois.
-  \item Insérer deux ou trois titres de sections de différents niveaux
-    dans le document.
-  \item Vous remarquerez que la numérotation cesse à partir des
-    sous-sections. C'est une particularité de la classe
-    \class{memoir}.
-
-    Recompiler le document après avoir ajouté au préambule la commande
-\begin{lstlisting}
-\maxsecnumdepth{subsection}
-\end{lstlisting}
-  \item Ajouter une annexe au document.
-  \end{enumerate}
-  \begin{sol}
-    Consulter le fichier \fichier{exercice\_parties-solution.tex}.
-  \end{sol}
-\end{exercice}
-
-\begin{exercice}
-  Utiliser le fichier \fichier{exercice\_renvois.tex}.
-  \begin{enumerate}
-  \item Insérer dans le texte un renvoi au numéro d'une section.
-  \item Activer le paquetage \pkg{hyperref} avec l'option
-    \code{colorlinks} et comparer l'effet d'utiliser \cmd{\ref} ou
-    \cmd{\autoref} pour le renvoi.
-  \end{enumerate}
-  \begin{sol}
-    Consulter le fichier \fichier{exercice\_renvois-solution.tex}.
-  \end{sol}
-\end{exercice}
-
-\begin{exercice}
+\begin{exercice}[nosol]
   \begin{enumerate}
   \item Ouvrir le fichier \fichier{exercice\_complet.tex} et en
     étudier le code source, puis le compiler.
@@ -589,12 +560,9 @@ code source, nous recommandons d'avoir recours au paquetage
   \item Changer la puce des listes pour le caractère \code{\$>\$} et
     compiler de nouveau le document.
   \end{enumerate}
-  \begin{sol}
-    Consulter le fichier \fichier{exercice\_complet-solution.tex}.
-  \end{sol}
 \end{exercice}
 
-\Closesolutionfile{solutions}
+% \Closesolutionfile{solutions}
 
 %%% Local Variables:
 %%% mode: latex
