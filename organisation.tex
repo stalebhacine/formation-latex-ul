@@ -7,10 +7,10 @@
 
 La toute première chose à faire au moment de se lancer dans la
 rédaction d'un document avec {\LaTeX} consiste normalement à choisir
-une classe pour celui-ci. Nous avons déjà expliqué à la
-\autoref{sec:bases:classes} comment spécifier la classe à utiliser. La
-présente section présente les différences entre les classes ainsi que
-les principales options disponibles.
+une classe. Nous avons déjà expliqué à la \autoref{sec:bases:classes}
+comment spécifier la classe à utiliser. La présente section présente
+les différences entre les classes ainsi que les principales options
+disponibles.
 
 Les classes standards sont \class{article}, \class{report},
 \class{book}, \class{letter} et \class{slides}.
@@ -111,8 +111,8 @@ d'office plus de 30 des paquetages les plus populaires\footnote{%
   Consulter la section~18.24 de la documentation de \class{memoir}
   pour la liste ou encore le fichier journal (\emph{log}) de la
   compilation d'un document utilisant la classe.}. %
-Comme la classe fait partie des distributions {\LaTeX} modernes, elle
-devrait être installée et disponible sur votre système. Elle est
+La classe fait partie des distributions {\LaTeX} modernes; elle
+devrait être installée et disponible sur tout système. Elle est
 livrée avec une %
 \doc{memman}{http://texdoc.net/pkg/memoir} %
 exhaustive: le manuel d'instructions fait près de 600~pages! Il peut
@@ -159,7 +159,7 @@ disposition en une ou deux colonnes, ou encore la position des
 équations hors paragraphe. \citet{Thurnherr:class-options} offre une
 présentation succincte des options standards. Le chapitre~1 de la %
 \doc{memman}{http://texdoc.net/pkg/memoir} %
-de \class{memoir} traite en plus des ajouts propres à la classe.
+de \class{memoir} traite en plus des ajouts propres à cette classe.
 
 
 
@@ -238,12 +238,12 @@ insérér dans le corps du document la commande
   On remarquera également que nous avons placé un symbole de
   commentaire \% immédiatement après le nom de l'auteur dans le code
   source. Tel qu'expliqué à la \ref{sec:bases:caracteres:espaces},
-  c'est pour éviter que {\LaTeX} transforme le retour à la ligne avant
+  c'est pour éviter que {\LaTeX} ne transforme le retour à la ligne avant
   la commande \cmd{\thanks} en une espace entre le nom et l'appel de
   note.
 
   (Le paquetage \pkg{lorem} utilisé dans cet exemple permet
-  d'insérer du faux texte \link{http://fr.lipsum.com}{«Lorem Ipsum»}
+  d'insérer du faux texte \link{http://fr.lipsum.com}{Lorem Ipsum}
   dans un document \LaTeX.)
   \begin{figure}
     \centering
@@ -306,7 +306,7 @@ l'environnement \Ie{abstract} des classes \class{article},
 \end{lstlisting}
 
 Il est plutôt rare que les livres comportent un résumé ou alors, comme
-d'ailleurs pour les thèses et mémoires de l'Université Laval, celui-ci
+pour les thèses et mémoires de l'Université Laval, celui-ci
 est simplement traité comme un chapitre normal non numéroté.
 
 \subsection{Sections}
@@ -334,7 +334,7 @@ disponible avec la classe \class{article}.
 Chaque commande prend en argument obligatoire le \meta{titre} de la
 section. Si celui-ci est très long, il peut être utile de fournir en
 argument optionnel un \meta{titre court}; c'est ce dernier qui
-apparaitra dans la table des matières et les entêtes de page, le cas
+apparaitra dans la table des matières et dans les entêtes de page, le cas
 échéant.
 
 Toutes les commandes existent en version suivie d'une \verb=*= qui
@@ -427,7 +427,7 @@ avec la visionneuse Aperçu de macOS.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.7\linewidth,angle=-90]{tdm-dans-pdf}
+  \includegraphics[width=0.8\textwidth,angle=-90]{tdm-dans-pdf}
   \caption{Consultation d'un document PDF avec la visionneuse Aperçu
     de macOS. La barre latérale de gauche affiche la table des
     matières du fichier PDF, ce qui permet de naviguer dans le
@@ -471,7 +471,7 @@ est le texte qui apparaitra dans la table des matières.
 \end{exemple}
 
 Outre une table des matières, les longs ouvrages scientifiques
-comptent parfois une liste des figures et une liste des tableaux. On
+comportent parfois une liste des figures et une liste des tableaux. On
 obtient celles-ci avec les commandes
 \begin{lstlisting}
 \listoffigures
@@ -495,7 +495,7 @@ parties dans la table des matières.
 \label{sec:organisation:renvois}
 
 Un document d'une certaine ampleur contiendra souvent des renvois à
-une section, à un tableau, à une équation, voire à une page
+une section, un tableau, une équation, voire une page
 spécifique. Évidemment, le numéro de la section, du tableau, de
 l'équation ou de la page est susceptible de changer au fil de la
 rédaction du document. C'est pourquoi l'auteur ne devrait
@@ -507,19 +507,17 @@ tâche qu'il vaut mieux confier à l'ordinateur.
 
 Les renvois automatiques dans {\LaTeX} reposent sur un système
 d'étiquettes attribuées à des éléments de contenu et de référencement
-par ces étiquettes.
-
-Ainsi, pour renvoyer le lecteur à un élément de contenu, il faut
-d'abord le nommer en insérant la commande
+par ces étiquettes. Ainsi, pour renvoyer le lecteur à un élément de
+contenu, il faut d'abord le nommer en insérant la commande
 \begin{lstlisting}
 \label`\marg{nom}'
 \end{lstlisting}
-près de l'élément. Le choix du \meta{nom} est tout à fait libre. Il
+à proximité de l'élément. Le choix du \meta{nom} est tout à fait libre. Il
 peut être constitué de toute combinaison de lettres, de chiffres et de
 symboles autres que les symboles réservés mentionnés à la
 \autoref{sec:bases:caracteres:reserves}.
 
-Ensuite, il est possible d'insérer un renvoi à cet élément de contenu
+Ensuite, il devient possible d'insérer un renvoi à cet élément de contenu
 n'importe où dans le document avec la commande
 \begin{lstlisting}
 \ref`\marg{nom}'
@@ -573,7 +571,7 @@ Tel que vu à la section \ref{sec:definitions}, on a...
 \end{lstlisting}
 \end{conseil}
 
-\subsection{Production des renvois automatiques}
+\subsection{Production des renvois}
 \label{sec:organisation:renvois:production}
 
 La production des renvois requiert deux à trois compilations.
@@ -586,7 +584,7 @@ cross-references right.
 
 On prendra également garde aux alertes suivantes dans le journal de
 compilation. Elles identifient des correctifs à apporter dans le
-réseau d'étiquettes et de renvois. D'abord, le message
+système d'étiquettes et de renvois. D'abord, le message
 \begin{verbatim}
 LaTeX Warning: There were undefined references.
 \end{verbatim}
@@ -676,7 +674,7 @@ Tel que vu à la \autoref{sec:definitions}, on a...
   \qed
 \end{exemple}
 
-On trouvera à la \autoref{sec:trucs:hyperliens} des détails
+La \autoref{sec:trucs:hyperliens} fournit des détails
 additionnels sur la gestion des hyperliens dans un document PDF.
 
 
@@ -690,8 +688,8 @@ dans un seul fichier à l'aide de son éditeur de texte favori.
 
 Cependant, si le préambule devient long et complexe ou, surtout,
 lorsque l'ampleur du document augmente jusqu'à compter un grand nombre
-de pages sur plusieurs chapitres, il convient de répartir les divers
-éléments du document dans des fichiers séparés.
+de pages sur plusieurs chapitres, il convient de répartir les diverses
+parties du document dans des fichiers séparés.
 
 La segmentation en plusieurs fichiers rend l'édition du texte plus
 simple et plus efficace. De plus, durant la phase de rédaction, elle
@@ -709,10 +707,10 @@ fichier dans un document {\LaTeX}. La syntaxe de la commande est
 où le nom du fichier à insérer est \meta{fichier}\code{.tex}. On
 laisse donc tomber l'extension \code{.tex}, qui est implicite. Le
 contenu du fichier est inséré tel quel dans le document, comme s'il
-avait été tapé dans le fichier qui contient l'appel à \cmd{\input}.
+avait été saisi dans le fichier qui contient l'appel à \cmd{\input}.
 
 Le procédé est surtout utile pour sauvegarder séparément des bouts de
-code qui pourraient nuire à l'édition du texte (figures, longs
+code qui gênent l'édition du texte (figures, longs
 tableaux) ou qui sont communs entre plusieurs documents (licence
 d'utilisation, auteur et affiliation).
 
@@ -725,24 +723,36 @@ effet dans tous les documents.
 \subsection{Insertion de parties d'un document}
 \label{sec:organisation:include:include}
 
-Extrait de la %
-\doc{ulthese}{http://texdoc.net/pkg/ulthese/} %
-de la classe \class{ulthese}:
-\begin{quote}
-  «Il est recommandé de segmenter tout document d'une certaine ampleur
-  dans des fichiers \verb=.tex= distincts pour chaque partie ---
-  habituellement un fichier par chapitre. Le document complet est
-  composé à l'aide d'un fichier maître qui contient le préambule
-  {\LaTeX} et un ensemble de commandes \cmdprint{\include} pour réunir les
-  parties dans un tout.»
-\end{quote}
-La \autoref{fig:organisation:maitre} présente un exemple type de
-fichier maître. On y utilise la commande \cmd{\include} pour composer
-un document chapitre par chapitre.
+Il est recommandé de segmenter tout document d'une certaine ampleur
+dans des fichiers \verb=.tex= distincts pour chaque partie ---
+habituellement un fichier par chapitre. Le document complet est
+composé à l'aide d'un fichier maître qui contient le préambule
+{\LaTeX} et un ensemble d'appels à la commande \cmdprint{\include}
+pour réunir les parties dans un tout.
 
-\begin{figure}
-  \centering
-  \begin{minipage}{0.75\linewidth}
+La syntaxe de \cmd{\include} est
+\begin{lstlisting}
+\include`\marg{fichier}'
+\end{lstlisting}
+où le nom du fichier à insérer est \meta{fichier}\code{.tex}. Ici
+aussi on laisse tomber l'extension \code{.tex} qui est implicite.
+
+Comme \cmd{\input}, la commande \cmd{\include} insère le contenu d'un
+autre fichier dans un document. Toutefois, l'insertion d'un fichier
+avec \cmd{\include} débute toujours une nouvelle page. On utilisera
+donc cette commande principalement pour insérer des chapitres entiers
+plutôt que seulement des portions de texte. De plus, un fichier inséré
+avec \cmd{\include} peut contenir des appels à \cmd{\input}, mais pas
+à \cmd{\include}.
+
+\begin{exemple}
+  La \autoref{fig:organisation:maitre} présente un exemple type de
+  fichier maître. On y utilise la commande \cmd{\include} pour
+  composer un document chapitre par chapitre.
+
+  \begin{figure}
+    \centering
+    \begin{minipage}{0.75\linewidth}
 \begin{lstlisting}[numbers=left, numberstyle=\tiny,
                    frame=single, rulecolor=\color{black}, framesep=6pt]
 \documentclass{ulthese}
@@ -763,47 +773,26 @@ un document chapitre par chapitre.
 
 \end{document}
 \end{lstlisting}
-  \end{minipage}
-  \caption{Structure type d'un fichier maître. Les fichiers
-    \code{historique.tex}, \code{rappels.tex} et \code{modele.tex}
-    contiennent le texte des trois premiers chapitres.}
-  \label{fig:organisation:maitre}
-\end{figure}
-
-Comme \cmd{\input}, la commande \cmd{\include} insère le contenu
-d'un autre fichier dans un document {\LaTeX}. Son effet est cependant
-différent et c'est son utilisation qui permet d'accélérer la
-compilation d'un long document.
-
-L'insertion d'un fichier avec \cmd{\include} débute toujours une
-nouvelle page. On utilisera donc \cmd{\include} principalement pour
-insérer des chapitres entiers plutôt que seulement des portions de
-texte. De plus, un fichier inséré avec \cmd{\include} peut contenir
-des appels à \cmd{\input}, mais pas à \cmd{\include}.
-
-La syntaxe de la commande \cmd{\include} est
-\begin{lstlisting}
-\include`\marg{fichier}'
-\end{lstlisting}
-où le nom du fichier à insérer est \meta{fichier}\code{.tex}. Ici
-aussi on laisse tomber l'extension \code{.tex} qui est implicite.
-
-
-\begin{conseil}
-  Utilisez des noms de fichiers qui permettent de facilement
-  identifier leur contenu. Par exemple, un nom comme
-  \fichier{rappels.tex} est plus parlant et résiste mieux aux
-  changements à l'ordre des chapitres que \fichier{chapitre1.tex}.
-\end{conseil}
+    \end{minipage}
+    \caption{Structure type d'un fichier maître. Les fichiers
+      \code{historique.tex}, \code{rappels.tex} et \code{modele.tex}
+      contiennent le texte des trois premiers chapitres.}
+    \label{fig:organisation:maitre}
+  \end{figure}
+  \qed
+\end{exemple}
 
 Le principal avantage de \cmd{\include} par rapport à \cmd{\input}
 réside dans le fait que {\LaTeX} peut préserver entre les compilations
 les informations telles que les numéros de pages, de sections ou
-d'équations, ainsi que les références. Cela permet, par exemple, de
-compiler le texte d'un seul chapitre --- plutôt que le document entier
---- et néanmoins obtenir une image représentative du chapitre.
-Procéder ainsi accélère significativement la compilation des documents
-longs ou complexes.
+d'équations, ainsi que les renvois et les références bibliographiques.
+Cela permet, par exemple, de compiler le texte d'un seul chapitre ---
+plutôt que le document entier --- et néanmoins obtenir une image
+représentative du chapitre. Procéder ainsi accélère significativement
+la compilation des documents longs ou complexes.
+
+\subsection{Compilation partielle}
+\label{sec:organisation:include:compilation}
 
 La commande \cmd{\includeonly}, que l'on utilise exclusivement dans le
 préambule, sert à spécifier le ou les fichiers à compiler tout en
@@ -814,6 +803,14 @@ préservant la numérotation et les références. Sa syntaxe est
 où \meta{liste\_fichiers} contient les noms des fichiers à
 inclure dans la compilation, séparés par des virgules et sans
 l'extension \code{.tex}.
+
+\begin{conseil}
+  Utiliser des noms de fichiers qui permettent de facilement
+  identifier leur contenu. Par exemple, un nom comme
+  \fichier{rappels.tex} identifie clairement le contenu du fichier et
+  il résiste mieux aux changements à l'ordre des chapitres que
+  \fichier{chapitre1.tex}.
+\end{conseil}
 
 Lors de l'utilisation de la commande \cmd{\includeonly}, toute la
 numérotation dans les fichiers \meta{liste\_fichiers} suivra celle
@@ -869,30 +866,28 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
 
 \end{Filesave}
 
-\begin{exercice}
+\begin{exercice}[nosol]
   Utiliser le fichier \fichier{exercice\_parties.tex}.
   \begin{enumerate}
   \item Étudier la structure du document dans le code source.
-  \item Ajouter un titre et un auteur au document.
+  \item Ajouter un titre et un auteur au document à l'aide des
+    commandes \cmprint{\title} et \cmdprint{\author} se trouvant déjà
+    dans le préambule.
   \item Créer la table des matières du document en le compilant 2 à 3
     fois.
   \item Insérer deux ou trois titres de sections de différents niveaux
     dans le document.
-  \item Vous remarquerez que la numérotation cesse à partir des
-    sous-sections. C'est une particularité de la classe
-    \class{memoir}. Recompiler le document après avoir ajouté au
-    préambule la commande
+  \item La numérotation cesse à partir des sous-sections. C'est une
+    particularité de la classe \class{memoir}. Recompiler le document
+    après avoir ajouté au préambule la commande
 \begin{lstlisting}
 \maxsecnumdepth{subsection}
 \end{lstlisting}
   \item Ajouter une annexe au document.
   \end{enumerate}
-  \begin{sol}
-    Consulter le fichier \fichier{exercice\_parties-solution.tex}.
-  \end{sol}
 \end{exercice}
 
-\begin{exercice}
+\begin{exercice}[nosol]
   Utiliser le fichier \fichier{exercice\_renvois.tex}.
   \begin{enumerate}
   \item Insérer dans le texte un renvoi au numéro d'une section.
@@ -929,8 +924,8 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
   \begin{enumerate}
   \item Étudier le code source du fichier maître
     \fichier{exercice\_include.tex}, puis le compiler deux à trois
-    fois jusqu'à ce que toutes les références internes soient à jour.
-    Il est normal à ce stade que la figure~1 du document soit vide.
+    fois jusqu'à ce que tous les renvois soient à jour. Il est normal
+    à ce stade que la figure~1 du document soit vide.
   \item Ajouter dans le préambule du fichier maître la commande
 \begin{lstlisting}
 \includeonly{emacs}
@@ -953,7 +948,7 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
     nouveau le document deux fois.
 
     Les modifications ont eu pour effet d'ajouter une page au
-    chapitre~1. Observer que selon la table des matières, le
+    chapitre~1. Observer que, selon la table des matières, le
     chapitre~2 débute toujours à la page~3 alors que celle-ci est
     maintenant occupée par la figure~1.
   \item Afin de corriger la table des matières, désactiver dans le
