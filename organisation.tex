@@ -1,6 +1,12 @@
 \chapter{Organisation d'un document}
 \label{chap:organisation}
 
+La maîtrise des notions du chapitre précédent permet déjà de composer
+un document simple avec {\LaTeX}. Toutefois, la puissance du système
+de mise en page se manifeste vraiment lors de la préparation de
+documents élaborés comportant plusieurs divisions internes, une table
+des matières, des renvois, etc. Le présent chapitre aborde ces aspects
+d'organisation d'un document.
 
 \section{Choix d'une classe}
 \label{sec:organisation:classe}
@@ -8,8 +14,8 @@
 La toute première chose à faire au moment de se lancer dans la
 rédaction d'un document avec {\LaTeX} consiste normalement à choisir
 une classe. Nous avons déjà expliqué à la \autoref{sec:bases:classes}
-comment spécifier la classe à utiliser. La présente section présente
-les différences entre les classes ainsi que les principales options
+comment spécifier la classe à utiliser. Cette section présente les
+différences entre les classes ainsi que les principales options
 disponibles.
 
 Les classes standards sont \class{article}, \class{report},
@@ -99,7 +105,7 @@ fournissent des exemples de mise en page pour ces trois classes.
   \label{fig:organisation:classes:book}
 \end{figure}
 
-Ce document fait une large place à la classe \class{memoir}
+Cet ouvrage fait une large place à la classe \class{memoir}
 \citep{memoir}, une extension de la classe standard \class{book} qui
 facilite à plusieurs égards la préparation de documents d'allure
 professionnelle dans {\LaTeX}. Nous recommandons d'utiliser cette
@@ -296,7 +302,7 @@ commandes de composition; consulter sa %
 
 Les articles scientifiques et les rapports comportent souvent un
 résumé, habituellement composé en retrait des marges gauche et droite
-et dans une police de caractère plus petite. On produit le résumé avec
+et dans une police plus petite. On produit le résumé avec
 l'environnement \Ie{abstract} des classes \class{article},
 \class{report} ou \class{memoir}:
 \begin{lstlisting}
@@ -448,7 +454,7 @@ commande suivante:
 \addtocontentsline{toc}`\marg{niveau}\marg{titre}'
 \end{lstlisting}
 où \meta{niveau} est le nom de la commande de division sans le
-caractère {\bs} (\code{chapter}, \code{section}, etc.) et \meta{titre}
+symbole {\bs} (\code{chapter}, \code{section}, etc.) et \meta{titre}
 est le texte qui apparaitra dans la table des matières.
 
 \begin{exemple}
@@ -871,7 +877,7 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
   \begin{enumerate}
   \item Étudier la structure du document dans le code source.
   \item Ajouter un titre et un auteur au document à l'aide des
-    commandes \cmprint{\title} et \cmdprint{\author} se trouvant déjà
+    commandes \cmdprint{\title} et \cmdprint{\author} se trouvant déjà
     dans le préambule.
   \item Créer la table des matières du document en le compilant 2 à 3
     fois.
