@@ -9,7 +9,7 @@ cesse, au moment de la rédaction, de la disposition du texte.
 
 Ce principe accepté, il faudra néanmoins indiquer au logiciel la
 structure du document. Avec {\LaTeX} cela s'effectue par le biais de
-diverses instructions que l'on insére au fil du texte. À la base, les
+diverses instructions que l'on insère au fil du texte. À la base, les
 logiciels de traitements de texte n'opèrent pas différemment, sauf
 qu'ils cachent les codes aux utilisateurs\footnote{%
   Le leader du traitement de texte jusqu'au milieu des années 1990,
@@ -375,7 +375,7 @@ connaître la syntaxe de
     \end{demo}
     %
   \item La commande \cmd{\rule} produit un rectangle plein. Elle a
-    deux arugments obligatoires: la longueur et la hauteur du
+    deux arguments obligatoires: la longueur et la hauteur du
     rectangle, dans l'ordre. Un argument optionnel permet de surélever
     le rectangle au-dessus de la ligne de base (voir le
     \autoref{chap:boites} pour plus de détails).
@@ -585,7 +585,7 @@ les lettres de l'alphabet (en versions minuscule et majuscule), les
 chiffres de 0 à 9, un certain nombre de symboles et, selon le clavier,
 des versions accentuées de certaines lettres. L'entrée des lettres et
 des chiffres ne pose pas de problème particulier pour {\LaTeX}, mais
-certains symboles sont reservés. De plus, certains symboles d'usage
+certains symboles sont réservés. De plus, certains symboles d'usage
 courant ne sont pas disponibles sur les claviers.
 
 \subsection{Espaces et retours à la ligne}
@@ -620,7 +620,7 @@ formidable!
 
 Dans le même ordre d'idées, le symbole \verb=~= insère une espace
 insécable entre deux mots, de telle sorte que {\LaTeX} ne pourra
-placer les mots sur des lignes différentes. À utliser dans les noms ou
+placer les mots sur des lignes différentes. À utiliser dans les noms ou
 entre une quantité et son unité.
 \begin{demo}
   \begin{texample}
@@ -759,8 +759,8 @@ guillemets doubles (\verb="=) que l'on trouve couramment sur les
 claviers d'ordinateurs.
 
 Pour obtenir les guillemets anglais, on utilisera deux symboles
-d'accent grave côte-à-côte pour les guillemets ouvrants (``) et deux
-apostrophes côte-à-côte pour les guillemets fermants ('').
+d'accent grave côte à côte pour les guillemets ouvrants (``) et deux
+apostrophes côte à côte pour les guillemets fermants ('').
 \begin{demo}
   \begin{texample}
 \begin{lstlisting}[escapeinside={}]
@@ -876,7 +876,7 @@ fois.
 \subsection{Accents et ligatures}
 \label{sec:bases:caracteres:accents}
 
-À la base, {\LaTeX} ne reconnait pas les lettres accentuées ni les
+À la base, {\LaTeX} ne reconnaît pas les lettres accentuées ni les
 ligatures comme {\ae} et {\oe} qui ne sont pas courantes en anglais.
 Néanmoins, il est possible de créer ces symboles avec des commandes.
 \begin{demo}
@@ -1102,7 +1102,7 @@ $x = 1, 2, 3$
 
 \begin{important}
   Le paquetage \pkg{icomma} peut interagir avec d'autres. Aussi
-  vaut-il mieux le charger parmi les derniers dans le préambule, et
+  est-il préférable de le charger parmi les derniers dans le préambule, et
   certainement après les paquetages \pkg{fontspec} et
   \pkg{unicode-math} avec {\XeLaTeX}.
 \end{important}

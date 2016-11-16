@@ -25,17 +25,17 @@ Les classes standards sont \class{article}, \class{report},
 \item[\normalfont\class{article}] Articles scientifiques et autres
   documents de longueur modérée ne nécessitant pas une mise en page
   élaborée. Le folio (numéro de page) est placé au centre du pied de
-  page. Le titre apparait dans le haut de la première page,
+  page. Le titre apparaît dans le haut de la première page,
   immédiatement suivi du texte.
 \item[\normalfont\class{report}] Rapports et autres documents plus
-  longs pouvant être divisés en chapitres. Le titre apparait sur une
+  longs pouvant être divisés en chapitres. Le titre apparaît sur une
   page de titre. La mise en page est autrement identique à celle de la
   classe \class{article}.
 \item[\normalfont\class{book}] Longs documents divisés en chapitres.
-  La mise en page est conçue pour une impression recto-verso. L'entête
+  La mise en page est conçue pour une impression recto verso. L'entête
   de la page (autre que la première du chapitre) contient le folio sur
   le bord extérieur et le titre de chapitre (page paire) ou le titre
-  de section (page impaire). Le titre apparait sur une page de titre.
+  de section (page impaire). Le titre apparaît sur une page de titre.
 \item[\normalfont\class{letter}] Lettres et correspondance. Bien que
   puissante, cette classe est plus rarement utilisée. Nous n'en traitons
   pas davantage dans ce document.
@@ -64,7 +64,7 @@ fournissent des exemples de mise en page pour ces trois classes.
                        & recto & vide & folio centré \\
     \addlinespace[6pt]
     \class{book} & parties,\newline chapitres,\newline sections, \dots
-                       & recto-verso & folio, titres & vide \\
+                       & recto verso & folio, titres & vide \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -112,14 +112,14 @@ professionnelle dans {\LaTeX}. Nous recommandons d'utiliser cette
 classe en lieu et place de la classe \class{book}, ou même de la
 classe \class{article} (voir ci-dessous).
 
-La classe \class{memoir} est très configurable et elle incorpore
-d'office plus de 30 des paquetages les plus populaires\footnote{%
+La classe \class{memoir} incorpore d'office plus de 30 des paquetages
+les plus populaires\footnote{%
   Consulter la section~18.24 de la documentation de \class{memoir}
-  pour la liste ou encore le fichier journal (\emph{log}) de la
-  compilation d'un document utilisant la classe.}. %
+  pour la liste ou encore le journal de la compilation (\emph{log})
+  d'un document utilisant la classe.}. %
 La classe fait partie des distributions {\LaTeX} modernes; elle
-devrait être installée et disponible sur tout système. Elle est
-livrée avec une %
+devrait être installée et disponible sur tout système. Elle est livrée
+avec une %
 \doc{memman}{http://texdoc.net/pkg/memoir} %
 exhaustive: le manuel d'instructions fait près de 600~pages! Il peut
 être utile de s'y référer de temps à autre pour réaliser une mise en
@@ -844,7 +844,7 @@ nécessaire.
     sorte que le chapitre se termine maintenant à la page 46, il
     faudra recompiler le document avec au moins les fichiers
     \fichier{rappels.tex} et \code{modele.tex} pour que les pages du
-    chapitre~3 soient renumérotées à partir de 47.
+    chapitre~3 soient numérotées à partir de 47.
   \end{itemize}
   \qed
 \end{exemple}

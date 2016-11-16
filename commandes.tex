@@ -1,7 +1,7 @@
 \chapter{Commandes et environnements définis par l'usager}
 \label{chap:commandes}
 
-{\LaTeX} est un ensemble de macro commandes conçu pour faciliter
+{\LaTeX} est un ensemble de macro-commandes conçu pour faciliter
 l'utilisation du système {\TeX}. Dès lors, il est assez naturel de
 permettre à l'usager de définir à son tour ses propres commandes. Il
 suffit généralement d'avoir rédigé quelques documents --- ou quelques
@@ -155,7 +155,7 @@ doivent apparaître.
     une police non proportionnelle;
   \item l'URL vers le fichier de documentation en ligne.
   \end{enumerate}
-  Voic une version simplifiée de la définition de la commande:
+  Voici une version simplifiée de la définition de la commande:
 \begin{lstlisting}
 \newcommand{\doc}[3]{%
   \href{#3}{#1~\raisebox{-0.2ex}{\faExternalLink}}%
@@ -166,7 +166,7 @@ doivent apparaître.
   commandes \cmdprint{\faEx\-ter\-nal\-Link} et \cmdprint{\faBookmark}
   proviennent du paquetage \pkg{fontawesome} \citep{fontawesome}; elles
   insèrent dans le texte des icônes de la police libre %
-  \doc[Font Awesome]{}{http://fortawesome.github.io/Font-Awesome/}. %
+  \link{http://fortawesome.io/}{Font~Awesome}. %
 
   Avec la définition ci-dessus, la déclaration
 \begin{lstlisting}
