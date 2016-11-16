@@ -3,23 +3,26 @@
 \TPGrid{3}{36}
 \textblockorigin{0mm}{0mm}
 
-%% édition
+%% auteur
 \begin{textblock*}{1.7\TPHorizModule}(0.3\TPHorizModule,5\TPVertModule)
+  \begin{minipage}{\textwidth}
+    \theauthor
+  \end{minipage}
+\end{textblock*}
+
+%% titre
+\begin{textblock*}{1.7\TPHorizModule}(0.3\TPHorizModule,14.2\TPVertModule)
+  \begin{minipage}{\textwidth}
+    \thetitle \\
+  \end{minipage}
+\end{textblock*}
+
+%% éditionq
+\begin{textblock*}{1.7\TPHorizModule}(0.3\TPHorizModule,30\TPVertModule)
   \begin{minipage}{\textwidth}
     \thedate
   \end{minipage}
 \end{textblock*}
-
-%% titre et auteur
-\begin{textblock*}{1.7\TPHorizModule}(0.3\TPHorizModule,14.2\TPVertModule)
-  \begin{minipage}{\textwidth}
-    \thetitle \\
-    \vspace*{20mm}
-    \theauthor \\
-  \end{minipage}
-\end{textblock*}
-
-
 
 \endgroup
 
