@@ -5,12 +5,12 @@
 \setlength{\parindent}{0mm}
 \setlength{\banderougewidth}{2\TPHorizModule}
 \setlength{\bandeorwidth}{\TPHorizModule}
-\setlength{\gapwidth}{1pt}
+\setlength{\gapwidth}{0.75pt}
 \addtolength{\bandeorwidth}{-\gapwidth}
 
 \begin{frame}[plain]
   %% bandeau identitaire
-  \begin{textblock*}{125mm}(0mm,30\TPVertModule)
+  \begin{textblock*}{125mm}[0,1](0mm,30\TPVertModule)
     \textcolor{or}{\rule{\bandeorwidth}{\TPVertModule}}%      % bande or
     \rule{\gapwidth}{0pt}%                                    % filet
     \textcolor{rouge}{\rule{\banderougewidth}{\TPVertModule}} % bande rouge

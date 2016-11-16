@@ -5,21 +5,21 @@
 \setlength{\parindent}{0mm}
 \setlength{\banderougewidth}{2\TPHorizModule}
 \setlength{\bandeorwidth}{\TPHorizModule}
-\setlength{\imageheight}{30\TPVertModule}
-\setlength{\gapwidth}{1pt}
+\setlength{\imageheight}{29\TPVertModule}
+\setlength{\gapwidth}{0.75pt}
 \addtolength{\bandeorwidth}{-\gapwidth}
 \addtolength{\imageheight}{-\gapwidth}
 
 \begin{frame}[plain]
   %% bandeau identitaire
-  \begin{textblock*}{125mm}(0mm,30\TPVertModule)
+  \begin{textblock*}{125mm}[0,1](0mm,30\TPVertModule)
     \textcolor{rouge}{\rule{\banderougewidth}{\TPVertModule}}% % bande rouge
     \rule{\gapwidth}{0pt}%                                     % filet
     \textcolor{or}{\rule{\bandeorwidth}{\TPVertModule}}        % bande or
   \end{textblock*}
 
   %% logo UL
-  \begin{textblock*}{\TPHorizModule}(2\TPHorizModule,32\TPVertModule)
+  \begin{textblock*}{\TPHorizModule}(2\TPHorizModule,31\TPVertModule)
     \rule{\gapwidth}{0pt}%                                     % filet
     \includegraphics[height=2.5\TPVertModule,keepaspectratio=true]{ul_p}
   \end{textblock*}
@@ -30,14 +30,14 @@
   \end{textblock*}
 
   %% trame (titre)
-  \begin{textblock*}{2\TPHorizModule}(0mm,15\TPVertModule)
+  \begin{textblock*}{2\TPHorizModule}(0mm,14\TPVertModule)
     \pgfsetfillopacity{0.5}
     \textcolor{white}{\rule{\linewidth}{10\TPVertModule}}
     \pgfsetfillopacity{1}
   \end{textblock*}
 
   %% titre
-  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,16.2\TPVertModule)
+  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,15.2\TPVertModule)
     \raggedright%
     \titles\bfseries
     \fontsize{20}{20}\selectfont
@@ -54,14 +54,14 @@
   \end{textblock*}
 
   %% trame (premiers pas)
-  \begin{textblock*}{\TPHorizModule}(2\TPHorizModule,25\TPVertModule)
+  \begin{textblock*}{\TPHorizModule}(2\TPHorizModule,24\TPVertModule)
     \pgfsetfillopacity{0.5}
     \textcolor{white}{\rule{\linewidth}{2\TPVertModule}}
     \pgfsetfillopacity{1}
   \end{textblock*}
 
   %%
-  \begin{textblock*}{0.8\TPHorizModule}(2.1\TPHorizModule,25.5\TPVertModule)
+  \begin{textblock*}{0.8\TPHorizModule}(2.1\TPHorizModule,24.5\TPVertModule)
     \raggedright%
     \titles\bfseries
     \fontsize{11}{11}\selectfont
