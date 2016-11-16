@@ -9,14 +9,14 @@ MASTER = formation-latex-ul.pdf
 MASTERDIAPOS = formation-latex-ul-diapos.pdf
 
 ## Liste des fichiers source du document principal
-TEXFILES = licence.tex \
+TEXFILES = couverture-avant.tex \
+	frontispice.tex \
+	licence.tex \
 	introduction.tex \
-	modedemploi.tex \
 	presentation.tex \
 	bases.tex \
 	organisation.tex \
 	apparence.tex \
-	include.tex \
 	boites.tex \
 	tableaux+figures.tex \
 	mathematiques.tex \
@@ -25,7 +25,8 @@ TEXFILES = licence.tex \
 	trucs.tex \
 	ulthese.tex \
 	solutions.tex \
-	colophon.tex
+	colophon.tex \
+	couverture-arriere.tex
 
 ## Liste des documents auxiliaires à compiler avant le document
 ## principal
@@ -37,9 +38,19 @@ AUXDOC = exemple-classe-article.pdf \
 	exemple-renvoi-hyperref.pdf \
 	exemple-renvoi-autoref.pdf
 
-## Liste des autres fichiers source des diapositives
-TEXFILESDIAPOS = licence-diapos.tex \
-	colophon-diapos.tex
+## Liste des fichiers source des diapositives
+TEXFILESDIAPOS = couverture-avant-diapos.tex \
+	frontispice-diapos.tex \
+	licence-diapos.tex \
+	prerequis-diapos.tex \
+	presentation-diapos.tex \
+	bases-diapos.tex \
+	organisation-diapos.tex \
+	apparence-diapos.tex \
+	mathematiques-diapos.tex \
+	ulthese-diapos.tex \
+	colophon-diapos.tex \
+	couverture-arriere-diapos.tex
 
 ## Liste des fichiers à inclure dans l'archive
 FILES = ${MASTER} ${MASTERDIAPOS} \
@@ -47,18 +58,12 @@ FILES = ${MASTER} ${MASTERDIAPOS} \
 	exercice_minimal.tex \
 	exercice_demo.tex \
 	exercice_commandes.tex \
-	exercice_commandes-solution.tex \
 	exercice_classe+paquetages.tex \
-	exercice_classe+paquetages-solution.tex \
 	exercice_parties.tex \
-	exercice_parties-solution.tex \
 	exercice_renvois.tex \
-	exercice_renvois-solution.tex \
 	exercice_complet.tex \
-	exercice_complet-solution.tex \
 	exercice_ulthese.tex \
 		includes/mathematiques.tex \
-	exercice_ulthese-solution.tex
 	exercice_gabarit.tex \
 	exercice_include.tex \
 		includes/pagetitre.tex \
@@ -77,8 +82,8 @@ RM = rm -r
 
 .PHONY: pdf zip clean
 
-#pdf : $(MASTER) $(MASTERDIAPOS)
-pdf : $(MASTER)
+pdf : $(MASTER) $(MASTERDIAPOS)
+#pdf : $(MASTER)
 
 %.pdf : %.tex
 	$(TEXI2DVI) $<
