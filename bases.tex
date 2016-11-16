@@ -560,6 +560,23 @@ seconde, la largeur de la page courante. Dans du texte normal, les
 deux mesures sont habituellement égales.
 
 
+\section{Commentaires}
+\label{sec:bases:commentaires}
+
+Le symbole \verb=%= indique un commentaire dans le code source: tout
+le texte après le symbole jusqu'à la fin de la ligne est ignoré par
+{\LaTeX}.
+\begin{demo}
+  \begin{texample}
+\begin{lstlisting}
+texte % ignoré par LaTeX
+\end{lstlisting}
+    \producing
+    texte % ignoré par LaTeX
+  \end{texample}
+\end{demo}
+
+
 \section{Caractères spéciaux}
 \label{sec:bases:caracteres}
 
@@ -598,6 +615,21 @@ formidable!
     \producing
     Apprendre \LaTeX\ c'est
     formidable!
+  \end{texample}
+\end{demo}
+
+Dans le même ordre d'idées, le symbole \verb=~= insère une espace
+insécable entre deux mots, de telle sorte que {\LaTeX} ne pourra
+placer les mots sur des lignes différentes. À utliser dans les noms ou
+entre une quantité et son unité.
+\begin{demo}
+  \begin{texample}
+\begin{lstlisting}
+M.~Tremblay me doit au
+moins 200~\$.
+\end{lstlisting}
+    \producing
+    M.~Tremblay me doit au moins 200~\$.
   \end{texample}
 \end{demo}
 
@@ -717,19 +749,6 @@ les précéder par le symbole {\bs}:
 \end{demo}
 (Les commandes \verb=\^= et \verb=\~= servent à créer des accents;
 voir la \autoref{sec:bases:caracteres:accents}.)
-
-Le symbole \verb=%= indique un commentaire dans le code source: tout
-le texte après le symbole jusqu'à la fin de la ligne est ignoré par
-{\LaTeX}.
-\begin{demo}
-  \begin{texample}
-\begin{lstlisting}
-texte % ignoré par LaTeX
-\end{lstlisting}
-    \producing
-    texte % ignoré par LaTeX
-  \end{texample}
-\end{demo}
 
 \subsection{Guillemets}
 \label{sec:bases:caracteres:guillemets}
