@@ -31,50 +31,6 @@ Une fois créée, une boîte ne peut être scindée en parties, notamment
 entre les lignes ou entre les pages.
 
 
-\section{Longueurs}
-\label{sec:boites:longueurs}
-
-Plusieurs des commandes de ce chapitre requièrent de spécifier une
-largeur ou une hauteur. Dans la terminologie de {\LaTeX}, on parle
-plus généralement de longueur\index{longueur} (\emph{length}).
-
-Une longueur est un nombre positif, négatif ou nul
-\emph{obligatoirement} et \emph{immédiatement} suivi d'un symbole
-d'unité de mesure. Le \autoref{tab:boites:longueurs} présente les
-principales unités de mesure utilisées par {\LaTeX} et le symbole
-correspondant.
-
-\begin{table}
-  \caption{Principales unités de mesure pour les longueurs dans
-    {\LaTeX}}
-  \label{tab:boites:longueurs}
-  \centering
-  \begin{tabular}{lcl}
-    \toprule
-    nom ou description & symbole & longueur équivalente \\
-    \midrule
-    millimètre & \texttt{mm} \\
-    centimètre & \texttt{cm} & $10$~mm \\
-    pouce      & \texttt{in} & $2,54$~cm \\
-    point      & \texttt{pt} & $1/72,27$~pouce \\
-    point PostScript     & \texttt{bp}   & $1/72$~pouce \\
-    largeur de la lettre M & \texttt{em} & fonction de la police \\
-    hauteur de la lettre x & \texttt{ex} & fonction de la police \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-Il existe un certain nombre de longueurs prédéfinies. Les plus utiles sont
-\begin{lstlisting}
-\linewidth
-\textwidth
-\end{lstlisting}
-La première contient la largeur de la ligne de texte courante et la
-seconde, la largeur de la page courante. Dans du texte normal, les
-deux mesures sont habituellement égales.
-
-
-
 \section{Boîtes horizontales}
 \label{sec:boites:lrbox}
 
@@ -175,7 +131,7 @@ Les boîtes verticales se distinguent des boîtes horizontales par le
 fait qu'elles peuvent contenir plusieurs lignes de contenu empilées
 les unes au-dessus des autres. Lorsque le contenu en question est du
 texte, on obtient des paragraphes\footnote{%
-  D'où l'appellation, cette fois, de \emph{paragraph boxes} en anglais
+  D'où l'appellation de \emph{paragraph boxes} en anglais
   ou \emph{parboxes} dans le jargon {\LaTeX}.}. %
 
 La commande de base pour créer une boîte verticale est:
@@ -192,7 +148,7 @@ ligne de base. Cet argument n'a aucun effet si la boîte est le seul
 On remarquera que l'argument \meta{largeur} est ici obligatoire.
 Autrement dit, on doit nécessairement définir la largeur des boîtes
 verticales, un peu comme il faut bien définir la largeur de la page
-pour le texte normal.
+pour le texte normal (la classe se charge de ce détail).
 
 Les boîtes créées avec \cmd{\parbox} ne peuvent contenir de structures
 «complexes» comme des listes ou des tableaux. Parce que plus général,
@@ -217,19 +173,8 @@ l'\autoref{exemple:tableaux:grille} à la
 \autopageref{exemple:tableaux:grille}).
 
 \begin{exemple}
-  Le code ci-dessous
-\begin{lstlisting}
-\begin{minipage}[b]{0.3\textwidth}
-  La ligne inférieure de cette \emph{minipage} [...]
-\end{minipage}
-\hfill
-\parbox{0.3\textwidth}{le centre de cette boîte [...] }
-\hfill
-\begin{minipage}[t]{0.3\textwidth}
-  la ligne supérieure de cette \emph{minipage}. [...]
-\end{minipage}
-\end{lstlisting}
-  produit: \\[0.5\baselineskip]
+  L'agencement de boîtes ci-dessous est produit avec le code qui suit
+  immédiatement.  \\[0.5\baselineskip]
   \begin{minipage}{\textwidth}
     \makebox[0pt][l]{\color{lightgray}\rule{\textwidth}{0.7pt}}\relax
     \fbox{\begin{minipage}[b]{0.3\textwidth} La ligne inférieure de
@@ -242,13 +187,24 @@ l'\autoref{exemple:tableaux:grille} à la
         boîtes.
       \end{minipage}}
   \end{minipage}
+\begin{lstlisting}
+\begin{minipage}[b]{0.3\textwidth}
+  La ligne inférieure de cette \emph{minipage} [...]
+\end{minipage}
+\hfill
+\parbox{0.3\textwidth}{le centre de cette boîte [...] }
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+  la ligne supérieure de cette \emph{minipage}. [...]
+\end{minipage}
+\end{lstlisting}
   \qed
 \end{exemple}
 
-La commande \cmd{\hfill} utilisée entre les boîtes dans l'exemple ci-dessus
-indique à {\LaTeX} d'insérer de l'espace blanc entre les éléments de
-contenu de manière à remplir entièrement la ligne de texte. C'est une
-commande très utile pour disposer automatiquement des éléments à
+La commande \cmd{\hfill} utilisée entre les boîtes dans l'exemple
+ci-dessus indique à {\LaTeX} d'insérer de l'espace entre les éléments
+de contenu de manière à remplir entièrement la ligne de texte. C'est
+une commande très utile pour disposer automatiquement des éléments à
 intervalles égaux sur la largeur du bloc de texte. Ainsi,
 \begin{lstlisting}
 \framebox[\linewidth]{gauche \hfill droite}
@@ -450,7 +406,7 @@ tous les exercices ci-dessous.
 
 \begin{exercice}
   Réaliser l'agencement de boîtes verticales ci-dessous. (La taille de
-  la police de caractères est \cs{footnotesize}.)
+  la police est \cs{footnotesize}.)
   \begin{center}
     \begin{minipage}{120mm}
       \footnotesize
@@ -499,6 +455,6 @@ tous les exercices ci-dessous.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-engine: xetex
-%%% TeX-master: "formation_latex_UL-partie_2"
+%%% TeX-master: "formation-latex-ul"
 %%% coding: utf-8
 %%% End:

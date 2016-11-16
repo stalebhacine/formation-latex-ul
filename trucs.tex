@@ -1,22 +1,21 @@
 \chapter{Trucs et astuces divers}
 \label{chap:trucs}
 
-En clôture du document, ce chapitre traite de différents sujets que
+En clôture de l'ouvrage, ce chapitre traite de différents sujets que
 même une personne débutant avec {\LaTeX} voudra assez rapidement
 aborder, comme le contrôle des sauts de ligne et des sauts de page, la
-modification de la police de caractère du document, l'utilisation de
-la couleur ou l'insertion d'hyperliens dans le fichier de sortie PDF.
-Nous offrons également de courtes introductions à des usages plus
-spécialisés de {\LaTeX} comme la mise en page de code informatique, la
-production de diapositives ou la programmation lettrée. Enfin, nous
-expliquons sommairement comme assurer de manière efficace la gestion
-des versions de ses documents, surtout dans un contexte de travail
-collaboratif.
+modification de la police du document, l'utilisation de la couleur ou
+l'insertion d'hyperliens dans le fichier de sortie PDF. Nous offrons
+également de courtes introductions à des usages plus spécialisés de
+{\LaTeX} comme la mise en page de code informatique, la production de
+diapositives ou la programmation lettrée. Enfin, nous expliquons
+sommairement comme assurer de manière efficace la gestion des versions
+de ses documents, surtout dans un contexte de travail collaboratif.
 
 \section{Contrôle de la disposition du texte}
 \label{sec:trucs:controle}
 
-Des algorithmes élaborés permettent à {\LaTeX} de généralement
+Des algorithmes élaborés permettent généralement à {\LaTeX} de
 disposer le texte harmonieusement sur la page. Néanmoins, il
 est parfois nécessaire  d'effectuer soi-même de menus ajustements,
 notamment pour les sauts de page et la coupure de mots.
@@ -40,7 +39,7 @@ La commande {\pixbsbs} est connue: elle sert aussi à délimiter les
 lignes dans les tableaux (\autoref{sec:tableaux:tableaux}) et les lignes
 d'une suite d'équations (\autoref{sec:math:align}). L'argument optionnel
 \oarg{longueur} permet d'insérer un blanc entre les deux lignes; la
-\autoref{sec:boites:longueurs} explique comment spécifier une
+\autoref{sec:bases:longueurs} explique comment spécifier une
 longueur.
 
 Généralement équivalente à {\bs\bs}, la commande \cmd{\newline} est
@@ -112,7 +111,7 @@ disposition.
 Les commandes \cmd{\cleartorecto} et \cmd{\cleartoverso}, propres à la
 classe \class{memoir} permettent respectivement de passer
 automatiquement à une page recto ou à une page verso. Évidemment, elles
-n'ont d'utilité que dans les documents recto-verso.
+n'ont d'utilité que dans les documents recto verso.
 
 Moins directives, les commandes
 \begin{lstlisting}
@@ -121,7 +120,7 @@ Moins directives, les commandes
 \end{lstlisting}
 permettent de seulement aider {\LaTeX} à gérer les sauts de page à un
 endroit précis. La commande \cmd{\pagebreak} est intéressante
-lorsqu'utilisée avec son argument optionnel \meta{n}: celui-ci
+lorsque utilisée avec son argument optionnel \meta{n}: celui-ci
 indique, par le biais d'un nombre entier entre 0 et 4, à quel point
 nous \emph{recommandons} à {\LaTeX} d'insérer un saut de page à
 l'endroit où la commande apparaît (0 étant une faible recommandation
@@ -176,40 +175,44 @@ sont identifiés par un trait d'union.
 \end{important}
 
 
-\section{Polices de caractères: au-delà de Computer Modern}
-\label{sec:trucs:police}
+\section{Au-delà de la police Computer Modern}
+\label{sec:trucs:polices}
 
 {\CM%
   Les documents {\LaTeX} standards sont facilement reconnaissables par
-  leur police de caractères par défaut, Computer Modern --- celle
-  utilisée dans ce paragraphe. Pour qui souhaitait briser la relative
-  monotonie induite par cette uniformité, il a longtemps été difficile
-  d'utiliser une autre police de caractères. Fort heureusement, la
-  situation a beaucoup évolué et il est aujourd'hui assez simple de
-  produire des documents {\LaTeX} utilisant des polices de caractères
-  variées.}
+  leur police par défaut, Computer Modern --- celle utilisée dans ce
+  paragraphe. Pour qui souhaitait briser la relative monotonie induite
+  par cette uniformité, il a longtemps été difficile d'utiliser une
+  autre police. Fort heureusement, la situation a beaucoup évolué et
+  il est aujourd'hui assez simple de produire des documents {\LaTeX}
+  utilisant des polices variées.}
 
-Avant d'aller plus loin, une mise en garde: si votre document contient
+Avant d'aller plus loin, une mise en garde: si un document contient
 plus que quelques équations mathématiques très simples, le choix de
-police devient très restreint. La raison: peu de polices de caractères
-comprennent des symboles mathématiques et les informations nécessaires
-pour les assembler dans une mise en page satisfaisant les standards de
-haute qualité usuels de {\LaTeX}.
+police devient très restreint. La raison: peu de polices comprennent
+des symboles mathématiques et les informations nécessaires pour les
+assembler selon les hauts standards qualité usuels de {\LaTeX}.
 
 Cela dit, pour qui souhaite aller au-delà de la police Computer Modern
 sans trop se compliquer la vie, il existe deux solutions principales.
 
 \begin{enumerate}
-\item Utiliser l'une ou l'autre des polices PostScript standards.
+\item Utiliser l'une ou l'autre des polices PostScript standards
+  convenant pour du texte normal
+  ({\Times Times}, %
+   {\Palatino Palatino}, %
+   {\Bookman Bookman}, %
+   {\Charter Charter}, %
+   {\NewCent New Century Schoolbook}, %
+   {\Helvet Helvetica}). %
   C'est très simple avec toute distribution {\LaTeX} moderne: il
   suffit de charger le paquetage approprié. Consulter la %
   \doc{psnfss2e}{http://texdoc.net/pkg/psnfss/} %
-  de l'ensemble de paquetages PSNFSS pour connaître les choix
-  disponibles.
-\item Utiliser une police OpenType ou TrueType présente sur son système avec le
-  moteur {\XeLaTeX}. Seule une poignée de ces polices offrent
-  toutefois un support approprié pour les mathématiques. La gestion
-  des polices de caractères avec {\XeLaTeX} se fait avec le paquetage
+  de l'ensemble de paquetages PSNFSS.
+\item Utiliser une police OpenType ou TrueType présente sur son
+  système avec le moteur {\XeLaTeX}. Seule une poignée de ces polices
+  offre toutefois un support approprié pour les mathématiques. La
+  gestion des polices avec {\XeLaTeX} se fait avec le paquetage
   standard \pkg{fontspec}; consulter sa %
   \doc{fontspec}{http://texdoc.net/pkg/fontspec/}.
 \end{enumerate}
@@ -224,14 +227,15 @@ Pour les thèses et mémoires de l'Université Laval, la Faculté des
     {\Palatino Palatino} \> {\Palatino ABCDEF abcdef 1234567890}
   \end{tabbing}
 \end{quote}
-Pour utiliser ces deux dernières avec {\LaTeX}, on charge
+Pour utiliser ces deux dernières avec pdf{\LaTeX}, charger
 respectivement les paquetages \pkg{mathptmx} ou \pkg{mathpazo}. Avec
-{\XeLaTeX}, on utilisera les polices Termes et Pagella du projet %
+{\XeLaTeX}, utiliser les polices Termes et Pagella du projet %
 \link{http://www.gust.org.pl/projects/e-foundry/tex-gyre/}{TeX~Gyre}.
 Ce sont des polices très similaires à Times et Palatino, disponibles
 en version OpenType et qui fournissent un bon support pour les
 mathématiques via le projet frère %
-\link{http://www.gust.org.pl/projects/e-foundry/tg-math/}{TeX~Gyre Math}.
+\link{http://www.gust.org.pl/projects/e-foundry/tg-math/}{TeX~Gyre
+  Math}.
 
 \begin{exemple}
   \label{ex:trucs:palatino}
@@ -243,11 +247,10 @@ mathématiques via le projet frère %
 \end{lstlisting}
 
   Avec le moteur {\XeLaTeX}, il est possible d'utiliser n'importe
-  quelle police de caractères OpenType et TrueType installée dans le
-  système d'exploitation de l'ordinateur. Pour obtenir un résultat
-  équivalent à celui de \pkg{mathpazo}, on installe les polices
-  TeX~Gyre dans le système, puis on insère dans le préambule les
-  commandes
+  quelle police OpenType et TrueType installée dans le système
+  d'exploitation de l'ordinateur. Pour obtenir un résultat équivalent
+  à celui de \pkg{mathpazo}, installer les polices TeX~Gyre dans le
+  système, puis insérer dans le préambule les commandes
 \begin{lstlisting}
 \usepackage{fontspec}
 \setmainfont{TeX Gyre Pagella}
@@ -262,7 +265,7 @@ une police commerciale de très haute qualité offrant également un
 excellent support pour les mathématiques. Ses auteurs ont toujours été
 proches de la communauté {\LaTeX}. La Bibliothèque de l'Université
 Laval détient une licence d'utilisation de cette police. Les étudiants
-et le personnel de l'Université peuvent s'en produrer une copie
+et le personnel de l'Université peuvent s'en procurer une copie
 gratuitement en écrivant à
 \href{mailto:lucida@bibl.ulaval.ca}{lucida@bibl.ulaval.ca}.
 
@@ -281,7 +284,7 @@ disponibles.
 
 \begin{table}
   \centering
-  \caption{Couleurs toujours disponibles quand le paquetage
+  \caption{Couleurs toujours disponibles lorsque le paquetage
     \pkg{xcolor} est chargé}
   \label{tab:trucs:couleurs}
   \begin{tabularx}{1.0\linewidth}{XlXll}
@@ -347,7 +350,7 @@ respectivement les teintes de rouge, de vert et de bleu.
 \begin{exemple}
   La commande
 \begin{lstlisting}
-\definecolor{acier}{rgb}{0.1,0.4,0.6}
+\definecolor{acier}{rgb}{0.3,0.4,0.6}
 \end{lstlisting}
   définit une nouvelle couleur nommée \code{acier} composée de rouge
   30~\%, de vert 40~\% et de bleu 60~\%: %
@@ -355,8 +358,9 @@ respectivement les teintes de rouge, de vert et de bleu.
   \fcolorbox{black}[rgb]{0,0.4,0}{\phantom{xx}} $+$ %
   \fcolorbox{black}[rgb]{0,0,0.6}{\phantom{xx}} $=$ %
   \fcolorbox{black}[rgb]{0.3,0.4,0.6}{\phantom{xx}}. %
-  On pourra utiliser la couleur \code{acier} directement dans les
-  commandes \cmdprint{\color} et \cmdprint{\textcolor}. %
+  Une fois la couleur  \code{acier} définie dans le préambule, elle
+  devient disponible pour être utilisée dans les commandes
+  \cmdprint{\color} et \cmdprint{\textcolor}. %
   \qed
 \end{exemple}
 
@@ -374,8 +378,8 @@ couleur.
 \label{sec:trucs:hyperliens}
 
 Nous en avons déjà traité à quelques reprises, notamment à la
-section~6 de \citet{UL:latex:1}: le paquetage \pkg{hyperref}
-\citep{hyperref} permet de transformer toutes les références dans le
+\autoref{sec:organisation:renvois}: le paquetage \pkg{hyperref}
+\citep{hyperref} permet de transformer les références dans le
 texte en hyperliens cliquables lorsque le document est produit avec
 pdf{\LaTeX} ou {\XeLaTeX}. C'est très pratique lors de la consultation
 électronique d'un document.
@@ -393,7 +397,7 @@ valeur (avec en gras la valeur par défaut) ainsi qu'une brève
 explication de chacune.
 
 \begin{table}[h]
-  \begin{tabularx}{1.0\linewidth}{@{}p{6em}p{6em}X@{}}
+  \begin{tabularx}{1.0\linewidth}{@{}p{7em}p{6em}X@{}}
     \code{colorlinks} & \code{true}|\code{\textbf{false}} & colorer les
                                                             liens selon
                                                             leur type \\
@@ -418,19 +422,20 @@ Lorsque la valeur admissible d'une option est \code{true} ou
 \pkg{xcolor} (\autoref{sec:trucs:couleurs}).
 
 Les fichiers PDF peuvent contenir diverses métadonnées sur leur
-contenu. Le paquetage \pkg{hyperref} permet de définir certaines
-catégories de celles-ci, notamment les informations de document comme
-le titre ou l'auteur. Nous ne mentionnons ici que deux options de
-configutation; la section~3.7 de la %
-\doc{hyperref}{http://texdoc.net/pkg/hyperref} %
-contient la liste complète.
+contenu. Le paquetage \pkg{hyperref} permet d'en définir certaines,
+notamment le titre ou l'auteur du document.
 
-\begin{table}[h]
-  \begin{tabularx}{1.0\linewidth}{@{}p{6em}p{6em}X@{}}
+\begin{table}[!h]
+  \begin{tabularx}{1.0\linewidth}{@{}p{7em}p{6em}X@{}}
     \code{pdftitle}  & texte & titre du document PDF \\
     \code{pdfauthor} & texte & auteur du document PDF
   \end{tabularx}
 \end{table}
+
+Consulter la section~3.7 de la %
+\doc{hyperref}{http://texdoc.net/pkg/hyperref} %
+de \pkg{hyperref} pour obtenir la liste complète des options de
+configuration des métadonnées.
 
 \begin{exemple}
   \label{ex:trucs:couleurs}
@@ -440,11 +445,14 @@ contient la liste complète.
 \definecolor{link}{rgb}{0,0.4,0.6}   % ~RoyalBlue de dvips
 \definecolor{url}{rgb}{0.6,0,0}      % rouge foncé
 \definecolor{citation}{rgb}{0,0.5,0} % vert foncé
-\hypersetup{colorlinks, linktocpage,
-  linkcolor=link, urlcolor=url, citecolor=citation,
-  pdftitle={Rédaction de thèses et mémoires avec LaTeX:
-            Concepts avancés},
-  pdfauthor={Vincent Goulet}}
+\hypersetup{%
+  pdfauthor = {Vincent Goulet},
+  pdftitle = {Rédaction avec LaTeX},
+  colorlinks = true,
+  linktocpage = true,
+  urlcolor = url,
+  linkcolor = link,
+  citecolor = citation}
 \end{lstlisting}
   \qed
 \end{exemple}
@@ -474,9 +482,9 @@ contient la liste complète.
 \label{sec:trucs:listings}
 
 L'environnement standard \Ie{verbatim} de {\LaTeX} permet de présenter
-du texte exactement tel qu'il est entré dans le code source du
-document. C'est un environnement particulièrement utile pour afficher
-du code informatique puisque le texte est composé en police non
+du texte tel qu'il est entré dans le code source du document. C'est un
+environnement particulièrement utile pour afficher du code
+informatique puisque le texte est composé en police non
 proportionnelle et que sa disposition exacte est respectée.
 
 \begin{demo}
@@ -561,10 +569,10 @@ int main()
   \end{texample}
 \end{demo}
 
-Il serait trop long et nettement hors de la portée du présent document
+Il serait trop long et nettement hors de la portée du présent ouvrage
 d'expliquer les nombreuses fonctionnalités de \pkg{listings}.
 Précisons simplement que le paquetage a servi pour en composer les
-extraits de code {\LaTeX} et pour construire une grande partie de
+extraits de code et pour construire une grande partie de
 l'index.
 
 \begin{exemple}
@@ -577,23 +585,23 @@ l'index.
 \definecolor{comments}{rgb}{0.7,0,0}
 
 %% Configuration de listings
-\lstset{language=[LaTeX]TeX,
-  basicstyle=\ttfamily\NoAutoSpacing,
-  keywordstyle=\mdseries,
-  commentstyle=\color{comments}\slshape,
-  extendedchars=true,
-  showstringspaces=false,
-  backgroundcolor=\color{LightYellow1},
-  frame=lr, rulecolor=\color{LightYellow1},
-  xleftmargin=3.4pt, xrightmargin=3.4pt}
+\lstset{language = [LaTeX]TeX,
+  basicstyle = \ttfamily\NoAutoSpacing,
+  keywordstyle = \mdseries,
+  commentstyle = \color{comments}\slshape,
+  extendedchars = true,
+  showstringspaces = false,
+  backgroundcolor = \color{LightYellow1},
+  frame = lr,
+  rulecolor = \color{LightYellow1},
+  xleftmargin = 3.4pt,
+  xrightmargin = 3.4pt}
 \end{lstlisting}
   (La couleur \code{LightYellow1} est définie par \pkg{xcolor} lorsque
   le paquetage est chargé avec l'option \code{x11names}.)
   \qed
 \end{exemple}
 
-%%% Réactivation des mots-clés.
-%\lstset{language=[LaTeX]TeX, moretexcs={int,include}}
 
 
 \section{Production de rapports avec l'analyse intégrée}
@@ -617,11 +625,12 @@ Cette meilleure façon de faire, tirée du concept de
 document l'analyse et le rapport, puis de produire automatiquement une
 partie du second à partir de la première.
 
-Les utilisateurs du système statistique R bénéficient d'une mise
-en œuvre simple et élégante du concept ci-dessus avec l'outil Sweave
+Les utilisateurs du système statistique R bénéficient d'une mise en
+œuvre simple et élégante du concept ci-dessus avec l'outil Sweave
 \citep{Sweave}. Un fichier Sweave est à la base un document {\LaTeX}
 dans lequel on a inséré du code R à l'intérieur de balises spéciales
-utilisant la syntaxe \code{noweb} \citep{noweb}, comme ceci:
+\verb|<<>>=| et \verb|@| tirée de la syntaxe \code{noweb}
+\citep{noweb}, comme ceci:
 \begin{lstlisting}
 \section{Commandes R}
 
@@ -641,13 +650,12 @@ par l'extension \code{.Rnw}. Sa compilation s'effectue
 en deux étapes:
 \begin{enumerate}
 \item Le fichier \code{.Rnw} est passé à la commande \code{Sweave()}
-  de R. Celle-ci retrace les extraits de code placés entre les balises
-  \verb|<<>>=| et \verb|@| et les remplace par des environnements
-  {\LaTeX} contenant, par défaut, les expressions R et leur résultat
-  dans des environnements \Ie{Sinput} et \Ie{Soutput}. Elle évalue
-  également les expressions R se trouvant dans les commandes
-  \cmd{\Sexpr} pour les remplacer par leur résultat. Cela produit un
-  fichier \code{.tex}:
+  de R. Celle-ci retrace les extraits de code et les remplace par des
+  environnements {\LaTeX} contenant, par défaut, les expressions R et
+  leur résultat dans des environnements \Ie{Sinput} et \Ie{Soutput}.
+  Elle évalue également les expressions R se trouvant dans les
+  commandes \cmd{\Sexpr} pour les remplacer par leur résultat. Cela
+  produit un fichier \code{.tex}:
 \begin{lstlisting}
 \section{Commandes R}
 
@@ -715,7 +723,6 @@ ses besoins.
   dans le seul fichier \code{ulthese.dtx}.
 \end{information}
 
-\newpage
 
 \section{Diapositives}
 \label{sec:trucs:diapositives}
@@ -742,7 +749,7 @@ diapositive à l'autre, gère automatiquement la table des matières
 et\dots\ produit des diapositives en couleur.
 
 Quelle que soit la classe utilisée, les diapositives produites avec
-{\LaTeX} se présentent sous forme de fichier PDF. On les projète avec
+{\LaTeX} se présentent sous forme de fichier PDF. On les projette avec
 une liseuse PDF en mode plein écran.
 
 Nous n'irons pas plus loin sur le sujet dans ce document. Consulter
@@ -750,22 +757,19 @@ la %
 \doc{beamer}{http://texdoc.net/pkg/beameruserguide} %
 de \class{beamer} pour apprendre à utiliser la classe. Produire des
 diapositives de grande qualité avec les gabarits fournis avec la
-classe est simple et rapide.
-
-Les diapositives de la première partie de la formation
-\citep{UL:latex:1} ont été produites avec \class{beamer}.
+classe se révèle simple et rapide.
 
 
 
 \section{Gestion des versions et travail collaboratif}
 \label{sec:trucs:cvs}
 
-Vous travaillez à plusieurs sur un même fichier, ou seul, mais de
-plusieurs postes de travail différents. Quelle est la plus récente
-version du fichier? Mon ajout fait hier dans le fichier a-t-il été
-pris en compte par ma collègue aujourd'hui? Une modification apportée
-au fichier n'est plus nécessaire; comment retourner en arrière
-facilement?
+Plusieurs personnes travaillent sur un même fichier, ou encore, une
+seule personne y travaille, mais de plusieurs postes de travail
+différents. Quelle est la plus récente version du fichier? Un ajout
+fait hier dans le fichier a-t-il été pris en compte par une collègue
+aujourd'hui? Une modification apportée au fichier n'est plus
+nécessaire; comment retourner en arrière facilement?
 
 Les informaticiens ont résolu ce genre de problèmes il y a des
 dizaines d'années avec les systèmes de gestion de versions. Les
@@ -831,7 +835,7 @@ consulter leur équipe de soutien informatique facultaire.
 \noindent%
 Pour les exercices
 \nolink{\ref{exercice:trucs:1}}--\nolink{\ref{exercice:trucs:n}},
-utiliser le fichier \fichier{exercices\_trucs.tex}. Celui-ci reprend
+utiliser le fichier \fichier{exercice\_trucs.tex}. Celui-ci reprend
 une partie de la documentation de la classe \class{ulthese}. De plus,
 on remarquera que le document:
 \begin{itemize}
@@ -941,7 +945,7 @@ on remarquera que le document:
   \Pe{lstlisting}. En s'inspirant de l'\autoref{ex:trucs:listings},
   configurer la présentation des extraits de code pour utiliser une
   police non proportionnelle (\cmdprint{\ttfamily}) et un arrière-plan
-  de la couleur standard «lightgray».
+  de la couleur standard \code{lightgray}.
   \begin{sol}
     S'il y avait plusieurs extraits de code dans le document, mieux
     vaudrait les configurer tous à l'identique dans le préambule du
@@ -970,63 +974,12 @@ latex ulthese.ins
   \end{sol}
 \end{exercice}
 
-\begin{exercice}[nosol]
-  Accéder au dépôt qui héberge le code source de cette formation
-  {\LaTeX} en suivant le lien à la page des notices de copyright.
-  Télécharger le fichier maître de la première partie de la formation
-  et ses fichiers auxiliaires:
-
-  \medskip
-  \begin{minipage}{\linewidth}
-    \dirtree{%
-      .1 formation\_latex-partie\_1.tex.
-      .2 licence-partie\_1.tex.
-      .2 colophon-partie\_1.tex.
-      .2 exercice\_commandes-output.pdf.
-      .2 renvoi.pdf.
-      .2 renvoi\_avec\_ref.pdf.
-      .2 renvoi\_avec\_autoref.pdf.
-      .2 ponctuation.pdf.
-    }
-  \end{minipage}
-  \medskip
-
-  (Les lecteurs curieux pourront aussi installer sur leur poste de
-  travail un %
-  \link{http://subversion.apache.org/packages.html}{client Subversion} %
-  et l'utiliser pour extraire l'ensemble des fichiers du dépôt.)
-
-  Une fois les fichiers en main, examiner le code source du fichier
-  maître. Il s'agit d'un document utilisant la classe \class{beamer}
-  pour créer des diapositives.
-
-  Désactiver (effacer ou mettre en commentaire) les lignes suivantes
-  du préambule:
-\begin{lstlisting}
-\defaultfontfeatures{Ligatures=TeX,Scale=0.92}
-\setmainfont{Lucida Bright OT}
-\setsansfont{Lucida Sans OT}
-\setmathfont{Lucida Bright Math OT}
-\setmonofont{Lucida Grande Mono DK}
-\newfontfamily\titles{Myriad Pro}
-\end{lstlisting}
-  et, plus loin dans le fichier,
-\begin{lstlisting}
-\setbeamerfont{frametitle}{family=\titles}
-\end{lstlisting}
-  Compiler ensuite le document avec {\XeLaTeX}. En comparant le code
-  source et les diapositives, observer comment \class{beamer} peut
-  afficher des listes une puce à la fois à partir d'un environnement
-  \Pe{itemize} usuel une fois qu'on lui a ajouté une option
-  \verb=[<+->]=.
-\end{exercice}
-
 \Closesolutionfile{solutions}
 
 
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-engine: xetex
-%%% TeX-master: "formation_latex_UL-partie_2"
+%%% TeX-master: "formation-latex-ul"
 %%% coding: utf-8
 %%% End:

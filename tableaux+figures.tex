@@ -9,11 +9,11 @@ un tableau ou un graphique simple pièce par pièce avec la souris.
 En revanche, pour ce type de contenu comme pour tout autre, {\LaTeX}
 fait ce qu'on lui demande, sans tenter de deviner notre pensée ou,
 pire, de prétendre savoir mieux que nous ce que nous voulons faire. À
-ce chapitre, les traitements de texte ne brillent plus! Peut-être avez-vous
+ce chapitre, les traitements de texte ne brillent plus! Quiconque a
 déjà eu de la difficulté à contrôler les bordures d'un tableau, la
 hauteur des lignes ou la largeur des colonnes dans un traitement de
-texte? Alors vous comprenez combien l'exercice de composition d'un tableau
-avec ces outils peut rapidement devenir frustrant.
+texte comprendra combien l'exercice de composition d'un tableau avec
+ces outils peut rapidement devenir frustrant.
 
 Avant de discuter de la création ou de l'insertion de tableaux, de
 graphiques et d'images dans un document {\LaTeX}, il convient de
@@ -24,7 +24,7 @@ des tableaux clairs et faciles à consulter.
 \section{De la conception de beaux tableaux}
 \label{sec:tableaux:booktabs}
 
-On utilise les tableaux pour disposer de l'information sous forme de
+Les tableaux servent à disposer de l'information sous forme de
 grille. Par conséquent, le premier réflexe pour les mettre en forme
 consiste souvent à mettre en évidence cette grille par le biais de
 filets\footnote{%
@@ -145,10 +145,11 @@ La signification des arguments\footnote{%
   servant à spécifier l'alignement vertical du tableau par rapport à
   la ligne de base externe.} %
 est la suivante. Nous ne traitons ici que les options les plus souvent
-employées. Pour une liste plus exhaustive, consulter la %
+utilisées. Pour une liste plus exhaustive, consulter la %
 \doc{memman}{http://texdoc.net/pkg/memman} %
 de la classe \class{memoir} (chapitre 11) ou %
-\citet[section \link{http://fr.wikibooks.org/wiki/LaTeX/Tableaux}{Tableaux}]{wikilivres:latex}.
+\citet[section
+\link{http://fr.wikibooks.org/wiki/LaTeX/Tableaux}{Tableaux}]{wikilivres:latex}.
 
 \begin{list}{}{%
     \setlength{\labelsep}{1.5ex}
@@ -166,10 +167,10 @@ de la classe \class{memoir} (chapitre 11) ou %
   droite.
 
   La largeur du tableau est généralement exprimée en fraction de la
-  largeur du bloc de texte. Celle-ci est accessible avec la commande
-  \cs{textwidth}. Par exemple, les déclarations suivantes définissent
-  respectivement des tableaux occupant toute la largeur d'une page et
-  80~\% de la largeur de la page:
+  largeur du bloc de texte (longueur \cmd{!textwidth}). Par exemple,
+  les déclarations suivantes définissent respectivement des tableaux
+  occupant toute la largeur d'une page et 80~\% de la largeur de la
+  page:
 \begin{lstlisting}
 \begin{tabular*}{\textwidth}`\marg{format}'
 \end{lstlisting}
@@ -219,61 +220,48 @@ de la classe \class{memoir} (chapitre 11) ou %
 \item[lignes] Le contenu des cellules du tableau. Les entrées des
   cellules sont séparées par le symbole \verb=&= et les lignes par
   {\pixbsbs}. Une cellule peut être vide.
-
-  Les lignes de contenu peuvent également contenir certaines commandes
-  spéciales pour contrôler la mise en forme. La commande ci-dessous
-  permet de fusionner des cellules:
-  \begin{description}
-  \item[\normalfont\cmdprint{\multicolumn\marg{n}\marg{fmt}\marg{texte}}]
-    fusionne les \meta{n} cellules suivantes en une seule de format
-    \meta{fmt} et contenant le texte \meta{texte}. \par%
-    Cette commande ne peut apparaître qu'au début d'une ligne ou après
-    un symbole de changement de colonne \verb=&=. \par%
-    La commande est souvent utilisée avec une valeur de \meta{n} égale
-    à 1 pour changer le format d'une cellule, par exemple pour centrer
-    le titre d'une colonne qui est autrement alignée à gauche ou à
-    droite.
-  \end{description}
-
-  Les commandes suivantes\footnote{%
-    Ce sont les commandes de \pkg{booktabs} et \class{memoir}
-auxquelles nous faisions référence à la \autoref{sec:tableaux:booktabs}.} %
-  servent à insérer des filets horizontaux dans un tableau:
-  \begin{description}
-  \item[\normalfont\cmd{\toprule}] insère un filet horizontal épais
-    suivi d'un espace vertical au début d'un tableau;
-  \item[\normalfont\cmd{\midrule}] insère un filet horizontal mince
-    précédé et suivi d'un espace vertical entre deux lignes;
-  \item[\normalfont\cmd{\cmidrule}\marg{m-n}] insère un filet
-    horizontal comme \cmdprint{\midrule} de la gauche de la
-    colonne \meta{m} à la droite de la colonne \meta{n};
-  \item[\normalfont\cmd{\bottomrule}] insère un filet horizontal épais
-    précédé d'un espace vertical à la fin d'un tableau.
-  \end{description}
-  Une fin de ligne {\bs\bs}  doit  obligatoirement précéder chacune
-  de ces commandes, sauf évidemment \cmdprint{\toprule}.
 \end{list}
+
+Outre du texte, les lignes de contenu peuvent contenir certaines
+commandes spéciales pour contrôler la mise en forme du tableau. En
+premier lieu, la commande
+\begin{lstlisting}
+\multicolumn`\marg{n}\marg{fmt}\marg{texte}'
+\end{lstlisting}
+permet de fusionner les \meta{n} cellules suivantes en une seule de
+format \meta{fmt} et d'y placer \meta{texte}. Cette commande ne peut
+apparaître qu'au début d'une ligne ou après un symbole de changement
+de colonne \verb=&=. Elle est souvent utilisée avec une valeur de
+\meta{n} égale à 1 pour changer le format d'une cellule, par exemple
+pour centrer le titre d'une colonne qui est autrement alignée à gauche
+ou à droite.
+
+Ensuite, les commandes suivantes\footnote{%
+  Ce sont les commandes de \pkg{booktabs} et \class{memoir} auxquelles
+  nous faisions référence à la \autoref{sec:tableaux:booktabs}.} %
+servent à insérer des filets horizontaux dans un tableau:
+\begin{lstlisting}
+\toprule
+\midrule
+\cmidrule`\marg{m-n}'
+\bottomrule
+\end{lstlisting}
+La commande \cmd{\toprule} insère un filet horizontal épais suivi d'un
+espace vertical au début d'un tableau; \cmd{\midrule} insère un filet
+horizontal mince précédé et suivi d'un espace vertical entre deux
+lignes; \cmd{\cmidrule}\marg{m-n} insère un filet horizontal comme
+\cmdprint{\midrule} de la gauche de la colonne \meta{m} à la droite de
+la colonne \meta{n}; enfin, \cmd{\bottomrule} insère un filet
+horizontal épais précédé d'un espace vertical à la fin d'un tableau.
+Une fin de ligne {\bs\bs} doit obligatoirement précéder chacune de ces
+commandes, sauf évidemment \cmdprint{\toprule}.
 
 La hauteur des lignes d'un tableau est déterminée automatiquement en
 fonction du contenu de celles-ci.
 
 \begin{exemple}
-  \label{exemple:tableaux:tabular}
-  On crée d'abord un tableau d'une largeur ajustée automatiquement au
-  contenu. Remarquer comment les lignes de contenu sont définies. La
-  première colonne est alignée à gauche et toutes les autres, à droite.
-\begin{lstlisting}
-\begin{tabular}{lrrr}
-  \toprule
-  Produit & Quantité & Prix unitaire (\$) & Prix (\$) \\
-  \midrule
-  Vis à bois    & 2 & 9,90 & 19,80 \\
-  Clous vrillés & 5 & 4,35 & 21,75 \\
-  \midrule
-  TOTAL         & 7 &      & 41,55 \\
-  \bottomrule
-\end{tabular}
-\end{lstlisting}
+  \label{exemple:tableaux:tabular:1}
+  Considérer le tableau suivant:
   \begin{center}
     \begin{tabular}{lrrr}
       \toprule
@@ -286,13 +274,49 @@ fonction du contenu de celles-ci.
       \bottomrule
     \end{tabular}
   \end{center}
+  La largeur du tableau est ajustée au contenu, la première colonne
+  est alignée à gauche et toutes les autres, à droite. Le code
+  ci-dessous permet de créer ce tableau. Remarquer comment les lignes
+  de contenu sont définies.
+\begin{lstlisting}
+\begin{tabular}{lrrr}
+  \toprule
+  Produit & Quantité & Prix unitaire (\$) & Prix (\$) \\
+  \midrule
+  Vis à bois    & 2 & 9,90 & 19,80 \\
+  Clous vrillés & 5 & 4,35 & 21,75 \\
+  \midrule
+  TOTAL         & 7 &      & 41,55 \\
+  \bottomrule
+\end{tabular}
+\end{lstlisting}
+  \qed
+\end{exemple}
 
-  Avec quelques modifications, le tableau occupera toute la
-  largeur de la page, la largeur de la première colonne étant ajustée
-  pour combler l'espace nécessaire. De plus, on modifie l'entête de la
-  première colonne avec la commande \cmd{\multicolumn} afin de centrer
-  le titre. Enfin, on augmente la hauteur de l'entête à l'aide d'une
-  réglure invisible (\autoref{sec:boites:rulebox}).
+\begin{exemple}
+  \label{exemple:tableaux:tabular:2}
+  On souhaite modifier le tableau de
+  l'\autoref{exemple:tableaux:tabular:1}  pour obtenir le tableau
+  suivant:
+  \begin{center}
+    \begin{tabularx}{\textwidth}{Xrrr}
+      \toprule
+      \multicolumn{1}{c}{Produit} &
+      \rule[-8pt]{0mm}{24pt} Quantité & Prix unitaire (\$) & Prix (\$) \\
+      \midrule
+      Vis à bois    & 2 & 9,90 & 19,80 \\
+      Clous vrillés & 5 & 4,35 & 21,75 \\
+      \midrule
+      TOTAL         & 7 &      & 41,55 \\
+      \bottomrule
+    \end{tabularx}
+  \end{center}
+  Le tableau occupe désormais toute la largeur de la page, la largeur
+  de la première colonne étant ajustée pour combler l'espace
+  nécessaire. De plus, le titre de la première colonne est centré et
+  la hauteur de l'entête est augmentée.
+
+  Le code suivant permet de réaliser cette mise en forme.
 \begin{lstlisting}
 \begin{tabularx}{\textwidth}{Xrrr}
   \toprule
@@ -307,32 +331,23 @@ fonction du contenu de celles-ci.
   \bottomrule
 \end{tabularx}
 \end{lstlisting}
-  \begin{center}
-    \begin{tabularx}{\textwidth}{Xrrr}
-      \toprule
-      \multicolumn{1}{c}{Produit} &
-      \rule[-8pt]{0mm}{24pt} Quantité & Prix unitaire (\$) & Prix (\$) \\
-      \midrule
-      Vis à bois    & 2 & 9,90 & 19,80 \\
-      Clous vrillés & 5 & 4,35 & 21,75 \\
-      \midrule
-      TOTAL         & 7 &      & 41,55 \\
-      \bottomrule
-    \end{tabularx}
-  \end{center}
+  L'environnement \Ie{tabularx} sert à créer un tableau de largeur
+  définie et la commande \cmd{\multicolumn}, à centrer le titre de la
+  première colonne. On augmente la hauteur de l'entête à l'aide d'une
+  réglure invisible (\autoref{sec:boites:rulebox}). %
   \qed
 \end{exemple}
-
 
 
 \section{Figures et graphiques}
 \label{sec:tableaux:figures}
 
-Il est possible de tracer des figures simples directement avec {\LaTeX}. Par «simple» on entend: des figures se
-limitant  pour l'essentiel à du texte, des lignes, des flèches, des
-ronds et des ovales. C'est parfois amplement suffisant et, en
-définitive, assez pratique puisque le code source d'une figure se
-trouve alors dans le même format que le reste du document.
+Il est possible de tracer des figures simples directement avec
+{\LaTeX}. Par «simple» on entend: des figures se limitant pour
+l'essentiel à du texte, des lignes, des flèches, des ronds et des
+ovales. C'est parfois amplement suffisant et, en définitive, assez
+pratique puisque le code source d'une figure se trouve alors dans le
+même format que le reste du document.
 
 Pour la création de figures et de graphiques plus complexes, on aura généralement
 recours à des logiciels spécialisés externes. {\LaTeX} est ensuite en
@@ -350,15 +365,15 @@ bibliographie.
 \subsection{Figures {\LaTeX}}
 \label{sec:tableaux:figures:picture}
 
-L'environnement \Ie{picture} permet de tracer des figures simples dans
-{\LaTeX} comme des diagrammes à base de texte, des flux logiques ou
-des organigrammes. Quelques logiciels spécialisés de création de
-graphiques sont en mesure d'exporter leurs graphiques dans le format
-de \Pe{picture}.
+L'environnement \Ie{picture} permet de tracer des figures simples
+comme des diagrammes à base de texte, des flux logiques ou des
+organigrammes. Quelques logiciels spécialisés de création de
+graphiques sont même en mesure d'exporter leurs graphiques dans le
+format de \Pe{picture}.
 
 Une fois conçues, les figures réalisées avec \Pe{picture} sont
 simples à modifier; nul besoin de recourir à un logiciel externe pour
-le moindre petit changement. Autre avantage: la police de caractère du texte
+le moindre petit changement. Autre avantage: la police du texte
 de la figure sera le même que celle du document.
 
 Pour tracer une figure avec l'environnement \Pe{picture}, on crée
@@ -372,11 +387,11 @@ compléter l'élément. C'est souvent plus simple d'esquisser d'abord un modèle
 crayon sur du papier quadrillé.
 
 La figure ci-dessous illustre ce qu'il est possible de faire avec
-l'environnement \Pe{picture}. La consultation du code commenté correspondant devrait
-permettre de comprendre les principes de base de la création de
-figures. Autrement, l'annexe~D de la %
- \doc{memman}{http://texdoc.net/pkg/memoir} %
-de la classe \class{memoir} fournit une bonne introduction à \Pe{picture}.
+l'environnement \Pe{picture}. La consultation du code commenté
+correspondant devrait permettre de comprendre les principes de base de
+la création de figures. Autrement, l'annexe~D de la %
+\doc{memman}{http://texdoc.net/pkg/memoir} %
+de \class{memoir} fournit une bonne introduction à \Pe{picture}.
 
 (Nous avons tracé la grille en filigrane dans la figure afin de
 faciliter la comparaison entre le code et le résultat.)
@@ -570,9 +585,9 @@ pour les détails et d'autres options.
 
   Enfin, il y a diverses manières de sélectionner une partie seulement
   d'une image. L'option \code{bb} (pour \emph{Bounding Box}) prend
-  quatre mesures en points PostScript (\code{bp}; $1~\text{bp} =
-  1/72~\text{pouce}$) définissant le coin inférieur gauche et le coin
-  supérieur droit de la zone à inclure:
+  quatre mesures en points PostScript (\autoref{tab:bases:longueurs})
+  définissant le coin inférieur gauche et le coin supérieur droit de
+  la zone à inclure:
   \begin{demo}
     \begin{texample}[0.72\linewidth]
 \begin{lstlisting}
@@ -588,10 +603,10 @@ pour les détails et d'autres options.
 \end{exemple}
 
 La commande \cmd{\includegraphics} permet d'appliquer certaines
- transformations aux images importées, mais celles-ci
-peuvent également s'effectuer à l'aide de commandes externes
-\emph{après} l'importation. L'avantage de ces commandes, c'est
-qu'elles sont valides tout autant pour du texte que pour des images.
+transformations aux images importées. Ces transformations peuvent
+également s'effectuer à l'aide de commandes externes \emph{après}
+l'importation. L'avantage de ces commandes, c'est qu'elles sont
+valides tout autant pour du texte que pour des images.
 
 Le paquetage \pkg{graphicx} définit les commandes suivantes:
 \begin{lstlisting}
@@ -677,20 +692,19 @@ les moteurs pdf{\LaTeX} ou {\XeLaTeX}, le très pratique paquetage
 \begin{lstlisting}
 \includepdf`\oarg{options}\marg{fichier}'
 \end{lstlisting}
-Les \meta{options} sont trop nombreuses pour les présenter ici;
-consulter la %
+Les \meta{options} sont très nombreuses; consulter la %
 \doc{pdfpages}{http://texdoc.net/pkg/pdfpages/}.
 
 \begin{exemple}
-  Les couvertures avant et arrière du présent document ont été
-  réalisées dans un logiciel spécialisé de création graphique,
-  sauvegardées dans un fichier \fichier{couvertures.pdf}, puis mises
-  en place dans le document avec
+  Il n'est pas rare que les couvertures avant et arrière d'un document
+  soient réalisées dans un logiciel spécialisé de création graphique.
+  Supposons que les deux couvertures sont sauvegardées en format PDF
+  dans un fichier \fichier{couvertures.pdf}. Pour les utiliser dans le
+  document, il suffit de placer aux endroits appropriés les commandes
 \begin{lstlisting}
 \includepdf[pages=1]{couvertures}
 \includepdf[pages=2]{couvertures}
 \end{lstlisting}
-  aux endroits appropriés.
   \qed
 \end{exemple}
 
@@ -772,7 +786,7 @@ disposition des éléments flottants pourra consulter
 \cite{Mittelbach:floats:2014}.
 
 \begin{exemple}
-  On reprend le tableau de l'\autoref{exemple:tableaux:tabular}, mais cette
+  On reprend le tableau de l'\autoref{exemple:tableaux:tabular:1}, mais cette
   fois défini à l'intérieur d'un environnement \Pe{table}:
 \begin{lstlisting}
 \begin{table}
@@ -813,8 +827,9 @@ annoncer et y faire référence dans le texte («comme l'illustre la
 figure~3\dots»). Cela
 permet à la fois de guider le lecteur au fil de sa lecture et de
 construire une liste des tableaux et des figures\footnote{%
-  Obtenues respectivement avec \cmd{\listoftables} et
-\cmd{\listoffigures} \citep[section~3]{UL:latex:1}.} %
+  Obtenues respectivement avec les commandes \cmd{\listoftables} et
+  \cmd{\listoffigures} mentionnées à la
+  \autoref{sec:organisation:tdm}.} %
 dans les pages liminaires d'un long document.
 
 Pour ajouter une légende à un tableau ou une figure, il suffit
@@ -841,7 +856,7 @@ contraire il est disposé comme un paragraphe normal.
   les étiquettes plus neutres «\textsc{Tab.}» et «\textsc{Fig.}» dans
   les légendes des tableaux et figures. Pour utiliser --- comme dans
   le présent document --- ces versions plutôt que les versions par
-  défaut ajoutez dans le préambule les commandes suivantes:
+  défaut ajouter dans le préambule les commandes suivantes:
 \begin{lstlisting}
 \def\frenchtablename{{\scshape Tab.}}
 \def\frenchfigurename{{\scshape Fig.}}
@@ -850,7 +865,7 @@ contraire il est disposé comme un paragraphe normal.
 
 Pour faire référence à un tableau ou à une figure dans le texte, il
 faut utiliser le système de renvois automatiques de {\LaTeX}
-\citep[section~4]{UL:latex:1}. On attribue une étiquette à l'élément
+(\autoref{sec:organisation:renvois}). On attribue une étiquette à l'élément
 flottant en plaçant la commande \cmd{\label} dans le texte de la
 commande \cmd{\caption} ou dans son voisinage immédiat. Les commandes
 \cmd{\ref} ou \cmd{\autoref} servent ensuite à insérer des renvois dans
@@ -860,8 +875,7 @@ L'exemple suivant présente finalement la recette complète pour composer
 un tableau et une figure dans {\LaTeX}, légende et renvoi inclus.
 
 \begin{exemple}
-  Attention, exemple récursif: son texte constitue lui-même un
-  exemple. Le code source de la \autoref{fig:tableaux:captions} crée
+  Le code source de la \autoref{fig:tableaux:captions} crée
   le \autoref{tab:tableaux:captions}.
   \begin{figure}
 \begin{lstlisting}
@@ -908,25 +922,37 @@ flottants qui, par ailleurs, sont des boîtes verticales standards
 (\autoref{sec:boites:parbox}). Il est donc permis d'y mettre à peu
 près n'importe quoi, mais surtout plus d'un tableau ou plus d'une
 figure (ou même une combinaison des deux). Les environnements
-\Pe{minipage} (\autoref{sec:boites:parbox}) se revèlent alors
+\Pe{minipage} (\autoref{sec:boites:parbox}) se révèlent alors
 particulièrement utiles pour disposer les éléments de contenu dans la
 boîte.
 
-À l'\autoref{ex:tableaux:subcaptions}, on montre comment ajouter des
-sous-légendes pour chacun des éléments.  La section~10.9 de la %
-  \doc{memman}{http://texdoc.net/pkg/memoir} %
-de \class{memoir} comporte de nombreux détails additionnels sur les
-sous-légendes.
-
 \begin{exemple}
   \label{exemple:tableaux:grille}
-  Le code ci-dessous démontre comment disposer quatre images sous
-  forme de grille $2 \times 2$ dans une même figure flottante à l'aide
-  de boîtes verticales créées avec l'environnement \Pe{minipage}. On
-  pourrait faire de même avec des tableaux.
-
-  Dans la \autoref{fig:tableaux:grille} correspondant au code, nous
-  avons indiqué en grisé les limites des boîtes verticales.
+  La \autoref{fig:tableaux:grille} contient quatre images sous forme
+  de grille $2 \times 2$. Le code ci-dessous démontre comment parvenir
+  à cette disposition à l'aide de boîtes verticales créées avec
+  l'environnement \Pe{minipage}.
+  \begin{figure}
+    \fcolorbox{lightgray}{white}{\begin{minipage}{0.45\linewidth}
+      \includegraphics[scale=0.4]{ul_p}
+    \end{minipage}}
+    \hfill
+    \fcolorbox{lightgray}{white}{\begin{minipage}{0.45\linewidth}
+      \reflectbox{\includegraphics[scale=0.4]{ul_p}}
+    \end{minipage}}
+    \newline
+    \fcolorbox{lightgray}{white}{\begin{minipage}{0.45\linewidth}
+      \includegraphics[scale=0.4,angle=45]{ul_p}
+    \end{minipage}}
+    \hfill
+    \fcolorbox{lightgray}{white}{\begin{minipage}{0.45\linewidth}
+      \reflectbox{\includegraphics[scale=0.4,angle=45]{ul_p}}
+    \end{minipage}}
+  \caption{Exemple de disposition de plusieurs graphiques dans une
+    même figure flottante. Les rectangles en grisé indiquent les
+    limites des boîtes verticales.}
+  \label{fig:tableaux:grille}
+  \end{figure}
 \begin{lstlisting}
 \begin{figure}
   \begin{minipage}{0.45\linewidth}
@@ -946,29 +972,16 @@ sous-légendes.
   \end{minipage}
 \end{figure}
 \end{lstlisting}
-  \begin{figure}
-    \fcolorbox{lightgray}{white}{\begin{minipage}{0.45\linewidth}
-      \includegraphics[scale=0.4]{ul_p}
-    \end{minipage}}
-    \hfill
-    \fcolorbox{lightgray}{white}{\begin{minipage}{0.45\linewidth}
-      \reflectbox{\includegraphics[scale=0.4]{ul_p}}
-    \end{minipage}}
-    \newline
-    \fcolorbox{lightgray}{white}{\begin{minipage}{0.45\linewidth}
-      \includegraphics[scale=0.4,angle=45]{ul_p}
-    \end{minipage}}
-    \hfill
-    \fcolorbox{lightgray}{white}{\begin{minipage}{0.45\linewidth}
-      \reflectbox{\includegraphics[scale=0.4,angle=45]{ul_p}}
-    \end{minipage}}
-  \caption{Exemple de disposition de plusieurs graphiques dans une
-    même figure flottante}
-  \label{fig:tableaux:grille}
-  \end{figure}
   \qed
 \end{exemple}
 
+Lorsqu'une figure ou un tableau compte plusieurs éléments, comme à
+l'exemple précédent, il peut être souhaitable d'ajouter pour chacun
+une sous-légende. L'\autoref{ex:tableaux:subcaptions} explique
+comment y parvenir. La section~10.9 de la %
+  \doc{memman}{http://texdoc.net/pkg/memoir} %
+de \class{memoir} comporte de nombreux détails additionnels sur les
+sous-légendes.
 
 
 %%%
@@ -1028,12 +1041,9 @@ sous-légendes.
 
 \begin{exercice}
   Apporter au tableau de l'exercice précédent les modifications
-  suivantes:
-  \begin{enumerate}[i)]
-  \item centrer le titre de la deuxième colonne;
-  \item ajuster automatiquement la largeur du tableau au bloc de texte
-    sur la page avec un environnement \Pe{tabularx}.
-  \end{enumerate}
+  suivantes: centrer le titre de la deuxième colonne; ajuster
+  automatiquement la largeur du tableau au bloc de texte sur la page
+  avec un environnement \Pe{tabularx}.
   \begin{sol}
     Pour effectuer les modifications demandées, il faut:
     \begin{enumerate}[i)]
@@ -1118,19 +1128,20 @@ sous-légendes.
 \end{exercice}
 
 \begin{exercice}
-  Insérer, disons, la page couverture du présent document dans un
-  document de votre cru à l'aide des fonctionnalités du paquetage
-  \pkg{pdfpages} décrites à la \autoref{sec:tableaux:figures:pdfpages}.
+  Utiliser le fichier \fichier{exercice\_gabarit.tex} pour composer un
+  document qui insère, disons, la page couverture du présent document
+  à l'aide des fonctionnalités du paquetage \pkg{pdfpages} décrites à
+  la \autoref{sec:tableaux:figures:pdfpages}.
   \begin{sol}
     Le préambule du document devrait contenir la déclaration
 \begin{lstlisting}
 \usepackage{pdfpages}
 \end{lstlisting}
     pour charger le paquetage \pkg{pdfpages}. Ensuite, à l'endroit où
-    l'on souhaite insérer la couverture du présent document dans notre
+    l'on souhaite insérer la couverture du présent document dans le
     document, il s'agit de placer la commande
 \begin{lstlisting}
-\includepdf[pages=1]{formation_latex_UL-partie_2}
+\includepdf[pages=1]{formation-latex-ul}
 \end{lstlisting}
   \end{sol}
 \end{exercice}
@@ -1148,6 +1159,6 @@ sous-légendes.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-engine: xetex
-%%% TeX-master: "formation_latex_UL-partie_2"
+%%% TeX-master: "formation-latex-ul"
 %%% coding: utf-8
 %%% End:

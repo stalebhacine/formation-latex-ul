@@ -12,31 +12,27 @@ VERSION
 
 *** The rest of this file is in French ***
 
-Ce paquetage contient tous les fichiers relatifs à une formation sur
-la rédaction de thèses et de mémoires avec LaTeX développée pour la
-Bibliothèque de l'Université Laval.
+Ce paquetage contient un ouvrage d'introduction à LaTeX; voir le
+fichier
 
-La formation se divise en deux parties.
+  formation-latex-ul.pdf
 
-La première partie de la formation se déroulant en classe, la
-documentation qui l'accompagne consiste en une série de diapositives;
-voir le fichier
+Le document tire son origine d'une formation sur la rédaction de
+thèses et de mémoires avec LaTeX développée pour la Bibliothèque de
+l'Université Laval.
 
-  formation_latex_UL-partie_1.pdf
-
-Cette première partie couvre les concepts de base de LaTeX pour un
+La formation couvre les concepts de base de LaTeX pour un
 nouvel utilisateur: processus d'édition, compilation, visualisation;
 séparation du contenu et de l'apparence du texte; mise en forme du
 texte; séparation du document en parties; rudiments du mode
-mathématique.
+mathématique. Les diapositives de cette formation sont livrées avec ce
+paquetage; voir le fichier
 
-La seconde partie a été conçue comme un ouvrage de référence pour une
-étude autonome; voir le fichier
+  formation-latex-ul-diapos.pdf
 
-  formation_latex_UL-partie_2.pdf
-
-Avec cette seconde partie, une personne devrait être en mesure de
-composer des documents relativement complexes comportant des tableaux,
+Les six autres chapitres du document de référence visent à rendre
+l'utilisateur de LaTeX débutant ou intermédiaire autonome dans la
+rédaction de documents relativement complexes comportant des tableaux,
 des figures, des équations mathématiques élaborées, une bibliographie,
 etc.
 
@@ -47,6 +43,15 @@ solutions des autres exercices.
 HISTORIQUE DES VERSIONS
 
 o <VERSION>
+
+- Importante refonte de la documentation en un document unique. Les
+  diapositives ne sont plus qu'un support visuel pour la formation qui
+  couvre grosso modo les quatre premiers chapitre de l'ouvrage de
+  référence.
+- Nouveau visuel des couvertures. Trop cuuuute.
+- Nouveau mode de numérotation des versions.
+
+o 2016-04-04
 
 - Fichier exercice_demo.tex: utilisation du style de bibliographie
   'plainnat' puisque le paquetage francais-bst ne fait pas partie de la

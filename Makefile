@@ -5,29 +5,56 @@ include ./Makeconf
 PACKAGENAME = formation-latex-ul
 
 ## Fichiers maîtres
-MASTER1 = formation_latex_UL-partie_1.pdf
-MASTER2 = formation_latex_UL-partie_2.pdf
+MASTER = formation-latex-ul.pdf
+MASTERDIAPOS = formation-latex-ul-diapos.pdf
 
-## Liste des autres fichiers source de la partie I
-TEXFILES1 = licence-partie_1.tex \
-	colophon-partie_1.tex
-
-## Liste des autres fichiers source de la partie II
-TEXFILES2 = licence-partie_2.tex \
-	introduction.tex     \
-	modedemploi.tex      \
-	include.tex          \
-	boites.tex           \
+## Liste des fichiers source du document principal
+TEXFILES = couverture-avant.tex \
+	frontispice.tex \
+	licence.tex \
+	introduction.tex \
+	presentation.tex \
+	bases.tex \
+	organisation.tex \
+	apparence.tex \
+	boites.tex \
 	tableaux+figures.tex \
-	mathematiques.tex    \
-	bibliographie.tex    \
-	commandes.tex        \
-	trucs.tex            \
-	solutions.tex        \
-	colophon-partie_2.tex
+	mathematiques.tex \
+	bibliographie.tex \
+	commandes.tex \
+	trucs.tex \
+	ulthese.tex \
+	solutions.tex \
+	colophon.tex \
+	couverture-arriere.tex
 
-## Liste des fichiers à inclure dans l'archive pour la partie I
-FILES1 = ${MASTER1} \
+## Liste des documents auxiliaires à compiler avant le document
+## principal
+AUXDOC = exemple-classe-article.pdf \
+	exemple-classe-report.pdf \
+	exemple-classe-book.pdf \
+	exemple-titre.pdf \
+	exemple-renvoi.pdf \
+	exemple-renvoi-hyperref.pdf \
+	exemple-renvoi-autoref.pdf
+
+## Liste des fichiers source des diapositives
+TEXFILESDIAPOS = couverture-avant-diapos.tex \
+	frontispice-diapos.tex \
+	licence-diapos.tex \
+	prerequis-diapos.tex \
+	presentation-diapos.tex \
+	bases-diapos.tex \
+	organisation-diapos.tex \
+	apparence-diapos.tex \
+	mathematiques-diapos.tex \
+	ulthese-diapos.tex \
+	colophon-diapos.tex \
+	couverture-arriere-diapos.tex
+
+## Liste des fichiers à inclure dans l'archive
+FILES = ${MASTER} ${MASTERDIAPOS} \
+	ul_p.pdf \
 	exercice_minimal.tex \
 	exercice_demo.tex \
 	exercice_commandes.tex \
@@ -37,19 +64,6 @@ FILES1 = ${MASTER1} \
 	exercice_complet.tex \
 	exercice_ulthese.tex \
 		includes/mathematiques.tex \
-	formation_latex_UL.bib
-
-SOLUTIONS1 = \
-	exercice_commandes-solution.tex \
-	exercice_classe+paquetages-solution.tex \
-	exercice_parties-solution.tex \
-	exercice_renvois-solution.tex \
-	exercice_complet-solution.tex \
-	exercice_ulthese-solution.tex
-
-## Liste des fichiers à inclure dans l'archive pour la partie II
-FILES2 = ${MASTER2} \
-	ul_p.pdf \
 	exercice_gabarit.tex \
 	exercice_include.tex \
 		includes/pagetitre.tex \
@@ -60,9 +74,7 @@ FILES2 = ${MASTER2} \
 	exercice_demo.tex \
 	exercice_mathematiques.tex \
 	exercice_trucs.tex \
-	formation_latex_UL.bib
-
-SOLUTIONS2 =
+	formation-latex-ul.bib
 
 # Outils de travail
 TEXI2DVI = LATEX=xelatex TEXINDY=makeindex texi2dvi -b
@@ -70,19 +82,23 @@ RM = rm -r
 
 .PHONY: pdf zip clean
 
-pdf : $(MASTER1) $(MASTER2)
+pdf : $(MASTER) $(MASTERDIAPOS)
+#pdf : $(MASTER)
 
-$(MASTER1): $(MASTER1:.pdf=.tex) $(TEXFILES1)
-	$(TEXI2DVI) $(MASTER1:.pdf=.tex)
+%.pdf : %.tex
+	$(TEXI2DVI) $<
 
-$(MASTER2): $(MASTER2:.pdf=.tex) $(TEXFILES2)
-	$(TEXI2DVI) $(MASTER2:.pdf=.tex)
+$(MASTER): $(MASTER:.pdf=.tex) $(TEXFILES) $(AUXDOC)
+	$(TEXI2DVI) $(MASTER:.pdf=.tex)
 
-zip : ${FILES1} ${SOLUTIONS1} ${FILES2} ${SOLUTIONS2}
+$(MASTERDIAPOS): $(MASTERDIAPOS:.pdf=.tex) $(TEXFILESDIAPOS) $(AUXDOC)
+	$(TEXI2DVI) $(MASTERDIAPOS:.pdf=.tex)
+
+zip : ${FILES} README.in
 	if [ -d ${PACKAGENAME} ]; then ${RM} ${PACKAGENAME}; fi
 	mkdir ${PACKAGENAME}
 	sed -e 's/<VERSION>/${VERSION}/g' README.in > README
-	cp README ${FILES1} ${SOLUTIONS1} ${FILES2} ${SOLUTIONS2} ${PACKAGENAME}
+	cp README ${FILES} ${PACKAGENAME}
 	zip --filesync -r ${PACKAGENAME}.zip ${PACKAGENAME}
 	${RM} ${PACKAGENAME}
 

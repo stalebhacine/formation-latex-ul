@@ -1,7 +1,7 @@
 \chapter{Commandes et environnements définis par l'usager}
 \label{chap:commandes}
 
-{\LaTeX} est un ensemble de macro commandes conçu pour faciliter
+{\LaTeX} est un ensemble de macro-commandes conçu pour faciliter
 l'utilisation du système {\TeX}. Dès lors, il est assez naturel de
 permettre à l'usager de définir à son tour ses propres commandes. Il
 suffit généralement d'avoir rédigé quelques documents --- ou quelques
@@ -32,14 +32,14 @@ trois raisons suivantes:
     l'insertion de liens vers la documentation. D'un seul appel, elle
     crée un hyperlien dans le texte suivi de l'icône {\faExternalLink}
     et elle ajoute le nom du fichier de documentation dans la marge
-    précédé de l'icône {\faBook}.
+    précédé de l'icône {\faBookmark}.
   \item Une nouvelle commande sémantique \cmdprint{\pkg} sert pour la
     mise en forme des noms de paquetages. Ainsi, leur présentation est
     toujours la même et si nous souhaitons en changer, il suffit de
     modifier la définition de la commande.
   \item La redéfinition de la commande \cmd{\chaptitlefont} de la
-    classe \class{memoir} permet de modifier la police de caractère et
-    la mise en forme des titres de chapitres.
+    classe \class{memoir} permet de modifier la police et la mise en
+    forme des titres de chapitres.
   \end{enumerate}
   Nous reviendrons sur les détails de ces exemples dans la suite du
   chapitre. %
@@ -68,7 +68,7 @@ plus simples à créer. La syntaxe des commandes \cmd{\newcommand} et
 \renewcommand{`\bs\meta{nom\_commande}'}`\marg{définition}'
 \end{lstlisting}
 Le premier argument, \bs\meta{nom\_commande}, est le nom de la
-commande, avec le caractère \bs. Ce nom doit être différent de celui
+commande, avec le symbole \bs. Ce nom doit être différent de celui
 de toute commande active\footnote{%
   Les commandes actives dans un document sont les commandes de base de
   {\TeX} et {\LaTeX} ainsi que les commandes de tous les paquetages
@@ -100,9 +100,9 @@ commandes à exécuter ou d'une combinaison de tout cela.
 
 \begin{exemple}
   Tel que mentionné à l'\autoref{ex:commandes:intro}, nous avons
-  modifié la police de caractère des titres de chapitres dans le présent
-  document en redéfinissant la commande \cmdprint{\chaptitlefont} de
-  la classe \class{memoir}. Pour obtenir des titres de chapitres sans
+  modifié la police des titres de chapitres dans le présent document
+  en redéfinissant la commande \cmdprint{\chaptitlefont} de la classe
+  \class{memoir}. Pour obtenir des titres de chapitres sans
   empattements, en caractères gras, de dimension \cmdprint{\Huge} et
   alignés à gauche, on trouve dans le préambule du document la
   déclaration
@@ -110,9 +110,6 @@ commandes à exécuter ou d'une combinaison de tout cela.
 \renewcommand{\chaptitlefont}{\normalfont%
   \sffamily\bfseries\Huge\raggedright}
 \end{lstlisting}
-  On trouve la commande \cmd{\normalfont} au début de la définition à
-  titre préventif afin de «remettre à zéro» toutes les
-  caractéristiques de police. %
   \qed
 \end{exemple}
 
@@ -155,22 +152,21 @@ doivent apparaître.
   \begin{enumerate}
   \item le texte de l'hyperlien qui sera placé au fil du texte;
   \item le nom du fichier de documentation à placer dans la marge dans
-    une police de caractère non proportionnelle;
+    une police non proportionnelle;
   \item l'URL vers le fichier de documentation en ligne.
   \end{enumerate}
-  Une version simplifiée de la définition de la commande est la
-  suivante:
+  Voici une version simplifiée de la définition de la commande:
 \begin{lstlisting}
 \newcommand{\doc}[3]{%
   \href{#3}{#1~\raisebox{-0.2ex}{\faExternalLink}}%
-  \marginpar{\faBook~\texttt{#2}}}
+  \marginpar{\faBookmark~\texttt{#2}}}
 \end{lstlisting}
   La commande \cmd{\href} qui permet d'insérer un hyperlien dans le
   texte provient du paquetage \pkg{hyperref} \citep{hyperref}. Les
-  commandes \cmdprint{\faBook} et \cmdprint{\faExternalLink}
+  commandes \cmdprint{\faEx\-ter\-nal\-Link} et \cmdprint{\faBookmark}
   proviennent du paquetage \pkg{fontawesome} \citep{fontawesome}; elles
   insèrent dans le texte des icônes de la police libre %
-  \doc[Font Awesome]{}{http://fortawesome.github.io/Font-Awesome/}. %
+  \link{http://fortawesome.io/}{Font~Awesome}. %
 
   Avec la définition ci-dessus, la déclaration
 \begin{lstlisting}
@@ -373,10 +369,9 @@ Les nombreux arguments sont les suivants:
 \renewcommand{`\bs\meta{nom\_commande}'}`\oarg{narg}\oarg{option}\marg{déf}'
 \end{lstlisting}
   L'argument additionnel \meta{option} contient la valeur par défaut
-  du \emph{premier} argument de \bs\meta{nom\_commande}. On remarquera
-  que, dès lors, la commande ne compte plus \meta{narg} arguments
-  obligatoires, mais bien $\text{\meta{narg}} - 1$ arguments
-  obligatoires et un optionnel.
+  du \emph{premier} argument de \bs\meta{nom\_commande}. Dès lors, la
+  commande ne compte plus \meta{narg} arguments obligatoires, mais
+  bien $\text{\meta{narg}} - 1$ arguments obligatoires et un optionnel.
 
   Modifier la définition de la commande \cmdprint{\doc} de
   l'\autoref{ex:commandes:doc} pour que «documentation» soit le texte
@@ -386,7 +381,7 @@ Les nombreux arguments sont les suivants:
 \begin{lstlisting}
 \newcommand{\doc}[3][documentation]{%
   \href{#3}{#1~\raisebox{-0.2ex}{\faExternalLink}}%
-  \marginpar{\faBook~\texttt{#2}}}
+  \marginpar{\faBookmark~\texttt{#2}}}
 \end{lstlisting}
     la déclaration à deux arguments
 \begin{lstlisting}
@@ -401,7 +396,7 @@ Les nombreux arguments sont les suivants:
   l'\autoref{ex:commandes:citation} afin de composer les citations
   hors paragraphe comme suit:
   \begin{quote}
-    \begin{tabular}{p{\linewidth}}
+    \begin{tabularx}{\linewidth}{X}
       \toprule
       \small\sffamily%
       La citation est toujours en retrait des marges gauche et droite,
@@ -409,7 +404,7 @@ Les nombreux arguments sont les suivants:
       texte est en police de taille \cmdprint{\small}, droite et sans
       empattements. \\
       \bottomrule
-    \end{tabular}
+    \end{tabularx}
   \end{quote}
   \emph{Astuce}: utiliser un tableau pleine largeur à l'intérieur de
   l'environnement \Pe{quote} pour disposer le texte et créer les
@@ -419,10 +414,10 @@ Les nombreux arguments sont les suivants:
 \begin{lstlisting}
 \newcommand{citation}
   {\begin{quote}
-     \begin{tabular}{p{\linewidth}}
+     \begin{tabularx}{\linewidth}{X}
        \toprule\small\sffamily}%
   {\\ \bottomrule
-     \end{tabular}
+     \end{tabularx}
    \end{quote}}
 \end{lstlisting}
     On remarquera dans le troisième argument la présence de la
@@ -436,6 +431,6 @@ Les nombreux arguments sont les suivants:
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-engine: xetex
-%%% TeX-master: "formation_latex_UL-partie_2"
+%%% TeX-master: "formation-latex-ul"
 %%% coding: utf-8
 %%% End:

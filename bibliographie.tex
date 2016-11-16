@@ -33,7 +33,8 @@ les quelques secondes de compilation nécessaires pour la composer.
 
 La gestion des citations et la composition d'une bibliographie sont
 des tâches hautement spécialisées. Comme la plupart des traitements de
-texte, {\LaTeX} les confie donc à des outils externes.
+texte, {\LaTeX} les confie donc à des outils externes. Reste à savoir
+lequel de ces outils utiliser.
 
 %% hack ici pour afficher le logo BibTeX en police sans serif qui n'a
 %% pas de version petites capitales tout en utilisant la commande
@@ -43,31 +44,32 @@ texte, {\LaTeX} les confie donc à des outils externes.
   et \pkg{natbib}}
 \label{sec:bibliographie:systeme:bibtex}
 
-Avec plus de 25 années d'utilisation, {\BibTeX} \citep{bibtex} est le
-système standard de traitement des bibliographies dans {\LaTeX}. Il
-est stable et prévisible --- ce que d'aucuns considéreraient des
-bogues passent pour des caractéristiques --- et, surtout, il existe un
-vaste catalogue de références bibliographiques en format {\BibTeX}.
-C'est généralement le seul format accepté par les revues
-scientifiques. Non qu'il s'agisse d'un argument massue, mais même
-Wikipedia, dans les rubriques «Citer cette page», offre les citations
-en format {\BibTeX}.
+Fort de plus de 25 années d'existence, {\BibTeX}\index{bibtex@\BibTeX}
+\citep{bibtex} est le système standard de traitement des
+bibliographies dans {\LaTeX}. Il est stable et prévisible --- ce que
+certains considéreraient des bogues passent pour des caractéristiques
+--- et, surtout, il existe un vaste catalogue de références
+bibliographiques en format {\BibTeX}. C'est généralement le seul
+format accepté par les revues scientifiques. Non qu'il s'agisse d'un
+argument massue, mais même Wikipedia, dans les rubriques «Citer cette
+page», et la Bibliothèque de l'Université Laval, dans les pages de
+notices bibliographiques, offrent les citations en format {\BibTeX}.
 
 {\BibTeX} est principalement un système de tri d'entrées
 bibliographiques et d'interface avec la base de données. La
-présentation des citations et de la bibliographie, on la contrôle par
-le biais d'un \emph{style}. Les styles standards sont \code{plain},
-\code{unsrt}, \code{alpha} et \code{abbrv}; nous y reviendrons à la
+présentation des citations et de la bibliographie relève d'un
+\emph{style}. Les styles standards sont \code{plain}, \code{unsrt},
+\code{alpha} et \code{abbrv}; nous y reviendrons à la
 \autoref{sec:bibliographie:style}.
 
 Fonctionnant de pair --- et exclusivement --- avec {\BibTeX},
 \pkg{natbib} \citep{natbib} est un paquetage qui fournit des styles et
 des commandes pour composer des bibliographies dans le format
-auteur-année\footnote{%
-  C'est le style utilisé dans le présent document.} %
-fréquemment utilisé dans les sciences naturelles et sociales. Il est
-également compatible avec les styles de citation standards mentionnés
-ci-dessus.
+auteur-année fréquemment utilisé dans les sciences naturelles et
+sociales\footnote{%
+  C'est le style utilisé dans le présent document.}. %
+Le paquetage est également compatible avec les styles de citation
+standards mentionnés ci-dessus.
 
 Parce qu'il est flexible et qu'il rend facile de produire des
 extensions compatibles, \pkg{natbib} est en quelque sorte devenu un
@@ -88,7 +90,7 @@ de la formidable %
 
 Au moment d'écrire ces lignes, un nouveau système de traitement des
 bibliographies dans {\LaTeX} est en émergence. Il est formé du moteur
-de traitement Biber \citep{biber} et du paquetage \pkg{biblatex}
+de traitement Biber\index{Biber} \citep{biber} et du paquetage \pkg{biblatex}\index{biblatex}
 \citep{biblatex}. Ensemble, ils visent tout à la fois à remplacer
 l'infrastructure bâtie autour de {\BibTeX} et à proposer des
 fonctionnalités additionnelles. Citons le support natif des caractères
@@ -103,10 +105,10 @@ standard, surtout compte tenu de la masse de matériel disponible pour
 {\BibTeX}.
 
 Pour de l'information additionnelle, consulter %
-\doc[cette entrée]{}{http://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib} %
-du site \url{tex.stackexchange.com} qui fournit un excellent sommaire des
-mérites et des inconvénients respectifs des deux systèmes de
-traitement de bibliographie.
+\link{http://tex.stackexchange.com/questions/25701/bibtex-vs-biber-and-biblatex-vs-natbib}{cette entrée} %
+du site {\TeX}--{\LaTeX} Stack Exchange qui fournit un excellent
+sommaire des mérites et des inconvénients respectifs des deux systèmes
+de traitement de bibliographie.
 
 En l'absence d'un consensus clair, nous avons choisi de traiter dans
 ce chapitre à la fois du système le plus répandu et de celui avec
@@ -116,7 +118,7 @@ lequel nous sommes le plus familier, soit la combinaison {\BibTeX} et
 \subsection{EndNote}
 \label{sec:bibliographie:systeme:endnote}
 
-EndNote est un logiciel commercial de gestion bibliographique très
+EndNote\index{EndNote} est un logiciel commercial de gestion bibliographique très
 répandu dans certaines disciplines scientifiques. Il n'est donc pas
 rare que les nouveaux utilisateurs de {\LaTeX} demandent: «puis-je
 utiliser EndNote pour ma bibliographie?» La réponse courte est «Non»,
@@ -145,8 +147,8 @@ détails dans les sections suivantes.
   étape s'amenuise au fur et à mesure que l'on complète ses bases de
   données.
 \item Choisir un style de citation et de présentation de la
-  bibliographie, généralement en se fiant aux us et coutumes dans sa
-  discipline scientifique.
+  bibliographie, généralement en se conformant aux us et coutumes dans
+  sa discipline scientifique ou aux instructions d'un éditeur.
 \item Insérer dans le texte de son document des références à des
   ouvrages se trouvant dans ses bases de données bibliographiques.
 \item Insérer dans le code source du document les informations
@@ -191,8 +193,7 @@ La structure générale d'une entrée de base de données est la suivante:
 @`\meta{type\_entree}'{`\meta{clé}',
   `\marg{champ}' = `\marg{valeur}',
   ...,
-  `\marg{champ}' = `\marg{valeur}'
-}
+  `\marg{champ}' = `\marg{valeur}'}
 \end{lstlisting}
 Ci-dessus, \meta{clé} est un identifiant arbitraire, mais unique ---
 et idéalement mnémonique --- de l'entrée. C'est cette clé qui sera
@@ -220,9 +221,8 @@ préparation des entrées bibliographiques suivent l'\autoref*{ex:bibliographie:
   publisher = {Addison-Wesley},
   year =      2003,
   edition =   4,
-  isbn =      {978-0321173850},
-  language =  {english}
-}
+  isbn =      {978-032117385-0},
+  language =  {english}}
 \end{lstlisting}
 
   \begin{framed}
@@ -239,8 +239,7 @@ préparation des entrées bibliographiques suivent l'\autoref*{ex:bibliographie:
   number =   1,
   pages =    {36-48},
   url =	{https://www.tug.org/TUGboat/tb30-1/tb94mori.pdf},
-  language = {english}
-}
+  language = {english}}
 \end{lstlisting}
 
   \begin{framed}
@@ -253,8 +252,7 @@ préparation des entrées bibliographiques suivent l'\autoref*{ex:bibliographie:
   title =    {Natural Sciences Citations and References},
   year =     2010,
   url =      {http://www.ctan.org/pkg/natbib/},
-  language = {english}
-}
+  language = {english}}
 \end{lstlisting}
 
   \begin{framed}
@@ -310,16 +308,12 @@ préparation des entrées bibliographiques suivent l'\autoref*{ex:bibliographie:
   \code{edition = 2}, sa fiche bibliographique contiendra la mention
   «2{\ieme} édition» ou «2\up{nd} edition» selon que l'on a précisé
   que l'ouvrage est en français ou en anglais.
-\item {\BibTeX} supportera les lettres accentuées ou autres caractères
-  spéciaux dans le texte des champs seulement si les paquetages requis
-  pour entrer ces caractères dans le texte sont chargés
-  (\pkg{inputenc} avec pdf{\LaTeX}; \pkg{fontspec} avec {\XeLaTeX}).
-  Autrement, il faut entrer ceux-ci avec les commandes {\LaTeX} de
-  base; voir %
-  le tableau~17 de la %
-  \doc[Comprehensive {\LaTeX} Symbol
-  List]{comprehensive}{http://texdoc.net/pkg/comprehensive} %
-  pour les accents.
+\item {\BibTeX} supporte les lettres accentuées ou autres caractères
+  spéciaux dans le texte des champs seulement si le document utilisant
+  la bibliographie supporte lui-même ces caractères; voir la
+  \autoref{sec:bases:francais}. Autrement, il faut entrer les
+  caractères spéciaux avec les commandes {\LaTeX} de base tel
+  qu'expliqué sommairement à la \autoref{sec:bases:caracteres}.
 
   Notre recommandation: éviter les lettres accentuées dans les
   entrées susceptibles d'être utilisées dans un document entièrement
@@ -345,9 +339,8 @@ préparation des entrées bibliographiques suivent l'\autoref*{ex:bibliographie:
 \label{sec:bibliographie:style}
 
 Il existe plusieurs manières différentes de présenter une
-bibliographie et {\LaTeX} s'adapte tout naturellement aux divers
-besoins des utilisateurs. Le format général de la bibliographie est
-contrôlé par un \emph{style} choisi avec la commande
+bibliographie et {\LaTeX} sait s'adapter. Le format général de la
+bibliographie est contrôlé par un \emph{style} choisi avec la commande
 \cmd{\bibliographystyle}. Le style affecte habituellement deux
 composantes de la bibliographie:
 \begin{enumerate}
@@ -364,7 +357,7 @@ On trouvera des exemples de quelques styles de bibliographie dans le
     citation et le format des notices bibliographiques}
   \label{tab:bibliographie:styles}
   \small
-  \textbf{Styles standards numériques et alphanumériques} \\[6pt]
+  \textbf{Styles standards numériques et alphanumériques} \\[0.5\normalbaselineskip]
   \begin{tabularx}{1.0\linewidth}{p{0.16\linewidth}p{0.35\linewidth}X}
     \toprule
     style & mode de citation & format de notice \\
@@ -392,7 +385,7 @@ On trouvera des exemples de quelques styles de bibliographie dans le
   \end{tabularx} \\
   \medskip
 
-  \textbf{Styles auteur-année avec \pkg{natbib}} \\[6pt]
+  \textbf{Styles auteur-année avec \pkg{natbib}} \\[0.5\normalbaselineskip]
   \begin{tabularx}{1.0\linewidth}{p{0.16\linewidth}p{0.35\linewidth}X}
     \toprule
     style & mode de citation & format de notice \\
@@ -410,37 +403,37 @@ On trouvera des exemples de quelques styles de bibliographie dans le
     \item[] Kopka, H.\ et P.~W. Daly. 2003.
       \emph{Guide to {\LaTeX}}, 4{\ieme} éd., Addison-Wesley.
     \end{bibexample} \\
+    \bottomrule
   \end{tabularx}
 \end{table}
 
-Tel que mentionné précédemment, les styles standards de {\LaTeX} sont
-\code{plain}, \code{unsrt}, \code{alpha} et \code{abbrv}. Ces styles
-ont été développés pour des modes de citation numériques ou
-alphanumériques.
+Les styles standards de {\LaTeX} sont \code{plain}, \code{unsrt},
+\code{alpha} et \code{abbrv}. Ces styles ont été développés pour des
+modes de citation numériques ou alphanumériques.
 
 Pour plus de flexibilité, nous recommandons d'utiliser le paquetage
 \pkg{natbib} pour la gestion des références et du style de la
 bibliographie. Entre autres choses, ce paquetage supporte le style de
 citation auteur-année fréquemment employé en sciences naturelles et
 sociales, plusieurs commandes de citation, un grand nombre de styles
-de bibliographie ainsi que des entrées spécifiques pour les numéros
+de bibliographie, ainsi que des entrées spécifiques pour les numéros
 ISBN et les URL. Le paquetage fournit des styles \code{plainnat},
 \code{unsrtnat} et \code{abbrvnat} similaires aux styles standards,
 mais plus complets. Il existe des %
 \doc[versions francisées]{}{http://mirrors.ctan.org/biblio/bibtex/contrib/bib-fr/} %
-de ces styles (et de quelques autres) dans CTAN et dans {\TeX}~Live.
+de ces styles dans CTAN et dans {\TeX}~Live.
 Il est fortement recommandé de consulter la %
 \doc{natbib}{http://texdoc.net/pkg/natbib/} %
 de \pkg{natbib} pour les détails. On y trouvera également des
 informations sur l'utilisation de styles de citation autres que
 auteur-année.
 
-On trouve également dans CTAN et dans {\TeX}~Live le paquetage
-\pkg{francais-bst} \citep{francais-bst} qui fournit deux feuilles de
-style compatibles avec \pkg{natbib}. Celles-ci permettent de composer
-des bibliographies auteur-année respectant les normes de typographie
-française proposées dans \citet{Malo:1996}; voir le dernier exemple
-du \autoref{tab:bibliographie:styles}.
+Également dans CTAN et dans {\TeX}~Live, le paquetage
+\pkg{francais-bst} \citep{francais-bst} fournit deux feuilles de style
+compatibles avec \pkg{natbib} permettant de composer des
+bibliographies auteur-année respectant les normes de typographie
+française proposées dans \citet{Malo:1996}; voir le dernier exemple du
+\autoref{tab:bibliographie:styles}.
 
 Le paquetage \pkg{natbib} est chargé par défaut par la classe
 \class{ulthese}; consulter la section~6.6 de la %
@@ -511,15 +504,16 @@ TUGboat a publié un bon survol
 
 On ne devrait \emph{jamais} entrer directement dans le texte des
 informations bibliographiques, même partielles. Pour insérer dans le
-texte le nom d'un auteur ou l'année de publication d'un ouvrage, on
-devrait utiliser les commandes de \pkg{natbib}
+texte le nom d'un auteur ou l'année de publication d'un ouvrage,
+\pkg{natbib} offre les commandes:
 \begin{lstlisting}
 \citeauthor`\marg{clé}'
 \citeyear`\marg{clé}'
 \end{lstlisting}
-Ainsi, pas de risque de mal orthographier un nom par inadvertance, ou
-d'oublier de modifier dans le texte une année de publication que l'on
-aura changé dans la base de données bibliographique.
+Avec ces commandes, pas de risque de mal orthographier un nom par
+inadvertance, ou d'oublier de modifier dans le texte une année de
+publication que l'on aura changé dans la base de données
+bibliographique.
 
 Le paquetage fournit plusieurs autres commandes pour manipuler les
 informations bibliographiques et contrôler leur présentation;
@@ -571,8 +565,9 @@ les ouvrages à inclure dans la bibliographie. C'est toutefois l'outil
 externe {\BibTeX} qui se chargera de fournir à {\LaTeX} le texte des
 références ainsi que le contenu de la bibliographie.
 
-Le processus de création d'un document avec pdf{\LaTeX} ou {\XeLaTeX}
-se représente schématiquement ainsi \citep{UL:latex:1}:
+À la \autoref{sec:presentation:processus}, nous avons représenté
+schématiquement comme suit le processus de création d'un document avec
+pdf{\LaTeX} ou {\XeLaTeX}:
 \begin{center}
   \sffamily
   \begin{minipage}[t]{0.12\linewidth}
@@ -786,7 +781,7 @@ de \citeauthor{wikilivres:latex}.
   Composer des entrées de base de données pour les références
   bibliographiques suivantes.
   \begin{enumerate}
-  \item \nolink{\bibentry{Mittelbach:floats:2014}}
+  \item \nolink{\bibentry{Mittelbach:floats:2014:nourl}}
 
     \emph{Astuce}: cette entrée est un article tiré d'une revue
     scientifique.
@@ -821,10 +816,7 @@ de \citeauthor{wikilivres:latex}.
   volume =  35,
   number =  3,
   pages =   {258-254},
-  url = {https://www.tug.org/members/TUGboat/tb35-3/
-         tb111mitt-float.pdf},
-  language = {english}
-}
+  language = {english}}
 \end{lstlisting}
 
     \item On utilise le type \code{Book} pour cette entrée.
@@ -838,8 +830,7 @@ de \citeauthor{wikilivres:latex}.
   edition =  8,
   note =    {Maintained by Lars Madsen},
   url =     {http://www.ctan.org/pkg/memoir/},
-  language = {english}
-}
+  language = {english}}
 \end{lstlisting}
 
     \item La réponse ci-dessous contient les prénoms des auteurs,
@@ -855,8 +846,7 @@ de \citeauthor{wikilivres:latex}.
             Generic {\TeX}},
   year =   2014,
   url =    {http://www.ctan.org/pkg/pstricks-base/},
-  language = {english}
-}
+  language = {english}}
 \end{lstlisting}
     \end{enumerate}
   \end{sol}
@@ -891,6 +881,6 @@ de \citeauthor{wikilivres:latex}.
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-engine: xetex
-%%% TeX-master: "formation_latex_UL-partie_2"
+%%% TeX-master: "formation-latex-ul"
 %%% coding: utf-8
 %%% End:

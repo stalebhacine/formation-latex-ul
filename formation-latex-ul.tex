@@ -8,13 +8,15 @@
   \usepackage{framed}                  % environnement titled-frame
   \usepackage{manfnt}                  % \mantriangleright (puce)
   \usepackage{dirtree}                 % arbre pour exercice sur \include
-  \usepackage{metalogo}                % \XeLaTeX logo
+  \usepackage{metalogo}                % logo de \XeLaTeX logo
+  \usepackage{mflogo}                  % logo de Metafont
   \usepackage{fontawesome}             % plusieurs icônes
   \usepackage{applekeys}               % touches Mac
   \usepackage{answers}                 % exercices et solutions
   \usepackage{listings}                % code informatique
-  \usepackage{pdfpages}                % couvertures
-  \usepackage{eso-pic}                 % disposition d'images
+  \usepackage[absolute]{textpos}       % disposition d'images
+  \usepackage{pgf}                     % transparence pour couverture avant
+  \usepackage{ifthen}                  % exécution conditionnelle
 
 
   %%% ===================
@@ -37,6 +39,10 @@
   \newfontfamily\CM{cmunrm.otf}                       % Computer Modern
   \newfontfamily\Times{texgyretermes-regular.otf}     % Times
   \newfontfamily\Palatino{texgyrepagella-regular.otf} % Palatino
+  \newfontfamily\Bookman{texgyrebonum-regular.otf}    % Bookman
+  \newfontfamily\NewCent{texgyreschola-regular.otf}   % New Cent. Sch.
+  \newfontfamily\Charter{XCharter-Roman.otf}          % Charter
+  \newfontfamily\Helvet{texgyreheros-regular.otf}     % Helvetica
 
   %% Couleurs
   \usepackage{xcolor}
@@ -45,14 +51,24 @@
   \definecolor{url}{rgb}{0.6,0,0}         % rouge-brun
   \definecolor{citation}{rgb}{0,0.5,0}    % vert foncé
   \definecolor{ULlinkcolor}{rgb}{0,0,0.3} % de ulthese.cls
+  \definecolor{rouge}{rgb}{0.85,0,0.07}   % rouge bandeau identitaire
+  \definecolor{or}{rgb}{1,0.8,0}          % or bandeau identitaire
 
   %% Hyperliens
   \usepackage{hyperref}
-  \hypersetup{colorlinks, linktocpage,
-    urlcolor=url, linkcolor=link, citecolor=citation,
-    bookmarksopen, bookmarksnumbered, bookmarksdepth=subsubsection,
-    pdftitle={Rédaction de thèses et mémoires avec LaTeX: Concepts avancés},
-    pdfauthor={Vincent Goulet}}
+  \hypersetup{%
+    pdfauthor = {Vincent Goulet},
+    pdftitle = {Rédaction avec LaTeX},
+    colorlinks = {true},
+    linktocpage = {true},
+    urlcolor = {url},
+    linkcolor = {link},
+    citecolor = {citation},
+    pdfpagemode = {UseOutlines},
+    pdfstartview = {Fit},
+    bookmarksopen = {true},
+    bookmarksnumbered = {true},
+    bookmarksdepth = {subsubsection}}
   \setlength{\XeTeXLinkMargin}{1pt}
 
   %% Étiquettes de \autoref (redéfinitions compatibles avec babel).
@@ -65,6 +81,7 @@
     \def\tableautorefname{tableau}%
     \def\exempleautorefname{exemple}%
     \def\exerciceautorefname{exercice}%
+    \def\appendixautorefname{annexe}%
   }
 
   %% Table des matières (inspirée de classicthesis.sty)
@@ -327,9 +344,8 @@
   \newcommand*{\pixabang}{\cmdprint{\!}\index{"!@\string\cs{}\texttt{"!}}}
   \newcommand*{\pixbar}{\cmdprint{\|}\index{[@\string\cs{}\texttt{\textbar}}}
 
-  %% Indications de capsule vidéo dans la marge
-  \newcommand{\capsule}[2]{\href{#1}{#2}\marginpar{%
-      \href{#1}{\raisebox{-0.5em}[0em][0em]{\HUGE\faYoutubePlay}}}}
+  %% Indications de capsule vidéo
+  \newcommand{\capsule}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\Large\faYoutubePlay}}}
 
   %% Hyperlien avec symbole de lien externe juste après
   \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
@@ -338,8 +354,8 @@
   %% usage: \doc[documentation]{nom_fichier}{url}
   \newcommand{\doc}[3][documentation]{\link{#3}{#1}%
     \ifthenelse{\equal{#2}{}}{}{\marginpar%
-      [\hfill\faBook~\fichier{#2}]%
-      {\faBook~\fichier{#2}}}}
+      [\hfill\faBookmark~\fichier{#2}]%
+      {\faBookmark~\fichier{#2}}}}
 
   %% Suppression de l'hyperlien
   \newcommand{\nolink}[1]{\begin{NoHyper}#1\end{NoHyper}}
@@ -351,14 +367,6 @@
       \rule[-5pt]{0mm}{16pt}%
       \makebox[7mm]{\raisebox{-3pt}{\LARGE\faExternalLink}}\;%
       {\sffamily Accéder au dépôt}}}
-
-  %% «Bouton» pour accéder à CTAN
-  \newcommand{\ctanbutton}{%
-    \setlength{\fboxrule}{1pt}%
-    \framebox[62mm][l]{%
-      \rule[-5pt]{0mm}{16pt}%
-      \makebox[7mm]{\raisebox{-3pt}{\LARGE\faExternalLink}}\;%
-      {\sffamily Accéder aux fichiers dans CTAN}}}
 
   %% Pour le tableau des commandes d'espacement en mode mathématique.
   %% Pris de la doc de amsmath.
@@ -392,55 +400,77 @@
   %% Style de la bibliographie
   \bibliographystyle{francais}
 
+  %% Longueurs pour la composition des pages couvertures avant et
+  %% arrière.
+  \newlength{\banderougewidth}
+  \newlength{\bandeorwidth}
+  \newlength{\imageheight}
+  \newlength{\gapwidth}
+
   %%% ==================================================
   %%%  Page titre et autres informations de publication
   %%% ==================================================
   \title{\protect\raggedright%
-    \bfseries\fontsize{32}{32}\selectfont Rédaction de thèses \\
-                                          et de mémoires avec {\LaTeX} \\[10mm]
-    \bfseries\fontsize{24}{24}\selectfont {\fullcaps 2} \textbar\ Concepts avancés}
+    \sffamily\bfseries
+    \fontsize{40}{40}\selectfont
+    Rédaction avec \\
+    \rmfamily\mdseries
+    \fontsize{45}{45}\selectfont
+    \raisebox{12pt}{{\protect\bs}title}%
+    \fontsize{80}{80}\selectfont%
+    \{%
+    \fontsize{70}{70}\selectfont%
+    \LaTeX
+    \fontsize{80}{80}\selectfont%
+    \}}
   \author{\protect\raggedright%
-    \bfseries\fontsize{16}{20}\selectfont Vincent Goulet \\
-    \mdseries\fontsize{14}{18}\selectfont Professeur titulaire \textbar\
-                                          École d'actuariat}
+    \sffamily\bfseries
+    \fontsize{17}{20}\selectfont
+    Vincent Goulet \\
+    \mdseries
+    \fontsize{15}{20}\selectfont
+    Professeur titulaire \textbar\ École d'actuariat}
   \date{%
-    \mdseries\fontsize{14}{18}\selectfont Édition \fullcaps\year}
+    \sffamily\mdseries\fontsize{15}{20}\selectfont
+    Édition {\fullcaps\year}.\month}
   \renewcommand{\year}{2016}
-  \newcommand{\ISBN}{978-2-9811416-5-1}
+  \renewcommand{\month}{11}
+  \newcommand{\ISBN}{978-2-9811416-7-5}
   \newcommand{\ctanurl}{https://ctan.org/pkg/formation-latex-ul/}
 
-%  \includeonly{frontispice}
+  %\includeonly{tableaux+figures}
 
 \begin{document}
 
 \frontmatter
 
-\pagestyle{empty}
-
 %% Page couverture avant.
-\includepdf[pages=1]{couvertures-partie_2}
-\cleardoublepage
+\pagestyle{empty}
+\input{couverture-avant}
+\null\cleardoublepage           % cf. section 2.2 textpos.pdf
 
 %% Page frontispice
 \include{frontispice}
-\clearpage
+\null\clearpage                 % idem
 
 %% Page de copyright
-\include{licence-partie_2}
+\include{licence}
 \clearpage
 
 %% Corps du document
 \pagestyle{companion}
 
 \include{introduction}
-\include{modedemploi}
 
 \cleartorecto
 \tableofcontents*
 
 \mainmatter
 
-\include{include}
+\include{presentation}
+\include{bases}
+\include{organisation}
+\include{apparence}
 \include{boites}
 \include{tableaux+figures}
 \include{mathematiques}
@@ -449,24 +479,23 @@
 \include{trucs}
 
 \appendix
+\include{ulthese}               % éléments spécifiques à ulthese
 \include{solutions}
 
-\bibliography{formation_latex_UL}
+\bibliography{formation-latex-ul}
 
 \cleardoublepage
 \printindex
 
 \cleartoverso
 
-\input{colophon-partie_2}
+\input{colophon}
 
 \cleartoverso
 
 %% Page couverture arrière.
-\AddToShipoutPictureFG*{%
-  \AtStockLowerLeft{\raisebox{45mm}{\hspace{5mm}\includegraphics{codebarre_\ISBN}}}
-}
-\includepdf[pages=2]{couvertures-partie_2}
+\pagestyle{empty}
+\input{couverture-arriere}
 
 \end{document}
 
