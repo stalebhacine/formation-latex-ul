@@ -6,6 +6,7 @@
   \usepackage{metalogo}                % logo \XeLaTeX
   \usepackage{fontawesome}
   \usepackage{listings}
+  \usepackage[export]{adjustbox}       % cadre serré autour d'une image
   \usepackage[overlay,absolute]{textpos}
 
   %% Polices de caractères
@@ -213,6 +214,31 @@
 \input{apparence-diapos}
 \input{mathematiques-diapos}
 \input{ulthese-diapos}
+
+\begin{frame}
+  \frametitle{Et la suite?}
+
+  \begin{columns}
+    \begin{column}{.5\textwidth}
+      Le document de référence couvre des concepts plus avancés:
+      \begin{itemize}
+        \small
+      \item boîtes, tableaux et figures
+      \item équations mathématiques élaborées
+      \item bibliographie et citations
+      \item commandes et environnement sur mesure
+      \item changement de police
+      \item diapositives
+      \item rapports avec analyse intégrée
+      \item etc.
+      \end{itemize}
+      Références additionnelles dans l'introduction.
+    \end{column}
+    \begin{column}{.5\textwidth}
+      \includegraphics[width=\linewidth,frame]{formation-latex-ul}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 \input{colophon-diapos}
 \input{couverture-arriere-diapos}
