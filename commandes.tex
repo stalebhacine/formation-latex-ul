@@ -396,7 +396,7 @@ Les nombreux arguments sont les suivants:
   l'\autoref{ex:commandes:citation} afin de composer les citations
   hors paragraphe comme suit:
   \begin{quote}
-    \begin{tabular}{p{\linewidth}}
+    \begin{tabularx}{\linewidth}{X}
       \toprule
       \small\sffamily%
       La citation est toujours en retrait des marges gauche et droite,
@@ -404,7 +404,7 @@ Les nombreux arguments sont les suivants:
       texte est en police de taille \cmdprint{\small}, droite et sans
       empattements. \\
       \bottomrule
-    \end{tabular}
+    \end{tabularx}
   \end{quote}
   \emph{Astuce}: utiliser un tableau pleine largeur à l'intérieur de
   l'environnement \Pe{quote} pour disposer le texte et créer les
@@ -414,10 +414,10 @@ Les nombreux arguments sont les suivants:
 \begin{lstlisting}
 \newcommand{citation}
   {\begin{quote}
-     \begin{tabular}{p{\linewidth}}
+     \begin{tabularx}{\linewidth}{X}
        \toprule\small\sffamily}%
   {\\ \bottomrule
-     \end{tabular}
+     \end{tabularx}
    \end{quote}}
 \end{lstlisting}
     On remarquera dans le troisième argument la présence de la
