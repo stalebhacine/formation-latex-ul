@@ -140,8 +140,8 @@ vitae ipsum vel, fermentum pellentesque orci.
     \item Changer la police du document pour 11~points, puis
       12~points. Observer l'effet sur les marges et sur la coupure
       automatique des mots.
-    \item Activer le paquetage \pkg{icomma} et observer l'effet sur
-      la formule mathématique.
+    \item Activer le paquetage \pkg{icomma} en supprimant le symbole
+      \% au début de la ligne dans le préambule. Observer l'effet sur la formule mathématique.
     \item Charger le paquetage \pkg{numprint} avec l'option
       \verb=autolanguage= (\emph{après} le paquetage \pkg{babel}).
       Dans le code source de la formule mathématique, changer
@@ -202,10 +202,15 @@ vitae ipsum vel, fermentum pellentesque orci.
   \item Le symbole \verb=%= sert à identifier les commentaires dans
     le code source
   \item Tout ce qui suit \verb=%= sur la ligne est ignoré
+    \begin{demo}
+      \begin{texample}
 \begin{lstlisting}
-%% Police de caractères
-\usepackage{mathpazo}        % texte et math. en Palatino
+texte % ignoré par LaTeX
 \end{lstlisting}
+        \producing
+        texte % ignoré par LaTeX
+      \end{texample}
+    \end{demo}
   \end{itemize}
 \end{frame}
 
