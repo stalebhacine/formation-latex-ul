@@ -4,23 +4,26 @@
 \textblockorigin{0mm}{0mm}
 \setlength{\parindent}{0mm}
 \setlength{\banderougewidth}{2\TPHorizModule}
+\setlength{\banderougeheight}{\TPVertModule}
 \setlength{\bandeorwidth}{\TPHorizModule}
+\setlength{\bandeorheight}{\banderougeheight}
 \setlength{\imageheight}{29\TPVertModule}
+\setlength{\logoheight}{2.5\TPVertModule}
 \setlength{\gapwidth}{1.5pt}
 \addtolength{\bandeorwidth}{-\gapwidth}
 \addtolength{\imageheight}{-\gapwidth}
 
 %% bandeau identitaire
 \begin{textblock*}{8.5in}[0,1](0mm,30\TPVertModule)
-  \textcolor{rouge}{\rule{\banderougewidth}{\TPVertModule}}% % bande rouge
-  \rule{\gapwidth}{0pt}%                                     % filet
-  \textcolor{or}{\rule{\bandeorwidth}{\TPVertModule}}        % bande or
+  \textcolor{rouge}{\rule{\banderougewidth}{\banderougeheight}}% % bande rouge
+  \rule{\gapwidth}{0pt}%                                         % filet
+  \textcolor{or}{\rule{\bandeorwidth}{\bandeorheight}}           % bande or
 \end{textblock*}
 
 %% logo UL
 \begin{textblock*}{\TPHorizModule}(2\TPHorizModule,31\TPVertModule)
   \rule{\gapwidth}{0pt}%                                     % filet
-  \includegraphics[height=2.5\TPVertModule,keepaspectratio=true]{ul_p}
+  \includegraphics[height=\logoheight,keepaspectratio=true]{ul_p}
 \end{textblock*}
 
 %% image de fond

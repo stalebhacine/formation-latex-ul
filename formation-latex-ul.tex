@@ -402,9 +402,10 @@
 
   %% Longueurs pour la composition des pages couvertures avant et
   %% arrière.
-  \newlength{\banderougewidth}
-  \newlength{\bandeorwidth}
+  \newlength{\banderougewidth} \newlength{\banderougeheight}
+  \newlength{\bandeorwidth}    \newlength{\bandeorheight}
   \newlength{\imageheight}
+  \newlength{\logoheight}
   \newlength{\gapwidth}
 
   %%% ==================================================
@@ -416,7 +417,7 @@
     Rédaction avec \\
     \rmfamily\mdseries
     \fontsize{45}{45}\selectfont
-    \raisebox{12pt}{{\protect\bs}title}%
+    \raisebox{10pt}{{\textbackslash}title}%
     \fontsize{80}{80}\selectfont%
     \{%
     \fontsize{70}{70}\selectfont%
@@ -438,7 +439,7 @@
   \newcommand{\ISBN}{978-2-9811416-7-5}
   \newcommand{\ctanurl}{https://ctan.org/pkg/formation-latex-ul/}
 
-  %\includeonly{tableaux+figures}
+%  \includeonly{couverture-avant,frontispice}
 
 \begin{document}
 
