@@ -44,6 +44,14 @@ HISTORIQUE DES VERSIONS
 
 o <VERSION>
 
+- Mise à jour des URL vers les vidéos dans YouTube. Celles-ci ont été
+  refaites avec le nouveau visuel de couverture.
+- Ajout d'un exercice au chapitre 1 tiré des pré-requis de la
+  formation, soit composer un document simple de type «Hello, World!».
+  Liens vers les vidéos explicatives dans YouTube.
+
+o 2016.11
+
 - Importante refonte de la documentation en un document unique. Les
   diapositives ne sont plus qu'un support visuel pour la formation qui
   couvre grosso modo les quatre premiers chapitre de l'ouvrage de
