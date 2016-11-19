@@ -82,11 +82,8 @@ RM = rm -r
 
 .PHONY: pdf zip clean
 
-pdf : $(MASTER) $(MASTERDIAPOS)
+pdf: $(MASTER) $(MASTERDIAPOS)
 #pdf : $(MASTER)
-
-%.pdf : %.tex
-	$(TEXI2DVI) $<
 
 $(MASTER): $(MASTER:.pdf=.tex) $(TEXFILES) $(AUXDOC)
 	$(TEXI2DVI) $(MASTER:.pdf=.tex)
