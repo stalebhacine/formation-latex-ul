@@ -911,7 +911,7 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
     \dirtree{%
       .1 exercice\_include.tex.
       .2 {\textbackslash}input pagetitre.tex.
-      .2 {\textbackslash}include presentation.tex.
+      .2 {\textbackslash}include rpresentation.tex.
       .3 {\textbackslash}includegraphics console-screenshot.pdf.
       .2 {\textbackslash}include emacs.tex.
     }
@@ -936,9 +936,9 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
   \item Remplacer la commande ajoutée en b) dans le préambule du
     fichier maître par la commande
 \begin{lstlisting}
-\includeonly{presentation}
+\includeonly{rpresentation}
 \end{lstlisting}
-    Vers la fin du fichier \fichier{presentation.tex}, activer la
+    Vers la fin du fichier \fichier{rpresentation.tex}, activer la
     commande
 \begin{lstlisting}
 \includegraphics[width=\textwidth]{console-screenshot}
