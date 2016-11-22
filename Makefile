@@ -8,29 +8,10 @@ PACKAGENAME = formation-latex-ul
 MASTER = formation-latex-ul.pdf
 MASTERDIAPOS = formation-latex-ul-diapos.pdf
 
-## Liste des fichiers source du document principal
-TEXFILES = couverture-avant.tex \
-	frontispice.tex \
-	licence.tex \
-	introduction.tex \
-	presentation.tex \
-	bases.tex \
-	organisation.tex \
-	apparence.tex \
-	boites.tex \
-	tableaux+figures.tex \
-	mathematiques.tex \
-	bibliographie.tex \
-	commandes.tex \
-	trucs.tex \
-	ulthese.tex \
-	solutions.tex \
-	colophon.tex \
-	couverture-arriere.tex
-
-## Liste des documents auxiliaires à compiler avant le document
-## principal
-AUXDOC = exemple-classe-article.pdf \
+## Documents auxiliaires insérés dans le document principal (et donc à
+## compiler avant)
+AUXDOC = \
+	exemple-classe-article.pdf \
 	exemple-classe-report.pdf \
 	exemple-classe-book.pdf \
 	exemple-titre.pdf \
@@ -38,23 +19,71 @@ AUXDOC = exemple-classe-article.pdf \
 	exemple-renvoi-hyperref.pdf \
 	exemple-renvoi-autoref.pdf
 
-## Liste des fichiers source des diapositives
-TEXFILESDIAPOS = couverture-avant-diapos.tex \
+## Sources du document principal
+SOURCEMAIN = \
+	couverture-avant.tex \
+		Suricata.jpg \
+		ul_p.pdf \
+	frontispice.tex \
+	licence.tex \
+		by-sa.pdf \
+		by.pdf \
+		sa.pdf \
+	introduction.tex \
+	presentation.tex \
+	bases.tex \
+		exercice_commandes-solution.pdf \
+	organisation.tex \
+		exemple-titre.tex \
+	apparence.tex \
+	boites.tex \
+	tableaux+figures.tex \
+	mathematiques.tex \
+	bibliographie.tex \
+		exemple-bibliographie.bib \
+		exemple-bibliographie.tex \
+		exemple-bibliographie-cropped-1.pdf \
+		exemple-bibliographie-cropped-2.pdf \
+		exemple-bibliographie-cropped-3.pdf \
+		bibtex-texmaker.png \
+		bibtex-texshop.png \
+		tdm-dans-pdf.pdf \
+	commandes.tex \
+	trucs.tex \
+	ulthese.tex \
+	solutions.tex \
+	colophon.tex \
+	couverture-arriere.tex \
+		codebarre_${ISBN}.pdf \
+	formation-latex-ul.bib \
+	francais.bst
+
+## Sources des diapositives
+SOURCEDIAPOS = \
+	couverture-avant-diapos.tex \
+		Suricata-diapos.jpg \
+		ul_p.pdf \
 	frontispice-diapos.tex \
 	licence-diapos.tex \
+		by-sa.pdf \
+		by.pdf \
+		sa.pdf \
 	prerequis-diapos.tex \
 	presentation-diapos.tex \
+		knuth.jpg \
+		TeXFZoneColor.pdf \
 	bases-diapos.tex \
+		exercice_commandes-solution.pdf \
 	organisation-diapos.tex \
 	apparence-diapos.tex \
 	mathematiques-diapos.tex \
+		ponctuation.pdf \
 	ulthese-diapos.tex \
 	colophon-diapos.tex \
 	couverture-arriere-diapos.tex
 
-## Liste des fichiers à inclure dans l'archive
-FILES = ${MASTER} ${MASTERDIAPOS} \
-	ul_p.pdf \
+## Fichiers des exercices
+EXERCICES = \
 	exercice_minimal.tex \
 	exercice_demo.tex \
 	exercice_commandes.tex \
@@ -74,7 +103,23 @@ FILES = ${MASTER} ${MASTERDIAPOS} \
 	exercice_demo.tex \
 	exercice_mathematiques.tex \
 	exercice_trucs.tex \
+	ul_p.pdf \
 	formation-latex-ul.bib
+
+## Liste des fichiers à placer dans le dossier 'source'
+SOURCEFILES = \
+	${MASTER:.pdf=.tex} \
+	${SOURCEMAIN} \
+	${MASTERDIAPOS:.pdf=.tex} \
+	${SOURCEDIAPOS} \
+	${AUXDOC}
+	${AUXDOC:.pdf=.tex}
+
+## Liste des fichiers à placer dans le dossier 'doc'
+DOCFILES = \
+	${MASTER} \
+	${MASTERDIAPOS} \
+	${EXERCICES}
 
 # Outils de travail
 TEXI2DVI = LATEX=xelatex TEXINDY=makeindex texi2dvi -b
@@ -82,20 +127,25 @@ RM = rm -r
 
 .PHONY: pdf zip clean
 
-pdf: $(MASTER) $(MASTERDIAPOS)
+pdf: $(AUXDOC) $(MASTER) $(MASTERDIAPOS)
 #pdf : $(MASTER)
 
-$(MASTER): $(MASTER:.pdf=.tex) $(TEXFILES) $(AUXDOC)
+$(AUXDOC): $(AUXDOC:.pdf=.tex)
+	$(TEXI2DVI) $(AUXDOC:.pdf=.tex)
+
+$(MASTER): $(MASTER:.pdf=.tex) $(TEXFILES)
 	$(TEXI2DVI) $(MASTER:.pdf=.tex)
 
-$(MASTERDIAPOS): $(MASTERDIAPOS:.pdf=.tex) $(TEXFILESDIAPOS) $(AUXDOC)
+$(MASTERDIAPOS): $(MASTERDIAPOS:.pdf=.tex) $(TEXFILESDIAPOS)
 	$(TEXI2DVI) $(MASTERDIAPOS:.pdf=.tex)
 
-zip : ${FILES} README.in
+zip : ${SOURCEFILES} ${DOCFILES} README.in
 	if [ -d ${PACKAGENAME} ]; then ${RM} ${PACKAGENAME}; fi
-	mkdir ${PACKAGENAME}
+	mkdir -p ${PACKAGENAME}/source ${PACKAGENAME}/doc
 	sed -e 's/<VERSION>/${VERSION}/g' README.in > README
-	cp README ${FILES} ${PACKAGENAME}
+	cp README ${PACKAGENAME}
+	cp ${SOURCEFILES} ${PACKAGENAME}/source
+	cp ${DOCFILES} ${PACKAGENAME}/doc
 	zip --filesync -r ${PACKAGENAME}.zip ${PACKAGENAME}
 	${RM} ${PACKAGENAME}
 
