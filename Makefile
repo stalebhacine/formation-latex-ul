@@ -112,7 +112,7 @@ SOURCEFILES = \
 	${SOURCEMAIN} \
 	${MASTERDIAPOS:.pdf=.tex} \
 	${SOURCEDIAPOS} \
-	${AUXDOC}
+	${AUXDOC} \
 	${AUXDOC:.pdf=.tex}
 
 ## Liste des fichiers à placer dans le dossier 'doc'
