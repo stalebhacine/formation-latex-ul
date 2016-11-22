@@ -49,7 +49,7 @@ SOURCEMAIN = \
 		bibtex-texshop.png \
 		tdm-dans-pdf.pdf \
 	commandes.tex \
-	trucs.tex \
+	trucs+astuces.tex \
 	ulthese.tex \
 	solutions.tex \
 	colophon.tex \
@@ -92,21 +92,19 @@ EXERCICES = \
 	exercice_renvois.tex \
 	exercice_complet.tex \
 	exercice_ulthese.tex \
-		includes/mathematiques.tex \
+		includes/b-a-ba-math.tex \
 	exercice_gabarit.tex \
 	exercice_include.tex \
 		includes/pagetitre.tex \
-		includes/presentation.tex \
+		includes/rpresentation.tex \
 		includes/console-screenshot.pdf \
 		includes/emacs.tex \
 	exercice_subcaption.tex \
 	exercice_demo.tex \
 	exercice_mathematiques.tex \
-	exercice_trucs.tex \
-	ul_p.pdf \
-	formation-latex-ul.bib
+	exercice_trucs.tex
 
-## Liste des fichiers à placer dans le dossier 'source'
+## Fichiers à placer dans le dossier 'source'
 SOURCEFILES = \
 	${MASTER:.pdf=.tex} \
 	${SOURCEMAIN} \
@@ -115,11 +113,17 @@ SOURCEFILES = \
 	${AUXDOC} \
 	${AUXDOC:.pdf=.tex}
 
-## Liste des fichiers à placer dans le dossier 'doc'
+## Fichiers à placer dans le dossier 'doc'
 DOCFILES = \
 	${MASTER} \
 	${MASTERDIAPOS} \
 	${EXERCICES}
+
+## Liens symboliques vers des fichiers de source/ à insérer dans doc/
+## (pour éviter les doublons qui ne sont pas tolérés par CTAN)
+SYMLINKS = \
+	ul_p.pdf \
+	formation-latex-ul.bib
 
 # Outils de travail
 TEXI2DVI = LATEX=xelatex TEXINDY=makeindex texi2dvi -b
@@ -133,20 +137,22 @@ pdf: $(AUXDOC) $(MASTER) $(MASTERDIAPOS)
 $(AUXDOC): $(AUXDOC:.pdf=.tex)
 	$(TEXI2DVI) $(AUXDOC:.pdf=.tex)
 
-$(MASTER): $(MASTER:.pdf=.tex) $(TEXFILES)
+$(MASTER): $(MASTER:.pdf=.tex) $(SOURCEMAIN)
 	$(TEXI2DVI) $(MASTER:.pdf=.tex)
 
-$(MASTERDIAPOS): $(MASTERDIAPOS:.pdf=.tex) $(TEXFILESDIAPOS)
+$(MASTERDIAPOS): $(MASTERDIAPOS:.pdf=.tex) $(SOURCEDIAPOS)
 	$(TEXI2DVI) $(MASTERDIAPOS:.pdf=.tex)
 
-zip : ${SOURCEFILES} ${DOCFILES} README.in
+zip: ${SOURCEFILES} ${DOCFILES} ${SYMLINKS} README.in
 	if [ -d ${PACKAGENAME} ]; then ${RM} ${PACKAGENAME}; fi
 	mkdir -p ${PACKAGENAME}/source ${PACKAGENAME}/doc
 	sed -e 's/<VERSION>/${VERSION}/g' README.in > README
 	cp README ${PACKAGENAME}
 	cp ${SOURCEFILES} ${PACKAGENAME}/source
 	cp ${DOCFILES} ${PACKAGENAME}/doc
-	zip --filesync -r ${PACKAGENAME}.zip ${PACKAGENAME}
+	cd ${PACKAGENAME}/doc && \
+		for file in ${SYMLINKS}; do ln -s ../source/$$file $$file; done
+	zip --filesync --symlinks -r ${PACKAGENAME}.zip ${PACKAGENAME}
 	${RM} ${PACKAGENAME}
 
 clean:
