@@ -1,5 +1,5 @@
-This package contains the supporting documentation, exercise files and
-templates for a two-part introductory LaTeX course (in French)
+This package contains the supporting documentation, slides, exercise
+files and templates for an introductory LaTeX course (in French)
 prepared for Université Laval, Québec, Canada.
 
 LICENCE
@@ -15,7 +15,7 @@ VERSION
 Ce paquetage contient un ouvrage d'introduction à LaTeX; voir le
 fichier
 
-  formation-latex-ul.pdf
+  doc/formation-latex-ul.pdf
 
 Le document tire son origine d'une formation sur la rédaction de
 thèses et de mémoires avec LaTeX développée pour la Bibliothèque de
@@ -28,7 +28,7 @@ texte; séparation du document en parties; rudiments du mode
 mathématique. Les diapositives de cette formation sont livrées avec ce
 paquetage; voir le fichier
 
-  formation-latex-ul-diapos.pdf
+  doc/formation-latex-ul-diapos.pdf
 
 Les six autres chapitres du document de référence visent à rendre
 l'utilisateur de LaTeX débutant ou intermédiaire autonome dans la
@@ -36,13 +36,28 @@ rédaction de documents relativement complexes comportant des tableaux,
 des figures, des équations mathématiques élaborées, une bibliographie,
 etc.
 
-Le paquetage contient également les fichiers nécessaires pour
+Le dossier doc/ contient également les fichiers nécessaires pour
 compléter certains exercices, ainsi qu'un gabarit pour composer les
 solutions des autres exercices.
 
+Le dossier source/ contient tous les fichiers nécessaires pour
+composer le document principal et les diapositives avec XeLaTeX. Ceci
+requiert toutefois les polices de caractères suivantes:
+
+  Lucida Bright OT
+  Lucida Bright Math
+  Lucida Grande Mono DK
+  Adobe Myriad Pro
+  Font Awesome (version TrueType)
+
 HISTORIQUE DES VERSIONS
 
-o <VERSION>
+o 2016.11-2
+
+- Incorporation des sources du document principal et des diapositives
+  dans la distribution tel que requis par TeX Live.
+
+o 2016.11-1
 
 - Mise à jour des URL vers les vidéos dans YouTube. Celles-ci ont été
   refaites avec le nouveau visuel de couverture.
