@@ -1,12 +1,18 @@
-## Prendre le numéro de version dans le fichier Makeconf
-include ./Makeconf
-
 ## Nom du paquetage sur CTAN
 PACKAGENAME = formation-latex-ul
 
 ## Fichiers maîtres
 MASTER = formation-latex-ul.pdf
 MASTERDIAPOS = formation-latex-ul-diapos.pdf
+
+## Numéro de version et numéro ISBN extraits du fichier maître
+YEAR = $(shell grep "newcommand{\\\\year" ${MASTER:.pdf=.tex} \
+	| cut -d "{" -f3 | cut -d "}" -f1)
+MONTH = $(shell grep "newcommand{\\\\month" ${MASTER:.pdf=.tex} \
+	| cut -d "{" -f3 | cut -d "}" -f1)
+VERSION = ${YEAR}.${MONTH}
+ISBN = $(shell grep "newcommand{\\\\ISBN" ${MASTER:.pdf=.tex} \
+	| cut -d "{" -f3 | cut -d "}" -f1)
 
 ## Documents auxiliaires insérés dans le document principal (et donc à
 ## compiler avant)
