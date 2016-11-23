@@ -21,8 +21,8 @@ Le document tire son origine d'une formation sur la rédaction de
 thèses et de mémoires avec LaTeX développée pour la Bibliothèque de
 l'Université Laval.
 
-La formation couvre les concepts de base de LaTeX pour un
-nouvel utilisateur: processus d'édition, compilation, visualisation;
+La formation couvre les concepts de base de LaTeX pour un nouvel
+utilisateur: processus d'édition, compilation, visualisation;
 séparation du contenu et de l'apparence du texte; mise en forme du
 texte; séparation du document en parties; rudiments du mode
 mathématique. Les diapositives de cette formation sont livrées avec ce
@@ -48,7 +48,13 @@ requiert toutefois les polices de caractères suivantes:
   Lucida Bright Math
   Lucida Grande Mono DK
   Adobe Myriad Pro
-  Font Awesome (version TrueType)
+  Font Awesome
+
+Les trois polices Lucida sont payantes et distribuées par le TeX Users
+Group: https://tug.org/lucida. La police Myriad Pro est livrée avec
+Acrobat Reader. La police Font Awesome est disponible graptuitement
+dans le site http://fontawesome.io. Utiliser la version TrueType.
+
 
 HISTORIQUE DES VERSIONS
 
@@ -56,6 +62,7 @@ o 2016.11-2
 
 - Incorporation des sources du document principal et des diapositives
   dans la distribution tel que requis par TeX Live.
+- Retouches au fichier README.
 
 o 2016.11-1
 
