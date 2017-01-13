@@ -7,12 +7,12 @@ MASTERDIAPOS = formation-latex-ul-diapos.pdf
 
 ## Numéro de version et numéro ISBN extraits du fichier maître
 YEAR = $(shell grep "newcommand{\\\\year" ${MASTER:.pdf=.tex} \
-	| cut -d "{" -f3 | cut -d "}" -f1)
+	| cut -d } -f 2 | tr -d {)
 MONTH = $(shell grep "newcommand{\\\\month" ${MASTER:.pdf=.tex} \
-	| cut -d "{" -f3 | cut -d "}" -f1)
+	| cut -d } -f 2 | tr -d {)
 VERSION = ${YEAR}.${MONTH}
 ISBN = $(shell grep "newcommand{\\\\ISBN" ${MASTER:.pdf=.tex} \
-	| cut -d "{" -f3 | cut -d "}" -f1)
+	| cut -d } -f 2 | tr -d {)
 
 ## Documents auxiliaires insérés dans le document principal (et donc à
 ## compiler avant)
