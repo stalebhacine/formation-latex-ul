@@ -14,6 +14,27 @@ VERSION = ${YEAR}.${MONTH}
 ISBN = $(shell grep "newcommand{\\\\ISBN" ${MASTER:.pdf=.tex} \
 	| cut -d } -f 2 | tr -d {)
 
+## Entête anglais du fichier README.md du paquetage.
+define HEADER
+This package contains the supporting documentation, slides, exercise
+files and templates for an introductory LaTeX course (in French)
+prepared for Université Laval, Québec, Canada.
+
+# Licence
+
+Creative Commons Attribution-ShareAlike 4.0 International.
+
+# Version
+
+${VERSION}
+
+> The rest of this file is in French
+endef
+
+## La variable multi-ligne doit être exportée vers le shell, autrement
+## les lignes sont interprétées par celui-ci.
+export HEADER
+
 ## Documents auxiliaires insérés dans le document principal (et donc à
 ## compiler avant)
 AUXDOC = \
@@ -149,15 +170,16 @@ $(MASTER): $(MASTER:.pdf=.tex) $(SOURCEMAIN)
 $(MASTERDIAPOS): $(MASTERDIAPOS:.pdf=.tex) $(SOURCEDIAPOS)
 	$(TEXI2DVI) $(MASTERDIAPOS:.pdf=.tex)
 
-zip: ${SOURCEFILES} ${DOCFILES} ${SYMLINKS} README.in
+zip: ${SOURCEFILES} ${DOCFILES} ${SYMLINKS} README.md
 	if [ -d ${PACKAGENAME} ]; then ${RM} ${PACKAGENAME}; fi
 	mkdir -p ${PACKAGENAME}/source ${PACKAGENAME}/doc
-	sed -e 's/<VERSION>/${VERSION}/g' README.in > README
-	cp README ${PACKAGENAME}
+	touch ${PACKAGENAME}/README.md && \
+	  echo "$$HEADER" >> ${PACKAGENAME}/README.md && \
+	  cat README.md   >> ${PACKAGENAME}/README.md
 	cp ${SOURCEFILES} ${PACKAGENAME}/source
 	cp ${DOCFILES} ${PACKAGENAME}/doc
 	cd ${PACKAGENAME}/doc && \
-		for file in ${SYMLINKS}; do ln -s ../source/$$file $$file; done
+	  for file in ${SYMLINKS}; do ln -s ../source/$$file $$file; done
 	zip --filesync --symlinks -r ${PACKAGENAME}.zip ${PACKAGENAME}
 	${RM} ${PACKAGENAME}
 
