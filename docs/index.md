@@ -5,10 +5,13 @@ Elle est distribuée sous forme de paquetage dans le site
 [Comprehensive TeX Archive Network (CTAN)](https://ctan.org/); voir
 [ci-dessous](#obtenir) pour les détails.
 
-Le paquetage est formé d'un document de référence de près de
-200~pages, des diapositives pour une formation en classe couvrant
-grosso modo les quatre premiers chapitres du document de référence,
-ainsi que des fichiers nécessaires pour compléter les exercices.
+La formation contient:
+
+- un document de référence de près de 200 pages;
+- les diapositives pourune formation en classe couvrant grosso modo
+  les quatre premiers chapitres du document de référence;
+- tous les fichiers nécessaires pour compléter les exercices.
+
 
 # Thèmes abordés
 
@@ -26,6 +29,7 @@ relativement complexes comportant des tableaux, des figures, des
 
 La table des matières abrégée est reproduite [ci-dessous](#tdm)
 
+
 # <a name="obtenir"></a> Obtenir la formation
 
 Le paquetage contenant la formation est distribué via
@@ -33,23 +37,38 @@ Le paquetage contenant la formation est distribué via
 
 Le paquetage fait également partie des distributions
 [TeX Live](https://tug.org/texlive) et [MiKTeX](https://miktex.org).
+Le document de référence est alors accessible avec la commande 
+
+```bash
+texdoc formation-latex-ul
+```
+
+La plupart des logiciels intégrés de rédaction LaTeX offrent une
+interface pour accéder à la documentation.
+
+- [TeXShop](http://www.texshop.org/): menu `Aide|Afficher l'aide pour le package`;
+- [Texmaker](http://www.xm1math.net/texmaker/index_fr.html): menu `Aide|TeXDoc [selection]`;
+- [GNU Emacs](http://www.gnu.org/software/emacs/): commande `TeX-doc`du mode spécialisé
+  [AUCTeX](https://www.gnu.org/software/auctex).
+
 Une
 [mise à jour](http://tex.stackexchange.com/questions/55437/how-do-i-update-my-tex-distribution)
 de votre distribution peut s'avérer nécessaire pour obtenir la plus
 récente version de la formation.
+
 
 # Quelques caractéristiques
 
 - Traitement de certains thèmes habituellement peu abordés dans les
   documents d'introduction à LaTeX:
   
-      - principe de séparation du contenu et de l'apparence;
-      - renvois automatiques dans les documents PDF avec **hyperref**;
-	  - document contenu dans plusieurs fichiers;
-	  - changement de police de caractères;
-	  - conception de beaux tableaux;
-	  - utilisation de la couleur dans un document;
-	  - production de rapports avec analyse intégrée (programmation lettrée).
+    - principe de séparation du contenu et de l'apparence;
+    - renvois automatiques dans les documents PDF avec **hyperref**;
+    - document contenu dans plusieurs fichiers;
+    - changement de police de caractères;
+    - conception de beaux tableaux;
+    - utilisation de la couleur dans un document;
+    - production de rapports avec analyse intégrée (programmation lettrée).
 
 - Vidéos explicatives sur l'installation de la distribution TeX Live
   sur [macOS](https://youtu.be/kA53EQ3Q47w) et
