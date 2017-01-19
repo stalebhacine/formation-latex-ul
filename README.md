@@ -59,7 +59,7 @@ l'écran ou à l'impression.
 
 - Incorporation des sources du document principal et des diapositives
   dans la distribution tel que requis par TeX Live.
-- Retouches au fichier README.
+- Retouches au fichier `README`.
 
 ## 2016.11-1
 
@@ -80,26 +80,26 @@ l'écran ou à l'impression.
 
 ## 2016-04-04
 
-- Fichier exercice_demo.tex: utilisation du style de bibliographie
-  'plainnat' puisque le paquetage francais-bst ne fait pas partie de la
+- Fichier `exercice_demo.tex`: utilisation du style de bibliographie
+  `plainnat` puisque le paquetage **francais-bst** ne fait pas partie de la
   distribution standard de TeX Live 2015.
-- Fichiers d'exercices: utilisation systématique des options 'og' et
-  'fg' dans \frenchbsetup.
+- Fichiers d'exercices: utilisation systématique des options `og` et
+  `fg` dans `\frenchbsetup`.
 
 ## 2016-03-24
 
 - Partie I: révision des diapositives pour baser davantage la
   présentation sur des exemples de code source.
 - Partie I: ajout d'images dans les diapos.
-- Partie I: correction du fichier exemple_demo.tex qui ne compilait
+- Partie I: correction du fichier `exemple_demo.tex` qui ne compilait
   pas correctement.
 - Partie II: ajout d'une introduction au chapitre 7 (tous les autres
   en avaient une) ainsi qu'une nouvelle section 7.1 sur le contrôle
   des sauts de ligne, sauts de page et coupures de mots.
 - Partie II: corrections mineures à l'index.
-- Fichiers d'exercices et gabarits: langue déclarée comme 'french'
-  plutôt que 'francais' et dans \documentclass plutôt que dans
-  \usepackage.
+- Fichiers d'exercices et gabarits: langue déclarée comme `french`
+  plutôt que `francais` et dans `\documentclass` plutôt que dans
+  `\usepackage`.
 - Fichiers d'exercices et gabarits: chargement du paquetage icomma
   déplacé vers la fin de la liste, plus particulièrement après
   fontspec.
