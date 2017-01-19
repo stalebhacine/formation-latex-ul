@@ -1,3 +1,5 @@
+# Présentation
+
 *Rédaction avec LaTeX* est une formation à l'utilisation du système de
 mise en page [LaTeX](https://fr.wikipedia.org/wiki/LaTeX) développée
 pour la Bibliothèque de l'[Université Laval](https://www.ulaval.ca).
@@ -8,7 +10,7 @@ Elle est distribuée sous forme de paquetage dans le site
 La formation contient:
 
 - un document de référence de près de 200 pages;
-- les diapositives pourune formation en classe couvrant grosso modo
+- les diapositives pour une formation en classe couvrant grosso modo
   les quatre premiers chapitres du document de référence;
 - tous les fichiers nécessaires pour compléter les exercices.
 
@@ -59,8 +61,9 @@ récente version de la formation.
 
 # Quelques caractéristiques
 
-- Traitement de certains thèmes habituellement peu abordés dans les
+- Traitement de certains thèmes moins souvent abordés dans les
   documents d'introduction à LaTeX:
+
     - principe de séparation du contenu et de l'apparence;
     - renvois automatiques dans les documents PDF avec **hyperref**;
     - document contenu dans plusieurs fichiers;
@@ -72,7 +75,7 @@ récente version de la formation.
 - Vidéos explicatives sur l'installation de la distribution TeX Live
   sur [macOS](https://youtu.be/kA53EQ3Q47w) et
   [Windows](https://youtu.be/7MfodhaghUk).
-
+  
 - Vidéos explicatives sur la composition d'un premier document très
   simple sur [macOS avec TeXShop](https://youtu.be/vZfiZUSsP68) et sur
   [Windows avec Texmaker](https://youtu.be/mMgFVQhZbiM).
@@ -117,10 +120,10 @@ Bibliographie
 Index
 
 
-### Accolades
+## Accolades
 
-Non, pas les caractères typographiques si communs dans LaTeX. Plutôt
-celles que l'on donne en signe de reconnaissance. Ce document a été en
-grande partie rédigé à la
-[Brulerie Vieux-Limoilou](http://lesbruleries.com) et à la [Brasserie
-artisanale La Souche](http://www.lasouche.ca). Dont acte!
+Non pas les caractères typographiques si communs dans LaTeX, mais
+plutôt celles que l'on donne en signe de reconnaissance. Ce document a
+été en grande partie rédigé à la
+[Brulerie Vieux-Limoilou](http://lesbruleries.com) et à la
+[Brasserie artisanale La Souche](http://www.lasouche.ca). Dont acte!
