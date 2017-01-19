@@ -39,7 +39,8 @@ Le paquetage contenant la formation est distribué via
 
 Le paquetage fait également partie des distributions
 [TeX Live](https://tug.org/texlive) et [MiKTeX](https://miktex.org).
-Le document de référence est alors accessible avec la commande 
+Le document de référence est alors accessible en entrant à une invite
+de commande
 
 ```bash
 texdoc formation-latex-ul
@@ -63,40 +64,32 @@ récente version de la formation.
 
 - Traitement de certains thèmes moins souvent abordés dans les
   documents d'introduction à LaTeX:
-
     - principe de séparation du contenu et de l'apparence;
     - renvois automatiques dans les documents PDF avec **hyperref**;
     - document contenu dans plusieurs fichiers;
-    - changement de police de caractères;
+    - changement de la police de caractères du document;
     - conception de beaux tableaux;
     - utilisation de la couleur dans un document;
-    - production de rapports avec analyse intégrée (programmation lettrée).
-
+    - production de rapports avec analyse intégrée (programmation
+      lettrée de type [Sweave](https://en.wikipedia.org/wiki/Sweave).
 - Vidéos explicatives sur l'installation de la distribution TeX Live
   sur [macOS](https://youtu.be/kA53EQ3Q47w) et
   [Windows](https://youtu.be/7MfodhaghUk).
-  
 - Vidéos explicatives sur la composition d'un premier document très
   simple sur [macOS avec TeXShop](https://youtu.be/vZfiZUSsP68) et sur
   [Windows avec Texmaker](https://youtu.be/mMgFVQhZbiM).
-
 - Large place faite à l'utilisation de LaTeX en français.
-
 - Renvois vers la documentation d'un paquetage ou d'une classe dans le
   site [TeXdoc Online](http://texdoc.net).
-
 - Nombreuses remarques spécifiques à la classe de documents
   [ulthese](https://ctan.org/pkg/ulthese) pour les étudiantes et
   étudiants de l'Université Laval occupés à la rédaction de leur thèse
   ou de leur mémoire. (Les autres lecteurs pourront sans mal escamoter
   ces passages.)
-
 - Exercices à la fin de chaque chapitre. (Les solutions sont fournies en
   annexe.)
-
 - Index colligeant les références aux commandes et environnements
   LaTeX, aux paquetages et aux classes.
-
 - Rubriques *Conseil du TeXpert* offrant conseils et astuces glanés au
   fil de nos vingt années d'utilisation de LaTeX.
 
