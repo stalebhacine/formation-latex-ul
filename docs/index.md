@@ -61,7 +61,6 @@ récente version de la formation.
 
 - Traitement de certains thèmes habituellement peu abordés dans les
   documents d'introduction à LaTeX:
-  
     - principe de séparation du contenu et de l'apparence;
     - renvois automatiques dans les documents PDF avec **hyperref**;
     - document contenu dans plusieurs fichiers;
@@ -84,7 +83,7 @@ récente version de la formation.
   site [TeXdoc Online](http://texdoc.net).
 
 - Nombreuses remarques spécifiques à la classe de documents
-  [`ulthese`](https://ctan.org/pkg/ulthese) pour les étudiantes et
+  [ulthese](https://ctan.org/pkg/ulthese) pour les étudiantes et
   étudiants de l'Université Laval occupés à la rédaction de leur thèse
   ou de leur mémoire. (Les autres lecteurs pourront sans mal escamoter
   ces passages.)
