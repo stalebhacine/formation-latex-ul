@@ -1,3 +1,19 @@
+### -*-Makefile-*- pour préparer le paquetage formation-latex-ul
+##
+## Copyright (C) 2017 Vincent Goulet
+##
+## 'make pdf' (recette par défaut) compile les documents auxiliaires,
+## puis le document principal et les diapositives avec XeLaTeX.
+##
+## 'make zip' crée l'archive du paquetage conformément aux exigences
+## de CTAN.
+##
+## Auteur: Vincent Goulet
+##
+## Ce fichier fait partie du projet formation-latex-ul
+## http://github.com/vigou3/formation-latex-ul
+
+
 ## Nom du paquetage sur CTAN
 PACKAGENAME = formation-latex-ul
 
