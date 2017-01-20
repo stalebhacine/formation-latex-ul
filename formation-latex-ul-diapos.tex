@@ -9,6 +9,17 @@
   \usepackage[export]{adjustbox}       % cadre serré autour d'une image
   \usepackage[overlay,absolute]{textpos}
 
+  %% =============================
+  %%  Informations de publication
+  %% =============================
+  \renewcommand{\year}{2016}
+  \renewcommand{\month}{11-1}
+  \newcommand{\ctanurl}{https://ctan.org/pkg/formation-latex-ul/}
+
+  %% =======================
+  %%  Apparence du document
+  %% =======================
+
   %% Polices de caractères
   \usepackage{fontspec}
   \usepackage{unicode-math}
@@ -89,27 +100,27 @@
   %% Paramétrage de babel pour les guillemets
   \frenchbsetup{og=«, fg=»}
 
-  %% Nouvelles commandes
-  \newcommand{\fichier}[1]{\fbox{\texttt{#1}}}
-  \newcommand{\class}[1]{\textbf{#1}}
-  \newcommand{\pkg}[1]{\textbf{#1}}
-  \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
-  \newcommand{\capsule}[2]{\href{#1}{\faYoutubePlay~#2}}
+  %% Sections de code source
+  \lstloadlanguages{[LaTeX]TeX}
+  \lstset{language=[LaTeX]TeX,
+    escapeinside=`',
+    extendedchars=true,
+    inputencoding=utf8/latin1,
+    basicstyle=\small\ttfamily\NoAutoSpacing,
+    commentstyle=\color{comments}\slshape,
+    keywordstyle=\mdseries,
+    emphstyle=\color{emphasis}\bfseries,
+    backgroundcolor=\color{LightYellow1},
+    frame=none,
+    showstringspaces=false}
 
-  %% «Bouton» de la page de copyright
-  \newcommand{\browsebutton}{%
-    \setlength{\fboxrule}{0.5pt}%
-    \framebox[20mm][l]{%
-      \makebox[2.5mm]{\raisebox{-1.5pt}{\scriptsize\faExternalLink}}\;%
-      {\sffamily Accéder au dépôt}}}
+  %%% =========================
+  %%%  Nouveaux environnements
+  %%% =========================
 
-  %% «Bouton» pour accéder à CTAN
-  \newcommand{\ctanbutton}{%
-    \setlength{\fboxrule}{1pt}%
-    \framebox[60mm][l]{%
-      \rule[-5pt]{0mm}{16pt}%
-      \makebox[7mm]{\raisebox{-2.5pt}{\Large\faExternalLink}}\;%
-      {\sffamily Accéder aux fichiers dans CTAN}}}
+  %% Exercices
+  \theoremstyle{example}
+  \newtheorem{exercice}[theorem]{Exercice}
 
   %% Environnements pour les demo de code; tirés du document
   %% principal.
@@ -151,32 +162,41 @@
       \begin{minipage}[t]{0.88\textwidth}}%
     {\end{minipage}\end{alertblock}}
 
-  %% Exercices
-  \theoremstyle{example}
-  \newtheorem{exercice}[theorem]{Exercice}
+  %% =====================
+  %%  Nouvelles commandes
+  %% =====================
 
-  %% Paramètres de listings
-  \lstloadlanguages{[LaTeX]TeX}
-  \lstset{language=[LaTeX]TeX,
-    escapeinside=`',
-    extendedchars=true,
-    inputencoding=utf8/latin1,
-    basicstyle=\small\ttfamily\NoAutoSpacing,
-    commentstyle=\color{comments}\slshape,
-    keywordstyle=\mdseries,
-    emphstyle=\color{emphasis}\bfseries,
-    backgroundcolor=\color{LightYellow1},
-    frame=none,
-    showstringspaces=false}
+  %% Noms de fonctions, code, environnement, etc.
+  \newcommand{\fichier}[1]{\fbox{\texttt{#1}}}
+  \newcommand{\class}[1]{\textbf{#1}}
+  \newcommand{\pkg}[1]{\textbf{#1}}
+  \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
+  \newcommand{\capsule}[2]{\href{#1}{\faYoutubePlay~#2}}
+
+  %% «Bouton» de la page de copyright
+  \newcommand{\browsebutton}{%
+    \setlength{\fboxrule}{0.5pt}%
+    \framebox[20mm][c]{%
+      \makebox[2.5mm]{\raisebox{-1pt}{\footnotesize\faGithub}}\;%
+      {\sffamily Voir sur GitHub}}}
+
+  %% «Bouton» pour accéder à CTAN
+  \newcommand{\ctanbutton}{%
+    \setlength{\fboxrule}{1pt}%
+    \framebox[60mm][l]{%
+      \rule[-5pt]{0mm}{16pt}%
+      \makebox[7mm]{\raisebox{-2.5pt}{\Large\faExternalLink}}\;%
+      {\sffamily Accéder aux fichiers dans CTAN}}}
+
+  %%% =======
+  %%%  Varia
+  %%% =======
 
   %% Nouveaux compteurs requis pour ajouter les numéros d'exercices
   %% dans la table des matières. Une page compte deux exercices;
   %% besoin de deux compteurs pour celle-là.
   \newcounter{exerciceref}
   \newcounter{exercicerefb}
-
-  %% URL du projet dans CTAN
-  \newcommand{\ctanurl}{https://ctan.org/pkg/formation-latex-ul/}
 
   %% Longueurs pour la composition des pages couvertures avant et
   %% arrière.
@@ -185,10 +205,6 @@
   \newlength{\imageheight}
   \newlength{\logoheight}
   \newlength{\gapwidth}
-
-  %% Année du copyright
-  \renewcommand{\year}{2016}
-  \renewcommand{\month}{11-1}
 
 \begin{document}
 
