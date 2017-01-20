@@ -1,8 +1,13 @@
+> Consulter la
+> [page du projet](https://vigou3.github.io/formation-latex-ul)
+> pour de l'information plus détaillée sur le paquetage et pour
+> télécharger la plus récente version officielle.
+
 > Ce fichier est utilisé dans le paquetage distribué dans
 > [CTAN](https://www.ctan.org/pkg/formation-latex-ul). Les noms de
 > répertoires ci-dessous sont ceux du paquetage et non ceux du dépôt.
 
-# Présentation du paquetage
+# La formation LaTeX de l'Université Laval
 
 Le paquetage `formation-latex-ul` propose une formation à
 l'utilisation de LaTeX développée pour la Bibliothèque de
@@ -10,13 +15,13 @@ l'[Université Laval](https://www.ulaval.ca).
 
 La formation est formée des éléments suivants:
 
-1. un document de référence de près de 200~pages; voir le fichier
-   `doc/formation-latex-ul.pdf`;
-   
+1. *Rédaction avec LaTeX*, un document de référence de près de
+   200 pages; voir le fichier `doc/formation-latex-ul.pdf`;
+
 2. des diapositives pour une formation en classe couvrant grosso modo
    les quatre premiers chapitres du document de référence; voir le
    fichier `doc/formation-latex-ul-diapos.pdf`;
-   
+
 3. les fichiers nécessaires pour compléter certains exercices, ainsi
    qu'un gabarit pour composer les solutions des autres exercices; voir
    le dossier `doc/`.
@@ -34,7 +39,7 @@ rédaction de documents relativement complexes comportant des tableaux,
 des figures, des équations mathématiques élaborées, une bibliographie,
 etc.
 
-# Composition des documents
+## Composition des documents
 
 Le dossier `source/` contient tous les fichiers nécessaires pour
 composer le document principal et les diapositives avec XeLaTeX. Ceci
@@ -53,15 +58,15 @@ dans le site http://fontawesome.io. Prendre soin d'utiliser la version
 TrueType pour éviter que les symboles ne soient redimensionnés à
 l'écran ou à l'impression.
 
-# Historique des versions
+## Historique des versions
 
-## 2016.11-2
+### 2016.11-2
 
 - Incorporation des sources du document principal et des diapositives
   dans la distribution tel que requis par TeX Live.
 - Retouches au fichier `README`.
 
-## 2016.11-1
+### 2016.11-1
 
 - Mise à jour des URL vers les vidéos dans YouTube. Celles-ci ont été
   refaites avec le nouveau visuel de couverture.
@@ -69,7 +74,7 @@ l'écran ou à l'impression.
   formation, soit composer un document simple de type «Hello, World!».
   Liens vers les vidéos explicatives dans YouTube.
 
-## 2016.11
+### 2016.11
 
 - Importante refonte de la documentation en un document unique. Les
   diapositives ne sont plus qu'un support visuel pour la formation qui
@@ -78,7 +83,7 @@ l'écran ou à l'impression.
 - Nouveau visuel des couvertures. Trop cuuuute.
 - Nouveau mode de numérotation des versions.
 
-## 2016-04-04
+### 2016-04-04
 
 - Fichier `exercice_demo.tex`: utilisation du style de bibliographie
   `plainnat` puisque le paquetage **francais-bst** ne fait pas partie de la
@@ -86,7 +91,7 @@ l'écran ou à l'impression.
 - Fichiers d'exercices: utilisation systématique des options `og` et
   `fg` dans `\frenchbsetup`.
 
-## 2016-03-24
+### 2016-03-24
 
 - Partie I: révision des diapositives pour baser davantage la
   présentation sur des exemples de code source.
@@ -104,6 +109,6 @@ l'écran ou à l'impression.
   déplacé vers la fin de la liste, plus particulièrement après
   fontspec.
 
-## 2015-03-18
+### 2015-03-18
 
 - Première publication sur CTAN.
