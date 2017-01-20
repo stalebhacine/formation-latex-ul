@@ -7,7 +7,7 @@
 > [CTAN](https://www.ctan.org/pkg/formation-latex-ul). Les noms de
 > répertoires ci-dessous sont ceux du paquetage et non ceux du dépôt.
 
-# La formation LaTeX de l'Université Laval
+# Présentation du projet
 
 Le paquetage `formation-latex-ul` propose une formation à
 l'utilisation de LaTeX développée pour la Bibliothèque de
