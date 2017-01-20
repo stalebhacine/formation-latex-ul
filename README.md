@@ -60,6 +60,12 @@ l'écran ou à l'impression.
 
 ## Historique des versions
 
+### 2016.11-3
+
+- Liens vers le code source modifiés suite au déplacement du projet
+  vers [Github](https://github.com/vigou3/formation-latex-ul).
+- Correction du numéro de version dans les documents PDF.
+
 ### 2016.11-2
 
 - Incorporation des sources du document principal et des diapositives
