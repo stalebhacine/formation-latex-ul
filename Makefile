@@ -32,15 +32,17 @@ ISBN = $(shell grep "newcommand{\\\\ISBN" ${MASTER:.pdf=.tex} \
 
 ## Entête anglais du fichier README.md du paquetage.
 define HEADER
+# Package formation-latex-ul
+
 This package contains the supporting documentation, slides, exercise
 files and templates for an introductory LaTeX course (in French)
 prepared for Université Laval, Québec, Canada.
 
-# Licence
+## Licence
 
 Creative Commons Attribution-ShareAlike 4.0 International.
 
-# Version
+## Version
 
 ${VERSION}
 
@@ -191,7 +193,7 @@ zip: ${SOURCEFILES} ${DOCFILES} ${SYMLINKS} README.md
 	mkdir -p ${PACKAGENAME}/source ${PACKAGENAME}/doc
 	touch ${PACKAGENAME}/README.md && \
 	  echo "$$HEADER" >> ${PACKAGENAME}/README.md && \
-	  cat README.md   >> ${PACKAGENAME}/README.md
+	  awk 'BEGIN { print } /^# / { state=1 } state' README.md >> ${PACKAGENAME}/README.md
 	cp ${SOURCEFILES} ${PACKAGENAME}/source
 	cp ${DOCFILES} ${PACKAGENAME}/doc
 	cd ${PACKAGENAME}/doc && \
