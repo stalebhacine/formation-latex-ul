@@ -68,10 +68,12 @@ récente version de la formation.
     - renvois automatiques dans les documents PDF avec **hyperref**;
     - document contenu dans plusieurs fichiers;
     - changement de la police de caractères du document;
-    - conception de beaux tableaux;
+    - conception de beaux tableaux avec **booktabs**;
     - utilisation de la couleur dans un document;
     - production de rapports avec analyse intégrée (programmation
-      lettrée de type [Sweave](https://en.wikipedia.org/wiki/Sweave).
+      lettrée de type [Sweave](https://en.wikipedia.org/wiki/Sweave));
+    - remplacement des classes de documents standards par la classe
+      [memoir](http://texdoc.net/pkg/memman).
 - Vidéos explicatives sur l'installation de la distribution TeX Live
   sur [macOS](https://youtu.be/kA53EQ3Q47w) et
   [Windows](https://youtu.be/7MfodhaghUk).
