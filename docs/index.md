@@ -19,10 +19,13 @@ La formation contient:
 
 Les quatre premiers chapitres du document de référence (ceux couverts
 par les diapositives) traitent des concepts de base pour un nouvel
-utilisateur: processus d'édition, compilation, visualisation;
-séparation du contenu et de l'apparence du texte; mise en forme du
-texte; séparation du document en parties; rudiments du mode
-mathématique.
+utilisateur: 
+
+- processus d'édition, compilation, visualisation;
+- séparation du contenu et de l'apparence du texte; 
+- mise en forme du texte;
+- séparation du document en parties;
+- rudiments du mode mathématique.
 
 Les six autres chapitres visent à rendre l'utilisateur de LaTeX
 débutant ou intermédiaire autonome dans la rédaction de documents
