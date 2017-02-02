@@ -45,11 +45,11 @@ Le dossier `source/` contient tous les fichiers nécessaires pour
 composer le document principal et les diapositives avec XeLaTeX. Ceci
 requiert toutefois les polices de caractères suivantes:
 
-  Lucida Bright OT
-  Lucida Bright Math
-  Lucida Grande Mono DK
-  Adobe Myriad Pro
-  Font Awesome
+  Lucida Bright OT  
+  Lucida Bright Math  
+  Lucida Grande Mono DK  
+  Adobe Myriad Pro  
+  Font Awesome  
 
 Les trois polices Lucida sont payantes et distribuées par le TeX Users
 Group: https://tug.org/lucida. La police Myriad Pro est livrée avec
