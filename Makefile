@@ -30,29 +30,6 @@ VERSION = ${YEAR}.${MONTH}
 ISBN = $(shell grep "newcommand{\\\\ISBN" ${MASTER:.pdf=.tex} \
 	| cut -d } -f 2 | tr -d {)
 
-## Entête anglais du fichier README.md du paquetage.
-define HEADER
-# Package formation-latex-ul
-
-This package contains the supporting documentation, slides, exercise
-files and templates for an introductory LaTeX course (in French)
-prepared for Université Laval, Québec, Canada.
-
-## Licence
-
-Creative Commons Attribution-ShareAlike 4.0 International.
-
-## Version
-
-${VERSION}
-
-> The rest of this file is in French
-endef
-
-## La variable multi-ligne doit être exportée vers le shell, autrement
-## les lignes sont interprétées par celui-ci.
-export HEADER
-
 ## Documents auxiliaires insérés dans le document principal (et donc à
 ## compiler avant)
 AUXDOC = \
@@ -192,7 +169,7 @@ zip: ${SOURCEFILES} ${DOCFILES} ${SYMLINKS} README.md
 	if [ -d ${PACKAGENAME} ]; then ${RM} ${PACKAGENAME}; fi
 	mkdir -p ${PACKAGENAME}/source ${PACKAGENAME}/doc
 	touch ${PACKAGENAME}/README.md && \
-	  echo "$$HEADER" >> ${PACKAGENAME}/README.md && \
+	  sed 's/<VERSION>/${VERSION}/' README-HEADER.in >> ${PACKAGENAME}/README.md && \
 	  awk 'BEGIN { print } /^# / { state=1 } state' README.md >> ${PACKAGENAME}/README.md
 	cp ${SOURCEFILES} ${PACKAGENAME}/source
 	cp ${DOCFILES} ${PACKAGENAME}/doc
@@ -203,3 +180,9 @@ zip: ${SOURCEFILES} ${DOCFILES} ${SYMLINKS} README.md
 
 clean:
 	$(RM) *.aux *.log *.blg *.bbl *.out *.ilg *.idx *.ind
+
+test:
+	if [ -f toto ]; then rm toto; fi
+	touch toto
+	sed 's/<VERSION>/${VERSION}/' README-HEADER.in >> toto
+	awk 'BEGIN { print } /^# / { state=1 } state' README.md >> toto
