@@ -1,13 +1,17 @@
-> Consulter la
+> **Pour affichage dans GitHub**
+>
+> Ceci est la partie en français du fichier `README.md` du paquetage
+> LaTeX `formation-latex-ul`. Les noms de répertoires ci-dessous sont
+> ceux du paquetage et non ceux du dépôt.
+>
+> Le paquetage est distribué via
+> [CTAN](https://www.ctan.org/pkg/formation-latex-ul).
+>
+> La
 > [page du projet](https://vigou3.github.io/formation-latex-ul)
-> pour de l'information plus détaillée sur le paquetage et pour
-> télécharger la plus récente version officielle.
+> fournit de l'information plus détaillée sur le paquetage.
 
-> Ce fichier est utilisé dans le paquetage distribué dans
-> [CTAN](https://www.ctan.org/pkg/formation-latex-ul). Les noms de
-> répertoires ci-dessous sont ceux du paquetage et non ceux du dépôt.
-
-# Présentation du projet
+# Paquetage formation-latex-ul
 
 Le paquetage `formation-latex-ul` propose une formation à
 l'utilisation de LaTeX développée pour la Bibliothèque de
@@ -45,11 +49,11 @@ Le dossier `source/` contient tous les fichiers nécessaires pour
 composer le document principal et les diapositives avec XeLaTeX. Ceci
 requiert toutefois les polices de caractères suivantes:
 
-  Lucida Bright OT  
-  Lucida Bright Math  
-  Lucida Grande Mono DK  
-  Adobe Myriad Pro  
-  Font Awesome  
+  Lucida Bright OT
+  Lucida Bright Math
+  Lucida Grande Mono DK
+  Adobe Myriad Pro
+  Font Awesome
 
 Les trois polices Lucida sont payantes et distribuées par le TeX Users
 Group: https://tug.org/lucida. La police Myriad Pro est livrée avec
