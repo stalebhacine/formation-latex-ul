@@ -170,7 +170,7 @@ zip: ${SOURCEFILES} ${DOCFILES} ${SYMLINKS} README.md
 	mkdir -p ${PACKAGENAME}/source ${PACKAGENAME}/doc
 	touch ${PACKAGENAME}/README.md && \
 	  sed 's/<VERSION>/${VERSION}/' README-HEADER.in >> ${PACKAGENAME}/README.md && \
-	  awk 'BEGIN { print } /^# / { state=1 } state' README.md >> ${PACKAGENAME}/README.md
+	  awk 'BEGIN { print } /^# /,0' README.md >> ${PACKAGENAME}/README.md
 	cp ${SOURCEFILES} ${PACKAGENAME}/source
 	cp ${DOCFILES} ${PACKAGENAME}/doc
 	cd ${PACKAGENAME}/doc && \
