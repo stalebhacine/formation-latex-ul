@@ -154,7 +154,6 @@ RM = rm -r
 .PHONY: pdf zip clean
 
 pdf: $(AUXDOC) $(MASTER) $(MASTERDIAPOS)
-#pdf : $(MASTER)
 
 $(AUXDOC): $(AUXDOC:.pdf=.tex)
 	$(TEXI2DVI) $(AUXDOC:.pdf=.tex)
@@ -181,9 +180,3 @@ zip: ${SOURCEFILES} ${DOCFILES} ${SYMLINKS} README.md
 
 clean:
 	$(RM) *.aux *.log *.blg *.bbl *.out *.ilg *.idx *.ind
-
-test:
-	if [ -f toto ]; then rm toto; fi
-	touch toto
-	sed 's/<VERSION>/${VERSION}/' README-HEADER.in >> toto
-	awk 'BEGIN { print } /^# / { state=1 } state' README.md >> toto
