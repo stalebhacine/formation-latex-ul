@@ -1,8 +1,6 @@
-> **Pour affichage dans GitHub**
->
-> Ceci est la partie en français du fichier `README.md` du paquetage
-> LaTeX `formation-latex-ul`. Les noms de répertoires ci-dessous sont
-> ceux du paquetage et non ceux du dépôt.
+> Ceci est le fichier `README.md` du paquetage LaTeX
+> `formation-latex-ul`. Les noms de répertoires ci-dessous sont ceux
+> du paquetage et non ceux du dépôt.
 >
 > Le paquetage est distribué via
 > [CTAN](https://www.ctan.org/pkg/formation-latex-ul).
@@ -11,9 +9,25 @@
 > [page du projet](https://vigou3.github.io/formation-latex-ul)
 > fournit de l'information plus détaillée sur le paquetage.
 
-# Paquetage formation-latex-ul
+# formation-latex-ul
 
-Le paquetage `formation-latex-ul` propose une formation à
+Package **formation-latex-ul** contains the supporting documentation,
+slides, exercise files and templates for an introductory LaTeX course
+(in French) prepared for Université Laval, Québec, Canada.
+
+## License
+
+Creative Commons Attribution-ShareAlike 4.0 International.
+
+## Author
+
+Vincent Goulet <vincent.goulet@act.ulaval.ca>
+
+> The rest of this file is in French for the target audience.
+
+# formation-latex-ul
+
+Le paquetage **formation-latex-ul** propose une formation à
 l'utilisation de LaTeX développée pour la Bibliothèque de
 l'[Université Laval](https://www.ulaval.ca).
 
@@ -63,6 +77,11 @@ TrueType pour éviter que les symboles ne soient redimensionnés à
 l'écran ou à l'impression.
 
 ## Historique des versions
+
+### En développement
+
+- Nouvelles diapositives sur les tableaux.
+- Nouvelles diapositives sur la programmation lettrée avec Sweave.
 
 ### 2016.11-3
 
