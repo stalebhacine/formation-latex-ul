@@ -1,3 +1,9 @@
+---
+title: Rédaction avec LaTeX
+tagline: La formation LaTeX de l'Université Laval
+description: Formation en français sur l'utilisation du système de mise en page LaTeX
+---
+
 # Présentation
 
 *Rédaction avec LaTeX* est une formation à l'utilisation du système de
