@@ -75,6 +75,35 @@ de votre distribution peut s'avérer nécessaire pour obtenir la plus
 récente version de la formation.
 
 
+# Prérequis pour la formation
+
+Vous devez disposer d'une distribution LaTeX sur votre poste de
+travail. Nous recommandons la distribution [TeX
+Live](https://tug.org/texlive).
+	
+- [Vidéo explicative de l'installation sur macOS](https://youtu.be/kA53EQ3Q47w)
+- [Vidéo explicative de l'installation sur Windows](https://youtu.be/7MfodhaghUk)
+
+Les logiciels de rédaction intégrés facilitent grandement l'édition de
+document LaTeX. 
+
+- La distribution [TeX Live](https://tug.org/texlive) pour Windows est
+  livrée avec [TeXworks](http://www.tug.org/texworks/). Nous
+  recommandons plutôt d'installer
+  [Texmaker](http://www.xm1math.net/texmaker/index_fr.html).
+- La distribution [MacTeX](http://tug.org/mactex/) (TeX Live pour
+  macOS) est livrée avec l'excellent éditeur
+  [TeXShop](http://www.texshop.org/). Il n'y a donc rien d'autre à
+  installer.
+
+Enfin, nous recommandons de composer un premier document très simple
+de type «Hello World!». (Il s'agit de l'exercice 1.1 du document de
+référence.)
+
+- [Démonstration sur macOS avec TeXShop](https://youtu.be/vZfiZUSsP68)
+- [Démonstration sur Windows avec Texmaker](https://youtu.be/mMgFVQhZbiM)
+
+
 # Quelques caractéristiques
 
 - Traitement de certains thèmes moins souvent abordés dans les
