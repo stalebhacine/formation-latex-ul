@@ -55,6 +55,12 @@ de commande
 texdoc formation-latex-ul
 ```
 
+Pour le diapositives, utiliser
+
+```bash
+texdoc formation-latex-ul-diapos
+```
+
 La plupart des logiciels intégrés de rédaction LaTeX offrent une
 interface pour accéder à la documentation.
 
