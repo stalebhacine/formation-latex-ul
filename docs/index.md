@@ -48,26 +48,21 @@ Le paquetage contenant la formation est distribué via
 
 Le paquetage fait également partie des distributions
 [TeX Live](https://tug.org/texlive) et [MiKTeX](https://miktex.org).
-Le document de référence est alors accessible en entrant à une invite
-de commande
+Le document de référence et les diapositives sont accessibles depuis une invite
+de commande avec la commande `texdoc`.
 
 ```bash
 texdoc formation-latex-ul
-```
-
-Pour le diapositives, utiliser
-
-```bash
 texdoc formation-latex-ul-diapos
 ```
 
 La plupart des logiciels intégrés de rédaction LaTeX offrent une
 interface pour accéder à la documentation.
 
-- [TeXShop](http://www.texshop.org/): menu `Aide|Afficher l'aide pour le package`;
-- [Texmaker](http://www.xm1math.net/texmaker/index_fr.html): menu `Aide|TeXDoc [selection]`;
+- [TeXShop](http://www.texshop.org/): menu `Aide|Afficher l'aide pour le package`
+- [Texmaker](http://www.xm1math.net/texmaker/index_fr.html): menu `Aide|TeXDoc [selection]`
 - [GNU Emacs](http://www.gnu.org/software/emacs/): commande `TeX-doc`du mode spécialisé
-  [AUCTeX](https://www.gnu.org/software/auctex).
+  [AUCTeX](https://www.gnu.org/software/auctex)
 
 Une
 [mise à jour](http://tex.stackexchange.com/questions/55437/how-do-i-update-my-tex-distribution)
