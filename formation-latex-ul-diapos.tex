@@ -1,20 +1,36 @@
-\documentclass[aspectratio=54,10pt,xcolor=x11names]{beamer}
-  \usepackage[french]{babel}
+%%% Copyright (C) 2018 Vincent Goulet
+%%%
+%%% Ce fichier fait partie du projet
+%%% «Rédaction avec LaTeX»
+%%% http://github.com/vigou3/formation-latex-ul
+%%%
+%%% Cette création est mise à disposition selon le contrat
+%%% Attribution-Partage dans les mêmes conditions 4.0
+%%% International de Creative Commons.
+%%% http://creativecommons.org/licenses/by-sa/4.0/
+
+\documentclass[aspectratio=1610,xcolor=x11names,french]{beamer}
+  \usepackage{babel}
   \usepackage[autolanguage]{numprint}
   \usepackage{amsmath}
-  \usepackage{booktabs,tabularx}
-  \usepackage{metalogo}                % logo \XeLaTeX
-  \usepackage{fontawesome}
-  \usepackage{listings}
-  \usepackage[export]{adjustbox}       % cadre serré autour d'une image
-  \usepackage[overlay,absolute]{textpos}
+  \usepackage{changepage}                % page licence
+  \usepackage{tabularx}                  % page licence
+  \usepackage{booktabs}                  % beaux tableaux
+  \usepackage{fontawesome}               % icônes
+  \usepackage{awesomebox}                % \tipbox et autres
+  \usepackage{listings}                  % code source
+  \usepackage[export]{adjustbox}         % cadre autour image
+  \usepackage[overlay,absolute]{textpos} % couvertures
+  \usepackage{metalogo}                  % logo \XeLaTeX
 
-  %% =============================
+  %% ==========================================
   %%  Informations de publication
-  %% =============================
+  %%  (titre et al. dans couverture-avant.tex)
+  %% ==========================================
   \renewcommand{\year}{2016}
   \renewcommand{\month}{11-3}
   \newcommand{\ctanurl}{https://ctan.org/pkg/formation-latex-ul/}
+  \newcommand{\ghurl}{https://github.com/vigou3/formation-latex-ul/}
 
   %% =======================
   %%  Apparence du document
@@ -173,12 +189,9 @@
   \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
   \newcommand{\capsule}[2]{\href{#1}{\faYoutubePlay~#2}}
 
-  %% «Bouton» de la page de copyright
-  \newcommand{\browsebutton}{%
-    \setlength{\fboxrule}{0.5pt}%
-    \framebox[20mm][c]{%
-      \makebox[2.5mm]{\raisebox{-1pt}{\footnotesize\faGithub}}\;%
-      {\sffamily Voir sur GitHub}}}
+  %% Lien vers GitHub dans la page de notices
+  \newcommand{\viewsource}[1]{%
+    \href{#1}{\faGithub\ Voir sur GitHub}}
 
   %% «Bouton» pour accéder à CTAN
   \newcommand{\ctanbutton}{%
@@ -203,13 +216,13 @@
   \newlength{\banderougewidth} \newlength{\banderougeheight}
   \newlength{\bandeorwidth}    \newlength{\bandeorheight}
   \newlength{\imageheight}
+  \newlength{\imagewidth}
   \newlength{\logoheight}
   \newlength{\gapwidth}
 
 \begin{document}
 
 \input{couverture-avant-diapos}
-\input{frontispice-diapos}
 \input{licence-diapos}
 \input{prerequis-diapos}
 
@@ -266,7 +279,7 @@
 \end{document}
 
 %%% Local Variables:
-%%% TeX-engine: xetex
-%%% mode: latex
 %%% TeX-master: t
+%%% TeX-engine: xetex
+%%% coding: utf-8
 %%% End:

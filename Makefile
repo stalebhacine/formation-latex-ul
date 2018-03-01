@@ -85,7 +85,6 @@ SOURCEDIAPOS = \
 	couverture-avant-diapos.tex \
 		Suricata-diapos.jpg \
 		ul_p.pdf \
-	frontispice-diapos.tex \
 	licence-diapos.tex \
 		by-sa.pdf \
 		by.pdf \

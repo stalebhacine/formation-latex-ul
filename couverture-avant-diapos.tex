@@ -1,3 +1,14 @@
+%%% Copyright (C) 2018 Vincent Goulet
+%%%
+%%% Ce fichier fait partie du projet
+%%% «Rédaction avec LaTeX»
+%%% http://github.com/vigou3/formation-latex-ul
+%%%
+%%% Cette création est mise à disposition selon le contrat
+%%% Attribution-Partage dans les mêmes conditions 4.0
+%%% International de Creative Commons.
+%%% http://creativecommons.org/licenses/by-sa/4.0/
+
 \begingroup
 
 \TPGrid{3}{36}
@@ -8,10 +19,40 @@
 \setlength{\bandeorwidth}{\TPHorizModule}
 \setlength{\bandeorheight}{\banderougeheight}
 \setlength{\imageheight}{29\TPVertModule}
-\setlength{\logoheight}{2.5\TPVertModule}
+\setlength{\imagewidth}{3\TPHorizModule}
+\setlength{\logoheight}{3.5\TPVertModule}
 \setlength{\gapwidth}{0.75pt}
 \addtolength{\bandeorwidth}{-\gapwidth}
 \addtolength{\imageheight}{-\gapwidth}
+
+\def\titlefmt{%
+  \titles\bfseries\fontsize{24}{24}\selectfont%
+  Rédaction avec\par
+  \rmfamily\mdseries\fontsize{22.5}{22.5}\selectfont%
+  \raisebox{5pt}{{\textbackslash}title}%
+  \fontsize{40}{40}\selectfont%
+  \{%
+  \fontsize{35}{35}\selectfont%
+  \LaTeX
+  \fontsize{40}{40}\selectfont%
+  \}}
+\def\subtitlefmt{%
+  \titles\bfseries\fontsize{11}{11}\selectfont%
+  Premiers pas\par}
+\def\authorfmt{%
+  \titles\bfseries\fontsize{14}{14}\selectfont%
+  Vincent Goulet\par}
+\def\affiliation{%
+  \titles\mdseries\fontsize{11}{12}\selectfont%
+  Professeur titulaire \\
+  École d'actuariat, Université Laval}
+\def\edition{%
+  \titles\mdseries\fontsize{11}{11}\selectfont%
+  Édition {\titles\year}.\month}
+
+%%%
+%%% Page de titre
+%%%
 
 \begin{frame}[plain]
   %% bandeau identitaire
@@ -29,7 +70,8 @@
 
   %% image de fond
   \begin{textblock*}{125mm}(0mm,0mm)
-    \includegraphics[height=\imageheight,keepaspectratio=true]{Suricata-diapos.jpg}
+    \includegraphics[width=\imagewidth,%
+                     keepaspectratio=true]{Suricata-diapos.jpg}
   \end{textblock*}
 
   %% trame (titre)
@@ -41,19 +83,7 @@
 
   %% titre
   \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,15.2\TPVertModule)
-    \raggedright%
-    \titles\bfseries
-    \fontsize{20}{20}\selectfont
-    Rédaction avec \\
-    \rmfamily\mdseries
-    \fontsize{22.5}{22.5}\selectfont
-    \raisebox{5pt}{{\textbackslash}title}%
-    \fontsize{40}{40}\selectfont%
-    \{%
-    \fontsize{35}{35}\selectfont%
-    \LaTeX
-    \fontsize{40}{40}\selectfont%
-    \}
+    \titlefmt
   \end{textblock*}
 
   %% trame (premiers pas)
@@ -63,18 +93,37 @@
     \pgfsetfillopacity{1}
   \end{textblock*}
 
-  %%
+  %% sous-titre (premiers pas)
   \begin{textblock*}{0.8\TPHorizModule}(2.1\TPHorizModule,24.5\TPVertModule)
-    \raggedright%
-    \titles\bfseries
-    \fontsize{11}{11}\selectfont
-    Premiers pas
+    \subtitlefmt
+  \end{textblock*}
+\end{frame}
+
+%%%
+%%% Page frontispice
+%%%
+
+\begin{frame}[plain]
+  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,5\TPVertModule)
+    \authorfmt
+  \end{textblock*}
+
+  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,7\TPVertModule)
+    \affiliation
+  \end{textblock*}
+
+  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,15.2\TPVertModule)
+    \titlefmt
+  \end{textblock*}
+
+  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,30\TPVertModule)
+    \edition
   \end{textblock*}
 \end{frame}
 \endgroup
 
 %%% Local Variables:
-%%% mode: latex
-%%% TeX-engine: xetex
 %%% TeX-master: "formation-latex-ul-diapos"
+%%% TeX-engine: xetex
+%%% coding: utf-8
 %%% End:
