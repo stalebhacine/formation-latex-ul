@@ -36,25 +36,31 @@
   %%  Apparence du document
   %% =======================
 
-  %% Polices de caractères
-  \usepackage{fontspec}
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=0.88}
-  \setmainfont{Lucida Bright OT}
-  \setsansfont{Lucida Sans OT}
-  \setmathfont{Lucida Bright Math OT}
-  \setmonofont{Lucida Grande Mono DK}
+  %% Thème Beamer
+  \usetheme{metropolis}
+
+  %% Polices de caractères pour les titres
   \newfontfamily\titles{Myriad Pro}
   \newfontfamily\oldstyle[Numbers=OldStyle]{Myriad Pro}
-  \usepackage{microtype}
+
+  %% Mathématiques en arev et ajustement de la taille des autres
+  %% polices Fira; https://tex.stackexchange.com/a/405211/24355
+  \usepackage{arevmath}
+  \setsansfont[%
+    BoldFont = {Fira Sans SemiBold},
+    ItalicFont = {Fira Sans Book Italic},
+    BoldItalicFont = {Fira Sans SemiBold Italic}]{Fira Sans Book}
 
   %% Couleurs
-  \definecolor{comments}{rgb}{0.7,0,0}  % rouge foncé
-  \definecolor{alert}{rgb}{0,0.7,0}     % vert foncé
-  \definecolor{link}{rgb}{0,0.4,0.6}    % ~RoyalBlue de dvips
-  \definecolor{url}{rgb}{0.6,0,0}       % rouge-brun
+  \definecolor{comments}{rgb}{0.7,0,0}      % commentaires
+  \definecolor{link}{rgb}{0,0.4,0.6}        % liens internes
+  \definecolor{url}{rgb}{0.6,0,0}           % liens externes
+  \definecolor{codebg}{named}{LightYellow1} % fond code source
   \definecolor{rouge}{rgb}{0.85,0,0.07} % rouge bandeau identitaire
   \definecolor{or}{rgb}{1,0.8,0}        % or bandeau identitaire
+  \colorlet{alert}{mLightBrown} % alias pour couleur Metropolis
+  \colorlet{dark}{mDarkTeal}    % alias pour couleur Metropolis
+  \colorlet{shadecolor}{codebg}
   \colorlet{emphasis}{link}
   \colorlet{exercices}{gray}
 
@@ -72,29 +78,6 @@
     bookmarksnumbered = {true},
     bookmarksdepth = {subsection}}
 
-  %% Paramètres de beamer
-  \useinnertheme{default}
-  \useoutertheme[width=10mm,height=2.2\baselineskip]{sidebar}
-  \usefonttheme[onlylarge]{structurebold}
-  \usefonttheme{professionalfonts}
-  \addtobeamertemplate{headline}{\rule{0pt}{12pt}\par}{}
-  \setbeamercolor{frametitle}{fg=white,bg=black}
-  \setbeamerfont{frametitle}{family=\titles}
-  \setbeamercolor{structure}{fg=emphasis,bg=white}
-  \setbeamercolor{block title}{fg=black,bg=Snow2}
-  \setbeamercolor{alerted text}{fg=black}
-  \setbeamerfont{alerted text}{series=\bfseries}
-  \setbeamercolor{block title alerted}{fg=white,bg=alert}
-  \setbeamercolor{block title example}{fg=white,bg=exercices}
-  \setbeamercolor{example text}{fg=exercices,bg=white}
-  \setbeamertemplate{frametitle continuation}{}
-  \setbeamertemplate{theorems}[numbered]
-  \setbeamertemplate{section in toc}[sections numbered]
-  \setbeamertemplate{navigation symbols}{}
-  \setbeamertemplate{section in sidebar}{}
-  \setbeamertemplate{subsection in sidebar}{}
-  \setbeamertemplate{section in sidebar shaded}{}
-  \setbeamertemplate{subsection in sidebar shaded}{}
   \AtBeginSection[]
   {
     \begin{frame}
