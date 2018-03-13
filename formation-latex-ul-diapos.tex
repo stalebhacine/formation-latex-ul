@@ -62,7 +62,6 @@
   \colorlet{alert}{mLightBrown} % alias pour couleur Metropolis
   \colorlet{dark}{mDarkTeal}    % alias pour couleur Metropolis
   \colorlet{shadecolor}{codebg}
-  \colorlet{emphasis}{link}
   \colorlet{exercices}{gray}
 
   %% Hyperliens
@@ -109,9 +108,9 @@
     basicstyle=\small\ttfamily\NoAutoSpacing,
     commentstyle=\color{comments}\slshape,
     keywordstyle=\mdseries,
-    emphstyle=\color{emphasis}\bfseries,
+    emphstyle=\color{alert}\bfseries,
     backgroundcolor=\color{LightYellow1},
-    frame=none,
+    frame=lr, rulecolor=\color{LightYellow1},
     showstringspaces=false}
 
   %%% =========================
@@ -167,7 +166,7 @@
   %% =====================
 
   %% Noms de fonctions, code, environnement, etc.
-  \newcommand{\fichier}[1]{\fbox{\texttt{#1}}}
+  \newcommand{\fichier}[1]{\texttt{#1}}
   \newcommand{\class}[1]{\textbf{#1}}
   \newcommand{\pkg}[1]{\textbf{#1}}
   \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
