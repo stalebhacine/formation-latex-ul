@@ -26,7 +26,6 @@
 \addtolength{\imageheight}{-\gapwidth}
 
 \def\titlefmt{%
-  \color{black}%
   \myriadOS\bfseries\fontsize{24}{24}\selectfont%
   Rédaction avec\par\vspace*{-18pt}
   \lucida\mdseries\fontsize{27}{27}\selectfont%
@@ -38,20 +37,16 @@
   \fontsize{48}{48}\selectfont%
   \}\par}
 \def\subtitlefmt{%
-  \color{black}%
   \myriadOS\bfseries\fontsize{11}{11}\selectfont%
   Premiers pas\par}
 \def\authorfmt{%
-  \color{black}%
   \myriadOS\bfseries\fontsize{14}{14}\selectfont%
   Vincent Goulet\par}
 \def\affiliation{%
-  \color{black}%
   \myriadOS\mdseries\fontsize{11}{12}\selectfont%
   Professeur titulaire \\
   École d'actuariat, Université Laval}
 \def\edition{%
-  \color{black}%
   \myriadOS\mdseries\fontsize{11}{11}\selectfont%
   Édition {\myriadFC\year}.\month}
 
@@ -80,7 +75,7 @@
   \end{textblock*}
 
   %% trame (titre)
-  \begin{textblock*}{2\TPHorizModule}(0mm,13\TPVertModule)
+  \begin{textblock*}{2\TPHorizModule}(0mm,12.2\TPVertModule)
     \pgfsetfillopacity{0.5}
     \textcolor{white}{\rule{\linewidth}{11\TPVertModule}}
     \pgfsetfillopacity{1}
@@ -88,19 +83,19 @@
 
   %% titre
   \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,14.2\TPVertModule)
-    \titlefmt
+    \textcolor{black}{\titlefmt}
   \end{textblock*}
 
   %% trame (premiers pas)
-  \begin{textblock*}{\TPHorizModule}(2\TPHorizModule,24\TPVertModule)
+  \begin{textblock*}{\TPHorizModule}(2\TPHorizModule,23.2\TPVertModule)
     \pgfsetfillopacity{0.5}
     \textcolor{white}{\rule{\linewidth}{2\TPVertModule}}
     \pgfsetfillopacity{1}
   \end{textblock*}
 
   %% sous-titre (premiers pas)
-  \begin{textblock*}{0.8\TPHorizModule}(2.1\TPHorizModule,24.5\TPVertModule)
-    \subtitlefmt
+  \begin{textblock*}{0.8\TPHorizModule}(2.1\TPHorizModule,24.35\TPVertModule)
+    \textcolor{black}{\subtitlefmt}
   \end{textblock*}
 \end{frame}
 
