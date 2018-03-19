@@ -45,6 +45,9 @@
   \newfontfamily\myriadFC[Letters=Uppercase,Numbers=Uppercase]{Myriad Pro}
   \newfontfamily\lucida[Scale=0.92]{Lucida Bright OT}
 
+  %% Police Computer Modern pour exemple de police par défaut
+  \newfontfamily\CM{cmunrm.otf}
+
   %% Mathématiques en arev et ajustement de la taille des autres
   %% polices Fira; https://tex.stackexchange.com/a/405211/24355
   \usepackage{arevmath}
@@ -94,7 +97,7 @@
     extendedchars=true,
     inputencoding=utf8/latin1,
     basicstyle=\small\ttfamily\NoAutoSpacing,
-    commentstyle=\color{comments}\slshape,
+    commentstyle=\color{comments},
     keywordstyle=\mdseries,
     emphstyle=\color{alert}\bfseries,
     backgroundcolor=\color{LightYellow1},
@@ -110,7 +113,8 @@
   \newtheorem{exercice}[theorem]{Exercice}
 
   %% Environnements pour les demo de code; tirés du document
-  %% principal.
+  %% principal. (L'environnement 'eqxample' ajoute des filets de part
+  %% et d'autre du bloc pour illustrer les marges.)
   \newenvironment{demo}{%
     \begin{beamercolorbox}[wd=\linewidth,sep=6pt]{block body example}}
     {\end{beamercolorbox}}
@@ -129,6 +133,24 @@
       % \hsize.
       \hrule height0pt width\hsize
       \egroup\kern-.2pt\egroup
+    \end{minipage}%
+    \par
+  }
+  \newenvironment{eqxample}{%
+    \noindent\begin{minipage}{.45\linewidth}%
+      \def\producing{\end{minipage}\hfill\begin{minipage}{.45\linewidth}%
+        \hbox\bgroup\kern-.2pt\vrule width.2pt%
+        \vbox\bgroup\parindent0pt\relax
+        % The 3pt is to cancel the -\lineskip from \displ@y
+        \abovedisplayskip3pt \abovedisplayshortskip\abovedisplayskip
+        \belowdisplayskip0pt \belowdisplayshortskip\belowdisplayskip
+        \noindent}
+    }{%
+      \par
+      % Ensure that a lonely \[\] structure doesn't take up width less than
+      % \hsize.
+      \hrule height0pt width\hsize
+      \egroup\vrule width.2pt\kern-.2pt\egroup
     \end{minipage}%
     \par
   }
