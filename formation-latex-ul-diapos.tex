@@ -38,6 +38,7 @@
 
   %% Thème Beamer
   \usetheme{metropolis}
+  \metroset{subsectionpage=progressbar}
 
   %% Polices de caractères pour les titres
   \newfontfamily\myriadOS[Scale=1.0,Numbers=OldStyle]{Myriad Pro}
@@ -67,33 +68,21 @@
   \hypersetup{%
     pdfauthor = {Vincent Goulet},
     pdftitle = {Rédaction avec LaTeX - Premiers pas},
-    colorlinks = {true},
-    linktocpage = {true},
-    allcolors = {link},
+    colorlinks = true,
+    linktocpage = true,
     urlcolor = {url},
+    linkcolor = {link},
+    citecolor = {citation},
     pdfpagemode = {UseOutlines},
-    pdfstartview = {Fit},
-    bookmarksopen = {true},
-    bookmarksnumbered = {true},
-    bookmarksdepth = {subsection}}
+    pdfstartview = {Fit}}
+  \setlength{\XeTeXLinkMargin}{1pt}
 
-  \AtBeginSection[]
-  {
-    \begin{frame}
-      \frametitle{Sommaire}
-      \small
-      \begin{columns}[t]
-        \begin{column}{.5\textwidth}
-          \tableofcontents[sections={1-4},%
-            currentsection,subsectionstyle=show/show/hide]
-        \end{column}
-        \begin{column}{.5\textwidth}
-          \tableofcontents[sections={5-8},%
-            currentsection,subsectionstyle=show/show/hide]
-        \end{column}
-      \end{columns}
-    \end{frame}
-  }
+  %% Affichage de la table des matières du PDF
+  \usepackage{bookmark}
+  \bookmarksetup{%
+    open = true,
+    depth = 3,
+    numbered = true}
 
   %% Paramétrage de babel pour les guillemets
   \frenchbsetup{og=«, fg=»}
@@ -170,6 +159,7 @@
   \newcommand{\pkg}[1]{\textbf{#1}}
   \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
   \newcommand{\capsule}[2]{\href{#1}{\faYoutubePlay~#2}}
+  \newcommand{\meta}[1]{\ensuremath\langle{\normalfont\itshape #1\/}\ensuremath\rangle}
 
   %% Lien vers GitHub dans la page de notices
   \newcommand{\viewsource}[1]{%
