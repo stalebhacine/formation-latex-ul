@@ -80,7 +80,7 @@ l'écran ou à l'impression.
 
 ### 2018.03-0 (2018-03-20)
 
-> Version «bêta» (dont le -0) uniquement publiée dans GitHub pour une
+> Version «bêta» (d'où le -0) uniquement publiée dans GitHub pour une
 > formation à l'École d'actuariat.
 
 #### Document de référence
