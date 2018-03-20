@@ -80,9 +80,17 @@ l'écran ou à l'impression.
 
 ### En développement
 
+#### Document de référence
+
 - Sections 1.2 et 1.3 inversées.
 - Correction de la ligature des tirets dans le premier paragraphe de
   la section 10.2.
+
+#### Diapositives
+
+- Diapositives complètement révisées en vue d'une formation plus
+  courte: 90 minutes au lieu de 180.
+- Diapositives dans le thème Metropolis et en format 16 x 10.
 - Nouvelles diapositives sur les tableaux.
 - Nouvelles diapositives sur la programmation lettrée avec Sweave.
 
