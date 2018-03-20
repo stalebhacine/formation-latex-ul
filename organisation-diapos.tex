@@ -20,9 +20,10 @@
 
 \begin{frame}[fragile]
   \frametitle{Titre et page de titre}
-  \begin{itemize}
-  \item Mise en forme automatique
-    \begin{lstlisting}
+  {\LaTeX} peut composer une page de titre automatiquement à partir
+  des informations pertinentes.
+
+  \begin{lstlisting}
 %% préambule
 \title{`\meta{Titre du document}'}
 \author{`\meta{Prénom Nom}'}
@@ -30,28 +31,7 @@
 
 %% corps du document
 \maketitle
-    \end{lstlisting}
-  \item Mise en forme libre \\[6pt]
-    \begin{minipage}{0.45\linewidth}
-      \begin{block}{\small classes standards}
-\begin{lstlisting}
-\begin{titlepage}
-  ...
-\end{titlepage}
-\end{lstlisting}
-      \end{block}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.45\linewidth}
-      \begin{block}{\small classe \class{memoir}}
-\begin{lstlisting}
-\begin{titlingpage}
-  ...
-\end{titlingpage}
-\end{lstlisting}
-      \end{block}
-    \end{minipage}
-  \end{itemize}
+  \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile=singleslide]
@@ -154,9 +134,10 @@
 \begin{frame}
   \frametitle{Étiquettes et renvois automatiques}
 
+  Ne \alert{jamais} renvoyer manuellement à un numéro de section,
+  d'équation, de tableau, etc.
+
   \begin{itemize}
-  \item Ne \alert{jamais} renvoyer manuellement à un numéro de
-    section, d'équation, de tableau, etc.
   \item «Nommer» un élément avec \cs{label}
   \item Faire référence par son nom avec \cs{ref}
   \item Requiert 2 à 3 compilations
@@ -186,19 +167,6 @@ on a...
 
   \fbox{\includegraphics[viewport=124 550 484 664,clip=true,width=0.98\linewidth]{exemple-renvoi}}
 \end{frame}
-
-\begin{conseil}
-  Adoptez une manière systématique et mnémotechnique de nommer les
-  éléments dans un long document afin de vous y retrouver.
-
-  \bigskip %
-\begin{lstlisting}[basicstyle=\normalsize\ttfamily\NoAutoSpacing\color{dark}]
-\label{chap:`\meta{chapitre}'}         % chapitre
-\label{sec:`\meta{chapitre}':`\meta{section}'}  % section
-\label{tab:`\meta{chapitre}':`\meta{tableau}'}  % tableau
-\label{eq:`\meta{chapitre}':`\meta{equation}'}  % équation
-\end{lstlisting}
-\end{conseil}
 
 \subsection{[~Exercice~]}
 
