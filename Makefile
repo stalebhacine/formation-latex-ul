@@ -1,6 +1,6 @@
 ### -*-Makefile-*- pour préparer le paquetage formation-latex-ul
 ##
-## Copyright (C) 2017 Vincent Goulet
+## Copyright (C) 2018 Vincent Goulet
 ##
 ## 'make pdf' (recette par défaut) compile les documents auxiliaires,
 ## puis le document principal et les diapositives avec XeLaTeX.
@@ -23,6 +23,7 @@ PACKAGENAME = formation-latex-ul
 ## Fichiers maîtres
 MASTER = formation-latex-ul.pdf
 MASTERDIAPOS = formation-latex-ul-diapos.pdf
+README = README.md
 
 ## Numéro de version et numéro ISBN extraits du fichier maître
 YEAR = $(shell grep "newcommand{\\\\year" ${MASTER:.pdf=.tex} \
@@ -179,13 +180,13 @@ $(MASTER): $(MASTER:.pdf=.tex) $(SOURCEMAIN)
 $(MASTERDIAPOS): $(MASTERDIAPOS:.pdf=.tex) $(SOURCEDIAPOS)
 	$(TEXI2DVI) $(MASTERDIAPOS:.pdf=.tex)
 
-zip: ${SOURCEFILES} ${DOCFILES} ${SYMLINKS} README.md
+zip: ${SOURCEFILES} ${DOCFILES} ${SYMLINKS} ${README}
 	if [ -d ${PACKAGENAME} ]; then ${RM} ${PACKAGENAME}; fi
 	mkdir -p ${PACKAGENAME}/source ${PACKAGENAME}/doc
-	touch ${PACKAGENAME}/README.md && \
+	touch ${PACKAGENAME}/${README} && \
 	  awk 'state==0 && /^# / { state=1 }; \
 	       /^## Author/ { printf("## Version\n\n%s\n\n", "${VERSION}") } \
-	       state' README.md >> ${PACKAGENAME}/README.md
+	       state' ${README} >> ${PACKAGENAME}/${README}
 	cp ${SOURCEFILES} ${PACKAGENAME}/source
 	cp ${DOCFILES} ${PACKAGENAME}/doc
 	cd ${PACKAGENAME}/doc && \
