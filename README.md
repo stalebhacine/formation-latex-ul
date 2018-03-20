@@ -80,6 +80,7 @@ l'écran ou à l'impression.
 
 ### En développement
 
+- Sections 1.2 et 1.3 inversées.
 - Nouvelles diapositives sur les tableaux.
 - Nouvelles diapositives sur la programmation lettrée avec Sweave.
 
