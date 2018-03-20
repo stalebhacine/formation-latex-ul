@@ -26,29 +26,29 @@
 \addtolength{\imageheight}{-\gapwidth}
 
 \def\titlefmt{%
-  \titles\bfseries\fontsize{24}{24}\selectfont%
-  Rédaction avec\par
-  \rmfamily\mdseries\fontsize{22.5}{22.5}\selectfont%
-  \raisebox{5pt}{{\textbackslash}title}%
-  \fontsize{40}{40}\selectfont%
+  \myriadOS\bfseries\fontsize{24}{24}\selectfont%
+  Rédaction avec\par\vspace*{-18pt}
+  \lucida\mdseries\fontsize{27}{27}\selectfont%
+  \raisebox{6pt}{{\textbackslash}title}%
+  \fontsize{48}{48}\selectfont%
   \{%
-  \fontsize{35}{35}\selectfont%
+  \fontsize{42}{42}\selectfont%
   \LaTeX
-  \fontsize{40}{40}\selectfont%
-  \}}
+  \fontsize{48}{48}\selectfont%
+  \}\par}
 \def\subtitlefmt{%
-  \titles\bfseries\fontsize{11}{11}\selectfont%
+  \myriadOS\bfseries\fontsize{11}{11}\selectfont%
   Premiers pas\par}
 \def\authorfmt{%
-  \titles\bfseries\fontsize{14}{14}\selectfont%
+  \myriadOS\bfseries\fontsize{14}{14}\selectfont%
   Vincent Goulet\par}
 \def\affiliation{%
-  \titles\mdseries\fontsize{11}{12}\selectfont%
+  \myriadOS\mdseries\fontsize{11}{12}\selectfont%
   Professeur titulaire \\
   École d'actuariat, Université Laval}
 \def\edition{%
-  \titles\mdseries\fontsize{11}{11}\selectfont%
-  Édition {\titles\year}.\month}
+  \myriadOS\mdseries\fontsize{11}{11}\selectfont%
+  Édition {\myriadFC\year}.\month}
 
 %%%
 %%% Page de titre
@@ -56,7 +56,7 @@
 
 \begin{frame}[plain]
   %% bandeau identitaire
-  \begin{textblock*}{125mm}[0,1](0mm,30\TPVertModule)
+  \begin{textblock*}{3\TPHorizModule}[0,1](0mm,30\TPVertModule)
     \textcolor{rouge}{\rule{\banderougewidth}{\banderougeheight}}% % bande rouge
     \rule{\gapwidth}{0pt}%                                         % filet
     \textcolor{or}{\rule{\bandeorwidth}{\bandeorheight}}           % bande or
@@ -69,33 +69,33 @@
   \end{textblock*}
 
   %% image de fond
-  \begin{textblock*}{125mm}(0mm,0mm)
+  \begin{textblock*}{3\TPHorizModule}(0mm,0mm)
     \includegraphics[width=\imagewidth,%
                      keepaspectratio=true]{Suricata-diapos.jpg}
   \end{textblock*}
 
   %% trame (titre)
-  \begin{textblock*}{2\TPHorizModule}(0mm,14\TPVertModule)
+  \begin{textblock*}{2\TPHorizModule}(0mm,12.2\TPVertModule)
     \pgfsetfillopacity{0.5}
-    \textcolor{white}{\rule{\linewidth}{10\TPVertModule}}
+    \textcolor{white}{\rule{\linewidth}{11\TPVertModule}}
     \pgfsetfillopacity{1}
   \end{textblock*}
 
   %% titre
-  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,15.2\TPVertModule)
-    \titlefmt
+  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,14.2\TPVertModule)
+    \textcolor{black}{\titlefmt}
   \end{textblock*}
 
   %% trame (premiers pas)
-  \begin{textblock*}{\TPHorizModule}(2\TPHorizModule,24\TPVertModule)
+  \begin{textblock*}{\TPHorizModule}(2\TPHorizModule,23.2\TPVertModule)
     \pgfsetfillopacity{0.5}
     \textcolor{white}{\rule{\linewidth}{2\TPVertModule}}
     \pgfsetfillopacity{1}
   \end{textblock*}
 
   %% sous-titre (premiers pas)
-  \begin{textblock*}{0.8\TPHorizModule}(2.1\TPHorizModule,24.5\TPVertModule)
-    \subtitlefmt
+  \begin{textblock*}{0.8\TPHorizModule}(2.1\TPHorizModule,24.35\TPVertModule)
+    \textcolor{black}{\subtitlefmt}
   \end{textblock*}
 \end{frame}
 
@@ -104,15 +104,15 @@
 %%%
 
 \begin{frame}[plain]
-  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,5\TPVertModule)
+  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,4\TPVertModule)
     \authorfmt
   \end{textblock*}
 
-  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,7\TPVertModule)
+  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,6\TPVertModule)
     \affiliation
   \end{textblock*}
 
-  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,15.2\TPVertModule)
+  \begin{textblock*}{1.6\TPHorizModule}(0.4\TPHorizModule,14.2\TPVertModule)
     \titlefmt
   \end{textblock*}
 

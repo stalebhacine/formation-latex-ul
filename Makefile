@@ -92,14 +92,18 @@ SOURCEDIAPOS = \
 	prerequis-diapos.tex \
 	presentation-diapos.tex \
 		knuth.jpg \
-		TeXFZoneColor.pdf \
 	bases-diapos.tex \
 		exercice_commandes-solution.pdf \
 	organisation-diapos.tex \
+		section-num.pdf \
+		section-non-num.pdf \
 	apparence-diapos.tex \
 	mathematiques-diapos.tex \
 		ponctuation.pdf \
+		xyz-emph.pdf
+		xyz-math.pdf
 	ulthese-diapos.tex \
+	suite-diapos.tex \
 	colophon-diapos.tex \
 	couverture-arriere-diapos.tex
 

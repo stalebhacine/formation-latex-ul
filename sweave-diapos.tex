@@ -1,3 +1,14 @@
+%%% Copyright (C) 2018 Vincent Goulet
+%%%
+%%% Ce fichier fait partie du projet
+%%% «Rédaction avec LaTeX»
+%%% http://github.com/vigou3/formation-latex-ul
+%%%
+%%% Cette création est mise à disposition selon le contrat
+%%% Attribution-Partage dans les mêmes conditions 4.0
+%%% International de Creative Commons.
+%%% http://creativecommons.org/licenses/by-sa/4.0/
+
 \section{Programmation lettrée}
 
 \begin{frame}[fragile=singleslide]
@@ -7,11 +18,9 @@
 \begin{lstlisting}[emph={Sexpr}]
 ...
 
-\section{Commandes R}
-
 L'utilisateur de R interagit avec l'interprète en entrant
 des commandes à l'invite de commande:
-<<>>=
+<<echo=TRUE>>=
 2 + 3
 @
 La commande \verb=exp(1)= donne \Sexpr{exp(1)},
@@ -28,8 +37,6 @@ la valeur du nombre $e$.
   $\rightarrow$ \fichier{fichier.tex}
 \begin{lstlisting}[emph={Schunk,Sinput,Soutput}]
 ...
-
-\section{Commandes R}
 
 L'utilisateur de R interagit avec l'interprète en entrant
 des commandes à l'invite de commande:
@@ -50,7 +57,7 @@ la valeur du nombre $e$.
 \end{frame}
 
 %%% Local Variables:
-%%% mode: latex
-%%% TeX-engine: xetex
 %%% TeX-master: "formation-latex-ul-diapos"
+%%% TeX-engine: xetex
+%%% coding: utf-8
 %%% End:

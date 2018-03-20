@@ -1,6 +1,17 @@
+%%% Copyright (C) 2018 Vincent Goulet
+%%%
+%%% Ce fichier fait partie du projet
+%%% «Rédaction avec LaTeX»
+%%% http://github.com/vigou3/formation-latex-ul
+%%%
+%%% Cette création est mise à disposition selon le contrat
+%%% Attribution-Partage dans les mêmes conditions 4.0
+%%% International de Creative Commons.
+%%% http://creativecommons.org/licenses/by-sa/4.0/
+
 \section{Présentation de {\TeX} et {\LaTeX}}
 
-\subsection{Ce que c'est}
+\subsection{Description sommaire}
 
 \begin{frame}
   \frametitle{Ce que c'est}
@@ -27,47 +38,6 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Exemples de typographie soignée}
-  \begin{itemize}
-  \item Ligatures
-    \begin{demo}
-      \begin{minipage}{0.42\linewidth}
-        \vspace{-12pt}
-        \begin{block}{\small Word \phantom{\LaTeX}}
-          \LARGE\rmfamily f\/f \quad f\/i \quad f\/l \\ f\/f\/i \quad
-          f\/f\/l
-        \end{block}
-      \end{minipage}
-      \hfill
-      \begin{minipage}{0.42\linewidth}
-        \vspace{-12pt}
-        \begin{block}{\small \LaTeX}
-          \LARGE\rmfamily ff \quad fi \quad fl \\ ffi \quad ffl
-        \end{block}
-      \end{minipage}
-    \end{demo}
-  \item Espacement des lettres
-    \begin{demo}
-      \begin{minipage}{0.45\linewidth}
-        \vspace{-12pt}
-        \begin{block}{\small texte \phantom{éq}}
-          \LARGE\rmfamily xy \quad \emph{xy}
-        \end{block}
-      \end{minipage}
-      \hfill
-      \begin{minipage}{0.4\linewidth}
-        \vspace{-12pt}
-        \begin{block}{\small mathématiques}
-          \LARGE $xy$
-        \end{block}
-      \end{minipage}
-    \end{demo}
-  \end{itemize}
-\end{frame}
-
-\subsection{Ce que ce n'est pas}
-
-\begin{frame}
   \frametitle{Ce que ce n'est pas}
   \begin{itemize}
   \item Un traitement de texte
@@ -90,6 +60,21 @@
     \begin{itemize}
     \item {\LaTeX} fait ce qu'on lui demande, ni plus, ni moins
     \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Quelques choses simples à réaliser avec {\LaTeX}}
+
+  \begin{itemize}
+  \item Page de titre
+  \item Table des matières
+  \item Numérotation des pages
+  \item Figures et tableaux: disposition sur la page, numérotation, renvois
+  \item Équations mathématiques: disposition, numérotation et renvois
+  \item Citations et composition de la bibliographie
+  \item Coupure de mots
+  \item Document recto verso
   \end{itemize}
 \end{frame}
 
@@ -122,59 +107,44 @@
   \newline\pause
   \begin{picture}(0,0)
     \thicklines\color{blue}
-    \put(-8,-5){\dashbox{2}(200,100){}}
-    \put(15,-15){
+    \put(-7,0){\dashbox{2}(257,100){}}
+    \put(45,-15){
       \begin{minipage}[t]{150\unitlength}
         \footnotesize\centering
         facilité par l'utilisation d'un \\
-        logiciel intégré de rédaction \\[4pt]
-        (Texmaker, TeXShop, Emacs, RStudio, \dots)
+        logiciel intégré de rédaction \\
+        (Texmaker, TeXShop, Emacs, \dots)
       \end{minipage}}
   \end{picture}
 \end{frame}
 
-%%% >>>
-\stepcounter{exerciceref}
-\subsection{[~Exercice \theexerciceref~]}
+\subsection{[~Exercice~]}
 
-\begin{frame}[plain,fragile=singleslide]
-  \begin{exercice}
-    \begin{enumerate}
-    \item Démarrer le logiciel Texmaker (ou tout autre
-      éditeur ou logiciel intégré de rédaction de votre choix).
-    \item Ouvrir et compiler le fichier \fichier{exercice\_minimal.tex}.
-    \end{enumerate}
-  \end{exercice}
-\end{frame}
-%%% <<<
+\begin{exercice}
+  Démarrer le logiciel \alert{Texmaker} (Windows), \alert{TeXShop}
+  (macOS) ou tout autre éditeur ou logiciel intégré de rédaction de
+  votre choix.
 
-
-\begin{frame}
-  \frametitle{Quelques choses simples à réaliser avec {\LaTeX}}
-  \framesubtitle{(et pas nécessairement avec un traitement de texte)}
-  \begin{itemize}
-  \item Page de titre
-  \item Table des matières
-  \item Numérotation des pages
-  \item Figures et tableaux: disposition sur la page, numérotation, renvois
-  \item Équations mathématiques: disposition, numérotation et renvois
-  \item Citations et composition de la bibliographie
-  \item Coupure de mots
-  \item Document recto verso
-  \end{itemize}
-\end{frame}
+  \begin{enumerate}
+  \item Ouvrir et compiler le fichier \fichier{exercice\_minimal.tex}.
+  \item Ajouter du texte en français (avec accents) et observer le
+    résultat.
+  \end{enumerate}
+\end{exercice}
 
 \subsection{Outils de production}
 
 \begin{frame}
   \frametitle{Moteurs et formats}
+  \centering
+
   \begin{tabular}{r}
     \\ \addlinespace[8pt] \\ \\
-    \color{emphasis}\faArrowRight \\
-    \color{emphasis}\faArrowRight
+    \color{alert}\faArrowRight \\
+    \color{alert}\faArrowRight
   \end{tabular}
-  \hspace{-5mm}
-  \begin{tabularx}{0.9\linewidth}{Xlc}
+  \hspace{-4mm}
+  \begin{tabularx}{0.7\linewidth}{Xlc}
     \toprule[2pt]
     Moteur & Format & Fichier de sortie \\
     \midrule
@@ -186,47 +156,36 @@
   \end{tabularx}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Distributions}
-
-  Le système {\LaTeX} est livré sous forme de \emph{distributions}.
-
-  \begin{columns}
-    \begin{column}{.58\textwidth}
-      \begin{itemize}
-      \item La Bibliothèque et la FESP recommandent %
-        \link{https://www.tug.org/texlive}{{\TeX}~Live}
-      \item macOS: %
-        \link{https://www.tug.org/mactex}{Mac{\TeX}} \\ %
-        (dérivée de {\TeX}~Live)
-      \end{itemize}
-    \end{column}
-    \begin{column}{.42\textwidth}
-    \end{column}
-  \end{columns}
-  \begin{textblock*}{70mm}(60mm,40mm)
-    \includegraphics[width=\linewidth]{TeXFZoneColor}
-  \end{textblock*}
-\end{frame}
-
 \begin{frame}[fragile=singleslide]
   \frametitle{Faits amusants}
   \begin{itemize}
-  \item {\TeX} est aujourd'hui considéré essentiellement exempt de bogue
+  \item {\TeX} est aujourd'hui considéré exempt de bogue
   \item Récompense si vous en trouvez un!
   \item Numéro de version de {\TeX} converge vers $\pi$:
 \begin{lstlisting}
 $ tex --version
-TeX `\textbf{3.14159265}' (TeX Live 2016)
-kpathsea version 6.2.2
-Copyright 2016 D.E. Knuth.
+TeX `\textbf{3.14159265}' (TeX Live 2017)
+kpathsea version 6.2.3
+Copyright 2017 D.E. Knuth.
 [...]
 \end{lstlisting} %$
   \end{itemize}
 \end{frame}
 
+\subsection{[~Exercice~]}
+
+\begin{exercice}
+  Question de voir ce que {\LaTeX} peut faire, compiler le document
+  élaboré \fichier{exercice\_demo.tex} de la manière suivante:
+  \begin{enumerate}[i)]
+  \item une fois avec \texttt{LaTeX};
+  \item une fois avec \texttt{BibTeX};
+  \item deux à trois fois avec \texttt{LaTeX}.
+  \end{enumerate}
+\end{exercice}
+
 %%% Local Variables:
-%%% mode: latex
-%%% TeX-engine: xetex
 %%% TeX-master: "formation-latex-ul-diapos"
+%%% TeX-engine: xetex
+%%% coding: utf-8
 %%% End:

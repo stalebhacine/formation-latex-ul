@@ -1,3 +1,14 @@
+%%% Copyright (C) 2018 Vincent Goulet
+%%%
+%%% Ce fichier fait partie du projet
+%%% «Rédaction avec LaTeX»
+%%% http://github.com/vigou3/formation-latex-ul
+%%%
+%%% Cette création est mise à disposition selon le contrat
+%%% Attribution-Partage dans les mêmes conditions 4.0
+%%% International de Creative Commons.
+%%% http://creativecommons.org/licenses/by-sa/4.0/
+
 \section{Tableaux}
 
 \begin{frame}
@@ -40,9 +51,21 @@
   \pause
   Deux règles d'or:
   \begin{enumerate}
-  \item \emph{jamais} de filets verticaux
+  \item \alert{jamais} de filets verticaux
   \item pas de filets doubles
   \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile=singleslide]
+  \frametitle{Paquetage essentiel}
+
+  \begin{itemize}
+  \item Vous voulez utiliser le paquetage \pkg{booktabs}
+\begin{lstlisting}
+\usepackage{booktabs}
+\end{lstlisting}
+  \item Fonctionnalités intégrées dans la classe \class{memoir}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile=singleslide]
@@ -76,7 +99,7 @@
 \end{frame}
 
 %%% Local Variables:
-%%% mode: latex
-%%% TeX-engine: xetex
 %%% TeX-master: "formation-latex-ul-diapos"
+%%% TeX-engine: xetex
+%%% coding: utf-8
 %%% End:

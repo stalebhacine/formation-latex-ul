@@ -1,3 +1,14 @@
+%%% Copyright (C) 2018 Vincent Goulet
+%%%
+%%% Ce fichier fait partie du projet
+%%% «Rédaction avec LaTeX»
+%%% http://github.com/vigou3/formation-latex-ul
+%%%
+%%% Cette création est mise à disposition selon le contrat
+%%% Attribution-Partage dans les mêmes conditions 4.0
+%%% International de Creative Commons.
+%%% http://creativecommons.org/licenses/by-sa/4.0/
+
 \section{B.a.-ba des mathématiques}
 
 \begin{frame}[fragile=singleslide]
@@ -10,19 +21,13 @@
     \end{itemize}
   \item Important d'utiliser un mode mathématique
     \begin{itemize}
-    \item règles de typographie spéciales (constantes vs variables,
-      disposition des équations, numérotation, etc.)
-    \item espaces entre les symboles et autour des opérateurs gérées
-      automatiquement
+    \item règles de typographie spéciales
+    \item espaces gérées automatiquement
     \end{itemize}
   \item Vous voulez utiliser le paquetage \pkg{amsmath}
 \begin{lstlisting}
 \usepackage{amsmath}
 \end{lstlisting}
-    \begin{itemize}
-    \item lire la documentation de ce paquetage pour connaître toutes
-      ses fonctionnalités
-    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -50,26 +55,22 @@ comme $(a + b)^2 = a^2 + 2ab + b^2$
   \end{enumerate}
 \end{frame}
 
-\begin{frame}[plain]
-  \begin{conseil}
-    Les équations, en ligne ou hors paragraphe, font partie intégrante
-    de la phrase.
 
-    \bigskip %
-    Les règles de ponctuation usuelles s'appliquent donc aux
-    équations.
-  \end{conseil}
+\begin{conseil}
+  En ligne ou hors paragraphe, les équations font partie intégrante de
+  la phrase.
 
-  \vspace{18pt}
+  Les règles de ponctuation usuelles s'appliquent donc aux équations.
+
+  \bigskip
   \fbox{\includegraphics[width=0.95\linewidth]{ponctuation}}
-\end{frame}
+\end{conseil}
 
 \begin{frame}[fragile]
   \frametitle{Quelques règles de base}
   \begin{itemize}
-  \item En mode mathématique, {\TeX} respecte automatiquement la
-    convention d'écrire les constantes en \rmfamily{romain} et les
-    variables en \textit{italique}
+  \item En mode mathématique, {\TeX} écrit automatiquement les
+    constantes en romain et les variables en italique
     \begin{demo}
       \begin{texample}
 \begin{lstlisting}
@@ -99,23 +100,27 @@ $z=2 a+3 y$
   \item \alert{Ne pas} utiliser le mode mathématique pour obtenir du
     texte en italique!
     \begin{demo}
-      \begin{texample}
+      \begin{minipage}{0.45\linewidth}
 \begin{lstlisting}
 \emph{xyz}
 \end{lstlisting}
-        \producing
-        \rmfamily\emph{xyz}
-      \end{texample}
-      \begin{texample}
+      \end{minipage}
+      \hfill
+      \begin{minipage}{0.45\linewidth}
+        \includegraphics[height=0.8\baselineskip,keepaspectratio]{xyz-emph}
+      \end{minipage}\par
+      \begin{minipage}{0.45\linewidth}
 \begin{lstlisting}
 $xyz$
 \end{lstlisting}
-        \producing
-        $xyz$
-      \end{texample}
+      \end{minipage}
+      \hfill
+      \begin{minipage}{0.45\linewidth}
+        \includegraphics[height=0.8\baselineskip,keepaspectratio]{xyz-math}
+      \end{minipage}
     \end{demo}
-  \item Utiliser la commande \verb=\text{}= de \pkg{amsmath} pour
-    composer du texte à l'intérieur du mode mathématique
+  \item Commande \cs{text} de \pkg{amsmath} pour texte à
+    l'intérieur du mode mathématique
     \begin{demo}
       \begin{texample}
 \begin{lstlisting}
@@ -150,7 +155,7 @@ $x = 0 \text{ si } y < 2$
 \end{frame}
 
 %%% Local Variables:
-%%% mode: latex
-%%% TeX-engine: xetex
 %%% TeX-master: "formation-latex-ul-diapos"
+%%% TeX-engine: xetex
+%%% coding: utf-8
 %%% End:

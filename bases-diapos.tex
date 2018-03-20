@@ -1,32 +1,45 @@
+%%% Copyright (C) 2018 Vincent Goulet
+%%%
+%%% Ce fichier fait partie du projet
+%%% «Rédaction avec LaTeX»
+%%% http://github.com/vigou3/formation-latex-ul
+%%%
+%%% Cette création est mise à disposition selon le contrat
+%%% Attribution-Partage dans les mêmes conditions 4.0
+%%% International de Creative Commons.
+%%% http://creativecommons.org/licenses/by-sa/4.0/
+
 \section{Principes de base}
 
-\subsection{Rédaction}
+\subsection{Règles de saisie}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Rédaction}
+
+  L'apparence du document est prise en charge par {\LaTeX} et
+  il est généralement préférable de ne pas la modifier.
+
   \begin{itemize}
-  \item On se concentre sur le contenu et la \alert{structure} du
-    document, pas sur son \alert{apparence}
+  \item On se concentre sur le \alert{contenu} et la \alert{structure} du
+    document
       \bigskip
       \begin{tabbing}
-        \verb=\textbf{titre}= \qquad\= \faArrowRight \qquad\= \verb|\section{titre}| \\[6pt]
-        \verb|\textit{texte}| \> \faArrowRight \> \verb|\emph{texte}|
+        titre de section \qquad\= \faArrowRight \qquad\= \verb|\section{titre}| \\[6pt]
+        emphase \> \faArrowRight \> \verb|\emph{texte}|
       \end{tabbing}
       \bigskip
-  \item Apparence prise en charge par {\LaTeX} et généralement préférable de ne
-    pas la modifier
   \item Mots séparés par une ou plusieurs \alert{espaces}
   \item Paragraphes séparés par une ou plusieurs \alert{lignes blanches}
   \item Utilisation de \alert{commandes} pour indiquer la structure du texte
   \end{itemize}
 \end{frame}
 
-\subsection{Structure d'un document}
+\subsection{Structure d'un fichier}
 
 \begin{frame}[fragile]
   \frametitle{Structure d'un document {\LaTeX}}
 
-  Un fichier source {\LaTeX} est toujours composé de deux parties:
+  Un fichier source {\LaTeX} est toujours composé de deux parties.
 
   \hfill
   \begin{minipage}{0.75\linewidth}
@@ -50,66 +63,38 @@ vitae ipsum vel, fermentum pellentesque orci.
   \begin{textblock*}{\linewidth}(0mm,0mm)
     \begin{picture}(0,0)
       \thicklines\color{blue}
-      \onslide<2>{\put(114,-155){\dashbox{2}(230,60){}}}
-      \onslide<3>{\put(114,-243){\dashbox{2}(230,82){}}}
-      \color{black}
-      \onslide<2>{\put(40,-125){\alert{préambule}}}
-      \onslide<3>{\put(40,-202){\parbox{25mm}{\alert{corps} du\\ document}}}
+      \onslide<2>{\put(120,-138){\dashbox{2}(285,76){}}}
+      \onslide<3>{\put(120,-248){\dashbox{2}(285,104){}}}
+      \onslide<2>{\put(46,-103){préambule}}
+      \onslide<3>{\put(46,-198){\parbox{25mm}{corps du\\ document}}}
     \end{picture}
   \end{textblock*}
 \end{frame}
-
-%%% >>>
-\stepcounter{exerciceref}
-\setcounter{exercicerefb}{\value{exerciceref}}
-\stepcounter{exerciceref}
-\subsection{[~Exercices  {\theexercicerefb} et \theexerciceref~]}
-
-\begin{frame}[plain,fragile=singleslide]
-  \begin{exercice}
-    Utiliser le fichier \fichier{exercice\_minimal.tex}.
-    \begin{enumerate}
-    \item Compiler le document avec la classe \class{article}, puis
-      avec la classe \class{book}. Observer le résultat.
-    \item Ajouter du texte en français (avec accents) et observer le
-      résultat.
-    \end{enumerate}
-  \end{exercice}
-
-  \begin{exercice}
-    Question de voir ce que {\LaTeX} peut faire, compiler le document
-    élaboré \fichier{exercice\_demo.tex} de la manière suivante:
-    \begin{enumerate}[i)]
-    \item une fois avec \texttt{LaTeX};
-    \item une fois avec \texttt{BibTeX};
-    \item deux à trois fois avec \texttt{LaTeX}.
-    \end{enumerate}
-  \end{exercice}
-\end{frame}
-%%% <<<
 
 \subsection{Classes et paquetages}
 
 \begin{frame}[fragile]
   \frametitle{Classe de document}
-  \begin{itemize}[<+->]
-  \item La première commande du préambule est normalement la
-    déclaration de la classe de la forme
+
+  La première commande du préambule est normalement la déclaration de
+  la classe de la forme
 \begin{lstlisting}
-\documentclass[`\textit{options}']{`\textit{classe}'}
+\documentclass`\oarg{options}\marg{classe}'
 \end{lstlisting}
-  \item Principales classes:
+
+  \begin{itemize}
+  \item Principales classes
     \begin{quote}
       \class{article, report, book, letter} \\
-      {\color{emphasis} \class{memoir}} \\
-      {\color{emphasis} \class{ulthese}}
+      {\color{alert} \class{memoir}} \\
+      {\color{alert} \class{ulthese}}
     \end{quote}
-  \item Principales options:
+  \item Principales options
     \begin{quote}
-      \texttt{10pt, {\color{emphasis} 11pt}, 12pt} \\
+      \texttt{10pt, {\color{alert} 11pt}, 12pt} \\
       \texttt{oneside, twoside} \\
       \texttt{openright, openany} \\
-      {\color{emphasis} \texttt{article}} (classe \class{memoir})
+      {\color{alert} \texttt{article}} (classe \class{memoir})
     \end{quote}
   \end{itemize}
 \end{frame}
@@ -121,72 +106,65 @@ vitae ipsum vel, fermentum pellentesque orci.
     fonctionnalités au système
   \item Chargés dans le préambule avec
     \begin{lstlisting}
-\usepackage{`\textit{paquetage}'}
-\usepackage[`\textit{options}']{`\textit{paquetage}'}
-\usepackage{`\textit{paquetage1,paquetage2,...}'}
+\usepackage`\marg{paquetage}'
+\usepackage`\oarg{options}\marg{paquetage}'
+\usepackage`\marg{paquetage1,paquetage2,...}'
     \end{lstlisting}
   \end{itemize}
 \end{frame}
 
-%%% >>>
-\stepcounter{exerciceref}
-\subsection{[~Exercice \theexerciceref~]}
+\subsection{[~Exercice~]}
 
-\begin{frame}[plain,fragile=singleslide]
-  \begin{exercice}
-    Utiliser le fichier \fichier{exercice\_classe+paquetages.tex}.
-    \begin{enumerate}
-    \item Compiler le fichier tel que fourni.
-    \item Changer la police du document pour 11~points, puis
-      12~points. Observer l'effet sur les marges et sur la coupure
-      automatique des mots.
-    \item Activer le paquetage \pkg{icomma} en supprimant le symbole
-      \% au début de la ligne dans le préambule. Observer l'effet sur la formule mathématique.
-    \item Charger le paquetage \pkg{numprint} avec l'option
-      \verb=autolanguage= (\emph{après} le paquetage \pkg{babel}).
-      Dans le code source de la formule mathématique, changer
+\begin{exercice}
+  Utiliser le fichier \fichier{exercice\_classe+paquetages.tex}.
+
+  \begin{enumerate}
+  \item Compiler le fichier tel que fourni.
+  \item Changer la police du document pour 11~points, puis 12~points.
+    Observer l'effet sur les marges et sur la coupure automatique des
+    mots.
+  \item Activer le paquetage \pkg{icomma} en supprimant le symbole \%
+    au début de la ligne dans le préambule. Observer l'effet sur la
+    formule mathématique.
+  \item Charger le paquetage \pkg{numprint} avec l'option
+    \verb=autolanguage= (\emph{après} le paquetage \pkg{babel}). Dans
+    le code source de la formule mathématique, changer
 \begin{lstlisting}
 10 000
 \end{lstlisting}
-      pour
+    pour
 \begin{lstlisting}
 \nombre{10000}
 \end{lstlisting}
-      et observer le résultat.
-    \end{enumerate}
-  \end{exercice}
-\end{frame}
-%%% <<<
+    et observer le résultat.
+  \end{enumerate}
+\end{exercice}
 
-\subsection{Commandes}
+\subsection{Commandes et environnements}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Commandes}
   \begin{itemize}
-  \item Débutent toujours par \verb=\=
+  \item Débutent toujours par \bs
   \item Formes générales:
 \begin{lstlisting}
-\`\textit{nomcommande}'[`\textit{arg\_optionnel}']{`\textit{arg\_obligatoire}'}
-\`\textit{nomcommande}'*[`\textit{arg\_optionnel}']{`\textit{arg\_obligatoire}'}
+\`\meta{nomcommande}\oarg{arg\_optionnel}\marg{arg\_obligatoire}'
+\`\meta{nomcommande}'*`\oarg{arg\_optionnel}\marg{arg\_obligatoire}'
 \end{lstlisting}
-  \item Arguments obligatoires entre \verb={ }=
-  \item Arguments optionnels entre \verb=[ ]=
-  \item Commande sans argument: le nom se termine par tout
+   \item Commande sans argument: le nom se termine par tout
     caractère qui n'est pas une lettre (y compris l'espace!)
   \item Portée d'une commande limitée à la zone entre \verb={ }=
   \end{itemize}
 \end{frame}
-
-\subsection{Environnements}
 
 \begin{frame}[fragile=singleslide]
   \frametitle{Environnements}
   \begin{itemize}
   \item Délimités par
 \begin{lstlisting}
-\begin{`\textit{environnement}'}
+\begin`\marg{environnement}'
    ...
-\end{`\textit{environnement}'}
+\end`\marg{environnement}'
     \end{lstlisting}
   \item Contenu de l'environnement traité différemment du reste du texte
   \item Changements s'appliquent uniquement à l'intérieur de
@@ -214,92 +192,29 @@ texte % ignoré par LaTeX
   \end{itemize}
 \end{frame}
 
-%%% >>>
-\stepcounter{exerciceref}
-\subsection{[~Exercice \theexerciceref~]}
+\subsection{[~Exercice~]}
 
-\begin{frame}[plain,fragile=singleslide]
-  \begin{exercice}
-    Modifier le fichier \fichier{exercice\_commandes.tex} afin de
-    produire le texte ci-dessous.
-  \end{exercice}
+\begin{exercice}
+  Modifier le fichier \fichier{exercice\_commandes.tex} afin de
+  produire le texte ci-dessous.
 
-  \vspace{18pt}
-  \fbox{\includegraphics[viewport=108 551 502 665,clip=true,width=0.98\linewidth]{exercice_commandes-solution}}
-\end{frame}
-%%% <<<
+  \bigskip
+  \centering
+  \fbox{\includegraphics[viewport=108 551 502 665,%
+    clip=true,width=0.9\linewidth]{exercice_commandes-solution}}
+\end{exercice}
 
 \subsection{Caractères spéciaux}
 
 \begin{frame}[fragile=singleslide]
-  \frametitle{Caractères spéciaux}
+  \frametitle{Caractères réservés}
+
   \begin{itemize}
   \item Caractères réservés par {\TeX}:
     \begin{quote}
       \verb=# $ & ~ _ ^ % { }=
     \end{quote}
-  \item Pour les utiliser, précéder par \verb=\=:
-    \begin{demo}
-      \begin{minipage}{0.15\linewidth}
-        \begin{texample}
-\begin{lstlisting}
-\#
-\end{lstlisting}
-          \producing
-          \#
-        \end{texample}
-      \end{minipage}
-      \hfill
-      \begin{minipage}{0.15\linewidth}
-        \begin{texample}
-\begin{lstlisting}
-\$
-\end{lstlisting}
-          \producing
-          \$
-        \end{texample}
-      \end{minipage}
-      \hfill
-      \begin{minipage}{0.15\linewidth}
-        \begin{texample}
-\begin{lstlisting}
-\%
-\end{lstlisting}
-          \producing
-          \%
-        \end{texample}
-      \end{minipage}
-      \\
-      \begin{minipage}{0.15\linewidth}
-        \begin{texample}
-\begin{lstlisting}
-\_
-\end{lstlisting}
-          \producing
-          \_
-        \end{texample}
-      \end{minipage}
-      \hfill
-      \begin{minipage}{0.15\linewidth}
-        \begin{texample}
-\begin{lstlisting}
-\{
-\end{lstlisting}
-          \producing
-          \}
-        \end{texample}
-      \end{minipage}
-      \hfill
-      \begin{minipage}{0.15\linewidth}
-        \begin{texample}
-\begin{lstlisting}
-\}
-\end{lstlisting}
-          \producing
-          \}
-        \end{texample}
-      \end{minipage}
-    \end{demo}
+  \item Pour les utiliser, précéder par \bs
   \item On écrira donc
     \begin{demo}
       \begin{texample}
@@ -317,13 +232,13 @@ de 5~\%.
 \end{frame}
 
 \begin{frame}[fragile=singleslide]
-  \frametitle{Caractères spéciaux (suite)}
+  \frametitle{Espaces, guillemets et tirets}
   \begin{itemize}
-  \item Espace insécable: \verb=~= %
+  \item Espace insécable
 \begin{lstlisting}
 M.~Tremblay me doit 200~\$.
 \end{lstlisting}
-  \item Guillemets:
+  \item Guillemets
     \begin{demo}
       \begin{texample}
 \begin{lstlisting}[escapeinside={}]
@@ -340,7 +255,7 @@ M.~Tremblay me doit 200~\$.
         «guillemets français»
       \end{texample}
    \end{demo}
-  \item Tiret, tiret demi-cadratin, tiret cadratin:
+  \item Tiret, tiret demi-cadratin, tiret cadratin
     \begin{demo}
       \begin{minipage}{0.15\linewidth}
         \begin{texample}
@@ -373,51 +288,27 @@ M.~Tremblay me doit 200~\$.
       \end{minipage}
       \hfill
     \end{demo}
+  \item Détails additionnels à la section~2.9 du document de référence
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{{\LaTeX} en français --- préambule pour pdf{\LaTeX}}
+  \frametitle{{\LaTeX} en français}
 
   Il faut charger un certain nombre de paquetages pour franciser \LaTeX.
-\begin{lstlisting}
-\documentclass[`\alt<2>{\textcolor{emphasis}{french}}{french}']{memoir}
-  \usepackage{`\alt<2>{\textcolor{emphasis}{babel}}{babel}'}
-  \usepackage[autolanguage]{`\alt<5>{\textcolor{emphasis}{numprint}}{numprint}'}
-  \usepackage[utf8]{`\alt<3>{\textcolor{emphasis}{inputenc}}{inputenc}'}
-  \usepackage[T1]{`\alt<3>{\textcolor{emphasis}{fontenc}}{fontenc}'}
-  \usepackage{`\alt<4>{\textcolor{emphasis}{icomma}}{icomma}'}
-\end{lstlisting}
-  \pause
-  \begin{itemize}[<+->]
+
+  \begin{itemize}
   \item \pkg{babel}: traduction des mots-clés prédéfinis,
     typographie française, coupure de mots, document multilingue
   \item \pkg{inputenc} et \pkg{fontenc}: lettres accentuées dans le
-    code source
+    code source (pdf{\LaTeX} seulement)
   \item \pkg{icomma}: virgule comme séparateur décimal
   \item \pkg{numprint}: espace comme séparateur des milliers
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-  \frametitle{{\LaTeX} en français --- préambule pour {\XeLaTeX}}
-
-  {\XeLaTeX} supporte nativement les caractères UTF-8 dans le code source.
-\begin{lstlisting}
-\documentclass[french]{memoir}
-  \usepackage{babel}
-  \usepackage[autolanguage]{numprint}
-  \usepackage{`\textcolor{emphasis}{fontspec}'}
-  \usepackage{icomma}
-\end{lstlisting}
-  \begin{itemize}
-  \item \pkg{fontspec}: gestion des polices et lettres accentuées dans
-    le fichier PDF
-  \end{itemize}
-\end{frame}
-
 %%% Local Variables:
-%%% mode: latex
-%%% TeX-engine: xetex
 %%% TeX-master: "formation-latex-ul-diapos"
+%%% TeX-engine: xetex
+%%% coding: utf-8
 %%% End:
