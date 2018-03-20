@@ -1,11 +1,9 @@
 \section{Organisation d'un document}
 
-\begin{frame}[standout]
-  \begin{conseil}
-    Utilisez impérativement les commandes {\LaTeX} pour identifier
-    les différentes parties (la structure) d'un document.
-  \end{conseil}
-\end{frame}
+\begin{conseil}
+  Utilisez impérativement les commandes {\LaTeX} pour identifier les
+  différentes parties (la structure) d'un document.
+\end{conseil}
 
 \subsection{Parties d'un document}
 
@@ -126,9 +124,7 @@
 
 \subsection{[~Exercice~]}
 
-\begin{frame}[fragile=singleslide,plain]
-  \frametitle{Exercice}
-
+\begin{exercice}
   Utiliser le fichier \fichier{exercice\_parties.tex}.
 
   \begin{enumerate}
@@ -148,7 +144,7 @@
 \end{lstlisting}
   \item Ajouter une annexe au document.
   \end{enumerate}
-\end{frame}
+\end{exercice}
 
 \subsection{Renvois automatiques}
 
@@ -184,27 +180,22 @@ on a...
 \fbox{\includegraphics[viewport=124 550 484 664,clip=true,width=0.98\linewidth]{exemple-renvoi}}
 \end{frame}
 
-\begin{frame}[plain,fragile=singleslide]
-  \begin{conseil}
-    Adoptez une manière systématique et mnémotechnique de nommer les
-    éléments dans un long document afin de vous y retrouver.
+\begin{conseil}
+  Adoptez une manière systématique et mnémotechnique de nommer les
+  éléments dans un long document afin de vous y retrouver.
 
-    \bigskip %
-    Exemple:
-\begin{lstlisting}
+  \bigskip %
+\begin{lstlisting}[basicstyle=\ttfamily\NoAutoSpacing\color{dark}]
 \label{chap:`\meta{chapitre}'}         % chapitre
 \label{sec:`\meta{chapitre}':`\meta{section}'}  % section
 \label{tab:`\meta{chapitre}':`\meta{tableau}'}  % tableau
 \label{eq:`\meta{chapitre}':`\meta{equation}'}  % équation
 \end{lstlisting}
-  \end{conseil}
-\end{frame}
+\end{conseil}
 
 \subsection{[~Exercice~]}
 
-\begin{frame}
-  \frametitle{Exercice}
-
+\begin{exercice}
   Utiliser le fichier \fichier{exercice\_renvois.tex}.
   \begin{enumerate}
   \item Insérer dans le texte un renvoi au numéro d'une section.
@@ -213,10 +204,10 @@ on a...
     \texttt{{\textbackslash}ref} ou \texttt{{\textbackslash}autoref}
     pour le renvoi.
   \end{enumerate}
-\end{frame}
+\end{exercice}
 
 %%% Local Variables:
-%%% mode: latex
-%%% TeX-engine: xetex
 %%% TeX-master: "formation-latex-ul-diapos"
+%%% TeX-engine: xetex
+%%% coding: utf-8
 %%% End:
