@@ -108,10 +108,6 @@
   %%%  Nouveaux environnements
   %%% =========================
 
-  %% Exercices
-  \newenvironment{exercice}{%
-    \begin{frame}[plain,fragile=singleslide]}{\end{frame}}
-
   %% Environnements pour les demo de code; tirés du document
   %% principal. (L'environnement 'eqxample' ajoute des filets de part
   %% et d'autre du bloc pour illustrer les marges.)
@@ -154,17 +150,21 @@
     \end{minipage}%
     \par
   }
+
+  %% Simplfication de l'environnement 'quote' de beamer
   \renewenvironment{quote}{%
     \begin{beamercolorbox}[wd=\linewidth,sep=6pt]{block body example}}
     {\end{beamercolorbox}}
-  \newenvironment{texoutput}[1]{%
-    \begin{minipage}[t]{#1} \small}{%
-    \end{minipage}}
+
+  %% Exercices
+  \newenvironment{exercice}{%
+    \begin{frame}[fragile=singleslide]
+      \frametitle{Exercice}}{\end{frame}}
 
   %% Rubriques conseil du TeXpert
   \newenvironment{conseil}{%
     \begin{frame}[standout,fragile=singleslide]
-      \textcolor{alert}{Conseil du {\TeX}pert}
+      \textcolor{alert}{Conseil du {\TeX}pert}\normalsize
       \begin{block}{}}%
     {\end{block}\end{frame}}
 
@@ -177,7 +177,6 @@
   \newcommand{\class}[1]{\textbf{#1}}
   \newcommand{\pkg}[1]{\textbf{#1}}
   \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
-  \newcommand{\capsule}[2]{\href{#1}{\faYoutubePlay~#2}}
 
   %% Pour documenter des commandes LaTeX; dérivé de memoir.cls
   \def\bs{\texttt{\char`\\}}
@@ -189,18 +188,9 @@
     {\ttfamily\char`\[}\meta{#1}{\ttfamily\char`\]}}
   \newcommand{\cs}[1]{\texttt{\char`\\#1}}
 
-
   %% Lien vers GitHub dans la page de notices
   \newcommand{\viewsource}[1]{%
     \href{#1}{\faGithub\ Voir sur GitHub}}
-
-  %% «Bouton» pour accéder à CTAN
-  \newcommand{\ctanbutton}{%
-    \setlength{\fboxrule}{1pt}%
-    \framebox[60mm][l]{%
-      \rule[-5pt]{0mm}{16pt}%
-      \makebox[7mm]{\raisebox{-2.5pt}{\Large\faExternalLink}}\;%
-      {\sffamily Accéder aux fichiers dans CTAN}}}
 
   %%% =======
   %%%  Varia
@@ -221,19 +211,6 @@
 \input{licence-diapos}
 \input{prerequis-diapos}
 
-\begin{frame}
-  \frametitle{Sommaire}
-  \small
-  \begin{columns}[b]
-    \begin{column}{.5\textwidth}
-      \tableofcontents[sections={1-4},hideallsubsections]
-    \end{column}
-    \begin{column}{.5\textwidth}
-      \tableofcontents[sections={5-8},hideallsubsections]
-    \end{column}
-  \end{columns}
-\end{frame}
-
 \input{presentation-diapos}
 \input{bases-diapos}
 \input{organisation-diapos}
@@ -242,31 +219,7 @@
 \input{tableaux-diapos}
 \input{sweave-diapos}
 \input{ulthese-diapos}
-
-\begin{frame}
-  \frametitle{Et la suite?}
-
-  \begin{columns}
-    \begin{column}{.5\textwidth}
-      Le document de référence couvre des concepts plus avancés:
-      \begin{itemize}
-        \small
-      \item boîtes, tableaux et figures
-      \item équations mathématiques élaborées
-      \item bibliographie et citations
-      \item commandes et environnement sur mesure
-      \item changement de police
-      \item diapositives
-      \item rapports avec analyse intégrée
-      \item etc.
-      \end{itemize}
-      Références additionnelles dans l'introduction.
-    \end{column}
-    \begin{column}{.5\textwidth}
-      \includegraphics[width=\linewidth,frame]{formation-latex-ul}
-    \end{column}
-  \end{columns}
-\end{frame}
+\input{suite-diapos}
 
 \input{colophon-diapos}
 \input{couverture-arriere-diapos}

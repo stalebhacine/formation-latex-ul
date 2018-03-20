@@ -103,6 +103,7 @@ SOURCEDIAPOS = \
 		xyz-emph.pdf
 		xyz-math.pdf
 	ulthese-diapos.tex \
+	suite-diapos.tex \
 	colophon-diapos.tex \
 	couverture-arriere-diapos.tex
 
