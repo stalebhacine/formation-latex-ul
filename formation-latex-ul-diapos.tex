@@ -109,8 +109,8 @@
   %%% =========================
 
   %% Exercices
-  \theoremstyle{example}
-  \newtheorem{exercice}[theorem]{Exercice}
+  \newenvironment{exercice}{%
+    \begin{frame}[plain,fragile=singleslide]}{\end{frame}}
 
   %% Environnements pour les demo de code; tirés du document
   %% principal. (L'environnement 'eqxample' ajoute des filets de part
@@ -195,12 +195,6 @@
   %%% =======
   %%%  Varia
   %%% =======
-
-  %% Nouveaux compteurs requis pour ajouter les numéros d'exercices
-  %% dans la table des matières. Une page compte deux exercices;
-  %% besoin de deux compteurs pour celle-là.
-  \newcounter{exerciceref}
-  \newcounter{exercicerefb}
 
   %% Longueurs pour la composition des pages couvertures avant et
   %% arrière.
