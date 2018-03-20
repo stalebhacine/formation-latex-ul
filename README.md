@@ -81,6 +81,8 @@ l'écran ou à l'impression.
 ### En développement
 
 - Sections 1.2 et 1.3 inversées.
+- Correction de la ligature des tirets dans le premier paragraphe de
+  la section 10.2.
 - Nouvelles diapositives sur les tableaux.
 - Nouvelles diapositives sur la programmation lettrée avec Sweave.
 
