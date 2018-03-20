@@ -68,7 +68,7 @@ vitae ipsum vel, fermentum pellentesque orci.
   La première commande du préambule est normalement la déclaration de
   la classe de la forme
 \begin{lstlisting}
-\documentclass[`\textit{options}']{`\textit{classe}'}
+\documentclass`\oarg{options}\marg{classe}'
 \end{lstlisting}
 
   \begin{itemize}
@@ -95,9 +95,9 @@ vitae ipsum vel, fermentum pellentesque orci.
     fonctionnalités au système
   \item Chargés dans le préambule avec
     \begin{lstlisting}
-\usepackage{`\textit{paquetage}'}
-\usepackage[`\textit{options}']{`\textit{paquetage}'}
-\usepackage{`\textit{paquetage1,paquetage2,...}'}
+\usepackage`\marg{paquetage}'
+\usepackage`\oarg{options}\marg{paquetage}'
+\usepackage`\marg{paquetage1,paquetage2,...}'
     \end{lstlisting}
   \end{itemize}
 \end{frame}
@@ -134,15 +134,13 @@ vitae ipsum vel, fermentum pellentesque orci.
 \begin{frame}[fragile=singleslide]
   \frametitle{Commandes}
   \begin{itemize}
-  \item Débutent toujours par \verb=\=
+  \item Débutent toujours par \bs
   \item Formes générales:
 \begin{lstlisting}
-\`\textit{nomcommande}'[`\textit{arg\_optionnel}']{`\textit{arg\_obligatoire}'}
-\`\textit{nomcommande}'*[`\textit{arg\_optionnel}']{`\textit{arg\_obligatoire}'}
+\`\meta{nomcommande}\oarg{arg\_optionnel}\marg{arg\_obligatoire}'
+\`\meta{nomcommande}'*`\oarg{arg\_optionnel}\marg{arg\_obligatoire}'
 \end{lstlisting}
-  \item Arguments obligatoires entre \verb={ }=
-  \item Arguments optionnels entre \verb=[ ]=
-  \item Commande sans argument: le nom se termine par tout
+   \item Commande sans argument: le nom se termine par tout
     caractère qui n'est pas une lettre (y compris l'espace!)
   \item Portée d'une commande limitée à la zone entre \verb={ }=
   \end{itemize}
@@ -153,9 +151,9 @@ vitae ipsum vel, fermentum pellentesque orci.
   \begin{itemize}
   \item Délimités par
 \begin{lstlisting}
-\begin{`\textit{environnement}'}
+\begin`\marg{environnement}'
    ...
-\end{`\textit{environnement}'}
+\end`\marg{environnement}'
     \end{lstlisting}
   \item Contenu de l'environnement traité différemment du reste du texte
   \item Changements s'appliquent uniquement à l'intérieur de
@@ -205,7 +203,7 @@ texte % ignoré par LaTeX
     \begin{quote}
       \verb=# $ & ~ _ ^ % { }=
     \end{quote}
-  \item Pour les utiliser, précéder par \verb=\=
+  \item Pour les utiliser, précéder par \bs
   \item On écrira donc
     \begin{demo}
       \begin{texample}
@@ -225,11 +223,11 @@ de 5~\%.
 \begin{frame}[fragile=singleslide]
   \frametitle{Espaces, guillemets et tirets}
   \begin{itemize}
-  \item Espace insécable: \verb=~= %
+  \item Espace insécable
 \begin{lstlisting}
 M.~Tremblay me doit 200~\$.
 \end{lstlisting}
-  \item Guillemets:
+  \item Guillemets
     \begin{demo}
       \begin{texample}
 \begin{lstlisting}[escapeinside={}]
@@ -246,7 +244,7 @@ M.~Tremblay me doit 200~\$.
         «guillemets français»
       \end{texample}
    \end{demo}
-  \item Tiret, tiret demi-cadratin, tiret cadratin:
+  \item Tiret, tiret demi-cadratin, tiret cadratin
     \begin{demo}
       \begin{minipage}{0.15\linewidth}
         \begin{texample}

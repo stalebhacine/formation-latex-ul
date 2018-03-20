@@ -2,7 +2,7 @@
 
 \subsection{Police et style}
 
-\begin{frame}[fragile=singleslide]
+\begin{frame}
   \frametitle{Police de caractères}
 
   Par défaut, {\LaTeX} compose les documents dans la police
@@ -16,7 +16,7 @@
   \item Commandes pour modifier les \alert{attributs} de la police
     (famille, forme, graisse)
   \item Commandes pour modifier la \alert{taille} du texte (de
-    \verb=\tiny= à \verb=\Huge=)
+    \cs{tiny} à \cs{Huge})
   \end{itemize}
 \end{frame}
 
@@ -27,7 +27,7 @@
     \vfill
   \item<1-> Commande sémantique:
 \begin{lstlisting}
-\emph{`\textit{texte}'}
+\emph`\marg{texte}'
 \end{lstlisting}
     \vfill
   \item<2-> Par défaut: texte en italique dans texte droit et vice versa
@@ -64,8 +64,8 @@ week!}»
   \begin{itemize}
   \item Deux principales sortes de listes:
     \begin{enumerate}
-    \item \alert{à puce} avec environnement \verb=itemize=
-    \item \alert{numérotée} avec environnement \verb=enumerate=
+    \item \alert{à puce} avec environnement \texttt{itemize}
+    \item \alert{numérotée} avec environnement \texttt{enumerate}
     \end{enumerate}
   \item Possible de les imbriquer les unes dans les autres
   \item Marqueurs adaptés automatiquement jusqu'à 4 niveaux
@@ -76,11 +76,10 @@ week!}»
 \begin{itemize}
 \item Deux principales sortes de listes:
   \begin{enumerate}
-  \item à puce avec environnement \verb=itemize=
-  \item numérotée avec environnement \verb=enumerate=
+  \item à puce avec environnement \texttt{itemize}
+  \item numérotée avec environnement \texttt{enumerate}
   \end{enumerate}
-\item Possible de les imbriquer les unes
-  dans les autres
+\item Possible de les imbriquer les unes dans les autres
 \item Marqueurs adaptés automatiquement jusqu'à 4 niveaux
 \end{itemize}
 \end{lstlisting}
@@ -107,7 +106,7 @@ week!}»
         \end{center}
       \end{eqxample}
     \end{demo}
-  \item Commande \verb=\centering= pour centrer tout le texte qui suit
+  \item Commande \cs{centering} pour centrer tout le texte qui suit
     \begin{itemize}
     \item surtout utilisée pour centrer les tableaux et les figures
     \end{itemize}
@@ -119,7 +118,7 @@ week!}»
   \begin{itemize}
   \item Note de bas de page insérée avec la commande
 \begin{lstlisting}
-\footnote{`\textit{texte de la note}'}
+\footnote`\marg{texte de la note}'
 \end{lstlisting}
   \item Commande doit suivre immédiatement le texte à annoter
   \item Numérotation et disposition automatiques
@@ -154,10 +153,10 @@ dans une police à largeur fixe
     \begin{enumerate}[a)]
     \item Dernier paragraphe de la première section, placer toute la
       phrase débutant par \texttt{«De simple dérivé»} à l'intérieur
-      d'une commande \texttt{{\textbackslash}emph}.
+      d'une commande \cs{emph}.
     \item Changer la puce des listes en spécifiant le symbole
-      \texttt{\$>\$} pour \verb=ItemLabeli= dans la commande
-      \verb=\frenchbsetup= du préambule.
+      \texttt{\$>\$} pour \texttt{ItemLabeli} dans la commande
+      \cs{frenchbsetup} du préambule.
     \end{enumerate}
   \end{enumerate}
 \end{exercice}

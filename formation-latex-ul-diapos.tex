@@ -178,7 +178,17 @@
   \newcommand{\pkg}[1]{\textbf{#1}}
   \newcommand{\link}[2]{\href{#1}{#2~\raisebox{-0.2ex}{\faExternalLink}}}
   \newcommand{\capsule}[2]{\href{#1}{\faYoutubePlay~#2}}
-  \newcommand{\meta}[1]{\ensuremath\langle{\normalfont\itshape #1\/}\ensuremath\rangle}
+
+  %% Pour documenter des commandes LaTeX; dérivé de memoir.cls
+  \def\bs{\texttt{\char`\\}}
+  \newcommand{\meta}[1]{%
+    \ensuremath\langle{\normalfont\itshape #1\/}\ensuremath\rangle}
+  \newcommand{\marg}[1]{%
+    {\ttfamily\char`\{}\meta{#1}{\ttfamily\char`\}}}
+  \newcommand{\oarg}[1]{%
+    {\ttfamily\char`\[}\meta{#1}{\ttfamily\char`\]}}
+  \newcommand{\cs}[1]{\texttt{\char`\\#1}}
+
 
   %% Lien vers GitHub dans la page de notices
   \newcommand{\viewsource}[1]{%
