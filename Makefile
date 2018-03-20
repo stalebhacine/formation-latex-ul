@@ -100,6 +100,8 @@ SOURCEDIAPOS = \
 	apparence-diapos.tex \
 	mathematiques-diapos.tex \
 		ponctuation.pdf \
+		xyz-emph.pdf
+		xyz-math.pdf
 	ulthese-diapos.tex \
 	colophon-diapos.tex \
 	couverture-arriere-diapos.tex
