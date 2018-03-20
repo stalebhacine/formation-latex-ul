@@ -8,6 +8,9 @@
 ## 'make zip' crée l'archive du paquetage conformément aux exigences
 ## de CTAN.
 ##
+## 'make release' crée une version dans GitHub et téléverse le fichier
+## .zip. Il n'y a pas de lien vers cette version dans la page web.
+##
 ## Auteur: Vincent Goulet
 ##
 ## Ce fichier fait partie du projet formation-latex-ul
@@ -100,8 +103,8 @@ SOURCEDIAPOS = \
 	apparence-diapos.tex \
 	mathematiques-diapos.tex \
 		ponctuation.pdf \
-		xyz-emph.pdf
-		xyz-math.pdf
+		xyz-emph.pdf \
+		xyz-math.pdf \
 	ulthese-diapos.tex \
 	suite-diapos.tex \
 	colophon-diapos.tex \
@@ -154,9 +157,18 @@ SYMLINKS = \
 TEXI2DVI = LATEX=xelatex TEXINDY=makeindex texi2dvi -b
 RM = rm -r
 
+## Dépôt GitHub et authentification
+REPOSURL = https://api.github.com/repos/vigou3/formation-latex-ul
+OAUTHTOKEN = $(shell cat ~/.github/token)
+
+
+all: pdf
+
 .PHONY: pdf zip clean
 
 pdf: $(AUXDOC) $(MASTER) $(MASTERDIAPOS)
+
+release: zip create-release upload
 
 $(AUXDOC): $(AUXDOC:.pdf=.tex)
 	$(TEXI2DVI) $(AUXDOC:.pdf=.tex)
@@ -180,6 +192,45 @@ zip: ${SOURCEFILES} ${DOCFILES} ${SYMLINKS} README.md
 	  for file in ${SYMLINKS}; do ln -s ../source/$$file $$file; done
 	zip --filesync --symlinks -r ${PACKAGENAME}.zip ${PACKAGENAME}
 	${RM} ${PACKAGENAME}
+
+create-release :
+	@echo ----- Creating release on GitHub...
+	@if [ -n "$(shell git status --porcelain | grep -v '^??')" ]; then \
+	     echo "uncommitted changes in repository; not creating release"; exit 2; fi
+	@if [ -n "$(shell git log origin/master..HEAD)" ]; then \
+	    echo "unpushed commits in repository; pushing to origin"; \
+	     git push; fi
+	if [ -e relnotes.in ]; then rm relnotes.in; fi
+	touch relnotes.in
+	awk 'BEGIN { ORS = " "; print "{\"tag_name\": \"v${VERSION}\"," } \
+	      /^$$/ { next } \
+	      /^## Historique/ { state = 1; next } \
+              (state == 1) && /^### / { \
+		state = 2; \
+		out = $$2; \
+	        for(i = 3; i <= NF; i++) { out = out" "$$i }; \
+	        printf "\"name\": \"Édition %s\", \"body\": \"", out; \
+	        next } \
+	      (state == 2) && /^### / { exit } \
+	      state == 2 { printf "%s\\n", $$0 } \
+	      END { print "\", \"draft\": false, \"prerelease\": false}" }' \
+	      README.md >> relnotes.in
+	curl --data @relnotes.in ${REPOSURL}/releases?access_token=${OAUTHTOKEN}
+	rm relnotes.in
+	@echo ----- Done creating the release
+
+upload :
+	@echo ----- Getting upload URL from GitHub...
+	$(eval upload_url=$(shell curl -s ${REPOSURL}/releases/latest \
+	 			  | awk -F '[ {]' '/^  \"upload_url\"/ \
+	                                    { print substr($$4, 2, length) }'))
+	@echo ${upload_url}
+	@echo ----- Uploading PDF and archive to GitHub...
+	curl -H 'Content-Type: application/zip' \
+	     -H 'Authorization: token ${OAUTHTOKEN}' \
+	     --upload-file ${ARCHIVE} \
+             -i "${upload_url}?&name=${ARCHIVE}" -s
+	@echo ----- Done uploading files
 
 clean:
 	$(RM) *.aux *.log *.blg *.bbl *.out *.ilg *.idx *.ind
