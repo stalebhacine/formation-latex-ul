@@ -229,8 +229,8 @@ upload :
 	@echo ----- Uploading PDF and archive to GitHub...
 	curl -H 'Content-Type: application/zip' \
 	     -H 'Authorization: token ${OAUTHTOKEN}' \
-	     --upload-file ${ARCHIVE} \
-             -i "${upload_url}?&name=${ARCHIVE}" -s
+	     --upload-file ${PACKAGENAME}.zip \
+             -i "${upload_url}?&name=${PACKAGENAME}.zip" -s
 	@echo ----- Done uploading files
 
 clean:
