@@ -163,13 +163,10 @@
 
   %% Rubriques conseil du TeXpert
   \newenvironment{conseil}{%
-    \begin{alertblock}{Conseil du {\TeX}pert}
-      \medskip
-      \begin{minipage}[t]{0.1\textwidth}
-        \color{alert}\raisebox{-1.2em}[0em][0em]{\huge\faThumbsOUp}
-      \end{minipage}
-      \begin{minipage}[t]{0.88\textwidth}}%
-    {\end{minipage}\end{alertblock}}
+    \begin{frame}[standout,fragile=singleslide]
+      \textcolor{alert}{Conseil du {\TeX}pert}
+      \begin{block}{}}%
+    {\end{block}\end{frame}}
 
   %% =====================
   %%  Nouvelles commandes
