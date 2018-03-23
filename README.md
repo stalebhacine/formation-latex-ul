@@ -78,6 +78,22 @@ l'écran ou à l'impression.
 
 ## Historique des versions
 
+### (en développement)
+
+#### Diapositives
+
+Révision des diapositives suite à une formation avec la version
+2018.03-0. Il y avait toujours un peu trop de matériel. Les
+changements par rapport à la version officielle précédente (2016.11-3)
+sont donc:
+
+- Diapositives complètement révisées en vue d'une formation de 120
+  minutes plutôt que 180.
+- Diapositives dans le thème Metropolis et en format 16 x 10.
+- Nouvelles diapositives sur les tableaux.
+- Nouvelles diapositives sur la programmation lettrée avec Sweave.
+- Exercice sur les mathématiques.
+
 ### 2018.03-0 (2018-03-20)
 
 > Version «bêta» (d'où le -0) uniquement publiée dans GitHub pour une
