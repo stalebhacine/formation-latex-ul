@@ -34,6 +34,31 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile=singleslide]
+  \frametitle{Caractères réservés}
+
+  \begin{itemize}
+  \item Caractères réservés par {\TeX}:
+    \begin{quote}
+      \verb=# $ & ~ _ ^ % { }=
+    \end{quote}
+  \item Pour les utiliser, précéder par \bs
+  \item On écrira donc
+    \begin{demo}
+      \begin{texample}
+\begin{lstlisting}
+L'augmentation de 2~\$
+représente une hausse
+de 5~\%.
+\end{lstlisting}
+        \producing
+        L'augmentation de 2~\$ représente une
+        hausse de 5~\%.
+      \end{texample}
+    \end{demo}
+  \end{itemize}
+\end{frame}
+
 \subsection{Structure d'un fichier}
 
 \begin{frame}[fragile]
@@ -71,75 +96,6 @@ vitae ipsum vel, fermentum pellentesque orci.
   \end{textblock*}
 \end{frame}
 
-\subsection{Classes et paquetages}
-
-\begin{frame}[fragile]
-  \frametitle{Classe de document}
-
-  La première commande du préambule est normalement la déclaration de
-  la classe de la forme
-\begin{lstlisting}
-\documentclass`\oarg{options}\marg{classe}'
-\end{lstlisting}
-
-  \begin{itemize}
-  \item Principales classes
-    \begin{quote}
-      \class{article, report, book, letter} \\
-      {\color{alert} \class{memoir}} \\
-      {\color{alert} \class{ulthese}}
-    \end{quote}
-  \item Principales options
-    \begin{quote}
-      \texttt{10pt, {\color{alert} 11pt}, 12pt} \\
-      \texttt{oneside, twoside} \\
-      \texttt{openright, openany} \\
-      {\color{alert} \texttt{article}} (classe \class{memoir})
-    \end{quote}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile=singleslide]
-  \frametitle{Paquetages}
-  \begin{itemize}
-  \item Permettent de modifier des commandes ou d'ajouter des
-    fonctionnalités au système
-  \item Chargés dans le préambule avec
-    \begin{lstlisting}
-\usepackage`\marg{paquetage}'
-\usepackage`\oarg{options}\marg{paquetage}'
-\usepackage`\marg{paquetage1,paquetage2,...}'
-    \end{lstlisting}
-  \end{itemize}
-\end{frame}
-
-\subsection{[~Exercice~]}
-
-\begin{exercice}
-  Utiliser le fichier \fichier{exercice\_classe+paquetages.tex}.
-
-  \begin{enumerate}
-  \item Compiler le fichier tel que fourni.
-  \item Changer la police du document pour 11~points, puis 12~points.
-    Observer l'effet sur les marges et sur la coupure automatique des
-    mots.
-  \item Activer le paquetage \pkg{icomma} en supprimant le symbole \%
-    au début de la ligne dans le préambule. Observer l'effet sur la
-    formule mathématique.
-  \item Charger le paquetage \pkg{numprint} avec l'option
-    \verb=autolanguage= (\emph{après} le paquetage \pkg{babel}). Dans
-    le code source de la formule mathématique, changer
-\begin{lstlisting}
-10 000
-\end{lstlisting}
-    pour
-\begin{lstlisting}
-\nombre{10000}
-\end{lstlisting}
-    et observer le résultat.
-  \end{enumerate}
-\end{exercice}
-
 \subsection{Commandes et environnements}
 
 \begin{frame}[fragile=singleslide]
@@ -172,26 +128,6 @@ vitae ipsum vel, fermentum pellentesque orci.
   \end{itemize}
 \end{frame}
 
-\subsection{Commentaires}
-
-\begin{frame}[fragile=singleslide]
-  \frametitle{Commentaires}
-  \begin{itemize}
-  \item Le symbole \verb=%= sert à identifier les commentaires dans
-    le code source
-  \item Tout ce qui suit \verb=%= sur la ligne est ignoré
-    \begin{demo}
-      \begin{texample}
-\begin{lstlisting}
-texte % ignoré par LaTeX
-\end{lstlisting}
-        \producing
-        texte % ignoré par LaTeX
-      \end{texample}
-    \end{demo}
-  \end{itemize}
-\end{frame}
-
 \subsection{[~Exercice~]}
 
 \begin{exercice}
@@ -203,94 +139,6 @@ texte % ignoré par LaTeX
   \fbox{\includegraphics[viewport=108 551 502 665,%
     clip=true,width=0.9\linewidth]{exercice_commandes-solution}}
 \end{exercice}
-
-\subsection{Caractères spéciaux}
-
-\begin{frame}[fragile=singleslide]
-  \frametitle{Caractères réservés}
-
-  \begin{itemize}
-  \item Caractères réservés par {\TeX}:
-    \begin{quote}
-      \verb=# $ & ~ _ ^ % { }=
-    \end{quote}
-  \item Pour les utiliser, précéder par \bs
-  \item On écrira donc
-    \begin{demo}
-      \begin{texample}
-\begin{lstlisting}
-L'augmentation de 2~\$
-représente une hausse
-de 5~\%.
-\end{lstlisting}
-        \producing
-        L'augmentation de 2~\$ représente une
-        hausse de 5~\%.
-      \end{texample}
-    \end{demo}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile=singleslide]
-  \frametitle{Espaces, guillemets et tirets}
-  \begin{itemize}
-  \item Espace insécable
-\begin{lstlisting}
-M.~Tremblay me doit 200~\$.
-\end{lstlisting}
-  \item Guillemets
-    \begin{demo}
-      \begin{texample}
-\begin{lstlisting}[escapeinside={}]
-``guillemets anglais''
-\end{lstlisting}
-        \producing
-        ``guillemets anglais''
-      \end{texample}
-      \begin{texample}
-\begin{lstlisting}
-«guillemets français»
-\end{lstlisting}
-        \producing
-        «guillemets français»
-      \end{texample}
-   \end{demo}
-  \item Tiret, tiret demi-cadratin, tiret cadratin
-    \begin{demo}
-      \begin{minipage}{0.15\linewidth}
-        \begin{texample}
-\begin{lstlisting}
--
-\end{lstlisting}
-          \producing
-          -
-        \end{texample}
-      \end{minipage}
-      \hfill
-      \begin{minipage}{0.15\linewidth}
-        \begin{texample}
-\begin{lstlisting}
---
-\end{lstlisting}
-          \producing
-          --
-        \end{texample}
-      \end{minipage}
-      \hfill
-      \begin{minipage}{0.15\linewidth}
-        \begin{texample}
-\begin{lstlisting}
----
-\end{lstlisting}
-          \producing
-          ---
-        \end{texample}
-      \end{minipage}
-      \hfill
-    \end{demo}
-  \item Détails additionnels à la section~2.9 du document de référence
-  \end{itemize}
-\end{frame}
 
 \begin{frame}[fragile]
   \frametitle{{\LaTeX} en français}
