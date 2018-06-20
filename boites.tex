@@ -86,20 +86,6 @@ Les commandes de base pour créer des boîtes horizontales sont:
 Elles produisent une boîte de la largeur précise de \meta{texte}. Avec
 la commande \cmd{\fbox}, le texte est au surplus \fbox{encadré}.
 
-\begin{conseil}
-  En usage courant, la commande \cmd{\mbox} sert principalement à deux
-  choses:
-  \begin{enumerate}
-  \item réunir en un bloc du texte que l'on ne veut pas voir scindé
-    entre les lignes ou entre les pages;
-  \item \label{item:boites:mbox} créer une boîte vide avec
-    \cs{mbox\{\}} afin de laisser croire à {\TeX} que du contenu
-    apparaît à un endroit, sans toutefois qu'il n'occupe aucun espace.
-  \end{enumerate}
-  La seconde utilisation fait l'objet de
-  l'\autoref{ex:boites:alignement-v}.
-\end{conseil}
-
 Il existe également des versions plus générales des commandes
 \cmd{\mbox} et \cmd{\fbox}:
 \begin{lstlisting}
@@ -119,6 +105,18 @@ produit \framebox[3.5cm][l]{aligné à gauche}, alors que
 \makebox[3.5cm]{centré}
 \end{lstlisting}
 produit \makebox[3.5cm]{centré}.
+
+\tipbox{En usage courant, la commande \cmd{\mbox} sert principalement
+  à deux choses:
+  \begin{enumerate}
+  \item réunir en un bloc du texte que l'on ne veut pas voir scindé
+    entre les lignes ou entre les pages;
+  \item \label{item:boites:mbox} créer une boîte vide avec
+    \cs{mbox\{\}} afin de laisser croire à {\TeX} que du contenu
+    apparaît à un endroit, sans toutefois qu'il n'occupe aucun espace.
+  \end{enumerate}
+  La seconde utilisation fait l'objet de
+  l'\autoref{ex:boites:alignement-v}.}
 
 Il est parfois nécessaire d'ajuster le positionnement vertical
 d'éléments de contenu, notamment pour les symboles ou les images. La

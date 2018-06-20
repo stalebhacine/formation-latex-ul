@@ -356,12 +356,10 @@ Toutes les commandes existent en version suivie d'une \verb=*= qui
 supprime la numérotation ainsi que l'insertion éventuelle dans la
 table des matières (plus de détails à la \autoref{sec:organisation:tdm}).
 
-\begin{conseil}
-  Éviter d'utiliser des sous-sous-sections numérotées (commande
+\tipbox{Éviter d'utiliser des sous-sous-sections numérotées (commande
   \cmdprint{\subsubsection}) dans un livre. Cela résulte en une
   numérotation à quatre niveaux qui s'avère difficile à suivre pour le
-  lecteur.
-\end{conseil}
+  lecteur.}
 
 \subsection{Annexes}
 \label{sec:organisation:parties:annexes}
@@ -449,11 +447,9 @@ avec la visionneuse Aperçu de macOS.
   \label{fig:organisation:tdm-dans-pdf}
 \end{figure}
 
-\begin{important}
-  La production initiale de la table des matières et la prise en
-  compte de toute modification requiert jusqu'à trois compilations
-  consécutives du document.
-\end{important}
+\importantbox{La production initiale de la table des matières et la
+  prise en compte de toute modification requiert jusqu'à trois
+  compilations consécutives du document.}
 
 Par défaut, une section non numérotée ne figure pas dans la table des
 matières. Si l'on souhaite néanmoins l'y insérer, il faut utiliser la
@@ -569,21 +565,22 @@ Tel que vu à la section \ref{sec:definitions}, on a...
   \qed
 \end{exemple}
 
-\begin{conseil}
-  Un long document contiendra vraisemblablement un grand nombre
+\tipbox{Un long document contiendra vraisemblablement un grand nombre
   d'étiquettes et de renvois. Afin de s'y retrouver et pour éviter les
   doublons, adopter une manière systématique et mnémotechnique de
   nommer les éléments.
 
-  Pour le présent document, nous avons utilisé un système de la forme
-  suivante:
-\begin{lstlisting}
-\label{chap:`\meta{chapitre}'}`\phantom{\meta{}}'         % chapitre
-\label{sec:`\meta{chapitre}':`\meta{section}'}  % section
-\label{tab:`\meta{chapitre}':`\meta{tableau}'}  % tableau
-\label{eq:`\meta{chapitre}':`\meta{equation}'}  % équation
-\end{lstlisting}
-\end{conseil}
+  Pour le présent document, nous avons utilisé un système d'étiquettes
+  de la forme suivante:
+  \begin{itemize}
+  \item \cmdprint{chap:\meta{chapitre}} pour les chapitres;
+  \item \cmdprint{sec:\meta{chapitre}:\meta{section}} pour
+    les sections;
+  \item \cmdprint{tab:\meta{chapitre}:\meta{tableau}} pour
+    les tableaux;
+  \item \cmdprint{eq:\meta{chapitre}:\meta{equation}} pour
+    les équations.
+  \end{itemize}}
 
 \subsection{Production des renvois}
 \label{sec:organisation:renvois:production}
@@ -818,13 +815,11 @@ où \meta{liste\_fichiers} contient les noms des fichiers à
 inclure dans la compilation, séparés par des virgules et sans
 l'extension \code{.tex}.
 
-\begin{conseil}
-  Utiliser des noms de fichiers qui permettent de facilement
+\tipbox{Utiliser des noms de fichiers qui permettent de facilement
   identifier leur contenu. Par exemple, un nom comme
   \fichier{rappels.tex} identifie clairement le contenu du fichier et
   il résiste mieux aux changements à l'ordre des chapitres que
-  \fichier{chapitre1.tex}.
-\end{conseil}
+  \fichier{chapitre1.tex}.}
 
 Lors de l'utilisation de la commande \cmd{\includeonly}, toute la
 numérotation dans les fichiers \meta{liste\_fichiers} suivra celle

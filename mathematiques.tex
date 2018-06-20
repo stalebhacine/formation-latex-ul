@@ -196,8 +196,8 @@ symboles mathématiques offerts par {\LaTeX} fera l'objet de la
 symboles n'importe quelle combinaison d'exposants et d'indices.
 
 On place un caractère en \textsuperscript{exposant} avec la
-commande \verb=^= et en \textsubscript{indice} avec la commande
-\verb=_=. Les indices et exposants se combinent naturellement.
+commande \cmd{^} et en \textsubscript{indice} avec la commande
+\cmd{_}. Les indices et exposants se combinent naturellement.
 \begin{demo}
   \def\strut{\rule[-0.4ex]{0pt}{2ex}}
   \begin{minipage}{0.3\linewidth}
@@ -284,16 +284,14 @@ A_{i_s, k^n}^{y_i}
   \quad \mbox{} % pour alignement avec bloc d'exemples ci-dessus
 \end{demo}
 
-\begin{important}
-  Les commandes \verb=^= et \verb=_= sont permises dans le mode
-  mathématique seulement. En fait, si {\TeX} rencontre l'une de ces
-  commandes en mode texte, il tentera automatiquement de passer au
+\importantbox{Les commandes \cmd{^} et \cmd{_} sont permises dans le
+  mode mathématique seulement. En fait, si {\TeX} rencontre l'une de
+  ces commandes en mode texte, il tentera automatiquement de passer au
   mode mathématique après avoir émis l'avertissement
-\begin{verbatim}
-! Missing $ inserted.
-\end{verbatim}
-  Il est assez rare que le résultat soit celui souhaité.
-\end{important}
+  \begin{trivlist} \item\ttfamily
+    ! Missing \$ inserted.
+  \end{trivlist}
+  Il est assez rare que le résultat soit celui souhaité.}
 
 \subsection{Fractions}
 \label{sec:math:bases:fractions}
@@ -370,10 +368,8 @@ dans le cas de \cmd{\tfrac}. Consulter l'\autoref{ex:math:matrices} à
 la \autopageref{ex:math:matrices} pour visualiser l'effet de la
 commande \cmd{\dfrac}.
 
-\begin{conseil}
-  Il est parfois visuellement plus intéressant, surtout au fil du
-  texte, d'écrire une fraction comme $1/x$ sous la forme $x^{-1}$.
-\end{conseil}
+\tipbox{Il est parfois visuellement plus intéressant, surtout au fil
+  du texte, d'écrire une fraction comme $1/x$ sous la forme $x^{-1}$.}
 
 \subsection{Racines}
 \label{sec:math:bases:racines}
@@ -829,16 +825,14 @@ symboles répartis sur plus de 160 pages! On y trouve de tout, des
 symboles mathématiques aux pictogrammes de météo ou d'échecs, en
 passant par\dots\ des figurines des Simpsons.
 
-\begin{important}
-  Les moteurs {\XeTeX} et {\LuaTeX} supportent nativement le code
-  source en format Unicode UTF-8 \citep{Unicode:5.0}. Ce standard
+\importantbox{Les moteurs {\XeTeX} et {\LuaTeX} supportent nativement le
+  code source en format Unicode UTF-8 \citep{Unicode:5.0}. Ce standard
   contient des définitions pour plusieurs symboles mathématiques
   \citep{wikipedia:unicode-math}. Cela signifie qu'il est possible
   d'entrer une partie au moins des équations mathématiques avec des
   caractères visibles à l'écran, plutôt qu'avec des commandes
   {\LaTeX}. Nous ne saurions toutefois recommander cette pratique qui
-  rend les fichiers source moins compatibles d'un système à un autre.
-\end{important}
+  rend les fichiers source moins compatibles d'un système à un autre.}
 
 \subsection{Lettres grecques}
 \label{sec:math:symboles:grecques}
@@ -931,15 +925,13 @@ Le tableau~213 de la %
 présente plusieurs autres alphabets spéciaux disponibles en mode
 mathématique.
 
-\begin{conseil}
-  Certaines polices OpenType contiennent plusieurs
-  versions des symboles mathématiques. Par exemple, la police utilisée
-  dans le présent document contient deux versions de la police
-  calligraphique, celle présentée ci-contre et celle-ci: %
+\tipbox{Certaines polices OpenType contiennent plusieurs versions des
+  symboles mathématiques. Par exemple, la police utilisée dans le
+  présent document contient deux versions de la police calligraphique,
+  celle présentée ci-contre et celle-ci: %
   \setmathfont[RawFeature=-ss04]{Lucida Bright Math OT}
   $\mathscr{ABC\, xyz}$. Consulter éventuellement la documentation de
-  la police pour les détails.
-\end{conseil}
+  la police pour les détails.}
 
 \subsection{Opérateurs binaires et relations}
 \label{sec:math:symboles:binaires+relations}
@@ -966,7 +958,7 @@ avec \pkg{amsmath} ou un autre paquetage. Autrement, il est possible
 de préfixer toute relation de \cmd{\not} pour y superposer une barre
 oblique $/$.
 
-\begin{table}[p]
+\begin{table}
   \caption{Quelques opérateurs binaires}
   \label{tab:math:binaires}
   \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
@@ -991,7 +983,7 @@ oblique $/$.
   \hspace*{1em}{\footnotesize $^\dagger$ requiert \pkg{amsmath}}
 \end{table}
 
-\begin{table}[p]
+\begin{table}
   \caption{Quelques relations et leur négation}
   \label{tab:math:relations}
   \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
@@ -1030,7 +1022,7 @@ Le paquetage \pkg{amsmath} fournit plusieurs flèches additionnelles
 ainsi que la négation des plus communes. Ces dernières apparaissent
 d'ailleurs dans le \autoref{tab:math:fleches}.
 
-\begin{table}[p]
+\begin{table}
   \caption{Quelques flèches et leur négation}
   \label{tab:math:fleches}
   \begin{tabularx}{1.0\linewidth}{lXlX}
@@ -1077,7 +1069,7 @@ Les versions extensibles de certains accents se trouvent au
 tableau~169. Quant aux symboles mathématiques divers, on en trouve de
 toutes les sortes dans les tableaux 201--212.
 
-\begin{table}[p]
+\begin{table}
   \caption{Accents et symboles mathématiques divers}
   \label{tab:math:autres}
   \begin{tabularx}{1.0\linewidth}{lXlXlXlX}
@@ -1365,9 +1357,8 @@ Consulter le chapitre 3 de la %
 du paquetage \pkg{amsmath} pour les détails sur
 l'utilisation des environnements du \autoref*{tab:math:displays}.
 
-\begin{conseil}
-  Veillez à respecter les règles suivantes pour la composition des
-  équations.
+\tipbox{Veillez à respecter les règles suivantes pour la composition
+  des équations.
   \begin{enumerate}
   \item Qu'elles apparaissent en ligne ou hors paragraphe, les
     équations font partie intégrante de la phrase. Ainsi, les règles
@@ -1378,8 +1369,7 @@ l'utilisation des environnements du \autoref*{tab:math:displays}.
     et quatrième exemples du \autoref{tab:math:displays}).
   \item Ne numéroter que les équations d'un document auxquelles le
     texte fait référence.
-  \end{enumerate}
-\end{conseil}
+  \end{enumerate}}
 
 \begin{exemple}
   Nous avons réalisé les deux suites d'équations au début de la
@@ -1684,8 +1674,7 @@ contrôler leur taille. C'est une lecture suggérée.
   \qed
 \end{exemple}
 
-\begin{conseil}
-  De manière générale, il est déconseillé de scinder une suite
+\tipbox{De manière générale, il est déconseillé de scinder une suite
   d'équations entre deux pages. Le chargement du paquetage
   \pkg{amsmath} désactive d'ailleurs cette possibilité. Cependant,
   c'est parfois inévitable pour les longs blocs d'équations.
@@ -1705,8 +1694,7 @@ contrôler leur taille. C'est une lecture suggérée.
   À moins d'en être vraiment aux toutes dernières étapes d'édition
   d'un document, il est conseillé d'utiliser la commande
   \cmdprint{\displaybreak} avec parcimonie et avec un argument
-  optionnel faible.
-\end{conseil}
+  optionnel faible.}
 
 
 \section{Caractères gras en mathématiques}
@@ -1797,52 +1785,18 @@ A \symbf{A}
   \end{texample}
 \end{demo}
 
-\begin{conseil}
-  \label{conseil:math:mat}
-  Si le gras est fréquemment utilisé dans un document pour une
-  notation particulière, il est fortement recommandé de définir une
-  nouvelle commande\footnotemark\
-  sémantique plutôt que d'utiliser à répétition l'une ou l'autre des
-  commandes ci-dessus.
-
-  Par exemple, si le gras est utilisé pour les vecteurs et matrices,
-  on pourrait définir une nouvelle commande \cmdprint{\mat} en
-  insérant dans le préambule du document
+Si le gras est fréquemment utilisé dans un document pour une notation
+particulière, il est fortement recommandé de définir une nouvelle
+commande\footnote{%
+  La définition de nouvelles commandes est couvert plus en détail au
+  \autoref{chap:commandes}.} sémantique plutôt que d'utiliser à
+répétition l'une ou l'autre des commandes ci-dessus. Par exemple, si
+le gras est utilisé pour les vecteurs et matrices, on pourrait définir
+une nouvelle commande \cmdprint{\mat} en insérant dans le préambule du
+document
 \begin{lstlisting}
 \newcommand[1]{\mat}{\bm{#1}}
 \end{lstlisting}
-\end{conseil}
-%
-\footnotetext{%
-  La définition de nouvelles commandes est couvert plus en détail au
-  \autoref{chap:commandes}.}
-
-
-\begin{information}
-  On l'a vu ci-dessus: le paquetage \pkg{unicode-math} offre l'option
-  \code{ISO} pour le traitement du gras dans les mathématiques. En
-  fait, c'est toute la composition des mathématiques qui fait l'objet
-  d'un standard ISO!
-
-  Plusieurs prescriptions du standard --- comme les noms de variables
-  en italique --- sont déjà prises en compte par {\LaTeX}. Le respect
-  de certaines autres règles est moins répandu, notamment celle qui
-  veut que les constantes mathématiques dont la valeur de change pas
-  (ce sont des constantes, après tout) soient représentées en police
-  droite. On pense, par exemple, au nombre d'Euler $\mathrm{e}$, au
-  nombre imaginaire $\mathrm{i} = \sqrt{-1}$. Même chose pour les
-  opérateurs mathématiques, dont le $\mathrm{d}$ dans les dérivées et
-  les intégrales.
-
-  Voici un exemple d'intégrale composée avec ces règles:
-  \begin{equation*}
-    \int_C \frac{\mathrm{e}^z}{z}\, \mathrm{d}z = 2 \pi \mathrm{i}.
-  \end{equation*}
-  Pour en savoir plus sur l'utilisation du standard ISO dans {\LaTeX},
-  consulter \citet{Beccari:ISO} ou, pour un sommaire rapide, l'%
-  \link{https://nickhigham.wordpress.com/2016/01/28/typesetting-mathematics-according-to-the-iso-standard/}{entrée de blogue} %
-  de Nick Higham.
-\end{information}
 
 \begin{exemple}
   \label{ex:math:matrices}
@@ -1886,10 +1840,34 @@ A \symbf{A}
   On remarquera l'utilisation de la commande \cmd{\dfrac}
   (\autoref{sec:math:bases:fractions}) pour composer des grandes
   fractions à l'intérieur des matrices. Nous avons également eu
-  recours à la commande \cmdprint{\mat} mentionnée dans la
-  rubrique Conseil du {\TeX}pert de la \autopageref{conseil:math:mat}. %
+  recours à la commande \cmdprint{\mat} ci-dessus. %
   \qed
 \end{exemple}
+
+
+\notebox{Le paquetage \pkg{unicode-math} offre l'option \code{ISO}
+  pour le traitement du gras dans les mathématiques. En fait, c'est
+  toute la composition des mathématiques qui fait l'objet d'un
+  standard ISO!
+
+  Plusieurs prescriptions du standard --- comme les noms de variables
+  en italique --- sont déjà prises en compte par {\LaTeX}. Le respect
+  de certaines autres règles est moins répandu, notamment celle qui
+  veut que les constantes mathématiques dont la valeur de change pas
+  (ce sont des constantes, après tout) soient représentées en police
+  droite. On pense, par exemple, au nombre d'Euler $\mathrm{e}$, au
+  nombre imaginaire $\mathrm{i} = \sqrt{-1}$. Même chose pour les
+  opérateurs mathématiques, dont le $\mathrm{d}$ dans les dérivées et
+  les intégrales.
+
+  Voici un exemple d'intégrale composée avec ces règles:
+  \begin{equation*}
+    \int_C \frac{\mathrm{e}^z}{z}\, \mathrm{d}z = 2 \pi \mathrm{i}.
+  \end{equation*}
+  Pour en savoir plus sur l'utilisation du standard ISO dans {\LaTeX},
+  consulter \citet{Beccari:ISO} ou, pour un sommaire rapide, l'%
+  \link{https://nickhigham.wordpress.com/2016/01/28/typesetting-mathematics-according-to-the-iso-standard/}{entrée de blogue} %
+  de Nick Higham.}
 
 
 %%%

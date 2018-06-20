@@ -185,13 +185,11 @@ week!}»
   \end{texample}
 \end{demo}
 
-\begin{conseil}
-  Le soulignement\index{soulignement} servait pour remplacer
+\tipbox{Le soulignement\index{soulignement} servait pour remplacer
   l'italique à l'ère des dactylos. C'est aujourd'hui une marque de
   typographie très rarement utilisée, voire à éviter. Ce n'est donc
   pas pour rien qu'il n'existe pas de commande de soulignement dans
-  les classes {\LaTeX} standards.
-\end{conseil}
+  les classes {\LaTeX} standards.}
 
 
 \section{Listes}
@@ -286,17 +284,18 @@ document. Plusieurs paquetages facilitent toutefois la configuration
 des listes; nous recommandons à ce titre le paquetage \pkg{enumitem}
 \citep{enumitem}.
 
-\begin{conseil}
-  Le mode français de \pkg{babel} remplace les puces par défaut en
-  anglais ({\textbullet}, {\textendash}, $\ast$ et $.$ pour chacun
-  des quatre niveaux de l'environnement \Ie{itemize}) par le tiret
-  cadratin {\textemdash}. On peut désactiver cette fonctionnalité de
-  \pkg{babel} en insérant dans le préambule:
+\begin{figure}[t]
+  \begin{emphbox}{Puces en français}
+    Le mode français de \pkg{babel} remplace les puces par défaut en
+    anglais ({\textbullet}, {\textendash}, $\ast$ et $.$ pour chacun
+    des quatre niveaux de l'environnement \Ie{itemize}) par le tiret
+    cadratin {\textemdash}. On peut désactiver cette fonctionnalité de
+    \pkg{babel} en insérant dans le préambule:
 \begin{lstlisting}
 \frenchbsetup{StardardItemLabels=true}
 \end{lstlisting}
-  Il est également possible de modifier le symbole utilisé comme
-  puce pour l'un, l'autre ou chacun des quatre niveaux avec:
+    Il est également possible de modifier le symbole utilisé comme
+    puce pour l'un, l'autre ou chacun des quatre niveaux avec:
 \begin{lstlisting}
 \frenchbsetup{
   ItemLabeli=\`\meta{commande}',
@@ -304,10 +303,11 @@ des listes; nous recommandons à ce titre le paquetage \pkg{enumitem}
   ItemLabeliii=\`\meta{commande}',
   ItemLabeliv=\`\meta{commande}'}
 \end{lstlisting}
-  La \emph{Comprehensive {\LaTeX} Symbol List} \citep{comprehensive}
-  propose une immense sélection de symboles pouvant faire office de
-  puces.
-\end{conseil}
+    La \emph{Comprehensive {\LaTeX} Symbol List} \citep{comprehensive}
+    propose une immense sélection de symboles pouvant faire office de
+    puces.
+  \end{emphbox}
+\end{figure}
 
 Il existe un troisième environnement, plus rarement utilisé, pour
 composer du texte sous une forme s'apparentant à une liste.

@@ -862,17 +862,19 @@ apparaît dans l'environnement, une légende de la forme «\textsc{Table}
 centré sur la page lorsqu'il fait moins d'une ligne; dans le cas
 contraire il est disposé comme un paragraphe normal.
 
-\begin{conseil}
-  Les anciennes version du style français de \pkg{babel} utilisaient
-  les étiquettes plus neutres «\textsc{Tab.}» et «\textsc{Fig.}» dans
-  les légendes des tableaux et figures. Pour utiliser --- comme dans
-  le présent document --- ces versions plutôt que les versions par
-  défaut ajouter dans le préambule les commandes suivantes:
+\begin{figure}[t]
+  \begin{emphbox}{Étiquettes des légendes en français}
+    Les anciennes version du style français de \pkg{babel} utilisaient
+    les étiquettes plus neutres «\textsc{Tab.}» et «\textsc{Fig.}»
+    dans les légendes des tableaux et figures. Pour utiliser --- comme
+    dans le présent document --- ces versions plutôt que les versions
+    par défaut ajouter dans le préambule les commandes suivantes:
 \begin{lstlisting}
 \def\frenchtablename{{\scshape Tab.}}
 \def\frenchfigurename{{\scshape Fig.}}
 \end{lstlisting}
-\end{conseil}
+  \end{emphbox}
+\end{figure}
 
 Pour faire référence à un tableau ou à une figure dans le texte, il
 faut utiliser le système de renvois automatiques de {\LaTeX}

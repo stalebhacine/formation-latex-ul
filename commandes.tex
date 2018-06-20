@@ -266,56 +266,9 @@ Les nombreux arguments sont les suivants:
   \qed
 \end{exemple}
 
-\begin{exemple}
-  Nous avons créé pour les fins du présent document un environnement
-  \Pe{conseil} servant à mettre en forme les rubriques «Conseil du
-  {\TeX}pert». La définition --- relativement élaborée --- de
-  l'environnement est la suivante:
-\begin{lstlisting}
-\newenvironment{conseil}{%
-  \colorlet{TFFrameColor}{black}
-  \colorlet{TFTitleColor}{white}
-  \begin{table}
-    \begin{titled-frame}{\sffamily Conseil du {\TeX}pert}
-      \noindent
-      \begin{minipage}{0.1\linewidth}
-        \raisebox{-1.5em}[0em][0em]{\HUGE\faThumbsOUp}
-      \end{minipage}
-      \begin{minipage}[t]{0.88\linewidth}}%
-  {\end{minipage}\end{titled-frame}\end{table}}
-\end{lstlisting}
-  Dans le second argument, on:
-  \begin{enumerate}
-  \item définit des couleurs requises par l'environnement
-    \Pe{titled-frame};
-  \item ouvre un élément flottant \Pe{table} pour disposer la rubrique sur la
-    page;
-  \item ouvre un environnement \Ie{titled-frame} (fourni par le paquetage
-    \pkg{framed}) pour encadrer la rubrique et afficher son titre;
-  \item crée une première \Pe{minipage} pour disposer le symbole
-    {\faThumbsOUp} tiré de la police Font~Awesome;
-  \item ouvre une seconde \Pe{minipage} à côté de la première pour
-    accueillir le texte de la rubrique.
-  \end{enumerate}
-  Le troisième argument sert à refermer tous les environnements
-  ouverts dans le second argument et qui n'ont pas déjà été fermés.
-
-  Une fois ce travail accompli, créer une nouvelle rubrique est très
-  simple:
-\begin{lstlisting}
-\begin{conseil}
-  N'hésitez pas à créer des nouvelles commandes...
-\end{conseil}
-\end{lstlisting}
-  On trouvera le résultat ci-dessus. %
-  \qed
-\end{exemple}
-
-\begin{conseil}
-  N'hésitez pas à créer des nouvelles commandes et des nouveaux
+\tipbox{N'hésitez pas à créer des nouvelles commandes et des nouveaux
   environnements dès lors qu'une mise en forme particulière revient
-  plus d'une ou deux fois dans un document.
-\end{conseil}
+  plus d'une ou deux fois dans un document.}
 
 
 

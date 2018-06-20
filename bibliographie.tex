@@ -331,8 +331,7 @@ préparation des entrées bibliographiques suivent l'\autoref*{ex:bibliographie:
   en anglais.
 \end{itemize}
 
-\begin{conseil}
-  Entretenir une base de données bibliographiques unique peut
+\tipbox{Entretenir une base de données bibliographiques unique peut
   rapidement devenir pénible quand le nombre d'entrée devient grand.
 
   Mieux vaut alors scinder ses références dans plusieurs fichiers par
@@ -341,8 +340,7 @@ préparation des entrées bibliographiques suivent l'\autoref*{ex:bibliographie:
 
   On nommera ensuite les fichiers du nom de la thématique:
   \code{droit.bib}, \code{finance.bib},
-  \code{informatique.bib}, etc.
-\end{conseil}
+  \code{informatique.bib}, etc.}
 
 
 
@@ -541,31 +539,31 @@ faire, insérer dans le corps du document la commande
 où \meta{clé1}, \meta{clé2}, \dots, sont les clés des documents à
 inclure dans la bibliographie.
 
-\begin{conseil}
-  Le paquetage \pkg{hyperref} fait
-  automatiquement d'une référence bibliographique un hyperlien vers
-  l'entrée dans la bibliographie. C'est le cas dans le présent
-  document.
+\begin{figure}[t]
+  \begin{emphbox}{Suppression des hyperliens indésirables}
+    Le paquetage \pkg{hyperref} fait automatiquement d'une référence
+    bibliographique un hyperlien vers l'entrée dans la bibliographie.
+    C'est le cas dans le présent document.
 
-  Il peut arriver que l'hyperlien soit superflu ou indésirable. Pour
-  le supprimer pour une référence particulière, on utilise
-  l'environnement \Ie{NoHyper}:
+    Il peut arriver que l'hyperlien soit superflu ou indésirable. Pour
+    le supprimer pour une référence particulière, on utilise
+    l'environnement \Ie{NoHyper}:
 \begin{lstlisting}
 \begin{NoHyper} \citet`\marg{clé}' \end{NoHyper}
 \end{lstlisting}
-  Pour usage fréquent, définir une nouvelle commande
-  (\autoref{chap:commandes}). Par exemple, avec dans le préambule
+    Pour usage fréquent, définir une nouvelle commande
+    (\autoref{chap:commandes}). Par exemple, avec dans le préambule
 \begin{lstlisting}
 \newcommand{\nolink}[1]{%
   \begin{NoHyper}#1\end{NoHyper}}
 \end{lstlisting}
-  on pourra utiliser dans le texte
+    on pourra utiliser dans le texte
 \begin{lstlisting}
 \nolink{\citet`\marg{clé}'}
 \end{lstlisting}
-  pour supprimer l'hyperlien d'une référence bibliographique.
-\end{conseil}
-
+    pour supprimer l'hyperlien d'une référence bibliographique.
+  \end{emphbox}
+\end{figure}
 
 
 \section{Composition de la bibliographie}
@@ -732,13 +730,11 @@ demeure inchangée, une compilation standard avec seulement le moteur
   \end{figure}
 \end{exemple}
 
-\begin{conseil}
-  Aux toutes dernières étapes avant de rendre un document, s'assurer
+\tipbox{Aux toutes dernières étapes avant de rendre un document, s'assurer
   d'exécuter {\BibTeX} une dernière fois et de compiler avec
   pdf{\LaTeX} ou {\XeLaTeX} au moins deux fois. Le journal de la
   compilation (\emph{log file}) ne devrait pas rapporter de références
-  manquantes (\emph{undefined references}).
-\end{conseil}
+  manquantes (\emph{undefined references}).}
 
 Les logiciels intégrés de rédaction offrent généralement des raccourcis pour exécuter la
 compilation avec {\BibTeX}.

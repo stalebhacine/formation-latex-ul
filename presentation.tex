@@ -25,12 +25,12 @@ trois grandes étapes:
 Les logiciels de traitement de texte combinent les trois étapes de
 manière transparente pour l'utilisateur.
 
-Le système {\LaTeX}, lui, n'est qu'un logiciel de mise en page qui se
-charge de la seconde étape de production. La préparation d'un document
-avec {\LaTeX} requiert donc d'utiliser trois outils bien différents,
-un pour chaque étape de production. Nous verrons rapidement que ce qui
-peut à priori sembler un inconvénient constitue en fait un grand
-avantage.
+Le système {\LaTeX}, lui, est un logiciel de mise en page qui se
+charge uniquement de la seconde étape de production. La préparation
+d'un document avec {\LaTeX} requiert donc d'utiliser trois outils bien
+différents, soit un pour chaque étape de production. Nous verrons
+rapidement que ce qui peut à priori sembler un inconvénient constitue
+en fait un grand avantage.
 
 {\LaTeX} est certainement l'un des systèmes de mise en page les plus
 utilisés dans le monde, particulièrement dans la production de
@@ -44,11 +44,11 @@ programme aux autres dont on croise couramment le nom aujourd'hui:
 
 Un peu de phonétique avant d'aller plus loin. La racine {\TeX} est une
 transcription en majuscules des lettres grecques $\tau\epsilon\chi$.
-La dernière lettre des acronymes ci-dessus n'est donc non pas un X,
-mais plutôt la lettre grecque khi majuscule, qui est visuellement
-identique. Pour cette raison, la terminaison des acronymes se prononce
-«tek». Voilà qui devrait permettre de distinguer le système de mise en
-page du matériau élastique.
+La dernière lettre des acronymes ci-dessus n'est donc non pas un X
+latin, mais plutôt la lettre grecque khi majuscule, qui est
+visuellement identique. Pour cette raison, la terminaison des
+acronymes se prononce «tek». Voilà qui devrait déjà vous permettre de
+distinguer le système de mise en page du matériau élastique.
 
 
 \section{Description sommaire}
@@ -281,14 +281,13 @@ La distribution %
 \link{http://www.miktex.org}{MiK\TeX} %
 demeure également très populaire sur Windows.
 
-\begin{information}
-  Quelques faits amusants au sujet de {\TeX}.
-  \begin{itemize}
-  \item {\TeX} est aujourd'hui considéré essentiellement exempt de
-    bogue.
-  \item Donald Knuth vous offre une récompense (symbolique) si vous en
-    trouvez un!
-  \item Le numéro de version de {\TeX} converge vers $\pi$:
+\begin{figure}[t]
+  \begin{emphbox}{\mdseries Quelques faits amusants au sujet de {\TeX}}
+    {\TeX} est aujourd'hui considéré essentiellement exempt de bogue.
+    D'ailleurs, Donald Knuth vous offre une récompense (symbolique) si
+    vous en trouvez un!
+
+    Le numéro de version de {\TeX} converge vers $\pi$:
 \begin{lstlisting}
 $ tex --version
 TeX `\textbf{3.14159265}' (TeX Live 2016)
@@ -296,20 +295,19 @@ kpathsea version 6.2.2
 Copyright 2016 D.E. Knuth.
 [...]
 \end{lstlisting} %$
-  \end{itemize}
-  Pour en savoir plus:
-  \begin{itemize}
-  \item \link{https://www.tug.org/whatis.html}{Histoire de \TeX} sur le
-    site du {\TeX} Users Group (en anglais);
-  \item {\TeX} sur Wikipedia
-    (\link{http://fr.wikipedia.org/wiki/TeX}{version française};
-    \link{http://en.wikipedia.org/wiki/TeX}{version anglaise}, plus
-    complète);
-  \item Texte de la conférence de \citet{Beebe:keynote:2004} à
-    l'occasion des 25 ans de {\TeX} et \textlogo{METAFONT}.
-  \end{itemize}
-\end{information}
-
+    Pour en savoir plus:
+    \begin{itemize}
+    \item \link{https://www.tug.org/whatis.html}{histoire de \TeX} sur
+      le site du {\TeX} Users Group (en anglais);
+    \item {\TeX} sur Wikipedia
+      (\link{http://fr.wikipedia.org/wiki/TeX}{version française};
+      \link{http://en.wikipedia.org/wiki/TeX}{version anglaise}, plus
+      complète);
+    \item texte de la conférence de \citet{Beebe:keynote:2004} à
+      l'occasion des 25 ans de {\TeX} et \textlogo{METAFONT}.
+    \end{itemize}
+\end{emphbox}
+\end{figure}
 
 %%%
 %%% Exercices

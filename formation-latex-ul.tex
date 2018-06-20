@@ -254,43 +254,32 @@
       \begin{trivlist}}
       {\end{trivlist}\end{minipage}}
 
-  %% Encadré générique pour les remarques importantes et autres
-  %% comportant une icône sur la gauche. Argument: symbole à
-  %% placer sur la gauche (obligatoire).
-  \newenvironment{infobox}[1]{%
-    \setlength{\FrameRule}{1pt}
-    \begin{table}[h]%
-      \begin{framed}%
-        \noindent
-        \begin{minipage}{0.1\linewidth}
-          \raisebox{-1.5em}[0em][0em]{\HUGE#1}
-        \end{minipage}
-        \begin{minipage}[t]{0.88\linewidth}}%
-        {\end{minipage}\end{framed}\end{table}}
+  %% Redéfinition de l'environnement titled-frame de framed.sty avec
+  %% deux modifications: épaisseur des filets réduite de 2pt à 1pt;
+  %% "(suite)" plutôt que "(cont)" dans la barre de titre
+  %% lorsque l'encadré se poursuit après un saut de page.
+  \renewenvironment{titled-frame}[1]{%
+    \def\FrameCommand{\fboxsep8pt\fboxrule1pt
+      \TitleBarFrame{\textbf{#1}}}%
+    \def\FirstFrameCommand{\fboxsep8pt\fboxrule1pt
+      \TitleBarFrame[$\blacktriangleright$]{\textbf{#1}}}%
+    \def\MidFrameCommand{\fboxsep8pt\fboxrule1pt
+      \TitleBarFrame[$\blacktriangleright$]{\textbf{#1\ (suite)}}}%
+    \def\LastFrameCommand{\fboxsep8pt\fboxrule1pt
+      \TitleBarFrame{\textbf{#1\ (suite)}}}%
+    \MakeFramed{\advance\hsize-16pt \FrameRestore}}%
+  {\endMakeFramed}
 
-  %% Remarques importantes
-  \newenvironment{important}{%
-    \begin{infobox}{\faExclamationCircle}}%
-    {\end{infobox}}
-
-  %% Informations
-  \newenvironment{information}{%
-    \begin{infobox}{\faInfoCircle}}%
-    {\end{infobox}}
-
-  %% Encadré avec titre (basé sur 'titled-frame' de framed pour les
-  %% conseils du TeXpert. Cet environnement est laissé flottant.
-  \newenvironment{conseil}{%
-    \colorlet{TFFrameColor}{black}%
+  %% Encadré avec titre basé sur titled-frame, ci-dessus.
+  %% Arguments: couleur du cadre (optionnel; noir par défaut) et titre
+  %% de la boite (obligatoire).
+  \newenvironment{emphbox}[2][black]{%
+    \fboxrule1pt
+    \colorlet{TFFrameColor}{#1}%
     \colorlet{TFTitleColor}{white}%
-    \begin{table}%
-      \begin{titled-frame}{\sffamily Conseil du {\TeX}pert}%
-        \noindent
-        \begin{minipage}{0.1\linewidth}
-          \raisebox{-1.5em}[0em][0em]{\HUGE\faThumbsOUp}
-        \end{minipage}
-        \begin{minipage}[t]{0.88\linewidth}}%
-        {\end{minipage}\end{titled-frame}\end{table}}
+    \begin{titled-frame}{\sffamily #2}%
+      \setlength{\parindent}{0pt}}%
+    {\end{titled-frame}}
 
   %%% =======
   %%%  Index
@@ -457,7 +446,7 @@
     \sffamily\mdseries\fontsize{15}{20}\selectfont
     Édition {\fullcaps\year}.\month}
 
-%  \includeonly{couverture-avant,frontispice}
+%  \includeonly{bases,presentation,boites}
 
 \begin{document}
 
