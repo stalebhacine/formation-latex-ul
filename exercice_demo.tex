@@ -113,7 +113,7 @@ foire aux questions\footnote{%
 de R.
 
 Pour quiconque travaille régulièrement avec un ordinateur pour faire
-du calcul scientifique, connaître globalement le fonctionnement
+du calcul scientifique, connaitre globalement le fonctionnement
 interne d'un ordinateur peut s'avérer précieux pour les raisons
 suivantes, entre autres:
 \begin{itemize}
@@ -607,7 +607,7 @@ usuels du système international d'unités. Par exemple:
 \item $1$ mégaoctet (Mo) est $2^{20} = \nombre{1 048 576}$ octets;
 \item $1$ gigaoctet (Go) est $2^{30} = \nombre{1 073 741 824}$ octets.
 \end{itemize}
-On voit que cette pratique fort répandue entraîne des distorsions par
+On voit que cette pratique fort répandue entraine des distorsions par
 rapport aux définitions usuelles de kilo, méga, giga, etc., et que
 cette distorsion s'amplifie au fur et à mesure que l'on grimpe dans
 l'échelle des tailles d'objets. Pour cette raison, on a défini les
@@ -637,7 +637,7 @@ pour montrer son produit sous un jour favorable. Deux exemples:
 
 Cette section décrit la manière standard de représenter les nombres
 réels dans les ordinateurs d'usage courant. Il est utile de
-connaître les grandes lignes afin de comprendre pourquoi les nombres
+connaitre les grandes lignes afin de comprendre pourquoi les nombres
 réels n'ont pas tous une représentation exacte dans un ordinateur et
 comment surviennent et se propagent les erreurs d'arrondi. L'étude du
 sujet est également intéressante en soi pour constater comment les
@@ -897,10 +897,10 @@ les suivantes.
 \end{enumerate}
 
 Tout calcul impliquant un nombre $x > x_{\text{max}}$ ($x <
--x_{\text{max}}$) entraîne un \emph{dépassement de capacité}.
-Habituellement, cela entraîne l'arrêt immédiat des calculs et un
+-x_{\text{max}}$) entraine un \emph{dépassement de capacité}.
+Habituellement, cela entraine l'arrêt immédiat des calculs et un
 résultat de $+\infty$ ($-\infty$). À l'autre bout du spectre, un
-calcul impliquant un nombre $x < x_{\text{min}}$ entraîne un
+calcul impliquant un nombre $x < x_{\text{min}}$ entraine un
 \emph{soupassement de capacité} et le résultat est habituellement
 considéré égal à $0$.
 
@@ -1004,7 +1004,7 @@ significatifs.
 La situation pour la multiplication et la division est quelque peu
 différente, mais la source d'erreur d'arrondi demeure la même.
 
-À toute fin pratique, tout calcul fait naître de l'erreur d'arrondi et
+À toute fin pratique, tout calcul fait naitre de l'erreur d'arrondi et
 celle-ci augmente avec le nombre d'opérations. Les quelques principes
 de programmation ci-dessous, lorsque suivis par le programmeur prudent
 et consciencieux, permettent d'atténuer l'impact de l'erreur
@@ -1015,7 +1015,7 @@ d'arrondi.
   associatives. Additionner les nombres en ordre croissant de grandeur
   afin d'accumuler des bits significatifs.
 \item Éviter de soustraire un petit nombre d'un grand, ou alors le
-  faire le plus tard possible dans la chaîne des calculs.
+  faire le plus tard possible dans la chaine des calculs.
 \item Pour calculer une somme alternée, additionner tous les termes
   positifs et tous les termes négatifs, puis faire la soustraction.
 \item Multiplier et diviser des nombres d'un même ordre de grandeur.
@@ -1139,7 +1139,7 @@ des soupassements de capacité et d'améliorer la précision des calculs.
   contenant un échantillon de $\nombre{1000}$ valeurs d'une distribution
   Pareto translatée de moyenne $\nombre{5000}$ (le contenu de cet objet
   n'est pas affiché ici pour des raisons évidentes). Le calcul de
-  l'estimateur $\hat{\alpha}$ directement par la formule entraîne
+  l'estimateur $\hat{\alpha}$ directement par la formule entraine
   rapidement un dépassement de capacité, tant lors du produit $X_1
   \cdots X_n$ que lors de l'opération $X_{(1)}^n$:
 \begin{Schunk}
@@ -1206,23 +1206,23 @@ des soupassements de capacité et d'améliorer la précision des calculs.
 \end{exemple}
 
 
-\subsection{Coût des opérations}
+\subsection{Cout des opérations}
 \label{sec:ordinateurs:arithmetique:cout}
 
 Les ordinateurs modernes disposent d'une unité de calcul en virgule
 flottante (FPU) intégrée au processeur. Cette unité est évidemment
 très optimisée et, par conséquent, elle accélère beaucoup le calcul en
-virgule flottante. Néanmoins, certaines opérations sont plus coûteuses
+virgule flottante. Néanmoins, certaines opérations sont plus couteuses
 à réaliser que d'autres en termes de temps de calcul. À titre
-indicatif, on trouve au \autoref{tab:ordinateurs:cout} le coût
+indicatif, on trouve au \autoref{tab:ordinateurs:cout} le cout
 relatif approximatif de quelques opérations en virgule flottante.
 \begin{table}
   \centering
-  \caption{Coût relatif de quelques opérations en virgule flottante}
+  \caption{Cout relatif de quelques opérations en virgule flottante}
   \label{tab:ordinateurs:cout}
   \begin{tabular}{lr}
     \toprule
-    Opération arithmétique & Coût relatif \\
+    Opération arithmétique & Cout relatif \\
     \midrule
     Addition et soustraction & $1,0$ \\
     Multiplication           & $1,3$ \\

@@ -108,7 +108,7 @@ en forme des tableaux:
 \begin{enumerate}
 \item ne \emph{jamais} utiliser de filets verticaux. Si l'information
   du côté gauche du tableau semble si différente de celle du côté
-  droit qu'un filet vertical apparaît absolument nécessaire, scinder
+  droit qu'un filet vertical apparait absolument nécessaire, scinder
   simplement l'information dans deux tableaux;
 \item ne jamais utiliser de filets doubles;
 \item placer les unités (\$, cm, {\textdegree}C, etc.) dans le titre
@@ -241,7 +241,7 @@ premier lieu, la commande
 \end{lstlisting}
 permet de fusionner les \meta{n} cellules suivantes en une seule de
 format \meta{fmt} et d'y placer \meta{texte}. Cette commande ne peut
-apparaître qu'au début d'une ligne ou après un symbole de changement
+apparaitre qu'au début d'une ligne ou après un symbole de changement
 de colonne \verb=&=. Elle est souvent utilisée avec une valeur de
 \meta{n} égale à 1 pour changer le format d'une cellule, par exemple
 pour centrer le titre d'une colonne qui est autrement alignée à gauche
@@ -415,7 +415,7 @@ faciliter la comparaison entre le code et le résultat.)
     \multiput(0,0)(0,1){10}{\line(1,0){15}}
     \color{black}
 
-    %% boîtes
+    %% boites
     \put(0,7){%
       \framebox(5,1.5){
         \begin{minipage}{35mm}
@@ -455,12 +455,12 @@ faciliter la comparaison entre le code et le résultat.)
 \setlength{\unitlength}{7mm}  % unité de mesure
 \begin{picture}(15,9)         % grille 15 x 9
   %%%
-  %%% On trace d'abord toutes les boîtes
+  %%% On trace d'abord toutes les boites
   %%%
   %% Rectangle "L'environnement picture"
   \put(0,7){%                 % point d'ancrage (0, 7)
     \framebox(5,1.5){%        % rectangle 5 x 1,5 plein
-      \begin{minipage}{35mm}  % contenu de la boîte
+      \begin{minipage}{35mm}  % contenu de la boite
         \centering L'environnement \\ \texttt{picture}
       \end{minipage}}}
 
@@ -479,7 +479,7 @@ faciliter la comparaison entre le code et le résultat.)
       et autres figures simples.}}
 
   %%%
-  %%% On trace ensuite les lignes entre les boîtes
+  %%% On trace ensuite les lignes entre les boites
   %%%
   %% De "L'environnement picture" à "convient"
   \thinlines                    % retour aux lignes minces
@@ -626,7 +626,7 @@ Le paquetage \pkg{graphicx} définit les commandes suivantes:
 \resizebox`\marg{dim-h}\marg{dim-v}\marg{texte}'
 \reflectbox`\marg{texte}'
 \end{lstlisting}
-Dans tous les cas, \meta{texte} peut être du simple texte ou une boîte
+Dans tous les cas, \meta{texte} peut être du simple texte ou une boite
 quelconque, y compris le résultat de \cmd{\includegraphics}. Ainsi,
 \begin{lstlisting}
 \rotatebox{45}{\includegraphics{ul_p}}
@@ -726,7 +726,7 @@ Les \meta{options} sont très nombreuses; consulter la %
 
 Dans la terminologie de {\LaTeX}, un élément flottant\footnote{%
   \emph{Float} en anglais.} %
-est un bloc de contenu (une boîte, en fait) que le logiciel pourra
+est un bloc de contenu (une boite, en fait) que le logiciel pourra
 positionner sur la page et dans le document plus ou moins
 automatiquement en fonction d'un algorithme prédéfini. C'est une
 fonctionnalité très évoluée de {\LaTeX}.
@@ -769,7 +769,7 @@ prévisible puisque {\LaTeX} tâchera d'insérer l'élément flottant dans
 le document \emph{dès que possible} sous réserve des conditions
 suivantes:
 \begin{itemize}
-\item l'élément flottant ne peut apparaître dans le document avant la
+\item l'élément flottant ne peut apparaitre dans le document avant la
   page où l'élément est défini;
 \item l'élément sera placé de préférence dans le haut de la page
   courante, puis dans le bas et enfin sur une page séparée ne pouvant
@@ -856,7 +856,7 @@ qui sera utilisée dans la liste des tableaux ou dans la liste des
 figures.
 
 La commande \cmd{\caption} insère,  à l'endroit où elle
-apparaît dans l'environnement, une légende de la forme «\textsc{Table}
+apparait dans l'environnement, une légende de la forme «\textsc{Table}
 \emph{n}~--~\meta{texte}» pour un tableau ou «\textsc{Figure}
 \emph{n}~--~\meta{texte}» pour une figure. Le texte de la légende est
 centré sur la page lorsqu'il fait moins d'une ligne; dans le cas
@@ -931,19 +931,19 @@ un tableau et une figure dans {\LaTeX}, légende et renvoi inclus.
 \end{exemple}
 
 Les environnements \Pe{table} et \Pe{figure} créent des éléments
-flottants qui, par ailleurs, sont des boîtes verticales standards
+flottants qui, par ailleurs, sont des boites verticales standards
 (\autoref{sec:boites:parbox}). Il est donc permis d'y mettre à peu
 près n'importe quoi, mais surtout plus d'un tableau ou plus d'une
 figure (ou même une combinaison des deux). Les environnements
 \Pe{minipage} (\autoref{sec:boites:parbox}) se révèlent alors
 particulièrement utiles pour disposer les éléments de contenu dans la
-boîte.
+boite.
 
 \begin{exemple}
   \label{exemple:tableaux:grille}
   La \autoref{fig:tableaux:grille} contient quatre images sous forme
   de grille $2 \times 2$. Le code ci-dessous démontre comment parvenir
-  à cette disposition à l'aide de boîtes verticales créées avec
+  à cette disposition à l'aide de boites verticales créées avec
   l'environnement \Pe{minipage}.
   \begin{figure}
     \fcolorbox{lightgray}{white}{\begin{minipage}{0.45\linewidth}
@@ -963,7 +963,7 @@ boîte.
     \end{minipage}}
   \caption{Exemple de disposition de plusieurs graphiques dans une
     même figure flottante. Les rectangles en grisé indiquent les
-    limites des boîtes verticales.}
+    limites des boites verticales.}
   \label{fig:tableaux:grille}
   \end{figure}
 \begin{lstlisting}
@@ -1088,7 +1088,7 @@ sous-légendes.
   \label{ex:tableaux:subcaptions}
   L'\autoref{exemple:tableaux:grille} montre comment intégrer
   plusieurs figures (ou tableaux) à l'intérieur d'un même
-  environnement flottant en les disposant dans des boîtes verticales.
+  environnement flottant en les disposant dans des boites verticales.
   Dans de tels cas, il peut être souhaitable de fournir une légende
   pour l'ensemble du flottant, mais aussi des sous-légendes pour
   chaque tableau ou figure.

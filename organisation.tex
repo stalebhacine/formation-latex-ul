@@ -12,7 +12,7 @@
 \chapter{Organisation d'un document}
 \label{chap:organisation}
 
-La maîtrise des notions du chapitre précédent permet déjà de composer
+La maitrise des notions du chapitre précédent permet déjà de composer
 un document simple avec {\LaTeX}. Toutefois, la puissance du système
 de mise en page se manifeste vraiment lors de la préparation de
 documents élaborés comportant plusieurs divisions internes, une table
@@ -36,17 +36,17 @@ Les classes standards sont \class{article}, \class{report},
 \item[\normalfont\class{article}] Articles scientifiques et autres
   documents de longueur modérée ne nécessitant pas une mise en page
   élaborée. Le folio (numéro de page) est placé au centre du pied de
-  page. Le titre apparaît dans le haut de la première page,
+  page. Le titre apparait dans le haut de la première page,
   immédiatement suivi du texte.
 \item[\normalfont\class{report}] Rapports et autres documents plus
-  longs pouvant être divisés en chapitres. Le titre apparaît sur une
+  longs pouvant être divisés en chapitres. Le titre apparait sur une
   page de titre. La mise en page est autrement identique à celle de la
   classe \class{article}.
 \item[\normalfont\class{book}] Longs documents divisés en chapitres.
   La mise en page est conçue pour une impression recto verso. L'entête
   de la page (autre que la première du chapitre) contient le folio sur
   le bord extérieur et le titre de chapitre (page paire) ou le titre
-  de section (page impaire). Le titre apparaît sur une page de titre.
+  de section (page impaire). Le titre apparait sur une page de titre.
 \item[\normalfont\class{letter}] Lettres et correspondance. Bien que
   puissante, cette classe est plus rarement utilisée. Nous n'en traitons
   pas davantage dans ce document.
@@ -429,7 +429,7 @@ production de la table des matières est on ne peut plus simple avec
 \tableofcontents
 \end{lstlisting}
 dans le corps du document à l'endroit où la table des matières doit
-apparaître. C'est tout!
+apparaitre. C'est tout!
 
 Lorsque le paquetage \pkg{hyperref} \citep{hyperref} est chargé, la
 commande \cmdprint{\tableofcontents} produit également la table des
@@ -467,7 +467,7 @@ est le texte qui apparaitra dans la table des matières.
   l'Université Laval, les résumés, la liste des abbréviations et des
   sigles, les remerciements et l'avant-propos doivent être composés
   comme des chapitres normaux non numérotés. Cependant, ils doivent
-  apparaître dans la table des matières. Pour ce faire, les gabarits
+  apparaitre dans la table des matières. Pour ce faire, les gabarits
   fournis avec la classe \class{ulthese} comportent des lignes de la
   forme:
 \begin{lstlisting}
@@ -737,7 +737,7 @@ effet dans tous les documents.
 Il est recommandé de segmenter tout document d'une certaine ampleur
 dans des fichiers \verb=.tex= distincts pour chaque partie ---
 habituellement un fichier par chapitre. Le document complet est
-composé à l'aide d'un fichier maître qui contient le préambule
+composé à l'aide d'un fichier maitre qui contient le préambule
 {\LaTeX} et un ensemble d'appels à la commande \cmdprint{\include}
 pour réunir les parties dans un tout.
 
@@ -758,7 +758,7 @@ avec \cmd{\include} peut contenir des appels à \cmd{\input}, mais pas
 
 \begin{exemple}
   La \autoref{fig:organisation:maitre} présente un exemple type de
-  fichier maître. On y utilise la commande \cmd{\include} pour
+  fichier maitre. On y utilise la commande \cmd{\include} pour
   composer un document chapitre par chapitre.
 
   \begin{figure}
@@ -785,7 +785,7 @@ avec \cmd{\include} peut contenir des appels à \cmd{\input}, mais pas
 \end{document}
 \end{lstlisting}
     \end{minipage}
-    \caption{Structure type d'un fichier maître. Les fichiers
+    \caption{Structure type d'un fichier maitre. Les fichiers
       \code{historique.tex}, \code{rappels.tex} et \code{modele.tex}
       contiennent le texte des trois premiers chapitres.}
     \label{fig:organisation:maitre}
@@ -908,7 +908,7 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
 
 \begin{exercice}[nosol]
   \label{ex:include}
-  Cet exercice fait appel au fichier maître
+  Cet exercice fait appel au fichier maitre
   \fichier{exercice\_include.tex} et à plusieurs fichiers auxiliaires.
   Schématiquement, le document est composé ainsi:
 
@@ -928,10 +928,10 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
   un document {\LaTeX}. Elle provient du paquetage \pkg{graphicx}.
 
   \begin{enumerate}
-  \item Étudier le code source du fichier maître, puis le compiler
+  \item Étudier le code source du fichier maitre, puis le compiler
     deux à trois fois jusqu'à ce que tous les renvois soient à jour.
     Il est normal à ce stade que la figure~1 du document soit vide.
-  \item Ajouter dans le préambule du fichier maître la commande
+  \item Ajouter dans le préambule du fichier maitre la commande
 \begin{lstlisting}
 \includeonly{emacs}
 \end{lstlisting}
@@ -940,7 +940,7 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
     Observer que, malgré l'absence du chapitre~1, la numérotation et
     les références demeurent à jour, notamment la table des matières.
   \item Remplacer la commande ajoutée en b) dans le préambule du
-    fichier maître par la commande
+    fichier maitre par la commande
 \begin{lstlisting}
 \includeonly{rpresentation}
 \end{lstlisting}
@@ -957,7 +957,7 @@ d'utilisation des commandes \cmd{\include} et \cmd{\includeonly}.
     chapitre~2 débute toujours à la page~3 alors que celle-ci est
     maintenant occupée par la figure~1.
   \item Afin de corriger la table des matières, désactiver dans le
-    préambule du fichier maître la commande \cmd{\includeonly}, puis
+    préambule du fichier maitre la commande \cmd{\includeonly}, puis
     compiler de nouveau le document quelques fois.
   \end{enumerate}
 \end{exercice}
