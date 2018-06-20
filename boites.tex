@@ -34,9 +34,35 @@ cela, des boîtes. Pour {\TeX}, chaque caractère, chaque lettre n'est
 qu'un rectangle d'une certaine largeur qui s'élève au-dessus de la
 ligne de base (les lignes d'une feuille lignée) et qui, parfois, se
 prolonge sous la ligne de base (pensons aux lettres \emph{p}, \emph{y}
-ou \emph{Q}). Les commandes et environnements présentés ci-dessous
-permettent simplement de créer d'autres boîtes dont le contrôle des
-dimensions et du contenu est laissé à l'usager.
+ou \emph{Q}). La \autoref{fig:boites:glyphs} illustre cela.
+
+\begin{figure}[t]
+  \begin{minipage}{0.45\linewidth}
+    \centering\huge
+    fantastique
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    %% creéation de boites autour des caractères
+    %% https://tex.stackexchange.com/questions/57812/bounding-box-for-each-letter
+    \fboxrule=0.1pt
+    \fboxsep=-\fboxrule
+    \makeatletter
+    \def\SOUL@soeverytoken{%
+      \fbox{\color{white}\the\SOUL@token}}
+    \makeatother
+    \centering
+    \so{\huge fantastique}
+  \end{minipage}
+  \caption{À gauche, ce que nous voyons dans le document fini: un
+    alignement de lettres. À droite, ce que {\TeX} manipule: une série
+    de boîtes.}
+  \label{fig:boites:glyphs}
+\end{figure}
+
+Les commandes et environnements présentés ci-dessous permettent
+simplement de créer d'autres boîtes dont le contrôle des dimensions et
+du contenu est laissé à l'usager.
 
 Une fois créée, une boîte ne peut être scindée en parties, notamment
 entre les lignes ou entre les pages.
