@@ -39,6 +39,7 @@
   \renewcommand{\month}{03-0}
   %\newcommand{\ISBN}{978-2-9811416-7-5}
   \newcommand{\ctanurl}{https://ctan.org/pkg/formation-latex-ul/}
+  \newcommand{\ghurl}{https://github.com/vigou3/formation-latex-ul/}
 
   %%% ===================
   %%%  Style du document
@@ -370,13 +371,9 @@
   %% Suppression de l'hyperlien
   \newcommand{\nolink}[1]{\begin{NoHyper}#1\end{NoHyper}}
 
-  %% «Bouton» de la page de copyright
-  \newcommand{\browsebutton}{%
-    \setlength{\fboxrule}{1pt}%
-    \framebox[40mm][c]{%
-      \rule[-5pt]{0mm}{16pt}%
-      \makebox[7mm]{\raisebox{-2pt}{\LARGE\faGithub}}\;%
-      {\sffamily Voir sur GitHub}}}
+  %% Lien vers GitHub dans la page de notices
+  \newcommand{\viewsource}[1]{%
+    \href{#1}{\faGithub\ Voir sur GitHub}}
 
   %% Pour le tableau des commandes d'espacement en mode mathématique.
   %% Pris de la doc de amsmath.
