@@ -51,7 +51,7 @@ SOURCEMAIN = \
 		Suricata.jpg \
 		ul_p.pdf \
 	frontispice.tex \
-	licence.tex \
+	notices.tex \
 		by-sa.pdf \
 		by.pdf \
 		sa.pdf \
@@ -89,7 +89,7 @@ SOURCEDIAPOS = \
 	couverture-avant-diapos.tex \
 		Suricata-diapos.jpg \
 		ul_p.pdf \
-	licence-diapos.tex \
+	notices-diapos.tex \
 		by-sa.pdf \
 		by.pdf \
 		sa.pdf \
